@@ -15,7 +15,7 @@ class CategoriesController extends Controller
         $categories = Category::where(['classid' => $classid, 'status' => 1])->with(['users' => function($query) use ($user) {
             return $query->where('users.id', $user->id);
         }])->get();
-        return view('domained::orders.create', compact('categories'));
+        return view('orders.create', compact('categories'));
     }
 
 }

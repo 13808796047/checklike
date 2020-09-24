@@ -15,27 +15,29 @@ class AuthenticationsController extends Controller
 
     public function __construct()
     {
-        $host = \request()->getHost();
-        switch ($host) {
-            case config('app.host.dev_host'):
-                $config = config('services.dev_lianwen_com');
-                $this->uri = 'dev';
-                break;
-            case config('app.host.wf_host'):
-                $config = config('services.wanfang_lianwen_com');
-                $this->uri = 'wf';
-                break;
-            case config('app.host.wp_host'):
-                $config = config('services.weipu_lianwen_com');
-                $this->uri = 'wp';
-                break;
-            case config('app.host.cn_host'):
-                $config = config('services.www_cnweipu_com');
-                $this->uri = 'cn';
-                break;
-            default:
-                $config = config('services.pp_lianwen_com');
-        }
+//        $host = \request()->getHost();
+//        switch ($host) {
+//            case config('app.host.dev_host'):
+//                $config = config('services.dev_lianwen_com');
+//                $this->uri = 'dev';
+//                break;
+//            case config('app.host.wf_host'):
+//                $config = config('services.wanfang_lianwen_com');
+//                $this->uri = 'wf';
+//                break;
+//            case config('app.host.wp_host'):
+//                $config = config('services.weipu_lianwen_com');
+//                $this->uri = 'wp';
+//                break;
+//            case config('app.host.cn_host'):
+//                $config = config('services.www_cnweipu_com');
+//                $this->uri = 'cn';
+//                break;
+//            default:
+//                $config = config('services.pp_lianwen_com');
+//        }
+        // 微信登录配置
+        $config = config('services.wechat');
         $this->app = new SocialiteManager($config);
     }
 
@@ -68,21 +70,22 @@ class AuthenticationsController extends Controller
                         'nick_name' => $oauthUser['nickname'],
                         'avatar' => $oauthUser['avatar'],
                         'weixin_unionid' => $unionid,
+                        'weixin_openid' => $oauthUser->getOriginal()['openid']
                     ];
-                    switch ($this->uri) {
-                        case 'dev':
-                            $attributes['dev_weixin_openid'] = $oauthUser->getOriginal()['openid'];
-                            break;
-                        case 'wf':
-                            $attributes['wf_weixin_openid'] = $oauthUser->getOriginal()['openid'];
-                            break;
-                        case 'wp':
-                            $attributes['wp_weixin_openid'] = $oauthUser->getOriginal()['openid'];
-                            break;
-                        case 'cn':
-                            $attributes['cn_weixin_openid'] = $oauthUser->getOriginal()['openid'];
-                            break;
-                    }
+//                    switch ($this->uri) {
+//                        case 'dev':
+//                            $attributes['dev_weixin_openid'] = $oauthUser->getOriginal()['openid'];
+//                            break;
+//                        case 'wf':
+//                            $attributes['wf_weixin_openid'] = $oauthUser->getOriginal()['openid'];
+//                            break;
+//                        case 'wp':
+//                            $attributes['wp_weixin_openid'] = $oauthUser->getOriginal()['openid'];
+//                            break;
+//                        case 'cn':
+//                            $attributes['cn_weixin_openid'] = $oauthUser->getOriginal()['openid'];
+//                            break;
+//                    }
                     $user = User::create($attributes);
                     $uid = \Cache::get('uid');
                     //邀请人

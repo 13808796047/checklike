@@ -47,34 +47,39 @@ return [
         "key" => env("BAIDU_TRANSLATE_KEY_FOUR"),
     ],
     //微信登录
-    'dev_lianwen_com' => [
-        'wechat' => [
-            'client_id' => env('DEV_WEIXIN_KEY'),
-            'client_secret' => env('DEV_WEIXIN_SECRET'),
-            'redirect' => env('DEV_WEIXIN_REDIRECT'),
-        ]
+    'wechat' => [
+        'client_id' => env('DEV_WEIXIN_KEY'),
+        'client_secret' => env('DEV_WEIXIN_SECRET'),
+        'redirect' => env('DEV_WEIXIN_REDIRECT'),
     ],
-    'wanfang_lianwen_com' => [
-        'wechat' => [
-            'client_id' => env('WANFANG_WEIXIN_KEY'),
-            'client_secret' => env('WANFANG_WEIXIN_SECRET'),
-            'redirect' => env('WANFANG_WEIXIN_REDIRECT'),
-        ]
-    ],
-    'weipu_lianwen_com' => [
-        'wechat' => [
-            'client_id' => env('WEIPU_WEIXIN_KEY'),
-            'client_secret' => env('WEIPU_WEIXIN_SECRET'),
-            'redirect' => env('WEIPU_WEIXIN_REDIRECT'),
-        ]
-    ],
-    'www_cnweipu_com' => [
-        'wechat' => [
-            'client_id' => env('CN_WEIXIN_KEY'),
-            'client_secret' => env('CN_WEIXIN_SECRET'),
-            'redirect' => env('CN_WEIXIN_REDIRECT'),
-        ]
-    ],
+//    'dev_lianwen_com' => [
+//        'wechat' => [
+//            'client_id' => env('DEV_WEIXIN_KEY'),
+//            'client_secret' => env('DEV_WEIXIN_SECRET'),
+//            'redirect' => env('DEV_WEIXIN_REDIRECT'),
+//        ]
+//    ],
+//    'wanfang_lianwen_com' => [
+//        'wechat' => [
+//            'client_id' => env('WANFANG_WEIXIN_KEY'),
+//            'client_secret' => env('WANFANG_WEIXIN_SECRET'),
+//            'redirect' => env('WANFANG_WEIXIN_REDIRECT'),
+//        ]
+//    ],
+//    'weipu_lianwen_com' => [
+//        'wechat' => [
+//            'client_id' => env('WEIPU_WEIXIN_KEY'),
+//            'client_secret' => env('WEIPU_WEIXIN_SECRET'),
+//            'redirect' => env('WEIPU_WEIXIN_REDIRECT'),
+//        ]
+//    ],
+//    'www_cnweipu_com' => [
+//        'wechat' => [
+//            'client_id' => env('CN_WEIXIN_KEY'),
+//            'client_secret' => env('CN_WEIXIN_SECRET'),
+//            'redirect' => env('CN_WEIXIN_REDIRECT'),
+//        ]
+//    ],
     //获取字数
     'words_count' => [
         'appid' => env('WORDSCOUNT_APPID'),
