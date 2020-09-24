@@ -1,0 +1,36 @@
+<?php 
+return [
+    'labels' => [
+        'Order' => 'Order',
+    ],
+    'fields' => [
+        'orderid' => '订单ID',
+        'cid' => 'cid',
+        'userid' => 'userid',
+        'status' => 'status',
+        'title' => 'title',
+        'writer' => 'writer',
+        'content' => 'content',
+        'date_publish' => 'date_publish',
+        'words' => 'words',
+        'price' => 'price',
+        'pay_price' => 'pay_price',
+        'pay_type' => 'pay_type',
+        'payid' => 'payid',
+        'date_pay' => 'date_pay',
+        'paper_path' => 'paper_path',
+        'report_path' => 'report_path',
+        'rate' => '重复率',
+        'result' => 'result',
+        'from' => 'from',
+        'keyword' => 'keyword',
+        'rid' => 'rid',
+        'del' => 'del',
+        'api_orderid' => 'api_orderid',
+        'report_pdf_path' => 'report_pdf_path',
+        'endDate' => 'endDate',
+        'publishdate' => 'publishdate',
+    ],
+    'options' => [
+    ],
+];
