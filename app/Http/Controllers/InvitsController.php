@@ -8,6 +8,6 @@ class InvitsController extends Controller
 {
     public function index()
     {
-        return view('domained::zt.jc');
+        return view('zt.jc');
     }
 }

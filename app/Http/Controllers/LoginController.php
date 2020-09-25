@@ -24,7 +24,7 @@ class LoginController extends Controller
         $credentials['password'] = $request->password;
         if(\Auth::attempt($credentials)) {
             session()->flash('success', '欢迎回来！');
-            return redirect()->route('domained::pages.index');
+            return redirect()->route('pages.index');
         } else {
             session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
             return redirect()->back()->withInput();

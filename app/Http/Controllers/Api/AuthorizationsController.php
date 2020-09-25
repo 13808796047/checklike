@@ -63,29 +63,29 @@ class AuthorizationsController extends Controller
     //微信小程序登录
     public function miniProgramStore(MiniProgromAuthorizationRequest $request)
     {
-        $domain = request()->getHost();
-        switch ($domain) {
-            case config('app.host.dev_host'):
-                $config = config('wechat.mini_program.dev');
-                $this->uri = 'dev';
-                break;
-            case config('app.host.wf_host'):
-                $config = config('wechat.mini_program.wf');
-                $this->uri = 'wf';
-                break;
-            case config('app.host.wp_host'):
-                $config = config('wechat.mini_program.wp');
-                $this->uri = 'wp';
-                break;
-            case config('app.host.pp_host'):
-                $config = config('wechat.mini_program.pp');
-                $this->uri = 'pp';
-                break;
-            default:
-                $config = config('wechat.mini_program.cn');
-                $this->uri = 'cn';
-        }
-        $app = Factory::miniProgram($config);
+//        $domain = request()->getHost();
+//        switch ($domain) {
+//            case config('app.host.dev_host'):
+//                $config = config('wechat.mini_program.dev');
+//                $this->uri = 'dev';
+//                break;
+//            case config('app.host.wf_host'):
+//                $config = config('wechat.mini_program.wf');
+//                $this->uri = 'wf';
+//                break;
+//            case config('app.host.wp_host'):
+//                $config = config('wechat.mini_program.wp');
+//                $this->uri = 'wp';
+//                break;
+//            case config('app.host.pp_host'):
+//                $config = config('wechat.mini_program.pp');
+//                $this->uri = 'pp';
+//                break;
+//            default:
+//                $config = config('wechat.mini_program.cn');
+//                $this->uri = 'cn';
+//        }
+        $app = Factory::miniProgram(config('wechat.mini_program'));
         if(!$code = $request->code) {
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
@@ -103,22 +103,23 @@ class AuthorizationsController extends Controller
         // 找到 openid 对应的用户
         $user = User::where('weixin_unionid', $data['unionid'])->first();
         $attributes['weixin_session_key'] = $data['session_key'];
-        switch ($this->uri) {
-            case 'dev':
-                $attributes['dev_weapp_openid'] = $data['openid'];
-                break;
-            case 'wf':
-                $attributes['wf_weapp_openid'] = $data['openid'];
-                break;
-            case 'wp':
-                $attributes['wp_weapp_openid'] = $data['openid'];
-                break;
-            case 'pp':
-                $attributes['pp_weapp_openid'] = $data['openid'];
-                break;
-            default:
-                $attributes['cn_weapp_openid'] = $data['openid'];
-        }
+        $attributes['weapp_openid'] = $data['openid'];
+//        switch ($this->uri) {
+//            case 'dev':
+//                $attributes['dev_weapp_openid'] = $data['openid'];
+//                break;
+//            case 'wf':
+//                $attributes['wf_weapp_openid'] = $data['openid'];
+//                break;
+//            case 'wp':
+//                $attributes['wp_weapp_openid'] = $data['openid'];
+//                break;
+//            case 'pp':
+//                $attributes['pp_weapp_openid'] = $data['openid'];
+//                break;
+//            default:
+//                $attributes['cn_weapp_openid'] = $data['openid'];
+//        }
         $attributes['weixin_unionid'] = $data['unionid'];
         if(!$user) {
             $user = User::create($attributes);
