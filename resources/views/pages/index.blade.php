@@ -161,7 +161,7 @@
               </a>
             </div>
             <p class="text-gray-500 text-xs px-8 d-flex">
-
+              <div></div>
               <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                  href="{{route('register')}}">
                 还没有账号?去注册
