@@ -15,7 +15,7 @@
         <thead class="thead-dark">
         <tr>
           <th scope="col"><input type="checkbox" id="allcheck"></th>
-          <th scope="col">论文s题目</th>
+          <th scope="col">论文题目</th>
           <th scope="col">系统名称</th>
           <th scope="col">状态</th>
           <th scope="col">检测结果</th>
