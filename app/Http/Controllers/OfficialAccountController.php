@@ -121,23 +121,6 @@ class OfficialAccountController extends Controller
      */
     protected function eventUnsubscribe($event)
     {
-//        switch ($this->officialAccount) {
-//            case 'gh_192a416dfc80':
-//                $wxUser = User::where('dev_weixin_openid', $this->openid)->first();
-//                $wxUser->dev_weixin_openid = '';
-//                break;
-//            case 'gh_caf405e63bb3':
-//                $wxUser = User::where('wf_weixin_openid', $this->openid)->first();
-//                $wxUser->wf_weixin_openid = '';
-//                break;
-//            case 'gh_1a157bde21a9':
-//                $wxUser = User::where('wp_weixin_openid', $this->openid)->first();
-//                $wxUser->wp_weixin_openid = '';
-//                break;
-//            default:
-//                $wxUser = User::where('pp_weixin_openid', $this->openid)->first();
-//                $wxUser->pp_weixin_openid = '';
-//        }
         $wxUser = User::where('weixin_openid', $this->openid)->first();
         $wxUser->subscribe = 0;
         $wxUser->subscribe_time = null;
@@ -188,61 +171,83 @@ class OfficialAccountController extends Controller
         $result = DB::transaction(function() use ($openId, $event, $nickname, $wxUser) {
             // 用户
             $user = User::create([
-                
+                'nickname' => $nickname,
+                'avatar' => $wxUser['headimgurl'],
+                'created_at' => now(),
+                'subscribe' => $wxUser['subscribe'],
+                'subscribe_time' => $wxUser['subscribe_time'],
+                'weixin_openid' => $wxUser['openid'],
             ]);
+            Log::info('用户注册成功 openid：' . $openId);
+            $this->markTheLogin($event, $user->id);
         });
     }
 
-    public function handleUser($type, $wxUser, $user, &$loginUser)
+    public function markTheLogin($event, $uid)
     {
-        if($type == 'JC') {
-            if(!$user) {
-                $invit_user->nick_name = $wxUser['nickname'];
-                $invit_user->avatar = $wxUser['headimgurl'];
-                $invit_user->weixin_unionid = $wxUser['unionid'];
-                switch ($this->officialAccount) {
-                    case 'gh_192a416dfc80':
-                        $invit_user->dev_weixin_openid = $wxUser['openid'];
-                        break;
-                    case 'gh_caf405e63bb3':
-                        $invit_user->wf_weixin_openid = $wxUser['openid'];
-                        break;
-                    case 'gh_1a157bde21a9':
-                        $invit_user->wp_weixin_openid = $wxUser['openid'];
-                        break;
-                    default:
-                        $invit_user->pp_weixin_openid = $wxUser['openid'];
-                }
-                $invit_user->save();
-                auth('web')->login($invit_user);
-                //邀请人
-                $loginUser->increaseJcTimes(5);
-                $invit_user->increaseJcTimes(5);
-            } else {
-                $message = new Text('您已经注册过账号了!');
+        if(empty($event['eventKey'])) {
+            return;
+        }
+        // 关注事件的场景值会带一个前缀需要去掉
+        if($event['Event'] == 'subscribe') {
+            $eventKey = \Str::after($event['EventKey'], 'qrscene_');
+        }
 
-                $result = $this->app->customer_service->message($message)->to($invit_user->weixin_openid)->send();
-            }
-        }
-        if($type == 'CC') {
-            $loginUser->nick_name = $wxUser['nickname'];
-            $loginUser->avatar = $wxUser['headimgurl'];
-            $loginUser->weixin_unionid = $wxUser['unionid'];
-            switch ($this->officialAccount) {
-                case 'gh_192a416dfc80':
-                    $loginUser->dev_weixin_openid = $wxUser['openid'];
-                    break;
-                case 'gh_caf405e63bb3':
-                    $loginUser->wf_weixin_openid = $wxUser['openid'];
-                    break;
-                case 'gh_1a157bde21a9':
-                    $loginUser->wp_weixin_openid = $wxUser['openid'];
-                    break;
-                default:
-                    $loginUser->pp_weixin_openid = $wxUser['openid'];
-            }
-            $loginUser->save();
-        }
-        return $loginUser;
+        Log::info('EventKey:' . $eventKey, [$event['EventKey']]);
+
+        // 标记前端可登陆
+        Cache::put('login_wechat' . $eventKey, $uid, now()->addMinute(30));
     }
+//    public function handleUser($type, $wxUser, $user, &$loginUser)
+//    {
+//        if($type == 'JC') {
+//            if(!$user) {
+//                $invit_user->nick_name = $wxUser['nickname'];
+//                $invit_user->avatar = $wxUser['headimgurl'];
+//                $invit_user->weixin_unionid = $wxUser['unionid'];
+//                switch ($this->officialAccount) {
+//                    case 'gh_192a416dfc80':
+//                        $invit_user->dev_weixin_openid = $wxUser['openid'];
+//                        break;
+//                    case 'gh_caf405e63bb3':
+//                        $invit_user->wf_weixin_openid = $wxUser['openid'];
+//                        break;
+//                    case 'gh_1a157bde21a9':
+//                        $invit_user->wp_weixin_openid = $wxUser['openid'];
+//                        break;
+//                    default:
+//                        $invit_user->pp_weixin_openid = $wxUser['openid'];
+//                }
+//                $invit_user->save();
+//                auth('web')->login($invit_user);
+//                //邀请人
+//                $loginUser->increaseJcTimes(5);
+//                $invit_user->increaseJcTimes(5);
+//            } else {
+//                $message = new Text('您已经注册过账号了!');
+//
+//                $result = $this->app->customer_service->message($message)->to($invit_user->weixin_openid)->send();
+//            }
+//        }
+//        if($type == 'CC') {
+//            $loginUser->nick_name = $wxUser['nickname'];
+//            $loginUser->avatar = $wxUser['headimgurl'];
+//            $loginUser->weixin_unionid = $wxUser['unionid'];
+//            switch ($this->officialAccount) {
+//                case 'gh_192a416dfc80':
+//                    $loginUser->dev_weixin_openid = $wxUser['openid'];
+//                    break;
+//                case 'gh_caf405e63bb3':
+//                    $loginUser->wf_weixin_openid = $wxUser['openid'];
+//                    break;
+//                case 'gh_1a157bde21a9':
+//                    $loginUser->wp_weixin_openid = $wxUser['openid'];
+//                    break;
+//                default:
+//                    $loginUser->pp_weixin_openid = $wxUser['openid'];
+//            }
+//            $loginUser->save();
+//        }
+//        return $loginUser;
+//    }
 }

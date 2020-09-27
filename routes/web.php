@@ -14,13 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-//微信登录
+Route::get('/', 'HomeController@index')->name('home.index');
+// 微信登录
 Route::get('/oauth/{type}', 'AuthenticationsController@oauth')->name('oauth');
 Route::get('/oauth/{type}/callback', 'AuthenticationsController@callback');
 
 
-Route::get('/', 'HomeController@index')->name('home.index');
-Route::get('/login-check', 'HomeController@loginCheck')->name('home.login.check');
+// 公众号登录
+Route::get('login_check', 'HomeController@loginCheck')->name('home.login.check');
+Route::get('official_account', 'OfficialAccountController@index')->name('official.account.index');
+Route::any('official_account/serve', 'OfficialAccountController@serve')->name('official.account.serve');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('categories/{classid}', 'CategoriesController@show')->name('categories.show');
@@ -70,7 +73,7 @@ Route::get('payments/{id}/wechat/return/{type}', 'PaymentsController@wechatRetur
 Auth::routes();
 //百度支付
 Route::any('payments/baidu/notify', 'PaymentsController@baiduNotify')->name('payments.baidu.notify');
-Route::any('official_account/serve', 'OfficialAccountController@serve')->name('official_account.serve');
+
 //生成分享二维码
 Route::get('orders/{order}/qrcode', 'OrdersController@generateQrcode')->name('orders.qrcode');
 //分享图片
