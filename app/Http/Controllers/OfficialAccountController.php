@@ -44,10 +44,6 @@ class OfficialAccountController extends Controller
         // 自定义参参数返回前端
         return response(compact('url', 'wechatFlag'))
             ->cookie('wechat_flag', $wechatFlag, 24 * 60);
-////        $prefix  = 'dev_order';
-//        $result = $qrCode->temporary('CC-' . auth()->user()->id, 3600 * 24);
-//        $url = $qrCode->url($result['ticket']);
-//        return response(compact('url'), 200);
     }
 
     public function serve()

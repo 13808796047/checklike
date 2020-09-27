@@ -58,156 +58,187 @@ return [
      * 公众号
      */
     'official_account' => [
-        'dev' =>
-            [
-                'app_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
-                'secret' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
-                'token' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
-                'aes_key' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
-                'templates' => [
-                    'subscribed' => [
-                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
-                        'appid' => env('DEV_MINIPROGRAM_APPID'),
-                        'page_path' => env('DEV_MINIPROGRAM_BINDPHONE_URL'),
-                    ],
-                    'pending' => [
-                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
-                        'appid' => env('DEV_MINIPROGRAM_APPID'),
-                        'page_path' => env('DEV_MINIPROGRAM_PENDING_URL'),
-                    ],
-                    'paid' => [
-                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
-                        'appid' => env('DEV_MINIPROGRAM_APPID'),
-                        'page_path' => env('DEV_MINIPROGRAM_PAID_URL'),
-                    ],
-                    'checked' => [
-                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
-                        'appid' => env('DEV_MINIPROGRAM_APPID'),
-                        'page_path' => env('DEV_MINIPROGRAM_CHECKED_URL'),
-                    ],
-                    'binded' => [
-                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
-                        'appid' => env('DEV_MINIPROGRAM_APPID'),
-                        'page_path' => env('DEV_MINIPROGRAM_BINDED_URL'),
-                    ]
-                ]
+        'app_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
+        'secret' => env('WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
+        'token' => env('WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
+        'aes_key' => env('WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
+        'templates' => [
+            'subscribed' => [
+                'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
+                'appid' => env('MINIPROGRAM_APPID'),
+                'page_path' => env('MINIPROGRAM_BINDPHONE_URL'),
             ],
-        'wf' =>
-            [
-                'app_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
-                'secret' => env('WF_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
-                'token' => env('WF_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
-                'aes_key' => env('WF_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
-                'templates' => [
-                    'subscribed' => [
-                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
-                        'appid' => env('WF_MINIPROGRAM_APPID'),
-                        'page_path' => env('WF_MINIPROGRAM_BINDPHONE_URL'),
-                    ],
-                    'pending' => [
-                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
-                        'appid' => env('WF_MINIPROGRAM_APPID'),
-                        'page_path' => env('WF_MINIPROGRAM_PENDING_URL'),
-                    ],
-                    'paid' => [
-                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
-                        'appid' => env('WF_MINIPROGRAM_APPID'),
-                        'page_path' => env('WF_MINIPROGRAM_PAID_URL'),
-                    ],
-                    'checked' => [
-                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
-                        'appid' => env('WF_MINIPROGRAM_APPID'),
-                        'page_path' => env('WF_MINIPROGRAM_CHECKED_URL'),
-                    ],
-                    'binded' => [
-                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
-                        'appid' => env('WF_MINIPROGRAM_APPID'),
-                        'page_path' => env('WF_MINIPROGRAM_BINDED_URL'),
-                    ]
-                ]
+            'pending' => [
+                'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
+                'appid' => env('MINIPROGRAM_APPID'),
+                'page_path' => env('MINIPROGRAM_PENDING_URL'),
             ],
-        'wp' =>
-            [
-                'app_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
-                'secret' => env('WP_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
-                'token' => env('WP_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
-                'aes_key' => env('WP_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
-                'templates' => [
-                    'subscribed' => [
-                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
-                        'appid' => env('WP_MINIPROGRAM_APPID'),
-                        'page_path' => env('WP_MINIPROGRAM_BINDPHONE_URL'),
-                    ],
-                    'pending' => [
-                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
-                        'appid' => env('WP_MINIPROGRAM_APPID'),
-                        'page_path' => env('WP_MINIPROGRAM_PENDING_URL'),
-                    ],
-                    'paid' => [
-                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
-                        'appid' => env('WP_MINIPROGRAM_APPID'),
-                        'page_path' => env('WP_MINIPROGRAM_PAID_URL'),
-                    ],
-                    'checked' => [
-                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
-                        'appid' => env('WP_MINIPROGRAM_APPID'),
-                        'page_path' => env('WP_MINIPROGRAM_CHECKED_URL'),
-                    ],
-                    'binded' => [
-                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
-                        'appid' => env('WP_MINIPROGRAM_APPID'),
-                        'page_path' => env('WP_MINIPROGRAM_BINDED_URL'),
-                    ]
-                ]
+            'paid' => [
+                'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
+                'appid' => env('MINIPROGRAM_APPID'),
+                'page_path' => env('MINIPROGRAM_PAID_URL'),
             ],
-        'pp' =>
-            [
-                'app_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
-                'secret' => env('PP_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
-                'token' => env('PP_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
-                'aes_key' => env('PP_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
-                'templates' => [
-                    'subscribed' => [
-                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
-                        'appid' => env('PP_MINIPROGRAM_APPID'),
-                        'page_path' => env('PP_MINIPROGRAM_BINDPHONE_URL'),
-                    ],
-                    'pending' => [
-                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
-                        'appid' => env('PP_MINIPROGRAM_APPID'),
-                        'page_path' => env('PP_MINIPROGRAM_PENDING_URL'),
-                    ],
-                    'paid' => [
-                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
-                        'appid' => env('PP_MINIPROGRAM_APPID'),
-                        'page_path' => env('PP_MINIPROGRAM_PAID_URL'),
-                    ],
-                    'checked' => [
-                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
-                        'appid' => env('PP_MINIPROGRAM_APPID'),
-                        'page_path' => env('PP_MINIPROGRAM_CHECKED_URL'),
-                    ],
-                    'binded' => [
-                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
-                        'appid' => env('PP_MINIPROGRAM_APPID'),
-                        'page_path' => env('PP_MINIPROGRAM_BINDED_URL'),
-                    ]
-                ]
+            'checked' => [
+                'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
+                'appid' => env('MINIPROGRAM_APPID'),
+                'page_path' => env('MINIPROGRAM_CHECKED_URL'),
             ],
-        'cn' =>
-            [
-                'app_id' => env('CN_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
-                'secret' => env('CN_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
-                'token' => env('CN_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
-                'aes_key' => env('CN_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
-                'templates' => [
-                    'subscribed' => [
-                        'template_id' => env('CN_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
-                        'appid' => env('CN_MINIPROGRAM_APPID'),
-                        'page_path' => env('CN_MINIPROGRAM_BINDPHONE_URL'),
-                    ]
-                ]
+            'binded' => [
+                'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
+                'appid' => env('MINIPROGRAM_APPID'),
+                'page_path' => env('MINIPROGRAM_BINDED_URL'),
             ],
+        ]
+//        'dev' =>
+//            [
+//                'app_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
+//                'secret' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
+//                'token' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
+//                'aes_key' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
+//                'templates' => [
+//                    'subscribed' => [
+//                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
+//                        'appid' => env('DEV_MINIPROGRAM_APPID'),
+//                        'page_path' => env('DEV_MINIPROGRAM_BINDPHONE_URL'),
+//                    ],
+//                    'pending' => [
+//                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
+//                        'appid' => env('DEV_MINIPROGRAM_APPID'),
+//                        'page_path' => env('DEV_MINIPROGRAM_PENDING_URL'),
+//                    ],
+//                    'paid' => [
+//                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
+//                        'appid' => env('DEV_MINIPROGRAM_APPID'),
+//                        'page_path' => env('DEV_MINIPROGRAM_PAID_URL'),
+//                    ],
+//                    'checked' => [
+//                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
+//                        'appid' => env('DEV_MINIPROGRAM_APPID'),
+//                        'page_path' => env('DEV_MINIPROGRAM_CHECKED_URL'),
+//                    ],
+//                    'binded' => [
+//                        'template_id' => env('DEV_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
+//                        'appid' => env('DEV_MINIPROGRAM_APPID'),
+//                        'page_path' => env('DEV_MINIPROGRAM_BINDED_URL'),
+//                    ]
+//                ]
+//            ],
+//        'wf' =>
+//            [
+//                'app_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
+//                'secret' => env('WF_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
+//                'token' => env('WF_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
+//                'aes_key' => env('WF_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
+//                'templates' => [
+//                    'subscribed' => [
+//                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
+//                        'appid' => env('WF_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WF_MINIPROGRAM_BINDPHONE_URL'),
+//                    ],
+//                    'pending' => [
+//                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
+//                        'appid' => env('WF_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WF_MINIPROGRAM_PENDING_URL'),
+//                    ],
+//                    'paid' => [
+//                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
+//                        'appid' => env('WF_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WF_MINIPROGRAM_PAID_URL'),
+//                    ],
+//                    'checked' => [
+//                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
+//                        'appid' => env('WF_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WF_MINIPROGRAM_CHECKED_URL'),
+//                    ],
+//                    'binded' => [
+//                        'template_id' => env('WF_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
+//                        'appid' => env('WF_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WF_MINIPROGRAM_BINDED_URL'),
+//                    ]
+//                ]
+//            ],
+//        'wp' =>
+//            [
+//                'app_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
+//                'secret' => env('WP_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
+//                'token' => env('WP_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
+//                'aes_key' => env('WP_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
+//                'templates' => [
+//                    'subscribed' => [
+//                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
+//                        'appid' => env('WP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WP_MINIPROGRAM_BINDPHONE_URL'),
+//                    ],
+//                    'pending' => [
+//                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
+//                        'appid' => env('WP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WP_MINIPROGRAM_PENDING_URL'),
+//                    ],
+//                    'paid' => [
+//                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
+//                        'appid' => env('WP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WP_MINIPROGRAM_PAID_URL'),
+//                    ],
+//                    'checked' => [
+//                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
+//                        'appid' => env('WP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WP_MINIPROGRAM_CHECKED_URL'),
+//                    ],
+//                    'binded' => [
+//                        'template_id' => env('WP_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
+//                        'appid' => env('WP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('WP_MINIPROGRAM_BINDED_URL'),
+//                    ]
+//                ]
+//            ],
+//        'pp' =>
+//            [
+//                'app_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
+//                'secret' => env('PP_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
+//                'token' => env('PP_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
+//                'aes_key' => env('PP_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
+//                'templates' => [
+//                    'subscribed' => [
+//                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
+//                        'appid' => env('PP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('PP_MINIPROGRAM_BINDPHONE_URL'),
+//                    ],
+//                    'pending' => [
+//                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
+//                        'appid' => env('PP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('PP_MINIPROGRAM_PENDING_URL'),
+//                    ],
+//                    'paid' => [
+//                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
+//                        'appid' => env('PP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('PP_MINIPROGRAM_PAID_URL'),
+//                    ],
+//                    'checked' => [
+//                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),
+//                        'appid' => env('PP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('PP_MINIPROGRAM_CHECKED_URL'),
+//                    ],
+//                    'binded' => [
+//                        'template_id' => env('PP_WECHAT_OFFICIAL_ACCOUNT_BINDED_TEMPLATE_ID'),
+//                        'appid' => env('PP_MINIPROGRAM_APPID'),
+//                        'page_path' => env('PP_MINIPROGRAM_BINDED_URL'),
+//                    ]
+//                ]
+//            ],
+//        'cn' =>
+//            [
+//                'app_id' => env('CN_WECHAT_OFFICIAL_ACCOUNT_APPID', ''),         // AppID
+//                'secret' => env('CN_WECHAT_OFFICIAL_ACCOUNT_SECRET', ''),    // AppSecret
+//                'token' => env('CN_WECHAT_OFFICIAL_ACCOUNT_TOKEN', ''),           // Token
+//                'aes_key' => env('CN_WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
+//                'templates' => [
+//                    'subscribed' => [
+//                        'template_id' => env('CN_WECHAT_OFFICIAL_ACCOUNT_BOUNDPHONE_TEMPLATE_ID'),
+//                        'appid' => env('CN_MINIPROGRAM_APPID'),
+//                        'page_path' => env('CN_MINIPROGRAM_BINDPHONE_URL'),
+//                    ]
+//                ]
+//            ],
         /*
  * OAuth 配置
  *
