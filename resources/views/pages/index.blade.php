@@ -56,7 +56,8 @@
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="w-full">
                   <form class="bg-white rounded px-4 pt-6">
-                    <div>
+                  <img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQGs7jwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAySHd2X3NyVkhjcW0xcEp2Tk52Y3QAAgTtTXBfAwSAUQEA" alt="">
+                    <!-- <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
                         用户名:
                       </label>
@@ -80,7 +81,8 @@
                         type="button" id="accountLogin">
                         登录
                       </button>
-                    </div>
+                    </div> -->
+                    <img src="" alt="">
 
                   </form>
 
@@ -158,7 +160,6 @@
                 </svg>
               </a>
             </div>
-            <p id="test">测试</p>
             <p class="text-gray-500 text-xs px-8 d-flex">
 
               <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
