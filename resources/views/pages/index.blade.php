@@ -158,6 +158,7 @@
                 </svg>
               </a>
             </div>
+            <p id="test">测试</p>
             <p class="text-gray-500 text-xs px-8 d-flex">
 
               <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
@@ -629,7 +630,15 @@
           $("#btnSubmit").click()
         }
       })
-
+      //生成二维码
+      $('#test').click(function(){
+          console.log("xixi")
+          axios.get("/official_account").then(res=>{
+            console.log(res,"fsdaf")
+          }).catch(err=>{
+            console.log(err,"fsdxxxxxxxx")
+          })
+      })
       //账号登录
       $('#accountLogin').click(function () {
         axios.post('{{route('login') }}', {
