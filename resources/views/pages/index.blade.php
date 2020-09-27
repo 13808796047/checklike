@@ -54,7 +54,7 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="w-full">
+                <!-- <div class="w-full">
                   <form class="bg-white rounded px-4 pt-6">
                     <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
@@ -82,8 +82,8 @@
                       </button>
                     </div>
 
-                  </form>
-
+                  </form> -->
+                    <img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQGs7jwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAySHd2X3NyVkhjcW0xcEp2Tk52Y3QAAgTtTXBfAwSAUQEA" alt="">
                 </div>
               </div>
               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
