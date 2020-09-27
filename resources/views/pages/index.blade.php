@@ -633,7 +633,7 @@
       //生成二维码
       $('#test').click(function(){
           console.log("xixi")
-          axios.get("/official_account ").then(res=>{
+          axios.get("/official_account").then(res=>{
             console.log(res,"fsdaf")
           }).catch(err=>{
             console.log(err,"fsdxxxxxxxx")
