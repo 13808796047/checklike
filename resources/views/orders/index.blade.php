@@ -1,10 +1,10 @@
-@extends('domained::layouts.app')
+@extends('layouts.app')
 @section('title', '检测报告')
 @section('styles')
   <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
   <style>
-    .curfont{
-      font-size:16px;
+    .curfont {
+      font-size: 16px;
     }
   </style>
 @stop

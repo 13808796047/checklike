@@ -1,4 +1,4 @@
-@extends('domained::layouts.app')
+@extends('layouts.app')
 @section('styles')
 
   <link href="{{asset('asset/css/bootstrap.css')}}" rel="stylesheet"/>

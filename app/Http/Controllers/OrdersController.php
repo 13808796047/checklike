@@ -38,7 +38,7 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
-        return view('domained::orders.index', compact('orders'));
+        return view('orders.index', compact('orders'));
     }
 
     public function store(OrderRequest $request)
@@ -60,7 +60,7 @@ class OrdersController extends Controller
 //        }
         // 校验权限
         $this->authorize('own', $order);
-        return view('domained::orders.show', compact('order'));
+        return view('orders.show', compact('order'));
     }
 
     public function viewReport(Order $order, OrderApiHandler $apiHandler)
@@ -68,7 +68,7 @@ class OrdersController extends Controller
         //校验权限
         $this->authorize('own', $order);
         $pdf = $apiHandler->extractReportPdf($order->api_orderid);
-        return view('domained::orders.view_report', compact('order', 'pdf'));
+        return view('orders.view_report', compact('order', 'pdf'));
     }
 
     public function destroy(Request $request)
@@ -112,6 +112,6 @@ class OrdersController extends Controller
     {
         $orderimg = app(OrderimgHandler::class);
         $img_url = $orderimg->generate($request->title, $request->writer, $request->category_name, $request->classid, $request->created_at, $request->rate);
-        return view('domained::orders.qrcode.index', compact('img_url'));
+        return view('orders.qrcode.index', compact('img_url'));
     }
 }

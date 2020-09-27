@@ -19,7 +19,8 @@ Route::get('/oauth/{type}', 'AuthenticationsController@oauth')->name('oauth');
 Route::get('/oauth/{type}/callback', 'AuthenticationsController@callback');
 
 
-Route::get('/', 'PagesController@index')->name('pages.index');
+Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/login-check', 'HomeController@loginCheck')->name('home.login.check');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('categories/{classid}', 'CategoriesController@show')->name('categories.show');

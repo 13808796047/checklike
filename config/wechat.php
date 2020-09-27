@@ -236,12 +236,12 @@ return [
      * 小程序
      */
     'mini_program' => [
-        'app_id' => env('DEV_WECHAT_MINI_PROGRAM_APPID', ''),
-        'secret' => env('DEV_WECHAT_MINI_PROGRAM_SECRET', ''),
-        'token' => env('DEV_WECHAT_MINI_PROGRAM_TOKEN', ''),
-        'aes_key' => env('DEV_WECHAT_MINI_PROGRAM_AES_KEY', ''),
-        'mch_id' => env('DEV_WECHAT_MINI_PROGRAM_MCH_ID'),
-        'key' => env('DEV_WECHAT_MINI_PROGRAM_KEY'),
+        'app_id' => env('WECHAT_MINI_PROGRAM_APPID', ''),
+        'secret' => env('WECHAT_MINI_PROGRAM_SECRET', ''),
+        'token' => env('WECHAT_MINI_PROGRAM_TOKEN', ''),
+        'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY', ''),
+        'mch_id' => env('WECHAT_MINI_PROGRAM_MCH_ID'),
+        'key' => env('WECHAT_MINI_PROGRAM_KEY'),
 //        'dev' => [
 //            'app_id' => env('DEV_WECHAT_MINI_PROGRAM_APPID', ''),
 //            'secret' => env('DEV_WECHAT_MINI_PROGRAM_SECRET', ''),
