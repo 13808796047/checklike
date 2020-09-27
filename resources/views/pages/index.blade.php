@@ -83,7 +83,9 @@
                     </div>
 
                   </form> -->
+                  <div class="w-full">
                     <img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQGs7jwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAySHd2X3NyVkhjcW0xcEp2Tk52Y3QAAgTtTXBfAwSAUQEA" alt="">
+                  </div>
                 </div>
               </div>
               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
