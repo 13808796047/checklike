@@ -52,7 +52,6 @@ class OfficialAccountController extends Controller
             try {
                 if($message) {
                     $method = \Str::camel('handle_' . $message['MsgType']);
-                    Log::info('方法', [$method]);
                     if(method_exists($this, $method)) {
                         $this->openid = $message['FromUserName'];
                         $this->officialAccount = $message['ToUserName'];
@@ -78,7 +77,7 @@ class OfficialAccountController extends Controller
     protected function handleEvent($event)
     {
         $method = \Str::camel('event_' . $event['Event']);
-
+        Log::info('方法', [$method]);
         if(method_exists($this, $method)) {
             return call_user_func_array([$this, $method], [$event]);
         }
