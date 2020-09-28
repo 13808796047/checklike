@@ -179,7 +179,6 @@ class OfficialAccountController extends Controller
 
     public function markTheLogin($event, $uid)
     {
-        Log::info('event', [$event]);
         if(empty($event['EventKey'])) {
             return;
         }
