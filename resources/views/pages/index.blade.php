@@ -50,19 +50,14 @@
             </button>
           </div>
           <div class="modal-body">
-
             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
               <li class="nav-item mr-4">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                   aria-controls="pills-home" aria-selected="true">账号登录</a>
+                   aria-controls="pills-home" aria-selected="true">微信登录</a>
               </li>
               <li class="nav-item mr-4">
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                   aria-controls="pills-profile" aria-selected="false">手机登录</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                   aria-controls="pills-profile" aria-selected="false">公众号登录</a>
+                   aria-controls="pills-profile" aria-selected="false">账号登录</a>
               </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
