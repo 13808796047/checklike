@@ -25,14 +25,19 @@
       text-align: center;
       color: #61534e;
     }
-    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    /* color: #fff; */
-    /* background-color: #3490dc; */
-       color:red;
-    }
-    .modal-content{
-
-    }
+  	.nav-link {
+			color: black;
+			}
+		.nav-pills .nav-link {
+			border-radius: 0;
+		}
+		.nav-pills .nav-link.active,
+		.nav-pills .show>.nav-link {
+			color: #3e8bdb;
+			background-color: #fff;
+			font-weight: bold;
+			border-bottom: 1px solid #3e8bdb;
+		}
 
   </style>
 @stop
@@ -42,14 +47,8 @@
   @guest
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document" style="width:390px;height:360px;">
-        <div class="modal-content">
-          <div class="modal-header border-none" style="padding:10px 15px;">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline:none;">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
+      <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:360px;">>
+        <div class="modal-content" style="width:330px;height:360px;">
             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
               <li class="nav-item mr-4">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -60,19 +59,23 @@
                    aria-controls="pills-profile" aria-selected="false">账号登录</a>
               </li>
             </ul>
-            <div class="tab-content" id="pills-tabContent">
+            <div class="tab-content" id="pills-tabContent" style="margin:17px 0;">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="w-full">
-                  <form class="bg-white rounded px-4 pt-6">
-                  <img src="" id="qrimg">
-
-                  </form>
-
-                </div>
+              <div style="width:270px;height:270px;margin: 0 auto;">
+								<div style="color: #999;font-size: 13px;text-align: center;">
+									微信扫一扫 享免费检测
+								</div>
+								<div style="margin: 5px 0;">
+									<img src=""
+									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: block;">
+								</div>
+								<div style="color: #999;font-size: 13px;text-align: center;">
+									无需注册，关注后自动登录
+								</div>
+							</div>
               </div>
               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="w-full">
-                  <form class="bg-white rounded px-4 pt-6">
+
                     <!-- <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                         手机号码:
@@ -129,10 +132,6 @@
                         登录
                       </button>
                     </div>
-
-                  </form>
-
-                </div>
               </div>
             </div>
 
