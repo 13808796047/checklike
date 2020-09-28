@@ -28,8 +28,12 @@
     .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     /* color: #fff; */
     /* background-color: #3490dc; */
-    color:red;
+       color:red;
     }
+    .modal-content{
+
+    }
+
   </style>
 @stop
 @section('content')
@@ -40,7 +44,7 @@
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header border-none">
+          <div class="modal-header border-none" style="outline:none;padding:10px 15px;">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
