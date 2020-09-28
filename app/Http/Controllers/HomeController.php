@@ -31,9 +31,7 @@ class HomeController extends Controller
         $uid = Cache::get('login_wechat' . $flag);
         $user = User::find($uid);
         if(!$user) {
-            response()->json([
-                'message' => '用户不存在'
-            ])->setStatusCode(401);
+            throw new InvalidRequestException('用户不存在', 401);
         }
         // 登录用户,并清空缓存
         auth('web')->login($user);
