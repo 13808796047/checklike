@@ -241,7 +241,34 @@
   <div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <p>sdfdf</p>
+    <div>
+	<label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+		手机号码:
+	</label>
+	<input class="appearance-none border rounded w-full py-2 px-2 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+	 id="mobile" type="text" placeholder="请输入手机号码">
+	<p class="text-red-500 text-xs italic "></p>
+</div>
+<div>
+	<label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+		验证码:
+	</label>
+	<div class="d-flex justify-content-between py-2">
+		<input class="appearance-none border border-red-500 rounded   py-2 px-2  w-full mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+		 id="verification_code" type="text" placeholder="请输入短信验证码" />
+		<input class="bg-blue-500 hover:bg-blue-700 px-2 py-1  text-white font-bold rounded" type="button" id="verificationCode"
+		 value="发送验证码">
+
+	</div>
+
+</div>
+<div class="flex items-center justify-between my-4">
+	<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
+	 type="button" id="phoneLogin">
+		登录
+	</button>
+</div>
+
     </div>
   </div>
   </div>
