@@ -161,6 +161,7 @@ class OfficialAccountController extends Controller
         }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
+        Log::info('用户', [$wxUser]);
         // 注册
         $nickname = $this->filterEmoji($wxUser['nickname']);
         $result = DB::transaction(function() use ($openId, $event, $nickname, $wxUser) {
