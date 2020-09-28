@@ -621,14 +621,15 @@
               wechat_flag:wechatFlag
             }).then(res=>{
               console.log(res,"fsdaf")
-              if(res){
+              if(res.status==200){
                 clearInterval(timer);
+                swal("提示", res.data.message, "success");
+                location.reload();
               }
-
             }).catch(err=>{
               console.log(err,"fxx")
               })
-          }, 5000);
+          }, 1000);
 
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
