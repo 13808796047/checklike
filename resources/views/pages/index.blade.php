@@ -65,31 +65,7 @@
                 <div class="w-full">
                   <form class="bg-white rounded px-4 pt-6">
                   <img src="" id="qrimg">
-                    <!-- <div>
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                        用户名:
-                      </label>
-                      <input
-                        class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="phone"
-                        id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
-                    </div>
-                    <div>
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                        密码:
-                      </label>
-                      <input
-                        class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                        name="password"
-                        id="password" type="password" placeholder="请输入密码" value="{{ old('password') }}">
-                    </div>
-                    <div class="flex items-center justify-between my-4">
-                      <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="button" id="accountLogin">
-                        登录
-                      </button>
-                    </div> -->
+
                   </form>
 
                 </div>
@@ -97,7 +73,7 @@
               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="w-full">
                   <form class="bg-white rounded px-4 pt-6">
-                    <div>
+                    <!-- <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                         手机号码:
                       </label>
@@ -127,6 +103,31 @@
                         type="button" id="phoneLogin">
                         登录
                       </button>
+                    </div> -->
+                    <div>
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+                        用户名:
+                      </label>
+                      <input
+                        class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="phone"
+                        id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
+                    </div>
+                    <div>
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                        密码:
+                      </label>
+                      <input
+                        class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        name="password"
+                        id="password" type="password" placeholder="请输入密码" value="{{ old('password') }}">
+                    </div>
+                    <div class="flex items-center justify-between my-4">
+                      <button
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="button" id="accountLogin">
+                        登录
+                      </button>
                     </div>
 
                   </form>
@@ -151,7 +152,7 @@
 
           </div>
           <div class="modal-footer" style="justify-content: space-between;">
-            <div style="display: flex;align-items: center;">
+            <!-- <div style="display: flex;align-items: center;">
               <p class="text-sm">社交账号登录</p>
               <a href="{{route('oauth',['type'=>'wechat'])}}" id="toWechat" class="block mr-4"
                  style="padding-left:23px">
@@ -172,7 +173,7 @@
                  href="{{route('register')}}">
                 还没有账号?去注册
               </a>
-            </p>
+            </p> -->
           </div>
         </div>
       </div>
