@@ -209,7 +209,7 @@
   <div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;height:330px;">
       <div class="modal-content" style="width:330px;height:360px;">
-        <div style="padding:10px 16px;">
+        <div style="padding:10px 16px;margin-top:40px;">
           <div >
 	          <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
 	          	手机号码:
