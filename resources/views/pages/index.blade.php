@@ -613,7 +613,6 @@
       // $().UItoTop({easingType: 'easeOutQuart'});
 
       axios.get("/official_account").then(res=>{
-          console.log(res,"fsdaf")
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
           console.log('var wechatFlag = ''',wechatFlag)
