@@ -103,7 +103,6 @@ class OfficialAccountController extends Controller
 //        $this->handleUser($type, $wxUser, $user, $loginUser);
 
         if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
-            Log::info('wxUser', [$wxUser]);
             // 标记前端可登录
             $this->markTheLogin($event, $wxUser->id);
 
@@ -180,6 +179,7 @@ class OfficialAccountController extends Controller
 
     public function markTheLogin($event, $uid)
     {
+        Log::info('event', [$event]);
         if(empty($event['EventKey'])) {
             return;
         }
