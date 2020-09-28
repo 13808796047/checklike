@@ -207,7 +207,7 @@
   {{--    </ul>--}}
   {{--  </div>--}}
   <div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="width:330px;height:360px;">
+  <div class="modal-dialog modal-dialog-centered" style="width:330px;height:330px;">
       <div class="modal-content" style="width:330px;height:360px;">
         <div style="padding:10px 16px;">
           <div >
