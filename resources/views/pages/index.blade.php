@@ -134,7 +134,7 @@
                       </button>
                     </div>
                     <div style="display: flex;font-size: 10px;justify-content: space-between;color: #999;">
-                       <p>忘记密码</p>
+                       <p id="forgetpsw">忘记密码</p>
                        <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                         href="{{route('register')}}">
                           立即注册
@@ -736,7 +736,11 @@
           }
         })
       }
-
+      //忘记密码
+      $("#forgetpsw").click(function(){
+        $("#staticBackdrop").modal("hide");
+        console.log("xixi")
+      })
       $('#verificationCode').click(function () {
         getcode(this)
       })
