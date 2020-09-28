@@ -76,6 +76,7 @@ class OfficialAccountController extends Controller
      */
     protected function handleEvent($event)
     {
+        Log::info('event', [$event]);
         $method = \Str::camel('event_' . $event['Event']);
         Log::info('方法', [$method]);
         if(method_exists($this, $method)) {
