@@ -101,6 +101,7 @@ class OfficialAccountController extends Controller
 //        [$type, $id] = explode('-', $eventKey);
 //        $loginUser = User::find($id);
 //        $this->handleUser($type, $wxUser, $user, $loginUser);
+
         if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
             // 标记前端可登录
             $this->markTheLogin($event, $wxUser->id);
@@ -162,34 +163,33 @@ class OfficialAccountController extends Controller
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
         // 注册
-        $nickname = $this->filterEmoji($wxUser['nickname']);
-        Log::info('nickname', [$nickname]);
-        $result = DB::transaction(function() use ($openId, $event, $nickname, $wxUser) {
+        $result = DB::transaction(function() use ($openId, $event, $wxUser) {
             // 用户
             $user = User::create([
-                'nick_name' => $nickname,
+                'nick_name' => $wxUser['nickname'],
                 'avatar' => $wxUser['headimgurl'],
                 'created_at' => now(),
                 'subscribe' => $wxUser['subscribe'],
                 'subscribe_time' => $wxUser['subscribe_time'],
                 'weixin_openid' => $wxUser['openid'],
             ]);
-            Log::info('用户注册成功 openid：' . $openId);
             $this->markTheLogin($event, $user->id);
         });
     }
 
     public function markTheLogin($event, $uid)
     {
-        if(empty($event['eventKey'])) {
+        Log::info('事件', [$event]);
+        if(empty($event['EventKey'])) {
             return;
         }
         // 关注事件的场景值会带一个前缀需要去掉
         if($event['Event'] == 'subscribe') {
             $eventKey = \Str::after($event['EventKey'], 'qrscene_');
+        } else {
+            $eventKey = $event['EventKey'];
         }
 
-        Log::info('EventKey:' . $eventKey, [$event['EventKey']]);
 
         // 标记前端可登陆
         Cache::put('login_wechat' . $eventKey, $uid, now()->addMinute(30));
