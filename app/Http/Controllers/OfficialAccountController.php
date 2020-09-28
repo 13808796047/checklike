@@ -172,13 +172,13 @@ class OfficialAccountController extends Controller
                 'subscribe_time' => $wxUser['subscribe_time'],
                 'weixin_openid' => $wxUser['openid'],
             ]);
-            Log::info('用户注册成功 openid：' . $openId);
             $this->markTheLogin($event, $user->id);
         });
     }
 
     public function markTheLogin($event, $uid)
     {
+        Log::info('event', [$event, $uid]);
         if(empty($event['eventKey'])) {
             return;
         }
