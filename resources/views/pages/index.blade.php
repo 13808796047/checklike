@@ -617,7 +617,6 @@
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
           console.log('var wechatFlag = ''',wechatFlag)
-
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
