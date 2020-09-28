@@ -629,7 +629,7 @@
             }).catch(err=>{
               console.log(err,"fxx")
               })
-          }, 20000);
+          }, 5000);
 
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
