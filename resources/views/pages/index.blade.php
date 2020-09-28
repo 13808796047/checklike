@@ -56,7 +56,8 @@
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="w-full">
                   <form class="bg-white rounded px-4 pt-6">
-                    <div>
+                  <img src="" id="qrimg">
+                    <!-- <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
                         用户名:
                       </label>
@@ -80,8 +81,7 @@
                         type="button" id="accountLogin">
                         登录
                       </button>
-                    </div>
-
+                    </div> -->
                   </form>
 
                 </div>
@@ -158,9 +158,8 @@
                 </svg>
               </a>
             </div>
-            <p id="test">测试</p>
             <p class="text-gray-500 text-xs px-8 d-flex">
-
+              <div></div>
               <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                  href="{{route('register')}}">
                 还没有账号?去注册
@@ -612,6 +611,21 @@
       //   }
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
+
+      axios.get("/official_account").then(res=>{
+          $("#qrimg").attr('src',res.data.url);
+          var wechatFlag = res.data.wechatFlag;
+          console.log("hahahaha",wechatFlag);
+          axios.post("login_check",{
+            wechat_flag:wechatFlag
+          }).then(res=>{
+            console.log(res,"fsdaf")
+          }).catch(err=>{
+            console.log(err,"fxx")
+          })
+        }).catch(err=>{
+          console.log(err,"fsdxxxxxxxx")
+        })
       // Tab切换
       $('.banner-li').click(function () {
         $(this)
@@ -629,15 +643,6 @@
         if (e.keyCode == 13) {
           $("#btnSubmit").click()
         }
-      })
-      //生成二维码
-      $('#test').click(function(){
-          console.log("xixi")
-          axios.get("/official_account").then(res=>{
-            console.log(res,"fsdaf")
-          }).catch(err=>{
-            console.log(err,"fsdxxxxxxxx")
-          })
       })
       //账号登录
       $('#accountLogin').click(function () {
@@ -667,7 +672,6 @@
       })
       var wait = 60;
       var verification_key = '';
-
       function time(o) {
         if (wait == 0) {
           o.removeAttribute("disabled");
