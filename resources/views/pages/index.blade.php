@@ -133,6 +133,10 @@
                         登录
                       </button>
                     </div>
+                    <div style="display:flex;">
+                       <p>忘记密码</p>
+                       <p>立即注册</p>
+                    </div>
                   </div>
               </div>
             </div>
