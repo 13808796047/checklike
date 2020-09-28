@@ -614,8 +614,8 @@
       var wechatFlag = ''
       axios.get("/official_account").then(res=>{
           console.log(res,"fsdaf")
-          $("#qrimg").attr('src',res.data.data.url);
-          wechatFlag = res.data.data.wechatFlag
+          $("#qrimg").attr('src',res.data.url);
+          wechatFlag = res.data.wechatFlag
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
