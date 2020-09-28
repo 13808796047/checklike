@@ -623,7 +623,7 @@
               console.log(res,"fsdaf")
               if(res.status==200){
                 clearInterval(timer);
-                swal("提示", res.data.message, "success");
+                swal("提示", "登录成功", "success");
                 location.reload();
               }
             }).catch(err=>{
