@@ -616,19 +616,24 @@
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
           console.log("hahahaha",wechatFlag);
-        setInterval(() => {
-          axios.post("login_check",{
-            wechat_flag:wechatFlag
-          }).then(res=>{
-            console.log(res,"fsdaf")
-          }).catch(err=>{
-            console.log(err,"fxx")
-          })
+
+          var timer = setInterval(() => {
+            axios.post("login_check",{
+              wechat_flag:wechatFlag
+            }).then(res=>{
+              console.log(res,"fsdaf")
+              if(res){
+                clearInterval(timer);
+              }
+
+            }).catch(err=>{
+              console.log(err,"fxx")
+              })
+          }, 20000);
+
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
-        }, 20000);
-
       // Tab切换
       $('.banner-li').click(function () {
         $(this)
