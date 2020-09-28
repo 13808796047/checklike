@@ -140,7 +140,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        view()->composer('domained::layouts._header', function($view) {
+        view()->composer('layouts._header', function($view) {
             $categories = DB::table('categories')->where('status', 1)->distinct()->select(['classname', 'classid'])->get();
             $view->with('categories', $categories);
         });

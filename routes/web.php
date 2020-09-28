@@ -21,7 +21,7 @@ Route::get('/oauth/{type}/callback', 'AuthenticationsController@callback');
 
 
 // 公众号登录
-Route::get('login_check', 'HomeController@loginCheck')->name('home.login.check');
+Route::post('login_check', 'HomeController@loginCheck')->name('home.login.check');
 Route::get('official_account', 'OfficialAccountController@index')->name('official.account.index');
 Route::any('official_account/serve', 'OfficialAccountController@serve')->name('official.account.serve');
 
