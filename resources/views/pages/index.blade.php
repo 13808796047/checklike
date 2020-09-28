@@ -611,11 +611,13 @@
       //   }
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
-      var wechatFlag = ''
+
       axios.get("/official_account").then(res=>{
           console.log(res,"fsdaf")
           $("#qrimg").attr('src',res.data.url);
-          wechatFlag = res.data.wechatFlag
+          var wechatFlag = res.data.wechatFlag;
+          console.log('var wechatFlag = ''',wechatFlag)
+
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
