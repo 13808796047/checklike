@@ -43,13 +43,13 @@
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document" style="width:390px;height:360px;">
-        <div class="modal-content">
+
           <div class="modal-header border-none" style="padding:10px 15px;">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline:none;">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+
             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
               <li class="nav-item mr-4">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
@@ -149,8 +149,6 @@
             {{--                   class="rounded-sm logout text-decoration-none w-100 inline-block py-1 bg-teal-500 hover:bg-teal-600 md:text-lg xl:text-base text-white font-semibold  shadow-md">退出登录</a>--}}
             {{--              </div>--}}
             {{--            </div>--}}
-
-          </div>
           <!-- <div class="modal-footer" style="justify-content: space-between;">
             <div style="display: flex;align-items: center;">
               <p class="text-sm">社交账号登录</p>
@@ -175,7 +173,6 @@
               </a>
             </p>
           </div> -->
-        </div>
       </div>
     </div>
   @endguest
