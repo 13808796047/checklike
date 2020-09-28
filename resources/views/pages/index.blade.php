@@ -82,8 +82,6 @@
                         登录
                       </button>
                     </div> -->
-                    <img src="" alt="">
-
                   </form>
 
                 </div>
