@@ -77,7 +77,6 @@ class OfficialAccountController extends Controller
     protected function handleEvent($event)
     {
         $method = \Str::camel('event_' . $event['Event']);
-
         if(method_exists($this, $method)) {
             return call_user_func_array([$this, $method], [$event]);
         }
@@ -162,6 +161,7 @@ class OfficialAccountController extends Controller
         }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
+        Log::info('用户', [$wxUser]);
         // 注册
         $nickname = $this->filterEmoji($wxUser['nickname']);
         $result = DB::transaction(function() use ($openId, $event, $nickname, $wxUser) {
