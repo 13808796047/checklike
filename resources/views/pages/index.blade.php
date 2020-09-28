@@ -151,8 +151,8 @@
             {{--            </div>--}}
 
           </div>
-          <div class="modal-footer" style="justify-content: space-between;">
-            <!-- <div style="display: flex;align-items: center;">
+          <!-- <div class="modal-footer" style="justify-content: space-between;">
+            <div style="display: flex;align-items: center;">
               <p class="text-sm">社交账号登录</p>
               <a href="{{route('oauth',['type'=>'wechat'])}}" id="toWechat" class="block mr-4"
                  style="padding-left:23px">
@@ -173,8 +173,8 @@
                  href="{{route('register')}}">
                 还没有账号?去注册
               </a>
-            </p> -->
-          </div>
+            </p>
+          </div> -->
         </div>
       </div>
     </div>
