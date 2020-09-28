@@ -178,8 +178,7 @@ class OfficialAccountController extends Controller
 
     public function markTheLogin($event, $uid)
     {
-        Log::info('event', [$event, $uid]);
-        if(empty($event['eventKey'])) {
+        if(empty($event['EventKey'])) {
             return;
         }
         // 关注事件的场景值会带一个前缀需要去掉
