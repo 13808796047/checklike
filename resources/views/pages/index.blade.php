@@ -42,10 +42,10 @@
   @guest
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered" role="document" style="width:390px;height:360px;">
         <div class="modal-content">
-          <div class="modal-header border-none" style="outline:none;padding:10px 15px;">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <div class="modal-header border-none" style="padding:10px 15px;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline:none;">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
