@@ -616,6 +616,7 @@
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
           console.log("hahahaha",wechatFlag);
+        setInterval(() => {
           axios.post("login_check",{
             wechat_flag:wechatFlag
           }).then(res=>{
@@ -626,6 +627,8 @@
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
+        }, 2000);
+
       // Tab切换
       $('.banner-li').click(function () {
         $(this)
