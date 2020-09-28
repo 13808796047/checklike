@@ -238,6 +238,13 @@
   {{--      </li>--}}
   {{--    </ul>--}}
   {{--  </div>--}}
+  <div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <p>sdfdf</p>
+    </div>
+  </div>
+  </div>
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -740,6 +747,7 @@
       $("#forgetpsw").click(function(){
         $("#staticBackdrop").modal("hide");
         console.log("xixi")
+        $("#forgetModal").modal("show");
       })
       $('#verificationCode').click(function () {
         getcode(this)
