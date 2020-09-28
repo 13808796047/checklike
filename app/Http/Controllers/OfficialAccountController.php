@@ -101,7 +101,9 @@ class OfficialAccountController extends Controller
 //        [$type, $id] = explode('-', $eventKey);
 //        $loginUser = User::find($id);
 //        $this->handleUser($type, $wxUser, $user, $loginUser);
+
         if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
+            Log::info('wxUser', [$wxUser]);
             // 标记前端可登录
             $this->markTheLogin($event, $wxUser->id);
 
