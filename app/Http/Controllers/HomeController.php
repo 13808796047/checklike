@@ -29,8 +29,8 @@ class HomeController extends Controller
         }
         // 根据微信标识在缓存中获取需要登录用户的UID
         $uid = Cache::get('login_wechat' . $flag);
-        dd($uid);
-        $user = User::findOrFail($uid);
+        $user = User::find($uid);
+        dd($user);
         // 登录用户,并清空缓存
         auth('web')->login($user);
         Cache::forget('login_wechat' . $flag);
