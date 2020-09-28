@@ -188,7 +188,6 @@ class OfficialAccountController extends Controller
             $eventKey = \Str::after($event['EventKey'], 'qrscene_');
         }
         $eventKey = $event['EventKey'];
-        Log::info('EventKey:' . $eventKey, [$event['EventKey']]);
 
         // 标记前端可登陆
         Cache::put('login_wechat' . $eventKey, $uid, now()->addMinute(30));
