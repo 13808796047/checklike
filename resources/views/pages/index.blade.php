@@ -665,7 +665,6 @@
       })
       var wait = 60;
       var verification_key = '';
-      console.log("wechatFlag",wechatFlag)
       function time(o) {
         if (wait == 0) {
           o.removeAttribute("disabled");
