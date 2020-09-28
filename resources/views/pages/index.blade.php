@@ -107,6 +107,7 @@
                         登录
                       </button>
                     </div> -->
+                  <div style="padding:0 17px;">
                     <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
                         用户名:
@@ -132,6 +133,7 @@
                         登录
                       </button>
                     </div>
+                  </div>
               </div>
             </div>
 
