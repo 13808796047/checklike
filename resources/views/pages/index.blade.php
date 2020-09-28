@@ -627,7 +627,7 @@
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
-        }, 2000);
+        }, 20000);
 
       // Tab切换
       $('.banner-li').click(function () {
