@@ -133,7 +133,7 @@
                         登录
                       </button>
                     </div>
-                    <div style="display:flex;">
+                    <div style="    display: flex;font-size: 10px;justify-content: space-between;color: #999;">
                        <p>忘记密码</p>
                        <p>立即注册</p>
                     </div>
