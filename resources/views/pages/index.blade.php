@@ -25,6 +25,11 @@
       text-align: center;
       color: #61534e;
     }
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    /* color: #fff; */
+    /* background-color: #3490dc; */
+    color:red;
+    }
   </style>
 @stop
 @section('content')
