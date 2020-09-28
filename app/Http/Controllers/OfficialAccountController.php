@@ -161,7 +161,6 @@ class OfficialAccountController extends Controller
         }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
-        Log::info('wxUser', [$wxUser]);
         // 注册
         $result = DB::transaction(function() use ($openId, $event, $wxUser) {
             // 用户
