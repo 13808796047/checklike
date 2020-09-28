@@ -48,7 +48,7 @@ class OfficialAccountController extends Controller
 
     public function serve()
     {
-        \log('进入回调');
+        Log::info('进入回调');
         $this->app->server->push(function($message) {
             try {
                 if($message) {
