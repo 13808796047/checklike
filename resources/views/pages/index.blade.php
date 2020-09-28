@@ -47,7 +47,7 @@
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
                    aria-controls="pills-home" aria-selected="true">账号登录</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item mr-4">
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
                    aria-controls="pills-profile" aria-selected="false">手机登录</a>
               </li>
