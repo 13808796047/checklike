@@ -49,7 +49,7 @@
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:360px;">>
         <div class="modal-content" style="width:330px;height:360px;">
-            <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist" style="margin:3px 0;">
               <li class="nav-item mr-4">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
                    aria-controls="pills-home" aria-selected="true">微信登录</a>
@@ -133,9 +133,12 @@
                         登录
                       </button>
                     </div>
-                    <div style="    display: flex;font-size: 10px;justify-content: space-between;color: #999;">
+                    <div style="display: flex;font-size: 10px;justify-content: space-between;color: #999;">
                        <p>忘记密码</p>
-                       <p>立即注册</p>
+                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                        href="{{route('register')}}">
+                          立即注册
+                        </a>
                     </div>
                   </div>
               </div>
