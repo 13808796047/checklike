@@ -48,11 +48,11 @@ class OfficialAccountController extends Controller
 
     public function serve()
     {
-        Log::info('进入回调');
         $this->app->server->push(function($message) {
             try {
                 if($message) {
                     $method = \Str::camel('handle_' . $message['MsgType']);
+                    Log::info('方法', [$method]);
                     if(method_exists($this, $method)) {
                         $this->openid = $message['FromUserName'];
                         $this->officialAccount = $message['ToUserName'];
