@@ -186,8 +186,10 @@ class OfficialAccountController extends Controller
         // 关注事件的场景值会带一个前缀需要去掉
         if($event['Event'] == 'subscribe') {
             $eventKey = \Str::after($event['EventKey'], 'qrscene_');
+        } else {
+            $eventKey = $event['EventKey'];
         }
-        $eventKey = $event['EventKey'];
+
 
         // 标记前端可登陆
         Cache::put('login_wechat' . $eventKey, $uid, now()->addMinute(30));
