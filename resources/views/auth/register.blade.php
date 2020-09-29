@@ -161,7 +161,7 @@
               'verification_code': $('#code').val()
             }).then(res => {
               swal("注册成功!");
-              // location.href = '{{route('pages.index')}}'
+
             }).catch(err => {
               if (err.response.status == 422) {
                 $('#message').show();
