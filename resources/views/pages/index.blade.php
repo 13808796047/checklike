@@ -627,12 +627,13 @@
       //   }
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
+      var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
           console.log("hahahaha",wechatFlag);
-          var timer = setInterval(() => {
+          timer = setInterval(() => {
             console.log("chufa")
             axios.post("login_check",{
               wechat_flag:wechatFlag
@@ -652,6 +653,7 @@
           console.log(err,"fsdxxxxxxxx")
         })
       })
+
       $('#staticBackdrop').on('hidden.bs.modal', function () {
           console.log("关闭了")
           clearInterval(timer);
