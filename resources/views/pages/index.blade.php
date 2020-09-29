@@ -25,6 +25,20 @@
       text-align: center;
       color: #61534e;
     }
+  	.nav-link {
+			color: black;
+			}
+		.nav-pills .nav-link {
+			border-radius: 0;
+		}
+		.nav-pills .nav-link.active,
+		.nav-pills .show>.nav-link {
+			color: #3e8bdb;
+			background-color: #fff;
+			font-weight: bold;
+			border-bottom: 1px solid #3e8bdb;
+		}
+
   </style>
 @stop
 @section('content')
@@ -33,31 +47,36 @@
   @guest
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header border-none">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-
-            <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
+      <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:360px;">
+        <div class="modal-content" style="width:330px;height:360px;">
+            <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist" style="margin:3px 0;">
               <li class="nav-item mr-4">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                   aria-controls="pills-home" aria-selected="true">账号登录</a>
+                   aria-controls="pills-home" aria-selected="true">微信登录</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item mr-4">
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                   aria-controls="pills-profile" aria-selected="false">手机登录</a>
+                   aria-controls="pills-profile" aria-selected="false">账号登录</a>
               </li>
             </ul>
-            <div class="tab-content" id="pills-tabContent">
+            <div class="tab-content" id="pills-tabContent" style="margin:17px 0;">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="w-full">
-                  <form class="bg-white rounded px-4 pt-6">
-                  <img src="" id="qrimg">
-                    <!-- <div>
+              <div style="width:270px;height:270px;margin: 0 auto;">
+								<div style="color: #999;font-size: 13px;text-align: center;">
+									微信扫一扫 享免费检测
+								</div>
+								<div style="margin: 5px 0;">
+									<img src=""
+									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: block;">
+								</div>
+								<div style="color: #999;font-size: 13px;text-align: center;">
+									无需注册，关注后自动登录
+								</div>
+							</div>
+              </div>
+              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                  <div style="padding:0 17px;">
+                    <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
                         用户名:
                       </label>
@@ -81,49 +100,15 @@
                         type="button" id="accountLogin">
                         登录
                       </button>
-                    </div> -->
-                  </form>
-
-                </div>
-              </div>
-              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="w-full">
-                  <form class="bg-white rounded px-4 pt-6">
-                    <div>
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                        手机号码:
-                      </label>
-                      <input
-                        class="appearance-none border rounded w-full py-2 px-2 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="mobile" type="text" placeholder="请输入手机号码">
-                      <p class="text-red-500 text-xs italic "></p>
                     </div>
-                    <div>
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                        验证码:
-                      </label>
-                      <div class="d-flex justify-content-between py-2">
-                        <input
-                          class="appearance-none border border-red-500 rounded   py-2 px-2  w-full mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          id="verification_code" type="text" placeholder="请输入短信验证码"/>
-                        <input
-                          class="bg-blue-500 hover:bg-blue-700 px-2 py-1  text-white font-bold rounded"
-                          type="button" id="verificationCode" value="发送验证码">
-
-                      </div>
-
+                    <div style="display: flex;font-size: 10px;justify-content: space-between;color: #999;">
+                       <p id="forgetpsw">忘记密码</p>
+                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                        href="{{route('register')}}">
+                          立即注册
+                        </a>
                     </div>
-                    <div class="flex items-center justify-between my-4">
-                      <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="button" id="phoneLogin">
-                        登录
-                      </button>
-                    </div>
-
-                  </form>
-
-                </div>
+                  </div>
               </div>
             </div>
 
@@ -140,9 +125,7 @@
             {{--                   class="rounded-sm logout text-decoration-none w-100 inline-block py-1 bg-teal-500 hover:bg-teal-600 md:text-lg xl:text-base text-white font-semibold  shadow-md">退出登录</a>--}}
             {{--              </div>--}}
             {{--            </div>--}}
-
-          </div>
-          <div class="modal-footer" style="justify-content: space-between;">
+          <!-- <div class="modal-footer" style="justify-content: space-between;">
             <div style="display: flex;align-items: center;">
               <p class="text-sm">社交账号登录</p>
               <a href="{{route('oauth',['type'=>'wechat'])}}" id="toWechat" class="block mr-4"
@@ -165,7 +148,7 @@
                 还没有账号?去注册
               </a>
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -223,6 +206,39 @@
   {{--      </li>--}}
   {{--    </ul>--}}
   {{--  </div>--}}
+  <div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="width:330px;height:330px;">
+      <div class="modal-content" style="width:330px;height:360px;">
+        <div style="padding:10px 16px;margin-top:40px;">
+          <div >
+	          <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+	          	手机号码:
+          </label>
+	          <input class="appearance-none border rounded w-full py-2 px-2 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+	           id="mobile" type="text" placeholder="请输入手机号码">
+	          <p class="text-red-500 text-xs italic "></p>
+          </div>
+          <div>
+	            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+		            验证码:
+	            </label>
+	            <div class="d-flex justify-content-between py-2">
+		            <input class="appearance-none border border-red-500 rounded   py-2 px-2  w-full mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+		             id="verification_code" type="text" placeholder="请输入短信验证码" />
+		            <input class="bg-blue-500 hover:bg-blue-700 px-2 py-1  text-white font-bold rounded" type="button" id="verificationCode"
+		             value="发送验证码">
+	            </div>
+          </div>
+          <div class="flex items-center justify-between my-4">
+	          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
+	           type="button" id="phoneLogin">
+		          登录
+	          </button>
+          </div>
+          </div>
+        </div>
+      </div>
+  </div>
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -611,8 +627,9 @@
       //   }
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
-
-      axios.get("/official_account").then(res=>{
+      if($('#staticBackdrop').css('display')=="block"){
+        console.log("ixifsd")
+        axios.get("/official_account").then(res=>{
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
           console.log("hahahaha",wechatFlag);
@@ -634,6 +651,8 @@
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
+      }
+
       // Tab切换
       $('.banner-li').click(function () {
         $(this)
@@ -721,7 +740,12 @@
           }
         })
       }
-
+      //忘记密码
+      $("#forgetpsw").click(function(){
+        $("#staticBackdrop").modal("hide");
+        console.log("xixi")
+        $("#forgetModal").modal("show");
+      })
       $('#verificationCode').click(function () {
         getcode(this)
       })
