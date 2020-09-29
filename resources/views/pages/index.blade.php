@@ -633,9 +633,7 @@
         axios.get("/official_account").then(res=>{
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
-          console.log("hahahaha",wechatFlag);
           timer = setInterval(() => {
-            console.log("chufa")
             axios.post("login_check",{
               wechat_flag:wechatFlag
             }).then(res=>{
