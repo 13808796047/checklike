@@ -253,23 +253,6 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
-      // @unless(Auth::user()->wp_weixin_openid)
-      // // axios.get('{{ route('official_account.index') }}').then(res => {
-      // //   //   swal({
-      // //   //   //   $('#wximg').attr('src', res.data.url)
-      // //   //   // // swal({
-      // //   //   // $('#staticBackdrop').modal('show')
-      // //   //   // //   // content 参数可以是一个 DOM 元素，这里我们用 jQuery 动态生成一个 img 标签，并通过 [0] 的方式获取到 DOM 元素
-      // //   //   // //   content: $('<img src="' + res.data.url + '" style="display: block;margin: 0 auto;"/>')[0],
-      // //   //   // // })
-      // //   //   content: $('<img src="' + res.data.url + '" style="display: block;margin: 0 auto;"/>')[0]
-      // //   // })
-      // //   // content 参数可以是一个 DOM 元素，这里我们用 jQuery 动态生成一个 img 标签，并通过 [0] 的方式获取到 DOM 元素
-      // //   $('#qrimg').attr("src", res.data.url)
-      // //   $("#lwqrcode").modal('show');
-
-      // // })
-      //   @endunless
       let set = new Set();
       let name = '';
       var oneid = ''
