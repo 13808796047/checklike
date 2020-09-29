@@ -627,6 +627,9 @@
       //   }
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
+      $('#staticBackdrop').on('show.bs.modal', function () {
+        console.log("打开中")
+      })
       if($('#staticBackdrop').css('display')=="block"){
         console.log("ixifsd")
         axios.get("/official_account").then(res=>{
