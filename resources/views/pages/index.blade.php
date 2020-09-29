@@ -45,8 +45,8 @@
 
   <!-- Modal -->
   @guest
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop"  tabindex="-1" role="dialog"
+         aria-labelledby="staticBackdropLabel" >
       <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:360px;">
         <div class="modal-content" style="width:330px;height:360px;">
             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist" style="margin:3px 0;">
@@ -633,6 +633,7 @@
           var wechatFlag = res.data.wechatFlag;
           console.log("hahahaha",wechatFlag);
           var timer = setInterval(() => {
+            console.log("chufa")
             axios.post("login_check",{
               wechat_flag:wechatFlag
             }).then(res=>{
@@ -650,6 +651,10 @@
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
+      })
+      $('#staticBackdrop').on('hidden.bs.modal', function () {
+          console.log("关闭了")
+          clearInterval(timer);
       })
 
 
