@@ -302,7 +302,7 @@
             }
           }).then(res => {
             array.push({
-              'file_id': res.data.data.id, 'from': 'wp-pc', 'type': 'file',
+              'file_id': res.data.data.id, 'from': 'pc', 'type': 'file',
               'content': ''
             });
             index++;
@@ -423,7 +423,7 @@
           $('#submitBtn').css("display", "block")
           axios.post('{{route('orders.store')}}', {
               cid: $('#cid').val(),
-              from: 'wp-pc',
+              from: 'pc',
               file_id: oneid,
               type: 'file',
               content: '',
@@ -446,7 +446,7 @@
           $('#submitBtn').css("display", "block")
           axios.post('{{route('orders.store')}}', {
               cid: $('#cid').val(),
-              from: 'wp-pc',
+              from: 'pc',
               type: 'content',
               content: $('#content').val(),
               title: $('#title').val(),
