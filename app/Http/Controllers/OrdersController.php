@@ -49,15 +49,6 @@ class OrdersController extends Controller
 
     public function show(Order $order)
     {
-//        dd(app(OrderApiHandler::class)->getRequestHeader());
-//        $orderimg = app(OrderimgHandler::class);
-//        return $orderimg->generate();
-//        $disk = Storage::disk('public');
-//        $directory = '/test';
-//        $files = $disk->files($directory);
-//        foreach($files as $file) {
-//            dispatch(new FileWords($file))->delay(now()->addSeconds(2));
-//        }
         // 校验权限
         $this->authorize('own', $order);
         return view('orders.show', compact('order'));
