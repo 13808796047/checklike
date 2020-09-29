@@ -23,14 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //往服务容器中注入一个名为alipay的单例对象
         $this->app->singleton('alipay', function() {
-            $domain = request()->getHost();
-            switch ($domain) {
-                case 'wanfang.lianwen.com':
-                    $config = config('pay.wanfang_alipay');
-                    break;
-                default:
-                    $config = config('pay.alipay');
-            }
+            $config = config('pay.alipay');
             $config['notify_url'] = route('payments.alipay.notify');
             $config['return_url'] = route('payments.alipay.return');
             //判断当前项目运行环境是否为线上环境
@@ -47,18 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('alipay_wap', function() {
             $config = config('pay.alipay');
             $config['notify_url'] = route('payments.alipay.notify');
-            $domain = request()->getHost();
-            switch ($domain) {
-                case 'www.lianwen.com':
-                    $config['return_url'] = 'https://wap.lianwen.com/#/report';
-                    break;
-                case "weipu.lianwen.com":
-                    $config['return_url'] = 'https://wap.lianwen.com/weipu/#/report';
-                    break;
-                case "wanfang.lianwen.com":
-                    $config['return_url'] = 'https://wap.lianwen.com/wanfang/#/report';
-                    break;
-            }
+            $config['return_url'] = 'https://wap.lianwen.com/#/report';
             //判断当前项目运行环境是否为线上环境
 //            if(app()->environment() != 'production') {
 //                $config['mode'] = 'dev';
@@ -71,15 +53,7 @@ class AppServiceProvider extends ServiceProvider
         });
         //微信支付容器
         $this->app->singleton('wechat_pay', function() {
-            $domain = request()->getHost();
-            switch ($domain) {
-                case 'wanfang.lianwen.com':
-                    $config = config('pay.wanfang_wechat');
-                    break;
-                default:
-                    $config = config('pay.wechat');
-                    break;
-            }
+            $config = config('pay.wechat');
             $config['notify_url'] = route('payments.wechat.notify');
 //            if(app()->environment() !== 'production') {
 //                $config['log']['level'] = Logger::DEBUG;
@@ -97,33 +71,13 @@ class AppServiceProvider extends ServiceProvider
             return Pay::wechat($config);
         });
         $this->app->singleton('wechat_pay_mp', function() {
-            $domain = request()->getHost();
-            switch ($domain) {
-                case config('app.host.wf_host'):
-                    $config = config('wechat.mini_program.wf');
-                    break;
-                case config('app.host.wp_host'):
-                    $config = config('wechat.mini_program.wp');
-                    break;
-                case config('app.host.pp_host'):
-                    $config = config('wechat.mini_program.pp');
-                    break;
-                default:
-                    $config = config('wechat.mini_program.dev');
-            }
+            $config = config('wechat.mini_program');
             $config['notify_url'] = route('payments.wechat.mp_notify');
             return Pay::wechat($config);
         });
         //百度收银台
         $this->app->singleton('baidu_pay', function() {
-            $domain = request()->getHost();
-            switch ($domain) {
-                case 'weipu.lianwen.com':
-                    $config = config('pay.zcnki_baidu_pay');
-                    break;
-                default:
-                    $config = config('pay.zcnki_baidu_pay');
-            }
+            $config = config('pay.baidu_pay');
             return new BaiduPayHandler($config);
         });
         //公众号
