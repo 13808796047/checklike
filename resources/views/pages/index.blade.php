@@ -627,6 +627,7 @@
       //   }
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
+       //模态框打开
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
@@ -638,28 +639,19 @@
             axios.post("login_check",{
               wechat_flag:wechatFlag
             }).then(res=>{
-              console.log(res,"fsdaf")
               if(res.status==200){
                 clearInterval(timer);
                 swal("提示", "登录成功", "success");
                 location.reload();
               }
-            }).catch(err=>{
-              console.log(err,"fxx")
-              })
+            })
           }, 1000);
-
-        }).catch(err=>{
-          console.log(err,"fsdxxxxxxxx")
         })
       })
-
+      //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
-          console.log("关闭了")
           clearInterval(timer);
       })
-
-
       // Tab切换
       $('.banner-li').click(function () {
         $(this)
