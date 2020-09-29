@@ -628,10 +628,6 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
       $('#staticBackdrop').on('show.bs.modal', function () {
-        console.log("打开中")
-      })
-      if($('#staticBackdrop').css('display')=="block"){
-        console.log("ixifsd")
         axios.get("/official_account").then(res=>{
           $("#qrimg").attr('src',res.data.url);
           var wechatFlag = res.data.wechatFlag;
@@ -654,7 +650,8 @@
         }).catch(err=>{
           console.log(err,"fsdxxxxxxxx")
         })
-      }
+      })
+
 
       // Tab切换
       $('.banner-li').click(function () {
