@@ -346,7 +346,7 @@
 <div class="modal fade" id="staticXiugai" role="dialog">
   <div class="modal-dialog modal-dialog-centered">
       <div style="padding:16px;">
-        <p>修改密码</p>
+        <p>密码</p>
       </div>
   </div>
 </div>
