@@ -334,6 +334,7 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:;">修改密码</a></li>
         @endguest
       </ul>
     </div>
