@@ -1,4 +1,4 @@
-@extends('domained::layouts.app')
+@extends('layouts.app')
 @section('title', '首页')
 @section('styles')
   <style>

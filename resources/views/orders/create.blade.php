@@ -37,25 +37,6 @@
   </div>
   <!-- alert弹框结束 -->
   <!-- 二维码弹窗 -->
-  <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
-       id="lwqrcode">
-    <div class="modal-dialog modal-dialog-centered" role="document" style="width:650px;">
-      <div class="modal-content">
-        <div class="modal-header" style="border-bottom: none;padding-top: 0;padding-bottom: 0;">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <p style='font-size: 16px;font-weight: bold;text-align: center;'>添加微信提醒</p>
-        <div style="width: 200px;height: 200px;margin: 0 auto;">
-          <img src="" id="qrimg">
-        </div>
-        <p style="text-align: center;font-size: 13px;margin-bottom: 5px;color:#FFA500;">
-          提示：系统检测到您未添加微信提醒，请使用手机扫描以上二维码关注</p>
-        <p style="font-size:13px;text-align:center;margin-bottom:5px;">关注公众号以后您可以及时收到检测完成通知，同时可以在手机上查看检测报告</p>
-      </div>
-    </div>
-  </div>
   <!-- 二维码弹窗结束 -->
   <div class="p-4 mb-24">
     <div class="grid grid-cols-6 gap-4">
@@ -253,23 +234,6 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
-      @unless(Auth::user()->wp_weixin_openid)
-      axios.get('{{ route('official_account.index') }}').then(res => {
-        //   swal({
-        //   //   $('#wximg').attr('src', res.data.url)
-        //   // // swal({
-        //   // $('#staticBackdrop').modal('show')
-        //   // //   // content 参数可以是一个 DOM 元素，这里我们用 jQuery 动态生成一个 img 标签，并通过 [0] 的方式获取到 DOM 元素
-        //   // //   content: $('<img src="' + res.data.url + '" style="display: block;margin: 0 auto;"/>')[0],
-        //   // // })
-        //   content: $('<img src="' + res.data.url + '" style="display: block;margin: 0 auto;"/>')[0]
-        // })
-        // content 参数可以是一个 DOM 元素，这里我们用 jQuery 动态生成一个 img 标签，并通过 [0] 的方式获取到 DOM 元素
-        $('#qrimg').attr("src", res.data.url)
-        $("#lwqrcode").modal('show');
-
-      })
-        @endunless
       let set = new Set();
       let name = '';
       var oneid = ''
@@ -338,7 +302,7 @@
             }
           }).then(res => {
             array.push({
-              'file_id': res.data.data.id, 'from': 'wp-pc', 'type': 'file',
+              'file_id': res.data.data.id, 'from': 'pc', 'type': 'file',
               'content': ''
             });
             index++;
@@ -459,7 +423,7 @@
           $('#submitBtn').css("display", "block")
           axios.post('{{route('orders.store')}}', {
               cid: $('#cid').val(),
-              from: 'wp-pc',
+              from: 'pc',
               file_id: oneid,
               type: 'file',
               content: '',
@@ -482,7 +446,7 @@
           $('#submitBtn').css("display", "block")
           axios.post('{{route('orders.store')}}', {
               cid: $('#cid').val(),
-              from: 'wp-pc',
+              from: 'pc',
               type: 'content',
               content: $('#content').val(),
               title: $('#title').val(),

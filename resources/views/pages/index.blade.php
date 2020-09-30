@@ -45,8 +45,8 @@
 
   <!-- Modal -->
   @guest
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop"  tabindex="-1" role="dialog"
+         aria-labelledby="staticBackdropLabel" >
       <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:360px;">
         <div class="modal-content" style="width:330px;height:360px;">
             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist" style="margin:3px 0;">
@@ -627,32 +627,33 @@
       //   }
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
-      if($('#staticBackdrop').css('display')=="block"){
-        console.log("ixifsd")
+       //模态框打开
+      var timer = null
+      $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
-          $("#qrimg").attr('src',res.data.url);
+          var img = new Image();
+          img.onload = function() {
+            $("#qrimg").attr('src',res.data.url);
+          }
+          img.src = res.data.url;
           var wechatFlag = res.data.wechatFlag;
-          console.log("hahahaha",wechatFlag);
-          var timer = setInterval(() => {
+          timer = setInterval(() => {
             axios.post("login_check",{
               wechat_flag:wechatFlag
             }).then(res=>{
-              console.log(res,"fsdaf")
               if(res.status==200){
                 clearInterval(timer);
                 swal("提示", "登录成功", "success");
                 location.reload();
               }
-            }).catch(err=>{
-              console.log(err,"fxx")
-              })
+            })
           }, 1000);
-
-        }).catch(err=>{
-          console.log(err,"fsdxxxxxxxx")
         })
-      }
-
+      })
+      //模态框关闭
+      $('#staticBackdrop').on('hidden.bs.modal', function () {
+          clearInterval(timer);
+      })
       // Tab切换
       $('.banner-li').click(function () {
         $(this)
