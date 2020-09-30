@@ -92,6 +92,10 @@
         }
       });
   });
+  $("#xiugai").click(()=>{
+    console.log("xixi")
+    $("#staticXiugai").modal("show")
+  })
 </script>
 </body>
 

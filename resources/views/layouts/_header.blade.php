@@ -272,6 +272,7 @@
 {{--  </div>--}}
 {{--</div>--}}
 <!----- //End-header---->
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
      style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
   <div class="container">
@@ -334,9 +335,30 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
-          <li class="nav-item"><a class="nav-link" href="javascript:;">修改密码</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:;" id="xiugai">修改密码</a></li>
         @endguest
       </ul>
     </div>
   </div>
 </nav>
+
+
+<div class="modal fade" id="staticXiugai" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
