@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\InvalidRequestException;
 use App\Models\User;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\URL;
@@ -29,7 +30,8 @@ class HomeController extends Controller
         $uid = Cache::get('login_wechat' . $flag);
         $user = User::find($uid);
         if(!$user) {
-            throw new InvalidRequestException('用户不存在', 401);
+            // 返回401
+            throw new AuthenticationException('未登录');
         }
         // 登录用户,并清空缓存
         auth('web')->login($user);
