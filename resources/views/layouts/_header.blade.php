@@ -343,7 +343,7 @@
 </nav>
 
 
-<div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
       <div style="padding:16px;">
         <p>密码</p>
