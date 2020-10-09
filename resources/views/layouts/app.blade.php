@@ -99,7 +99,7 @@
     $("#staticXiugai").modal("hide")
   })
   $("#xiugaisure").click(()=>{
-    console.log("xixix",$("#xgpsd").val().length)
+    console.log("xixix",$("#xgpsd").val().length,"fasdsf")
     if($("#xgpsd").val().length>=8){
       $("#xgtoast").text("密码不少于8位")
       return;
