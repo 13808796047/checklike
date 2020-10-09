@@ -384,7 +384,7 @@
             </button>
             <button
               type="button" class="btn btn-primary"
-              id="accountLogin">
+              id="xiugaisure">
               确认
             </button>
           </div>
