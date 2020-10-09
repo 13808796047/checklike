@@ -344,9 +344,9 @@
 
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered" style="width:330px;">
     <div class="modal-content">
-      <div style="padding:10px;">
+      <div style="padding:20px;">
         <div>
           <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
             用户名:
