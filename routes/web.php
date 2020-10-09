@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('ai_rewrite', 'AutoCheckController@store')->name('ai_rewrite.store');
     Route::get('auto_check/{autoCheck}', 'AutoCheckController@show')->name('auto_check.show');
     Route::get('payments/{order}/free_pay', 'PaymentsController@freePay')->name('payments.freePay');
+    //修改密码
+    Route::put('reset_password', 'UsersController@resetPassword');
 });
 //下载
 Route::get('orders/{orderid}/download', 'OrdersController@download')

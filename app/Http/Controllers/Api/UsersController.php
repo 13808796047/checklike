@@ -49,6 +49,11 @@ class UsersController extends Controller
         return (new UserResource($request->user))->showSensitiveFields();
     }
 
+    public function resetPassword(Request $request)
+    {
+        $user = $request->user();
+    }
+
     public function boundPhone(BoundPhoneRequest $request)
     {
         $verification_key = $request->verification_key;
