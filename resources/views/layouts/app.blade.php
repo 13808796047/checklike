@@ -99,7 +99,7 @@
     $("#staticXiugai").modal("hide")
   })
   $("#xiugaisure").click(()=>{
-    console.log("xixix",$("#xgpsd").val()!=$("#xgsurepsd").val(),"fshaddfh")
+    console.log("xixix",$("#xgpsd").val()!=$("#xgsurepsd").val())
     if($("#xgpsd").val()!=$("#xgsurepsd").val()){
       $("#xgtoast").text("两次密码不一致")
       return;
