@@ -375,10 +375,14 @@
               id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
         </div>
         <div class="flex items-center justify-between my-4">
-
             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button" id="accountLogin">
+              type="button" class="btn btn-primary btn-sm"
+              id="accountLogin">
+              取消
+            </button>
+            <button
+              type="button" class="btn btn-secondary btn-sm"
+              id="accountLogin">
               确认
             </button>
           </div>
