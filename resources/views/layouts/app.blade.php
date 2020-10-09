@@ -111,9 +111,14 @@
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
-      console.log(res,"fsdai")
       swal(res.data.message, {
         icon: "success",
+      }).then(willDelete => {
+        $("#staticXiugai").modal("hide")
+      });
+    }).catch(err=>{
+      swal(err.data.message, {
+        icon: "error",
       }).then(willDelete => {
         $("#staticXiugai").modal("hide")
       });
