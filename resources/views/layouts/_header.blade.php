@@ -272,6 +272,7 @@
 {{--  </div>--}}
 {{--</div>--}}
 <!----- //End-header---->
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
      style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
   <div class="container">
@@ -334,8 +335,49 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:;" id="xiugai">修改密码</a></li>
         @endguest
       </ul>
     </div>
   </div>
 </nav>
+
+
+<div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="width:330px;">
+    <div class="modal-content">
+      <div style="padding:20px;">
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="xgpsd">
+            密码:
+          </label>
+          <input
+              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="xgpsd"
+              id="xgpsd" type="text" placeholder="请输入密码">
+        </div>
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="xgsurepsd">
+            确认密码:
+          </label>
+          <input
+              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="xgsurepsd"
+              id="xgsurepsd" type="text" placeholder="请输入确认密码">
+        </div>
+        <div class="flex items-center justify-evenly my-4">
+            <button
+              type="button" class="btn btn-secondary"
+              id="xiugaicancel">
+              取消
+            </button>
+            <button
+              type="button" class="btn btn-primary"
+              id="xiugaisure">
+              确认
+            </button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
