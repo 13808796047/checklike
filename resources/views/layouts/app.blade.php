@@ -104,7 +104,7 @@
       $("#xgtoast").text("两次密码不一致")
       return;
     }
-    axios.post('password/reset', {
+    axios.post('https://mp.cnweipu.com/password/reset', {
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
