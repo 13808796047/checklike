@@ -35,8 +35,7 @@ class ResetPasswordController extends Controller
     public function reset(Request $request)
     {
         $result = $request->validate($this->rules(), $this->validationErrorMessages());
-        dd($result);
-        $this->resetPassword($user, $password);
+        $this->resetPassword($request->user(), $result['password']);
         return $this->sendResetResponse($request, '修改成功');
 
     }
