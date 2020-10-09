@@ -99,14 +99,29 @@
     $("#staticXiugai").modal("hide")
   })
   $("#xiugaisure").click(()=>{
-    console.log("hahaah")
-    axios.post('password/reset', {
+    if($("#xgpsd").val().length<8){
+      $("#xgtoast").text("密码不少于8位")
+      return;
+    }
+    if($("#xgpsd").val()!=$("#xgsurepsd").val()){
+      $("#xgtoast").text("两次密码不一致")
+      return;
+    }
+    axios.post('https://mp.cnweipu.com/password/reset', {
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
-      console.log(res,"fsdai")
+      swal(res.data.message, {
+        icon: "success",
+      }).then(willDelete => {
+        $("#staticXiugai").modal("hide")
+      });
     }).catch(err=>{
-      console.log(err,"fasf")
+      swal(err.data.message, {
+        icon: "error",
+      }).then(willDelete => {
+        $("#staticXiugai").modal("hide")
+      });
     })
   })
 </script>
