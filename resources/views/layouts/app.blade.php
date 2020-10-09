@@ -93,11 +93,21 @@
       });
   });
   $("#xiugai").click(()=>{
-    console.log("xixi")
     $("#staticXiugai").modal("show")
   })
   $("#xiugaicancel").click(()=>{
     $("#staticXiugai").modal("hide")
+  })
+  $("#xiugaisure").click(()=>{
+    console.log("hahaah")
+    axios.post('password/reset', {
+      password: $("#xgpsd").val(),
+      password_confirmation: $("#xgsurepsd").val()
+    }).then(res=>{
+      console.log(res,"fsdai")
+    }).catch(err=>{
+      console.log(err,"fasf")
+    })
   })
 </script>
 </body>
