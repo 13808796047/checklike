@@ -375,6 +375,7 @@
               id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
         </div>
         <div class="flex items-center justify-evenly my-4">
+
             <button
               type="button" class="btn btn-primary btn-sm"
               id="accountLogin">
