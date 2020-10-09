@@ -99,7 +99,11 @@
     $("#staticXiugai").modal("hide")
   })
   $("#xiugaisure").click(()=>{
-    console.log("xixix",$("#xgpsd").val()!=$("#xgsurepsd").val())
+    console.log("xixix",$("#xgpsd").val().length)
+    if($("#xgpsd").val().length>=8){
+      $("#xgtoast").text("密码不少于8位")
+      return;
+    }
     if($("#xgpsd").val()!=$("#xgsurepsd").val()){
       $("#xgtoast").text("两次密码不一致")
       return;
@@ -112,10 +116,8 @@
       swal(res.data.message, {
         icon: "success",
       }).then(willDelete => {
-
+        $("#staticXiugai").modal("hide")
       });
-    }).catch(err=>{
-      console.log(err,"fasf")
     })
   })
 </script>
