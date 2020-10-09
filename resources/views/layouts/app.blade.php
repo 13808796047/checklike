@@ -96,7 +96,7 @@
     console.log("xixi")
     $("#staticXiugai").modal("show")
   })
-  $("xiugaicancel").click(()=>{
+  $("#xiugaicancel").click(()=>{
     $("#staticXiugai").modal("hide")
   })
 </script>
