@@ -99,7 +99,12 @@
     $("#staticXiugai").modal("hide")
   })
   $("#xiugaisure").click(()=>{
-    console.log("hahaah")
+    console.log("xixix",$("#xgpsd").val()!=$("#xgsurepsd").val())
+    if($("#xgpsd").val()!=$("#xgsurepsd").val()){
+      $("#xgtoast").text("两次密码不一致")
+      return;
+    }
+
     axios.post('password/reset', {
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()

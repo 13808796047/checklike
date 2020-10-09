@@ -365,7 +365,7 @@
               name="xgsurepsd"
               id="xgsurepsd" type="text" placeholder="请输入确认密码">
         </div>
-        <div style="color:red;">
+        <div style="color:red;" id="xgtoast">
           密码不一致
         </div>
         <div class="flex items-center justify-evenly my-4">
