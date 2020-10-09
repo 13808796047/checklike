@@ -109,6 +109,11 @@
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
       console.log(res,"fsdai")
+      swal(res.data.message, {
+        icon: "success",
+      }).then(willDelete => {
+
+      });
     }).catch(err=>{
       console.log(err,"fasf")
     })
