@@ -349,15 +349,6 @@
       <div style="padding:20px;">
         <div>
           <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-            用户名:
-          </label>
-          <input
-              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="phone"
-              id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
-        </div>
-        <div>
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
             密码:
           </label>
           <input
@@ -375,9 +366,7 @@
               id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
         </div>
         <div class="flex items-center justify-evenly my-4">
-
             <button
-
               type="button" class="btn btn-secondary"
               id="xiugaicancel">
               取消
