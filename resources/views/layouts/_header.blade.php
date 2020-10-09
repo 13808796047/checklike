@@ -377,12 +377,13 @@
         <div class="flex items-center justify-evenly my-4">
 
             <button
-              type="button" class="btn btn-primary btn-sm"
+
+              type="button" class="btn btn-secondary"
               id="xiugaicancel">
               取消
             </button>
             <button
-              type="button" class="btn btn-secondary btn-sm"
+              type="button" class="btn btn-primary"
               id="accountLogin">
               确认
             </button>
