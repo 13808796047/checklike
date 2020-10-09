@@ -347,7 +347,33 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div style="padding:10px;">
-        <p>修改密码</p>
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+            用户名:
+          </label>
+          <input
+              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="phone"
+              id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
+        </div>
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+            密码:
+          </label>
+          <input
+              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="phone"
+              id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
+        </div>
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+            确认密码:
+          </label>
+          <input
+              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="phone"
+              id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
+        </div>
       </div>
     </div>
   </div>
