@@ -379,7 +379,7 @@
             <button
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
               type="button" id="accountLogin">
-              登录
+              确认
             </button>
           </div>
       </div>
