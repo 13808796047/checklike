@@ -104,7 +104,6 @@
       $("#xgtoast").text("两次密码不一致")
       return;
     }
-
     axios.post('password/reset', {
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
