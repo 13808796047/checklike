@@ -378,7 +378,7 @@
 
             <button
               type="button" class="btn btn-primary btn-sm"
-              id="accountLogin">
+              id="xiugaicancel">
               取消
             </button>
             <button
