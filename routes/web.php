@@ -39,7 +39,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('auto_check/{autoCheck}', 'AutoCheckController@show')->name('auto_check.show');
     Route::get('payments/{order}/free_pay', 'PaymentsController@freePay')->name('payments.freePay');
     //修改密码
-    Route::put('reset_password', 'UsersController@resetPassword');
+    Route::put('reset_password', 'UsersController@resetPassword')->name('users.reset_password');
+    //绑定手机号
+    Route::put('bond_phone', 'UsersController@boundPhone')->name('users.bound_phone');
 });
 //下载
 Route::get('orders/{orderid}/download', 'OrdersController@download')
