@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\BindPhoneSuccess;
+use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -26,12 +28,29 @@ class UsersController extends Controller
             throw new AuthenticationException('验证码错误');
         }
         $phone = $verifyData['phone'];
+        // 公众号用户
         $user = $request->user();
+        // 手机用户
+        $phoneUser = User::where('phone', $phone)->first();
+        if(!$phoneUser) {
+            $user->update([
+                'phone' => $phone
+            ]);
+        } else {
+            $user = DB::transaction(function() use ($user, $phoneUser, $phone) {
+                DB::table('orders')->where('userid', $phoneUser->id)->update([
+                    'userid' => $user->id
+                ]);
+                $phoneUser->delete();
+                $user->update([
+                    'phone' => $phone,
+                    'password' => $phoneUser->password ?? "",
+                ]);
+                return $user;
+            });
+        }
 
-        $user->update([
-            'phone' => $phone
-        ]);
-//        $this->dispatch(new BindPhoneSuccess($user));
+        $this->dispatch(new BindPhoneSuccess($user));
         if($request->wantsJson()) {
             return response()->json([
                 'message' => '绑定成功!'
