@@ -435,18 +435,3 @@
     </div>
   </div>
 </div>
-
-<!--toast弹窗-->
-<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
-		  <!-- Then put toasts within -->
-<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
-		  <!-- Then put toasts within -->
-	<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="width:300px;" id="toastModel">
-		  <div class="toast-header">
-		    <strong class="mr-auto">提示</strong>
-		  </div>
-		  <div class="toast-body" id="toastcontent">
-		    修改成功
-		  </div>
-	</div>
-</div>

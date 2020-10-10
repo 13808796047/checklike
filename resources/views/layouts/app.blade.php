@@ -161,7 +161,10 @@
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
-      $("#toastModel").toast("show");
+      swal(res.data.message, {
+        buttons: false,
+        timer: 2000,
+      })
       // $("#staticXiugai").modal("hide")
     }).catch(err=>{
       swal(err.data.message, {
