@@ -27,10 +27,11 @@ class UsersController extends Controller
         }
         $phone = $verifyData['phone'];
         $user = $request->user();
+
         $user->update([
             'phone' => $phone
         ]);
-        $this->dispatch(new BindPhoneSuccess($user));
+//        $this->dispatch(new BindPhoneSuccess($user));
         if($request->wantsJson()) {
             return response()->json([
                 'message' => '绑定成功!'
