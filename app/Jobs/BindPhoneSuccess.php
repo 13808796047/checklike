@@ -14,12 +14,10 @@ class BindPhoneSuccess implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $host;
     protected $user;
 
     public function __construct(User $user)
     {
-        $this->host = request()->getHost();
         $this->user = $user;
     }
 
@@ -36,28 +34,11 @@ class BindPhoneSuccess implements ShouldQueue
             'keyword2' => ['value' => '已绑定', 'color' => '#173177'],
             'remark' => ['value' => '感谢您的使用', 'color' => '#173177']
         ];
-        switch ($this->host) {
-            case config('app.host.wf_host'):
-                $touser = $this->user->wf_weixin_openid;
-                $template_id = config('wechat.official_account.wf.templates.binded.template_id');
-                $appid = config('wechat.official_account.wf.templates.binded.appid');
-                $pagepath = config('wechat.official_account.wf.templates.binded.page_path');
-                $config = config('wechat.official_account.wf');
-                break;
-            case config('app.host.wp_host'):
-                $touser = $this->user->wp_weixin_openid;
-                $template_id = config('wechat.official_account.wp.templates.binded.template_id');
-                $appid = config('wechat.official_account.wp.templates.binded.appid');
-                $pagepath = config('wechat.official_account.wp.templates.binded.page_path');
-                $config = config('wechat.official_account.wp');
-                break;
-            default:
-                $touser = $this->user->dev_weixin_openid;
-                $template_id = config('wechat.official_account.dev.templates.binded.template_id');
-                $appid = config('wechat.official_account.dev.templates.binded.appid');
-                $pagepath = config('wechat.official_account.dev.templates.binded.page_path');
-                $config = config('wechat.official_account.dev');
-        }
+        $template_id = config('wechat.official_account.wf.templates.binded.template_id');
+        $appid = config('wechat.official_account.wf.templates.binded.appid');
+        $pagepath = config('wechat.official_account.wf.templates.binded.page_path');
+        $config = config('wechat.official_account.wf');
+     
         if($touser) {
             Factory::officialAccount($config)->template_message->send([
                 'touser' => $touser,

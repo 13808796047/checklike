@@ -38,30 +38,12 @@ class OrderPendingMsg implements ShouldQueue
                 'keyword5' => ['value' => $this->order->price, 'color' => '#173177'],
                 'remark' => ['value' => '点击去支付', 'color' => '#173177']
             ];
-            switch ($this->host) {
-                case config('app.host.wf_host'):
-                    $touser = $this->order->user->wf_weixin_openid;
-                    $template_id = config('wechat.official_account.wf.templates.pending.template_id');
-                    $appid = config('wechat.official_account.wf.templates.pending.appid');
-                    $pagepath = config('wechat.official_account.wf.templates.pending.page_path');
-                    $config = config('wechat.official_account.wf');
-                    break;
-                case config('app.host.wp_host'):
-                    $touser = $this->order->user->wp_weixin_openid;
-                    $template_id = config('wechat.official_account.wp.templates.pending.template_id');
-                    $appid = config('wechat.official_account.wp.templates.pending.appid');
-                    $pagepath = config('wechat.official_account.wp.templates.pending.page_path');
-                    $config = config('wechat.official_account.wp');
-                    break;
-                default:
-                    $touser = $this->order->user->dev_weixin_openid;
-                    $template_id = config('wechat.official_account.dev.templates.pending.template_id');
-                    $appid = config('wechat.official_account.dev.templates.pending.appid');
-                    $pagepath = config('wechat.official_account.dev.templates.pending.page_path');
-                    $config = config('wechat.official_account.dev');
-            }
+            $touser = $this->order->user->wf_weixin_openid;
+            $template_id = config('wechat.official_account.templates.pending.template_id');
+            $appid = config('wechat.official_account.templates.pending.appid');
+            $pagepath = config('wechat.official_account.templates.pending.page_path');
             if($touser) {
-                Factory::officialAccount($config)->template_message->send([
+                app('official_account')->template_message->send([
                     'touser' => $touser,
                     'template_id' => $template_id,
 //                'url' => 'https://wap.lianwen.com/bading?openid=' . $this->order->user->weixin_openid,
