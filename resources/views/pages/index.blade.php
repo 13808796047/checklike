@@ -631,8 +631,10 @@
       var isBindPhone = {!!Auth::user()!!}
       console.log(isBindPhone,"那哈哈")
       if(isBindPhone && isBindPhone.phone){
+        console.log( $("#xiugai"),isBindPhone.phone,"111")
         $("#xiugai").css("display","none")
       }else{
+        console.log( $("#xiugai"),isBindPhone.phone,"211")
         $("#xiugai").css("display","block")
       }
       var timer = null
