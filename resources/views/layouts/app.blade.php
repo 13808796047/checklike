@@ -86,7 +86,7 @@
             }).then(willDelete => {
               // console.log(willDelete,42)
               // location.reload();
-              location.replace('https://mp.cnweipu.com')
+              location.replace('https://p.checklike.com')
             });
           })
         }
@@ -101,7 +101,7 @@
   $("#bindSelfPhone").click(()=>{
     $("#bindTitle").modal("show")
   })
-  vat currentCode="";
+  var currentCode="";
   $("#sendYzCode").click(()=>{
     let isYZphone =$("#bindphonenum").val();
     console.log(isYZphone)
@@ -132,7 +132,8 @@
   })
   $("#bindnow").click(()=>{
     axios.put("https://p.checklike.com/bond_phone",{
-      verification_key:currentCode
+      verification_key:currentCode,
+      verification_code:$("#bindCodeNow").val()
     }).then(res=>{
       console.log(res)
     }).catch(err=>{
@@ -148,7 +149,7 @@
       $("#xgtoast").text("两次密码不一致")
       return;
     }
-    axios.post('https://mp.cnweipu.com/password/reset', {
+    axios.post('https://p.checklike.com/password/reset', {
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
