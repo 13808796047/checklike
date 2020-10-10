@@ -416,6 +416,7 @@
             <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendYzCode">发送验证码</button>
           </div>
         </div>
+        <div id="bindphoneTip" style="color:red;"></div>
         <div class="flex items-center justify-evenly my-4">
             <button
               type="button" class="btn btn-secondary"

@@ -634,7 +634,6 @@
         console.log( $("#xiugai"),isBindPhone.phone,"11")
         // $("#xiugai").css("display","block")
       }else{
-        console.log( $("#xiugai"),isBindPhone.phone,"211")
         // $("#xiugai").css("display","none")
       }
       var timer = null
