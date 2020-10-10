@@ -109,7 +109,7 @@
        clearInterval(countDown);
       } else {
        $("#sendYzCode").attr('disabled', true);
-       $("#sendYzCode").text(count + '秒后可重新获取');
+       $("#sendYzCode").text(count +'S' );
       }
       count--;
      }, 1000)
