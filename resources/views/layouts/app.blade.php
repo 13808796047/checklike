@@ -101,7 +101,7 @@
   $("#bindSelfPhone").click(()=>{
     $("#bindTitle").modal("show")
   })
-  vat currentCode="";
+  var currentCode="";
   $("#sendYzCode").click(()=>{
     let isYZphone =$("#bindphonenum").val();
     console.log(isYZphone)
