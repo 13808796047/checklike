@@ -630,7 +630,7 @@
        //模态框打开
       var isBindPhone = {!!Auth::user()!!}
       console.log(isBindPhone,"那哈哈")
-      if(isBindPhone.phone){
+      if(isBindPhone && isBindPhone.phone){
         $("#xiugai").css("display","none")
       }else{
         $("#xiugai").css("display","block")
