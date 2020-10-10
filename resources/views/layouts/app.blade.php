@@ -162,10 +162,10 @@
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
       swal(res.data.message, {
-        icon: "success",
-      }).then(willDelete => {
-        $("#staticXiugai").modal("hide")
-      });
+        buttons: false,
+        timer: 2000,
+      })
+      // $("#staticXiugai").modal("hide")
     }).catch(err=>{
       swal(err.data.message, {
         icon: "error",
