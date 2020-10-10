@@ -98,6 +98,9 @@
   $("#xiugaicancel").click(()=>{
     $("#staticXiugai").modal("hide")
   })
+  $("#bindSelfPhone").click(()=>{
+    $("#bindTitle").modal("show")
+  })
   $("#xiugaisure").click(()=>{
     if($("#xgpsd").val().length<8){
       $("#xgtoast").text("密码不少于8位")

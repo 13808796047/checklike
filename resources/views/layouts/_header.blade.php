@@ -338,7 +338,7 @@
           @if(Auth::user()->phone)
           <li class="nav-item"><a class="nav-link" href="javascript:;" id="xiugai">修改密码</a></li>
           @else
-          <li class="nav-item"><a class="nav-link" href="javascript:;" id="bindPhone">绑定账号</a></li>
+          <li class="nav-item"><a class="nav-link" href="javascript:;" id="bindSelfPhone">绑定手机号</a></li>
           @endif
         @endguest
       </ul>
@@ -384,6 +384,17 @@
               确认
             </button>
           </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--绑定 -->
+
+<div class="modal fade" id="bindTitle" tabindex="-1" role="dialog" aria-labelledby="bindTitleLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="width:330px;">
+    <div class="modal-content">
+      <div style="padding:20px;">
       </div>
     </div>
   </div>
