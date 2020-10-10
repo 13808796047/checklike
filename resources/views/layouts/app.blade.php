@@ -120,7 +120,7 @@
       }
       count--;
      }, 1000)
-      axios.post('https://mp.cnweipu.com/api/v1/verificationCodes', {
+      axios.post('https://p.checklike.com/api/v1/verificationCodes', {
           phone: isYZphone,
         }).then(res => {
           console.log(res,"xiix")
