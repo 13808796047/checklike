@@ -15,7 +15,17 @@
     .swal-title {
       font-size: 20px;
     }
-
+    .sweet-alert .sa-icon {
+    width: 80px;
+    height: 80px;
+    border: 4px solid gray;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    border-radius: 50%;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-sizing: content-box; }
     .swal-text {
       /* background-color: #FEFAE3;
       padding: 17px;
