@@ -145,6 +145,9 @@
       console.log(err,"fsadfjdsafjdsajfj")
     })
   })
+  $("#bindno").click(()=>{
+    $("#bindTitle").modal("hide")
+  })
   $("#xiugaisure").click(()=>{
     if($("#xgpsd").val().length<8){
       $("#xgtoast").text("密码不少于8位")
