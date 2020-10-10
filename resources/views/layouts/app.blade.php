@@ -107,9 +107,10 @@
     if(!(/^1[3456789]\d{9}$/.test(isYZphone))){
         $("#bindphoneTip").text("请输入正确手机号")
         return false;
-    }
-    let count = 60;
-    const countDown = setInterval(() => {
+    }else{
+      $("#bindphoneTip").text("")
+      let count = 60;
+      const countDown = setInterval(() => {
       if (count === 0) {
        $("#sendYzCode").text('重新发送').removeAttr('disabled');
        clearInterval(countDown);
@@ -119,6 +120,15 @@
       }
       count--;
      }, 1000)
+      axios.post('/api/v1/verificationCodes', {
+          phone: isYZphone,
+        }).then(res => {
+          console.log(res,"xiix")
+        }).catch(err => {
+          console.log(err,"xfsdafiix")
+        })
+    }
+
   })
   $("#xiugaisure").click(()=>{
     if($("#xgpsd").val().length<8){
