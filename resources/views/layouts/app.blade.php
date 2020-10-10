@@ -105,7 +105,7 @@
     let isYZphone =$("#bindphonenum").val();
     console.log(isYZphone)
     if(!(/^1[3456789]\d{9}$/.test(isYZphone))){
-        console.log("xixi")
+        $("#bindphoneTip").text("请输入正确手机号")
         return false;
     }
     let count = 60;
