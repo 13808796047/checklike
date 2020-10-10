@@ -408,7 +408,7 @@
           <label class="block text-gray-700 text-sm font-bold mb-2" for="xgpsd">
             验证码:
           </label>
-          <div class="flex">
+          <div>
             <input
               class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="xgpsd"
@@ -428,7 +428,7 @@
               绑定
             </button>
           </div>
-          <div style="text-align:center;color:#999;">绑定手机可合并原账号订单以及接受订单通知</div>
+          <div style="text-align:center;color:#999;font-size:14px;">绑定手机可合并原账号订单以及接受订单通知</div>
       </div>
 
     </div>
