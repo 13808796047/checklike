@@ -335,7 +335,10 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+          @if(Auth::user()->phone)
           <li class="nav-item"><a class="nav-link" href="javascript:;" id="xiugai">修改密码</a></li>
+          @else
+          <li class="nav-item"><a class="nav-link" href="javascript:;" id="bindPhone">绑定账号</a></li>
         @endguest
       </ul>
     </div>
