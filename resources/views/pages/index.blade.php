@@ -680,7 +680,7 @@
           type: 'account'
         }).then(res => {
           if (res.status == 200) {
-            console.log("xixix",Auth::user())
+            console.log("xixix",{!!Auth::user()!!})
             swal("提示", res.data.message, "success");
             location.reload();
           } else {
