@@ -161,10 +161,7 @@
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
-      swal("修改成功", {
-        buttons: false,
-        timer: 2000,
-      })
+      Swal.fire('Any fool can use a computer')
       // $("#staticXiugai").modal("hide")
     }).catch(err=>{
       swal(err.data.message, {
