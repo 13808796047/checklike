@@ -133,6 +133,7 @@
   $("#bindnow").click(()=>{
     axios.put("https://p.checklike.com/bond_phone",{
       verification_key:currentCode
+      verification_code:$("#bindphonenum").val()
     }).then(res=>{
       console.log(res)
     }).catch(err=>{
