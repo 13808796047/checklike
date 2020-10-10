@@ -101,6 +101,7 @@
   $("#bindSelfPhone").click(()=>{
     $("#bindTitle").modal("show")
   })
+  vat currentCode="";
   $("#sendYzCode").click(()=>{
     let isYZphone =$("#bindphonenum").val();
     console.log(isYZphone)
@@ -123,12 +124,20 @@
       axios.post('https://p.checklike.com/api/v1/verificationCodes', {
           phone: isYZphone,
         }).then(res => {
-          console.log(res,"xiix")
-        }).catch(err => {
-          console.log(err,"xfsdafiix")
+          if(res.data&&res.data.key){
+            currentCode=res.data.key
+          }
         })
     }
-
+  })
+  $("#bindnow").click(()=>{
+    axios.put("https://p.checklike.com/bond_phone",{
+      verification_key:currentCode
+    }).then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err,"fsadfjdsafjdsajfj")
+    })
   })
   $("#xiugaisure").click(()=>{
     if($("#xgpsd").val().length<8){
