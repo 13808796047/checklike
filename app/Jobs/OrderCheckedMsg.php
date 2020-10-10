@@ -51,7 +51,7 @@ class OrderCheckedMsg implements ShouldQueue
         } else {
             try {
                 $result = $this->easySms->send($this->order->user->phone, [
-                    'template' => config('easysms.gateways.aliyun.templates.register'),
+                    'template' => config('easysms.gateways.aliyun.templates.checked'),
                 ]);
             } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
                 $message = $exception->getException('aliyun')->getMessage();

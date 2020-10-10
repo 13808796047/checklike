@@ -25,6 +25,7 @@ return [
             'sign_name' => '学信检测',
             'templates' => [
                 'register' => env('SMS_ALIYUN_TEMPLATE_REGISTER'),
+                'checked' => env('SMS_ALIYUN_TEMPLATE_CHECKED'),
             ]
         ],
     ],
