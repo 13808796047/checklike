@@ -162,7 +162,7 @@
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
       $("#toastModel").toast("show");
-      $("#staticXiugai").modal("hide")
+      // $("#staticXiugai").modal("hide")
     }).catch(err=>{
       swal(err.data.message, {
         icon: "error",
