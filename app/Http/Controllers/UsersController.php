@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\BindPhoneSuccess;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ class UsersController extends Controller
         $user->update([
             'phone' => $phone
         ]);
+        $this->dispatch(new BindPhoneSuccess($user));
         if($request->wantsJson()) {
             return response()->json([
                 'message' => '绑定成功!'
