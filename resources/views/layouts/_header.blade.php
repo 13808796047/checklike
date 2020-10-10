@@ -358,7 +358,7 @@
           <input
               class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="xgpsd"
-              id="xgpsd" type="text" placeholder="请输入密码">
+              id="xgpsd" type="password" placeholder="请输入密码">
         </div>
         <div>
           <label class="block text-gray-700 text-sm font-bold mb-2" for="xgsurepsd">
@@ -367,7 +367,7 @@
           <input
               class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="xgsurepsd"
-              id="xgsurepsd" type="text" placeholder="请输入确认密码">
+              id="xgsurepsd" type="password" placeholder="请输入确认密码">
         </div>
         <div style="color:red;" id="xgtoast">
 

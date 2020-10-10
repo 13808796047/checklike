@@ -135,10 +135,18 @@
       verification_key:currentCode,
       verification_code:$("#bindCodeNow").val()
     }).then(res=>{
-      console.log(res)
+      swal("绑定成功", {
+        icon: "success",
+      }).then(willDelete => {
+        $("#bindTitle").modal("hide")
+        location.replace('https://p.checklike.com')
+      });
     }).catch(err=>{
       console.log(err,"fsadfjdsafjdsajfj")
     })
+  })
+  $("#bindno").click(()=>{
+    $("#bindTitle").modal("hide")
   })
   $("#xiugaisure").click(()=>{
     if($("#xgpsd").val().length<8){
