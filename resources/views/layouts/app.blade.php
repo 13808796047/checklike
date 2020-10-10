@@ -161,7 +161,7 @@
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
-      swal(res.data.message, {
+      swal("修改成功", {
         buttons: false,
         timer: 2000,
       })
