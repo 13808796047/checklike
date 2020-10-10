@@ -412,6 +412,11 @@
               class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="xgpsd"
               id="bindphonenum" type="text" placeholder="验证码">
+            <button
+              type="button" class="btn btn-secondary btn-sm"
+              id="bindsend">
+              发送验证码
+            </button>
         </div>
         <div class="flex items-center justify-evenly my-4">
             <button
@@ -425,8 +430,9 @@
               绑定
             </button>
           </div>
+          <div>绑定手机可合并原账号订单以及接受订单通知</div>
       </div>
-      <div>绑定手机可合并原账号订单以及接受订单通知</div>
+
     </div>
   </div>
 </div>
