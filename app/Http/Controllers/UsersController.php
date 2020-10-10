@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,34 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
+    public function boundPhone(Request $request)
+    {
+        $verification_key = $request->verification_key;
+        if(!$verification_key) {
+            throw new AuthenticationException('验证码错误!');
+        }
+
+        $verifyData = \Cache::get($verification_key);
+        if(!$verifyData) {
+            abort(403, '验证码已失效');
+        }
+        if(!hash_equals($verifyData['code'], $request->verification_code)) {
+            throw new AuthenticationException('验证码错误');
+        }
+        $phone = $verifyData['phone'];
+        $user = $request->user();
+        $user->update([
+            'phone' => $phone
+        ]);
+        if($request->wantsJson()) {
+            return response()->json([
+                'message' => '绑定成功!'
+            ]);
+        }
+        return redirect($this->redirectPath())
+            ->with('status', '绑定成功');
+    }
+
     public function resetPassword(Request $request)
     {
         $user = $request->user();
