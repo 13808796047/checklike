@@ -628,6 +628,7 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
+       console.log("xixix",{!!$auth!!})
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
@@ -680,9 +681,10 @@
           type: 'account'
         }).then(res => {
           if (res.status == 200) {
-            console.log("xixix",{!!Auth::user()!!})
+
             swal("提示", res.data.message, "success");
             location.reload();
+
           } else {
             swal("提示", res.data.message);
           }
