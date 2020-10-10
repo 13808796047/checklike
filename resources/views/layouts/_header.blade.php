@@ -395,7 +395,38 @@
   <div class="modal-dialog modal-dialog-centered" style="width:330px;">
     <div class="modal-content">
       <div style="padding:20px;">
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="xgpsd">
+            手机号:
+          </label>
+          <input
+              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="xgpsd"
+              id="bindphonenum" type="text" placeholder="请输入手机号">
+        </div>
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="xgpsd">
+            验证码:
+          </label>
+          <input
+              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="xgpsd"
+              id="bindphonenum" type="text" placeholder="验证码">
+        </div>
+        <div class="flex items-center justify-evenly my-4">
+            <button
+              type="button" class="btn btn-secondary"
+              id="bindno">
+              暂不绑定
+            </button>
+            <button
+              type="button" class="btn btn-primary"
+              id="bindnow">
+              绑定
+            </button>
+          </div>
       </div>
+      <div>绑定手机可合并原账号订单以及接受订单通知</div>
     </div>
   </div>
 </div>
