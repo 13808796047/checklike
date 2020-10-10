@@ -20,6 +20,7 @@ class VerificationCodesController extends Controller
         }
         $data = [
             'code' => $code,
+            'product' => '论文检测'
         ];
         try {
             $result = $easySms->send($phone, [
