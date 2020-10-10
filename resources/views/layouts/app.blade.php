@@ -102,6 +102,12 @@
     $("#bindTitle").modal("show")
   })
   $("#sendYzCode").click(()=>{
+    let isYZphone =$("#bindphonenum").val();
+    console.log(isYZphone)
+    if(!(/^1[3456789]\d{9}$/.test(isYZphone))){
+        console.log("xixi")
+        return false;
+    }
     let count = 60;
     const countDown = setInterval(() => {
       if (count === 0) {
