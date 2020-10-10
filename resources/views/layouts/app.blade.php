@@ -109,7 +109,7 @@
        clearInterval(countDown);
       } else {
        $("#sendYzCode").attr('disabled', true);
-       $("#sendYzCode").text(count +'S' );
+       $("#sendYzCode").text(count +' '+'S');
       }
       count--;
      }, 1000)
