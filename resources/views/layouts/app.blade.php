@@ -112,8 +112,7 @@
        $("#sendYzCode").text(count + '秒后可重新获取');
       }
       count--;
-     }, 1000);
-    }
+     }, 1000)
   })
   $("#xiugaisure").click(()=>{
     if($("#xgpsd").val().length<8){
