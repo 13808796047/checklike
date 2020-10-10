@@ -86,7 +86,7 @@
             }).then(willDelete => {
               // console.log(willDelete,42)
               // location.reload();
-              location.replace('https://mp.cnweipu.com')
+              location.replace('https://p.checklike.com')
             });
           })
         }
@@ -148,7 +148,7 @@
       $("#xgtoast").text("两次密码不一致")
       return;
     }
-    axios.post('https://mp.cnweipu.com/password/reset', {
+    axios.post('https://p.checklike.com/password/reset', {
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
