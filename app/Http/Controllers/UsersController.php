@@ -36,18 +36,20 @@ class UsersController extends Controller
             $user->update([
                 'phone' => $phone
             ]);
+        } else {
+            $user = DB::transaction(function() use ($user, $phoneUser, $phone) {
+                DB::table('orders')->where('userid', $phoneUser->id)->update([
+                    'userid' => $user->id
+                ]);
+                $phoneUser->delete();
+                $user->update([
+                    'phone' => $phone,
+                    'password' => $phoneUser->password ?? "",
+                ]);
+                return $user;
+            });
         }
-        $user = DB::transaction(function() use ($user, $phoneUser, $phone) {
-            DB::table('orders')->where('userid', $phoneUser->id)->update([
-                'userid' => $user->id
-            ]);
-            $phoneUser->delete();
-            $user->update([
-                'phone' => $phone,
-                'password' => $phoneUser->password ?? "",
-            ]);
-            return $user;
-        });
+
         $this->dispatch(new BindPhoneSuccess($user));
         if($request->wantsJson()) {
             return response()->json([
