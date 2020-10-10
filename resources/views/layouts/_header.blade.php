@@ -339,6 +339,7 @@
           <li class="nav-item"><a class="nav-link" href="javascript:;" id="xiugai">修改密码</a></li>
           @else
           <li class="nav-item"><a class="nav-link" href="javascript:;" id="bindPhone">绑定账号</a></li>
+          @endif
         @endguest
       </ul>
     </div>
