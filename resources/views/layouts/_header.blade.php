@@ -408,15 +408,17 @@
           <label class="block text-gray-700 text-sm font-bold mb-2" for="xgpsd">
             验证码:
           </label>
-          <input
+          <div class="flex my-4">
+            <input
               class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="xgpsd"
               id="bindphonenum" type="text" placeholder="验证码">
             <button
-              type="button" class="btn btn-secondary btn-sm"
+              type="button" class="btn btn-primary btn-sm"
               id="bindsend">
               发送验证码
             </button>
+          </div>
         </div>
         <div class="flex items-center justify-evenly my-4">
             <button
