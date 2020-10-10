@@ -628,6 +628,15 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
+      var isBindPhone = {!!Auth::user()!!}
+      console.log(isBindPhone,"那哈哈")
+      if(isBindPhone && isBindPhone.phone){
+        console.log( $("#xiugai"),isBindPhone.phone,"11")
+        $("#xiugai").css("display","block")
+      }else{
+        console.log( $("#xiugai"),isBindPhone.phone,"211")
+        $("#xiugai").css("display","none")
+      }
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
@@ -680,8 +689,10 @@
           type: 'account'
         }).then(res => {
           if (res.status == 200) {
+
             swal("提示", res.data.message, "success");
             location.reload();
+
           } else {
             swal("提示", res.data.message);
           }
