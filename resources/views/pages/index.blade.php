@@ -628,7 +628,7 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-       console.log("xixix",{!!$Auth!!})
+       console.log("xixix",{!!$auth!!})
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
