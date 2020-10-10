@@ -15,32 +15,15 @@
     .swal-title {
       font-size: 20px;
     }
-    .swal-icon {
-    width: 51px;
-    height: 51px;
-    border-width: 5px;
-    border-style: solid;
-    border-radius: 50%;
-    padding: 0px;
-    position: relative;
-    box-sizing: content-box;
-    margin: 6px auto;
-    }
-    .swal-icon--warning__body {
-    width: 5px;
-    height: 20px;
-    top: 9px;
-    border-radius: 2px;
-    margin-left: -2px;
-    }
+
     .swal-text {
-      /* background-color: #FEFAE3;
+      background-color: #FEFAE3;
       padding: 17px;
       border: 1px solid #F0E1A1;
       display: block;
       margin: 22px;
       text-align: center;
-      color: #61534e; */
+      color: #61534e;
     }
   	.nav-link {
 			color: black;
@@ -645,14 +628,7 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-      var isBindPhone = {!!Auth::user()!!}
-      console.log(isBindPhone,"那哈哈")
-      if(isBindPhone && isBindPhone.phone){
-        console.log( $("#xiugai"),isBindPhone.phone,"11")
-        // $("#xiugai").css("display","block")
-      }else{
-        // $("#xiugai").css("display","none")
-      }
+
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
