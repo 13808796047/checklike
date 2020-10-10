@@ -737,7 +737,7 @@
           swal('提示信息', "请输入正确的手机号码!!!");
           return;
         }
-        axios.post('/api/v1/verificationCodes', {
+        axios.post('https://mp.cnweipu.com/api/v1/verificationCodes', {
           phone: phone,
         }).then(res => {
           swal('验证码已发送成功!,请注意查收!')
