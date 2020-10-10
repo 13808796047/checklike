@@ -98,6 +98,22 @@
   $("#xiugaicancel").click(()=>{
     $("#staticXiugai").modal("hide")
   })
+  $("#bindSelfPhone").click(()=>{
+    $("#bindTitle").modal("show")
+  })
+  $("#sendYzCode").click(()=>{
+    let count = 60;
+    const countDown = setInterval(() => {
+      if (count === 0) {
+       $("#sendYzCode").text('重新发送').removeAttr('disabled');
+       clearInterval(countDown);
+      } else {
+       $("#sendYzCode").attr('disabled', true);
+       $("#sendYzCode").text(count +' '+'S');
+      }
+      count--;
+     }, 1000)
+  })
   $("#xiugaisure").click(()=>{
     if($("#xgpsd").val().length<8){
       $("#xgtoast").text("密码不少于8位")
