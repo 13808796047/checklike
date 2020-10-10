@@ -26,24 +26,8 @@ class PaymentsController extends Controller
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
-        $domain = $request->getHost();
-        switch ($domain) {
-            case config('app.host.dev_host'):
-                $openid = $request->user()->dev_weapp_openid;
-                break;
-            case config('app.host.wf_host'):
-                $openid = $request->user()->wf_weapp_openid;
-                break;
-            case config('app.host.wp_host'):
-                $openid = $request->user()->wp_weapp_openid;
-                break;
-            case config('app.host.pp_host'):
-                $openid = $request->user()->pp_weapp_openid;
-                break;
-            default:
-                $openid = $request->user()->cn_weapp_openid;
-        }
 
+        $openid = $request->user()->weapp_openid;
         return app('wechat_pay_mp')->mp([
             'out_trade_no' => $order->orderid,  // 商户订单流水号，与支付宝 out_trade_no 一样
             'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
@@ -60,18 +44,8 @@ class PaymentsController extends Controller
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
-        $domain = request()->getHost();
-        switch ($domain) {
-            case 'dev.lianwen.com':
-                $data['dealId'] = config('pay.dev_baidu_pay.dealId');
-                $data['appKey'] = config('pay.dev_baidu_pay.appKey');
-                break;
-            default:
-                $data['dealId'] = config('pay.zcnki_baidu_pay.dealId');
-                $data['appKey'] = config('pay.zcnki_baidu_pay.appKey');
-                break;
-        }
-
+        $data['dealId'] = config('pay.zcnki_baidu_pay.dealId');
+        $data['appKey'] = config('pay.zcnki_baidu_pay.appKey');
         $data['totalAmount'] = $order->price * 100;
         $data['tpOrderId'] = $order->orderid;
         $data['rsaSign'] = app('baidu_pay')->getSign($data);
