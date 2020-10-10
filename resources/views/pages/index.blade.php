@@ -634,7 +634,6 @@
         console.log( $("#xiugai"),isBindPhone.phone,"11")
         // $("#xiugai").css("display","block")
       }else{
-        console.log( $("#xiugai"),isBindPhone.phone,"211")
         // $("#xiugai").css("display","none")
       }
       var timer = null
@@ -737,7 +736,7 @@
           swal('提示信息', "请输入正确的手机号码!!!");
           return;
         }
-        axios.post('https://mp.cnweipu.com/api/v1/verificationCodes', {
+        axios.post('/api/v1/verificationCodes', {
           phone: phone,
         }).then(res => {
           swal('验证码已发送成功!,请注意查收!')
