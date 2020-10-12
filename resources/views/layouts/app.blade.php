@@ -161,12 +161,11 @@
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
-      // swal(res.data.message, {
-      //   buttons: false,
-      //   timer: 2000,
-      // })
-      $('#toastAll').toast('show')
-      // $("#staticXiugai").modal("hide")
+      swal(res.data.message, {
+        buttons: false,
+        timer: 2000,
+      })
+      $("#staticXiugai").modal("hide")
     }).catch(err=>{
       swal(err.data.message, {
         icon: "error",
