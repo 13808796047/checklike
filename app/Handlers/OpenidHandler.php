@@ -39,14 +39,14 @@ class OpenidHandler
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
-        $content = curl_exec($ch);
+        $res = curl_exec($ch);
         $status = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
         if($status == 404) {
             return $status;
         }
         curl_close($ch);
-
-        $array = get_object_vars(json_decode($content));//转换成数组
-        return $array['openid'];//输出openid
+        $json_obj = json_decode($res, true);
+//根据openid和access_token查询用户信息
+        return $json_obj['openid'];
     }
 }
