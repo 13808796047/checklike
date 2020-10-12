@@ -58,12 +58,6 @@ class PaymentsController extends Controller
     //jssdk
     public function wxJsBridgeData(Request $request, Order $order)
     {
-        $result = app(OpenidHandler::class)->openid($request->code);
-        return response()->json([
-            'message' => $result
-        ])->setStatusCode(200);
-
-        dd(app(OpenidHandler::class)->openid($request->code));
         $config = config('pay.wechat');
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
@@ -82,7 +76,6 @@ class PaymentsController extends Controller
         } catch (InvalidRequestException $e) {
 
         }
-        dd($result);
         //预支付订单号prepayId, 生成支付 JS 配置
         $prepayId = $result['prepay_id'];
         $json = $jssdk->bridgeConfig($prepayId);
