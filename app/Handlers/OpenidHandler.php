@@ -45,6 +45,8 @@ class OpenidHandler
             return $status;
         }
         curl_close($ch);
-        return json_decode($content, true);
+
+        $array = get_object_vars(json_decode($content, true));//转换成数组
+        return $array['openid'];//输出openid
     }
 }
