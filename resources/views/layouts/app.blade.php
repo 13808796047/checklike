@@ -33,7 +33,7 @@
     .alertify-notifier .ajs-message.ajs-visible {
       padding: 8px;
     }
-    .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #FFF; }
+    .ajs-message.ajs-custom { color: #67c23a;background-color: #f0f9eb;border-color: #e1f3d8;}
   </style>
   @yield('styles')
   <script>
@@ -163,7 +163,7 @@
       // })
       $("#staticXiugai").modal("hide")
       alertify.set('notifier','position', 'top-center');
-      alertify.success(res.data.message)
+      alertify.notify(res.data.message,'custom',3)
     }).catch(err=>{
       console.log(err,"xixi")
       // swal(err.data.message, {
