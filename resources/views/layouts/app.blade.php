@@ -96,7 +96,7 @@
     //     }
     //   });
     alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('Ok') }
-                , function(){ alertify.error('Cancel')}).set('movable', false);
+                , function(){ alertify.error('Cancel')}).set({'movable':false,'reverseButtons':true});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
