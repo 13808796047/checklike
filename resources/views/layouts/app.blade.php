@@ -99,7 +99,7 @@
       axios.post('{{route('logout')}}').then(res => {
               location.replace('https://p.checklike.com')
           })
-     }, function(){ alertify.error('Cancel')}).set({'movable':false,'reverseButtons':true});
+     }, function(){ alertify.error('Cancel')}).set({'movable':false,'reverseButtons':true,'labels':{ok:'确定',cancel:'取消'}});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
