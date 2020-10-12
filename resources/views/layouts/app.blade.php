@@ -167,9 +167,11 @@
       //   buttons: false,
       //   timer: 2000,
       // })
-      alertify.set("修改成功",'position', 'top-center');
+      console.log(res,"xixi")
+      alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
+      console.log(err,"xixi")
       // swal(err.data.message, {
       //   icon: "error",
       // }).then(willDelete => {
