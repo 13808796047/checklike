@@ -161,10 +161,9 @@
       //   buttons: false,
       //   timer: 2000,
       // })
-      console.log(res,"xixi")
-      alertify.set('notifier','position', 'top-center');
-      alertify.success(res.data.message).
       $("#staticXiugai").modal("hide")
+      alertify.set('notifier','position', 'top-center');
+      alertify.success(res.data.message)
     }).catch(err=>{
       console.log(err,"xixi")
       // swal(err.data.message, {
