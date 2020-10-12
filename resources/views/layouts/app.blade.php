@@ -75,26 +75,6 @@
 <script !src="">
   //退出登录
   $('.logout').click(() => {
-    // swal({
-    //   title: "您确认要退出登录吗?",
-    //   icon: "warning",
-    //   buttons: ['取消', '确定'],
-    //   dangerMode: true,
-    // })
-    //   .then((willDelete) => {
-    //     if (willDelete) {
-    //       console.log('xixi')
-    //       axios.post('{{route('logout')}}').then(res => {
-    //         swal("注销成功!", {
-    //           icon: "success",
-    //         }).then(willDelete => {
-    //           // console.log(willDelete,42)
-    //           // location.reload();
-    //           location.replace('https://p.checklike.com')
-    //         });
-    //       })
-    //     }
-    //   });
     alertify.confirm('提示', '您确认要退出登录吗?', function(){
       axios.post('{{route('logout')}}').then(res => {
               location.replace('https://p.checklike.com')
@@ -177,6 +157,7 @@
       // })
       console.log(res,"xixi")
       alertify.set('notifier','position', 'top-center');
+      alertify.set('notifier','delay', 100);
       alertify.notify(res.data.message,'custom', 2,);
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
