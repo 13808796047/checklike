@@ -77,7 +77,6 @@ class PaymentsController extends Controller
         } catch (InvalidRequestException $e) {
 
         }
-        dd($result);
         //预支付订单号prepayId, 生成支付 JS 配置
         $prepayId = $result['prepay_id'];
         $json = $jssdk->bridgeConfig($prepayId);
