@@ -18,10 +18,10 @@ class OpenidHandler
 
     public function getOpenid($code)
     {
-        $config = config('pay.wechat');
+        $config = config('wechat.official_account');
         $query = [
             'appid' => $config['app_id'],
-            'secret' => 'b4e08c848e9c1f9114ead07b6549d641',
+            'secret' => $config['secret'],
             'code' => $code,
             'grant_type' => 'authorization_code',
         ];
