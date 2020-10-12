@@ -170,7 +170,7 @@
       // })
       console.log(res,"xixi")
       alertify.set('notifier','position', 'top-center');
-      alertify.notify(res.data.message);
+      alertify.notify(res.data.message,'custom', 2,);
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
       console.log(err,"xixi")
