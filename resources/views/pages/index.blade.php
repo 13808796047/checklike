@@ -15,7 +15,7 @@
     .swal-title {
       font-size: 20px;
     }
-    .swal-icon {
+    /* .swal-icon {
     width: 51px;
     height: 51px;
     border-width: 5px;
@@ -32,7 +32,7 @@
     top: 9px;
     border-radius: 2px;
     margin-left: -2px;
-    }
+    } */
     .swal-text {
       /* background-color: #FEFAE3;
       padding: 17px;
