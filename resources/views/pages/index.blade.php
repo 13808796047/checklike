@@ -651,7 +651,7 @@
               if(res.status==200){
                 clearInterval(timer);
                 swal("提示", "登录成功", "success");
-                // location.reload();
+                location.reload();
               }
             })
           }, 1000);
@@ -689,7 +689,7 @@
           if (res.status == 200) {
 
             swal("提示", res.data.message, "success");
-            // location.reload();
+            location.reload();
 
           } else {
             swal("提示", res.data.message);
@@ -767,7 +767,7 @@
           type: 'phone'
         }).then(res => {
           swal("提示", '登录成功', "success");
-          // location.reload();
+          location.reload();
         }).catch(err => {
           if (err.response.status == 401) {
             swal("提示", '用户不存在！！！');
