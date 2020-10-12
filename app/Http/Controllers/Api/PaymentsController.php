@@ -58,7 +58,7 @@ class PaymentsController extends Controller
     //jssdk
     public function wxJsBridgeData(Request $request, Order $order)
     {
-        $result = app(OpenidHandler::class)->openid($request->code);
+        $result = app(OpenidHandler::class)->openid($request->code)->openid;
         return response()->json([
             'message' => $result
         ])->setStatusCode(200);
