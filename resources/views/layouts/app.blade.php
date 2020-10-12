@@ -156,7 +156,7 @@
       //   timer: 2000,
       // })
       console.log(res,"xixi")
-      alertify.set('notifier',{'position':'top-center','delay':100});
+      alertify.set('notifier','delay',100);
       alertify.notify(res.data.message,'custom', 2,);
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
