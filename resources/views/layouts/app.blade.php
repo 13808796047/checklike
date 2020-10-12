@@ -168,7 +168,8 @@
       //   timer: 2000,
       // })
       console.log(res,"xixi")
-      alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
+      alertify.set('notifier','position', 'top-center');
+      alertify.success('Current position : ' + alertify.get('notifier','position'));
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
       console.log(err,"xixi")
