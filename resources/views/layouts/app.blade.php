@@ -165,6 +165,7 @@
         buttons: false,
         timer: 2000,
       })
+      $('#toastAll').toast('show')
       // $("#staticXiugai").modal("hide")
     }).catch(err=>{
       swal(err.data.message, {
