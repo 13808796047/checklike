@@ -74,26 +74,27 @@
 <script !src="">
   //退出登录
   $('.logout').click(() => {
-    swal({
-      title: "您确认要退出登录吗?",
-      icon: "warning",
-      buttons: ['取消', '确定'],
-      dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          console.log('xixi')
-          axios.post('{{route('logout')}}').then(res => {
-            swal("注销成功!", {
-              icon: "success",
-            }).then(willDelete => {
-              // console.log(willDelete,42)
-              // location.reload();
-              location.replace('https://p.checklike.com')
-            });
-          })
-        }
-      });
+    // swal({
+    //   title: "您确认要退出登录吗?",
+    //   icon: "warning",
+    //   buttons: ['取消', '确定'],
+    //   dangerMode: true,
+    // })
+    //   .then((willDelete) => {
+    //     if (willDelete) {
+    //       console.log('xixi')
+    //       axios.post('{{route('logout')}}').then(res => {
+    //         swal("注销成功!", {
+    //           icon: "success",
+    //         }).then(willDelete => {
+    //           // console.log(willDelete,42)
+    //           // location.reload();
+    //           location.replace('https://p.checklike.com')
+    //         });
+    //       })
+    //     }
+    //   });
+    alertify.confirm('closableByDimmer: false').set({'closableByDimmer': false});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
