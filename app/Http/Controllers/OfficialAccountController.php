@@ -107,6 +107,7 @@ class OfficialAccountController extends Controller
             $this->markTheLogin($event, $wxUser->id);
             return;
         }
+        $openId = $this->openid;
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
         Log::info('wx', [$wxUser]);
