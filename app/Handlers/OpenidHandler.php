@@ -45,6 +45,6 @@ class OpenidHandler
             return $status;
         }
         curl_close($ch);
-        return json_decode($content, true);
+        return json_decode($content);
     }
 }
