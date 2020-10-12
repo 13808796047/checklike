@@ -158,14 +158,8 @@
           return
         }
         // 选择后状态
-        swal({
-          title: "您确认要删除数据?",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        }).then(willDelete => {
-          if (willDelete) {
-            var valuelist = [];
+        alertify.confirm('提示', '您确认要删除数据?', function(){
+          var valuelist = [];
             $("input[name='delete']:checked").each(function () {
               var inputval = $(this).val()
               valuelist.push(inputval);
@@ -175,11 +169,33 @@
                 ids: valuelist
               }
             }).then(res => {
-              swal('删除成功!')
+              // swal('删除成功!')
+              alertify.success('删除成功')
               location.reload()
             })
-          }
-        })
+     }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
+        // swal({
+        //   title: "您确认要删除数据?",
+        //   icon: "warning",
+        //   buttons: true,
+        //   dangerMode: true,
+        // }).then(willDelete => {
+        //   if (willDelete) {
+        //     var valuelist = [];
+        //     $("input[name='delete']:checked").each(function () {
+        //       var inputval = $(this).val()
+        //       valuelist.push(inputval);
+        //     });
+        //     axios.delete('{{route('orders.destroy')}}', {
+        //       data: {
+        //         ids: valuelist
+        //       }
+        //     }).then(res => {
+        //       swal('删除成功!')
+        //       location.reload()
+        //     })
+        //   }
+        // })
       })
     })
   </script>
