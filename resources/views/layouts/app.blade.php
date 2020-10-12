@@ -26,6 +26,7 @@
       flex-direction: column;
       height: 100%;
     }
+    .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }
   </style>
   @yield('styles')
   <script>
