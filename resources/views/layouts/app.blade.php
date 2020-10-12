@@ -94,7 +94,8 @@
     //       })
     //     }
     //   });
-    alertify.confirm('closableByDimmer: false').set({'closableByDimmer': false});
+    alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('Ok') }
+                , function(){ alertify.error('Cancel')});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
