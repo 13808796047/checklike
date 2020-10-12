@@ -785,7 +785,7 @@
           type: 'phone'
         }).then(res => {
           swal("提示", '登录成功', "success");
-          location.reload();
+          // location.reload();
         }).catch(err => {
           if (err.response.status == 401) {
             swal("提示", '用户不存在！！！');
