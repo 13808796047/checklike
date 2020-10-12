@@ -107,6 +107,9 @@ class OfficialAccountController extends Controller
             $this->markTheLogin($event, $wxUser->id);
 
         }
+        // 微信用户信息
+        $wxUser = $this->app->user->get($openId);
+        $this->makeTheUser($event, $wxUser);
     }
 
 
@@ -162,8 +165,13 @@ class OfficialAccountController extends Controller
         }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
+        $this->makeTheUser($event, $wxUser);
+    }
+
+    public function makeTheUser($event, $wxUser)
+    {
         // 注册
-        $result = DB::transaction(function() use ($openId, $event, $wxUser) {
+        $result = DB::transaction(function() use ($event, $wxUser) {
             // 用户
             $user = User::create([
                 'nick_name' => $wxUser['nickname'],
