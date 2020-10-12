@@ -59,10 +59,7 @@ class PaymentsController extends Controller
     public function wxJsBridgeData(Request $request, Order $order)
     {
         $result = app(OpenidHandler::class)->openid($request->code);
-        return response()->json([
-            'message' => $result
-        ])->setStatusCode(200);
-
+ 
         $config = config('pay.wechat');
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
