@@ -95,7 +95,7 @@
     //       })
     //     }
     //   });
-    alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('Ok') }
+    alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('O') }
                 , function(){ alertify.error('Cancel')}).set({'movable':false,'reverseButtons':true});
   });
   $("#xiugai").click(()=>{
