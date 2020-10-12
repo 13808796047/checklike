@@ -110,7 +110,6 @@ class OfficialAccountController extends Controller
         $openId = $this->openid;
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
-        Log::info('wx', [$wxUser]);
         $this->makeTheUser($event, $wxUser);
     }
 
