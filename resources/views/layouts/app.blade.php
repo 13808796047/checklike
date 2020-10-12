@@ -100,7 +100,7 @@
               location.replace('https://p.checklike.com')
               alertify.success('注销成功')
           })
-     }, function(){}).set({'movable':false,'reverseButtons':true,'labels':{ok:'确定',cancel:'取消'}});
+     }, function(){}).set({'movable':false,'reverseButtons':true,'labels':{ok:'确定',cancel:'取消'}},'closable':false);
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
