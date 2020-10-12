@@ -31,7 +31,7 @@ class OpenidHandler
 
     public function openid($code)
     {
-        $config = config('wechat.official_account.wf');
+        $config = config('wechat.official_account');
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" . $config['app_id'] . "&secret=" . $config['secret'] . "&code=" . $code . "&grant_type=authorization_code";
 
         $ch = curl_init();

@@ -44,7 +44,7 @@ Route::prefix('v1')
             //百度支付
             Route::get('payments/{order}/mock_data', 'PaymentsController@mockData')->name('payments.baidu.mock_data');
             //微信支付数据
-            Route::get('payments/{order}/bridge_data', 'PaymentsController@wxJsBridgeData')->name('payments.wx.js_data');
+            Route::get('bridge_data', 'PaymentsController@wxJsBridgeData')->name('payments.wx.js_data');
             //微信小程序
             Route::get('payments/{order}/wechat_mp', 'PaymentsController@wechatPayMp')
                 ->name('payments.wechat_mp');
