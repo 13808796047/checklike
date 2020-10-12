@@ -30,6 +30,9 @@
     .alertify-notifier.ajs-top {
       top: 89px;
     }
+    .alertify-notifier .ajs-message.ajs-visible {
+      padding: 8px;
+    }
     .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #FFF; }
   </style>
   @yield('styles')
