@@ -169,7 +169,7 @@
       // })
       console.log(res,"xixi")
       alertify.set('notifier','position', 'top-center');
-      alertify.success('Current position : ' + alertify.get('notifier','position'));
+      alertify.success(res.data.message + alertify.get('notifier','position'));
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
       console.log(err,"xixi")
