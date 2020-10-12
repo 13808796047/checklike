@@ -60,7 +60,7 @@ class PaymentsController extends Controller
     {
         $result = app(OpenidHandler::class)->openid($request->code);
         return response()->json([
-            'message' => $result->openid
+            'message' => $result['openid']
         ])->setStatusCode(200);
 
         $config = config('pay.wechat');
