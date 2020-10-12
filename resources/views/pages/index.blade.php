@@ -15,24 +15,6 @@
     .swal-title {
       font-size: 20px;
     }
-    /* .swal-icon {
-    width: 51px;
-    height: 51px;
-    border-width: 5px;
-    border-style: solid;
-    border-radius: 50%;
-    padding: 0px;
-    position: relative;
-    box-sizing: content-box;
-    margin: 6px auto;
-    }
-    .swal-icon--warning__body {
-    width: 5px;
-    height: 20px;
-    top: 9px;
-    border-radius: 2px;
-    margin-left: -2px;
-    } */
     .swal-text {
       /* background-color: #FEFAE3;
       padding: 17px;
