@@ -12,6 +12,8 @@
   <title>@yield('title', '联文') _维普论文检测系统</title>
 
   <!-- Styles -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <style>
     .newbody {
@@ -25,6 +27,13 @@
       flex-direction: column;
       height: 100%;
     }
+    .alertify-notifier.ajs-top {
+      top: 89px;
+    }
+    .alertify-notifier .ajs-message.ajs-visible {
+      padding: 8px;
+    }
+    .ajs-message.ajs-custom { color: #67c23a;background-color: #f0f9eb;border-color: #e1f3d8;}
   </style>
   @yield('styles')
   <script>
@@ -66,31 +75,18 @@
 </div>
 
 <!-- Scripts -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('scripts')
 <script !src="">
   //退出登录
   $('.logout').click(() => {
-    swal({
-      title: "您确认要退出登录吗?",
-      icon: "warning",
-      buttons: ['取消', '确定'],
-      dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          console.log('xixi')
-          axios.post('{{route('logout')}}').then(res => {
-            swal("注销成功!", {
-              icon: "success",
-            }).then(willDelete => {
-              // console.log(willDelete,42)
-              // location.reload();
+    alertify.confirm('提示', '您确认要退出登录吗?', function(){
+      axios.post('{{route('logout')}}').then(res => {
               location.replace('https://p.checklike.com')
-            });
+              alertify.success('注销成功')
           })
-        }
-      });
+     }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
@@ -161,17 +157,20 @@
       password: $("#xgpsd").val(),
       password_confirmation: $("#xgsurepsd").val()
     }).then(res=>{
-      swal(res.data.message, {
-        icon: "success",
-      }).then(willDelete => {
-        $("#staticXiugai").modal("hide")
-      });
+      // swal(res.data.message, {
+      //   buttons: false,
+      //   timer: 2000,
+      // })
+      $("#staticXiugai").modal("hide")
+      alertify.set('notifier','position', 'top-center');
+      alertify.notify(res.data.message,'custom',3)
     }).catch(err=>{
-      swal(err.data.message, {
-        icon: "error",
-      }).then(willDelete => {
-        $("#staticXiugai").modal("hide")
-      });
+      console.log(err,"xixi")
+      // swal(err.data.message, {
+      //   icon: "error",
+      // }).then(willDelete => {
+      //   $("#staticXiugai").modal("hide")
+      // });
     })
   })
 </script>

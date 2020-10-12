@@ -15,15 +15,14 @@
     .swal-title {
       font-size: 20px;
     }
-
     .swal-text {
-      background-color: #FEFAE3;
+      /* background-color: #FEFAE3;
       padding: 17px;
       border: 1px solid #F0E1A1;
       display: block;
       margin: 22px;
       text-align: center;
-      color: #61534e;
+      color: #61534e; */
     }
   	.nav-link {
 			color: black;
