@@ -80,6 +80,6 @@ class PaymentsController extends Controller
         //预支付订单号prepayId, 生成支付 JS 配置
         $prepayId = $result['prepay_id'];
         $json = $jssdk->bridgeConfig($prepayId);
-        return response()->json($json)->setStatusCode(200);
+        return $json;
     }
 }
