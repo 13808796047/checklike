@@ -156,8 +156,8 @@
       //   timer: 2000,
       // })
       console.log(res,"xixi")
-      alertify.set('notifier','delay',100);
-      alertify.notify(res.data.message,'custom', 2,);
+      alertify.set('notifier','position', 'top-center');
+      alertify.notify(res.data.message,'custom', 100).
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
       console.log(err,"xixi")
