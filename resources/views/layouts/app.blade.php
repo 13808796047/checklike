@@ -167,14 +167,14 @@
       //   buttons: false,
       //   timer: 2000,
       // })
-      alertify.set(res.data.message,'position', 'top-center');
+      alertify.set("修改成功",'position', 'top-center');
       $("#staticXiugai").modal("hide")
     }).catch(err=>{
-      swal(err.data.message, {
-        icon: "error",
-      }).then(willDelete => {
-        $("#staticXiugai").modal("hide")
-      });
+      // swal(err.data.message, {
+      //   icon: "error",
+      // }).then(willDelete => {
+      //   $("#staticXiugai").modal("hide")
+      // });
     })
   })
 </script>
