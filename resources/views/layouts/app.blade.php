@@ -95,8 +95,11 @@
     //       })
     //     }
     //   });
-    alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('O') }
-                , function(){ alertify.error('Cancel')}).set({'movable':false,'reverseButtons':true});
+    alertify.confirm('提示', '您确认要退出登录吗?', function(){
+      axios.post('{{route('logout')}}').then(res => {
+              location.replace('https://p.checklike.com')
+          })
+     }, function(){ alertify.error('Cancel')}).set({'movable':false,'reverseButtons':true});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
