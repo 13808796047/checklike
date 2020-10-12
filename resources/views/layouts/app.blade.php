@@ -12,6 +12,7 @@
   <title>@yield('title', '联文') _维普论文检测系统</title>
 
   <!-- Styles -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <style>
     .newbody {
@@ -66,6 +67,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('scripts')
 <script !src="">
