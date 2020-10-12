@@ -98,7 +98,7 @@
     alertify.confirm('提示', '您确认要退出登录吗?', function(){
       axios.post('{{route('logout')}}').then(res => {
               location.replace('https://p.checklike.com')
-              alertify.error('注销成功')}
+              alertify.success('注销成功')
           })
      }, function(){}).set({'movable':false,'reverseButtons':true,'labels':{ok:'确定',cancel:'取消'}});
   });
