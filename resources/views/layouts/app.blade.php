@@ -27,6 +27,9 @@
       flex-direction: column;
       height: 100%;
     }
+    .alertify-notifier.ajs-top {
+      top: 89px;
+    }
     .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #FFF; }
   </style>
   @yield('styles')
