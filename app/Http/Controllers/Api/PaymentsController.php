@@ -55,6 +55,11 @@ class PaymentsController extends Controller
         return response()->json($data)->setStatusCode(200);
     }
 
+    public function getOpenid(Request $request)
+    {
+        return app(OpenidHandler::class)->openid($request->code);
+    }
+
     //jssdk
     public function wxJsBridgeData(Request $request, Order $order)
     {
@@ -76,7 +81,7 @@ class PaymentsController extends Controller
                 'spbill_create_ip' => '', // 可选，如不传该参数，SDK 将会自动获取相应 IP 地址
                 'notify_url' => $config['notify_url'], // 支付结果通知网址，如果不设置则会使用配置里的默认地址
                 'trade_type' => 'JSAPI',//支付方式
-                'openid' => app(OpenidHandler::class)->openid($request->code),
+                'openid' => $request->openid,
             ]);
         } catch (InvalidRequestException $e) {
 

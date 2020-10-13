@@ -43,6 +43,7 @@ Route::prefix('v1')
             Route::post('orders/{order}/mail_report', 'OrdersController@reportMail');
             //百度支付
             Route::get('payments/{order}/mock_data', 'PaymentsController@mockData')->name('payments.baidu.mock_data');
+            Route::get('payments/get_openid', 'PaymentsController@getOpenid');
             //微信支付数据
             Route::get('payments/{order}/bridge_data', 'PaymentsController@wxJsBridgeData')->name('payments.wx.js_data');
             //微信小程序
