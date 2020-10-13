@@ -13,10 +13,13 @@ use Endroid\QrCode\QrCode;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Ramsey\Uuid\Uuid;
 use Yansongda\Pay\Pay;
 
 class PaymentsController extends Controller
 {
+    protected $orderfix;
+
     //
     public function wechatPayMp(Order $order, Request $request, OpenidHandler $openidHandler)
     {
@@ -63,11 +66,13 @@ class PaymentsController extends Controller
     //jssdk
     public function wxJsBridgeData(Request $request, Order $order)
     {
+
         //校验权限
         $this->authorize('own', $order);
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
+        $this->orderfix = Uuid::uuid4()->getHex();
         $config = config('pay.wechat');
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
@@ -75,7 +80,7 @@ class PaymentsController extends Controller
         try {
             $result = $payment->order->unify([
                 'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid,
-                'out_trade_no' => $order->orderid,
+                'out_trade_no' => $order->orderid . '_' . $this->orderfix,
                 'total_fee' => $order->price * 100,//todo
                 'attach' => $order->id,
                 'spbill_create_ip' => '', // 可选，如不传该参数，SDK 将会自动获取相应 IP 地址
