@@ -201,7 +201,7 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确');
                 }
-                $this->orderfix = Uuid::uuid4()->getHex();
+                $this->orderfix = rand(1, 99);
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
@@ -225,7 +225,7 @@ class PaymentsController extends Controller
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
-        $this->orderfix = Uuid::uuid4()->getHex();
+        $this->orderfix = rand(1, 99);
         $attributes = [
             'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
             'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
