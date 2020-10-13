@@ -446,24 +446,24 @@
           $('#submitBtn').css("display", "block");
           $('#content').val().replace(/\n|\r\n/g,'<br>').replace(/\s/g,'&nbsp;');
           console.log("xixi", $('#content').val())
-          // axios.post('{{route('orders.store')}}', {
-          //     cid: $('#cid').val(),
-          //     from: 'pc',
-          //     type: 'content',
-          //     content: $('#content').val(),
-          //     title: $('#title').val(),
-          //     writer: $('#writer').val(),
-          //     endDate: $('#element_id').val()
-          //   }
-          // ).then(res => {
-          //   console.log(res, 3123123)
-          //   var order = res.data.data
-          //   location.href = '/orders/' + res.data.data.id
-          // }).catch(err => {
-          //   alert('提交失败，请重试')
-          //   $('#tosubmit').css("display", "block");
-          //   $('#submitBtn').css("display", "none")
-          // })
+          axios.post('{{route('orders.store')}}', {
+              cid: $('#cid').val(),
+              from: 'pc',
+              type: 'content',
+              content: $('#content').val(),
+              title: $('#title').val(),
+              writer: $('#writer').val(),
+              endDate: $('#element_id').val()
+            }
+          ).then(res => {
+            console.log(res, 3123123)
+            var order = res.data.data
+            location.href = '/orders/' + res.data.data.id
+          }).catch(err => {
+            alert('提交失败，请重试')
+            $('#tosubmit').css("display", "block");
+            $('#submitBtn').css("display", "none")
+          })
         }
       })
 
