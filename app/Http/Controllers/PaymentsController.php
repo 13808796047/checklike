@@ -18,10 +18,14 @@ use http\Exception\InvalidArgumentException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Ramsey\Uuid\Uuid;
+use Yansongda\Pay\Exceptions\GatewayException;
 use Yansongda\Pay\Pay;
 
 class PaymentsController extends Controller
 {
+    protected $orderfix;
+
     public function alipay(Request $request)
     {
         $id = $request->id;
@@ -197,9 +201,10 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确');
                 }
+                $this->orderfix = Uuid::uuid4()->getHex();
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
-                    'out_trade_no' => $order->orderid,  // 商户订单流水号，与支付宝 out_trade_no 一样
+                    'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
                     'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
                     'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
                 ]);
@@ -220,8 +225,9 @@ class PaymentsController extends Controller
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
+        $this->orderfix = Uuid::uuid4()->getHex();
         $attributes = [
-            'out_trade_no' => $order->orderid,  // 商户订单流水号，与支付宝 out_trade_no 一样
+            'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
             'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
             'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
         ];
@@ -245,10 +251,11 @@ class PaymentsController extends Controller
     {
         // 校验回调参数是否正确
         $data = app('wechat_pay')->verify();
-        $type = substr($data->out_trade_no, 0, 2);
+        [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
+        $type = substr($out_trade_no, 0, 2);
         switch ($type) {
             case 'JC':
-                $recharge = Recharge::where('no', $data->out_trade_no)->first();
+                $recharge = Recharge::where('no', $out_trade_no)->first();
                 // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
                 if(!$recharge) {
                     return 'fail';
@@ -261,14 +268,14 @@ class PaymentsController extends Controller
                 $recharge->update([
                     'paid_at' => Carbon::now(),
                     'payment_method' => '微信支付',
-                    'payment_no' => $data->out_trade_no,
+                    'payment_no' => $out_trade_no,
                 ]);
                 $this->afterRechargePaid($recharge);
                 return app('wechat_pay')->success();
                 break;
             default:
                 // 找到对应的订单:
-                $order = Order::where('orderid', $data->out_trade_no)->first();
+                $order = Order::where('orderid', $out_trade_no)->first();
                 // 订单不存在则告知微信支付
                 if(!$order) {
                     return 'fail';
@@ -283,7 +290,7 @@ class PaymentsController extends Controller
                 $order->update([
                     'date_pay' => Carbon::now(),
                     'pay_type' => '微信支付',
-                    'payid' => $data->out_trade_no, //订单号
+                    'payid' => $out_trade_no, //订单号
                     'pay_price' => $data->total_fee / 100,//支付金额
                     'status' => 1,
                 ]);
