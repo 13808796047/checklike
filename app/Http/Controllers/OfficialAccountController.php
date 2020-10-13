@@ -105,8 +105,12 @@ class OfficialAccountController extends Controller
         if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
             // 标记前端可登录
             $this->markTheLogin($event, $wxUser->id);
-
+            return;
         }
+        $openId = $this->openid;
+        // 微信用户信息
+        $wxUser = $this->app->user->get($openId);
+        $this->makeTheUser($event, $wxUser);
     }
 
 
@@ -162,8 +166,13 @@ class OfficialAccountController extends Controller
         }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
+        $this->makeTheUser($event, $wxUser);
+    }
+
+    public function makeTheUser($event, $wxUser)
+    {
         // 注册
-        $result = DB::transaction(function() use ($openId, $event, $wxUser) {
+        $result = DB::transaction(function() use ($event, $wxUser) {
             // 用户
             $user = User::create([
                 'nick_name' => $wxUser['nickname'],

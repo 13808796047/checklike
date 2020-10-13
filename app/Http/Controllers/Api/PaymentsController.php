@@ -55,10 +55,19 @@ class PaymentsController extends Controller
         return response()->json($data)->setStatusCode(200);
     }
 
+    public function getOpenid(Request $request)
+    {
+        return app(OpenidHandler::class)->openid($request->code);
+    }
+
     //jssdk
     public function wxJsBridgeData(Request $request, Order $order)
     {
-        dd(app(OpenidHandler::class)->openid($request->code));
+        //校验权限
+        $this->authorize('own', $order);
+        if($order->status == 1 || $order->del) {
+            throw new InvalidRequestException('订单状态不正确');
+        }
         $config = config('pay.wechat');
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
@@ -72,15 +81,14 @@ class PaymentsController extends Controller
                 'spbill_create_ip' => '', // 可选，如不传该参数，SDK 将会自动获取相应 IP 地址
                 'notify_url' => $config['notify_url'], // 支付结果通知网址，如果不设置则会使用配置里的默认地址
                 'trade_type' => 'JSAPI',//支付方式
-                'openid' => app(OpenidHandler::class)->openid($request->code),
+                'openid' => $request->openid,
             ]);
         } catch (InvalidRequestException $e) {
 
         }
-        dd($result);
         //预支付订单号prepayId, 生成支付 JS 配置
         $prepayId = $result['prepay_id'];
         $json = $jssdk->bridgeConfig($prepayId);
-        return response()->json($json)->setStatusCode(200);
+        return $json;
     }
 }
