@@ -186,6 +186,11 @@ class OrderController extends AdminController
         ]);
     }
 
+    public function uploadPdf()
+    {
+
+    }
+
     public function downloadPaper(Order $order)
     {
         if(!$order->paper_path) {
