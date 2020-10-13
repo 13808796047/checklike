@@ -73,7 +73,7 @@ class PaymentsController extends Controller
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
-        $this->orderfix = Uuid::uuid4()->getHex();
+        $this->orderfix = Uuid::uuid2()->getHex();
         $config = config('pay.wechat');
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
