@@ -58,7 +58,11 @@ class PaymentsController extends Controller
     //jssdk
     public function wxJsBridgeData(Request $request, Order $order)
     {
-
+        //校验权限
+        $this->authorize('own', $order);
+        if($order->status == 1 || $order->del) {
+            throw new InvalidRequestException('订单状态不正确');
+        }
         $config = config('pay.wechat');
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
