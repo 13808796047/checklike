@@ -445,6 +445,8 @@
           $('#tosubmit').css("display", "none");
           $('#submitBtn').css("display", "block");
           console.log($('#content').val(),"xifdsadfsxi")
+          $('#content').val().replace(/\\n/g,'\\r\\n');
+          console.log($('#content').val(),"xif")
           // $('#content').val().replace(/\n|\r\n/g,'<br>').replace(/\s/g,'&nbsp;');
           // console.log("xixi", $('#content').val())
           // axios.post('{{route('orders.store')}}', {
