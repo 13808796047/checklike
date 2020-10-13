@@ -13,6 +13,7 @@ use Endroid\QrCode\QrCode;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Uuid;
 use Yansongda\Pay\Pay;
 
