@@ -45,7 +45,6 @@ class OrderService
                 }
             } else {
                 $content = remove_spec_char($request->input('content', ''));
-                dd($content);
                 $words = count_words($content);
                 if($category->classid == 3) {
                     $result = $wordHandler->save($content, 'files', $user->id);
