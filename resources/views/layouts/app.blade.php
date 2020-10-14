@@ -218,12 +218,13 @@
               swal("注册成功!");
               location.href = '{{route('home.index')}}'
             }).catch(err => {
-              // if (err.response.status == 422) {
-              //   $('#message').show();
-              //   $.each(err.response.data.errors, (field, errors) => {
-              //     $('#message').append('<strong>' + errors + '</strong> </br>');
-              //   })
-              // }
+              if (err.response.status == 422) {
+                // $('#message').show();
+                // $.each(err.response.data.errors, (field, errors) => {
+                //   $('#message').append('<strong>' + errors + '</strong> </br>');
+                // })
+                $("#registerTip").text(err.response.data.errors)
+              }
               console.log(err,"注册")
             })
           })
