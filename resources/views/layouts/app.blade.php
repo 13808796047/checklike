@@ -223,7 +223,10 @@
                 // $.each(err.response.data.errors, (field, errors) => {
                 //   $('#message').append('<strong>' + errors + '</strong> </br>');
                 // })
-                $("#registerTip").text(err.response.data.errors)
+                $.each(err.response.data.errors, (field, errors) => {
+                  $("#registerTip").text(errors)
+                })
+
               }
               console.log(err,"注册")
             })
