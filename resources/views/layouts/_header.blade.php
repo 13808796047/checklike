@@ -332,7 +332,7 @@
         <!-- Authentication Links -->
           <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
                                   data-target="#staticBackdrop">登录</a></li>
-          <li class="nav-item"><a class="nav-link" id='RegisterDialogBtn'">注册</a></li>
+          <li class="nav-item"><a class="nav-link" id='RegisterDialogBtn'" href="javascript:;">注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
           @if(Auth::user()->phone)
