@@ -444,7 +444,7 @@
          <div style="padding:10px 17px;">
             <div>
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-              用户名:
+              手机号:
               </label>
               <input
                  class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -480,7 +480,7 @@
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
                   <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
             </div>
-            <div id="registerTip" style="color:red;"></div>
+            <div id="registerTip" style="color:red;margin-bottom:10px;"></div>
             <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;">
                 提交注册
             </button>
