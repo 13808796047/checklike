@@ -480,6 +480,9 @@
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
                   <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendYzCode">发送验证码</button>
             </div>
+            <button type="button" class="btn btn-large btn-block" id="submitBtn" style="background:#26AEF2;color:#fff;">
+                提交注册
+            </button>
         </div>
          </div>
       </div>
