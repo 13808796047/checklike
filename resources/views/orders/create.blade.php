@@ -449,8 +449,8 @@
               cid: $('#cid').val(),
               from: 'pc',
               type: 'content',
-              // content: $('#content').val(),
-              content: $('#content').val().replace(/\\n/g,'\\r\\n'),
+              content: $('#content').val(),
+              // content: $('#content').val().replace(/\\n/g,'\\r\\n'),
               title: $('#title').val(),
               writer: $('#writer').val(),
               endDate: $('#element_id').val()
