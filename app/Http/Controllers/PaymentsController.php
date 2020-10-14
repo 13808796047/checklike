@@ -110,7 +110,7 @@ class PaymentsController extends Controller
             default:
                 $order = Order::where('payid', $result->out_trade_no)->first();
                 $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(10);
-                return view('domained::orders.index', compact('orders'));
+                return view('orders.index', compact('orders'));
         }
 
     }
@@ -236,14 +236,13 @@ class PaymentsController extends Controller
 
     public function wechatReturn(Request $request)
     {
-        $id = $request->id;
         switch ($request->type) {
             case 'recharge':
                 return view('domained::auto_checks.index');
                 break;
             default:
                 $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
-                return view('domained::orders.index', compact('orders'));
+                return view('orders.index', compact('orders'));
         }
     }
 
