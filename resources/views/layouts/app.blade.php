@@ -173,6 +173,10 @@
       // });
     })
   })
+  $("#RegisterDialogBtn").click(()=>{
+    console.log("xixi，点击了")
+    $("#registerTcDialog").modal("show")
+  })
 </script>
 </body>
 

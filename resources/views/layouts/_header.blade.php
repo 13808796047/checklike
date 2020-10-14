@@ -332,7 +332,7 @@
         <!-- Authentication Links -->
           <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
                                   data-target="#staticBackdrop">登录</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+          <li class="nav-item"><a class="nav-link" id='RegisterDialogBtn'">注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
           @if(Auth::user()->phone)
@@ -432,6 +432,60 @@
           <div style="text-align:center;color:#999;font-size:14px;">绑定手机可合并原账号订单以及接受订单通知</div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- 注册 -->
+<div class="modal fade" id="registerTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="registerTcDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="width:390px;">
+    <div class="modal-content">
+      <div class="modal-body">
+         <div style="padding:10px 17px;">
+            <div>
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+              用户名:
+              </label>
+              <input
+                 class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 name="phone"
+                 id="registerphone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
+            </div>
+            <div>
+               <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                 密码:
+               </label>
+               <input
+                 class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                 name="password"
+                 id="registerpassword" type="password" placeholder="请输入密码" value="{{ old('password') }}">
+            </div>
+            <div>
+               <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                 确认密码:
+               </label>
+               <input
+                 class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                 name="password"
+                 id="registerpassword" type="password" placeholder="请输入密码" value="{{ old('password') }}">
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="yzmcode">
+                  验证码:
+                </label>
+                <div>
+                  <input
+                    class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="yzmcode"
+                    id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
+                  <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendYzCode">发送验证码</button>
+            </div>
+            <button type="button" class="btn btn-large btn-block" id="submitBtn" style="background:#26AEF2;color:#fff;">
+                提交注册
+            </button>
+        </div>
+         </div>
+      </div>
     </div>
   </div>
 </div>
