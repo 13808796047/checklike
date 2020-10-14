@@ -441,7 +441,7 @@
          aria-labelledby="registerTcLabel" >
       <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:360px;">
         <div class="modal-content" style="width:330px;height:360px;">
-                  <div style="padding:0 17px;">
+                  <div style="padding:10px 17px;">
                     <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
                         用户名:
