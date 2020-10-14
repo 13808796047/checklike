@@ -438,7 +438,7 @@
 
 <!-- 注册 -->
 <div class="modal fade" id="registerTcDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="registerTcDialogLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered" style="width:300px;">
     <div class="modal-content">
       <div class="modal-body">
          <div style="padding:10px 17px;">
