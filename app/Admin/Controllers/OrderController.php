@@ -7,6 +7,7 @@ use App\Admin\Actions\BatchQueue;
 use App\Admin\Actions\Grid\ResetOrderStatus;
 use App\Admin\Actions\Grid\UploadOrderFile;
 use App\Admin\Actions\OrderBatchDelete;
+use App\Handlers\FileUploadHandler;
 use App\Jobs\getOrderStatus;
 use App\Jobs\UploadCheckFile;
 use App\Models\Order;
@@ -186,9 +187,20 @@ class OrderController extends AdminController
         ]);
     }
 
-    public function uploadPdf()
+    public function uploadPdf(Request $request, Order $order)
     {
-
+        $file = $request->file;
+        if(!$file->isValid()) {
+            abort(400, '无效的上传文件');
+        }
+        $ext = $file->getClientOrginalExtension();
+        $upload_path = public_path() . '/' . $extension;
+        $filename = $order->orderid . '.' . $extension;
+        //将文件移动到目标存储路径中
+        $file->move($upload_path, $filename);
+        return [
+            'path' => config('app.url') . "/$extension/$filename",
+        ];
     }
 
     public function downloadPaper(Order $order)
