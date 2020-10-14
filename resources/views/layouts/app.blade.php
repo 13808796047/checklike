@@ -173,6 +173,7 @@
       // });
     })
   })
+  var registerCode="";
   $("#RegisterDialogBtn").click(()=>{
     console.log("xixi，点击了")
     $("#registerTcDialog").modal("show")
@@ -199,12 +200,33 @@
           phone: iszcphone,
         }).then(res => {
           if(res.data&&res.data.key){
-            currentCode=res.data.key
+            registerCode=res.data.key
           }
         })
     }
   })
   })
+
+  $('#submitRegisterBtn').click(() => {
+            axios.post('{{route('register')}}', {
+              'verification_key': registerCode,
+              'phone': $('#registerphones').val(),
+              'password': $('#registerpassword').val(),
+              'password_confirmation': $('#password_confirmation').val(),
+              'verification_code': $('#bindCoderegister').val()
+            }).then(res => {
+              swal("注册成功!");
+              location.href = '{{route('home.index')}}'
+            }).catch(err => {
+              // if (err.response.status == 422) {
+              //   $('#message').show();
+              //   $.each(err.response.data.errors, (field, errors) => {
+              //     $('#message').append('<strong>' + errors + '</strong> </br>');
+              //   })
+              // }
+              console.log(err,"注册")
+            })
+          })
 </script>
 </body>
 

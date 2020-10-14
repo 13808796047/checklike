@@ -449,7 +449,7 @@
               <input
                  class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
-                 id="registerphones" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
+                 id="registerphones" type="text" placeholder="请输入手机号码" >
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -458,7 +458,7 @@
                <input
                  class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                  name="password"
-                 id="registerpassword" type="password" placeholder="请输入密码" value="{{ old('password') }}">
+                 id="registerpassword" type="password" placeholder="请输入密码" >
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -467,7 +467,7 @@
                <input
                  class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                  name="password"
-                 id="registerpassword" type="password" placeholder="请输入密码" value="{{ old('password') }}">
+                 id="password_confirmation" type="password" placeholder="请输入密码" value="{{ old('password') }}">
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="yzmcode">
@@ -481,7 +481,7 @@
                   <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
             </div>
             <div id="registerTip" style="color:red;"></div>
-            <button type="button" class="btn btn-large btn-block" id="submitBtn" style="background:#26AEF2;color:#fff;">
+            <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;">
                 提交注册
             </button>
         </div>
