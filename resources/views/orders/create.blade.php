@@ -444,13 +444,12 @@
         } else {
           $('#tosubmit').css("display", "none");
           $('#submitBtn').css("display", "block");
-
           axios.post('{{route('orders.store')}}', {
               cid: $('#cid').val(),
               from: 'pc',
               type: 'content',
               // content: $('#content').val(),
-              content: $('#content').val().replace(/\\n/g,'\\r\\n'),
+              content:  $('#content').val().replace(/\n/g,'\r\n'),
               title: $('#title').val(),
               writer: $('#writer').val(),
               endDate: $('#element_id').val()
@@ -460,7 +459,7 @@
             var order = res.data.data
             location.href = '/orders/' + res.data.data.id
           }).catch(err => {
-            alert('提交失败，请重试')
+            alert('提交失败sfd，请重试')
             $('#tosubmit').css("display", "block");
             $('#submitBtn').css("display", "none")
           })
