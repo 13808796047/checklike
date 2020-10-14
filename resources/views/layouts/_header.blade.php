@@ -437,36 +437,22 @@
 </div>
 
 <!-- 注册 -->
-<div class="modal fade" id="registerTc""  tabindex="-1" role="dialog"
-         aria-labelledby="registerTcLabel" >
-      <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:360px;">
-        <div class="modal-content" style="width:330px;height:360px;">
-                  <div style="padding:10px 17px;">
-                    <div>
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                        用户名:
-                      </label>
-                      <input
-                        class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="phone"
-                        id="phone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
-                    </div>
-                    <div>
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                        密码:
-                      </label>
-                      <input
-                        class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                        name="password"
-                        id="password" type="password" placeholder="请输入密码" value="{{ old('password') }}">
-                    </div>
-                    <div class="flex items-center justify-between my-4">
-                      <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="button" id="accountLogin">
-                        登录
-                      </button>
-              </div>
-        </div>
+<div class="modal fade" id="registerTcDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="registerTcDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
     </div>
+  </div>
 </div>
