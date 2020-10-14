@@ -2,7 +2,6 @@
 
 namespace App\Handlers;
 
-use mysql_xdevapi\Exception;
 
 class FileUploadHandler
 {
@@ -43,7 +42,7 @@ class FileUploadHandler
             return [
                 'path' => config('app.url') . "/$folder_name/$filename"
             ];
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
