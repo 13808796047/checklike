@@ -459,7 +459,7 @@
             var order = res.data.data
             location.href = '/orders/' + res.data.data.id
           }).catch(err => {
-            alert('提交失败sfd，请重试')
+            alert('提交失败，请重试')
             $('#tosubmit').css("display", "block");
             $('#submitBtn').css("display", "none")
           })
