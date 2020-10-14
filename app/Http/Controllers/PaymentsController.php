@@ -243,7 +243,7 @@ class PaymentsController extends Controller
                 break;
             default:
                 $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
-                return view('domained::orders.index', compact('orders'));
+                return view('orders.index', compact('orders'));
         }
     }
 
