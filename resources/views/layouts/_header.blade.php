@@ -332,7 +332,7 @@
         <!-- Authentication Links -->
           <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
                                   data-target="#staticBackdrop">登录</a></li>
-          <li class="nav-item"><a class="nav-link" id='RegisterDialogBtn'">注册</a></li>
+          <li class="nav-item"><a class="nav-link" id='RegisterDialogBtn'" href="javascript:;">注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
           @if(Auth::user()->phone)
@@ -444,12 +444,12 @@
          <div style="padding:10px 17px;">
             <div>
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-              用户名:
+              手机号:
               </label>
               <input
                  class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
-                 id="registerphone" type="text" placeholder="请输入手机号码" value="{{ old('phone') }}">
+                 id="registerphones" type="text" placeholder="请输入手机号码" >
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -458,7 +458,7 @@
                <input
                  class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                  name="password"
-                 id="registerpassword" type="password" placeholder="请输入密码" value="{{ old('password') }}">
+                 id="registerpassword" type="password" placeholder="请输入密码" >
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -467,7 +467,7 @@
                <input
                  class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                  name="password"
-                 id="registerpassword" type="password" placeholder="请输入密码" value="{{ old('password') }}">
+                 id="password_confirmation" type="password" placeholder="请输入密码" value="{{ old('password') }}">
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="yzmcode">
@@ -478,9 +478,10 @@
                     class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="yzmcode"
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
-                  <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendYzCode">发送验证码</button>
+                  <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
             </div>
-            <button type="button" class="btn btn-large btn-block" id="submitBtn" style="background:#26AEF2;color:#fff;">
+            <div id="registerTip" style="color:red;margin-bottom:10px;"></div>
+            <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;">
                 提交注册
             </button>
         </div>

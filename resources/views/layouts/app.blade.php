@@ -173,10 +173,64 @@
       // });
     })
   })
+  var registerCode="";
   $("#RegisterDialogBtn").click(()=>{
     console.log("xixi，点击了")
     $("#registerTcDialog").modal("show")
+    $("#sendRegisterYzCode").click(()=>{
+    let iszcphone =$("#registerphones").val();
+    console.log(iszcphone)
+    if(!(/^1[3456789]\d{9}$/.test(iszcphone))){
+        $("#registerTip").text("请输入正确手机号")
+        return false;
+    }else{
+      $("#registerTip").text("")
+      let counts = 60;
+      const clearDown = setInterval(() => {
+      if (counts === 0) {
+       $("#sendRegisterYzCode").text('重新发送').removeAttr('disabled');
+       clearInterval(clearDown);
+      } else {
+       $("#sendRegisterYzCode").attr('disabled', true);
+       $("#sendRegisterYzCode").text(counts +' '+'S');
+      }
+      count--;
+     }, 1000)
+      axios.post('https://p.checklike.com/api/v1/verificationCodes', {
+          phone: iszcphone,
+        }).then(res => {
+          if(res.data&&res.data.key){
+            registerCode=res.data.key
+          }
+        })
+    }
   })
+  })
+
+  $('#submitRegisterBtn').click(() => {
+            axios.post('{{route('register')}}', {
+              'verification_key': registerCode,
+              'phone': $('#registerphones').val(),
+              'password': $('#registerpassword').val(),
+              'password_confirmation': $('#password_confirmation').val(),
+              'verification_code': $('#bindCoderegister').val()
+            }).then(res => {
+              swal("注册成功!");
+              location.href = '{{route('home.index')}}'
+            }).catch(err => {
+              if (err.response.status == 422) {
+                // $('#message').show();
+                // $.each(err.response.data.errors, (field, errors) => {
+                //   $('#message').append('<strong>' + errors + '</strong> </br>');
+                // })
+                $.each(err.response.data.errors, (field, errors) => {
+                  $("#registerTip").text(errors)
+                })
+
+              }
+              console.log(err,"注册")
+            })
+          })
 </script>
 </body>
 
