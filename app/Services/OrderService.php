@@ -35,7 +35,7 @@ class OrderService
                         $result = $wordHandler->save($content, 'files', $user->id);
                     }
                 } else {
-                    $res = app(FileWordsHandle::class)->submitCheck($result->path);
+                    $res = app(FileWordsHandle::class)->submitCheck($result->real_path);
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid']);
                     dd($words);
                     $content = read_docx($result->real_path);
