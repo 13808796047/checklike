@@ -440,7 +440,7 @@
 <div class="modal fade" id="registerTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="registerTcDialogLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:390px;">
     <div class="modal-content">
-    <div>
+    <div style="padding:10px 17px;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
