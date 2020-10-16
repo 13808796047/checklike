@@ -160,9 +160,9 @@
               <img src="" alt="" srcset="" id="codeurl" style="width:210px;height:210px;display:block;margin:0 auto;">
             </div>
             <div style="display:flex;justify-content: center;margin-top:5px;">
-              <button type="button" class="btn btn-secondary">关闭</button>
+              <button type="button" class="btn btn-secondary" id="closeCodeDialog">关闭</button>
               <div style="margin:0 10px;"></div>
-              <button type="button" class="btn btn-primary">已完成付款</button>
+              <button type="button" class="btn btn-primary" id="completeCodeDialog">已完成付款</button>
             </div>
          </div>
       </div>
@@ -203,6 +203,13 @@
         //     }
         //   })
       });
+      $("#closeCodeDialog").click(()=>{
+        $("#codeTcDialog").modal("hide")
+      })
+      $("#completeCodeDialog").click(()=>{
+        let order = {!!$order!!}
+        location.href=`/payments/${order.id}/wechat/return/order`
+      })
       //支付宝
       $('#bottonsubmit').click(function(){
        let order = {!!$order!!};
