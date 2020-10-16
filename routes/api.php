@@ -20,7 +20,7 @@ Route::prefix('v1')
     ->middleware('throttle:' . config('api.rate_limits.sign'))
     ->group(function() {
         Route::middleware('auth:api')->group(function() {
-
+            Route::post('check-phone', 'AuthorizationsController@checkPhone');
             // 刷新token
             Route::put('authorizations/current', 'AuthorizationsController@update')
                 ->name('authorizations.update');
