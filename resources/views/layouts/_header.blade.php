@@ -456,7 +456,7 @@
                  name="phone"
                  style="width:63%;"
                  id="registerphones" type="text" placeholder="请输入手机号码" >
-              <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendRegisterYzCode">检测手机号</button>
+              <button type="button" class="btn btn-primary" style="margin-left:10px;" id="checkPhone">检测手机号</button>
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">

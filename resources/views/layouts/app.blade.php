@@ -206,7 +206,15 @@
     }
   })
   })
-
+  $("#checkPhone").click(()=>{
+    axios.post('https://p.checklike.com/api/v1/check-phone', {
+          phone: $('#registerphones').val(),
+        }).then(res => {
+          console.log(res,"xii")
+        }).catch(err=>{
+          console.log(err,"fafdd")
+        })
+  })
   $('#submitRegisterBtn').click(() => {
             axios.post('{{route('register')}}', {
               'verification_key': registerCode,
