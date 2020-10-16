@@ -159,9 +159,9 @@
             <div>
               <img src="" alt="" srcset="" id="codeurl" style="width:210px;height:210px;display:block;margin:0 auto;">
             </div>
-            <div>
-              <button type="button" class="btn btn-secondary">Secondary</button>
-              <button type="button" class="btn btn-primary">Primary</button>
+            <div style="display:flex;justify-content: center;">
+              <button type="button" class="btn btn-secondary" style="margin-right:10px;">关闭</button>
+              <button type="button" class="btn btn-primary">已完成付款</button>
             </div>
          </div>
       </div>
