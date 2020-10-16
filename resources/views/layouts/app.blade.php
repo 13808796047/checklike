@@ -226,7 +226,6 @@
                 $.each(err.response.data.errors, (field, errors) => {
                   $("#registerTip").text(errors)
                 })
-
               }
               console.log(err,"注册")
             })
