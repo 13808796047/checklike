@@ -76,11 +76,11 @@
       </div>
 
       <div class="form-row mt-3 mb-3">
-        <label for="file" class="col-sm-1 col-form-label">上传</label>
+        <label for="file" class="col-sm-1 col-form-label">上传报告</label>
         <div class="col-sm-3">
           <input type="file" class="form-control" name="file" id="file">
         </div>
-        <label for="title" class="col-sm-1 col-form-label">论文</label>
+        <label for="title" class="col-sm-1 col-form-label">检测报告</label>
         <div class="col-sm-3">
           <a class="btn btn-danger" href="{{ route('admin.orders.download_report',$order) }}" target="_blank">下载</a>(订单支付后才能下载论文)
         </div>

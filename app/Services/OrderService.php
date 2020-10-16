@@ -21,7 +21,6 @@ class OrderService
         $order = \DB::transaction(function() use ($request) {
             $category = Category::findOrFail($request->cid);
             $user = \Auth()->user();
-            $fileWordsHandler = app(FileWordsHandle::class);
             $fileUploadHandle = app(FileUploadHandler::class);
             $wordHandler = app(WordHandler::class);
 
@@ -29,18 +28,18 @@ class OrderService
                 if($fileId = $request->file_id) {
                     $result = File::find($fileId);
                 }
-                if($result->type == 'docx') {
-                    $content = read_docx($result->real_path);
-                    $words_count = $fileWordsHandler->getWords($request->title, $request->writer, $result->path);
-                    $words = $words_count['data']['wordCount'];
-                    if($category->classid == 4) {
-                        $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
-                    }
-                } else {
+                if($result->type == 'txt') {
                     $content = remove_spec_char(convert2utf8(file_get_contents($result->real_path)));
                     $words = count_words(remove_spec_char(convert2utf8($content)));
                     if($category->classid == 3) {
                         $result = $wordHandler->save($content, 'files', $user->id);
+                    }
+                } else {
+                    $res = app(FileWordsHandle::class)->submitCheck($result->path);
+                    $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
+                    if($category->classid == 4) {
+                        $content = read_docx($result->real_path);
+                        $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
                     }
                 }
             } else {
