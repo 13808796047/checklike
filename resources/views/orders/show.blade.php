@@ -155,9 +155,13 @@
     <div class="modal-content">
       <div class="modal-body">
          <div style="padding:10px 17px;">
-            <p>打开微信使用扫一扫完成付款</p>
+            <p style="text-align:center;font-size:16px;color:#808080;">打开微信使用扫一扫完成付款</p>
             <div>
               <img src="" alt="" srcset="" id="codeurl" style="width:210px;height:210px;display:block;margin:0 auto;">
+            </div>
+            <div>
+              <button type="button" class="btn btn-secondary">Secondary</button>
+              <button type="button" class="btn btn-primary">Primary</button>
             </div>
          </div>
       </div>
