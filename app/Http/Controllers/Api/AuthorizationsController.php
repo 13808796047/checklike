@@ -109,7 +109,7 @@ class AuthorizationsController extends Controller
         if($result) {
             return response()->json(['message' => '手机号已经存在'], 401);
         }
-        return response()->json(['message' => '手机号可以使用'], 200);;
+        return response()->json(['message' => '手机号可以使用'], 200);
     }
 
     public function store(Request $request)
