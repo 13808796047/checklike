@@ -36,8 +36,7 @@ class OrderService
                     }
                 } else {
                     $res = app(FileWordsHandle::class)->submitCheck($result->path);
-                    $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid']);
-                    dd($words);
+                    $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
                     $content = read_docx($result->real_path);
                     if($category->classid == 4) {
                         $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
