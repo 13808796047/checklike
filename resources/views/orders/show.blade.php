@@ -150,6 +150,18 @@
         <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则会有“去除本人已发表文献复制比”的结果。</p>
 		</div>
 	</div>
+  <div class="modal fade" id="codeTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="codeTcDialogLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" style="width:390px;">
+    <div class="modal-content">
+      <div class="modal-body">
+         <div style="padding:10px 17px;">
+              <img src="" alt="" srcset="" id="codeurl">
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <!--/.fluid-container-->
@@ -168,17 +180,18 @@
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
         let order = {!!$order!!}
-        swal({
-          title: "打开微信使用扫一扫完成付款",
-          content: $(`<img src="/payments/${order.id}/wechat/order" style="display: block;margin: 0 auto;"/>`)[0],
-          // buttons 参数可以设置按钮显示的文案
-          buttons: ['关闭', '已完成付款'],
-        })
-          .then(function (result) {
-            if (result) {
-             location.href=`/payments/${order.id}/wechat/return/order`
-            }
-          })
+        $("#codeurl").attr(src,"/payments/${order.id}/wechat/order")
+        // swal({
+        //   title: "打开微信使用扫一扫完成付款",
+        //   content: $(`<img src="/payments/${order.id}/wechat/order" style="display: block;margin: 0 auto;"/>`)[0],
+        //   // buttons 参数可以设置按钮显示的文案
+        //   buttons: ['关闭', '已完成付款'],
+        // })
+        //   .then(function (result) {
+        //     if (result) {
+        //      location.href=`/payments/${order.id}/wechat/return/order`
+        //     }
+        //   })
       });
       //支付宝
       $('#bottonsubmit').click(function(){
