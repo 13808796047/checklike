@@ -151,7 +151,7 @@
 		</div>
 	</div>
   <div class="modal fade" id="codeTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="codeTcDialogLabel" aria-hidden="true" data-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered" style="width:390px;">
+  <div class="modal-dialog modal-dialog-centered" style="width:350px;">
     <div class="modal-content">
       <div class="modal-body">
          <div style="padding:10px 17px;">
