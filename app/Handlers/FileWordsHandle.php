@@ -23,7 +23,6 @@ class FileWordsHandle
         $this->username = config('services.words_count.username');
         $this->key = config('services.words_count.key');
         $this->productid = 2;
-        $this->sign = md5($this->username . $this->productid . $this->key);
     }
 
     public function submitCheck($file)
@@ -41,7 +40,7 @@ class FileWordsHandle
                 ],
                 [
                     'name' => 'sign',        //字段名
-                    'contents' => $this->sign     //對應的值
+                    'contents' => md5($this->username . $this->productid . $this->key)     //對應的值
                 ],
                 [
                     'name' => 'file',        //文件字段名
@@ -65,7 +64,7 @@ class FileWordsHandle
                 ],
                 [
                     'name' => 'sign',        //字段名
-                    'contents' => $this->sign     //對應的值
+                    'contents' => md5($this->username . $orderid . $this->key)     //對應的值
                 ],
                 [
                     'name' => 'orderid',        //文件字段名
