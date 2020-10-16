@@ -181,7 +181,7 @@
       $('#btn-wechat').click(function () {
         let order = {!!$order!!}
         console.log(order,"fsajdfjsdf")
-        $("#codeTcDialog").show()
+        $("#codeTcDialog").modal("show")
         $("#codeurl").attr("src","/payments/${order.id}/wechat/order")
         // swal({
         //   title: "打开微信使用扫一扫完成付款",
