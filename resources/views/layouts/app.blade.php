@@ -213,6 +213,8 @@
           console.log(res,"xii")
         }).catch(err=>{
           console.log(err.response.data,"fafdd")
+          alertify.fail(err.response.data.message)
+
         })
   })
   $('#submitRegisterBtn').click(() => {
