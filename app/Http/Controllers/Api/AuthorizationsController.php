@@ -103,6 +103,15 @@ class AuthorizationsController extends Controller
         ])->setStatusCode(201);
     }
 
+    public function checkPhone(Request $request)
+    {
+        $result = User::where('phone', $request->phone)->exist();
+        if($result) {
+            return response()->json(['message' => '手机号已经存在'], 401);
+        }
+        return [];
+    }
+
     public function store(Request $request)
     {
         if($request->type == 'phone') {
