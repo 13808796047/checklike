@@ -55,7 +55,6 @@ class FileWordsHandle
 
     public function queryParsing($orderid)
     {
-        dd($orderid);
         // 构建请求参数
         $query = [
             'multipart' => [
@@ -70,10 +69,6 @@ class FileWordsHandle
                 [
                     'name' => 'orderid',        //文件字段名
                     'contents' => $orderid
-                ],
-                [
-                    'name' => 'productid',        //字段名
-                    'contents' => $this->productid    //對應的值
                 ],
             ]
         ];
