@@ -213,7 +213,8 @@
           console.log(res,"xii")
         }).catch(err=>{
           console.log(err.response.data,"fafdd")
-          alertify.fail(err.response.data.message)
+          alertify.set('notifier','position', 'top-center');
+          alertify.warning(err.response.data.message)
 
         })
   })
