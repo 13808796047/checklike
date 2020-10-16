@@ -206,7 +206,7 @@
     }
   })
   })
-  $("#checkPhone").click(()=>{
+  $("#registerphones").blur(()=>{
     axios.post('https://p.checklike.com/api/v1/check-phone', {
           phone: $('#registerphones').val(),
         }).then(res => {
