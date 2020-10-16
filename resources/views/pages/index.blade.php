@@ -682,8 +682,8 @@
       //账号登录
       $('#accountLogin').click(function () {
         axios.post('{{route('login') }}', {
-          phone: $("input[name='phone']").val(),
-          password: $("input[name='password']").val(),
+          phone: $("#phone").val(),
+          password: $("#password").val(),
           type: 'account'
         }).then(res => {
           if (res.status == 200) {

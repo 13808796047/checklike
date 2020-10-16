@@ -150,6 +150,26 @@
         <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则会有“去除本人已发表文献复制比”的结果。</p>
 		</div>
 	</div>
+  <div class="modal fade" id="codeTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="codeTcDialogLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" style="width:333px;">
+    <div class="modal-content">
+      <div class="modal-body">
+         <div style="padding:10px 17px;">
+            <p style="text-align:center;font-size:16px;color:#808080;">打开微信使用扫一扫完成付款</p>
+            <div>
+              <img src="" alt="" srcset="" id="codeurl" style="width:210px;height:210px;display:block;margin:0 auto;">
+            </div>
+            <div style="display:flex;justify-content: center;margin-top:5px;">
+              <button type="button" class="btn btn-secondary" id="closeCodeDialog">关闭</button>
+              <div style="margin:0 10px;"></div>
+              <button type="button" class="btn btn-primary" id="completeCodeDialog">已完成付款</button>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <!--/.fluid-container-->
@@ -168,18 +188,28 @@
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
         let order = {!!$order!!}
-        swal({
-          title: "打开微信使用扫一扫完成付款",
-          content: $(`<img src="/payments/${order.id}/wechat/order" style="display: block;margin: 0 auto;"/>`)[0],
-          // buttons 参数可以设置按钮显示的文案
-          buttons: ['关闭', '已完成付款'],
-        })
-          .then(function (result) {
-            if (result) {
-             location.href=`/payments/${order.id}/wechat/return/order`
-            }
-          })
+        console.log(order,"fsajdfjsdf")
+        $("#codeTcDialog").modal("show")
+        $('#codeurl').attr("src", `/payments/${order.id}/wechat/order`);
+        // swal({
+        //   title: "打开微信使用扫一扫完成付款",
+        //   content: $(`<img src="/payments/${order.id}/wechat/order" style="display: block;margin: 0 auto;"/>`)[0],
+        //   // buttons 参数可以设置按钮显示的文案
+        //   buttons: ['关闭', '已完成付款'],
+        // })
+        //   .then(function (result) {
+        //     if (result) {
+        //      location.href=`/payments/${order.id}/wechat/return/order`
+        //     }
+        //   })
       });
+      $("#closeCodeDialog").click(()=>{
+        $("#codeTcDialog").modal("hide")
+      })
+      $("#completeCodeDialog").click(()=>{
+        let order = {!!$order!!}
+        location.href=`/payments/${order.id}/wechat/return/order`
+      })
       //支付宝
       $('#bottonsubmit').click(function(){
        let order = {!!$order!!};
