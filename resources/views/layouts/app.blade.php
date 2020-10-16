@@ -212,7 +212,7 @@
         }).then(res => {
           console.log(res,"xii")
         }).catch(err=>{
-          console.log(err,"fafdd")
+          console.log(err.response.data,"fafdd")
         })
   })
   $('#submitRegisterBtn').click(() => {
