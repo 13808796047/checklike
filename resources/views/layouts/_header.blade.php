@@ -454,7 +454,9 @@
               <input
                  class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
+                 style="width:63%;"
                  id="registerphones" type="text" placeholder="请输入手机号码" >
+              <button type="button" class="btn btn-primary" style="margin-left:10px;" id="checkPhone">检测手机号</button>
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
