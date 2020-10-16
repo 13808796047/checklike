@@ -19,11 +19,10 @@ class FileWordsHandle
     public function __construct(Client $client)
     {
         $this->http = $client;
-        $this->uri = 'http://api.weipu.com/agent/api/submit-check';
+        $this->uri = 'http://api.weipu.com/agent/api';
         $this->username = config('services.words_count.username');
         $this->key = config('services.words_count.key');
         $this->productid = 2;
-        $this->sign = md5($this->username . $this->productid . $this->key);
     }
 
     public function submitCheck($file)
@@ -41,7 +40,7 @@ class FileWordsHandle
                 ],
                 [
                     'name' => 'sign',        //字段名
-                    'contents' => $this->sign     //對應的值
+                    'contents' => md5($this->username . $this->productid . $this->key)     //對應的值
                 ],
                 [
                     'name' => 'file',        //文件字段名
@@ -50,7 +49,7 @@ class FileWordsHandle
             ]
         ];
 
-        $response = $http->post($this->uri, $query);
+        $response = $this->http->post($this->uri . '/submit-check', $query);
         return json_decode($response->getbody()->getContents(), true);
     }
 
@@ -65,7 +64,7 @@ class FileWordsHandle
                 ],
                 [
                     'name' => 'sign',        //字段名
-                    'contents' => $this->sign     //對應的值
+                    'contents' => md5($this->username . $orderid . $this->key)     //對應的值
                 ],
                 [
                     'name' => 'orderid',        //文件字段名
@@ -74,7 +73,7 @@ class FileWordsHandle
             ]
         ];
 
-        $response = $http->post($this->uri, $query);
+        $response = $this->http->post($this->uri . '/query-parsing', $query);
         return json_decode($response->getbody()->getContents(), true);
     }
 }
