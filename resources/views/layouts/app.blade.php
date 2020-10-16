@@ -211,6 +211,8 @@
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.data.message)
         }).catch(err=>{
           console.log(err.response.data,"fafdd")
           alertify.set('notifier','position', 'top-center');
