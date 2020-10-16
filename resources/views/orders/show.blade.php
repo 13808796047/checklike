@@ -155,7 +155,10 @@
     <div class="modal-content">
       <div class="modal-body">
          <div style="padding:10px 17px;">
-              <img src="" alt="" srcset="" id="codeurl">
+            <p>打开微信使用扫一扫完成付款</p>
+            <div>
+              <img src="" alt="" srcset="" id="codeurl" style="width:210px;height:210px;display:block;margin:0 auto;">
+            </div>
          </div>
       </div>
     </div>
