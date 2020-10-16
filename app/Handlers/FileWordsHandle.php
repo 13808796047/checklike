@@ -19,7 +19,7 @@ class FileWordsHandle
     public function __construct(Client $client)
     {
         $this->http = $client;
-        $this->uri = 'http://api.weipu.com/agent/api/submit-check';
+        $this->uri = 'http://api.weipu.com/agent/api';
         $this->username = config('services.words_count.username');
         $this->key = config('services.words_count.key');
         $this->productid = 2;
@@ -49,7 +49,7 @@ class FileWordsHandle
             ]
         ];
 
-        $response = $this->http->post($this->uri, $query);
+        $response = $this->http->post($this->uri . '/submit-check', $query);
         return json_decode($response->getbody()->getContents(), true);
     }
 
@@ -70,14 +70,10 @@ class FileWordsHandle
                     'name' => 'orderid',        //文件字段名
                     'contents' => $orderid
                 ],
-                [
-                    'name' => 'productid',        //字段名
-                    'contents' => $this->productid    //對應的值
-                ],
             ]
         ];
 
-        $response = $this->http->post($this->uri, $query);
+        $response = $this->http->post($this->uri . '/query-parsing', $query);
         return json_decode($response->getbody()->getContents(), true);
     }
 }
