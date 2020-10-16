@@ -180,6 +180,7 @@
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
         let order = {!!$order!!}
+        $("#codeTcDialog").show()
         $("#codeurl").attr(src,"/payments/${order.id}/wechat/order")
         // swal({
         //   title: "打开微信使用扫一扫完成付款",
