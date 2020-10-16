@@ -105,11 +105,11 @@ class AuthorizationsController extends Controller
 
     public function checkPhone(Request $request)
     {
-        $result = User::where('phone', $request->phone)->exist();
+        $result = User::where('phone', $request->phone)->exists();
         if($result) {
             return response()->json(['message' => '手机号已经存在'], 401);
         }
-        return [];
+        return response()->json(['message' => '手机号可以使用'], 200);;
     }
 
     public function store(Request $request)
