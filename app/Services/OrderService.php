@@ -36,7 +36,6 @@ class OrderService
                     }
                 } else {
                     $res = app(FileWordsHandle::class)->submitCheck($result->path);
-                    dd($res);
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid']);
                     dd($words);
                     $content = read_docx($result->real_path);
