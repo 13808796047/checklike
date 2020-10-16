@@ -50,7 +50,7 @@ class FileWordsHandle
             ]
         ];
 
-        $response = $http->post($this->uri, $query);
+        $response = $this->http->post($this->uri, $query);
         return json_decode($response->getbody()->getContents(), true);
     }
 
@@ -74,7 +74,7 @@ class FileWordsHandle
             ]
         ];
 
-        $response = $http->post($this->uri, $query);
+        $response = $this->http->post($this->uri, $query);
         return json_decode($response->getbody()->getContents(), true);
     }
 }
