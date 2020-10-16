@@ -55,6 +55,7 @@ class FileWordsHandle
 
     public function queryParsing($orderid)
     {
+        dd($orderid);
         // 构建请求参数
         $query = [
             'multipart' => [
