@@ -279,7 +279,7 @@
     <!-- Branding Image -->
     <div style="background-color: #3182ce;height: 100%;padding: 3px;">
     <a class="navbar-brand " href="{{ url('/') }}" style="height: 50px;margin-top: 10px;margin-left: 10px;">
-      <img src="https://css.lianwen.com/images/logo.png" alt="">
+      <img src="https://css.lianwen.com/images/logo.png" alt="" style="height:100%;">
     </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
