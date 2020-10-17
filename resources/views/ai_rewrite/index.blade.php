@@ -160,7 +160,7 @@
     </div>
     <!-- 降重成功后 -->
     <div style="padding: 21px; display: none;min-height:800px;" id="jclater">
-    <div style="display: flex;">
+    <div style="display:flex;">
       <table style="width:100%;">
         <tr>
             <td style="width:48%;">
