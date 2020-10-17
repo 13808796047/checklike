@@ -299,7 +299,7 @@
              初稿查重
         </span>
         @guest
-        <a class="nav-link" href="javascript:;" data-toggle="modal"
+         <a class="nav-link" href="javascript:;" data-toggle="modal"
                data-target="#staticBackdrop"></a>
         @else
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
