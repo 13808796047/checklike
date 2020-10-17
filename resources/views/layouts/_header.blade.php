@@ -279,7 +279,7 @@
     <!-- Branding Image -->
     <div>
     <a class="navbar-brand " href="{{ url('/') }}">
-      <img src="https://css.lianwen.com/images/logo.png" alt="">
+      <img src="http://wanfang.lianwen.com/asset/images/logo/wanfang.png" alt="">
     </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
