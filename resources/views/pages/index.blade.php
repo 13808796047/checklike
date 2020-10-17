@@ -248,11 +248,7 @@
   <!----//End-services---->
   <!-----//End-services-grids---->
   <!---- start-about----->
-  <div id="about" class="about">
-  </div>
   <!----start-team----->
-  <div id="team" class="mb-24">
-  </div>
   <!----//End-team----->
   <!--登陆模态框-->
   {{--  <div class="login-box" style="display: none" id="loginbox">--}}
