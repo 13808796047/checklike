@@ -243,7 +243,7 @@
   <!----- //End-slider---->
   <!----start-services---->
   <div>
-  <div class="login-banner-box">
+  <div style="background-color: rgb(40, 73, 123);width: 100%;height: 620px;position: relative;">
       <div style="left:18%; top:88px;position: absolute;">
         <img src="https://www.lianwen.com/asset/images/bg2i.png" width="100%">
       </div>
