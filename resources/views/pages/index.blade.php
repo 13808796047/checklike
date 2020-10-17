@@ -243,7 +243,10 @@
   <!----- //End-slider---->
   <!----start-services---->
   <div>
-    <span>电风扇</span>
+  <div class="login-banner-box">
+      <div style="left:18%; top:88px;position: absolute;">
+        <img src="https://www.lianwen.com/asset/images/bg2i.png" width="100%">
+      </div>
   </div>
   <!----//End-services---->
   <!-----//End-services-grids---->
