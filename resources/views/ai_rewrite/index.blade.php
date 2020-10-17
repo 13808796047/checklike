@@ -161,16 +161,6 @@
     <!-- 降重成功后 -->
     <div style="padding: 21px; display: none;min-height:800px;" id="jclater">
     <div style="display: flex;">
-      <!-- <div style="width: 50%;">
-        <p style="font-size: 17px;font-weight: bold;">降重前</p>
-        <textarea name="" id="content_after"
-          style="width:100%;height: 550px;box-sizing: border-box;overflow-x:visible;border:1px solid #ccc;outline: none;"></textarea>
-      </div>
-      <div style="width: 50%;">
-        <p style="font-size: 17px;font-weight: bold;">降重后</p>
-        <textarea name="" id="content_later" style="width: 100%;height: 550px;border: none;outline: none;border:1px solid #ccc"
-          readonly></textarea>
-      </div> -->
       <table style="width:100%;">
         <tr>
             <td style="width:48%;">
