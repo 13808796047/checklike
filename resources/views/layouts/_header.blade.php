@@ -295,14 +295,18 @@
             href="{{ url('/') }}">首页</a>
         </li>
         <li class="nav-item dropdown px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
-            <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
              初稿查重
-            </span>
+        </span>
+        @guest
+        @else
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
             </div>
+        @endguest
+
         </li>
         <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
           @guest
