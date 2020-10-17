@@ -264,7 +264,7 @@
       </div>
   </div>
   <div style="padding: 40px 0 160px;">
-    <div>
+    <div style="display: flex;justify-content:space-evenly;">
       <div class="index_first">
         <h4 class="index_first_title">专业</h4>
         <div class="index_first_content">
