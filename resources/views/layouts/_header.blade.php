@@ -278,7 +278,7 @@
   <div class="container">
     <!-- Branding Image -->
     <a class="navbar-brand " href="{{ url('/') }}">
-      <img src="https://wanfang.lianwen.com/asset/images/vpcs-logo.png" alt="">
+      <img src="https://css.lianwen.com/images/logo.png" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -454,8 +454,7 @@
               <input
                  class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
-
-                 id="registerphones" type="text" placeholder="请输入手机号码" >
+                 id="registerphones" type="text" placeholder="请输入手机号码">
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
