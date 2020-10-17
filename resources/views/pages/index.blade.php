@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '维普查重')
+@section('title', '学信检测')
 @section('styles')
   <link href="{{asset('asset/css/weipu-theme.css')}}" rel="stylesheet"/>
   <style>
