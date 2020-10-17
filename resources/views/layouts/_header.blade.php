@@ -294,16 +294,15 @@
             class="nav-link text-blue-300"
             href="{{ url('/') }}">首页</a>
         </li>
-        <li class="nav-item dropdown px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
+        <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
           @guest
             <a class="nav-link" href="javascript:;" data-toggle="modal"
                data-target="#staticBackdrop">维普查重</a>
           @else
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
-        </div>
+            <a
+              class="nav-link"
+              href="{{route('categories.show',['classid'=>2])}}"
+            >维普查重</a>
           @endguest
         </li>
         <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
