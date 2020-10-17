@@ -331,6 +331,12 @@
          @endguest
 
        </li>
+       <li class="nav-item px-2">
+        <a href="/ai_rewrite"
+         class="block  lg:inline-block lg:mt-0 text-black-500 hover:text-blue-600 mr-4 text-decoration-none" style="margin-left:15px;">
+        自动降重
+        </a>
+       </li>
         <li class="nav-item px-2 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
           @guest
             <a class="nav-link" href="javascript:;" data-toggle="modal"
