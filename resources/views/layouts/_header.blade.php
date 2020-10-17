@@ -295,13 +295,14 @@
             href="{{ url('/') }}">首页</a>
         </li>
         <li class="nav-item dropdown px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
-        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-             初稿查重
-        </span>
+
         @guest
          <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop"></a>
+               data-target="#staticBackdrop">初稿查重</a>
         @else
+        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+        初稿查重
+        </span>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
                 <div class="dropdown-divider"></div>
