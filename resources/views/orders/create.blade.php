@@ -307,8 +307,8 @@
             });
             index++;
             console.log(res, 'fsadf')
-            //let obj = {!!$categories!!}
-            let obj =[{id:3,name:'维普大学生版'},{id:4,name:'维普研究生版'},{id:5,name:'维普编辑部版'},{id:6,name:'维普职称版'}]
+            let obj = {!!$categories!!}
+            // let obj =[{id:3,name:'维普大学生版'},{id:4,name:'维普研究生版'},{id:5,name:'维普编辑部版'},{id:6,name:'维普职称版'}]
             console.log(obj, Object.prototype.toString.call(obj));
             console.log(obj, 3123)
             var option = ""
