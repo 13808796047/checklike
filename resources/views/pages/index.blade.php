@@ -45,6 +45,7 @@
     .index_first_title{
       color: #333333;
       font-size: 26px;
+      margin-bottom: 10px;
     }
     .index_first_content{
       height: auto;
@@ -263,8 +264,8 @@
         <img src="https://www.lianwen.com/asset/images/bg2i.png" width="100%">
       </div>
   </div>
-  <div style="padding: 40px 0 160px;">
-    <div style="display: flex;justify-content:space-evenly;">
+  <div>
+    <div style="display: flex;justify-content:space-evenly;padding: 68px;">
       <div class="index_first">
         <h4 class="index_first_title">专业</h4>
         <div class="index_first_content">
