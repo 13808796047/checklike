@@ -242,7 +242,7 @@
 
   <!----- //End-slider---->
   <!----start-services---->
-  <div id="ser" class="services">
+  <div>
     <span>电风扇</span>
   </div>
   <!----//End-services---->
