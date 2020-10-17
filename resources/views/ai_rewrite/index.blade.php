@@ -222,7 +222,6 @@
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
               <div class="w-full">
                 <form class="bg-white rounded px-4 pt-6">
-
                   <div>
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
                       用户名:
