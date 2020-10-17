@@ -311,6 +311,25 @@
         @endguest
 
         </li>
+        <li class="nav-item dropdown px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
+
+         @guest
+          <a class="nav-link" href="javascript:;" data-toggle="modal"
+                data-target="#staticBackdrop">定稿查重</a>
+         @else
+         <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+          定稿查重
+        </span>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
+        </div>
+         @endguest
+
+       </li>
         <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
           @guest
             <a class="nav-link" href="javascript:;" data-toggle="modal"
