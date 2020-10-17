@@ -274,11 +274,11 @@
 <!----- //End-header---->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
-     style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
+     style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);padding:0;">
   <div class="container">
     <!-- Branding Image -->
-    <div>
-    <a class="navbar-brand " href="{{ url('/') }}">
+    <div style="background-color: #3182ce;height: 100%;padding: 3px;">
+    <a class="navbar-brand " href="{{ url('/') }}" style="height: 50px;margin-top: 10px;margin-left: 10px;">
       <img src="https://css.lianwen.com/images/logo.png" alt="">
     </a>
     </div>
