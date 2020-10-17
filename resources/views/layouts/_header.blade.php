@@ -277,9 +277,11 @@
      style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
   <div class="container">
     <!-- Branding Image -->
+    <div>
     <a class="navbar-brand " href="{{ url('/') }}">
       <img src="https://css.lianwen.com/images/logo.png" alt="">
     </a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
