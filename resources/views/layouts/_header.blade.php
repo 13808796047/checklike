@@ -299,6 +299,8 @@
              初稿查重
         </span>
         @guest
+        <a class="nav-link" href="javascript:;" data-toggle="modal"
+               data-target="#staticBackdrop"></a>
         @else
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
