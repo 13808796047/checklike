@@ -37,6 +37,21 @@
 			font-weight: bold;
 			border-bottom: 1px solid #3e8bdb;
 		}
+    .index_first{
+      width: 290px;
+      text-align: center;
+      float: left;
+    }
+    .index_first_title{
+      color: #333333;
+      font-size: 26px;
+    }
+    .index_first_content{
+      height: auto;
+      font-size: 16px;
+      line-height: 28px;
+      color: #56565e;
+    }
 
   </style>
 @stop
@@ -249,22 +264,22 @@
       </div>
   </div>
   <div style="padding: 40px 0 160px;">
-    <div class="main-wrap">
-      <div class="item fl first">
-        <h4 class="ind1_txt">专业</h4>
-        <div class="text">
+    <div>
+      <div class="index_first">
+        <h4 class="index_first_title">专业</h4>
+        <div class="index_first_content">
           不仅提供查重服务，更是提供专业的全套论文解决方案，为你解除论文烦恼。
         </div>
       </div>
-      <div class="item fl">
-        <h4 class="ind1_txt">省心</h4>
-        <div class="text">
+      <div class="index_first">
+        <h4 class="index_first_title">省心</h4>
+        <div class="index_first_content">
           各种论文问题均可一键解决，省心，省力，极其方便的解决论文痛点
         </div>
       </div>
-      <div class="item fl">
-        <h4 class="ind1_txt">安全</h4>
-        <div class="text">
+      <div class="index_first">
+        <h4 class="index_first_title">安全</h4>
+        <div class="index_first_content">
           全站https协议传输，基于阿里云OSS文档上传，报告支持密码加密，安全无痕迹
         </div>
       </div>
