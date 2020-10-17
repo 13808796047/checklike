@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @section('title','智能查重')
 @section('styles')
   <!-- <link href="https://css.lianwen.com/css/public_c.css?v=2018v1" type="text/css" rel="stylesheet"/>
