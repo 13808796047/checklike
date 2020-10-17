@@ -304,7 +304,7 @@
         初稿查重
         </span>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
+                <a class="dropdown-item istoaster" href="/categories/1">CheckLike</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
             </div>
