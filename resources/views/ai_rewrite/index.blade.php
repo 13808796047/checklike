@@ -5,15 +5,6 @@
   <!-- <link href="https://css.lianwen.com/css/public_c.css?v=2018v1" type="text/css" rel="stylesheet"/>
   <link href="https://css.lianwen.com/css/index_2017.css" type="text/css" rel="stylesheet"/> -->
   <!-- <link rel="stylesheet" href="{{asset('asset/css/index.css')}}"> -->
-  <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" />
-  <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
-  <style>
-    .curfont {
-      font-size: 16px;
-    }
-    del { background: #FF4040; }
-    ins { background: #00ff21;text-decoration:none; }
-  </style>
 @stop
 @section('content')
   <!-- alert提示框 -->
@@ -338,9 +329,6 @@
   <script>
     $(() => {
       @auth
-      $('.navbar>div').removeClass('container').addClass('container-fluid')
-      $('#headerlw').addClass('curfont')
-
       $('#freeadd').click(function(){
         $('#tjModal').modal('show')
       })
