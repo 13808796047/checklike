@@ -289,7 +289,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
-      <ul class="navbar-nav mr-auto" id="headerlw">
+      <ul class="navbar-nav mr-auto" id="headerlw" style="align-items:center;">
         <li class="nav-item px-4 {{ active_class(if_route('domained::pages.index')) }}"><a
             class="nav-link text-blue-300"
             href="{{ url('/') }}">首页</a>
