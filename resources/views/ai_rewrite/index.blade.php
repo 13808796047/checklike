@@ -21,6 +21,15 @@
           <label class="radio-inline"><input type="radio" name="optradio">智能改写</label>
           <label class="radio-inline"><input type="radio" name="optradio">智能换词、智能改写同时改写</label>
         </div>
+        <div>
+        <label for="sel1">原创度:</label>
+          <select class="form-control" id="sel1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
     </div>
 
   <div class="rbox fr">
