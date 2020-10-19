@@ -14,7 +14,13 @@
   <!-- 模态框 -->
   <div class="main clearfix" style="min-height:800px;">
     <div class="lbox fl">
-    <p>fsda</p>
+        <p>智能降重</p>
+        <div>
+          <span>模式：</span>
+          <label class="radio-inline"><input type="radio" name="optradio">智能换词</label>
+          <label class="radio-inline"><input type="radio" name="optradio">智能改写</label>
+          <label class="radio-inline"><input type="radio" name="optradio">智能换词、智能改写同时改写</label>
+        </div>
     </div>
 
   <div class="rbox fr">
