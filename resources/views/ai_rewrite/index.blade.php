@@ -14,7 +14,7 @@
   <!-- 模态框 -->
   <div class="main clearfix" style="min-height:800px;">
     <div class="lbox fl">
-        <p>智能降重</p>
+        <div>智能降重</div>
         <div>
           <span>模式：</span>
           <label class="radio-inline"><input type="radio" name="optradio">智能换词</label>
