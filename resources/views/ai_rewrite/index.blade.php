@@ -22,14 +22,20 @@
           <label class="radio-inline"><input type="radio" name="optradio">智能换词、智能改写同时改写</label>
         </div>
         <div style="display:flex;">
-        <label for="sel1">原创度:</label>
+          <label for="sel1">原创度:</label>
           <select class="custom-select custom-select-sm" id="sel1" style="width:10%;margin:0 20px;">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
           </select>
-        <p>(数值越大、可读性越高)</p>
+          <p>(数值越大、可读性越高)</p>
+        </div>
+        <div>
+          <p>关键词锁定:(智能原创时，保护以下关键词不被替换，多个关键词以"|搁开)</p>
+          <div>
+              <textarea class="form-control" rows="3"></textarea>
+          </div>
         </div>
     </div>
 
