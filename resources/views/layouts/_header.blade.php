@@ -274,12 +274,15 @@
 <!----- //End-header---->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
-     style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
+     style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);padding:0;">
+     <div style="background-color: #3182ce;height: 100%;padding: 3px;">
+    <a class="navbar-brand " href="{{ url('/') }}" style="height: 50px;margin-top: 10px;margin-left: 10px;">
+      <img src="https://css.lianwen.com/images/logo.png" alt="" style="height:100%;">
+    </a>
+    </div>
   <div class="container">
     <!-- Branding Image -->
-    <a class="navbar-brand " href="{{ url('/') }}">
-      <img src="https://wanfang.lianwen.com/asset/images/vpcs-logo.png" alt="">
-    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -287,23 +290,54 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
-      <ul class="navbar-nav mr-auto" id="headerlw">
-        <li class="nav-item px-4 {{ active_class(if_route('domained::pages.index')) }}"><a
+      <ul class="navbar-nav mr-auto" id="headerlw" style="align-items:center;">
+        <li class="nav-item px-2 {{ active_class(if_route('domained::pages.index')) }}"><a
             class="nav-link text-blue-300"
             href="{{ url('/') }}">首页</a>
         </li>
-        <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
-          @guest
-            <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop">维普查重</a>
-          @else
-            <a
-              class="nav-link"
-              href="{{route('categories.show',['classid'=>2])}}"
-            >维普查重</a>
-          @endguest
+        <li class="nav-item dropdown px-2 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
+
+        @guest
+         <a class="nav-link" href="javascript:;" data-toggle="modal"
+               data-target="#staticBackdrop">初稿查重</a>
+        @else
+        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+        初稿查重
+        </span>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item istoaster" href="/categories/1">CheckLike</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
+            </div>
+        @endguest
+
         </li>
-        <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
+        <li class="nav-item dropdown px-2 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
+
+         @guest
+          <a class="nav-link" href="javascript:;" data-toggle="modal"
+                data-target="#staticBackdrop">定稿查重</a>
+         @else
+         <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+          定稿查重
+        </span>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
+        </div>
+         @endguest
+
+       </li>
+       <li class="nav-item px-2">
+        <a href="/ai_rewrite"
+         class="block  lg:inline-block lg:mt-0 text-black-500 hover:text-blue-600 mr-4 text-decoration-none" style="margin-left:15px;">
+        自动降重
+        </a>
+       </li>
+        <li class="nav-item px-2 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
           @guest
             <a class="nav-link" href="javascript:;" data-toggle="modal"
                data-target="#staticBackdrop">查看报告</a>
@@ -311,7 +345,7 @@
             <a class="nav-link" href="{{route('orders.index')}}">查看报告</a>
           @endguest
         </li>
-        <li class="nav-item px-4"><a class="nav-link" href="javascript:void(0)"
+        <li class="nav-item px-2"><a class="nav-link" href="javascript:void(0)"
                                      onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
         </li>
         {{--        <li class="active"><a href="/" class="scroll">首页<span> </span></a></li>--}}
@@ -454,9 +488,7 @@
               <input
                  class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
-                 style="width:63%;"
-                 id="registerphones" type="text" placeholder="请输入手机号码" >
-              <button type="button" class="btn btn-primary" style="margin-left:10px;" id="checkPhone">检测手机号</button>
+                 id="registerphones" type="text" placeholder="请输入手机号码">
             </div>
             <div>
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">

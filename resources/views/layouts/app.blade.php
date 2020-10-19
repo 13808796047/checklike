@@ -9,7 +9,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', '联文') _维普论文检测系统</title>
+  <title>@yield('title', '联文') _学信检测</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
@@ -206,13 +206,18 @@
     }
   })
   })
-  $("#checkPhone").click(()=>{
+  $("#registerphones").blur(()=>{
     axios.post('https://p.checklike.com/api/v1/check-phone', {
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.data.message)
         }).catch(err=>{
           console.log(err.response.data,"fafdd")
+          alertify.set('notifier','position', 'top-center');
+          alertify.warning(err.response.data.message)
+
         })
   })
   $('#submitRegisterBtn').click(() => {

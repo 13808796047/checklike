@@ -237,15 +237,16 @@
       let set = new Set();
       let name = '';
       var oneid = ''
-      $('.navbar>div').removeClass('container').addClass('container-fluid')
-      $('#headerlw').addClass('curfont')
+
+      // $('.navbar>div').removeClass('container').addClass('container-fluid')
+      // $('#headerlw').addClass('curfont')
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
         $(this).children('i').addClass('selected')
         $('#cid').val($(this).data('id'))
-        if ($(this).data('id') == 6) {
+        if ($(this).data('id') == 6|| $(this).data('id') == 15) {
           $('#element_id').val(getNowFormatDate())
           $('#isfbtime').css('display', 'block')
         } else {
@@ -307,8 +308,8 @@
             });
             index++;
             console.log(res, 'fsadf')
-            //let obj = {!!$categories!!}
-            let obj =[{id:3,name:'维普大学生版'},{id:4,name:'维普研究生版'},{id:5,name:'维普编辑部版'},{id:6,name:'维普职称版'}]
+            let obj = {!!$categories!!}
+            // let obj =[{id:3,name:'维普大学生版'},{id:4,name:'维普研究生版'},{id:5,name:'维普编辑部版'},{id:6,name:'维普职称版'}]
             console.log(obj, Object.prototype.toString.call(obj));
             console.log(obj, 3123)
             var option = ""
