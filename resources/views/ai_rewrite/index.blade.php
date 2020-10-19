@@ -37,11 +37,11 @@
               <textarea class="form-control" rows="3"></textarea>
           </div>
         </div>
-        <div style="margin:25px 0;">
+        <div style="margin-top:25px;">
            <textarea class="form-control" rows="13"></textarea>
         </div>
         <div>
-          <p>注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
+          <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
         </div>
         <div>
           <button type="button" class="btn btn-primary">提交</button>
