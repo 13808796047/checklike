@@ -21,14 +21,15 @@
           <label class="radio-inline"><input type="radio" name="optradio">智能改写</label>
           <label class="radio-inline"><input type="radio" name="optradio">智能换词、智能改写同时改写</label>
         </div>
-        <div>
+        <div style="display:flex;">
         <label for="sel1">原创度:</label>
-          <select class="form-control" id="sel1">
+          <select class="form-control" id="sel1" style="width:10%;margin:0 20px;">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
           </select>
+        <p>(数值越大、可读性越高)</p>
         </div>
     </div>
 
