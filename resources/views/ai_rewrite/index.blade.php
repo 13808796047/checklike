@@ -38,7 +38,7 @@
           </div>
         </div>
         <div style="margin:25px 0;">
-           <textarea class="form-control" rows="7"></textarea>
+           <textarea class="form-control" rows="10"></textarea>
         </div>
     </div>
 
