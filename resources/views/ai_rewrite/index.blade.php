@@ -23,7 +23,7 @@
         </div>
         <div style="display:flex;">
         <label for="sel1">原创度:</label>
-          <select class="form-control" id="sel1" style="width:10%;margin:0 20px;">
+          <select class="selectpicker" id="sel1" style="width:10%;margin:0 20px;">
             <option>1</option>
             <option>2</option>
             <option>3</option>
