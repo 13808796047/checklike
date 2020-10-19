@@ -17,9 +17,9 @@
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
           <span>模式：</span>
-          <label class="radio-inline"><input type="radio" name="optradio">智能换词</label>
-          <label class="radio-inline" style="margin:0 10px;"><input type="radio" name="optradio">智能改写</label>
-          <label class="radio-inline"><input type="radio" name="optradio">智能换词、智能改写同时改写</label>
+          <label class="radio-inline"><input type="radio" name="optradio" style="margin-right:5px;">智能换词</label>
+          <label class="radio-inline" style="margin:0 10px;"><input type="radio" name="optradio" style="margin-right:5px;">智能改写</label>
+          <label class="radio-inline"><input type="radio" name="optradio" style="margin-right:5px;">智能换词、智能改写同时改写</label>
         </div>
         <div style="display:flex;">
           <label for="sel1">原创度:</label>
