@@ -14,7 +14,7 @@ class FileService
         $user = \Auth::user();
         if($file = $request->file) {
             //文件后缀
-            $fileTypes = ['docx', 'txt'];
+            $fileTypes = ['docx', 'txt', 'doc'];
             //获取文件类型后缀
             $extension = $file->getClientOriginalExtension();
             //是否是要求的文件
