@@ -15,7 +15,7 @@ class AiWriterHandler
         $headers = [];
         array_push($headers, "Authorization:" . $apikey);
         //根据API的要求，定义相对应的Content-Type
-        array_push($headers, "Content-Type" . ":" . "application/x-www-form-urlencoded; charset=UTF-8");
+//        array_push($headers, "Content-Type" . ":" . "application/x-www-form-urlencoded; charset=UTF-8");
         $querys = "";
         $bodys = "txt=txt&th=th&filter=filter&corewordfilter=corewordfilter";
         $url = $host . $path;
