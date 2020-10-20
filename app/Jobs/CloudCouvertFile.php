@@ -11,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class CloudCouvertFile implements ShouldQueue
 {
@@ -44,6 +45,7 @@ class CloudCouvertFile implements ShouldQueue
                         ->set('input', 'convert-my-file')
                 )
         );
+        Log::info('job', [$job]);
         foreach($job->getExportUrls() as $file) {
 
             $source = CloudConvert::getHttpTransport()->download($file->url)->detach();

@@ -9,6 +9,7 @@ use App\Handlers\FileUploadHandler;
 use App\Handlers\FileWordsHandle;
 use App\Handlers\OrderApiHandler;
 use App\Handlers\WordHandler;
+use App\Jobs\CloudCouvertFile;
 use App\Jobs\OrderPendingMsg;
 use App\Models\Category;
 use App\Models\File;
@@ -95,12 +96,40 @@ class OrderService
             $order->orderContent()->create([
                 'content' => $content
             ]);
+            $this->checkWords($order);
             if($order->status == 0) {
                 dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
             }
             return $order;
         });
         return $order;
+    }
+
+
+    protected function checkWords(Order $order)
+    {
+
+        if($order->category->classid == 4) {
+            if($order->file->type == 'docx') {
+                $content = read_docx($order->file->real_path);
+                $words = count_words($content);
+                if($words / $order->words > 1.15) {
+                    $this->cloudConert($order);
+                } else {
+                    $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
+                    $order->update([
+                        'paper_path' => $result['path']
+                    ]);
+                }
+            } else {
+                $this->cloudConert($order);
+            }
+        }
+    }
+
+    protected function cloudConert(Order $order)
+    {
+        $this->dispatch(new CloudCouvertFile($order));
     }
 
     //计算字数
