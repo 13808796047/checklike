@@ -334,18 +334,12 @@ class PaymentsController extends Controller
 
     protected function checkWords(Order $order)
     {
-
         if($order->category->classid == 4) {
             if($order->file->type == 'docx') {
                 $content = read_docx($order->file->real_path);
                 $words = count_words($content);
                 if($words / $order->words > 1.15) {
                     $this->cloudConert($order);
-                } else {
-                    $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
-                    $order->update([
-                        'paper_path' => $result['path']
-                    ]);
                 }
             } else {
                 $this->cloudConert($order);
@@ -355,7 +349,7 @@ class PaymentsController extends Controller
 
     protected function cloudConert(Order $order)
     {
-        $this->dispatch(new CloudCouvertFile($order));
+        dispatch(new CloudCouvertFile($order));
     }
 
     protected function afterPaidMsg(Order $order)
