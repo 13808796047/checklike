@@ -25,22 +25,16 @@ class OrderService
             $wordHandler = app(WordHandler::class);
 
             if($request->type == 'file') {
-                if($fileId = $request->file_id) {
-                    $result = File::find($fileId);
-                }
-                if($result->type == 'txt') {
-                    $content = remove_spec_char(convert2utf8(file_get_contents($result->real_path)));
+                $file = File::find($fileId);
+                if($file->type == 'txt') {
+                    $content = remove_spec_char(convert2utf8(file_get_contents($file->real_path)));
                     $words = count_words(remove_spec_char(convert2utf8($content)));
                     if($category->classid == 3) {
                         $result = $wordHandler->save($content, 'files', $user->id);
                     }
                 } else {
-                    $res = app(FileWordsHandle::class)->submitCheck($result->path);
+                    $res = app(FileWordsHandle::class)->submitCheck($file->path);
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
-                    $content = read_docx($result->real_path);
-                    if($category->classid == 4) {
-                        $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
-                    }
                 }
             } else {
                 $content = remove_spec_char($request->input('content', ''));
@@ -96,6 +90,7 @@ class OrderService
             }
             $order->price = $price;
             $order->save();
+            $file->order()->associate($order);
             \Cache::forget('word');
             $order->orderContent()->create([
                 'content' => $content
