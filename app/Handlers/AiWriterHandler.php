@@ -32,7 +32,7 @@ class AiWriterHandler
         }
         curl_setopt($curl, CURLOPT_POSTFIELDS, $bodys);
         $output = curl_exec($curl);
-        curl_close($ch);
+        curl_close($curl);
         return $output;
     }
 }
