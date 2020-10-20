@@ -29,11 +29,7 @@ class AutoCheckController extends Controller
         }
 
         $result = app(AiWriterHandler::class)->getContent($request->input('content', ''));
-        var_dump($result);
 
-        if($result['status'] == 0) {
-            return response(compact('result'), 500);
-        }
         $user->decreaseJcTimes();
         return response(compact('result', 'user'), 200);
 
