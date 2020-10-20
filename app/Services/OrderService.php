@@ -46,7 +46,7 @@ class OrderService
                     $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
                 }
             }
-
+            dd($result);
             if($words > 2500 && $user->redix == 1 && $request->from != 'wp-wx') {
                 $resultWords = \Cache::remember('user' . $user->id, now()->addDay(), function() use ($words) {
                     return $this->calcWords($words);
