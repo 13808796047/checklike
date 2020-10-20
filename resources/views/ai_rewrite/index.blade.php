@@ -38,13 +38,13 @@
           </div>
         </div>
         <div style="margin-top:25px;">
-           <textarea class="form-control" rows="13"></textarea>
+           <textarea class="form-control" rows="13" id="content"></textarea>
         </div>
         <div>
           <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
         </div>
         <div style="margin-top:10px;">
-          <button type="button" class="btn btn-primary">提交</button>
+          <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
           <button type="button" class="btn btn-secondary">清除内容</button>
         </div>
     </div>
@@ -61,7 +61,6 @@
         <p>本站不限制论文检测次数，但检测一次需支付一次费用。</p>
         <b>4、检测报告有网页版、pdf格式的吗？</b>
         <p>检测完成后会提供网页版和pdf格式的检测报告，报告只是格式不同，重复率都一样的。</p>
-
       </div>
     </div>
 </div>
@@ -72,6 +71,17 @@
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
+  $("#aiSubmitBtn").click(()=>{
+    let contents = $('#content').val();
+        axios.post("/ai_rewrite",{content:contents})
+          .then(res => {
+            console.log(res,"fdsafs")
+          })
+          .catch(err =>{
+            console.log(err,"xixijsafjsajf")
+          }
+        );
+  })
 
   </script>
 @stop
