@@ -45,7 +45,7 @@ class CloudCouvertFile implements ShouldQueue
                         ->set('input', 'convert-my-file')
                 )
         );
-        Log::info('job', [$job]);
+        CloudConvert::jobs()->wait($job);
         foreach($job->getExportUrls() as $file) {
 
             $source = CloudConvert::getHttpTransport()->download($file->url)->detach();
