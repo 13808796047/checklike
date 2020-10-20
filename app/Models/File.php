@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
-    protected $fillable = ['type', 'path', 'user_id', 'real_path'];
+    protected $fillable = ['type', 'path', 'user_id', 'real_path', 'order_id'];
 
     public function user()
     {
