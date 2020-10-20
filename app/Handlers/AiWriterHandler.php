@@ -17,7 +17,7 @@ class AiWriterHandler
         //根据API的要求，定义相对应的Content-Type
 //        array_push($headers, "Content-Type" . ":" . "application/x-www-form-urlencoded; charset=UTF-8");
         $querys = "";
-        $bodys = "txt=txt&th=th&filter=filter&corewordfilter=corewordfilter";
+        $bodys = "txt={$content}&th=th&filter=filter&corewordfilter=corewordfilter";
         $url = $host . $path;
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
