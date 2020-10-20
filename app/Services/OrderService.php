@@ -26,7 +26,7 @@ class OrderService
             $wordHandler = app(WordHandler::class);
 
             if($request->type == 'file') {
-                $file = File::find($fileId);
+                $file = File::find($request->file_id);
                 if($file->type == 'txt') {
                     $content = remove_spec_char(convert2utf8(file_get_contents($file->real_path)));
                     $words = count_words(remove_spec_char(convert2utf8($content)));
