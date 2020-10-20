@@ -19,7 +19,7 @@ class CloudCouvertFile implements ShouldQueue
 
     protected $order;
 
-    public function __construct(Order $order, $job)
+    public function __construct(Order $order)
     {
         $this->order = $order;
     }
