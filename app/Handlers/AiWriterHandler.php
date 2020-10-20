@@ -26,9 +26,10 @@ class AiWriterHandler
         // 构建请求参数
         $option = [
             'headers' => [
-                'Authorization' => '20FED99DBE644B818379C20653A8806F'
+                'Authorization' => '20FED99DBE644B818379C20653A8806F',
+                "Content-Type" => "application/x-www-form-urlencoded; charset=UTF-8"
             ],
-            'body' => json_encode($data),
+            'body' => $data,
         ];
         $response = $this->http->post($this->api, $option);
         dd($response->getbody()->getContents());
