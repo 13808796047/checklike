@@ -37,7 +37,7 @@ class CloudCouvertFile implements ShouldQueue
                 ->addTask(
                     (new Task('convert', 'convert-my-file'))
                         ->set('input', 'import-my-file')
-                        ->set('output_format', 'pdf')
+                        ->set('output_format', 'txt')
                         ->set('some_other_option', 'value')
                 )
                 ->addTask(
