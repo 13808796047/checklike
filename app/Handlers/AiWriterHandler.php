@@ -31,6 +31,8 @@ class AiWriterHandler
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         }
         curl_setopt($curl, CURLOPT_POSTFIELDS, $bodys);
-        return curl_exec($curl);
+        $output = curl_exec($curl);
+        curl_close($ch);
+        return $output;
     }
 }
