@@ -207,8 +207,7 @@
             <div style="width:150px;background:red;color:#fff;text-align:center;" id="toSecup">再次上传</div>
           </div>
           <div style="display:flex;" id="manyupload">
-            批量上传<input type="file" id="customFiles" style="width:70%;border:1px solid"
-                       lang="cn" multiple>
+            批量上传<input type="file" id="customFiles" style="width:70%;border:1px solid" lang="cn" multiple>
           </div>
           <!-- 批量上传结束 -->
         @endif
@@ -398,6 +397,7 @@
           $('#tosubmit').attr("disabled", true);
         })
       })
+
 
       // $("form").submit(function(e){
       // <s></s>
