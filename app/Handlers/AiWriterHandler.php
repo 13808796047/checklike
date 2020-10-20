@@ -29,7 +29,7 @@ class AiWriterHandler
                 'Authorization' => '20FED99DBE644B818379C20653A8806F',
                 "Content-Type" => "application/x-www-form-urlencoded; charset=UTF-8"
             ],
-            'body' => $data,
+            'body' => json_encode($data),
         ];
         $response = $this->http->post($this->api, $option);
         dd($response->getbody()->getContents());
