@@ -93,7 +93,9 @@ class OrderService
             }
             $order->price = $price;
             $order->save();
-            $file->order()->associate($order);
+            $file->update([
+                'order_id' => $order->id,
+            ]);
             \Cache::forget('word');
             $order->orderContent()->create([
                 'content' => $content ?? ''
