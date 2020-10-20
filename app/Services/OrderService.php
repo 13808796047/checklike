@@ -35,7 +35,10 @@ class OrderService
                 } else {
                     $res = app(FileWordsHandle::class)->submitCheck($file->path);
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
-                    $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
+                    if($category->classid == 4 && $file->type == 'docx') {
+                        $content = read_docx($order->file->real_path);
+                        $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
+                    }
                 }
             } else {
                 $content = remove_spec_char($request->input('content', ''));
@@ -114,11 +117,6 @@ class OrderService
                 $words = count_words($content);
                 if($words / $order->words > 1.15) {
                     $this->cloudConert($order);
-                } else {
-
-                    $order->update([
-                        'paper_path' => $result['path']
-                    ]);
                 }
             } else {
                 $this->cloudConert($order);
