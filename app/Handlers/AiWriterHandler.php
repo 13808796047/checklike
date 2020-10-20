@@ -30,7 +30,7 @@ class AiWriterHandler
             ],
             'body' => json_encode($data),
         ];
-        $response = $this->http->post($this->api . 'order/create', $option);
+        $response = $this->http->post($this->api, $option);
 
         return json_decode($response->getbody()->getContents());
 //        $host = "http://apis.5118.com";
