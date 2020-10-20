@@ -22,10 +22,9 @@ class FileService
             if(!$isInFileType) {
                 throw new \Exception('文件格式不合法!', 400);
             }
-            $type = $file->getClientOriginalExtension() == 'docx' ? 'docx' : 'txt';
             $result = $uploadHandler->save($file, 'files', $user->id);
             $data = File::create([
-                'type' => $type,
+                'type' => $extension,
                 'user_id' => $user->id,
                 'path' => $result['path'],
                 'real_path' => $result['real_path'],
