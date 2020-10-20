@@ -31,7 +31,7 @@ class AutoCheckController extends Controller
         $result = app(AiWriterHandler::class)->getContent($request->input('content', ''));
 
         $user->decreaseJcTimes();
-        return json_decode($result);
+        return json_decode($result['data']);
 
 //        $data = AutoCheck::create([
 //            'content_before' => $request->input('content'),
