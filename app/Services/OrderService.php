@@ -106,7 +106,7 @@ class OrderService
 
     protected function checkWords(Order $order)
     {
-
+        dd($order);
         if($order->category->classid == 4) {
             if($order->file->type == 'docx') {
                 $content = read_docx($order->file->real_path);
