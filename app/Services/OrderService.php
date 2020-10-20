@@ -92,7 +92,7 @@ class OrderService
             $file->order()->associate($order);
             \Cache::forget('word');
             $order->orderContent()->create([
-                'content' => $content
+                'content' => $content ?? ''
             ]);
             $this->checkWords($order);
             if($order->status == 0) {
