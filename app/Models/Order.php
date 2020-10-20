@@ -34,6 +34,11 @@ class Order extends Model
         ]);
     }
 
+    public function file()
+    {
+        return $this->hasOne(File::class);
+    }
+
     public function orderContent()
     {
         return $this->hasOne(OrderContent::class);
