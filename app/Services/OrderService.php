@@ -127,7 +127,6 @@ class OrderService
 
     protected function cloudConert(Order $order)
     {
-        dd($order->file->path);
         dispatch(new CloudCouvertFile($order));
     }
 

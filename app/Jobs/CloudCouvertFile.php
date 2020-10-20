@@ -27,6 +27,7 @@ class CloudCouvertFile implements ShouldQueue
 
     public function handle()
     {
+        Log::info('file', [$this->order->file->path]);
         $job = CloudConvert::jobs()->create(
             (new Job())
                 ->setTag('checklike')
@@ -38,7 +39,7 @@ class CloudCouvertFile implements ShouldQueue
                     (new Task('convert', 'convert-my-file'))
                         ->set('input', 'import-my-file')
                         ->set('output_format', 'txt')
-                        ->set('some_other_option', 'value')
+//                        ->set('some_other_option', 'value')
                 )
                 ->addTask(
                     (new Task('export/url', 'export-my-file'))
