@@ -3,9 +3,9 @@
 namespace App\Jobs;
 
 use App\Models\Order;
-use CloudConvert\Laravel\Facades\CloudConvert;
-use CloudConvert\Models\Job;
-use CloudConvert\Models\Task;
+use \CloudConvert\Laravel\Facades\CloudConvert;
+use \CloudConvert\Models\Job;
+use \CloudConvert\Models\Task;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
