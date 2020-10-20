@@ -96,6 +96,7 @@ class OrderService
             $file->update([
                 'order_id' => $order->id,
             ]);
+            dd($file);
             \Cache::forget('word');
             $order->orderContent()->create([
                 'content' => $content ?? ''
