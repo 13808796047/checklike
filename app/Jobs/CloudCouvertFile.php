@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Handlers\FileUploadHandler;
 use App\Models\Order;
 use \CloudConvert\Laravel\Facades\CloudConvert;
 use \CloudConvert\Models\Job;
