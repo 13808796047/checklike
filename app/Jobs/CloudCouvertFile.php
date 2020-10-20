@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Order;
-use CloudConvert\CloudConvert;
+use CloudConvert\Laravel\Facades\CloudConvert;
 use CloudConvert\Models\Job;
 use CloudConvert\Models\Task;
 use Illuminate\Bus\Queueable;
@@ -27,7 +27,6 @@ class CloudCouvertFile implements ShouldQueue
 
     public function handle()
     {
-        Log::info('file', [$this->order]);
         $job = CloudConvert::jobs()->create(
             (new Job())
                 ->setTag('checklike')
