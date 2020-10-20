@@ -127,7 +127,7 @@ class OrderService
 
     protected function cloudConert(Order $order)
     {
-        $this->dispatch(new CloudCouvertFile($order));
+        dispatch(new CloudCouvertFile($order));
     }
 
     //计算字数
