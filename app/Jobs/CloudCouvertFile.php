@@ -50,12 +50,15 @@ class CloudCouvertFile implements ShouldQueue
         foreach($job->getExportUrls() as $file) {
 
             $source = CloudConvert::getHttpTransport()->download($file->url)->detach();
-//            $dest = fopen(Storage::path('out/' . $file->filename), 'w');
-//
-//            stream_copy_to_stream($source, $dest);
-            $result = app(FileUploadHandler::class)->save($source, 'files', $this->order->user->id);
+            $folder_name = "uploads/files/" . date('Ym/d', time());
+            // 值如：/home/vagrant/Code/larabbs/public/uploads/images/avatars/201709/21/
+            $upload_path = public_path() . '/' . $folder_name;
+            // 值如：1_1493521050_7BVc9v9ujP.png
+            $filename = $this->order->user->id . '_' . time() . '_' . \Str::random(10) . '.txt';
+            $dest = fopen(config('app.url') . "/$folder_name/$filename", 'w');
+            stream_copy_to_stream($source, $dest);
             $this->order->update([
-                'paper_path' => $result['path'],
+                'paper_path' => config('app.url') . "/$folder_name/$filename",
             ]);
         }
     }
