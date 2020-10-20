@@ -35,6 +35,7 @@ class OrderService
                 } else {
                     $res = app(FileWordsHandle::class)->submitCheck($file->path);
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
+                    $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
                 }
             } else {
                 $content = remove_spec_char($request->input('content', ''));
@@ -114,7 +115,7 @@ class OrderService
                 if($words / $order->words > 1.15) {
                     $this->cloudConert($order);
                 } else {
-                    $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
+
                     $order->update([
                         'paper_path' => $result['path']
                     ]);
