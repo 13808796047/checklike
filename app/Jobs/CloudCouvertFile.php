@@ -27,7 +27,7 @@ class CloudCouvertFile implements ShouldQueue
 
     public function handle()
     {
-        Log::info('file', [$this->order->file->path]);
+        Log::info('file', [$this->order->file]);
         $job = CloudConvert::jobs()->create(
             (new Job())
                 ->setTag('checklike')
