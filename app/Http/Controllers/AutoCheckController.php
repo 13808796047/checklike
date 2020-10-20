@@ -29,7 +29,7 @@ class AutoCheckController extends Controller
         }
 
         $result = app(AiWriterHandler::class)->getContent($request->input('content', ''));
-        dd($result);
+        var_dump($result);
 
         if($result['status'] == 0) {
             return response(compact('result'), 500);
