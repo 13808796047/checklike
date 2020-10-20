@@ -37,7 +37,7 @@ class OrderService
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
                     if($category->classid == 4 && $file->type == 'docx') {
                         $content = read_docx($file->real_path);
-//                        $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
+                        $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
                     }
                 }
             } else {
@@ -110,7 +110,6 @@ class OrderService
 
     protected function checkWords(Order $order)
     {
-        dd($order);
         if($order->category->classid == 4) {
             if($order->file->type == 'docx') {
                 $content = read_docx($order->file->real_path);
