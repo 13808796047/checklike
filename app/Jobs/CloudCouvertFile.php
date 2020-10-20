@@ -55,7 +55,7 @@ class CloudCouvertFile implements ShouldQueue
             $upload_path = public_path() . '/' . $folder_name;
             // 值如：1_1493521050_7BVc9v9ujP.png
             $filename = $this->order->user->id . '_' . time() . '_' . \Str::random(10) . '.txt';
-            $dest = fopen(config('app.url') . "/$folder_name/$filename", 'w');
+            $dest = fopen("$upload_path/$filename", 'w');
             stream_copy_to_stream($source, $dest);
             $this->order->update([
                 'paper_path' => config('app.url') . "/$folder_name/$filename",
