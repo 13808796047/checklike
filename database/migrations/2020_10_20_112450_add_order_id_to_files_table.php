@@ -14,7 +14,7 @@ class AddOrderIdToFilesTable extends Migration
     public function up()
     {
         Schema::table('files', function(Blueprint $table) {
-            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('order_id')->nullable();
         });
     }
 
