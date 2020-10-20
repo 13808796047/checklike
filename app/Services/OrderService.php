@@ -22,7 +22,6 @@ class OrderService
         $order = \DB::transaction(function() use ($request) {
             $category = Category::findOrFail($request->cid);
             $user = \Auth()->user();
-            $fileUploadHandle = app(FileUploadHandler::class);
             $wordHandler = app(WordHandler::class);
 
             if($request->type == 'file') {
@@ -43,10 +42,9 @@ class OrderService
                 if($category->classid == 3) {
                     $result = $wordHandler->save($content, 'files', $user->id);
                 } else {
-                    $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
+                    $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
                 }
             }
-            dd($result);
             if($words > 2500 && $user->redix == 1 && $request->from != 'wp-wx') {
                 $resultWords = \Cache::remember('user' . $user->id, now()->addDay(), function() use ($words) {
                     return $this->calcWords($words);
@@ -77,7 +75,7 @@ class OrderService
                 'publishdate' => $request->publishdate ?? "",
                 'date_publish' => $request->date_publish,
                 'words' => ceil($words),
-                'paper_path' => $result['path'],
+                'paper_path' => $result['path'] ?? '',
                 'from' => $request->from,
                 'content' => '',
                 'referer' => $referer['from'],
