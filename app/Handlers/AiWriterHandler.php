@@ -53,8 +53,8 @@ class AiWriterHandler
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HEADER, true);
         if(1 == strpos("$" . $host, "https://")) {
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, true);
         }
         curl_setopt($curl, CURLOPT_POSTFIELDS, $bodys);
         $output = curl_exec($curl);
