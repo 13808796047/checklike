@@ -178,9 +178,9 @@
             $('#beingModal').modal('hide')
             $('#jcqian').css('display', 'none')
             console.log(res,"xixi")
-            // var htmlstring=res.data.result.new_content;
-            // var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
-            // changed(contents,stringtemp,htmlstring)
+            var htmlstring=res.data.data;
+            var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
+            changed(contents,stringtemp,htmlstring)
             $("#jchou").css('display', 'block')
           })
           .catch(err =>{
