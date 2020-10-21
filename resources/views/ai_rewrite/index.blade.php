@@ -17,17 +17,19 @@
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
           <span>模式：</span>
-          <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="0">智能换词</label>
+          <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="0" checked>智能换词</label>
           <label class="radio-inline" style="margin:0 10px;"><input type="radio" name="radio" style="margin-right:5px;" value="1">智能改写</label>
           <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="-1">智能换词、智能改写同时改写</label>
         </div>
         <div style="display:flex;">
-          <label for="sel1">原创度:</label>
-          <select class="custom-select custom-select-sm" id="sel1" style="width:10%;margin:0 20px;">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <label for="sel">原创度:</label>
+          <select class="custom-select custom-select-sm" id="sel" style="width:10%;margin:0 20px;"  onchange="optionChange()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
           </select>
           <p>(数值越大、可读性越高)</p>
         </div>
@@ -71,15 +73,27 @@
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
+   var checkvalue = "";
+  function getRadioVal(){
     var radio_tag = document.getElementsByName("radio");
-    for(var i=0;i<radio_tag.length;i++){
+    for(let i=0;i<radio_tag.length;i++){
         if(radio_tag[i].checked){
-            var checkvalue = radio_tag[i].value;
+          checkvalue = radio_tag[i].value
+          return checkvalue
         }
     }
+  }
+  var optionVal = "3"
+  function optionChange(){
+    var sel=document.getElementById('sel');
+    var sid=sel.selectedIndex;
+    optionVal = sel[sid].value
+  }
 
   $("#aiSubmitBtn").click(()=>{
-    console.log(checkvalue,"fsdaf")
+    getRadioVal();
+    console.log(optionVal,"fsdaf")
+    console.log("🎵🍣🍞🐟🐀🥁🐶🐕🐱🐅🦖");
     // let contents = $('#content').val();
     //     axios.post("/ai_rewrite",{ txt:contents,sim:1})
     //       .then(res => {
