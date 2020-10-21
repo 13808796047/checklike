@@ -87,7 +87,7 @@ class OrderService
             ]);
             $order->user()->associate($user);
             if($user->is_free && $category->id == 1) {
-                if($user->dev_weixin_openid || $user->dev_weapp_openid) {
+                if($user->weixin_openid || $user->weapp_openid) {
                     $price = max($price - 3, 0);
                 }
             }
@@ -107,8 +107,6 @@ class OrderService
         });
         return $order;
     }
-
-
 
 
     //计算字数
