@@ -93,7 +93,6 @@ class OrderService
             }
             $order->price = $price;
             $order->save();
-            dd($order);
             $file->update([
                 'order_id' => $order->id,
             ]);
