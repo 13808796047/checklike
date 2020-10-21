@@ -177,10 +177,10 @@
           .then(res => {
             $('#beingModal').modal('hide')
             $('#jcqian').css('display', 'none')
-            console.log(res,"xixi")
             var htmlstring=res.data.data;
             var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
             changed(contents,stringtemp,htmlstring)
+
             $("#jchou").css('display', 'block')
           })
           .catch(err =>{
@@ -198,9 +198,10 @@
     }
 
     function changed(a,b,c) {
-            var oldContent = a
-            var content1 = b
-            var diff = JsDiff['diffChars'](oldContent, content1);
+      console.log(a,b,"xixi")
+      var oldContent = a
+      var content1 = b
+      var diff = JsDiff['diffChars'](oldContent, content1);
       var arr = new Array();
       for (var i = 0; i < diff.length; i++) {
         if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
