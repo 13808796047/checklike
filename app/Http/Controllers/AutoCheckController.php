@@ -32,13 +32,6 @@ class AutoCheckController extends Controller
 
         $user->decreaseJcTimes();
         return $result;
-
-//        $data = AutoCheck::create([
-//            'content_before' => $request->input('content'),
-//            'user_id' => $user->id,
-//        ]);
-//        $user->decreaseJcTimes();
-//        return new AutoCheckResource($data);
     }
 
     public function show(AutoCheck $autoCheck)
