@@ -80,7 +80,7 @@
   }
 
   $("#aiSubmitBtn").click(()=>{
-    console.log(chkobjs)
+    console.log(chkObjs)
     // let contents = $('#content').val();
     //     axios.post("/ai_rewrite",{ txt:contents,sim:1})
     //       .then(res => {
