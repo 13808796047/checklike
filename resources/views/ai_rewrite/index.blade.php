@@ -148,22 +148,10 @@
     optionChange();
     getRadioVal();
     $('#exampleModal').modal('show')
-    // let filter = $("#filter").val().replace(/\s*/g,"")
-    // let contents = $('#content').val();
-    //     axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
-    //       .then(res => {
-    //         console.log(res,"fdsafs")
-    //       })
-    //       .catch(err =>{
-    //         console.log(err,"xixijsafjsajf")
-    //       }
-    //     );
   })
   $("#surecheck").click(()=>{
     $('#exampleModal').modal('hide')
     $('#beingModal').modal('show')
-    // alertify.set('notifier','position', 'top-center');
-    //   alertify.notify("fdsjafsjf",'custom',3)
     let num = $("#requestcishuNum").html();
     togetJc(num)
   })
