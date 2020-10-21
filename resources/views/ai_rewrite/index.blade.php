@@ -146,7 +146,10 @@
     var sid=sel.selectedIndex;
     optionVal = sel[sid].value
   }
-
+  //获取字数
+  $("#content").bind('input',(e)=>{
+        $('#words span').html(e.target.value.length)
+  })
   $("#aiSubmitBtn").click(()=>{
     let words =  $('#words span').text();
     if(words>100){
