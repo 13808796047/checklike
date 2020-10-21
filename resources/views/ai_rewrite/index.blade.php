@@ -190,7 +190,8 @@
               return;
             }else{
               $('#beingModal').modal('hide')
-              toastr.error('降重失败，请重试');
+              alertify.set('notifier','position', 'top-center');
+              alertify.notify("降重失败，请重试",'custom',3)
             }
           }
           );
