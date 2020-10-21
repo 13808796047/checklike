@@ -35,7 +35,6 @@ class OrderService
                 } else {
                     $res = app(FileWordsHandle::class)->submitCheck($file->path);
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
-                    dd($words);
                     if($category->classid == 4 && $file->type == 'docx') {
                         $content = read_docx($file->real_path);
                         $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
@@ -86,6 +85,7 @@ class OrderService
                 'referer' => $referer['from'],
                 'keyword' => $referer['keyword']
             ]);
+            dd($order);
             $order->user()->associate($user);
             if($user->is_free && $category->id == 1) {
                 if($user->dev_weixin_openid || $user->dev_weapp_openid) {
