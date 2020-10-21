@@ -71,13 +71,12 @@
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
+   var checkvalue = "";
   function getRadioVal(){
-    console.log(checkvalue)
-    var checkvalue = "";
     var radio_tag = document.getElementsByName("radio");
     for(let i=0;i<radio_tag.length;i++){
         if(radio_tag[i].checked){
-          var checkvalue = radio_tag[i].value
+          checkvalue = radio_tag[i].value
           console.log(checkvalue)
           return checkvalue
         }
