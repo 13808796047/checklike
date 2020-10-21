@@ -74,10 +74,10 @@
   var chkObjs=null;
   var obj=document.getElementsByName("radio")
   for (let i=0;i<obj.length;i++){ //遍历Radio
-  console.log(obj)
+  console.log(obj[i])
     if(obj[i].checked){
       chkObjs=obj[i].value;
-      console.log(obj.value,"fasfsadfsfd")
+      console.log(obj[i].value,"fasfsadfsfd")
     }
   }
 
