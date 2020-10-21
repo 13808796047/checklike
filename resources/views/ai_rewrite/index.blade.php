@@ -36,7 +36,7 @@
         <div>
           <p>关键词锁定:(智能原创时，保护以下关键词不被替换，多个关键词以 "|" 搁开)</p>
           <div>
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" rows="3" id="filter"></textarea>
           </div>
         </div>
         <div style="margin-top:25px;">
@@ -91,11 +91,14 @@
   }
 
   $("#aiSubmitBtn").click(()=>{
+    optionChange();
     getRadioVal();
-    console.log(optionVal,"fsdaf")
+
+    let filter = $("#filter").val().replace(/\s*/g,"")
+    console.log(filter,"fdsaf")
     console.log("🎵🍣🍞🐟🐀🥁🐶🐕🐱🐅🦖");
     // let contents = $('#content').val();
-    //     axios.post("/ai_rewrite",{ txt:contents,sim:1})
+    //     axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue})
     //       .then(res => {
     //         console.log(res,"fdsafs")
     //       })
