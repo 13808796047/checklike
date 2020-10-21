@@ -43,21 +43,15 @@
            <textarea class="form-control" rows="13" id="content"></textarea>
         </div> -->
         <div style="margin-top:25px;display:flex;">
-                <span>
-                <span>降重前</span>
+            <div style="width:100%;">
+                <p>降重前</p>
                 <textarea class="form-control" rows="13"></textarea>
-                </span>
-
-
+            </div>
             <div style="margin:0 17px;"></div>
-            <span>
-                <span>降重前</span>
-                <textarea class="form-control" rows="13" cols="23"></textarea>
-
-                </span>
-
-                <!-- <textarea class="form-control" rows="13"></textarea> -->
-
+            <div style="width:100%;">
+                <p>降重后</p>
+                <textarea class="form-control" rows="13"></textarea>
+            </div>
         </div>
         <div>
           <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
