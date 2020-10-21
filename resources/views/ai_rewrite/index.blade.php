@@ -73,10 +73,10 @@
   <script>
   var chkObjs=null;
   var obj=document.getElementsByName("optradio")
-  console.log(obj,"fasfdsa")
   for (let i=0;i<obj.length;i++){ //遍历Radio
     if(obj[i].checked){
       chkObjs=obj[i].value;
+      console.log(obj.value,"fasfsadfsfd")
     }
   }
 
