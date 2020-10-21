@@ -22,12 +22,11 @@
           <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="-1">智能换词、智能改写同时改写</label>
         </div>
         <div style="display:flex;">
-          <label for="sel1">原创度:</label>
-          <select class="custom-select custom-select-sm" id="sel1" style="width:10%;margin:0 20px;">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <label for="sel">原创度:</label>
+          <select class="custom-select custom-select-sm" id="sel" style="width:10%;margin:0 20px;"  onchange="optionChange()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
           </select>
           <p>(数值越大、可读性越高)</p>
         </div>
@@ -77,15 +76,21 @@
     for(let i=0;i<radio_tag.length;i++){
         if(radio_tag[i].checked){
           checkvalue = radio_tag[i].value
-          console.log(checkvalue)
           return checkvalue
         }
     }
   }
+  var optionVal = ""
+  function optionChange(){
+    var sel=document.getElementById('sel');
+    var sid=sel.selectedIndex;
+    optionVal = sel[sid].value
+  }
 
   $("#aiSubmitBtn").click(()=>{
     getRadioVal();
-    console.log(checkvalue,"fsdaf")
+    console.log(optionVal,"fsdaf")
+    console.log("🎵🍣🍞🐟🐀🥁🐶🐕🐱🐅🦖");
     // let contents = $('#content').val();
     //     axios.post("/ai_rewrite",{ txt:contents,sim:1})
     //       .then(res => {
