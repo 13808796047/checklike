@@ -71,16 +71,9 @@
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
-    var radio_tag = document.getElementsByName("radio");
-    var checkvalue=""
-    for(let i=0;i<radio_tag.length;i++){
-        if(radio_tag[i].checked){
-          checkvalue = radio_tag[i].value;
-        }
-    }
-
+  var freshYN = $('input:radio:checked').val();//获取选中的radio的值
   $("#aiSubmitBtn").click(()=>{
-    console.log(checkvalue,"fsdaf")
+    console.log(freshYN,"fsdaf")
     // let contents = $('#content').val();
     //     axios.post("/ai_rewrite",{ txt:contents,sim:1})
     //       .then(res => {
