@@ -43,13 +43,19 @@
            <textarea class="form-control" rows="13" id="content"></textarea>
         </div> -->
         <div style="margin-top:25px;display:flex;">
-
+                <span>
+                <span>降重前</span>
                 <textarea class="form-control" rows="13"></textarea>
+                </span>
+
 
             <div style="margin:0 17px;"></div>
-
-
+            <span>
+                <span>降重前</span>
                 <textarea class="form-control" rows="13"></textarea>
+                </span>
+
+                <!-- <textarea class="form-control" rows="13"></textarea> -->
 
         </div>
         <div>
