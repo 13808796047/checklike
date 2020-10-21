@@ -33,7 +33,7 @@ class AiWriterHandler
         ];
         $response = $this->http->post($this->api, $option);
 //        dd($response->getbody()->getContents());
-        return json_decode($response->getbody()->getContents());
+        return $response->getbody()->getContents();
 //        $host = "http://apis.5118.com";
 //        $path = "/wyc/akey";
 //        $method = "POST";
