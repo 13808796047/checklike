@@ -24,7 +24,6 @@
         <div class="modal-body" style="text-align:center;">
           <p>本次操作将消耗1次降重次数</p>
           <p>剩余次数：{{ auth()->user()->jc_times}}<span style="color:#4876FF;margin-left:10px;" id="addjctimes">增加次数</span></p>
-
         </div>
         <div class="modal-footer">
           <p style="color:#4876FF;margin-right:25%;" id="freeadds">免费增加</p>
@@ -36,6 +35,20 @@
   </div>
   @endauth
   <!-- 模态框结束 -->
+   <!-- 模态框2 -->
+   @auth
+   <div class="modal fade bd-example-modal-sm" id="beingModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" >
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body" style="text-align:center;">
+          <div style="padding:20px 0">正在降重中，请勿刷新页面</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endauth
+  <!-- 模态框2结束-->
   <div class="main clearfix" style="min-height:800px;">
     <div class="lbox fl">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
@@ -65,8 +78,12 @@
         </div>
         <div style="margin-top:25px;" id="jcqian">
            <textarea class="form-control" rows="13" id="content"></textarea>
+           <div style="margin-top:10px;">
+              <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
+              <button type="button" class="btn btn-secondary">清除内容</button>
+          </div>
         </div>
-      <div style="margin-top:25px;" id="jchou">
+      <div style="margin-top:25px;display:none;" id="jchou">
         <div style="display:flex;">
             <div style="width:100%;">
                 <p>降重前</p>
@@ -81,10 +98,7 @@
         <div>
           <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
         </div>
-        <div style="margin-top:10px;">
-          <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
-          <button type="button" class="btn btn-secondary">清除内容</button>
-        </div>
+
       </div>
       </div>
 
