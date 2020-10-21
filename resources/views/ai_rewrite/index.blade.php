@@ -17,7 +17,7 @@
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
           <span>模式：</span>
-          <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="0">智能换词</label>
+          <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="0" checked>智能换词</label>
           <label class="radio-inline" style="margin:0 10px;"><input type="radio" name="radio" style="margin-right:5px;" value="1">智能改写</label>
           <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="-1">智能换词、智能改写同时改写</label>
         </div>
@@ -72,9 +72,10 @@
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
     var radio_tag = document.getElementsByName("radio");
-    for(var i=0;i<radio_tag.length;i++){
+    var checkvalue=""
+    for(let i=0;i<radio_tag.length;i++){
         if(radio_tag[i].checked){
-            var checkvalue = radio_tag[i].value;
+          checkvalue = radio_tag[i].value;
         }
     }
 
