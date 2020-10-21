@@ -106,7 +106,7 @@ class PaymentsController extends Controller
         switch ($type) {
             case 'JC':
                 $recharge = Recharge::where('no', $result->out_trade_no)->first();
-                return view('domained::auto_checks.index');
+                return view('auto_checks.index');
                 break;
             default:
                 $order = Order::where('payid', $result->out_trade_no)->first();
