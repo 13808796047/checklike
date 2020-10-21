@@ -89,7 +89,7 @@
               <button type="button" class="btn btn-secondary">清除内容</button>
           </div>
         </div>
-      <div style="margin-top:25px;" id="jchou">
+      <div style="margin-top:25px;display:none;" id="jchou">
         <div style="display:flex;">
             <div style="width:100%;">
                 <p>降重前</p>
@@ -178,7 +178,7 @@
     $("#jchou").css('display', 'block')
     var htmlstring="一切正常检测20分钟上下，大学毕业高峰期，网络服务器检测压力太大，时间会有增加，请大伙儿提早做好时间提前准备。超出2钟头没出結果能够联络在线客服解决"
 
-    changed(contents,stringtemp,htmlstring)
+    changed(contents,htmlstring)
     // var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
         // axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
         //   .then(res => {
@@ -204,9 +204,7 @@
     }
 
     function changed(a,b) {
-      var oldContent = "正常检测20分钟左右，毕业高峰期，服务器检测压力大，时间会有延长，请大家提前做好时间准备。超过2小时没出结果可以联系客服处理！";
-            var content1 = "一切正常检测20分钟上下，大学毕业高峰期，网络服务器检测压力太大，时间会有增加，请大伙儿提早做好时间提前准备。超出2钟头没出結果能够联络在线客服解决"
-            var diff = JsDiff['diffChars'](oldContent, content1);
+            var diff = JsDiff['diffChars'](a, b);
             var arr = new Array();
             for (var i = 0; i < diff.length; i++) {
                 if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
@@ -235,8 +233,8 @@
                 }
             }
             var html = arr.join('');
-
-            result.innerHTML = html;
+            document.getElementById('content_later').innerHTML = html;
+            document.getElementById('content_after').innerHTML = a;
         }
 
   </script>
