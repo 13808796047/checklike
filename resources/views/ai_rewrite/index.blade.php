@@ -78,6 +78,9 @@
         </div>
         <div style="margin-top:25px;" id="jcqian">
            <textarea class="form-control" rows="13" id="content"></textarea>
+           <div>
+              <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
+            </div>
            <div style="margin-top:10px;">
               <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
               <button type="button" class="btn btn-secondary">清除内容</button>
@@ -95,9 +98,7 @@
                 <textarea class="form-control" rows="13"></textarea>
             </div>
         </div>
-        <div>
-          <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
-        </div>
+
 
       </div>
       </div>
