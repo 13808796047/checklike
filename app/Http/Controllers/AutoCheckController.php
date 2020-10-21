@@ -28,7 +28,14 @@ class AutoCheckController extends Controller
             throw new InvalidRequestException('您的降重次数不足!');
         }
 
-        $result = app(AiWriterHandler::class)->getContent($request->input('txt', ''), $request->th, $request->filter, $request->corewordfilter, $request->sim, $request->retype);
+        $result = app(AiWriterHandler::class)->getContent(
+            $request->input('txt', ''),
+            $request->th,
+            $request->filter,
+            $request->corewordfilter,
+            $request->sim,
+            $request->retype
+        );
 
         $user->decreaseJcTimes();
         return $result;
