@@ -23,7 +23,7 @@
         </div>
         <div style="display:flex;">
           <label for="sel">原创度:</label>
-          <select class="custom-select custom-select-sm" id="sel" style="width:10%;margin:0 20px;"  onchange="optionChange()">
+          <select class="custom-select custom-select-sm" id="sel" style="width:10%;margin:0 20px;" name="3" onchange="optionChange()">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
