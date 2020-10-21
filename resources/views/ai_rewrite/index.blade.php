@@ -23,7 +23,7 @@
         </div>
         <div class="modal-body" style="text-align:center;">
           <p>本次操作将消耗1次降重次数</p>
-          <p>剩余次数：{{ auth()->user()->jc_times}}<span style="color:#4876FF;margin-left:10px;" id="addjctimes">增加次数</span></p>
+          <p>剩余次数：<span id="requestcishuNum">{{ auth()->user()->jc_times}}</span><span style="color:#4876FF;margin-left:10px;" id="addjctimes">增加次数</span></p>
         </div>
         <div class="modal-footer">
           <p style="color:#4876FF;margin-right:25%;" id="freeadds">免费增加</p>
@@ -98,8 +98,6 @@
                 <textarea class="form-control" rows="13"></textarea>
             </div>
         </div>
-
-
       </div>
       </div>
 
@@ -157,6 +155,12 @@
     //         console.log(err,"xixijsafjsajf")
     //       }
     //     );
+  })
+  $("#surecheck").click(()=>{
+    $('#exampleModal').modal('hide')
+    $('#beingModal').modal('show')
+    let num = $("#requestcishuNum").html();
+    console.log(num,"xixi")
   })
 
   </script>
