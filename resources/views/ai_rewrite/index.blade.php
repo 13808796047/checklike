@@ -176,31 +176,28 @@
     $('#beingModal').modal('hide')
     $('#jcqian').css('display', 'none')
     $("#jchou").css('display', 'block')
-    var htmlstring="一切正常检测20分钟上下，大学毕业高峰期，网络服务器检测压力太大，时间会有增加，请大伙儿提早做好时间提前准备。超出2钟头没出結果能够联络在线客服解决"
-
-    changed(contents,htmlstring)
-    // var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
-        // axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
-        //   .then(res => {
-        //     $('#beingModal').modal('hide')
-        //     $('#jcqian').css('display', 'none')
-        //     var htmlstring=res.data.data;
-        //     var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
-        //     $("#jchou").css('display', 'block')
-        //     changed(contents,stringtemp,htmlstring)
-        //   })
-        //   .catch(err =>{
-        //     num--;
-        //     if(num>=0){
-        //       togetJc(num)
-        //       return;
-        //     }else{
-        //       $('#beingModal').modal('hide')
-        //       alertify.set('notifier','position', 'top-center');
-        //       alertify.notify("降重失败，请重试",'custom',3)
-        //     }
-        //   }
-        //   );
+    var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
+        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
+          .then(res => {
+            $('#beingModal').modal('hide')
+            $('#jcqian').css('display', 'none')
+            var htmlstring=res.data.data;
+            // var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
+            $("#jchou").css('display', 'block')
+            changed(contents,htmlstring)
+          })
+          .catch(err =>{
+            num--;
+            if(num>=0){
+              togetJc(num)
+              return;
+            }else{
+              $('#beingModal').modal('hide')
+              alertify.set('notifier','position', 'top-center');
+              alertify.notify("降重失败，请重试",'custom',3)
+            }
+          }
+          );
     }
 
     function changed(a,b) {
