@@ -73,7 +73,7 @@
   <script>
   $("#aiSubmitBtn").click(()=>{
     let contents = $('#content').val();
-        axios.post("/ai_rewrite",{txt:contents,sim:1})
+        axios.post("/ai_rewrite",{ txt:contents , sim:1})
           .then(res => {
             console.log(res,"fdsafs")
           })
