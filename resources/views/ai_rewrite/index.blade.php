@@ -89,16 +89,16 @@
               <button type="button" class="btn btn-secondary">清除内容</button>
           </div>
         </div>
-      <div style="margin-top:25px;display:none;" id="jchou">
+      <div style="margin-top:25px;" id="jchou">
         <div style="display:flex;">
             <div style="width:100%;">
                 <p>降重前</p>
-                <textarea class="form-control" rows="13" id="content_after"></textarea>
+                <div id="content_later"></div>
             </div>
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
                 <p>降重后</p>
-                <textarea class="form-control" rows="13" id="content_later"></textarea>
+                <div id="content_later"></div>
             </div>
         </div>
       </div>
@@ -204,40 +204,39 @@
     }
 
     function changed(a,b) {
-      console.log(a,b,"xixi")
-      var oldContent = a
-      var content1 = b
-      var diff = JsDiff['diffChars'](oldContent, content1);
-      var arr = new Array();
-      for (var i = 0; i < diff.length; i++) {
-        if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
-          var swap = diff[i];
-          diff[i] = diff[i + 1];
-          diff[i + 1] = swap;
-        }
-        var diffObj = diff[i];
-        var content = diffObj.value;
+      var oldContent = "正常检测20分钟左右，毕业高峰期，服务器检测压力大，时间会有延长，请大家提前做好时间准备。超过2小时没出结果可以联系客服处理！";
+            var content1 = "一切正常检测20分钟上下，大学毕业高峰期，网络服务器检测压力太大，时间会有增加，请大伙儿提早做好时间提前准备。超出2钟头没出結果能够联络在线客服解决"
+            var diff = JsDiff['diffChars'](oldContent, content1);
+            var arr = new Array();
+            for (var i = 0; i < diff.length; i++) {
+                if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+                    var swap = diff[i];
+                    diff[i] = diff[i + 1];
+                    diff[i + 1] = swap;
+                }
+                console.log(diff[i]);
+                var diffObj = diff[i];
+                var content = diffObj.value;
 
-        //可以考虑启用，特别是后台清理HTML标签后的文本
-        if (content.indexOf("\n") >= 0) {
+                //可以考虑启用，特别是后台清理HTML标签后的文本
+                if (content.indexOf("\n") >= 0) {
+                    //console.log("有换行符");
+                    //替换为<br/>
+                    var reg = new RegExp('\n', 'g');
+                    content = content.replace(reg, '<br/>');
+                }
+                if (diffObj.removed) {
+                    arr.push('<del title="删除的部分">' + content + '</del>');
+                } else if (diffObj.added) {
+                    arr.push('<ins title="新增的部分">' + content + '</ins>');
+                } else {
+                    //没有改动的部分
+                    arr.push('<span title="没有改动的部分">' + content + '</span>');
+                }
+            }
+            var html = arr.join('');
 
-          var reg = new RegExp('\n', 'g');
-          content = content.replace(reg, '<br/>');
-        }
-        if (diffObj.removed) {
-          arr.push('<del title="删除的部分">' + content + '</del>');
-        } else if (diffObj.added) {
-          arr.push('<ins title="新增的部分">' + content + '</ins>');
-        } else {
-          //没有改动的部分
-          arr.push('<span title="没有改动的部分">' + content + '</span>');
-        }
-      }
-          var html = arr.join('');
-          var stringtemp =b.replace(/<[^>]+>/g, "");
-          document.getElementById('content_after').innerHTML = html;
-
-          document.getElementById('content_later').innerHTML = stringtemp;
+            result.innerHTML = html;
         }
 
   </script>
