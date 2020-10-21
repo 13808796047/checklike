@@ -44,6 +44,7 @@
         </div> -->
         <div style="margin-top:25px;display:flex;">
             <textarea class="form-control" rows="13"></textarea>
+            <div style="margin:0 17px;"></div>
             <textarea class="form-control" rows="13"></textarea>
         </div>
         <div>
