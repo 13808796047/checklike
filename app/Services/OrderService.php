@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use App\Exceptions\InternalException;
 use App\Exceptions\InvalidRequestException;
 use App\Handlers\FileUploadHandler;
 use App\Handlers\FileWordsHandle;
@@ -48,6 +49,9 @@ class OrderService
                 } else {
                     $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
                 }
+            }
+            if($words <= 0) {
+                throw new InternalException('文件解析错误,请重新提交');
             }
             if($words > 2500 && $user->redix == 1 && $request->from != 'wp-wx') {
                 $resultWords = \Cache::remember('user' . $user->id, now()->addDay(), function() use ($words) {
