@@ -27,6 +27,9 @@
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
           </select>
           <p>(数值越大、可读性越高)</p>
         </div>
@@ -80,7 +83,7 @@
         }
     }
   }
-  var optionVal = "1"
+  var optionVal = "3"
   function optionChange(){
     var sel=document.getElementById('sel');
     var sid=sel.selectedIndex;
