@@ -176,7 +176,6 @@
     $('#beingModal').modal('hide')
     $('#jcqian').css('display', 'none')
     $("#jchou").css('display', 'block')
-    var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
           .then(res => {
             $('#beingModal').modal('hide')
