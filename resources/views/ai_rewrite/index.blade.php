@@ -177,7 +177,7 @@
     $('#jcqian').css('display', 'none')
     $("#jchou").css('display', 'block')
     var htmlstring="一切正常检测20分钟上下，大学毕业高峰期，网络服务器检测压力太大，时间会有增加，请大伙儿提早做好时间提前准备。超出2钟头没出結果能够联络在线客服解决"
-    var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
+
     changed(contents,stringtemp,htmlstring)
     // var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
         // axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
@@ -203,7 +203,7 @@
         //   );
     }
 
-    function changed(a,b,c) {
+    function changed(a,b) {
       console.log(a,b,"xixi")
       var oldContent = a
       var content1 = b
@@ -234,9 +234,10 @@
         }
       }
           var html = arr.join('');
+          var stringtemp =b.replace(/<[^>]+>/g, "");
           document.getElementById('content_after').innerHTML = html;
 
-          document.getElementById('content_later').innerHTML = c;
+          document.getElementById('content_later').innerHTML = stringtemp;
         }
 
   </script>
