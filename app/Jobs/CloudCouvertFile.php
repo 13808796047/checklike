@@ -2,10 +2,11 @@
 
 namespace App\Jobs;
 
+use App\Handlers\FileUploadHandler;
 use App\Models\Order;
-use CloudConvert\CloudConvert;
-use CloudConvert\Models\Job;
-use CloudConvert\Models\Task;
+use \CloudConvert\Laravel\Facades\CloudConvert;
+use \CloudConvert\Models\Job;
+use \CloudConvert\Models\Task;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -19,7 +20,7 @@ class CloudCouvertFile implements ShouldQueue
 
     protected $order;
 
-    public function __construct(Order $order, $job)
+    public function __construct(Order $order)
     {
         $this->order = $order;
     }
@@ -37,24 +38,29 @@ class CloudCouvertFile implements ShouldQueue
                 ->addTask(
                     (new Task('convert', 'convert-my-file'))
                         ->set('input', 'import-my-file')
-                        ->set('output_format', 'pdf')
-                        ->set('some_other_option', 'value')
+                        ->set('output_format', 'txt')
+//                        ->set('some_other_option', 'value')
                 )
                 ->addTask(
                     (new Task('export/url', 'export-my-file'))
                         ->set('input', 'convert-my-file')
                 )
         );
-        Log::info('job', [$job]);
+        CloudConvert::jobs()->wait($job);
         foreach($job->getExportUrls() as $file) {
 
             $source = CloudConvert::getHttpTransport()->download($file->url)->detach();
-//            $dest = fopen(Storage::path('out/' . $file->filename), 'w');
-//
+//            $folder_name = "uploads/files/" . date('Ym/d', time());
+//            // 值如：/home/vagrant/Code/larabbs/public/uploads/images/avatars/201709/21/
+//            $upload_path = public_path() . '/' . $folder_name;
+//            // 值如：1_1493521050_7BVc9v9ujP.png
+//            $filename = $this->order->user->id . '_' . time() . '_' . \Str::random(10) . '.txt';
+//            $dest = fopen("$upload_path/$filename", 'w');
 //            stream_copy_to_stream($source, $dest);
-            $result = app(FileUploadHandler::class)->save($source, 'files', $this->order->user->id);
+            $result = app(FileUploadHandler::class)->saveTxt($source, 'files', $this->order->user->id);
             $this->order->update([
-                'paper_path' => $result['path'],
+//                'paper_path' => config('app.url') . "/$folder_name/$filename",
+                'paper_path' => $result['path'] ?? ''
             ]);
         }
     }

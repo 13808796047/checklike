@@ -35,6 +35,10 @@ class OrderService
                 } else {
                     $res = app(FileWordsHandle::class)->submitCheck($file->path);
                     $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
+                    if($category->classid == 4 && $file->type == 'docx') {
+                        $content = read_docx($file->real_path);
+                        $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
+                    }
                 }
             } else {
                 $content = remove_spec_char($request->input('content', ''));
@@ -89,12 +93,13 @@ class OrderService
             }
             $order->price = $price;
             $order->save();
-            $file->order()->associate($order);
+            $file->update([
+                'order_id' => $order->id,
+            ]);
             \Cache::forget('word');
             $order->orderContent()->create([
                 'content' => $content ?? ''
             ]);
-            $this->checkWords($order);
             if($order->status == 0) {
                 dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
             }
@@ -104,31 +109,7 @@ class OrderService
     }
 
 
-    protected function checkWords(Order $order)
-    {
-        dd($order);
-        if($order->category->classid == 4) {
-            if($order->file->type == 'docx') {
-                $content = read_docx($order->file->real_path);
-                $words = count_words($content);
-                if($words / $order->words > 1.15) {
-                    $this->cloudConert($order);
-                } else {
-                    $result = $fileUploadHandle->saveTxt($content, 'files', $user->id);
-                    $order->update([
-                        'paper_path' => $result['path']
-                    ]);
-                }
-            } else {
-                $this->cloudConert($order);
-            }
-        }
-    }
 
-    protected function cloudConert(Order $order)
-    {
-        $this->dispatch(new CloudCouvertFile($order));
-    }
 
     //计算字数
     public function calcWords($words)

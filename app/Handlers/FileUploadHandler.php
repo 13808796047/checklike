@@ -5,7 +5,7 @@ namespace App\Handlers;
 
 class FileUploadHandler
 {
-    protected $allowed_ext = ['txt', 'docx'];
+    protected $allowed_ext = ['txt', 'docx', 'doc'];
 
     public function save($file, $folder, $file_prefix)
     {
@@ -13,7 +13,7 @@ class FileUploadHandler
         // 值如：/home/vagrant/Code/larabbs/public/uploads/images/avatars/201709/21/
         $upload_path = public_path() . '/' . $folder_name;
         //获取文件的后缀名
-        $extension = strtolower($file->getClientOriginalExtension()) ?: 'docx';
+        $extension = strtolower($file->getClientOriginalExtension());
         // 值如：1_1493521050_7BVc9v9ujP.png
         $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.' . $extension;
 
