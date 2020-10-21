@@ -93,12 +93,12 @@
         <div style="display:flex;">
             <div style="width:100%;">
                 <p>降重前</p>
-                <textarea class="form-control" rows="13"></textarea>
+                <div id="content_after" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
                 <p>降重后</p>
-                <textarea class="form-control" rows="13"></textarea>
+                <div id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
         </div>
       </div>
@@ -148,25 +148,77 @@
     optionChange();
     getRadioVal();
     $('#exampleModal').modal('show')
-    // let filter = $("#filter").val().replace(/\s*/g,"")
-    // let contents = $('#content').val();
-    //     axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
-    //       .then(res => {
-    //         console.log(res,"fdsafs")
-    //       })
-    //       .catch(err =>{
-    //         console.log(err,"xixijsafjsajf")
-    //       }
-    //     );
   })
   $("#surecheck").click(()=>{
     $('#exampleModal').modal('hide')
     $('#beingModal').modal('show')
-    alertify.set('notifier','position', 'top-center');
-      alertify.notify("fdsjafsjf",'custom',3)
     let num = $("#requestcishuNum").html();
-
+    togetJc(num)
   })
+
+  function togetJc(num){
+    optionChange();
+    getRadioVal();
+    let filter = $("#filter").val().replace(/\s*/g,"")
+    let contents = $('#content').val();
+    $('#beingModal').modal('hide')
+    $('#jcqian').css('display', 'none')
+    $("#jchou").css('display', 'block')
+        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
+          .then(res => {
+            $('#beingModal').modal('hide')
+            $('#jcqian').css('display', 'none')
+            var htmlstring=res.data.data;
+            $("#jchou").css('display', 'block')
+            changed(contents,htmlstring)
+          })
+          .catch(err =>{
+            num--;
+            if(num>=0){
+              togetJc(num)
+              return;
+            }else{
+              $('#beingModal').modal('hide')
+              alertify.set('notifier','position', 'top-center');
+              alertify.notify("降重失败，请重试",'custom',3)
+            }
+          }
+          );
+    }
+
+    function changed(a,b) {
+            var diff = JsDiff['diffChars'](a, b);
+            var arr = new Array();
+            for (var i = 0; i < diff.length; i++) {
+                if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+                    var swap = diff[i];
+                    diff[i] = diff[i + 1];
+                    diff[i + 1] = swap;
+                }
+                console.log(diff[i]);
+                var diffObj = diff[i];
+                var content = diffObj.value;
+
+                //可以考虑启用，特别是后台清理HTML标签后的文本
+                if (content.indexOf("\n") >= 0) {
+                    //console.log("有换行符");
+                    //替换为<br/>
+                    var reg = new RegExp('\n', 'g');
+                    content = content.replace(reg, '<br/>');
+                }
+                if (diffObj.removed) {
+                    arr.push('<del title="删除的部分">' + content + '</del>');
+                } else if (diffObj.added) {
+                    arr.push('<ins title="新增的部分">' + content + '</ins>');
+                } else {
+                    //没有改动的部分
+                    arr.push('<span title="没有改动的部分">' + content + '</span>');
+                }
+            }
+            var html = arr.join('');
+            document.getElementById('content_later').innerHTML = html;
+            document.getElementById('content_after').innerHTML = a;
+        }
 
   </script>
 @stop
