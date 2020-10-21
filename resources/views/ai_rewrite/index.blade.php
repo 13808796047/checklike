@@ -52,7 +52,8 @@
             <div style="margin:0 17px;"></div>
             <span>
                 <span>降重前</span>
-                <textarea class="form-control" rows="13"></textarea>
+                <textarea class="form-control" rows="13" cols="23"></textarea>
+
                 </span>
 
                 <!-- <textarea class="form-control" rows="13"></textarea> -->
