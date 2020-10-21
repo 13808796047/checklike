@@ -39,8 +39,12 @@
               <textarea class="form-control" rows="3" id="filter"></textarea>
           </div>
         </div>
-        <div style="margin-top:25px;">
+        <!-- <div style="margin-top:25px;">
            <textarea class="form-control" rows="13" id="content"></textarea>
+        </div> -->
+        <div style="margin-top:25px;display:flex;">
+            <textarea class="form-control" rows="13"></textarea>
+            <textarea class="form-control" rows="13"></textarea>
         </div>
         <div>
           <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
@@ -93,19 +97,16 @@
   $("#aiSubmitBtn").click(()=>{
     optionChange();
     getRadioVal();
-
     let filter = $("#filter").val().replace(/\s*/g,"")
-    console.log(filter,"fdsaf")
-    console.log("🎵🍣🍞🐟🐀🥁🐶🐕🐱🐅🦖");
-    // let contents = $('#content').val();
-    //     axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue})
-    //       .then(res => {
-    //         console.log(res,"fdsafs")
-    //       })
-    //       .catch(err =>{
-    //         console.log(err,"xixijsafjsajf")
-    //       }
-    //     );
+    let contents = $('#content').val();
+        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
+          .then(res => {
+            console.log(res,"fdsafs")
+          })
+          .catch(err =>{
+            console.log(err,"xixijsafjsajf")
+          }
+        );
   })
 
   </script>
