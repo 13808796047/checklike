@@ -93,12 +93,12 @@
         <div style="display:flex;">
             <div style="width:100%;">
                 <p>降重前</p>
-                <div id="content_later"></div>
+                <div id="content_later" style="height:550px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
                 <p>降重后</p>
-                <div id="content_later"></div>
+                <div id="content_later" style="height:550px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
         </div>
       </div>
