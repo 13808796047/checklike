@@ -72,7 +72,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
   var chkObjs=null;
-  var obj=document.getElementsByName("radio")
+  var obj=document.getElementsByName("optradio")
   for (var i=0;i<obj.length;i++){ //遍历Radio
     if(obj[i].checked){
       chkObjs=obj[i].value;
