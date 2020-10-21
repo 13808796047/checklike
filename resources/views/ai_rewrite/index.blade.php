@@ -72,6 +72,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
   function getRadioVal(){
+    var checkvalue = "";
     var radio_tag = document.getElementsByName("radio");
     for(let i=0;i<radio_tag.length;i++){
         if(radio_tag[i].checked){
