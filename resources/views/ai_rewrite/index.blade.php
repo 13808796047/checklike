@@ -163,15 +163,15 @@
   })
   $("#surecheck").click(()=>{
     $('#exampleModal').modal('hide')
-    $('#beingModal').modal('show')
+
     let num = $("#requestcishuNum").html();
     if(num == 0){
       alertify.set('notifier','position', 'top-center');
       alertify.notify("您的降重次数不足",'custom',3);
-    }else{
-      togetJc(num)
+      return;
     }
-
+    $('#beingModal').modal('show')
+    togetJc(num)
   })
 
   function togetJc(num){
