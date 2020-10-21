@@ -152,9 +152,10 @@
   })
   $("#aiSubmitBtn").click(()=>{
     let words =  $('#words span').text();
-    if(words>100){
+    if(words>5000){
       alertify.set('notifier','position', 'top-center');
       alertify.notify("字数不能大于5000字",'custom',3)
+      return;
     }
     optionChange();
     getRadioVal();
@@ -164,6 +165,11 @@
     $('#exampleModal').modal('hide')
     $('#beingModal').modal('show')
     let num = $("#requestcishuNum").html();
+    if(num == 0){
+      alertify.set('notifier','position', 'top-center');
+      alertify.notify("您的降重次数不足",'custom',3);
+      return;
+    }
     togetJc(num)
   })
 
