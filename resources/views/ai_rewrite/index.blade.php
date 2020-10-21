@@ -182,7 +182,6 @@
             $('#beingModal').modal('hide')
             $('#jcqian').css('display', 'none')
             var htmlstring=res.data.data;
-            // var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
             $("#jchou").css('display', 'block')
             changed(contents,htmlstring)
           })
