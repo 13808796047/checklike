@@ -17,9 +17,9 @@
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
           <span>模式：</span>
-          <label class="radio-inline"><input type="radio" name="optradio" style="margin-right:5px;">智能换词</label>
-          <label class="radio-inline" style="margin:0 10px;"><input type="radio" name="optradio" style="margin-right:5px;">智能改写</label>
-          <label class="radio-inline"><input type="radio" name="optradio" style="margin-right:5px;">智能换词、智能改写同时改写</label>
+          <label class="radio-inline"><input type="radio" name="optradio" style="margin-right:5px;" value="0" >智能换词</label>
+          <label class="radio-inline" style="margin:0 10px;"><input type="radio" name="optradio" style="margin-right:5px;" value="1">智能改写</label>
+          <label class="radio-inline"><input type="radio" name="optradio" style="margin-right:5px;" value="-1">智能换词、智能改写同时改写</label>
         </div>
         <div style="display:flex;">
           <label for="sel1">原创度:</label>
@@ -71,16 +71,26 @@
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
+  var chkObjs=null;
+  var obj=document.getElementsByName("optradio")
+  for (let i=0;i<obj.length;i++){ //遍历Radio
+    if(obj[i].checked){
+      chkObjs=obj[i].value;
+      console.log(obj.value,"fasfsadfsfd")
+    }
+  }
+
   $("#aiSubmitBtn").click(()=>{
-    let contents = $('#content').val();
-        axios.post("/ai_rewrite",{ txt:contents,sim:1})
-          .then(res => {
-            console.log(res,"fdsafs")
-          })
-          .catch(err =>{
-            console.log(err,"xixijsafjsajf")
-          }
-        );
+    console.log(chkObjs)
+    // let contents = $('#content').val();
+    //     axios.post("/ai_rewrite",{ txt:contents,sim:1})
+    //       .then(res => {
+    //         console.log(res,"fdsafs")
+    //       })
+    //       .catch(err =>{
+    //         console.log(err,"xixijsafjsajf")
+    //       }
+    //     );
   })
 
   </script>
