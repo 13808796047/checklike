@@ -80,7 +80,7 @@
         }
     }
   }
-  var optionVal = ""
+  var optionVal = "1"
   function optionChange(){
     var sel=document.getElementById('sel');
     var sid=sel.selectedIndex;
