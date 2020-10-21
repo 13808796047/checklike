@@ -168,9 +168,10 @@
     if(num == 0){
       alertify.set('notifier','position', 'top-center');
       alertify.notify("您的降重次数不足",'custom',3);
-      return;
+    }else{
+      togetJc(num)
     }
-    togetJc(num)
+
   })
 
   function togetJc(num){
