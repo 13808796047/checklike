@@ -104,6 +104,12 @@
                 <div id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
         </div>
+        <div>
+          <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
+        </div>
+        <div style="margin-top:10px;">
+          <button type="button" class="btn btn-primary" id="againjc">再次降重</button>
+        </div>
       </div>
       </div>
 
@@ -150,6 +156,10 @@
   $("#content").bind('input',(e)=>{
         $('#words span').html(e.target.value.length)
   })
+   //再来一篇
+   $('#againjc').click(function(){
+        window.location.reload()
+      })
   $("#aiSubmitBtn").click(()=>{
     let words =  $('#words span').text();
     if(words>5000){
