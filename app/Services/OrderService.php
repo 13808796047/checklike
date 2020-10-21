@@ -85,15 +85,15 @@ class OrderService
                 'referer' => $referer['from'],
                 'keyword' => $referer['keyword']
             ]);
-            dd($order);
             $order->user()->associate($user);
             if($user->is_free && $category->id == 1) {
-                if($user->dev_weixin_openid || $user->dev_weapp_openid) {
+                if($user->weixin_openid || $user->weapp_openid) {
                     $price = max($price - 3, 0);
                 }
             }
             $order->price = $price;
             $order->save();
+            dd($order);
             $file->update([
                 'order_id' => $order->id,
             ]);
