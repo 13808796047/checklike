@@ -1,17 +1,57 @@
 @extends('layouts.app')
 @section('title','智能查重')
 @section('styles')
+<link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" />
 <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
-  <style>
+<style>
+  del { background: #FF4040; }
+  ins { background: #00ff21;text-decoration:none; }
 </style>
   <!-- <link href="https://css.lianwen.com/css/public_c.css?v=2018v1" type="text/css" rel="stylesheet"/>
   <link href="https://css.lianwen.com/css/index_2017.css" type="text/css" rel="stylesheet"/> -->
   <!-- <link rel="stylesheet" href="{{asset('asset/css/index.css')}}"> -->
 @stop
 @section('content')
-  <!-- alert提示框 -->
-
   <!-- 模态框 -->
+  @auth
+  <div class="modal fade bd-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">提示</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <p>本次操作将消耗1次降重次数</p>
+          <p>剩余次数：<span id="requestcishuNum">{{ auth()->user()->jc_times}}</span><span style="color:#4876FF;margin-left:10px;" id="addjctimes">增加次数</span></p>
+        </div>
+        <div class="modal-footer">
+          <p style="color:#4876FF;margin-right:25%;" id="freeadds">免费增加</p>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="surecheck">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endauth
+  <!-- 模态框结束 -->
+   <!-- 模态框2 -->
+   @auth
+   <div class="modal fade bd-example-modal-sm" id="beingModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" >
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body" style="text-align:center;">
+          <div style="padding:20px 0">正在降重中，请勿刷新页面</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endauth
+  <!-- 模态框2结束-->
   <div class="main clearfix" style="min-height:800px;">
     <div class="lbox fl">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
@@ -36,20 +76,34 @@
         <div>
           <p>关键词锁定:(智能原创时，保护以下关键词不被替换，多个关键词以 "|" 搁开)</p>
           <div>
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" rows="3" id="filter"></textarea>
           </div>
         </div>
-        <div style="margin-top:25px;">
+        <div style="margin-top:25px;" id="jcqian">
            <textarea class="form-control" rows="13" id="content"></textarea>
+           <div>
+              <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
+            </div>
+           <div style="margin-top:10px;">
+              <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
+              <button type="button" class="btn btn-secondary">清除内容</button>
+          </div>
         </div>
-        <div>
-          <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
+      <div style="margin-top:25px;display:none;" id="jchou">
+        <div style="display:flex;">
+            <div style="width:100%;">
+                <p>降重前</p>
+                <textarea class="form-control" rows="13"></textarea>
+            </div>
+            <div style="margin:0 17px;"></div>
+            <div style="width:100%;">
+                <p>降重后</p>
+                <textarea class="form-control" rows="13"></textarea>
+            </div>
         </div>
-        <div style="margin-top:10px;">
-          <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
-          <button type="button" class="btn btn-secondary">清除内容</button>
-        </div>
-    </div>
+      </div>
+      </div>
+
 
   <div class="rbox fr">
       <div class="tit">在线客服</div>
@@ -68,7 +122,7 @@
 </div>
 @stop
 @section('scripts')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="{{ asset('asset/js/qrcode.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
@@ -91,11 +145,12 @@
   }
 
   $("#aiSubmitBtn").click(()=>{
+    optionChange();
     getRadioVal();
-    console.log(optionVal,"fsdaf")
-    console.log("🎵🍣🍞🐟🐀🥁🐶🐕🐱🐅🦖");
+    $('#exampleModal').modal('show')
+    // let filter = $("#filter").val().replace(/\s*/g,"")
     // let contents = $('#content').val();
-    //     axios.post("/ai_rewrite",{ txt:contents,sim:1})
+    //     axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
     //       .then(res => {
     //         console.log(res,"fdsafs")
     //       })
@@ -103,6 +158,14 @@
     //         console.log(err,"xixijsafjsajf")
     //       }
     //     );
+  })
+  $("#surecheck").click(()=>{
+    $('#exampleModal').modal('hide')
+    $('#beingModal').modal('show')
+    alertify.set('notifier','position', 'top-center');
+      alertify.notify("fdsjafsjf",'custom',3)
+    let num = $("#requestcishuNum").html();
+
   })
 
   </script>
