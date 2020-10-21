@@ -17,10 +17,15 @@ class AiWriterHandler
         $this->http = $client;
     }
 
-    public function getContent($content)
+    public function getContent($txt, $th, $filter, $corewordfilter, $sim, $retype)
     {
         $data = [
-            'txt' => $content, //文件資源
+            'txt' => $txt, //文件資源
+            'th' => $th,
+            'filter' => $filter,
+            'corewordfilter' => $corewordfilter,
+            'sim' => $sim,
+            'retype' => $retype
         ];
 
         // 构建请求参数
