@@ -93,12 +93,12 @@
         <div style="display:flex;">
             <div style="width:100%;">
                 <p>降重前</p>
-                <textarea class="form-control" rows="13"></textarea>
+                <textarea class="form-control" rows="13" id="content_after"></textarea>
             </div>
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
                 <p>降重后</p>
-                <textarea class="form-control" rows="13"></textarea>
+                <textarea class="form-control" rows="13" id="content_later"></textarea>
             </div>
         </div>
       </div>
@@ -162,11 +162,74 @@
   $("#surecheck").click(()=>{
     $('#exampleModal').modal('hide')
     $('#beingModal').modal('show')
-    alertify.set('notifier','position', 'top-center');
-      alertify.notify("fdsjafsjf",'custom',3)
+    // alertify.set('notifier','position', 'top-center');
+    //   alertify.notify("fdsjafsjf",'custom',3)
     let num = $("#requestcishuNum").html();
-
+    togetJc(num)
   })
+
+  function togetJc(num){
+    optionChange();
+    getRadioVal();
+    let filter = $("#filter").val().replace(/\s*/g,"")
+    let contents = $('#content').val();
+        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
+          .then(res => {
+            $('#beingModal').modal('hide')
+            $('#jcqian').css('display', 'none')
+            console.log(res,"xixi")
+            // var htmlstring=res.data.result.new_content;
+            // var stringtemp =htmlstring.replace(/<[^>]+>/g, "");
+            // changed(contents,stringtemp,htmlstring)
+            $("#jchou").css('display', 'block')
+          })
+          .catch(err =>{
+            num--;
+            if(num>=0){
+              togetJc(num)
+              return;
+            }else{
+              $('#beingModal').modal('hide')
+              toastr.error('降重失败，请重试');
+            }
+          }
+          );
+    }
+
+    function changed(a,b,c) {
+            var oldContent = a
+            var content1 = b
+            var diff = JsDiff['diffChars'](oldContent, content1);
+      var arr = new Array();
+      for (var i = 0; i < diff.length; i++) {
+        if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+          var swap = diff[i];
+          diff[i] = diff[i + 1];
+          diff[i + 1] = swap;
+        }
+        var diffObj = diff[i];
+        var content = diffObj.value;
+
+        //可以考虑启用，特别是后台清理HTML标签后的文本
+        if (content.indexOf("\n") >= 0) {
+
+          var reg = new RegExp('\n', 'g');
+          content = content.replace(reg, '<br/>');
+        }
+        if (diffObj.removed) {
+          arr.push('<del title="删除的部分">' + content + '</del>');
+        } else if (diffObj.added) {
+          arr.push('<ins title="新增的部分">' + content + '</ins>');
+        } else {
+          //没有改动的部分
+          arr.push('<span title="没有改动的部分">' + content + '</span>');
+        }
+      }
+          var html = arr.join('');
+          document.getElementById('content_after').innerHTML = html;
+
+          document.getElementById('content_later').innerHTML = c;
+        }
 
   </script>
 @stop
