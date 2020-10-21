@@ -162,7 +162,8 @@
   $("#surecheck").click(()=>{
     $('#exampleModal').modal('hide')
     $('#beingModal').modal('show')
-    toastr.error('当前未登录账号，请登录后再操作');
+    alertify.set('notifier','position', 'top-center');
+      alertify.notify("fdsjafsjf",'custom',3)
     let num = $("#requestcishuNum").html();
 
   })
