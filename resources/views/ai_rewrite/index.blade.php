@@ -9,9 +9,33 @@
   <!-- <link rel="stylesheet" href="{{asset('asset/css/index.css')}}"> -->
 @stop
 @section('content')
-  <!-- alert提示框 -->
-
   <!-- 模态框 -->
+  @auth
+  <div class="modal fade bd-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">提示</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <p>本次操作将消耗1次降重次数</p>
+          <p>剩余次数：{{ auth()->user()->jc_times}}<span style="color:#4876FF;margin-left:10px;" id="addjctimes">增加次数</span></p>
+
+        </div>
+        <div class="modal-footer">
+          <p style="color:#4876FF;margin-right:25%;" id="freeadds">免费增加</p>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="surecheck">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endauth
+  <!-- 模态框结束 -->
   <div class="main clearfix" style="min-height:800px;">
     <div class="lbox fl">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
@@ -39,10 +63,11 @@
               <textarea class="form-control" rows="3" id="filter"></textarea>
           </div>
         </div>
-        <!-- <div style="margin-top:25px;">
+        <div style="margin-top:25px;" id="jcqian">
            <textarea class="form-control" rows="13" id="content"></textarea>
-        </div> -->
-        <div style="margin-top:25px;display:flex;">
+        </div>
+      <div style="margin-top:25px;" id="jchou">
+        <div style="display:flex;">
             <div style="width:100%;">
                 <p>降重前</p>
                 <textarea class="form-control" rows="13"></textarea>
@@ -60,7 +85,9 @@
           <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
           <button type="button" class="btn btn-secondary">清除内容</button>
         </div>
-    </div>
+      </div>
+      </div>
+
 
   <div class="rbox fr">
       <div class="tit">在线客服</div>
@@ -104,16 +131,17 @@
   $("#aiSubmitBtn").click(()=>{
     optionChange();
     getRadioVal();
-    let filter = $("#filter").val().replace(/\s*/g,"")
-    let contents = $('#content').val();
-        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
-          .then(res => {
-            console.log(res,"fdsafs")
-          })
-          .catch(err =>{
-            console.log(err,"xixijsafjsajf")
-          }
-        );
+    $('#exampleModal').modal('show')
+    // let filter = $("#filter").val().replace(/\s*/g,"")
+    // let contents = $('#content').val();
+    //     axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
+    //       .then(res => {
+    //         console.log(res,"fdsafs")
+    //       })
+    //       .catch(err =>{
+    //         console.log(err,"xixijsafjsajf")
+    //       }
+    //     );
   })
 
   </script>
