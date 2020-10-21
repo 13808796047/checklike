@@ -75,7 +75,6 @@
     for(var i=0;i<radio_tag.length;i++){
         if(radio_tag[i].checked){
             var checkvalue = radio_tag[i].value;
-            return checkvalue;
         }
     }
 
