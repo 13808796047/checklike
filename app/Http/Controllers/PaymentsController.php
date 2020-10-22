@@ -259,7 +259,6 @@ class PaymentsController extends Controller
     {
         // 校验回调参数是否正确
         $data = app('wechat_pay')->verify();
-        Log::info('data-wechat', [$data]);
         [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
         $type = substr($out_trade_no, 0, 2);
         switch ($type) {
