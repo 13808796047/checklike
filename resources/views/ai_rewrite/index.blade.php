@@ -229,8 +229,6 @@
           console.log(err,31312)
         })
       })
-      })
-
   function togetJc(num){
     optionChange();
     getRadioVal();
