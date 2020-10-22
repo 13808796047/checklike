@@ -4,9 +4,6 @@
   <link href="{{asset('asset/css/check.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/theme.css')}}" rel="stylesheet"/>
   <style>
-    .curfont{
-      font-size:16px;
-    }
   </style>
 @stop
 @section('content')
@@ -123,9 +120,6 @@
 @section('scripts')
   <script>
     $(document).ready(function () {
-      $('#categories a').css('color','black')
-      $('.navbar>div').removeClass('container').addClass('container-fluid')
-      $('#headerlw').addClass('curfont')
       $("input[name='paytype']").change(() => {
         $('#bottonsubmit').toggle();
         $('#btn-wechat').toggle();
