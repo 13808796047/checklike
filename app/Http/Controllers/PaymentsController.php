@@ -240,7 +240,7 @@ class PaymentsController extends Controller
     {
         switch ($request->type) {
             case 'recharge':
-                return view('domained::auto_checks.index');
+                return view('auto_checks.index');
                 break;
             default:
                 $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
