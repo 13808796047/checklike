@@ -36,6 +36,17 @@
     </div>
   </div>
   <!-- alert弹框结束 -->
+  <!-- 提交弹框款 -->
+  <div class="modal fade bd-example-modal-sm" id="submitAlertModal" tabindex="-1" role="dialog"
+    aria-labelledby="submitAlertModalLabel" aria-hidden="true" data-backdrop="static" >
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body" style="text-align:center;">
+          <div style="padding:20px 0">文件解析中，请稍后...</div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- 二维码弹窗 -->
   <!-- 二维码弹窗结束 -->
   <div class="p-4 mb-24">
@@ -400,8 +411,6 @@
           $("#tosubmit").val("提交论文")
         })
       })
-
-
       // $("form").submit(function(e){
       // <s></s>
       // });
@@ -425,6 +434,7 @@
           if (oneid == '') return false;
           $('#tosubmit').css("display", "none");
           $('#submitBtn').css("display", "block")
+          $("#submitAlertModal").modal('show')
           axios.post('{{route('orders.store')}}', {
               cid: $('#cid').val(),
               from: 'pc',
@@ -438,12 +448,14 @@
           ).then(res => {
             console.log(res, 3123123)
             var order = res.data.data
+            $("#submitAlertModal").modal('hide')
             location.href = '/orders/' + res.data.data.id
           }).catch(err => {
             console.log(err, 3112312312)
             alert('提交失败，请重试')
             $('#tosubmit').css("display", "block");
             $('#submitBtn').css("display", "none")
+            $("#submitAlertModal").modal('hide')
           })
         } else {
           $('#tosubmit').css("display", "none");
