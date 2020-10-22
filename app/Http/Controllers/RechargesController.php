@@ -11,7 +11,7 @@ class RechargesController extends Controller
 {
     public function index()
     {
-        return view('domained::recharges.index');
+        return view('recharges.index');
     }
 
     public function show(Recharge $recharge)
