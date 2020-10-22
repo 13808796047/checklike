@@ -26,7 +26,7 @@
         </div>
         <div class="modal-body" style="text-align:center;">
           <p>本次操作将消耗1次降重次数</p>
-          <p>剩余次数：<span id="requestcishuNum">{{ auth()->user()->jc_times}}</span><span style="color:#4876FF;margin-left:10px;" id="addjctimes">增加次数</span></p>
+          <p>剩余次数：<span id="requestcishuNum">{{ auth()->user()->jc_times}}</span><span style="color:#4876FF;margin-left:10px;cursor:pointer;" id="addjctimes">增加次数</span></p>
         </div>
         <div class="modal-footer">
           <p style="color:#4876FF;margin-right:25%;" id="freeadds">免费增加</p>
@@ -51,6 +51,33 @@
     </div>
   </div>
   @endauth
+  <!-- 购买降重字数模态框 -->
+  @auth
+  <div class="modal fade bd-example-modal-sm" id="jctimeModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">提示</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <p>购买自动降重次数</p>
+          <p style="margin: 6px 0;font-size: 11px;color: #F4A460;">(价格:1元/次)</p>
+          <p>请输入购买次数<span style="padding:0 10px;" id="cutjctime">-</span><span style="border: 1px solid;padding: 3px;" id="curjctime">10</span><span style="padding:0 10px;" id="addjctime">+</span></p>
+        </div>
+        <div class="modal-footer">
+          <p style="color:#4876FF;margin-right:25%;" id="freeadd">免费增加</p>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="sureshop">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endauth
+  <!-- 购买降重字数模态框结束 -->
   <!-- 模态框2结束-->
   <div class="main clearfix" style="min-height:800px;">
     <div class="lbox fl">
@@ -85,8 +112,11 @@
               <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
             </div>
            <div style="margin-top:10px;">
+
               <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
               <button type="button" class="btn btn-secondary">清除内容</button>
+
+             <p style="float: right;font-size: 13px;padding-right: 30px;" id="words">当前输入<span>0</span>字</p>
           </div>
         </div>
       <div style="margin-top:25px;display:none;" id="jchou">
@@ -101,10 +131,14 @@
                 <div id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
         </div>
+        <div>
+          <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
+        </div>
+        <div style="margin-top:10px;">
+          <button type="button" class="btn btn-primary" id="againjc">再次降重</button>
+        </div>
       </div>
       </div>
-
-
   <div class="rbox fr">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
@@ -143,19 +177,58 @@
     var sid=sel.selectedIndex;
     optionVal = sel[sid].value
   }
-
+  // 增加次数
+  $("#addjctimes").click(()=>{
+        $('#exampleModal').modal('hide')
+        $("#jctimeModal").modal('show')
+    })
+  //获取字数
+  $("#content").bind('input',(e)=>{
+        $('#words span').html(e.target.value.length)
+  })
+   //再来一篇
+   $('#againjc').click(function(){
+        window.location.reload()
+      })
   $("#aiSubmitBtn").click(()=>{
+    let words =  $('#words span').text();
+    if(words>5000){
+      alertify.set('notifier','position', 'top-center');
+      alertify.notify("字数不能大于5000字",'custom',3)
+      return;
+    }
     optionChange();
     getRadioVal();
     $('#exampleModal').modal('show')
   })
   $("#surecheck").click(()=>{
     $('#exampleModal').modal('hide')
-    $('#beingModal').modal('show')
+
     let num = $("#requestcishuNum").html();
+    if(num == 0){
+      alertify.set('notifier','position', 'top-center');
+      alertify.notify("您的降重次数不足",'custom',3);
+      return;
+    }
+    $('#beingModal').modal('show')
     togetJc(num)
   })
-
+  //确认购买
+  $("#sureshop").click(()=>{
+        let totalprice=$("#curjctime").text();
+        console.log(totalprice,3131)
+        axios.post('{{ route('recharges.store') }}',{
+          total_amount:totalprice,
+          amount:totalprice
+        }).then(res => {
+          let number = res.data.data.amount;
+          let id =res.data.data.id;
+          let price=res.data.data.total_amount;
+          location.href=`/recharges/${id}`
+        }).catch(err => {
+          console.log(err,31312)
+        })
+      })
   function togetJc(num){
     optionChange();
     getRadioVal();
@@ -198,7 +271,6 @@
                 console.log(diff[i]);
                 var diffObj = diff[i];
                 var content = diffObj.value;
-
                 //可以考虑启用，特别是后台清理HTML标签后的文本
                 if (content.indexOf("\n") >= 0) {
                     //console.log("有换行符");
