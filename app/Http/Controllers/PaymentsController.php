@@ -107,7 +107,7 @@ class PaymentsController extends Controller
         switch ($type) {
             case 'JC':
                 $recharge = Recharge::where('no', $result->out_trade_no)->first();
-                return view('auto_checks.index');
+                return view('ai_rewrite.index');
                 break;
             default:
                 $order = Order::where('payid', $result->out_trade_no)->first();
@@ -127,11 +127,12 @@ class PaymentsController extends Controller
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
             return app('alipay')->success();
         }
-        $type = substr($data->out_trade_no, 0, 2);
+        [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
+        $type = substr($out_trade_no, 0, 2);
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
         switch ($type) {
             case 'recharge':
-                $recharge = Recharge::where('no', $data->out_trade_no)->first();
+                $recharge = Recharge::where('no', $out_trade_no)->first();
                 // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
                 if(!$recharge) {
                     return 'fail';
@@ -144,7 +145,7 @@ class PaymentsController extends Controller
                 $recharge->update([
                     'paid_at' => Carbon::now(),
                     'payment_method' => '支付宝支付',
-                    'payment_no' => $data->trade_no,
+                    'payment_no' => $out_trade_no,
                 ]);
                 $this->afterRechargePaid($recharge);
                 return app('alipay')->success();
