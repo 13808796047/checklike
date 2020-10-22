@@ -213,6 +213,23 @@
     $('#beingModal').modal('show')
     togetJc(num)
   })
+  //确认购买
+  $("#sureshop").click(()=>{
+        let totalprice=$("#curjctime").text();
+        console.log(totalprice,3131)
+        axios.post('{{ route('recharges.store') }}',{
+          total_amount:totalprice,
+          amount:totalprice
+        }).then(res => {
+          let number = res.data.data.amount;
+          let id =res.data.data.id;
+          let price=res.data.data.total_amount;
+          location.href=`/recharges/${id}`
+        }).catch(err => {
+          console.log(err,31312)
+        })
+      })
+      })
 
   function togetJc(num){
     optionChange();
