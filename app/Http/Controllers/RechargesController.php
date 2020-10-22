@@ -11,12 +11,12 @@ class RechargesController extends Controller
 {
     public function index()
     {
-        return view('domained::recharges.index');
+        return view('recharges.index');
     }
 
     public function show(Recharge $recharge)
     {
-        return view('domained::recharges.show', compact('recharge'));
+        return view('recharges.show', compact('recharge'));
     }
 
     public function store(Request $request)
