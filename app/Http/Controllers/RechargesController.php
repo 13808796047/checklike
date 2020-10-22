@@ -16,7 +16,7 @@ class RechargesController extends Controller
 
     public function show(Recharge $recharge)
     {
-        return view('domained::recharges.show', compact('recharge'));
+        return view('recharges.show', compact('recharge'));
     }
 
     public function store(Request $request)
