@@ -375,6 +375,7 @@
       //单文件上传
       $('#customFile').change(function (e) {
         $('.custom-file-label').html(e.target.files[0].name)
+        $("#tosubmit").val("文件上传中")
         $('#tosubmit').attr("disabled", true);
         var file = e.target.files[0];
         var formData = new FormData();
@@ -386,6 +387,7 @@
         }).then(res => {
           console.log(res, 3123123)
           $('#tosubmit').attr("disabled", false);
+          $("#tosubmit").val("提交论文")
           $('#model-body-container').html('上传成功')
           $('#alertbot').modal('show')
           setTimeout("$('#alertbot').modal('hide')", 1000);
@@ -395,6 +397,7 @@
           $('#alertbot').modal('show')
           setTimeout("$('#alertbot').modal('hide')", 2000);
           $('#tosubmit').attr("disabled", true);
+          $("#tosubmit").val("提交论文")
         })
       })
 
