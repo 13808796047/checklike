@@ -66,7 +66,7 @@ class OrdersController extends Controller
 
     public function index(Request $request)
     {
-        $orders = $request->user()->orders()->with('category:id,name')->latest()->get();;
+        $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate();;
         return OrderResource::collection($orders);
     }
 
