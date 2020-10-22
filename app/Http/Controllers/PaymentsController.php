@@ -30,6 +30,7 @@ class PaymentsController extends Controller
     public function alipay(Request $request)
     {
         $id = $request->id;
+        $this->orderfix = rand(1, 99);
         switch ($request->type) {
             case 'recharge':
                 $recharge = Recharge::find($id);
@@ -41,7 +42,7 @@ class PaymentsController extends Controller
                 }
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
-                    'out_trade_no' => $recharge->no, // 订单编号，需保证在商户端不重复
+                    'out_trade_no' => $recharge->no . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
                     'total_amount' => $recharge->total_amount, // 订单金额，单位元，支持小数点后两位
                     'subject' => '支付充值降重次数的订单:' . $recharge->no, // 订单标题
                 ]);
@@ -176,6 +177,7 @@ class PaymentsController extends Controller
     //微信支付
     public function wechatPay(Request $request)
     {
+        $this->orderfix = rand(1, 99);
         $id = $request->id;
         switch ($request->type) {
             case 'recharge':
@@ -188,7 +190,7 @@ class PaymentsController extends Controller
                 }
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
-                    'out_trade_no' => $recharge->no,  // 商户订单流水号，与支付宝 out_trade_no 一样
+                    'out_trade_no' => $recharge->no . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
                     'total_fee' => $recharge->total_amount * 100, // 与支付宝不同，微信支付的金额单位是分。
                     'body' => '支付充值降重次数的订单：' . $recharge->no, // 订单描述
                 ]);
@@ -203,7 +205,7 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确');
                 }
-                $this->orderfix = rand(1, 99);
+
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
@@ -240,7 +242,7 @@ class PaymentsController extends Controller
     {
         switch ($request->type) {
             case 'recharge':
-                return view('domained::auto_checks.index');
+                return view('auto_checks.index');
                 break;
             default:
                 $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
