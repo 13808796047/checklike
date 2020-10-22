@@ -28,10 +28,14 @@ class PaymentsController extends Controller
 {
     protected $orderfix;
 
+    public function __construct()
+    {
+        $this->orderfix = rand(1, 99);
+    }
+
     public function alipay(Request $request)
     {
         $id = $request->id;
-        $this->orderfix = rand(1, 99);
         switch ($request->type) {
             case 'recharge':
                 $recharge = Recharge::find($id);
@@ -123,7 +127,6 @@ class PaymentsController extends Controller
     {
         // 校验输入参数
         $data = app('alipay')->verify();
-        Log::info('data-alipay', [$data]);
         // 如果订单状态不是成功或者结束，则不走后续的逻辑
         // 所有交易状态：https://docs.open.alipay.com/59/103672
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
@@ -180,7 +183,6 @@ class PaymentsController extends Controller
     //微信支付
     public function wechatPay(Request $request)
     {
-        $this->orderfix = rand(1, 99);
         $id = $request->id;
         switch ($request->type) {
             case 'recharge':
