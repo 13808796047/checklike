@@ -19,6 +19,7 @@ use http\Exception\InvalidArgumentException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Uuid;
 use Yansongda\Pay\Exceptions\GatewayException;
 use Yansongda\Pay\Pay;
@@ -122,6 +123,7 @@ class PaymentsController extends Controller
     {
         // 校验输入参数
         $data = app('alipay')->verify();
+        Log::info('data-alipay', [$data]);
         // 如果订单状态不是成功或者结束，则不走后续的逻辑
         // 所有交易状态：https://docs.open.alipay.com/59/103672
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
@@ -255,6 +257,7 @@ class PaymentsController extends Controller
     {
         // 校验回调参数是否正确
         $data = app('wechat_pay')->verify();
+        Log::info('data-wechat', [$data]);
         [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
         $type = substr($out_trade_no, 0, 2);
         switch ($type) {
