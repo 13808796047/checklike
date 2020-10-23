@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\OrderPaid;
+use App\Exceptions\InternalException;
 use App\Exceptions\InvalidRequestException;
 use App\Handlers\FileUploadHandler;
 use App\Handlers\FileWordsHandle;
@@ -108,9 +109,7 @@ class OrdersController extends Controller
         try {
             Mail::to($to)->send(new OrderReport($order));
         } catch (Exception $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ]);
+            throw new InternalException($e->getMessage());
         }
         return response()->json([
             'message' => '邮件发送成功,请注意查收！'
