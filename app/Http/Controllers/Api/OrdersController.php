@@ -65,7 +65,7 @@ class OrdersController extends Controller
 
     public function index(Request $request)
     {
-        $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate();;
+        $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate();
         return OrderResource::collection($orders);
     }
 
@@ -120,7 +120,14 @@ class OrdersController extends Controller
     public function generateImg(Request $request)
     {
         $orderimg = app(OrderimgHandler::class);
-        $img_url = $orderimg->generate($request->title, $request->writer, $request->category_name, $request->classid, $request->created_at, $request->rate);
+        $img_url = $orderimg->generate(
+            $request->title,
+            $request->writer,
+            $request->category_name,
+            $request->classid,
+            $request->created_at,
+            $request->rate
+        );
         return response(compact('img_url'), 200);
     }
 }
