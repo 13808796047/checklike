@@ -35,27 +35,27 @@ class OrdersController extends Controller
     }
 
 //    //上传文件
-//    public function uploadFile(Request $request, FileUploadHandler $fileUploadHandler)
-//    {
-//        //初始化上传返回数据,默认是失败的
-//        $data = [
-//            'success' => false,
-//            'msg' => '上传失败!',
-//            'file_path' => '',
-//        ];
-//        //判断是否有上传文件,并赋值给file
-//        if($file = $request->file) {
-//            // 保存文件到本地
-//            $result = $fileUploadHandler->save($file, 'files', $user->id);
-//            // 文件保存成功
-//            if($result) {
-//                $data['file_path'] = $result['path'];
-//                $data['msg'] = '上传成功!';
-//                $data['success'] = true;
-//            }
-//        }
-//        return $data;
-//    }
+////    public function uploadFile(Request $request, FileUploadHandler $fileUploadHandler)
+////    {
+////        //初始化上传返回数据,默认是失败的
+////        $data = [
+////            'success' => false,
+////            'msg' => '上传失败!',
+////            'file_path' => '',
+////        ];
+////        //判断是否有上传文件,并赋值给file
+////        if($file = $request->file) {
+////            // 保存文件到本地
+////            $result = $fileUploadHandler->save($file, 'files', $user->id);
+////            // 文件保存成功
+////            if($result) {
+////                $data['file_path'] = $result['path'];
+////                $data['msg'] = '上传成功!';
+////                $data['success'] = true;
+////            }
+////        }
+////        return $data;
+////    }
 
     public function store(OrderRequest $request)
     {

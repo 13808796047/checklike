@@ -186,6 +186,7 @@ class PaymentsController extends Controller
         $id = $request->id;
         switch ($request->type) {
             case 'recharge':
+                // 充值降重次数订单
                 $recharge = Recharge::find($id);
                 //校验权限
                 $this->authorize('ownRecharge', $recharge);
