@@ -57,7 +57,6 @@ class OrdersController extends Controller
 //        return $data;
 //    }
 
-    //提交订单
     public function store(OrderRequest $request)
     {
         $order = $this->orderService->add($request);
@@ -72,7 +71,7 @@ class OrdersController extends Controller
 
     public function show(Request $request, Order $order)
     {
-        //        校验权限
+        // 校验权限
         $this->authorize('own', $order);
         return new OrderResource($order);
     }
@@ -80,9 +79,9 @@ class OrdersController extends Controller
     public function viewPdf(Request $request)
     {
 
-        //接口返回 pdf 流
+        // 接口返回 pdf 流
         $order = Order::where('orderid', $request->orderid)->first();
-        //校验权限
+        // 校验权限
         $this->authorize('own', $order);
         $pdf = $this->orderService->getPdf($order->api_orderid);
         return $pdf;
@@ -102,10 +101,10 @@ class OrdersController extends Controller
 
     public function reportMail(Request $request, Order $order)
     {
-        //校验权限
+        // 校验权限
         $this->authorize('own', $order);
         $to = $request->email_address;
-        //发送
+        // 发送
         try {
             Mail::to($to)->send(new OrderReport($order));
         } catch (Exception $e) {
