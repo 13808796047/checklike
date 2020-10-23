@@ -30,11 +30,11 @@ class AutoCheckController extends Controller
 
         $result = app(AiWriterHandler::class)->getContent(
             $request->input('txt', ''),
-            $request->th,
-            $request->filter,
-            $request->corewordfilter,
-            $request->sim,
-            $request->retype
+            $request->input('th', ''),
+            $request->input('filter', ''),
+            $request->input('corewordfilter', ''),
+            $request->input('sim', ''),
+            $request->input('retype', '')
         );
 
         $user->decreaseJcTimes();
