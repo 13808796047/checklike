@@ -97,7 +97,7 @@ class OrderService
             }
             $order->price = $price;
             $order->save();
-            if($file) {
+            if(isset($file)) {
                 $file->update([
                     'order_id' => $order->id,
                 ]);
