@@ -81,7 +81,7 @@ class OrdersController extends Controller
             $order = Order::where('orderid', $orderid)->first();
         }
         // 校验权限
-        $this->authorize('own', $order);
+//        $this->authorize('own', $order);
         if(!$order->report_path) {
             throw new InvalidRequestException('检测未完成', 400);
         }
