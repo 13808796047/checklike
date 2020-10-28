@@ -50,6 +50,7 @@ class OrderService
                     $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
                 }
             }
+            dd($words);
             if($words <= 0) {
                 throw new InvalidRequestException('还未解析完成', 400);
             }
