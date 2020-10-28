@@ -73,14 +73,19 @@ class FileWordsHandle
                 ],
             ]
         ];
+        try {
+            $response = $this->http->post($this->uri . '/query-parsing', $query);
+            return json_decode($response->getbody()->getContents(), true);
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
 
-//        $response = $this->http->postAsync($this->uri . '/query-parsing', $query);
         // 开始每个请求，但是不阻塞
 //        $request = new Request('POST', );
-        $promise = $this->http->postAsync($this->uri . '/query-parsing', $query)->then(function($response) {
-            return json_decode($response->getbody()->getContents(), true);
-        });
-        $promise->wait();
-//        return json_decode($response->getbody()->getContents(), true);
+//        $promise = $this->http->postAsync($this->uri . '/query-parsing', $query)->then(function($response) {
+//            return json_decode($response->getbody()->getContents(), true);
+//        });
+//        $promise->wait();
+
     }
 }
