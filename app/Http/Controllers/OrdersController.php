@@ -86,7 +86,7 @@ class OrdersController extends Controller
             throw new InvalidRequestException('检测未完成', 400);
         }
         if($order->pay_type == '百度支付') {
-            return response()->download('https://www.lianwen.com/' . storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
+            return response()->download('https://www.lianwen.com/storage/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
         }
         return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
