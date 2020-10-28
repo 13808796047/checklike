@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderPaid;
+use App\Exceptions\InvalidRequestException;
 use App\Handlers\DocxConversionHandler;
 use App\Handlers\FileUploadHandler;
 use App\Handlers\FileWordsHandle;
@@ -77,12 +78,16 @@ class OrdersController extends Controller
         if(strlen($orderid) == 3) {
             $order = Order::findOrFail($orderid);
         } else {
-
             $order = Order::where('orderid', $orderid)->first();
         }
         // 校验权限
 //        $this->authorize('own', $order);
-        //校验权限
+        if(!$order->report_path) {
+            throw new InvalidRequestException('检测未完成', 400);
+        }
+        if($order->pay_type == '百度支付') {
+            return response()->download('https://www.lianwen.com/storage/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
+        }
         return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
 
