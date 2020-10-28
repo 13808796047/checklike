@@ -51,7 +51,7 @@ class OrderService
                 }
             }
             if($words <= 0) {
-                throw new InternalException('文件解析错误,请重新提交');
+                throw new InvalidRequestException('还未解析完成', 400);
             }
             if($words > 2500 && $user->redix == 1 && $request->from != 'wp-wx') {
                 $resultWords = \Cache::remember('user' . $user->id, now()->addDay(), function() use ($words) {
