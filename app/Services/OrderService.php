@@ -35,7 +35,7 @@ class OrderService
                     }
                 } else {
                     $res = app(FileWordsHandle::class)->submitCheck($file->path);
-                    $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid']);
+                    $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
                     if($category->classid == 4 && $file->type == 'docx') {
                         $content = read_docx($file->real_path);
                         $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
@@ -50,7 +50,6 @@ class OrderService
                     $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
                 }
             }
-            dd($words);
             if($words <= 0) {
                 throw new InvalidRequestException('还未解析完成', 400);
             }
