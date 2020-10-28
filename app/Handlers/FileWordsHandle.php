@@ -73,7 +73,8 @@ class FileWordsHandle
             ]
         ];
 
-        $response = $this->http->post($this->uri . '/query-parsing', $query);
-        return json_decode($response->getbody()->getContents(), true);
+        $promise = $this->http->postAsync($this->uri . '/query-parsing', $query)->then(function($response) {
+            return json_decode($response->getbody()->getContents(), true);
+        })->wait();
     }
 }
