@@ -75,13 +75,10 @@ class FileWordsHandle
 
 //        $response = $this->http->postAsync($this->uri . '/query-parsing', $query);
         // 开始每个请求，但是不阻塞
-        $promises = [
-            'image' => $this->http->postAsync($this->uri . '/query-parsing', $query)
-        ];
-
-// 等待所有请求完成
-        $results = Promise\unwrap($promises);
-        return $results;
+        $promise = $this->http->sendAsync($this->uri . '/query-parsing', $query)->then(function($response) {
+            return json_decode($response->getbody()->getContents(), true);
+        });
+        $promise->wait();
 //        return json_decode($response->getbody()->getContents(), true);
     }
 }
