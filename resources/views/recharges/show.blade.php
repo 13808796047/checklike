@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
   <!-- 购买降重字数模态框结束 -->
 <div class="main clearfix" style="flex:1;background: rgb(235,237,243)">
 <div class="lbox fl">
@@ -96,7 +96,7 @@
 			</div>
 		</div>
     </div>
-	<div class="rbox fr">
+<div class="rbox fr">
 		<div style="background:#fff;padding:20px;font-size:14px;min-height:1000px;">
 		    <b>1、检测结果是否准确？</b>
         <p>如果你们学校也是用万方检测，那结果是一致的。同一个的系统、同样的比对库、同样的算法，所以只要在本系统提交的内容和学校的一致，那检测结果是一致的。</p>
@@ -137,10 +137,10 @@
           buttons: ['关闭', '已完成付款'],
         })
           .then(function (result) {
-            // 如果用户点击了 已完成付款 按钮，则重新加载页面
+            //如果用户点击了 已完成付款 按钮，则重新加载页面
             if (result) {
               location.href=`https://p.checklike.com/ai_rewrite`
-            //  location.href=`/payments/${order.id}/wechat/return/order`
+            //location.href=`/payments/${order.id}/wechat/return/order`
             }
           })
         ;
@@ -149,8 +149,8 @@
      $('#bottonsubmit').click(function(){
        let id = {!!$recharge!!};
        console.log(id)
-      // /payments/7/alipay/recharge
-      location.href=`/payments/${id.id}/alipay/recharge`
+       // /payments/7/alipay/recharge
+       location.href=`/payments/${id.id}/alipay/recharge`
      })
     })
   </script>
