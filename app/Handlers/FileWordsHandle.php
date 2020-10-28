@@ -76,8 +76,8 @@ class FileWordsHandle
 
 //        $response = $this->http->postAsync($this->uri . '/query-parsing', $query);
         // 开始每个请求，但是不阻塞
-        $request = new Request('POST', $this->uri . '/query-parsing', $query);
-        $promise = $this->http->sendAsync($request)->then(function($response) {
+//        $request = new Request('POST', );
+        $promise = $this->http->postAsync($this->uri . '/query-parsing', $query)->then(function($response) {
             return json_decode($response->getbody()->getContents(), true);
         });
         $promise->wait();
