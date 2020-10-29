@@ -61,7 +61,7 @@ class PaymentsController extends Controller
                 }
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
-                    'out_trade_no' => $order->orderid, // 订单编号，需保证在商户端不重复
+                    'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
                     'total_amount' => $order->price, // 订单金额，单位元，支持小数点后两位
                     'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
                 ]);
