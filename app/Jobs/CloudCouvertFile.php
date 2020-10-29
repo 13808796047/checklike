@@ -58,6 +58,7 @@ class CloudCouvertFile implements ShouldQueue
 //            $dest = fopen("$upload_path/$filename", 'w');
 //            stream_copy_to_stream($source, $dest);
             $result = app(FileUploadHandler::class)->saveTxt($source, 'files', $this->order->user->id);
+            Log::info('doc', [$result]);
             $this->order->update([
 //                'paper_path' => config('app.url') . "/$folder_name/$filename",
                 'paper_path' => $result['path'] ?? ''
