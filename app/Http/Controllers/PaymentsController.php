@@ -174,7 +174,6 @@ class PaymentsController extends Controller
                     'pay_price' => $data->total_amount,//支付金额
                     'status' => 1,
                 ]);
-                $this->checkWords($order);
                 $this->afterOrderPaid($order);
                 $this->afterPaidMsg($order);
                 return app('alipay')->success();

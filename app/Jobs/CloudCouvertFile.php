@@ -34,7 +34,7 @@ class CloudCouvertFile implements ShouldQueue
         $result = $api->cloudConvertFile($this->order);
         if($result) {
             //调用上传接口
-            dispatch(new UploadCheckFile($order));
+            dispatch(new UploadCheckFile($this->order));
         }
     }
 }
