@@ -37,7 +37,7 @@ class FileUploadHandler
             if(!file_exists($upload_path)) {
                 mkdir($upload_path, 0777, true);
             }
-            chmod($upload_path, 0777);
+//            chmod($upload_path, 0777);
             file_put_contents($upload_path . '/' . $filename, $txt_content);
             return [
                 'path' => config('app.url') . "/$folder_name/$filename"
