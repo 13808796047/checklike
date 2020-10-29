@@ -89,13 +89,12 @@ class OrderService
                 'referer' => $referer['from'],
                 'keyword' => $referer['keyword']
             ]);
-            dd($price);
             $order->user()->associate($user);
-            if($user->is_free && $category->id == 1) {
-                if($user->weixin_openid || $user->weapp_openid) {
-                    $price = max($price - 3, 0);
-                }
-            }
+//            if($user->is_free && $category->id == 1) {
+//                if($user->weixin_openid || $user->weapp_openid) {
+//                    $price = max($price - 3, 0);
+//                }
+//            }
             $order->price = $price;
             $order->save();
             if(isset($file)) {
