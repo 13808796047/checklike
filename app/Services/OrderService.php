@@ -89,6 +89,7 @@ class OrderService
                 'referer' => $referer['from'],
                 'keyword' => $referer['keyword']
             ]);
+            dd($price);
             $order->user()->associate($user);
             if($user->is_free && $category->id == 1) {
                 if($user->weixin_openid || $user->weapp_openid) {

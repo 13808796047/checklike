@@ -132,7 +132,6 @@ class PaymentsController extends Controller
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
             return app('alipay')->success();
         }
-        Log::info('alipay', [$data->out_trade_no]);
         [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
         $type = substr($out_trade_no, 0, 2);
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
