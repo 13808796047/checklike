@@ -132,6 +132,7 @@ class PaymentsController extends Controller
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
             return app('alipay')->success();
         }
+        Log::info('订单号', [$data->out_trade_no]);
         [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
         $type = substr($out_trade_no, 0, 2);
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
@@ -156,7 +157,7 @@ class PaymentsController extends Controller
                 return app('alipay')->success();
                 break;
             default:
-                $order = Order::where('orderid', $data->out_trade_no)->first();
+                $order = Order::where('orderid', $out_trade_no)->first();
                 // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
                 if(!$order) {
                     return 'fail';
@@ -169,7 +170,7 @@ class PaymentsController extends Controller
                 $order->update([
                     'date_pay' => Carbon::now(), // 支付时间
                     'pay_type' => '支付宝支付', // 支付方式
-                    'payid' => $data->out_trade_no, // 支付宝订单号
+                    'payid' => $out_trade_no, // 支付宝订单号
                     'pay_price' => $data->total_amount,//支付金额
                     'status' => 1,
                 ]);
