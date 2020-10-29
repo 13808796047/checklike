@@ -304,7 +304,6 @@ class PaymentsController extends Controller
                     'pay_price' => $data->total_fee / 100,//支付金额
                     'status' => 1,
                 ]);
-                $this->checkWords($order);
                 $this->afterOrderPaid($order);
                 $this->afterPaidMsg($order);
                 return app('wechat_pay')->success();
@@ -336,31 +335,11 @@ class PaymentsController extends Controller
             'pay_price' => $data->total_fee / 100,//支付金额
             'status' => 1,
         ]);
-        $this->checkWords($order);
         $this->afterOrderPaid($order);
         $this->afterPaidMsg($order);
         return app('wechat_pay_mp')->success();
     }
 
-    protected function checkWords(Order $order)
-    {
-        if($order->category->classid == 4) {
-            if($order->file->type == 'docx') {
-                $content = read_docx($order->file->real_path);
-                $words = count_words($content);
-                if($words / $order->words > 1.15) {
-                    $this->cloudConert($order);
-                }
-            } else {
-                $this->cloudConert($order);
-            }
-        }
-    }
-
-    protected function cloudConert(Order $order)
-    {
-        dispatch(new CloudCouvertFile($order));
-    }
 
     protected function afterPaidMsg(Order $order)
     {
