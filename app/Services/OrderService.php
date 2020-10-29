@@ -111,9 +111,29 @@ class OrderService
             }
             return $order;
         });
+        $this->checkWords($order);
         return $order;
     }
 
+    protected function checkWords(Order $order)
+    {
+        if($order->category->classid == 4) {
+            if($order->file->type == 'docx') {
+                $content = read_docx($order->file->real_path);
+                $words = count_words($content);
+                if($words / $order->words > 1.15) {
+                    $this->cloudConert($order);
+                }
+            } else {
+                $this->cloudConert($order);
+            }
+        }
+    }
+
+    protected function cloudConert(Order $order)
+    {
+        dispatch(new CloudCouvertFile($order));
+    }
 
     //计算字数
     public function calcWords($words)
