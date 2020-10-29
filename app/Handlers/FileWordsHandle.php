@@ -74,7 +74,9 @@ class FileWordsHandle
             ]
         ];
         try {
-            $response = $this->http->post($this->uri . '/query-parsing', $query);
+            do {
+                $response = $this->http->post($this->uri . '/query-parsing', $query);
+            } while (!$response);
             return json_decode($response->getbody()->getContents(), true);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
