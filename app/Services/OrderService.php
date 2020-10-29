@@ -109,9 +109,10 @@ class OrderService
             if($order->status == 0) {
                 dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
             }
+            dd($order);
             return $order;
         });
-        $this->checkWords($order);
+//        $this->checkWords($order);
         return $order;
     }
 
