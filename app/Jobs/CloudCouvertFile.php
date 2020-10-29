@@ -50,19 +50,19 @@ class CloudCouvertFile implements ShouldQueue
         foreach($job->getExportUrls() as $file) {
 
             $source = CloudConvert::getHttpTransport()->download($file->url)->detach();
-//            $folder_name = "uploads/files/" . date('Ym/d', time());
-//            // 值如：/home/vagrant/Code/larabbs/public/uploads/images/avatars/201709/21/
-//            $upload_path = public_path() . '/' . $folder_name;
-//            // 值如：1_1493521050_7BVc9v9ujP.png
-//            $filename = $this->order->user->id . '_' . time() . '_' . \Str::random(10) . '.txt';
-//            $dest = fopen("$upload_path/$filename", 'w');
-//            stream_copy_to_stream($source, $dest);
-            Log::info('doc', [$source]);
-            $result = app(FileUploadHandler::class)->saveTxt($source, 'files', $this->order->user->id);
-            Log::info('doc', [$result]);
+            $folder_name = "uploads/files/" . date('Ym/d', time());
+            // 值如：/home/vagrant/Code/larabbs/public/uploads/images/avatars/201709/21/
+            $upload_path = public_path() . '/' . $folder_name;
+            // 值如：1_1493521050_7BVc9v9ujP.png
+            $filename = $this->order->user->id . '_' . time() . '_' . \Str::random(10) . '.txt';
+            $dest = fopen("$upload_path/$filename", 'w');
+            stream_copy_to_stream($source, $dest);
+//            Log::info('doc', [$source]);
+//            $result = app(FileUploadHandler::class)->saveTxt($source, 'files', $this->order->user->id);
+//            Log::info('doc', [$result]);
             $this->order->update([
-//                'paper_path' => config('app.url') . "/$folder_name/$filename",
-                'paper_path' => $result['path'] ?? ''
+                'paper_path' => config('app.url') . "/$folder_name/$filename",
+//                'paper_path' => $result['path'] ?? ''
             ]);
         }
     }
