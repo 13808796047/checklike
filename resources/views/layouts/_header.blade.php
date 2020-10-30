@@ -1,7 +1,23 @@
 <style>
-.clearfix:before, .clearfix:after, .dl-horizontal dd:before, .dl-horizontal dd:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical>.btn-group:before, .btn-group-vertical>.btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-header:before, .modal-header:after, .modal-footer:before, .modal-footer:after {
-    content: " ";
-    display: table;
+.navbar.affix {
+    background-color: #206CE1;
+    padding: 10px 0px;
+    z-index: 1000;
+}
+.navbar {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    min-height: 0px;
+    color: #FFF;
+    padding: 40px 0px;
+    margin: 0px;
+    border: 0px;
+    z-index: 100;
+    border-radius: 0px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
 }
 </style>
 <div>
