@@ -264,8 +264,35 @@
 
   <!----- //End-slider---->
   <!----start-services---->
-  <div id="header">
-  <div class="header-content">
+  <header id="header">
+
+	<!-- #navigation -->
+	<nav id="navigation" class="navbar scrollspy">
+
+		<!-- .container -->
+		<div class="container">
+
+			<div class="navbar-brand">
+				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="assets/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
+			</div>
+
+			<ul class="nav navbar-nav">
+				<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+				<li><a href="#features" class="smooth-scroll">论文查重</a></li>
+				<li><a href="#testimonials" class="smooth-scroll">免费查重</a></li>
+				<li><a href="#screenshots" class="smooth-scroll">自动降重</a></li>
+				<li><a href="#pricing" class="smooth-scroll">报告下载</a></li>
+				<li class="menu-btn"><a href="page.html">登录/注册</a></li>
+			</ul>
+
+		</div>
+		<!-- .container end -->
+
+	</nav>
+	<!-- #navigation end -->
+
+	<!-- .header-content -->
+	<div class="header-content">
 
 		<!-- .container -->
 		<div class="container">
@@ -286,10 +313,10 @@
 
 				<div class="col-sm-5 col-md-4 col-lg-offset-1 header-img">
 					<div class="carousel-slider header-slider animation" data-animation="animation-fade-in-down">
-						<div><img src="{{asset('asset/images/content/sliders/1.jpg')}}" alt="Image 1"></div>
-						<div><img src="{{asset('asset/images/content/sliders/2.jpg')}}" alt="Image 2"></div>
-						<div><img src="{{asset('asset/images/content/sliders/3.jpg')}}" alt="Image 3"></div>
-						<div><img src="{{asset('asset/images/content/sliders/4.jpg')}}" alt="Image 4"></div>
+						<div><img src= "{{asset('asset/images/content/sliders/1.jpg')}}" alt="Image 1"></div>
+						<div><img src= "{{asset('asset/images/content/sliders/2.jpg')}}" alt="Image 2"></div>
+						<div><img src= "{{asset('asset/images/content/sliders/3.jpg')}}" alt="Image 3"></div>
+						<div><img src= "{{asset('asset/images/content/sliders/4.jpg')}}" alt="Image 4"></div>
 					</div>
 				</div>
 
@@ -300,7 +327,13 @@
 		<!-- .container end -->
 
 	</div>
-  </div>
+	<!-- .header-content end -->
+
+	<div class="header-bg" style="background-image:url('assets/images/content/bg/1.jpg');">
+		<div class="header-bg-overlay"></div>
+	</div>
+
+</header>
   <!----//End-services---->
   <!-----//End-services-grids---->
   <!---- start-about----->
