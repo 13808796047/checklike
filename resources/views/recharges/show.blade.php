@@ -120,6 +120,7 @@
 @section('scripts')
   <script>
     $(document).ready(function () {
+      $('#navigation').removeClass('navbar').addClass('affix')
       $("input[name='paytype']").change(() => {
         $('#bottonsubmit').toggle();
         $('#btn-wechat').toggle();
