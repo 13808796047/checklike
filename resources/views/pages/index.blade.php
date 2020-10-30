@@ -266,13 +266,6 @@
   <!----start-services---->
   <header id="header">
 	<!-- #navigation -->
-	<nav id="navigation" class="navbar scrollspy">
-
-		<!-- .container -->
-
-		<!-- .container end -->
-
-	</nav>
 	<!-- #navigation end -->
 
 	<!-- .header-content -->
