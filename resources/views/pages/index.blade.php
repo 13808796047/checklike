@@ -335,6 +335,250 @@
 
 </header>
   <!----//End-services---->
+  <div id="features" class="section-wrap padding-top60">
+
+	<!-- .container -->
+	<div class="container">
+		<!-- .row -->
+		<div class="row padding-bottom20">
+
+			<div class="col-sm-4"> <!-- 1 -->
+				<div class="affa-feature-icon">
+					<i class="ion ion-ios-world-outline"></i>
+					<h4>海量的学术资源</h4>
+					<p>采用海量的论文比对数据，包含科技期刊、报纸、专利、会议、学位论文等多个论文数据库资源。</p>
+				</div>
+			</div>
+
+			<div class="col-sm-4"> <!-- 2 -->
+				<div class="affa-feature-icon">
+					<i class="ion ion-ios-locked-outline"></i>
+					<h4>安全的传输协议</h4>
+					<p>全站遵循HTTPS协议，传输解析技术安全可靠，保护您的文献不被泄露，检测过程放心安心。</p>
+				</div>
+			</div>
+
+			<div class="col-sm-4"> <!-- 3 -->
+				<div class="affa-feature-icon">
+					<i class="ion ion-ios-pulse"></i>
+					<h4>专业的检测算法</h4>
+					<p>采用国际领先的海量论文动态语义跨域识别加指纹比对技术，做到快捷、安全、准确、全面。</p>
+				</div>
+			</div>
+
+		</div>
+		<!-- .row end -->
+
+	</div>
+	<!-- .container end -->
+
+	<!-- .container-wrap -->
+	<div class="container-wrap container-padding8060">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-lg-5 col-txt text-center-sm text-center-xs margin-bottom40-sm margin-bottom40-xs">
+					<div class="post-heading-left">
+						<h2>多端同步适配</h2>
+					</div>
+					<p>全新架构打通常终端设备，数据互通。电脑、手机、平板均可提交论文查重，下载查重报告，方不同使用场景。</p>
+					<p>提供多种版本检测报告帮助您轻松阅读检测结果、准确获取论文查重信息，检测结果客观、准确、详细！</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-pull-right">
+			<figure class="img-layers3 img-pull-left">
+				<div class="img-layer-lg">
+					<img src="{{asset('asset/images/content/landing/feature-1.png')}}" alt="Image Large" class="animation" data-animation="animation-fade-in-right">
+				</div>
+				<div class="img-layer-md">
+					<img src="{{asset('asset/images/content/landing/feature-2.png')}}" alt="Image Mediun" class="animation" data-animation="animation-fade-in-left" data-delay="300">
+				</div>
+				<div class="img-layer-sm">
+					<img src="{{asset('asset/images/content/landing/feature-3.png')}}" alt="Image Small" class="animation" data-animation="animation-fade-in-down" data-delay="600">
+				</div>
+			</figure>
+		</div>
+
+	</div>
+	<!-- .container-wrap end -->
+
+	<!-- .container-padding -->
+	<div class="container-padding60 bg-color">
+
+		<!-- .container -->
+		<div class="container">
+
+			<!-- .row -->
+			<div class="row">
+
+				<div class="col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-0 margin-bottom20">
+					<figure class="img-layers img-layer-right-front">
+						<div class="img-layer-left">
+							<img src="{{asset('asset/images/content/landing/feature-4.png')}}" alt="Image Left" class="animation" data-animation="animation-fade-in-left">
+						</div>
+						<div class="img-layer-right">
+							<img src="{{asset('asset/images/content/landing/feature-5.png')}}" alt="Image Right" class="animation" data-animation="animation-fade-in-right" data-delay="400">
+						</div>
+					</figure>
+				</div>
+
+				<div class="col-sm-10 col-md-7 col-lg-6 col-sm-offset-1 col-md-offset-0 col-lg-offset-1">
+					<div class="text-wrap40 text-center-sm text-center-xs">
+						<div class="post-heading-left">
+							<h2>丰富的论文写作解决方案</h2>
+						</div>
+						<div class="affa-feature-icon-left margin-bottom30"> <!-- 1 -->
+							<i class="ion ion-android-done"></i>
+							<h4>一键自动降重</h4>
+							<p>强大自然语言语义分析系统，在不改变原意的情况下通过AI智能技术重新编写原句，瞬间降低论文重复率。</p>
+						</div>
+						<div class="affa-feature-icon-left"> <!-- 3 -->
+							<i class="ion ion-android-done"></i>
+							<h4>智能语法纠错</h4>
+							<p>可以帮助用户检查一些单词错误、语法错误、时态错误等，并提供更准确的使用方法。</p>
+						</div>
+						<div class="affa-feature-icon-left margin-bottom30"> <!-- 2 -->
+							<i class="ion ion-android-done"></i>
+							<h4>PDF转Word</h4>
+							<p>快速把PDF文件转换成Word文件，一键操作，快速、方便，能最大限度的保留源文档的布局和格式。</p>
+						</div>
+
+						<div class="affa-feature-icon-left"> <!-- 3 -->
+							<i class="ion ion-android-done"></i>
+							<h4>海量文献资料下载</h4>
+							<p>海量专业学术文献免费下载，覆盖各个行业期刊论文,学位论文,会议论文,标准,专利等各类学术资源。</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- .row end -->
+
+		</div>
+		<!-- .container end -->
+
+	</div>
+	<!-- .container-padding end -->
+
+</div>
+<!-- #features end -->
+<!-- #works -->
+<div id="works" class="container-padding8020">
+
+	<!-- .container -->
+	<div class="container">
+
+		<div class="post-heading-center no-border margin-bottom40">
+			<h2>用户评价</h2>
+		</div>
+
+		<!-- .row -->
+		<div class="row">
+
+			<div class="col-sm-3 affa-testimonial"> <!-- 1 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/1.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>浅夏丿初晴</b> <small>(大学生)</small>
+						<p>“班级群里老师推荐的，价格不高，首次还免费，而且查重报告还比较详细，我们学校是用维普查重，检测结果跟这个差不多，一次性通过!”</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3 affa-testimonial"> <!-- 2 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/2.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>醉相思</b> <small>(研究生)</small>
+						<p>“导师推荐的，知网查重太贵了，只能用其他系统代替。初稿先用CheckLike检测，修改后用维普和万方查重检测，把查出来的全部改掉，顺利通过了学校知网查重。”</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 affa-testimonial"> <!-- 3 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/3.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>岁月如歌</b> <small>(大学教师)</small>
+						<p>“经常用它给学生的作业进行的查重，可以批量上传，检测结果一目了然，而且比较准确，不像之前用的某些系统内容都没重复也飘红。”</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 affa-testimonial"> <!-- 4 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/4.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>大号萝莉</b> <small>(主管护师)</small>
+						<p>“学信检测小程序很方便，可以在手机上提交论文查重而且检测完成后能查看详细的比对报告，充分利用了碎片时间，工作和写论文两不误。”</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- .row end -->
+
+	</div>
+	<!-- .container end -->
+
+</div>
+<!-- #works end -->
+
+<div class="container">
+	<div class="sep-border"></div> <!-- separator -->
+</div>
+
+
+<!-- #clients -->
+<div id="clients" class="container-padding60">
+
+	<!-- .container -->
+	<div class="container">
+
+		<div class="post-heading-center">
+			<h2>合作机构</h2>
+		</div>
+
+		<!-- .row -->
+		<div class="row row-clients">
+
+			<div class="col-sm-3"> <!-- 1 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/1.png')}}" alt="Logo">
+				</div>
+			</div>
+
+			<div class="col-sm-3"> <!-- 2 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/2.png')}}" alt="Logo">
+				</div>
+			</div>
+
+			<div class="col-sm-3"> <!-- 3 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/3.png')}}" alt="Logo">
+				</div>
+			</div>
+
+			<div class="col-sm-3"> <!-- 4 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/4.png')}}" alt="Logo">
+				</div>
+			</div>
+
+		</div>
+		<!-- .row end -->
+
+	</div>
+	<!-- .container end -->
+
+</div>
+<!-- #clients end -->
+
+<div class="container">
+	<div class="sep-border"></div> <!-- separator -->
+</div>
+
   <!-----//End-services-grids---->
   <!---- start-about----->
   <!----start-team----->
@@ -453,6 +697,7 @@
   <script type="text/javascript" src="{{ asset('asset/js/move-top.js') }}"></script>
   <script type="text/javascript" src=" {{ asset('asset/js/easing.js') }}"></script>
   {{--  <script src="{{ asset('asset/js/responsiveslides.min.js') }}"></script>--}}
+
   <script>
     $(function () {
       {{--      @auth--}}
