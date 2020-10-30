@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('title', '学信检测')
 @section('styles')
+  <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/ionicons.min.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/slick-theme.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery.fancybox.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/animate.min.css')}}">
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <style>
     .swal-modal {
