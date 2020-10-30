@@ -34,6 +34,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<div class="navbar-brand">
 				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="https://p.checklike.com/asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
@@ -61,7 +62,8 @@
 				<li class="menu-btn"><a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">登录/注册</a></li>
 			</ul>
 
-		</div>
+		 </div>
+  	</div>
 		<!-- .container end -->
 
 	</nav>
