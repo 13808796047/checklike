@@ -247,7 +247,7 @@
       let set = new Set();
       let name = '';
       var oneid = ''
-      $('#navigation').removeClass('navbar').addClass('affix')
+      $('#navigation').css('postion','static').addClass('affix')
       // $('.navbar>div').removeClass('container').addClass('container-fluid')
       // $('#headerlw').addClass('curfont')
       $('.category>li:first-child i').addClass('selected')

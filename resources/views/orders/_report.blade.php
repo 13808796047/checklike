@@ -47,7 +47,7 @@
     $(function () {
       // $('.navbar>div').removeClass('container').addClass('container-fluid')
       // $('#headerlw').addClass('curfont')
-      $('#navigation').removeClass('navbar').addClass('affix')
+      $('#navigation').css('postion','static').addClass('affix')
     })
   </script>
 @stop
