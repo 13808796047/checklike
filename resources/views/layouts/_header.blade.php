@@ -32,7 +32,7 @@
 		<div class="container">
 
 			<div class="navbar-brand">
-				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
+				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="https://p.checklike.com/asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
 
 			<ul class="nav navbar-nav" style="flex:1;">
