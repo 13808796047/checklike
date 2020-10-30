@@ -270,7 +270,6 @@
 
 		<!-- .container -->
 		<div class="container">
-
 			<div class="navbar-brand">
 				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="assets/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
