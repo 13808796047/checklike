@@ -671,11 +671,12 @@
   {{--  </div>--}}
 @stop
 @section('scripts')
-  <script type="text/javascript" src="{{ asset('asset/js/move-top.js') }}"></script>
-  <script type="text/javascript" src=" {{ asset('asset/js/easing.js') }}"></script>
+  <!-- <script type="text/javascript" src="{{ asset('asset/js/move-top.js') }}"></script>
+  <script type="text/javascript" src=" {{ asset('asset/js/easing.js') }}"></script> -->
   {{--  <script src="{{ asset('asset/js/responsiveslides.min.js') }}"></script>--}}
   <!-- JavaScripts -->
 <script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/newjs/script.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/jquery-migrate-1.2.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/jquery.easing.min.js')}}"></script>
@@ -686,7 +687,6 @@
 <script type="text/javascript" src="{{asset('asset/newjs/jquery.imgpreload.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/waypoints.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('asset/newjs/script.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/jquery.fancybox.pack.js')}}"></script>
 <!-- <script type="text/javascript" src="js/jquery.fancybox-media.js"></script> -->
 <script type="text/javascript" src="{{asset('asset/newjs/jquery.counterup.min.js')}}"></script>
