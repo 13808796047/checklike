@@ -269,21 +269,7 @@
 	<nav id="navigation" class="navbar scrollspy">
 
 		<!-- .container -->
-		<div class="container">
-			<div class="navbar-brand">
-				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="assets/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
-			</div>
 
-			<ul class="nav navbar-nav">
-				<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-				<li><a href="#features" class="smooth-scroll">论文查重</a></li>
-				<li><a href="#testimonials" class="smooth-scroll">免费查重</a></li>
-				<li><a href="#screenshots" class="smooth-scroll">自动降重</a></li>
-				<li><a href="#pricing" class="smooth-scroll">报告下载</a></li>
-				<li class="menu-btn"><a href="page.html">登录/注册</a></li>
-			</ul>
-
-		</div>
 		<!-- .container end -->
 
 	</nav>
