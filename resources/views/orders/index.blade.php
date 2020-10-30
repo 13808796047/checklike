@@ -139,7 +139,8 @@
       setTimeout(() => {
         window.location.reload();
       }, 120000);
-      $('#navigation').css('postion','static').addClass('affix')
+      $('.navbar').css('position','static')
+      $('#navigation').addClass('affix')
       // $('#headerlw').addClass('curfont')
       // 全选
       $('#allcheck').click(function () {
