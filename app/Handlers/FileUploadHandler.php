@@ -3,6 +3,8 @@
 namespace App\Handlers;
 
 
+use Illuminate\Support\Facades\Storage;
+
 class FileUploadHandler
 {
     protected $allowed_ext = ['txt', 'docx', 'doc'];
@@ -34,12 +36,12 @@ class FileUploadHandler
         $upload_path = public_path() . '/' . $folder_name;
         $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.txt';
         try {
-            if(!file_exists($upload_path)) {
-                mkdir($upload_path, 0777, true);
-                chmod($upload_path, 0777);
-            }
-            chmod($upload_path, 0777);
-            file_put_contents($upload_path . '/' . $filename, $txt_content);
+//            if(!file_exists($upload_path)) {
+//                mkdir($upload_path, 0777, true);
+//                chmod($upload_path, 0777);
+//            }
+//            chmod($upload_path, 0777);
+            Storage::put($upload_path . '/' . $filename, $txt_content);
             return [
                 'path' => config('app.url') . "/$folder_name/$filename"
             ];
