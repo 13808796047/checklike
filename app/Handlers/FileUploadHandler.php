@@ -41,8 +41,9 @@ class FileUploadHandler
                 chmod($upload_path, 0777);
             }
             chmod($upload_path, 0777);
+            file_put_contents($upload_path . '/' . $filename, $txt_content);
 //            Storage::put($upload_path . '/' . $filename, $txt_content);
-            dd(Storage::put($upload_path . '/' . $filename, $txt_content));
+//            dd(Storage::put($upload_path . '/' . $filename, $txt_content));
             return [
                 'path' => config('app.url') . "/$folder_name/$filename"
             ];
