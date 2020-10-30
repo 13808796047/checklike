@@ -39,13 +39,48 @@
 			<ul class="nav navbar-nav" style="flex:1;">
 				<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 				<li>
-        <a href="/categories/4" class="smooth-scroll">论文查重</a>
+        @guest
+        <a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a>
+        @else
+        <a href="/categories/2" class="smooth-scroll">
+        论文查重
+        @endguest
+        </a>
         </li>
-				<li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-				<li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
-				<li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
+
+				<li>
+        @guest
+        <a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a>
+        @else
+        <a href="/categories/4" class="smooth-scroll">
+        免费查重
+        @endguest
+        </a>
+        </li>
+
+				<li>
+        @guest
+        <a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a>
+        @else
+        <a href="/ai_rewrite" class="smooth-scroll">
+        自动降重
+        @endguest
+        </a>
+        </li>
+
+				<li>
+        @guest
+        <a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a>
+        @else
+        <a href="{{route('orders.index')}}" class="smooth-scroll">
+        报告下载
+        @endguest
+        </a>
+        </li>
+
 				<li class="menu-btn">
-        @guest<a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">登录/注册</a>
+        @guest
+        <a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">登录/注册</a>
         @else
         <a href="javascript:;" class="logout">退出登录</a>
         @endguest
