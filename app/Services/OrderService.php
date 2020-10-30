@@ -39,6 +39,7 @@ class OrderService
                     if($category->classid == 4 && $file->type == 'docx') {
                         $content = read_docx($file->real_path);
                         $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
+                        dd($result);
                     }
                 }
             } else {
