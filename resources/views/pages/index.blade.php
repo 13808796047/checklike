@@ -259,32 +259,41 @@
   <!----- //End-slider---->
   <!----start-services---->
   <div>
-  <div style="background-color: rgb(40, 73, 123);width: 100%;height: 620px;position: relative;">
-      <div style="left:18%; top:88px;position: absolute;">
-        <img src="https://www.lianwen.com/asset/images/bg2i.png" width="100%">
-      </div>
-  </div>
-  <div>
-    <div style="display: flex;justify-content:space-evenly;padding: 68px;">
-      <div class="index_first">
-        <h4 class="index_first_title">专业</h4>
-        <div class="index_first_content">
-          不仅提供查重服务，更是提供专业的全套论文解决方案，为你解除论文烦恼。
-        </div>
-      </div>
-      <div class="index_first">
-        <h4 class="index_first_title">省心</h4>
-        <div class="index_first_content">
-          各种论文问题均可一键解决，省心，省力，极其方便的解决论文痛点
-        </div>
-      </div>
-      <div class="index_first">
-        <h4 class="index_first_title">安全</h4>
-        <div class="index_first_content">
-          全站https协议传输，基于阿里云OSS文档上传，报告支持密码加密，安全无痕迹
-        </div>
-      </div>
-    </div>
+  <div class="header-content">
+
+		<!-- .container -->
+		<div class="container">
+
+			<!-- .row -->
+			<div class="row header-row">
+
+				<div class="col-sm-7 col-md-8 col-lg-7">
+					<div class="header-txt">
+						<h1>移动版全新上线<br>完美支持手机/微信/小程序</h1>
+						<p>CheckLike 论文查重系统移动版全新升级，支持手机提交论文(含文件上传)、检测完成后微信提醒、在线查看检测结果、原文比对等功能，方便随时随地查重论文，提升毕业论文写作效率。</p>
+					</div>
+					<div class="header-btn">
+						<a href="#" class="btn-custom">微信扫码体验</a>
+						<a href="#download" class="btn-custom btn-border btn-icon smooth-scroll"><i class="ion ion-social-twitter"></i>免费查重</a>
+					</div>
+				</div>
+
+				<div class="col-sm-5 col-md-4 col-lg-offset-1 header-img">
+					<div class="carousel-slider header-slider animation" data-animation="animation-fade-in-down">
+						<div><img src="{{asset('asset/images/images/content/sliders/1.jpg')}}" alt="Image 1"></div>
+						<div><img src="{{asset('asset/images/images/content/sliders/2.jpg')}}" alt="Image 2"></div>
+						<div><img src="{{asset('asset/images/images/content/sliders/3.jpg')}}" alt="Image 3"></div>
+						<div><img src="{{asset('asset/images/images/content/sliders/4.jpg')}}" alt="Image 4"></div>
+					</div>
+				</div>
+
+			</div>
+			<!-- .row end -->
+
+		</div>
+		<!-- .container end -->
+
+	</div>
   </div>
   <!----//End-services---->
   <!-----//End-services-grids---->

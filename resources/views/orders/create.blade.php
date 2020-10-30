@@ -452,7 +452,9 @@
             location.href = '/orders/' + res.data.data.id
           }).catch(err => {
             console.log(err.response.status, 3112312312)
+            if(err.response.status == 400){
 
+            }
             alert('提交失败，请重试')
             $('#tosubmit').css("display", "block");
             $('#submitBtn').css("display", "none")
