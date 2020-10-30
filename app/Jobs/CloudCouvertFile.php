@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Handlers\FileUploadHandler;
+use App\Handlers\OrderApiHandler;
 use App\Models\Order;
 use \CloudConvert\Laravel\Facades\CloudConvert;
 use \CloudConvert\Models\Job;
@@ -28,6 +29,7 @@ class CloudCouvertFile implements ShouldQueue
 
     public function handle()
     {
+
         $job = CloudConvert::jobs()->create(
             (new Job())
                 ->setTag('checklike')
@@ -58,10 +60,14 @@ class CloudCouvertFile implements ShouldQueue
 //            $dest = fopen("$upload_path/$filename", 'w');
 //            stream_copy_to_stream($source, $dest);
             $result = app(FileUploadHandler::class)->saveTxt($source, 'files', $this->order->user->id);
-            $this->order->update([
-//                'paper_path' => config('app.url') . "/$folder_name/$filename",
-                'paper_path' => $result['path'] ?? ''
-            ]);
+            Log::info('result', [$result]);
+            if($result['path']) {
+                $this->order->update([
+                    'paper_path' => $result['path']
+                ]);
+                //调用上传接口
+                dispatch(new UploadCheckFile($this->order));
+            }
         }
     }
 }

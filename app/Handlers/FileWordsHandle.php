@@ -5,6 +5,7 @@ namespace App\Handlers;
 
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Http;
 
 class FileWordsHandle
@@ -72,8 +73,22 @@ class FileWordsHandle
                 ],
             ]
         ];
+        try {
+            do {
+                $response = $this->http->post($this->uri . '/query-parsing', $query);
+                $result = json_decode($response->getbody()->getContents(), true);
+            } while ($result['code'] != 0);
+            return $result;
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
 
-        $response = $this->http->post($this->uri . '/query-parsing', $query);
-        return json_decode($response->getbody()->getContents(), true);
+        // 开始每个请求，但是不阻塞
+//        $request = new Request('POST', );
+//        $promise = $this->http->postAsync($this->uri . '/query-parsing', $query)->then(function($response) {
+//            return json_decode($response->getbody()->getContents(), true);
+//        });
+//        $promise->wait();
+
     }
 }

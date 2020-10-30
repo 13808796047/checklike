@@ -42,11 +42,14 @@ class getOrderStatus implements ShouldQueue
                     $status = OrderEnum::CHECKING;
                     dispatch(new getOrderStatus($this->order))->delay(now()->addMinutes());
             }
-            \DB::transaction(function() use ($status) {
-                $this->order->update([
-                    'status' => $status,
-                ]);
-            });
+        } else {
+            $status = OrderEnum::CHECKING;
+            dispatch(new getOrderStatus($this->order))->delay(now()->addMinutes());
         }
+        \DB::transaction(function() use ($status) {
+            $this->order->update([
+                'status' => $status,
+            ]);
+        });
     }
 }

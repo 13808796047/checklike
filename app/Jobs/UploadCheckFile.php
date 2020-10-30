@@ -30,5 +30,4 @@ class UploadCheckFile implements ShouldQueue
             dispatch(new CreateCheckOrder($this->order, $result));
         }
     }
-
 }
