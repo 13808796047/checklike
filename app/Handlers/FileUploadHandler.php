@@ -40,8 +40,8 @@ class FileUploadHandler
                 mkdir($upload_path, 0777, true);
                 chmod($upload_path, 0777);
             }
-            chmod($upload_path . '/' . $filename, 0777);
             file_put_contents($upload_path . '/' . $filename, $txt_content);
+            chmod($upload_path . '/' . $filename, 0777);
             return [
                 'path' => config('app.url') . "/$folder_name/$filename"
             ];
