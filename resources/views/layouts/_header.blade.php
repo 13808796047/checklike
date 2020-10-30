@@ -34,7 +34,7 @@
 				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
 
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" style="flex:1;">
 				<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 				<li><a href="#features" class="smooth-scroll">论文查重</a></li>
 				<li><a href="#testimonials" class="smooth-scroll">免费查重</a></li>
