@@ -36,12 +36,13 @@ class FileUploadHandler
         $upload_path = public_path() . '/' . $folder_name;
         $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.txt';
         try {
-//            if(!file_exists($upload_path)) {
-//                mkdir($upload_path, 0777, true);
-//                chmod($upload_path, 0777);
-//            }
+            if(!file_exists($upload_path)) {
+                mkdir($upload_path, 0777, true);
+                chmod($upload_path, 0777);
+            }
 //            chmod($upload_path, 0777);
-            Storage::put($upload_path . '/' . $filename, $txt_content);
+//            Storage::put($upload_path . '/' . $filename, $txt_content);
+            dd(Storage::put($upload_path . '/' . $filename, $txt_content));
             return [
                 'path' => config('app.url') . "/$folder_name/$filename"
             ];
