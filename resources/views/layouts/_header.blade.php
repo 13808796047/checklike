@@ -3,19 +3,10 @@
     content: " ";
     display: table;
 }
-@media (min-width: 768px)
-.navbar-nav>li {
-    float: left;
-}
-.nav>li {
-    position: relative;
-    display: block;
-}
-ul li {
-    line-height: inherit;
-}
 </style>
-<div style="position: relative;">
+<div>
+<header id="header">
+
 	<!-- #navigation -->
 	<nav id="navigation" class="navbar scrollspy">
 
@@ -26,7 +17,7 @@ ul li {
 				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
 
-			<ul class="nav navbar-nav">
+			<ul>
 				<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 				<li><a href="#features" class="smooth-scroll">论文查重</a></li>
 				<li><a href="#testimonials" class="smooth-scroll">免费查重</a></li>
@@ -40,7 +31,7 @@ ul li {
 
 	</nav>
 	<!-- #navigation end -->
-</div>
+</header>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;">
