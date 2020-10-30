@@ -39,7 +39,6 @@ class CheckOrderStatus implements ShouldQueue
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
             \Storage::delete($path);
             \Storage::put($path, $file);
-
             //存储pdf
             $content = $api->extractReportPdf($this->order->api_orderid);
             file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
