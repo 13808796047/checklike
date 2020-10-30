@@ -464,6 +464,121 @@
 
 </div>
 <!-- #features end -->
+<!-- #works -->
+<div id="works" class="container-padding8020">
+
+	<!-- .container -->
+	<div class="container">
+
+		<div class="post-heading-center no-border margin-bottom40">
+			<h2>用户评价</h2>
+		</div>
+
+		<!-- .row -->
+		<div class="row">
+
+			<div class="col-sm-3 affa-testimonial"> <!-- 1 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/1.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>浅夏丿初晴</b> <small>(大学生)</small>
+						<p>“班级群里老师推荐的，价格不高，首次还免费，而且查重报告还比较详细，我们学校是用维普查重，检测结果跟这个差不多，一次性通过!”</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3 affa-testimonial"> <!-- 2 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/2.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>醉相思</b> <small>(研究生)</small>
+						<p>“导师推荐的，知网查重太贵了，只能用其他系统代替。初稿先用CheckLike检测，修改后用维普和万方查重检测，把查出来的全部改掉，顺利通过了学校知网查重。”</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 affa-testimonial"> <!-- 3 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/3.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>岁月如歌</b> <small>(大学教师)</small>
+						<p>“经常用它给学生的作业进行的查重，可以批量上传，检测结果一目了然，而且比较准确，不像之前用的某些系统内容都没重复也飘红。”</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 affa-testimonial"> <!-- 4 -->
+				<div class="testimonial-name">
+						<img src="{{asset('asset/images/content/avatars/4.jpg')}}" alt="Avatar">
+					<div class="testimonial-txt">
+						<b>大号萝莉</b> <small>(主管护师)</small>
+						<p>“学信检测小程序很方便，可以在手机上提交论文查重而且检测完成后能查看详细的比对报告，充分利用了碎片时间，工作和写论文两不误。”</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- .row end -->
+
+	</div>
+	<!-- .container end -->
+
+</div>
+<!-- #works end -->
+
+<div class="container">
+	<div class="sep-border"></div> <!-- separator -->
+</div>
+
+
+<!-- #clients -->
+<div id="clients" class="container-padding60">
+
+	<!-- .container -->
+	<div class="container">
+
+		<div class="post-heading-center">
+			<h2>合作机构</h2>
+		</div>
+
+		<!-- .row -->
+		<div class="row row-clients">
+
+			<div class="col-sm-3"> <!-- 1 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/1.png')}}" alt="Logo">
+				</div>
+			</div>
+
+			<div class="col-sm-3"> <!-- 2 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/2.png')}}" alt="Logo">
+				</div>
+			</div>
+
+			<div class="col-sm-3"> <!-- 3 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/3.png')}}" alt="Logo">
+				</div>
+			</div>
+
+			<div class="col-sm-3"> <!-- 4 -->
+				<div class="affa-client-logo">
+					<img src="{{asset('asset/images/content/clients/4.png')}}" alt="Logo">
+				</div>
+			</div>
+
+		</div>
+		<!-- .row end -->
+
+	</div>
+	<!-- .container end -->
+
+</div>
+<!-- #clients end -->
+
+<div class="container">
+	<div class="sep-border"></div> <!-- separator -->
+</div>
+
   <!-----//End-services-grids---->
   <!---- start-about----->
   <!----start-team----->
