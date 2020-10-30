@@ -1,27 +1,7 @@
-<style>
-.navbar.affix {
-    background-color: #206CE1;
-    padding: 10px 0px;
-    z-index: 1000;
-}
-.navbar {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    min-height: 0px;
-    color: #FFF;
-    padding: 40px 0px;
-    margin: 0px;
-    border: 0px;
-    z-index: 100;
-    border-radius: 0px;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
-}
-</style>
-<div>
-<div>
+<style></style>
+<header id="header">
+
+	<!-- #navigation -->
 	<nav id="navigation" class="navbar scrollspy">
 
 		<!-- .container -->
@@ -31,7 +11,7 @@
 				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
 
-			<ul>
+			<ul class="nav navbar-nav">
 				<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 				<li><a href="#features" class="smooth-scroll">论文查重</a></li>
 				<li><a href="#testimonials" class="smooth-scroll">免费查重</a></li>
@@ -45,7 +25,7 @@
 
 	</nav>
 	<!-- #navigation end -->
-</div>
+</header>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;">
