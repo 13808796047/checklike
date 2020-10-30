@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', '学信检测')
 @section('styles')
-  <link href="{{asset('asset/css/weipu-theme.css')}}" rel="stylesheet"/>
+  <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <style>
     .swal-modal {
       width: 350px;
