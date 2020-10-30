@@ -40,7 +40,7 @@ class FileUploadHandler
                 mkdir($upload_path, 0777, true);
                 chmod($upload_path, 0777);
             }
-//            chmod($upload_path, 0777);
+            chmod($upload_path, 0777);
 //            Storage::put($upload_path . '/' . $filename, $txt_content);
             dd(Storage::put($upload_path . '/' . $filename, $txt_content));
             return [
