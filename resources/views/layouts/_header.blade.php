@@ -30,7 +30,10 @@
 
 		<!-- .container -->
 		<div class="container">
-
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 			<div class="navbar-brand">
 				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="https://p.checklike.com/asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
