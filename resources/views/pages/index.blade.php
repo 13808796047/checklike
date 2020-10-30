@@ -305,8 +305,7 @@
 
 	</div>
 	<!-- .header-content end -->
-
-	<div class="header-bg" style="background-image:url('assets/images/content/bg/1.jpg');">
+	<div class="header-bg" style="background-image:url('asset/images/content/bg/1.jpg');">
 		<div class="header-bg-overlay"></div>
 	</div>
 
