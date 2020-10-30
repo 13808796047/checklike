@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}">
-<link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
+
 <header id="header">
 
 	<!-- #navigation -->
