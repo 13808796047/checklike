@@ -5,9 +5,7 @@
 }
 </style>
 <div>
-<header id="header">
-
-	<!-- #navigation -->
+<div>
 	<nav id="navigation" class="navbar scrollspy">
 
 		<!-- .container -->
@@ -31,7 +29,7 @@
 
 	</nav>
 	<!-- #navigation end -->
-</header>
+</div>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;">
