@@ -416,10 +416,10 @@
 				<div class="col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-0 margin-bottom20">
 					<figure class="img-layers img-layer-right-front">
 						<div class="img-layer-left">
-							<img src="images/content/landing/feature-4.png" alt="Image Left" class="animation" data-animation="animation-fade-in-left">
+							<img src="{{asset('asset/images/content/landing/feature-4.png')}}" alt="Image Left" class="animation" data-animation="animation-fade-in-left">
 						</div>
 						<div class="img-layer-right">
-							<img src="images/content/landing/feature-5.png" alt="Image Right" class="animation" data-animation="animation-fade-in-right" data-delay="400">
+							<img src="{{asset('asset/images/content/landing/feature-5.png')}}" alt="Image Right" class="animation" data-animation="animation-fade-in-right" data-delay="400">
 						</div>
 					</figure>
 				</div>
