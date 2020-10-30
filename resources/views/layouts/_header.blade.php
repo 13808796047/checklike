@@ -30,11 +30,8 @@
 
 		<!-- .container -->
 		<div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
 			<div class="navbar-brand">
 				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="https://p.checklike.com/asset/images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
 			</div>
@@ -42,19 +39,7 @@
 			<ul class="nav navbar-nav" style="flex:1;">
 				<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 				<li>
-        @guest
-         <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop">初稿查重</a>
-        @else
-        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-        初稿查重
-        </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item istoaster" href="/categories/1">CheckLike</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
-            </div>
-        @endguest
+        <a href="/categories/4" class="smooth-scroll">论文查重</a>
         </li>
 				<li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
 				<li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
@@ -62,8 +47,7 @@
 				<li class="menu-btn"><a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">登录/注册</a></li>
 			</ul>
 
-		 </div>
-  	</div>
+		</div>
 		<!-- .container end -->
 
 	</nav>
