@@ -280,10 +280,10 @@
 
 				<div class="col-sm-5 col-md-4 col-lg-offset-1 header-img">
 					<div class="carousel-slider header-slider animation" data-animation="animation-fade-in-down">
-						<div><img src="{{asset('asset/images/images/content/sliders/1.jpg')}}" alt="Image 1"></div>
-						<div><img src="{{asset('asset/images/images/content/sliders/2.jpg')}}" alt="Image 2"></div>
-						<div><img src="{{asset('asset/images/images/content/sliders/3.jpg')}}" alt="Image 3"></div>
-						<div><img src="{{asset('asset/images/images/content/sliders/4.jpg')}}" alt="Image 4"></div>
+						<div><img src="{{asset('asset/images/content/sliders/1.jpg')}}" alt="Image 1"></div>
+						<div><img src="{{asset('asset/images/content/sliders/2.jpg')}}" alt="Image 2"></div>
+						<div><img src="{{asset('asset/images/content/sliders/3.jpg')}}" alt="Image 3"></div>
+						<div><img src="{{asset('asset/images/content/sliders/4.jpg')}}" alt="Image 4"></div>
 					</div>
 				</div>
 
