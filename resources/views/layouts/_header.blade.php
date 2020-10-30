@@ -44,7 +44,12 @@
 				<li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
 				<li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
 				<li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
-				<li class="menu-btn"><a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">登录/注册</a></li>
+				<li class="menu-btn">
+        @guest<a href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">登录/注册</a>
+        @else
+        <a href="javascript:;" class="logout">退出登录</a>
+        @endguest
+        </li>
 			</ul>
 
 		</div>
