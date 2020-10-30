@@ -390,13 +390,13 @@
 		<div class="col-pull-right">
 			<figure class="img-layers3 img-pull-left">
 				<div class="img-layer-lg">
-					<img src="{{asset('asset/images/content/landing/feature-1.png')}" alt="Image Large" class="animation" data-animation="animation-fade-in-right">
+					<img src="{{asset('asset/images/content/landing/feature-1.png')}}" alt="Image Large" class="animation" data-animation="animation-fade-in-right">
 				</div>
 				<div class="img-layer-md">
-					<img src="{{asset('asset/images/content/landing/feature-2.png')}" alt="Image Mediun" class="animation" data-animation="animation-fade-in-left" data-delay="300">
+					<img src="{{asset('asset/images/content/landing/feature-2.png')}}" alt="Image Mediun" class="animation" data-animation="animation-fade-in-left" data-delay="300">
 				</div>
 				<div class="img-layer-sm">
-					<img src="{{asset('asset/images/content/landing/feature-3.png')}" alt="Image Small" class="animation" data-animation="animation-fade-in-down" data-delay="600">
+					<img src="{{asset('asset/images/content/landing/feature-3.png')}}" alt="Image Small" class="animation" data-animation="animation-fade-in-down" data-delay="600">
 				</div>
 			</figure>
 		</div>
