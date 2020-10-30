@@ -3,6 +3,17 @@
     content: " ";
     display: table;
 }
+@media (min-width: 768px)
+.navbar-nav>li {
+    float: left;
+}
+.nav>li {
+    position: relative;
+    display: block;
+}
+ul li {
+    line-height: inherit;
+}
 </style>
 <header id="header">
 
