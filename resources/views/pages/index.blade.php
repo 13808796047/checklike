@@ -429,7 +429,6 @@
 						<div class="post-heading-left">
 							<h2>丰富的论文写作解决方案</h2>
 						</div>
-
 						<div class="affa-feature-icon-left margin-bottom30"> <!-- 1 -->
 							<i class="ion ion-android-done"></i>
 							<h4>一键自动降重</h4>
