@@ -1,27 +1,4 @@
-<link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
 <style>
-.clearfix:before, .clearfix:after, .dl-horizontal dd:before, .dl-horizontal dd:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical>.btn-group:before, .btn-group-vertical>.btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-header:before, .modal-header:after, .modal-footer:before, .modal-footer:after {
-    content: " ";
-    display: table;
-}
-@media (min-width: 1200px)
-.container {
-    width: 1170px;
-}
-@media (min-width: 992px)
-.container {
-    width: 970px;
-}
-@media (min-width: 768px)
-.container {
-    width: 750px;
-}
-.container {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
      style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);padding:0;">

@@ -45,10 +45,6 @@
 @section('scripts')
   <script !src="">
     $(function () {
-      // $('.navbar>div').removeClass('container').addClass('container-fluid')
-      // $('#headerlw').addClass('curfont')
-      $('.navbar').css('position','static')
-      $('#navigation').addClass('affix')
     })
   </script>
 @stop

@@ -139,9 +139,6 @@
       setTimeout(() => {
         window.location.reload();
       }, 120000);
-      $('.navbar').css('position','static')
-      $('#navigation').addClass('affix')
-      // $('#headerlw').addClass('curfont')
       // 全选
       $('#allcheck').click(function () {
         $("input[name='delete']").prop("checked", this.checked);

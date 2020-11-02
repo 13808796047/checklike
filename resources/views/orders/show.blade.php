@@ -178,10 +178,6 @@
 @section('scripts')
   <script>
      $(document).ready(function () {
-      $('.navbar').css('position','static')
-      $('#navigation').addClass('affix')
-      // $('.navbar>div').removeClass('container').addClass('container-fluid')
-      // $('#headerlw').addClass('curfont')
       $('#lwfooter').removeClass('absolute');
       $("input[name='paytype']").change(() => {
         $('#bottonsubmit').toggle();
