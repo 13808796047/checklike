@@ -946,7 +946,6 @@ img.parallax-slider.loaded, .ie img.parallax-slider, .ie9 img.parallax-slider {
 
 /* ========================= Header ========================= */
 
-#header { position:relative; }
 	#header .header-bg {
 		position:absolute;
 		top:0px;

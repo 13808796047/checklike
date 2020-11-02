@@ -247,10 +247,6 @@
       let set = new Set();
       let name = '';
       var oneid = ''
-      $('#navigation > .navbar').css('postion','static')
-      $('#navigation').addClass('affix')
-      // $('.navbar>div').removeClass('container').addClass('container-fluid')
-      // $('#headerlw').addClass('curfont')
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
       $('.category>li').click(function () {
