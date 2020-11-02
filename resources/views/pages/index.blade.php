@@ -676,9 +676,8 @@
   <!-- JavaScripts -->
 <script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/script.js')}}"></script>
-<script type="text/javascript" src="{{asset('asset/newjs/jquery-migrate-1.2.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('asset/newjs/jquery.easing.min.js')}}"></script>
+<!-- <script type="text/javascript" src="{{asset('asset/newjs/jquery.easing.min.js')}}"></script> -->
 <!-- <script type="text/javascript" src="js/smoothscroll.js"></script>
 <script type="text/javascript" src="js/response.min.js"></script> -->
 <script type="text/javascript" src="{{asset('asset/newjs/jquery.placeholder.min.js')}}"></script>
