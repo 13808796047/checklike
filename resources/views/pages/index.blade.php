@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="{{asset('asset/css/ionicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/slick-theme.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery.fancybox.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/animate.min.css')}}">
 
   <style>
     .swal-modal {
