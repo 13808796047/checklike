@@ -12,10 +12,9 @@
   <title>@yield('title', '联文') _学信检测</title>
 
   <!-- Styles -->
-
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <style>
     .newbody {
       height: 100%;
