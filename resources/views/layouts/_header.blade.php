@@ -1,11 +1,10 @@
 <style>
-
 </style>
-  <header id="header">
+
+<header id="header">
      <nav id="navigation" class="navbar scrollspy">
 				<!-- .container -->
 				<div class="container">
-
 					<div class="navbar-brand">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
@@ -15,11 +14,15 @@
 						<li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
 						<li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
 						<li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
-						<li class="menu-btn"><a href="page.html">登录/注册</a></li>
+            @guest
+						<li class="menu-btn"><a class="nav-link" href="javascript:;" data-toggle="modal"
+                                  data-target="#staticBackdrop">登录/注册</a></li>
+            @else
+            <li class="menu-btn"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+            @endguest
 					</ul>
         </div>
 			</nav>
-
   </header>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
