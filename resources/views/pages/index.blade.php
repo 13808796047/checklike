@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="{{asset('asset/css/slick-theme.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/jquery.fancybox.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/animate.min.css')}}">
+  <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <style>
     .swal-modal {
       width: 350px;
