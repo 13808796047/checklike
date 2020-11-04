@@ -20,6 +20,7 @@
       height: 100%;
       margin-bottom: 0;
       user-select: auto;
+      position:relative;
     }
 
     .newmain {

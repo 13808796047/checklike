@@ -269,7 +269,6 @@
 	<!-- #navigation end -->
 
 	<!-- .header-content -->
-  <div id="header2" style="position:relative;">
 <header id="header">
 	<div class="header-content">
 		<div class="container">
@@ -302,8 +301,6 @@
 		<div class="header-bg-overlay"></div>
 	</div>
 </header>
-</div>
-
 
   <!----//End-services---->
   <div id="features" class="section-wrap padding-top60">
