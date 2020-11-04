@@ -269,7 +269,7 @@
 	<!-- #navigation end -->
 
 	<!-- .header-content -->
-<header id="header">
+<header id="header" style="position:relative;">
 	<div class="header-content">
 		<div class="container">
 			<div class="row header-row">
