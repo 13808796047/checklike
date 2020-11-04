@@ -1,7 +1,7 @@
 <style>
 </style>
 
-<header id="header">
+<div id="header1">
      <nav id="navigation" class="navbar scrollspy">
 				<!-- .container -->
 				<div class="container">
@@ -23,7 +23,7 @@
 					</ul>
         </div>
 			</nav>
-  </header>
+</div>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;">
