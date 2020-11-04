@@ -111,6 +111,8 @@
 @section('scripts')
   <script !src="">
     $(function () {
+      $('.navbar').css('position','static')
+      $('#navigation').addClass('affix')
       $("#qrcode").click(function(){
           let order = {!!$order!!};
           $('#qrimgs').children().remove();

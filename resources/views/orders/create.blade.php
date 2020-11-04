@@ -244,6 +244,7 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
+      $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       let set = new Set();
       let name = '';
