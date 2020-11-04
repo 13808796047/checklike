@@ -269,7 +269,8 @@
 	<!-- #navigation end -->
 
 	<!-- .header-content -->
-<!-- <header id="header">
+  <div id="header2" style="position:relative;">
+<header id="header">
 	<div class="header-content">
 		<div class="container">
 			<div class="row header-row">
@@ -300,53 +301,10 @@
 	<div class="header-bg" style="background-image:url('asset/images/content/bg/1.jpg');">
 		<div class="header-bg-overlay"></div>
 	</div>
-</header> -->
-<div id="header2" style="position:relative;">
-<header id="header">
-	<!-- #navigation end -->
-
-	<!-- .header-content -->
-	<div class="header-content">
-
-		<!-- .container -->
-		<div class="container">
-
-			<!-- .row -->
-			<div class="row header-row">
-
-				<div class="col-sm-7 col-md-8 col-lg-7">
-					<div class="header-txt">
-						<h1>移动版全新上线<br>完美支持手机/微信/小程序</h1>
-						<p>CheckLike 论文查重系统移动版全新升级，支持手机提交论文(含文件上传)、检测完成后微信提醒、在线查看检测结果、原文比对等功能，方便随时随地查重论文，提升毕业论文写作效率。</p>
-					</div>
-					<div class="header-btn">
-						<a href="#" class="btn-custom">微信扫码体验</a>
-						<a href="#download" class="btn-custom btn-border btn-icon smooth-scroll"><i class="ion ion-social-twitter"></i>免费查重</a>
-					</div>
-				</div>
-
-				<div class="col-sm-5 col-md-4 col-lg-offset-1 header-img">
-					<div class="carousel-slider header-slider animation" data-animation="animation-fade-in-down">
-          <div><img src= "{{asset('asset/images/content/sliders/1.jpg')}}" alt="Image 1"></div>
-						<div><img src= "{{asset('asset/images/content/sliders/2.jpg')}}" alt="Image 2"></div>
-						<div><img src= "{{asset('asset/images/content/sliders/3.jpg')}}" alt="Image 3"></div>
-						<div><img src= "{{asset('asset/images/content/sliders/4.jpg')}}" alt="Image 4"></div>
-					</div>
-				</div>
-
-			</div>
-			<!-- .row end -->
-
-		</div>
-		<!-- .container end -->
-
-	</div>
-	<!-- .header-content end -->
-	<div class="header-bg" style="background-image:url('asset/images/content/bg/1.jpg');">
-		<div class="header-bg-overlay"></div>
-	</div>
 </header>
 </div>
+
+
   <!----//End-services---->
   <div id="features" class="section-wrap padding-top60">
 
