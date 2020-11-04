@@ -1,9 +1,9 @@
 <style>
 </style>
 
-<div id="header1">
+<!-- <div id="header1">
      <nav id="navigation" class="navbar scrollspy">
-				<!-- .container -->
+
 				<div class="container">
 					<div class="navbar-brand">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
@@ -23,6 +23,35 @@
 					</ul>
         </div>
 			</nav>
+</div> -->
+
+<div id="header1">
+  <!-- #navigation -->
+	<nav id="navigation" class="navbar scrollspy">
+
+		<!-- .container -->
+		<div class="container">
+
+			<div class="navbar-brand">
+				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src="images/checklike.png" alt="CheckLike"></a> <!-- site logo -->
+			</div>
+
+			<ul class="nav navbar-nav" >
+			<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+						<li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+						<li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+						<li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+						<li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
+            @guest
+						<li class="menu-btn"><a class="nav-link" href="javascript:;" data-toggle="modal"
+            data-target="#staticBackdrop">登录/注册</a></li>
+            @else
+            <li class="menu-btn"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+            @endguest
+			</ul>
+		<!-- .container end -->
+    </nav>
+  </div>
 </div>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
