@@ -16,7 +16,7 @@
 						<li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
             @guest
 						<li class="menu-btn"><a class="nav-link" href="javascript:;" data-toggle="modal"
-                                  data-target="#staticBackdrop">登录/注册</a></li>
+            data-target="#staticBackdrop">登录/注册</a></li>
             @else
             <li class="menu-btn"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
             @endguest

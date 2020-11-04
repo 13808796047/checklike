@@ -264,7 +264,7 @@
 
   <!----- //End-slider---->
   <!----start-services---->
-  <header id="header">
+
 	<!-- #navigation -->
 	<!-- #navigation end -->
 
@@ -309,7 +309,6 @@
 		<div class="header-bg-overlay"></div>
 	</div>
 
-</header>
   <!----//End-services---->
   <div id="features" class="section-wrap padding-top60">
 
