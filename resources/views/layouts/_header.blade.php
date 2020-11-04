@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
 <style>
 </style>
 
