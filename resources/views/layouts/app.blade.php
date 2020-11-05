@@ -21,7 +21,7 @@
       height: 100%;
       margin-bottom: 0;
       user-select: auto;
-
+      padding-right:0;
     }
 
     .newmain {
