@@ -27,6 +27,11 @@ class Order extends Model
         return $this->belongsTo(User::class, 'userid');
     }
 
+    public function couponCode()
+    {
+        return $this->belongsTo(CouponCode::class);
+    }
+
     public function report()
     {
         return $this->hasOne(Report::class)->withDefault([
