@@ -290,8 +290,10 @@
                 }
             }
             var html = arr.join('');
-            document.getElementById('content_later').innerHTML = html;
-            document.getElementById('content_after').innerHTML = a;
+            // document.getElementById('content_later').innerHTML = html;
+            // document.getElementById('content_after').innerHTML = a;
+            document.getElementById('content_later').innerHTML = b;
+            document.getElementById('content_after').innerHTML = html;
         }
 
   </script>
