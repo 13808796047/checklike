@@ -9,7 +9,7 @@
 					<div class="navbar-brand">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" style="flex:1">
 						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 						<li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
 						<li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
@@ -17,8 +17,9 @@
 						<li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
 						<li class="menu-btn"><a href="page.html">登录/注册</a></li>
 					</ul>
+        </div>
 			</nav>
-      </div>
+
   </header>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
