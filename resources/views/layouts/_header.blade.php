@@ -18,6 +18,7 @@
 						<li class="menu-btn"><a href="page.html">登录/注册</a></li>
 					</ul>
 			</nav>
+      </div>
   </header>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
