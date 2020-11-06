@@ -4,11 +4,12 @@ namespace App\Admin\Actions\Grid;
 
 use App\Admin\Forms\CreateCouponCode;
 use Dcat\Admin\Actions\Response;
-use Dcat\Admin\Widgets\Modal;
+
 
 use Dcat\Admin\Grid\Tools\AbstractTool;
 use Dcat\Admin\Traits\HasPermissions;
-use Dcat\Admin\Widgets\Box;
+
+use Dcat\Admin\Widgets\DialogForm;
 use Dcat\Admin\Widgets\Widget;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -26,11 +27,7 @@ class GenerateCouponCode extends AbstractTool
     public function handle(Request $request)
     {
         $form = CreateCouponCode::make();
-
-        return Modal::make()
-            ->lg()
-            ->title($this->title)
-            ->body($form)
-            ->button($this->title);
+        DialogForm::make();
+        return;
     }
 }
