@@ -14,6 +14,7 @@
   <!-- Styles -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
+
   <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -79,7 +80,7 @@
 
 <!-- Scripts -->
 <!-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> -->
-<script src="{{asset('asset/js/jquery-confirm.js'}}"></script>
+<script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('scripts')
 <script !src="">
