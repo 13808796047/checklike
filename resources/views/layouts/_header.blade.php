@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}">
 <style>
 </style>
 
