@@ -28,12 +28,16 @@ class CreateCouponCode extends Form
      */
     public function form()
     {
-        $this->tab('选项卡1', function() {
+        $this->tab('VIP卡', function() {
             $this->text('text1');
 
         });
 
-        $this->tab('选项卡2', function() {
+        $this->tab('满减卡', function() {
+            $this->text('text2');
+
+        });
+        $this->tab('折扣卡', function() {
             $this->text('text2');
 
         });
@@ -44,11 +48,11 @@ class CreateCouponCode extends Form
      *
      * @return array
      */
-    public function default()
-    {
-        return [
-            'name' => 'John Doe',
-            'email' => 'John.Doe@gmail.com',
-        ];
-    }
+//    public function default()
+//    {
+//        return [
+//            'name' => 'John Doe',
+//            'email' => 'John.Doe@gmail.com',
+//        ];
+//    }
 }
