@@ -10,6 +10,7 @@ use Dcat\Admin\Grid\Tools\AbstractTool;
 use Dcat\Admin\Traits\HasPermissions;
 
 use Dcat\Admin\Widgets\DialogForm;
+use Dcat\Admin\Widgets\Modal;
 use Dcat\Admin\Widgets\Widget;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -26,8 +27,11 @@ class GenerateCouponCode extends AbstractTool
 
     public function handle(Request $request)
     {
-        $form = CreateCouponCode::make();
-        DialogForm::make();
-        return;
+        return $this->response()->success('发送成功')->refresh();
+//        $form = CreateCouponCode::make();
+//        return Modal::make()
+//            ->lg()
+//            ->title($this->title);
+
     }
 }

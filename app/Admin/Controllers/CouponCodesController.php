@@ -8,6 +8,7 @@ use App\Admin\Actions\BatchCouponCode;
 use App\Admin\Actions\BatchQueue;
 use App\Admin\Actions\Grid\GenerateCouponCode;
 use App\Admin\Actions\OrderBatchDelete;
+use App\Admin\Forms\CreateCouponCode;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Grid;
@@ -44,9 +45,20 @@ class CouponCodesController extends AdminController
                 $actions->disableDelete();
                 $actions->disableView();
             });
-            $grid->tools(new GenerateCouponCode());
+            $grid->tools("{$this->modal2()}");
             // 禁用
             $grid->disableCreateButton();
         });
+    }
+
+    // 异步加载弹窗内容
+    protected function modal2()
+    {
+        return Modal::make()
+            ->lg()
+            ->delay(300) // loading 效果延迟时间设置长一些，否则图表可能显示不出来
+            ->title('异步加载 - 图表')
+            ->body(CreateCouponCode::make())
+            ->button('<button class="btn btn-white"><i class="feather icon-bar-chart-2"></i> 异步加载</button>');
     }
 }
