@@ -668,7 +668,7 @@
   <script type="text/javascript" src=" {{ asset('asset/js/easing.js') }}"></script> -->
   {{--  <script src="{{ asset('asset/js/responsiveslides.min.js') }}"></script>--}}
   <!-- JavaScripts -->
-<script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script>
+<!-- <script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script> -->
 <script type="text/javascript" src="{{asset('asset/newjs/jquery-migrate-1.2.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 <script type="text/javascript" src="{{asset('asset/newjs/script.js')}}"></script>
@@ -836,10 +836,10 @@
       //忘记密码
       $("#forgetpsw").click(function(){
         $("#staticBackdrop").modal('hide')
-        $("#staticBackdrop").remove()
-        $("#staticBackdrop").removeClass()
-        $("#staticBackdrop").removeClass('modal-open')
-        $("body").removeClass('modal-open');
+        // $("#staticBackdrop").remove()
+        // $("#staticBackdrop").removeClass()
+        // $("#staticBackdrop").removeClass('modal-open')
+        // $("body").removeClass('modal-open');
         // $("#staticBackdrop").remove()
         // $("#staticBackdrop").removeClass();
         // console.log("xixi")
