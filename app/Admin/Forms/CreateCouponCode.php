@@ -29,7 +29,10 @@ class CreateCouponCode extends Form
     public function form()
     {
         $this->tab('VIP卡', function() {
-            $this->text('text1');
+            $this->number('enable_days', '有效天数');
+            $this->datetime('unenable_date', '失效日期');
+            $this->number('num', '生成数量');
+            $this->textarea('remark', '备注');
 
         });
 
