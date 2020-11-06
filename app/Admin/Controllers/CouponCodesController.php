@@ -33,6 +33,35 @@ class CouponCodesController extends AdminController
             $grid->column('user.phone', '会员账号');
             $grid->column('category.name', '生效系统');
             $grid->unenable_date('失效时间');
+            $grid->remark('备注');
+            // 传入字符串
+            $grid->tools('<a class="btn btn-sm btn-default">工具按钮测试</a>');
+
+
+        });
+    }
+
+    public function form()
+    {
+        $form->tab('Basic info', function(Form $form) {
+
+            $form->text('username');
+            $form->email('email');
+
+        })->tab('Profile', function(Form $form) {
+
+            $form->image('avatar');
+            $form->text('address');
+            $form->mobile('phone');
+
+        })->tab('Jobs', function(Form $form) {
+
+            $form->hasMany('jobs', function() {
+                $form->text('company');
+                $form->date('start_date');
+                $form->date('end_date');
+            });
+
         });
     }
 }
