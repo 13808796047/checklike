@@ -106,7 +106,7 @@
             },
             cancel: {
                 text: '取消',
-                btnClass: 'btn-warning'
+                btnClass: 'btn-info'
             }
         }
     });
