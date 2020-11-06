@@ -94,16 +94,9 @@
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
 
     $.confirm({
-    title: 'Confirm!',
-    content: 'Simple confirm!',
     confirmButtonClass: 'btn-info',
-    cancelButtonClass: 'btn-danger',
-    confirm: function(){
-        $.alert('Confirmed!');
-    },
-    cancel: function(){
-        $.alert('Canceled!')
-    }
+    cancelButtonClass: 'btn-danger'
+    })
 });
   });
   $("#xiugai").click(()=>{
