@@ -190,3 +190,24 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="delcfmModel">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">确认信息</h4>
+            </div>
+            <div class="modal-body">
+                <p id="delcfmMsg">您确认要删除吗？</p>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="submitUrl"/>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <a onclick="urlSubmit()" class="btn btn-success" data-dismiss="modal">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
