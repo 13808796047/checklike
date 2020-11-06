@@ -7,12 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Order;
 use Dcat\Admin\Controllers\Dashboard;
+use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Layout\Column;
 use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Layout\Row;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends AdminController
 {
     public function index(Content $content, Request $request)
     {
