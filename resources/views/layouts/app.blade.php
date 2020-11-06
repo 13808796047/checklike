@@ -97,8 +97,15 @@
       theme: 'black',
       title: '提示',
       content: '您确认要退出登录吗?',
+      confirmButton: '确认',
+      cancelButton: '取消',
+      confirmButtonClass: 'btn-info',
+      cancelButtonClass: 'btn-danger',
       confirm: function(){
-        $.alert('Confirmed!'); // shorthand.
+        $.alert('Confirmed!');
+      },
+      cancel: function(){
+        $.alert('Canceled!')
       }
     })
   });
