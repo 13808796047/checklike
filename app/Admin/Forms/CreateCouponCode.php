@@ -8,10 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 class CreateCouponCode extends Form
 {
     protected $options = [
-        1 => '显示文本框',
-        2 => '显示编辑器',
-        3 => '显示文件上传',
-        4 => '还是显示文本框',
+        1 => 'VIP卡',
+        2 => '满减卡',
+        3 => '折扣卡',
     ];
 
     public function handle(array $input)
