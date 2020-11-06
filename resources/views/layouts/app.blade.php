@@ -95,7 +95,9 @@
 
     $.confirm({
     confirmButtonClass: 'btn-inverse',
-    cancelButtonClass: 'btn-warning'
+    cancelButtonClass: 'btn-warning',
+    confirmButton: 'Yes i agree',
+    cancelButton: 'NO never !'
     })
   });
   $("#xiugai").click(()=>{
