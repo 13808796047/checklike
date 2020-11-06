@@ -17,8 +17,9 @@
 
 
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
   <style>
     .newbody {
       height: 100%;
