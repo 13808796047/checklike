@@ -68,7 +68,7 @@
 
   <!-- Modal -->
   @guest
-    <div class="modal fade" id="staticBackdrop1"  tabindex="-1" role="dialog"
+    <div class="modal fade" id="staticBackdrop"  tabindex="-1" role="dialog"
          aria-labelledby="staticBackdropLabel" >
       <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:390px;">
         <div class="modal-content" style="width:330px;height:390px;">
@@ -134,13 +134,101 @@
                   </div>
               </div>
             </div>
+
+            {{--          @else--}}
+            {{--            <div class="flex flex-col align-middle">--}}
+            {{--              <div class=" text-center  px-4 py-2 m-2">欢迎您</div>--}}
+            {{--              <div class=" text-center  px-4 py-2 m-2"><img--}}
+            {{--                  src='{{Auth::user()->avatar??'https://css.lianwen.com/images/head.jpg'}}' class='w-50 h-50 m-auto'>--}}
+            {{--              </div>--}}
+            {{--              <div--}}
+            {{--                class=" text-center  px-4 py-2 m-2">{{auth()->user()->phone??auth()->user()->nickname}}</div>--}}
+            {{--              <div class=" text-center  px-4 py-2 m-2">--}}
+            {{--                <a href="javascript:;"--}}
+            {{--                   class="rounded-sm logout text-decoration-none w-100 inline-block py-1 bg-teal-500 hover:bg-teal-600 md:text-lg xl:text-base text-white font-semibold  shadow-md">退出登录</a>--}}
+            {{--              </div>--}}
+            {{--            </div>--}}
+          <!-- <div class="modal-footer" style="justify-content: space-between;">
+            <div style="display: flex;align-items: center;">
+              <p class="text-sm">社交账号登录</p>
+              <a href="{{route('oauth',['type'=>'wechat'])}}" id="toWechat" class="block mr-4"
+                 style="padding-left:23px">
+                <svg t="1585367706568" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" p-id="1112" width="24" height="24">
+                  <path
+                    d="M347.729118 353.0242c-16.487119 0-29.776737 13.389539-29.776737 29.776737S331.241998 412.677596 347.729118 412.677596s29.776737-13.389539 29.776737-29.776737-13.289617-29.876659-29.776737-29.876659zM577.749415 511.800156c-13.689305 0-24.880562 11.091335-24.880563 24.880562 0 13.689305 11.091335 24.880562 24.880563 24.880562 13.689305 0 24.880562-11.191257 24.880562-24.880562s-11.191257-24.880562-24.880562-24.880562zM500.909446 412.677596c16.487119 0 29.776737-13.389539 29.776737-29.776737s-13.389539-29.776737-29.776737-29.776737c-16.487119 0-29.776737 13.389539-29.776737 29.776737s13.289617 29.776737 29.776737 29.776737zM698.455113 511.600312c-13.689305 0-24.880562 11.091335-24.880562 24.880562 0 13.689305 11.091335 24.880562 24.880562 24.880562 13.689305 0 24.880562-11.091335 24.880562-24.880562-0.099922-13.689305-11.191257-24.880562-24.880562-24.880562z"
+                    fill="#00C800" p-id="1113"></path>
+                  <path
+                    d="M511.601093 0.799375C229.12178 0.799375 0.000781 229.820453 0.000781 512.399688s229.021077 511.600312 511.600312 511.600312 511.600312-229.021077 511.600312-511.600312S794.180328 0.799375 511.601093 0.799375z m-90.229508 634.504294c-27.37861 0-49.361436-5.595628-76.839969-10.991413l-76.640125 38.469945 21.882904-65.948477c-54.957065-38.370023-87.73146-87.831382-87.73146-148.084309 0-104.318501 98.722873-186.554254 219.32865-186.554255 107.815769 0 202.34192 65.648712 221.327088 153.979703-6.994536-0.799375-13.989071-1.298985-21.083529-1.298985-104.118657 0-186.454333 77.739266-186.454332 173.564403 0 15.98751 2.498048 31.275566 6.794692 45.964091-6.794692 0.599532-13.689305 0.899297-20.583919 0.899297z m323.547228 76.839969l16.48712 54.757221-60.153006-32.874317c-21.882904 5.495706-43.965652 10.991413-65.848555 10.991413-104.318501 0-186.554254-71.344262-186.554255-159.175644 0-87.631538 82.135831-159.175644 186.554255-159.175644 98.523029 0 186.254489 71.444184 186.254488 159.175644 0.099922 49.461358-32.774395 93.227166-76.740047 126.301327z"
+                    fill="#00C800" p-id="1114"></path>
+                </svg>
+              </a>
+            </div>
+            <p class="text-gray-500 text-xs px-8 d-flex">
+              <div></div>
+              <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                 href="{{route('register')}}">
+                还没有账号?去注册
+              </a>
+            </p>
+          </div> -->
         </div>
       </div>
     </div>
   @endguest
   <!----//End-slider-script---->
   <!-- Slideshow 4 -->
-
+  {{--  <div id="top" class="callbacks_container">--}}
+  {{--    <ul class="rslides" id="slider4">--}}
+  {{--      <li>--}}
+  {{--        <div class="caption text-center">--}}
+  {{--          <div class="slide-text-info">--}}
+  {{--            --}}{{--            <a class="btn1" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop"><span>万方查重</span></a>--}}
+  {{--            <h1>本科大学生 <span>毕业论文</span> 学术不端检测</h1>--}}
+  {{--            <div class="slide-text">--}}
+  {{--              <p>用于检测大学生毕业论文是否存在抄袭剽窃等学术不端行为，全国多个高校在使用，与学校检测结果一致。</p>--}}
+  {{--            </div>--}}
+  {{--            @guest--}}
+  {{--              <a class="btn2" href="javascript:;" data-toggle="modal"--}}
+  {{--                 data-target="#staticBackdrop"><span>立即查重</span></a>--}}
+  {{--            @else--}}
+  {{--              <a class="btn2" href="{{route('categories.show',['classid'=>2])}}" target="_blank"><span>立即查重</span></a>--}}
+  {{--            @endguest--}}
+  {{--          </div>--}}
+  {{--        </div>--}}
+  {{--      </li>--}}
+  {{--      <li>--}}
+  {{--        <div class="caption text-center">--}}
+  {{--          <div class="slide-text-info">--}}
+  {{--            <a class="btn1" href="#"><span>万方查重</span></a>--}}
+  {{--            <h1>硕博研究生 <span> 学位论文 </span> 学术不端检测</h1>--}}
+  {{--            <div class="slide-text">--}}
+  {{--              <p>为高校研究生院部提供检测服务，仅限检测研究生毕业论文。可检测抄袭与剽窃、伪造、篡改等学术不端行为。</p>--}}
+  {{--            </div>--}}
+  {{--            <a class="btn2" href="javascript:;" id="login3"><span>立即查重</span></a>--}}
+  {{--            @auth--}}
+  {{--              <a class="btn2" href="{{route('categories.show',['classid'=>2])}}" id="login3"><span>立即查重</span></a>--}}
+  {{--            @endauth--}}
+  {{--          </div>--}}
+  {{--        </div>--}}
+  {{--      </li>--}}
+  {{--      <li>--}}
+  {{--        <div class="caption text-center">--}}
+  {{--          <div class="slide-text-info">--}}
+  {{--            <a class="btn1" href="#"><span>万方查重</span></a>--}}
+  {{--            <h1>职称评比 <span>期刊发表</span> 学术不端检测</h1>--}}
+  {{--            <div class="slide-text">--}}
+  {{--              <p>为编辑部提供检测服务，可检测抄袭与剽窃、伪造、篡改、不当署名、一稿多投等学术不端文献。</p>--}}
+  {{--            </div>--}}
+  {{--            @auth--}}
+  {{--              <a class="btn2" href="{{route('categories.show',['classid'=>2])}}" id="login4"><span>立即查重</span></a>--}}
+  {{--            @endauth--}}
+  {{--            <a class="btn2" href="javascript:;" id="login4"><span>立即查重</span></a>--}}
+  {{--          </div>--}}
+  {{--        </div>--}}
+  {{--      </li>--}}
+  {{--    </ul>--}}
+  {{--  </div>--}}
   <div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;height:330px;">
       <div class="modal-content" style="width:330px;height:360px;">
@@ -631,7 +719,7 @@
         // $("#xiugai").css("display","none")
       }
       var timer = null
-      $('#staticBackdrop1').on('show.bs.modal', function () {
+      $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(res=>{
           var img = new Image();
           img.onload = function() {
@@ -748,7 +836,7 @@
       //忘记密码
       $("#forgetpsw").click(function(){
         console.log("xixo")
-        $("#staticBackdrop1").modal("hide")
+        $("#staticBackdrop").modal("hide")
         // $("#staticBackdrop").remove()
         // $("#staticBackdrop").removeClass();
         // console.log("xixi")
