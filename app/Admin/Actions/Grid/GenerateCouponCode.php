@@ -17,13 +17,7 @@ class GenerateCouponCode extends AbstractTool
     protected $title = 'Title';
     protected $style = 'btn btn-white waves-effect';
 
-    /**
-     * Handle the action request.
-     *
-     * @param Request $request
-     *
-     * @return Response
-     */
+
     public function handle(Request $request)
     {
         return $this->response()
