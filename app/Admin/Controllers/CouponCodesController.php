@@ -6,6 +6,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Actions\BatchCouponCode;
 use App\Admin\Actions\BatchQueue;
+use App\Admin\Actions\Grid\GenerateCouponCode;
 use App\Admin\Actions\OrderBatchDelete;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Controllers\AdminController;
@@ -41,10 +42,7 @@ class CouponCodesController extends AdminController
                 $actions->disableDelete();
                 $actions->disableView();
             });
-            $grid->tools([
-                '<a class="btn btn-sm btn-default">工具按钮测试</a>',
-                new BatchCouponCode(),
-            ]);
+            $grid->tools(new GenerateCouponCode());
             // 禁用
             $grid->disableCreateButton();
         });
