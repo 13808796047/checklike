@@ -260,10 +260,57 @@ return [
         'menu_model' => Dcat\Admin\Models\Menu::class,
 
         // Pivot table for table above.
+        'operation_log_table'    => 'admin_operation_log',
         'role_users_table'       => 'admin_role_users',
         'role_permissions_table' => 'admin_role_permissions',
         'role_menu_table'        => 'admin_role_menu',
         'permission_menu_table'  => 'admin_permission_menu',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User operation log setting
+    |--------------------------------------------------------------------------
+    |
+    | By setting this option to open or close operation log in dcat-admin.
+    |
+    */
+    'operation_log' => [
+
+        'enable' => true,
+
+        // Only logging allowed methods in the list
+        'allowed_methods' => ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'],
+
+        'secret_fields' => [
+            'password',
+            'password_confirmation',
+        ],
+
+        // Routes that will not log to database.
+        // All method to path like: auth/logs/*/edit
+        // or specific method to path like: get:auth/logs.
+        'except' => [
+            'auth/logs*',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin map field provider
+    |--------------------------------------------------------------------------
+    |
+    | Supported: "tencent", "google", "yandex", "baidu".
+    |
+    */
+    'map' => [
+        'provider' => 'baidu',
+
+        'keys' => [
+            'tencent' => env('TENCENT_MAP_API_KEY'),
+            'google' => env('GOOGLE_API_KEY'),
+            'baidu' => env('BAIDU_MAP_API_KEY'),
+        ],
     ],
 
     /*
@@ -274,8 +321,8 @@ return [
     | This value is the layout of admin pages.
     */
     'layout' => [
-        // default, blue, blue-light, blue-dark, green
-        'color' => 'default',
+        // indigo, blue, blue-light, blue-dark, green
+        'color' => 'indigo',
 
         'body_class' => '',
 
@@ -296,7 +343,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'exception_handler' => Dcat\Admin\Exception\Handler::class,
+    'exception_handler' => \Dcat\Admin\Exception\Handler::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -309,12 +356,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Extension
+    | Extension Directory
     |--------------------------------------------------------------------------
+    |
+    | When you use command `php artisan admin:extend` to generate extensions,
+    | the extension files will be generated in this directory.
     */
-    'extension' => [
-        // When you use command `php artisan admin:ext-make` to generate extensions,
-        // the extension files will be generated in this directory.
-        'dir' => base_path('dcat-admin-extensions'),
+    'extension_dir' => app_path('Admin/Extensions'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Settings for extensions.
+    |--------------------------------------------------------------------------
+    |
+    | You can find all available extensions here
+    | https://github.com/dcat-admin-extensions.
+    |
+    */
+    'extensions' => [
+
     ],
 ];
