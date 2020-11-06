@@ -41,7 +41,10 @@ class CouponCodesController extends AdminController
                 $actions->disableDelete();
                 $actions->disableView();
             });
-            $grid->batchActions([new BatchCouponCode()]);
+            $grid->tools([
+                '<a class="btn btn-sm btn-default">工具按钮测试</a>',
+                new BatchCouponCode(),
+            ]);
             // 禁用
             $grid->disableCreateButton();
         });
