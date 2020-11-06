@@ -837,6 +837,7 @@
       $("#forgetpsw").click(function(){
         console.log("xixo")
         $("#staticBackdrop").remove()
+        $("#staticBackdrop").removeClass();
         // console.log("xixi")
         // $("#forgetModal").modal("show");
       })
