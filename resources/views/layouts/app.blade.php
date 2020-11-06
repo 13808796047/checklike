@@ -14,7 +14,7 @@
   <!-- Styles -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <style>
@@ -79,18 +79,25 @@
 
 <!-- Scripts -->
 <!-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> -->
-
+<script src="{{asset('asset/css/jquery-confirm.js'}}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('scripts')
 <script !src="">
   //退出登录
   $('.logout').click(() => {
-    alertify.confirm('提示', '您确认要退出登录吗?', function(){
-      axios.post('{{route('logout')}}').then(res => {
-              location.replace('https://p.checklike.com')
-              alertify.success('注销成功')
-          })
-     }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
+    // alertify.confirm('提示', '您确认要退出登录吗?', function(){
+    //   axios.post('{{route('logout')}}').then(res => {
+    //           location.replace('https://p.checklike.com')
+    //           alertify.success('注销成功')
+    //       })
+    //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
+    $.alert({
+    title: 'Alert!',
+    content: 'Simple alert!',
+    confirm: function(){
+        $.alert('Confirmed!'); // shorthand.
+    }
+});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
