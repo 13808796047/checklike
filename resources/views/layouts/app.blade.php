@@ -18,6 +18,7 @@
 
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <style>
     .newbody {
       height: 100%;
@@ -80,6 +81,7 @@
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
+<script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 @yield('scripts')
 <script !src="">
   //退出登录
