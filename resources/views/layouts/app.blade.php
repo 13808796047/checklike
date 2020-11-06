@@ -81,9 +81,10 @@
 <!-- Scripts -->
 <!-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> -->
 <!-- <script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script> -->
+
+<script src="{{ mix('js/app.js') }}"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
-<script src="{{ mix('js/app.js') }}"></script>
 @yield('scripts')
 <script !src="">
   //退出登录
@@ -94,15 +95,14 @@
     //           alertify.success('注销成功')
     //       })
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
-    $('.logout').confirm( {title: 'Confirm!',
-    content: 'Simple confirm!',
-    confirm: function(){
-        $.alert('Confirmed!');
-    },
-    cancel: function(){
-        $.alert('Canceled!')
-    })}
 
+    $.alert({
+    title: 'Alert!',
+    content: 'Simple alert!',
+    confirm: function(){
+        $.alert('Confirmed!'); // shorthand.
+    }
+});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
