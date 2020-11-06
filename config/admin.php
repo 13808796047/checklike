@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => '论文检测',
+    'name' => 'Dcat Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<img src="/vendors/dcat-admin/images/logo.png" width="35"> &nbsp;论文检测',
+    'logo' => '<img src="/vendors/dcat-admin/images/logo.png" width="35"> &nbsp;Dcat Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ return [
     | Html title for all pages.
     |
     */
-    'title' => '论文检测',
+    'title' => 'Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,7 +115,7 @@ return [
 
         'guards' => [
             'admin' => [
-                'driver' => 'session',
+                'driver'   => 'session',
                 'provider' => 'admin',
             ],
         ],
@@ -123,7 +123,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model' => Dcat\Admin\Models\Administrator::class,
+                'model'  => Dcat\Admin\Models\Administrator::class,
             ],
         ],
 
@@ -191,7 +191,7 @@ return [
         'cache' => [
             // enable cache or not
             'enable' => false,
-            'store' => 'file',
+            'store'  => 'file',
         ],
 
         // Whether enable menu bind to a permission.
@@ -209,12 +209,14 @@ return [
     |
     */
     'upload' => [
-        // 对应 filesystem.php 中的 disks
-        'disk' => 'public',
 
+        // Disk in `config/filesystem.php`.
+        'disk' => 'admin',
+
+        // Image and file upload path under the disk above.
         'directory' => [
             'image' => 'images',
-            'file' => 'files',
+            'file'  => 'files',
         ],
     ],
 
@@ -248,12 +250,12 @@ return [
         'menu_model' => Dcat\Admin\Models\Menu::class,
 
         // Pivot table for table above.
-        'operation_log_table' => 'admin_operation_log',
+        'operation_log_table'    => 'admin_operation_log',
         'user_permissions_table' => 'admin_user_permissions',
-        'role_users_table' => 'admin_role_users',
+        'role_users_table'       => 'admin_role_users',
         'role_permissions_table' => 'admin_role_permissions',
-        'role_menu_table' => 'admin_role_menu',
-        'permission_menu_table' => 'admin_permission_menu',
+        'role_menu_table'        => 'admin_role_menu',
+        'permission_menu_table'  => 'admin_permission_menu',
     ],
 
     /*
@@ -303,7 +305,7 @@ return [
     */
     'layout' => [
         // indigo, blue, blue-light, blue-dark, green
-        'color' => 'green',
+        'color' => 'indigo',
 
         'body_class' => '',
 
