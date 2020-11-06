@@ -4,12 +4,13 @@ namespace App\Admin\Actions;
 
 use Dcat\Admin\Actions\Action;
 use Dcat\Admin\Actions\Response;
+use Dcat\Admin\Grid\BatchAction;
 use Dcat\Admin\Traits\HasPermissions;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class BatchCouponCode extends Action
+class BatchCouponCode extends BatchAction
 {
     /**
      * @return string
