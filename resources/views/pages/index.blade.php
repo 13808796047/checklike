@@ -844,7 +844,7 @@
         // $("#staticBackdrop").remove()
         // $("#staticBackdrop").removeClass();
         // console.log("xixi")
-        // $("#forgetModal").modal("show");
+        $("#forgetModal").modal("show");
       })
       $('#verificationCode').click(function () {
         getcode(this)
