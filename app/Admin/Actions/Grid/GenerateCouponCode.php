@@ -14,7 +14,7 @@ class GenerateCouponCode extends AbstractTool
     /**
      * @return string
      */
-    protected $title = 'Title';
+    protected $title = '批量生成卡密';
     protected $style = 'btn btn-white waves-effect';
 
 
@@ -23,39 +23,5 @@ class GenerateCouponCode extends AbstractTool
         return $this->response()
             ->success('Processed successfully.')
             ->redirect('/');
-    }
-
-    /**
-     * @return string|void
-     */
-    protected function href()
-    {
-        // return admin_url('auth/users');
-    }
-
-    /**
-     * @return string|array|void
-     */
-    public function confirm()
-    {
-        // return ['Confirm?', 'contents'];
-    }
-
-    /**
-     * @param Model|Authenticatable|HasPermissions|null $user
-     *
-     * @return bool
-     */
-    protected function authorize($user): bool
-    {
-        return true;
-    }
-
-    /**
-     * @return array
-     */
-    protected function parameters()
-    {
-        return [];
     }
 }
