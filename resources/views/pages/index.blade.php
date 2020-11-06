@@ -120,7 +120,7 @@
                     <div class="flex items-center justify-between my-4">
                       <button
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="button" id="accountLogin">
+                        type="button" id="accountLogin" style="text-align:center;">
                         登录
                       </button>
                     </div>
