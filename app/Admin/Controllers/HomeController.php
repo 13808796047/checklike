@@ -6,6 +6,7 @@ use App\Admin\Metrics\Examples;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Order;
+use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Controllers\Dashboard;
 use Dcat\Admin\Layout\Column;
 use Dcat\Admin\Layout\Content;
