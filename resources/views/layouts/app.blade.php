@@ -94,7 +94,12 @@
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
 
     $.confirm({
-      theme: 'black'
+      theme: 'black',
+      title: '提示',
+      content: '您确认要退出登录吗?',
+      confirm: function(){
+        $.alert('Confirmed!'); // shorthand.
+      }
     })
   });
   $("#xiugai").click(()=>{
