@@ -11,6 +11,7 @@ use App\Admin\Actions\OrderBatchDelete;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Widgets\Modal;
 
 class CouponCodesController extends AdminController
 {
