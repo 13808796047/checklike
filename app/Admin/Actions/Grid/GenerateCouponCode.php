@@ -30,8 +30,8 @@ class GenerateCouponCode extends AbstractTool
         $form = CreateCouponCode::make();
         return Modal::make()
             ->lg()
-            ->title('标题')
+            ->title($this->title)
             ->body($form)
-            ->button('<button class="btn btn-primary">点击打开弹窗</button>');
+            ->button($this->title);
     }
 }
