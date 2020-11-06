@@ -82,7 +82,7 @@
 <!-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> -->
 <!-- <script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script> -->
 <script src="{{ mix('js/app.js') }}"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="{{asset('asset/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 @yield('scripts')
 <script !src="">
@@ -96,9 +96,15 @@
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
 
     $.confirm({
-    confirmButtonClass: 'btn-info',
-    cancelButtonClass: 'btn-danger'
-    })
+    title: 'Confirm!',
+    content: 'Simple confirm!',
+    confirm: function(){
+        $.alert('Confirmed!');
+    },
+    cancel: function(){
+        $.alert('Canceled!')
+    }
+});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
