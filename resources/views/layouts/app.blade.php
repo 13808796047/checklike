@@ -82,7 +82,7 @@
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
-<script type="text/javascript" src="{{asset('asset/newjs/bootstrap.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 @yield('scripts')
 <script !src="">
