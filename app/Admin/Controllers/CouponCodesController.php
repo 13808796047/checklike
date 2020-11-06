@@ -11,9 +11,21 @@ use App\Admin\Actions\OrderBatchDelete;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Widgets\Modal;
 
 class CouponCodesController extends AdminController
 {
+    public function index()
+    {
+        $modal = Grid\Displayers\Modal::make()
+            ->lg()
+            ->title('异步加载 - 表单')
+            ->body(UserProfile::make())
+            ->button('<button class="btn btn-white"> 异步加载</button>');
+
+        return $content->body($modal);
+    }
+
     public function grid()
     {
         return Grid::make(new CouponCode(['user', 'category']), function(Grid $grid) {
