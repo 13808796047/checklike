@@ -8,6 +8,7 @@ use App\Admin\Actions\BatchCouponCode;
 use App\Admin\Actions\BatchQueue;
 use App\Admin\Actions\Grid\GenerateCouponCode;
 use App\Admin\Actions\OrderBatchDelete;
+use App\Admin\Forms\CreateCouponCode;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Grid;
@@ -57,6 +58,7 @@ class CouponCodesController extends AdminController
             ->lg()
             ->delay(300) // loading 效果延迟时间设置长一些，否则图表可能显示不出来
             ->title('异步加载 - 图表')
+            ->body(CreateCouponCode::make())
             ->button('<button class="btn btn-white"><i class="feather icon-bar-chart-2"></i> 异步加载</button>');
     }
 }
