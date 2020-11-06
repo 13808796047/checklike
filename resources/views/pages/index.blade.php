@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{asset('asset/css/jquery.fancybox.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/animate.min.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
-  <!-- <link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}"> -->
+  <link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}">
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
 
   <style>
