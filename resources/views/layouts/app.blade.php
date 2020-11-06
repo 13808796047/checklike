@@ -14,11 +14,16 @@
   <!-- Styles -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
-
-
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('asset/css/ionicons.min.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/slick-theme.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery.fancybox.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/animate.min.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
 
   <style>
     .newbody {
@@ -82,6 +87,23 @@
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
 <script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
+<script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('asset/newjs/jquery-migrate-1.2.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
+<script type="text/javascript" src="{{asset('asset/newjs/script.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('asset/newjs/jquery.easing.min.js')}}"></script>
+<!-- <script type="text/javascript" src="js/smoothscroll.js"></script>
+<script type="text/javascript" src="js/response.min.js"></script> -->
+<script type="text/javascript" src="{{asset('asset/newjs/jquery.placeholder.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/newjs/jquery.fitvids.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/newjs/jquery.imgpreload.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/newjs/waypoints.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/newjs/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/newjs/jquery.fancybox.pack.js')}}"></script>
+<!-- <script type="text/javascript" src="js/jquery.fancybox-media.js"></script> -->
+<script type="text/javascript" src="{{asset('asset/newjs/jquery.counterup.min.js')}}"></script>
 @yield('scripts')
 <script !src="">
   //退出登录
