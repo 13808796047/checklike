@@ -93,13 +93,26 @@
     //           alertify.success('注销成功')
     //       })
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
-    $.alert({
-    title: 'Alert!',
-    content: 'Simple alert!',
-    confirm: function(){
-        $.alert('Confirmed!'); // shorthand.
-    }
-});
+    $.confirm({
+        title: '确认',
+        content: '确认把该搜索结果导出Excel表格?',
+        type: 'green',
+        icon: 'glyphicon glyphicon-question-sign',
+        buttons: {
+            ok: {
+                text: '确认',
+                btnClass: 'btn-primary',
+                action: function() {
+                    location.href = url; //指向下载资源（此处为目标文件的输出数据流）
+                }
+            },
+            cancel: {
+                text: '取消',
+                btnClass: 'btn-primary'
+            }
+        }
+    });
+
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
