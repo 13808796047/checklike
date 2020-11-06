@@ -13,7 +13,7 @@ use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Layout\Row;
 use Illuminate\Http\Request;
 
-class HomeController extends AdminController
+class HomeController extends Controller
 {
     public function index(Content $content, Request $request)
     {
