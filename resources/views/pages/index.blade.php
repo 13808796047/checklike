@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title', '学信检测')
 @section('styles')
-  <link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/ionicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/slick-theme.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/jquery.fancybox.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/animate.min.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
+  <!-- <link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}"> -->
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
 
   <style>
@@ -837,6 +837,7 @@
       $("#forgetpsw").click(function(){
         console.log("xixo")
         $("#staticBackdrop").remove()
+        $("#staticBackdrop").removeClass();
         // console.log("xixi")
         // $("#forgetModal").modal("show");
       })
