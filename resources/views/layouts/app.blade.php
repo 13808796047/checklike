@@ -99,14 +99,14 @@
         buttons: {
             ok: {
                 text: '确认',
-                btnClass:  'btn-info',
+                btnClass:  'btn-success',
                 action: function() {
                     location.href = url; //指向下载资源（此处为目标文件的输出数据流）
                 }
             },
             cancel: {
                 text: '取消',
-                btnClass: 'btn-primary'
+                btnClass: 'btn-warning'
             }
         }
     });
