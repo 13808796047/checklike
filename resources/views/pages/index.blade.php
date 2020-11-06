@@ -71,7 +71,7 @@
     <div class="modal fade" id="staticBackdrop"  tabindex="-1" role="dialog"
          aria-labelledby="staticBackdropLabel" >
       <div class="modal-dialog modal-dialog-centered" role="document" style="width:330px;height:390px;">
-        <div class="modal-content" style="width:330px;height:360px;">
+        <div class="modal-content" style="width:330px;height:390px;">
             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist" style="margin:3px 0;">
               <li class="nav-item mr-4">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
