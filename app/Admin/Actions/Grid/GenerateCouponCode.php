@@ -28,7 +28,7 @@ class GenerateCouponCode extends AbstractTool
     public function handle(Request $request)
     {
         $form = CreateCouponCode::make();
-        Modal::make()
+        return Modal::make()
             ->lg()
             ->title('标题')
             ->body($form)
