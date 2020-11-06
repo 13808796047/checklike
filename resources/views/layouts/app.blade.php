@@ -103,7 +103,7 @@
                 action: function() {
                   axios.post('{{route('logout')}}').then(res => {
                      location.replace('https://p.checklike.com')
-                     alertify.success('注销成功')
+                     swal("提示","退出成功", "success");
                   })
                 }
             },
