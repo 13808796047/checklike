@@ -42,7 +42,7 @@ class CouponCodesController extends AdminController
                 $actions->disableDelete();
                 $actions->disableView();
             });
-            $grid->tools('<a class="btn btn-primary disable-outline" href="">测试按钮</a>');
+            $grid->tools(new GenerateCouponCode());
             // 禁用
             $grid->disableCreateButton();
         });
