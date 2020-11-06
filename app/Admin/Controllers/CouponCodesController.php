@@ -42,7 +42,7 @@ class CouponCodesController extends AdminController
                 $actions->disableView();
             });
             $grid->batchActions(function($batch) {
-                $batch->add(new BatchCouponCode());
+                $batch->add(new BatchCouponCode('批量启动队列'));
             });
             // 禁用批量删除按钮
             $grid->disableBatchDelete();
