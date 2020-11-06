@@ -102,8 +102,8 @@
                 btnClass:  'btn-danger',
                 action: function() {
                   axios.post('{{route('logout')}}').then(res => {
-                     location.replace('https://p.checklike.com')
                      swal("提示","退出成功", "success");
+                     location.replace('https://p.checklike.com')
                   })
                 }
             },
