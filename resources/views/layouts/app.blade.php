@@ -83,7 +83,7 @@
 <!-- <script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script> -->
 
 <script src="{{ mix('js/app.js') }}"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script> -->
 <script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 @yield('scripts')
 <script !src="">
