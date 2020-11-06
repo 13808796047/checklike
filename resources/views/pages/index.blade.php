@@ -835,9 +835,9 @@
       }
       //忘记密码
       $("#forgetpsw").click(function(){
-        // $("#staticBackdrop").modal("hide");
+        $("#staticBackdrop").modal("hide");
         // console.log("xixi")
-        $("#forgetModal").modal("show");
+        // $("#forgetModal").modal("show");
       })
       $('#verificationCode').click(function () {
         getcode(this)
