@@ -94,10 +94,7 @@
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
 
     $.confirm({
-    confirmButtonClass: 'btn-inverse',
-    cancelButtonClass: 'btn-warning',
-    confirmButton: 'Yes i agree',
-    cancelButton: 'NO never !'
+      theme: 'black'
     })
   });
   $("#xiugai").click(()=>{
