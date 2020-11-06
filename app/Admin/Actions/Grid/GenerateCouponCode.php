@@ -27,7 +27,7 @@ class GenerateCouponCode extends AbstractTool
 
     public function handle(Request $request)
     {
-        return ['您确定要发送新的提醒消息吗？', '确认信息内容，如没有可以留空'];
+        return $this->response()->success('发送成功')->refresh();
 //        $form = CreateCouponCode::make();
 //        return Modal::make()
 //            ->lg()
