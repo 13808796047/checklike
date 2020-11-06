@@ -4,8 +4,8 @@ namespace App\Admin\Actions\Grid;
 
 use App\Admin\Forms\CreateCouponCode;
 use Dcat\Admin\Actions\Response;
+use Dcat\Admin\Widgets\Modal;
 
-use Dcat\Admin\Grid\Displayers\Modal;
 use Dcat\Admin\Grid\Tools\AbstractTool;
 use Dcat\Admin\Traits\HasPermissions;
 use Dcat\Admin\Widgets\Box;
@@ -27,7 +27,7 @@ class GenerateCouponCode extends AbstractTool
     {
         $form = CreateCouponCode::make();
 
-        return Box::make()
+        return Modal::make()
             ->lg()
             ->title($this->title)
             ->body($form)

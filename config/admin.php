@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Dcat Admin',
+    'name' => '论文检测',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,7 +115,7 @@ return [
 
         'guards' => [
             'admin' => [
-                'driver'   => 'session',
+                'driver' => 'session',
                 'provider' => 'admin',
             ],
         ],
@@ -123,7 +123,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => Dcat\Admin\Models\Administrator::class,
+                'model' => Dcat\Admin\Models\Administrator::class,
             ],
         ],
 
@@ -191,7 +191,7 @@ return [
         'cache' => [
             // enable cache or not
             'enable' => false,
-            'store'  => 'file',
+            'store' => 'file',
         ],
 
         // Whether enable menu bind to a permission.
@@ -216,7 +216,7 @@ return [
         // Image and file upload path under the disk above.
         'directory' => [
             'image' => 'images',
-            'file'  => 'files',
+            'file' => 'files',
         ],
     ],
 
@@ -250,12 +250,12 @@ return [
         'menu_model' => Dcat\Admin\Models\Menu::class,
 
         // Pivot table for table above.
-        'operation_log_table'    => 'admin_operation_log',
+        'operation_log_table' => 'admin_operation_log',
         'user_permissions_table' => 'admin_user_permissions',
-        'role_users_table'       => 'admin_role_users',
+        'role_users_table' => 'admin_role_users',
         'role_permissions_table' => 'admin_role_permissions',
-        'role_menu_table'        => 'admin_role_menu',
-        'permission_menu_table'  => 'admin_permission_menu',
+        'role_menu_table' => 'admin_role_menu',
+        'permission_menu_table' => 'admin_permission_menu',
     ],
 
     /*
