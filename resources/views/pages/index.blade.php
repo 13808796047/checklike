@@ -264,17 +264,14 @@
 
   <!----- //End-slider---->
   <!----start-services---->
-  <header id="header">
+
 	<!-- #navigation -->
 	<!-- #navigation end -->
 
 	<!-- .header-content -->
+<header id="header" style="position:relative;">
 	<div class="header-content">
-
-		<!-- .container -->
 		<div class="container">
-
-			<!-- .row -->
 			<div class="row header-row">
 
 				<div class="col-sm-7 col-md-8 col-lg-7">
@@ -298,18 +295,13 @@
 				</div>
 
 			</div>
-			<!-- .row end -->
-
 		</div>
-		<!-- .container end -->
-
 	</div>
-	<!-- .header-content end -->
 	<div class="header-bg" style="background-image:url('asset/images/content/bg/1.jpg');">
 		<div class="header-bg-overlay"></div>
 	</div>
-
 </header>
+
   <!----//End-services---->
   <div id="features" class="section-wrap padding-top60">
 
@@ -674,10 +666,10 @@
   <script type="text/javascript" src=" {{ asset('asset/js/easing.js') }}"></script> -->
   {{--  <script src="{{ asset('asset/js/responsiveslides.min.js') }}"></script>--}}
   <!-- JavaScripts -->
-<script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('asset/newjs/jquery-migrate-1.2.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('asset/newjs/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/script.js')}}"></script>
+<script type="text/javascript" src="{{asset('asset/newjs/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/newjs/jquery.easing.min.js')}}"></script>
 <!-- <script type="text/javascript" src="js/smoothscroll.js"></script>
 <script type="text/javascript" src="js/response.min.js"></script> -->

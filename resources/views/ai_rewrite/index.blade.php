@@ -161,7 +161,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
-   $('.navbar').css('position','static')
+  $('.navbar').css('position','static')
   $('#navigation').addClass('affix')
    var checkvalue = "";
   function getRadioVal(){

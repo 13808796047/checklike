@@ -1,116 +1,46 @@
 <style>
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
-     style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);padding:0;">
-     <div style="background-color: #2863f9;height: 100%;padding: 3px;">
-    <a class="navbar-brand " href="{{ url('/') }}" style="height: 50px;margin-top: 10px;margin-left: 10px;">
-      <img src= "{{ asset('asset/images/checklike.png') }}" alt="" style="height:100%;">
-    </a>
-    </div>
-  <div class="container">
-    <!-- Branding Image -->
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Left Side Of Navbar -->
-      <ul class="navbar-nav mr-auto" id="headerlw" style="align-items:center;">
-        <li class="nav-item px-2 {{ active_class(if_route('domained::pages.index')) }}"><a
-            class="nav-link text-blue-300"
-            href="{{ url('/') }}">首页</a>
-        </li>
-        <li class="nav-item dropdown px-2 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
-
-        @guest
-         <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop">初稿查重</a>
-        @else
-        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-        初稿查重
-        </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item istoaster" href="/categories/1">CheckLike</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
-            </div>
-        @endguest
-
-        </li>
-        <li class="nav-item dropdown px-2 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
-
-         @guest
-          <a class="nav-link" href="javascript:;" data-toggle="modal"
-                data-target="#staticBackdrop">定稿查重</a>
-         @else
-         <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-          定稿查重
-        </span>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
+<div id="header1">
+     <nav id="navigation" class="navbar scrollspy">
+				<div class="container">
+					<div class="navbar-brand">
+						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
+					</div>
+					<ul class="nav navbar-nav" style="flex:1">
+						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
+            @else
+            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
+            @else
+            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
+            @else
+            <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a></li>
+            @else
+            <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
+            @endguest
+            @guest
+						<li class="menu-btn"><a class="nav-link" href="javascript:;" data-toggle="modal"
+            data-target="#staticBackdrop">登录/注册</a></li>
+            @else
+            <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li>
+            @endguest
+					</ul>
+          </nav>
         </div>
-         @endguest
+</div>
 
-       </li>
-       <li class="nav-item px-2">
-          @guest
-            <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop">自动降重</a>
-          @else
-            <a href="/ai_rewrite"
-                class="block  lg:inline-block lg:mt-0 text-black-500 hover:text-blue-600 mr-4 text-decoration-none" style="margin-left:15px;">
-                自动降重
-            </a>
-          @endguest
-       </li>
-        <li class="nav-item px-2 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
-          @guest
-            <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop">查看报告</a>
-          @else
-            <a class="nav-link" href="{{route('orders.index')}}">查看报告</a>
-          @endguest
-        </li>
-        <li class="nav-item px-2"><a class="nav-link" href="javascript:void(0)"
-                                     onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
-        </li>
-        {{--        <li class="active"><a href="/" class="scroll">首页<span> </span></a></li>--}}
 
-        {{--        <li class="page-scroll"><a href="{{route('categories.show',['classid'=>2])}}" id="login1"--}}
-        {{--                                   class="scroll">万方查重<span> </span></a></li>--}}
-
-        {{--        <li class="page-scroll"><a href="{{route('orders.index')}}" id="down" class="scroll">查看报告<span> </span></a></li>--}}
-        {{--        <li class="contatct-active" class="page-scroll"><a href="javascript:void(0)"--}}
-        {{--                                                           onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')"--}}
-        {{--                                                           class="scroll">在线咨询</a></li>--}}
-
-      </ul>
-
-      <!-- Right Side Of Navbar -->
-      <ul class="navbar-nav navbar-right">
-      @guest
-        <!-- Authentication Links -->
-          <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
-                                  data-target="#staticBackdrop">登录</a></li>
-          <li class="nav-item"><a class="nav-link" id='RegisterDialogBtn'" href="javascript:;">注册</a></li>
-        @else
-          <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
-          @if(Auth::user()->phone)
-          <li class="nav-item"><a class="nav-link" href="javascript:;" id="xiugai">修改密码</a></li>
-          @else
-          <li class="nav-item"><a class="nav-link" href="javascript:;" id="bindSelfPhone">绑定手机号</a></li>
-          @endif
-        @endguest
-      </ul>
-    </div>
-  </div>
-</nav>
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;">
@@ -259,4 +189,25 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="modal fade" id="delcfmModel">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">确认信息</h4>
+            </div>
+            <div class="modal-body">
+                <p id="delcfmMsg">您确认要删除吗？</p>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="submitUrl"/>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <a onclick="urlSubmit()" class="btn btn-success" data-dismiss="modal">确定</a>
+            </div>
+        </div>
+    </div>
 </div>
