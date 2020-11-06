@@ -42,7 +42,7 @@ class CreateCouponCode extends Form
 //            $this->text('text2');
 //
 //        });
-        $this->radio('')->when(1, function(Form $form) {
+        $this->radio('radio', '')->when(1, function(Form $form) {
             $form->number('enable_days', '有效天数');
             $form->datetime('unenable_date', '失效日期');
             $form->number('num', '生成数量');
