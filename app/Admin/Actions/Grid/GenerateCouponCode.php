@@ -30,8 +30,7 @@ class GenerateCouponCode extends AbstractTool
         $form = CreateCouponCode::make();
         return Modal::make()
             ->lg()
-            ->title($this->title)
-            ->body($form)
-            ->button($this->title);
+            ->title($this->title);
+
     }
 }
