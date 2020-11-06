@@ -99,7 +99,7 @@
         buttons: {
             ok: {
                 text: '确认',
-                btnClass:  'btn-success',
+                btnClass:  'btn-danger',
                 action: function() {
                     location.href = url; //指向下载资源（此处为目标文件的输出数据流）
                 }
