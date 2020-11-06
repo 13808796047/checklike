@@ -15,9 +15,10 @@
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
 
-  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
+
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <style>
     .newbody {
       height: 100%;
@@ -79,11 +80,8 @@
 </div>
 
 <!-- Scripts -->
-<!-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> -->
-<!-- <script type="text/javascript" src="{{asset('asset/newjs/jquery-1.11.3.min.js')}}"></script> -->
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-<script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 <script src="{{ mix('js/app.js') }}"></script>
+<script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}" ></script>
 @yield('scripts')
 <script !src="">
   //退出登录
@@ -94,26 +92,10 @@
     //           alertify.success('注销成功')
     //       })
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
-    $.confirm({
-        title: '确认',
-        content: '确认把该搜索结果导出Excel表格?',
-        type: 'green',
-        icon: 'glyphicon glyphicon-question-sign',
-        buttons: {
-            ok: {
-                text: '确认',
-                btnClass: 'btn-primary',
-                action: function() {
-                    location.href = url; //指向下载资源（此处为目标文件的输出数据流）
-                }
-            },
-            cancel: {
-                text: '取消',
-                btnClass: 'btn-primary'
-            }
-        }
-    });
 
+    $.confirm({
+      theme: 'black'
+    })
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
