@@ -97,7 +97,6 @@
     confirmButtonClass: 'btn-info',
     cancelButtonClass: 'btn-danger'
     })
-});
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
