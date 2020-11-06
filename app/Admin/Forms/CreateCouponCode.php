@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CreateCouponCode extends Form
 {
-    /**
-     * Handle the form request.
-     *
-     * @param array $input
-     *
-     * @return Response
-     */
+    protected $options = [
+        1 => '显示文本框',
+        2 => '显示编辑器',
+        3 => '显示文件上传',
+        4 => '还是显示文本框',
+    ];
+
     public function handle(array $input)
     {
         // dump($input);
@@ -28,22 +28,34 @@ class CreateCouponCode extends Form
      */
     public function form()
     {
-        $this->tab('VIP卡', function() {
-            $this->number('enable_days', '有效天数');
-            $this->datetime('unenable_date', '失效日期');
-            $this->number('num', '生成数量');
-            $this->textarea('remark', '备注');
-
-        });
-
-        $this->tab('满减卡', function() {
-            $this->text('text2');
-
-        });
-        $this->tab('折扣卡', function() {
-            $this->text('text2');
-
-        });
+//        $this->tab('VIP卡', function() {
+//            $this->number('enable_days', '有效天数');
+//            $this->datetime('unenable_date', '失效日期');
+//            $this->number('num', '生成数量');
+//            $this->textarea('remark', '备注');
+//        });
+//
+//        $this->tab('满减卡', function() {
+//            $this->text('text2');
+//
+//        });
+//        $this->tab('折扣卡', function() {
+//            $this->text('text2');
+//
+//        });
+        $this->radio('radio')->when([1, 4], function(Form $form) {
+            $form->text('text1');
+            $form->text('text2');
+            $form->text('text3');
+        })
+            ->when(2, function(Form $form) {
+                $form->editor('editor');
+            })
+            ->when(3, function(Form $form) {
+                $form->image('image');
+            })
+            ->options($this->options)
+            ->default(1);
     }
 
     /**
