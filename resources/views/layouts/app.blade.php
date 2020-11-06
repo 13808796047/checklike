@@ -101,7 +101,10 @@
                 text: '确认',
                 btnClass:  'btn-danger',
                 action: function() {
-                    location.href = url; //指向下载资源（此处为目标文件的输出数据流）
+                  axios.post('{{route('logout')}}').then(res => {
+                     location.replace('https://p.checklike.com')
+                     alertify.success('注销成功')
+                  })
                 }
             },
             cancel: {
