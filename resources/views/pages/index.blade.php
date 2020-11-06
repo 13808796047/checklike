@@ -836,7 +836,7 @@
       //忘记密码
       $("#forgetpsw").click(function(){
         console.log("xixo")
-        $("#staticBackdrop").css('display:none')
+        $("#staticBackdrop").modal('hide')
         // $("#staticBackdrop").remove()
         // $("#staticBackdrop").removeClass();
         // console.log("xixi")
