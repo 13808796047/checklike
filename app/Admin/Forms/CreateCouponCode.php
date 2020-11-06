@@ -28,8 +28,15 @@ class CreateCouponCode extends Form
      */
     public function form()
     {
-        $this->text('name')->required();
-        $this->email('email')->rules('email');
+        $this->tab('选项卡1', function() {
+            $this->text('text1');
+
+        });
+
+        $this->tab('选项卡2', function() {
+            $this->text('text2');
+
+        });
     }
 
     /**
@@ -40,7 +47,7 @@ class CreateCouponCode extends Form
     public function default()
     {
         return [
-            'name'  => 'John Doe',
+            'name' => 'John Doe',
             'email' => 'John.Doe@gmail.com',
         ];
     }
