@@ -4,6 +4,9 @@
 namespace App\Admin\Controllers;
 
 
+use App\Admin\Actions\BatchCouponCode;
+use App\Admin\Actions\BatchQueue;
+use App\Admin\Actions\OrderBatchDelete;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Grid;
@@ -34,10 +37,17 @@ class CouponCodesController extends AdminController
             $grid->column('category.name', '生效系统');
             $grid->unenable_date('失效时间');
             $grid->remark('备注');
-            $grid->tools('<a class="btn btn-danger">生成VIP卡</a>');
-            $grid->tools('<a class="btn btn-danger">生成满减卡</a>');
-            $grid->tools('<a class="btn btn-danger">生成折扣卡</a>');
-            // 传入字符串
+            $grid->actions(function(Grid\Displayers\Actions $actions) {
+                $actions->disableDelete();
+                $actions->disableView();
+            });
+            $grid->batchActions(function($batch) {
+                $batch->add(new BatchCouponCode());
+            });
+            // 禁用批量删除按钮
+            $grid->disableBatchDelete();
+            // 禁用
+            $grid->disableCreateButton();
         });
     }
 }
