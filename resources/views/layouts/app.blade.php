@@ -96,11 +96,16 @@
     //       })
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
 
-    $.alert({
-    title: 'Alert!',
-    content: 'Simple alert!',
+    $.confirm({
+    title: 'Confirm!',
+    confirmButtonClass: 'btn-info',
+    cancelButtonClass: 'btn-danger',
+    content: 'Simple confirm!',
     confirm: function(){
-        $.alert('Confirmed!'); // shorthand.
+        $.alert('Confirmed!');
+    },
+    cancel: function(){
+        $.alert('Canceled!')
     }
 });
   });
