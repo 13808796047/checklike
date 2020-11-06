@@ -17,8 +17,9 @@
 
 
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
   <style>
     .newbody {
       height: 100%;
@@ -92,22 +93,28 @@
     //           alertify.success('注销成功')
     //       })
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
-
     $.confirm({
-      theme: 'black',
-      title: '提示',
-      content: '您确认要退出登录吗?',
-      confirmButton: '确认',
-      cancelButton: '取消',
-      confirmButtonClass: 'btn-info',
-      cancelButtonClass: 'btn-danger',
-      confirm: function(){
-        $.alert('Confirmed!');
-      },
-      cancel: function(){
-        $.alert('Canceled!')
-      }
-    })
+        title: '提示',
+        content: '您确认要退出登录吗?',
+        buttons: {
+            ok: {
+                text: '确认',
+                btnClass:  'btn-danger',
+                action: function() {
+                  axios.post('{{route('logout')}}').then(res => {
+                     location.replace('https://p.checklike.com')
+                     swal("提示","退出成功", "success");
+                  })
+                }
+            },
+            cancel: {
+                text: '取消',
+                btnClass: 'btn-info'
+            }
+        }
+    });
+
+
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")
