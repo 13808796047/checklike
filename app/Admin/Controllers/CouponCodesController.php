@@ -44,7 +44,7 @@ class CouponCodesController extends AdminController
                 $actions->disableDelete();
                 $actions->disableView();
             });
-            $grid->tools('{$this->modal2()}');
+            $grid->tools("{$this->modal2()}");
             // 禁用
             $grid->disableCreateButton();
         });
