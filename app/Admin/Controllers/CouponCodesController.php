@@ -15,16 +15,6 @@ use Dcat\Admin\Widgets\Modal;
 
 class CouponCodesController extends AdminController
 {
-    public function index()
-    {
-        $modal = Grid\Displayers\Modal::make()
-            ->lg()
-            ->title('异步加载 - 表单')
-            ->body(UserProfile::make())
-            ->button('<button class="btn btn-white"> 异步加载</button>');
-
-        return $content->body($modal);
-    }
 
     public function grid()
     {
