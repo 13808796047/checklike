@@ -93,14 +93,12 @@
     //       })
     //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
     $.confirm({
-        title: '确认',
-        content: '确认把该搜索结果导出Excel表格?',
-        type: 'green',
-        icon: 'glyphicon glyphicon-question-sign',
+        title: '提示',
+        content: '您确认要退出登录吗?',
         buttons: {
             ok: {
                 text: '确认',
-                btnClass: 'btn-primary',
+                btnClass:  'btn-info',
                 action: function() {
                     location.href = url; //指向下载资源（此处为目标文件的输出数据流）
                 }
