@@ -30,7 +30,7 @@ class CreateCouponCode extends Form
     public function form()
     {
         $this->tab('VIP卡', function() {
-            $this->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
+            $this->select('value', 'xxx')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
             $this->number('enable_days', '有效天数');
             $this->datetime('unenable_date', '失效日期');
             $this->number('num', '生成数量');
