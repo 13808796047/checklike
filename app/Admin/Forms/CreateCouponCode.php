@@ -39,7 +39,7 @@ class CreateCouponCode extends Form
 
         $this->tab('满减卡', function() {
             $this->number('min_amount', '满')->required();
-            $this->number('value', '减');
+            $this->number('value1', '减');
 //            $this->select('cid', '生效系统')->options('/category_options');
             $this->number('enable_days', '有效天数');
             $this->datetime('unenable_date', '失效日期');
