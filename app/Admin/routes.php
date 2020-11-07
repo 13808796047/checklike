@@ -22,4 +22,5 @@ Route::group([
     $router->get('orders/{order}/download_report', 'OrderController@downloadReport')->name('admin.orders.download_report');
     $router->post('orders/{order}/receved', 'OrderController@receved')->name('admin.orders.receved');
     $router->get('coupon_codes', 'CouponCodesController@index');
+    $router->get('category_options', 'CategoryController@categories');
 });
