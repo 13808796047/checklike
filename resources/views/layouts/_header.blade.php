@@ -180,7 +180,7 @@
                     class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="yzmcode"
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
-                  <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
+                  <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
             </div>
             <div id="registerTip" style="color:red;margin-bottom:10px;"></div>
             <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;">
