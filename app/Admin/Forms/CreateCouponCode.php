@@ -44,16 +44,17 @@ class CreateCouponCode extends Form
 //            $this->text('text2');
 //
 //        });
-        $this->radio('radio', '')->when(1, function(Form $form) {
-            $form->number('enable_days', '有效天数');
-            $form->datetime('unenable_date', '失效日期');
-            $form->number('num', '生成数量');
-            $form->textarea('remark', '备注');
-        })
+        $this->radio('radio', '')
+            ->when(1, function(Form $form) {
+                $form->number('enable_days', '有效天数');
+                $form->datetime('unenable_date', '失效日期');
+                $form->number('num', '生成数量');
+                $form->textarea('remark', '备注');
+            })
             ->when(2, function(Form $form) {
                 $form->number('min_amount', '满')->required();
                 $form->number('value', '减');
-                $form->select('cid', '生效系统');
+                $form->select('cid', '生效系统')->options('/category_options');
                 $form->number('enable_days', '有效天数');
                 $form->datetime('unenable_date', '失效日期');
                 $form->number('num', '生成数量');
@@ -61,7 +62,6 @@ class CreateCouponCode extends Form
             })
             ->when(3, function(Form $form) {
                 $form->select('value', '卡密折扣')->options($this->options)->default(1);
-
                 $form->number('enable_days', '有效天数');
                 $form->datetime('unenable_date', '失效日期');
                 $form->number('num', '生成数量');
