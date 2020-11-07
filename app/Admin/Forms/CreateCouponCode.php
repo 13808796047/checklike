@@ -2,8 +2,8 @@
 
 namespace App\Admin\Forms;
 
+use Dcat\Admin\Form;
 use Dcat\Admin\Form\Row;
-use Dcat\Admin\Widgets\Form;
 use Faker\Factory;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -44,33 +44,33 @@ class CreateCouponCode extends Form
 //            $this->text('text2');
 //
 //        });
-        $this->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
-//        $this->radio('radio', '')
-//            ->when(1, function(Form $form) {
-//                $form->number('enable_days', '有效天数');
-//                $form->datetime('unenable_date', '失效日期');
-//                $form->number('num', '生成数量');
-//                $form->textarea('remark', '备注');
-//            })
-//            ->when(2, function(Form $form) {
-//                $form->number('min_amount', '满')->required();
-//                $form->number('value', '减');
-////                $form->select('cid', '生效系统')->options('/category_options');
-//                $form->number('enable_days', '有效天数');
-//                $form->datetime('unenable_date', '失效日期');
-//                $form->number('num', '生成数量');
-//                $form->textarea('remark', '备注');
-//            })
-//            ->when(3, function(Form $form) {
-//                $form->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
-//                $form->number('enable_days', '有效天数');
-//                $form->datetime('unenable_date', '失效日期');
-//                $form->number('num', '生成数量');
-//                $form->textarea('remark', '备注');
-////                $form->select('cid', '生效系统')->options('/category_options');
-//            })
-//            ->options($this->options)
-//            ->default(1);
+//        $this->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
+        $this->radio('radio', '')
+            ->when(1, function(Form $form) {
+                $form->number('enable_days', '有效天数');
+                $form->datetime('unenable_date', '失效日期');
+                $form->number('num', '生成数量');
+                $form->textarea('remark', '备注');
+            })
+            ->when(2, function(Form $form) {
+                $form->number('min_amount', '满')->required();
+                $form->number('value', '减');
+//                $form->select('cid', '生效系统')->options('/category_options');
+                $form->number('enable_days', '有效天数');
+                $form->datetime('unenable_date', '失效日期');
+                $form->number('num', '生成数量');
+                $form->textarea('remark', '备注');
+            })
+            ->when(3, function(Form $form) {
+                $form->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
+                $form->number('enable_days', '有效天数');
+                $form->datetime('unenable_date', '失效日期');
+                $form->number('num', '生成数量');
+                $form->textarea('remark', '备注');
+//                $form->select('cid', '生效系统')->options('/category_options');
+            })
+            ->options($this->options)
+            ->default(1);
     }
 
     /**
