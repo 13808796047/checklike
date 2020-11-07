@@ -4,7 +4,7 @@
 <div id="header1">
      <nav id="navigation" class="navbar scrollspy">
 				<div class="container">
-					<div class="navbar-brand">
+					<div class="navbar-brand" style="width:316px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
 					<ul class="nav navbar-nav" style="flex:1">
@@ -30,8 +30,10 @@
             <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
             @endguest
             @guest
-						<li class="menu-btn"><a class="nav-link" href="javascript:;" data-toggle="modal"
-            data-target="#staticBackdrop">登录/注册</a></li>
+						<li class="menu-btn" style="padding-right:0"><a class="nav-link" href="javascript:;" data-toggle="modal"
+            data-target="#staticBackdrop" >登录</a></li>
+            <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
+            id="RegisterDialogBtn">注册</a></li>
             @else
             <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li>
             @endguest
@@ -142,7 +144,7 @@
       </div>
       <div class="modal-body">
          <div style="padding:10px 17px;">
-            <div>
+            <div class="input-group">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
               手机号:
               </label>
@@ -151,7 +153,7 @@
                  name="phone"
                  id="registerphones" type="text" placeholder="请输入手机号码">
             </div>
-            <div>
+            <div class="input-group">
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                  密码:
                </label>
@@ -160,7 +162,7 @@
                  name="password"
                  id="registerpassword" type="password" placeholder="请输入密码" >
             </div>
-            <div>
+            <div class="input-group">
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                  确认密码:
                </label>
@@ -169,7 +171,7 @@
                  name="password"
                  id="password_confirmation" type="password" placeholder="请输入密码" value="{{ old('password') }}">
             </div>
-            <div>
+            <div class="input-group">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="yzmcode">
                   验证码:
                 </label>
@@ -178,7 +180,7 @@
                     class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="yzmcode"
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
-                  <button type="button" class="btn btn-primary" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
+                  <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
             </div>
             <div id="registerTip" style="color:red;margin-bottom:10px;"></div>
             <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;">

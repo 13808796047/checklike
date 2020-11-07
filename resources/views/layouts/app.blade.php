@@ -113,8 +113,6 @@
             }
         }
     });
-
-
   });
   $("#xiugai").click(()=>{
     $("#staticXiugai").modal("show")

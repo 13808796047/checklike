@@ -274,7 +274,7 @@
 <header id="header" style="position:relative;">
 	<div class="header-content">
 		<div class="container">
-			<div class="row header-row">
+			<div class="row header-row">3e
 
 				<div class="col-sm-7 col-md-8 col-lg-7">
 					<div class="header-txt">
@@ -771,10 +771,8 @@
           type: 'account'
         }).then(res => {
           if (res.status == 200) {
-
             swal("提示", res.data.message, "success");
             location.reload();
-
           } else {
             swal("提示", res.data.message);
           }
@@ -837,13 +835,6 @@
       //忘记密码
       $("#forgetpsw").click(function(){
         $("#staticBackdrop").modal('hide')
-        // $("#staticBackdrop").remove()
-        // $("#staticBackdrop").removeClass()
-        // $("#staticBackdrop").removeClass('modal-open')
-        // $("body").removeClass('modal-open');
-        // $("#staticBackdrop").remove()
-        // $("#staticBackdrop").removeClass();
-        // console.log("xixi")
         $("#forgetModal").modal("show");
       })
       $('#verificationCode').click(function () {
