@@ -59,7 +59,7 @@ class CreateCouponCode extends Form
                 $form->textarea('remark', '备注');
             })
             ->when(3, function(Form $form) {
-                $form->select('value', '卡密折扣')->options([9.5 => '95折', 9 => '9折', 8.5 => '8.5折']);
+                $form->select('value', '卡密折扣')->options(['9.5' => '95折', '9' => '9折', '8.5' => '8.5折']);
                 $form->select('cid', '生效系统');
                 $form->number('enable_days', '有效天数');
                 $form->datetime('unenable_date', '失效日期');
