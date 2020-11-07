@@ -52,7 +52,7 @@ class CreateCouponCode extends Form
             $this->datetime('unenable_date', '失效日期');
             $this->number('num', '生成数量');
             $this->textarea('remark', '备注');
-            $form->select('cid', '生效系统')->options('/category_options');
+            $this->select('cid', '生效系统')->options('/category_options');
 
         });
 //        $this->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
