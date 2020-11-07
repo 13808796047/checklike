@@ -3,6 +3,7 @@
 namespace App\Admin\Forms;
 
 use Dcat\Admin\Form\Row;
+use Dcat\Admin\Widgets\Form;
 use Faker\Factory;
 use Symfony\Component\HttpFoundation\Response;
 
