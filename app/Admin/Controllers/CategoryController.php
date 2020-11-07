@@ -7,6 +7,7 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Controllers\AdminController;
+use Illuminate\Http\Request;
 
 class CategoryController extends AdminController
 {
@@ -93,5 +94,12 @@ class CategoryController extends AdminController
             });
 
         });
+    }
+
+    public function categories(Request $request)
+    {
+        $q = $request->get('q');
+
+        return \App\Models\Category::where('name', 'like', "%$q%")->paginate(null, ['id', 'name as text']);
     }
 }

@@ -45,20 +45,20 @@ class CouponCodesController extends AdminController
                 $actions->disableDelete();
                 $actions->disableView();
             });
-            $grid->tools("{$this->modal2()}");
+            $grid->tools("{$this->modal()}");
             // 禁用
             $grid->disableCreateButton();
         });
     }
 
     // 异步加载弹窗内容
-    protected function modal2()
+    protected function modal()
     {
         return Modal::make()
             ->lg()
             ->delay(300) // loading 效果延迟时间设置长一些，否则图表可能显示不出来
-            ->title('异步加载 - 图表')
+            ->title('批量生成')
             ->body(CreateCouponCode::make())
-            ->button('<button class="btn btn-white"><i class="feather icon-bar-chart-2"></i> 异步加载</button>');
+            ->button('<button class="btn btn-white"><i class="feather icon-bar-chart-2"></i> 批量生成</button>');
     }
 }
