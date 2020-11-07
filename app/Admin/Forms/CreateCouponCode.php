@@ -17,11 +17,11 @@ class CreateCouponCode extends Form
 
     public function handle(array $input)
     {
-        // dump($input);
+        dump($input);
 
         // return $this->error('Your error message.');
 
-        return $this->success('Processed successfully.', '/');
+        // return $this->success('Processed successfully.', '/');
     }
 
     /**
