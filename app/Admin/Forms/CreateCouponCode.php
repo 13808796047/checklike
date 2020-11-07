@@ -4,6 +4,7 @@ namespace App\Admin\Forms;
 
 use Dcat\Admin\Form\Row;
 use Dcat\Admin\Widgets\Form;
+use Faker\Factory;
 use Symfony\Component\HttpFoundation\Response;
 
 class CreateCouponCode extends Form
@@ -59,6 +60,8 @@ class CreateCouponCode extends Form
                 $form->textarea('remark', '备注');
             })
             ->when(3, function(Form $form) {
+                $names = $this->createNames();
+                $form->select('form2.select', 'select')->options($names);
                 $form->select('value', '卡密折扣')->options(['9.5' => '95折', '9' => '9折', '8.5' => '8.5折']);
                 $form->select('cid', '生效系统');
                 $form->number('enable_days', '有效天数');
@@ -82,4 +85,23 @@ class CreateCouponCode extends Form
 //            'email' => 'John.Doe@gmail.com',
 //        ];
 //    }
+    /**
+     * 生成随机数据
+     *
+     * @return array
+     */
+    protected function createNames()
+    {
+        if(isset($this->names)) {
+            return $this->names;
+        }
+        $faker = Factory::create();
+        $this->names = [];
+        for($i = 0; $i < 15; $i++) {
+            $name = $faker->name;
+            $this->names[$name] = $name;
+        }
+        return $this->names;
+    }
+
 }
