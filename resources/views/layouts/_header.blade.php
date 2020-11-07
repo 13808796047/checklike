@@ -144,17 +144,16 @@
       </div>
       <div class="modal-body">
          <div style="padding:10px 17px;">
-            <div class="input-group input-group-sm">
+            <div class="input-group">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
               手机号:
               </label>
               <input
-                 class="input-sm appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
-                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
                  id="registerphones" type="text" placeholder="请输入手机号码">
             </div>
-            <div class="input-group input-group-sm">
+            <div class="input-group">
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                  密码:
                </label>
@@ -163,7 +162,7 @@
                  name="password"
                  id="registerpassword" type="password" placeholder="请输入密码" >
             </div>
-            <div class="input-group input-group-sm">
+            <div class="input-group">
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                  确认密码:
                </label>
@@ -172,7 +171,7 @@
                  name="password"
                  id="password_confirmation" type="password" placeholder="请输入密码" value="{{ old('password') }}">
             </div>
-            <div class="input-group input-group-sm">
+            <div class="input-group">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="yzmcode">
                   验证码:
                 </label>
