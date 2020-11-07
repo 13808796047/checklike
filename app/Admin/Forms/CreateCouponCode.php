@@ -60,13 +60,13 @@ class CreateCouponCode extends Form
                 $form->textarea('remark', '备注');
             })
             ->when(3, function(Form $form) {
-                $form->select('value', '卡密折扣')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
+                $form->select('value', '卡密折扣')->options(['val' => 'Option name']);
 
                 $form->number('enable_days', '有效天数');
                 $form->datetime('unenable_date', '失效日期');
                 $form->number('num', '生成数量');
                 $form->textarea('remark', '备注');
-                $form->select('cid', '生效系统')->options('/category_options');
+//                $form->select('cid', '生效系统')->options('/category_options');
             })
             ->options($this->options)
             ->default(1);
