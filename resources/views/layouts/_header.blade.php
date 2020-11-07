@@ -144,7 +144,7 @@
       </div>
       <div class="modal-body">
          <div style="padding:10px 17px;">
-            <div>
+            <div class="input-group input-group-sm">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
               手机号:
               </label>
@@ -153,7 +153,7 @@
                  name="phone"
                  id="registerphones" type="text" placeholder="请输入手机号码">
             </div>
-            <div>
+            <div class="input-group input-group-sm">
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                  密码:
                </label>
@@ -162,7 +162,7 @@
                  name="password"
                  id="registerpassword" type="password" placeholder="请输入密码" >
             </div>
-            <div>
+            <div class="input-group input-group-sm">
                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                  确认密码:
                </label>
@@ -171,7 +171,7 @@
                  name="password"
                  id="password_confirmation" type="password" placeholder="请输入密码" value="{{ old('password') }}">
             </div>
-            <div>
+            <div class="input-group input-group-sm">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="yzmcode">
                   验证码:
                 </label>
