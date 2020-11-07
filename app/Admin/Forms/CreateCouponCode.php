@@ -2,7 +2,6 @@
 
 namespace App\Admin\Forms;
 
-use Dcat\Admin\Form;
 use Dcat\Admin\Form\Row;
 use Faker\Factory;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,7 +61,7 @@ class CreateCouponCode extends Form
                 $form->textarea('remark', '备注');
             })
             ->when(3, function(Form $form) {
-                $form->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
+                $this->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
                 $form->number('enable_days', '有效天数');
                 $form->datetime('unenable_date', '失效日期');
                 $form->number('num', '生成数量');
