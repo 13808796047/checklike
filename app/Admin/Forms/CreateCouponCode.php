@@ -60,11 +60,11 @@ class CreateCouponCode extends Form
                 $form->textarea('remark', '备注');
             })
             ->when(3, function(Form $form) {
-                $form->select('value', '卡密折扣')->options([
-                    '6' => '6折',
-                    '6' => '6折',
-                    '6' => '6折',
-                ]);
+//                $form->select('value', '卡密折扣')->options([
+//                    '6' => '6折',
+//                    '6' => '6折',
+//                    '6' => '6折',
+//                ]);
                 $form->select('cid', '生效系统')->options(Model::class)->ajax('/category_options');
                 $form->number('enable_days', '有效天数');
                 $form->datetime('unenable_date', '失效日期');
