@@ -50,8 +50,8 @@ class CreateCouponCode extends Form
             $form->textarea('remark', '备注');
         })
             ->when(2, function(Form $form) {
-                $form->width(4)->number('min_amount', '满')->required();
-                $form->width(3)->number('value', '减');
+                $form->number('min_amount', '满')->required();
+                $form->number('value', '减');
             })
             ->when(3, function(Form $form) {
                 $form->image('image');
