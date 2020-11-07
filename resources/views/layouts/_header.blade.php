@@ -31,7 +31,9 @@
             @endguest
             @guest
 						<li class="menu-btn"><a class="nav-link" href="javascript:;" data-toggle="modal"
-            data-target="#staticBackdrop">登录/注册</a></li>
+            data-target="#staticBackdrop">登录</a></li>
+            <li class="menu-btn"><a class="nav-link" href="javascript:;"
+            id="RegisterDialogBtn">注册</a></li>
             @else
             <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li>
             @endguest
