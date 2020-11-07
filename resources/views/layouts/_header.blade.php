@@ -149,7 +149,7 @@
               手机号:
               </label>
               <input
-                 class="form-control input-sm appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 class="input-sm appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
                  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
                  id="registerphones" type="text" placeholder="请输入手机号码">
