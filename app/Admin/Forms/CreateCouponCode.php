@@ -61,9 +61,8 @@ class CreateCouponCode extends Form
             })
             ->when(3, function(Form $form) {
                 $names = $this->createNames();
-                $form->select('form2.select', 'select')->options(Model::class)->ajax('/category_options');
-//                $form->select('value', '卡密折扣')->options(['9.5' => '95折', '9' => '9折', '8.5' => '8.5折']);
-//                $form->select('cid', '生效系统');
+                $form->select('value', '卡密折扣')->options($names);
+                $form->select('cid', '生效系统')->options(Model::class, 'name', 'id')->ajax('/category_options');
                 $form->number('enable_days', '有效天数');
                 $form->datetime('unenable_date', '失效日期');
                 $form->number('num', '生成数量');
@@ -97,8 +96,8 @@ class CreateCouponCode extends Form
         }
         $faker = Factory::create();
         $this->names = [];
-        for($i = 0; $i < 15; $i++) {
-            $name = $faker->name;
+        for($i = 6; $i < 10; $i++) {
+            $name = $i + 0.5;
             $this->names[$name] = $name;
         }
         return $this->names;
