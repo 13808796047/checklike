@@ -24,7 +24,7 @@ class CreateCouponCodesTable extends Migration
             $table->foreign('uid')->references('id')->on('users')->onDelete('set null');
             $table->decimal('min_amount')->nullable()->comment('生效金额');
             $table->integer('enable_days')->default(0)->comment('有效天数');
-            $table->datetime('unabled_date')->nullable()->comment('失效日期');
+            $table->datetime('unabled_date')->comment('失效日期');
             $table->string('status')->default(\App\Models\CouponCode::STATUS_UNACTIVED)->comment('状态');
             $table->string('remark')->nullable()->comment('备注');
             $table->timestamps();
