@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class CouponCode extends Model
 {
-    
+
     // 类型
     const TYPE_VIP = 'vip';
     const TYPE_FIXED = 'fixed';
@@ -38,6 +39,7 @@ class CouponCode extends Model
         'remark',
     ];
     protected $dates = ['unable_date'];
+    protected $appends = ['description'];
 
     public function user()
     {
@@ -48,5 +50,27 @@ class CouponCode extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'cid');
+    }
+
+    public function getDescriptionAttribute()
+    {
+        $str = '';
+        if($this->min_amount > 0) {
+            $str = '满' . $this->min_amount;
+        }
+        if($this->type === self::TYPE_PERCENT) {
+            return $str = $this->value . '折';
+        }
+        return $str . '减' . $this->value;
+    }
+
+    //创建时生成卡号
+    public static function findAvailableCode($length = 16)
+    {
+        do {
+            // 生成一个指定长度的随机字符串,并转换为大写
+            $code = strtoupper(Str::random($length));
+        } while (self::query()->where('code', $code)->exists());
+        return $code;
     }
 }
