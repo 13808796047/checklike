@@ -5,8 +5,8 @@ namespace App\Admin\Controllers;
 use App\Admin\Repositories\Category;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Show;
-use Dcat\Admin\Controllers\AdminController;
 use Illuminate\Http\Request;
 
 class CategoryController extends AdminController

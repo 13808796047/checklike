@@ -10,8 +10,8 @@ use App\Admin\Actions\Grid\GenerateCouponCode;
 use App\Admin\Actions\OrderBatchDelete;
 use App\Admin\Forms\CreateCouponCode;
 use App\Admin\Repositories\CouponCode;
-use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Widgets\Modal;
 
 class CouponCodesController extends AdminController
