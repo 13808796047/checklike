@@ -13,7 +13,7 @@ class CreateAdminExtensionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_extensions', function (Blueprint $table) {
+        Schema::create('admin_extensions', function(Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name', 100)->unique();
             $table->string('version', 20)->default('');
@@ -21,10 +21,9 @@ class CreateAdminExtensionsTable extends Migration
             $table->json('options')->nullable();
             $table->timestamps();
 
-            $table->engine = 'InnoDB';
         });
 
-        Schema::create('admin_extension_histories', function (Blueprint $table) {
+        Schema::create('admin_extension_histories', function(Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('name', 100);
             $table->tinyInteger('type')->default(1);
@@ -34,7 +33,6 @@ class CreateAdminExtensionsTable extends Migration
             $table->index('name');
             $table->timestamps();
 
-            $table->engine = 'InnoDB';
         });
     }
 
