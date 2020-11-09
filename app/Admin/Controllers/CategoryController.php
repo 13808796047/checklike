@@ -100,6 +100,6 @@ class CategoryController extends AdminController
     {
         $q = $request->get('q');
 
-        return \App\Models\Category::where('name', 'like', "%$q%")->paginate(null, ['id', 'name as text']);
+        return \App\Models\Category::where('name', 'like', "%$q%")->get(['id', 'name as text']);
     }
 }

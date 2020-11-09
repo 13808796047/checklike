@@ -34,11 +34,11 @@ class CouponCode extends Model
         'value',
         'min_amount',
         'enable_days',
-        'unable_date',
+        'unabled_date',
         'status',
         'remark',
     ];
-    protected $dates = ['unable_date'];
+    protected $dates = ['unabled_date'];
     protected $appends = ['description'];
 
     public function user()
@@ -72,5 +72,22 @@ class CouponCode extends Model
             $code = strtoupper(Str::random($length));
         } while (self::query()->where('code', $code)->exists());
         return $code;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        // 监听模型创建事件，在写入数据库之前触发
+        static::creating(function($model) {
+            // 如果模型的 no 字段为空
+            if(!$model->code) {
+                // 调用 findAvailableNo 生成订单流水号
+                $model->code = static::findAvailableCode();
+                // 如果生成失败，则终止创建订单
+                if($model->code) {
+                    return false;
+                }
+            }
+        });
     }
 }
