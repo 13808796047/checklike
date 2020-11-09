@@ -25,6 +25,7 @@ return [
         'type'              => '類型',
         'nullable'          => '允許null',
         'key'               => '索引',
+        'translate_title'   => '翻譯標題',
     ],
     'client' => [
         'delete_confirm'    => '確認刪除?',
@@ -216,6 +217,7 @@ return [
     'install_succeeded'         => '本地安裝',
     'invalid_extension_package' => '安裝包異常',
     'copied'                    => '已複製',
+    'auth_failed'               => '帳號或密碼錯誤',
     'validation'               => [
         'match'     => '與 :attribute 不匹配。',
         'minlength' => ':attribute 長度不能少於 :min。',
