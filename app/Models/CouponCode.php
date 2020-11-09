@@ -7,7 +7,9 @@ use Illuminate\Support\Str;
 
 class CouponCode extends Model
 {
-
+    protected $casts = [
+        'unabled_date' => 'datetime:Y-m-d H:i:s',
+    ];
     // 类型
     const TYPE_VIP = 'vip';
     const TYPE_FIXED = 'fixed';
@@ -43,7 +45,7 @@ class CouponCode extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'userid');
+        return $this->belongsTo(User::class, 'uid');
     }
 
     //分类
@@ -55,14 +57,18 @@ class CouponCode extends Model
     public function getDescriptionAttribute()
     {
         $str = '';
+
         if($this->min_amount > 0) {
-            $str = '满' . $this->min_amount;
+            $str = '满' . str_replace('.00', '', $this->min_amount);
+
+            return $str . '减' . str_replace('.00', '', $this->value);
         }
         if($this->type === self::TYPE_PERCENT) {
             return $str = $this->value . '折';
         }
-        return $str . '减' . $this->value;
+
     }
+
 
     //创建时生成卡号
     public static function findAvailableCode($length = 16)
@@ -84,9 +90,6 @@ class CouponCode extends Model
                 // 调用 findAvailableNo 生成订单流水号
                 $model->code = static::findAvailableCode();
                 // 如果生成失败，则终止创建订单
-                if($model->code) {
-                    return false;
-                }
             }
         });
     }

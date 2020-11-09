@@ -26,9 +26,9 @@ class CreateCouponCode extends Form
             'type' => '',
             'value' => 0,
             'min_amount' => 0,
-            'cid' => '',
+            'cid' => null,
             'enable_days' => 0,
-            'uid' => '',
+            'uid' => null,
             'unabled_date' => '',
             'remark' => '',
         ];
@@ -46,7 +46,7 @@ class CreateCouponCode extends Form
                 $attributes['value'] = $input['value2'];
                 $attributes['cid'] = $input['cid2'];
                 $attributes['enable_days'] = $input['enable_days2'];
-                $attributes['enabled_date'] = $input['enable_date2'];
+                $attributes['unabled_date'] = $input['unable_date2'];
                 $attributes['num'] = $input['num2'];
                 $attributes['remark'] = $input['remark2'];
                 break;
@@ -55,18 +55,19 @@ class CreateCouponCode extends Form
                 $attributes['value'] = $input['value3'];
                 $attributes['cid'] = $input['cid3'];
                 $attributes['enable_days'] = $input['enable_days3'];
-                $attributes['enabled_date'] = $input['enable_date3'];
+                $attributes['unabled_date'] = $input['unable_date3'];
                 $attributes['num'] = $input['num3'];
                 $attributes['remark'] = $input['remark3'];
                 break;
         }
-        $couponCode = new CouponCode($attributes);
-        $couponCode->category()->associate($attributes['cid']);
-        $couponCode->save();
-//        dd($couponCode);
-//        for($i = 1; $i <= $attributes['num']; $i++) {
-//
-//        }
+
+
+        for($i = 1; $i <= $attributes['num']; $i++) {
+            $couponCode = new CouponCode($attributes);
+            $couponCode->category()->associate($attributes['cid']);
+            $couponCode->user()->associate($attributes['uid']);
+            $couponCode->save();
+        }
 
         // return $this->error('Your error message.');
 //

@@ -29,18 +29,16 @@ class CouponCodesController extends AdminController
                 return \App\Models\CouponCode::$typeMap[$value];
             });
             // 根据不同的折扣类型用对应的方式来展示
-            $grid->value('折扣')->display(function($value) {
-                return $this->type === \App\Models\CouponCode::TYPE_FIXED ? '$' . $value : $value . '%';
-            });
-            $grid->min_amount('生效金额');
+            $grid->column('description', '描述');
             $grid->enable_days('有效天数');
+
+            $grid->column('user.phone', '会员账号');
+            $grid->column('category.name', '生效系统');
+            $grid->unabled_date('失效时间');
+            $grid->remark('备注');
             $grid->status('状态')->display(function($value) {
                 return \App\Models\CouponCode::$statusMap[$value];
             });
-            $grid->column('user.phone', '会员账号');
-            $grid->column('category.name', '生效系统');
-            $grid->unenable_date('失效时间');
-            $grid->remark('备注');
             $grid->actions(function(Grid\Displayers\Actions $actions) {
                 $actions->disableDelete();
                 $actions->disableView();
