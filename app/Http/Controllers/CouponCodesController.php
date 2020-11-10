@@ -24,4 +24,14 @@ class CouponCodesController extends Controller
         $record->checkAvailable();
         return $record;
     }
+
+    public function activeCouponCode(Request $request)
+    {
+        $user = $request->user();
+        if(!$couponCode = CouponCode::where('code', $code)->first()) {
+            throw new CouponCodeUnavailableException('折扣卡不存在!');
+        }
+        $couponCode->checkAvailable();
+        $couponCode->user()->associate($user);
+    }
 }

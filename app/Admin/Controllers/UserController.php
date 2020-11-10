@@ -27,13 +27,16 @@ class UserController extends AdminController
                     0 => '普通用户',
                     1 => '普通代理 ',
                     2 => '高级代理 ',
+                    3 => 'VIP用户',
                 ])->label([
                     0 => 'default',
                     1 => 'info',
                     2 => 'success',
+                    3 => 'danger'
                 ]);
             $grid->consumption_amount('消费金额');
             $grid->created_at('注册时间');
+            $grid->vip_days('vip时间');
             $grid->inviter('邀请人id');
             // 不在页面显示 `新建` 按钮，因为我们不需要在后台新建用户
             $grid->disableCreateButton();

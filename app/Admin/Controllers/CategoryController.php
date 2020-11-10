@@ -52,8 +52,8 @@ class CategoryController extends AdminController
             // 显示记录id
             $form->hidden('id', 'ID');
             // 第一列占据1/2的页面宽度
-            $form->number('cid', 'cid');
-            $form->number('classid', '分类ID');
+//            $form->number('cid', 'cid');
+//            $form->number('classid', '分类ID');
             $form->text('classname', '分类名称')->rules('required');
             $form->text('name', '系统名称')->rules('required');
             $form->text('sname', '系统简称')->rules('required');
@@ -61,9 +61,10 @@ class CategoryController extends AdminController
                 0 => '千字/元',
                 1 => '万字/元',
                 2 => '篇']);
-            $form->decimal('price', '检测单价')->default(0.00);
-            $form->decimal('agent_price1', '普通代理价')->default(0.00);
-            $form->decimal('agent_price2', '高级代理价')->default(0.00);
+            $form->currency('price', '检测单价')->default(0.00);
+            $form->currency('agent_price1', '普通代理价')->default(0.00);
+            $form->currency('agent_price2', '高级代理价')->default(0.00);
+            $form->currency('vip_price', 'VIP价格');
             $checkTypeOption = [
                 0 => '手动',
                 1 => 'API'
