@@ -97,7 +97,7 @@ class OrderController extends AdminController
 //            $grid->column('title', '标题')->link(function($title) {
 //                return admin_url('/orders/' . $this->id . '/edit');
 //            })->copyable();
-            $grid->column('title', '标题')->modal('订单修改', OrderEdit::make());
+            $grid->column('title', '标题')->copyable()->modal('订单修改', OrderEdit::make());
 //            $grid->model()->sum("pay_price");
             $grid->column('writer', '作者')->width('100px');
             $grid->column('words', '字数')->width('50px');
@@ -107,14 +107,19 @@ class OrderController extends AdminController
                 $data = Order::all()->sum('pay_price');
                 return "<div style='padding: 10px; color: red'>总收入 ： $data 元</div>";
             });
-            $grid->column('from', '来源');
-            $grid->column('referer', '来路');
-            $grid->column('keyword', '关键字');
-            $grid->column('created_at', '创建时间')->sortable();
+//            $grid->column('from', '来源');
+            $grid->from('来源');
+            $grid->referer('来路');
+            $grid->keyword('关键字');
+            $grid->created_at('创建时间')->sortable();
 
             $grid->actions(function(Grid\Displayers\Actions $actions) {
                 $actions->disableDelete();
                 $actions->disableView();
+
+                // 禁用
+                $actions->disableEdit();
+                $actions->disableQuickEdit();
             });
             $grid->batchActions(function($batch) {
                 $batch->add(new BatchQueue('批量启动队列'));
@@ -122,11 +127,7 @@ class OrderController extends AdminController
             });
             // 禁用批量删除按钮
             $grid->disableBatchDelete();
-            // 禁用
             $grid->disableCreateButton();
-            $grid->disableEditButton();
-//            $grid->actions(new ResetOrderStatus());
-//            $grid->actions(new UploadOrderFile());
             $grid->filter(function($filter) {
                 $filter->panel();
                 // 去掉默认的id过滤器
