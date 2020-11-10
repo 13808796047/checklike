@@ -22,42 +22,25 @@ class CreateCouponCode extends Form
     {
 //        dump($input);
         $attributes = [
-            'num' => 0,
-            'type' => '',
+            'num' => $input['num'],
+            'type' => $input['type'],
             'value' => 0,
             'min_amount' => 0,
             'cid' => null,
-            'enable_days' => 0,
+            'enable_days' => $input['enable_days'],
             'uid' => null,
-            'unabled_date' => '',
-            'remark' => '',
+            'unabled_date' => $input['unable_date'],
+            'remark' => $input['remark'],
         ];
-        switch ($input['radio']) {
-            case '1':
-                $attributes['type'] = CouponCode::TYPE_VIP;
-                $attributes['enable_days'] = $input['enable_days1'];
-                $attributes['unabled_date'] = $input['unable_date1'];
-                $attributes['num'] = $input['num1'];
-                $attributes['remark'] = $input['remark1'];
-                break;
-            case '2':
-                $attributes['type'] = CouponCode::TYPE_FIXED;
-                $attributes['min_amount'] = $input['min_amount2'];
+        switch ($input['type']) {
+            case CouponCode::TYPE_FIXED:
+                $attributes['min_amount'] = $input['min_amount'];
                 $attributes['value'] = $input['value2'];
                 $attributes['cid'] = $input['cid2'];
-                $attributes['enable_days'] = $input['enable_days2'];
-                $attributes['unabled_date'] = $input['unable_date2'];
-                $attributes['num'] = $input['num2'];
-                $attributes['remark'] = $input['remark2'];
                 break;
-            case '3':
-                $attributes['type'] = CouponCode::TYPE_PERCENT;
+            case CouponCode::TYPE_PERCENT:
                 $attributes['value'] = $input['value3'];
                 $attributes['cid'] = $input['cid3'];
-                $attributes['enable_days'] = $input['enable_days3'];
-                $attributes['unabled_date'] = $input['unable_date3'];
-                $attributes['num'] = $input['num3'];
-                $attributes['remark'] = $input['remark3'];
                 break;
         }
 
@@ -109,41 +92,72 @@ class CreateCouponCode extends Form
 //
 //        });
 //        $this->select('value')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
-        $this->radio('radio', '')
-            ->when(1, function() {
-                $this->number('enable_days1', '有效天数');
-                $this->datetime('unable_date1', '失效日期');
-                $this->number('num1', '生成数量');
-                $this->textarea('remark1', '备注');
-            })
-            ->when(2, function() {
-                $this->number('min_amount2', '满')->required();
+        $this->radio('type', '类型')->options(CouponCode::$typeMap)
+            ->required()->default(CouponCode::TYPE_VIP)
+            ->when(CouponCode::TYPE_FIXED, function() {
+                $this->number('min_amount', '满')->required();
                 $this->number('value2', '减');
                 $this->select('cid2', '生效系统')->options('/category_options');
-                $this->number('enable_days2', '有效天数');
-                $this->datetime('unable_date2', '失效日期');
-                $this->number('num2', '生成数量');
-                $this->textarea('remark2', '备注');
-            })
-            ->when(3, function() {
+            })->when(CouponCode::TYPE_PERCENT, function() {
                 $this->select('value3', '卡密折扣')->options([
-                    '6' => '6折',
-                    '6.5' => '6.5折',
-                    '7' => '7折',
-                    '7.5' => '7.5折',
-                    '8' => '8折',
-                    '8.5' => '8.5折',
-                    '9' => '9折',
-                    '9.5' => '9.5折',
+                    '60' => '6折',
+                    '65' => '6.5折',
+                    '70' => '7折',
+                    '75' => '7.5折',
+                    '80' => '8折',
+                    '85' => '8.5折',
+                    '90' => '9折',
+                    '95' => '9.5折',
                 ])->default(6);
                 $this->select('cid3', '生效系统')->options('/category_options');
-                $this->number('enable_days3', '有效天数');
-                $this->datetime('unable_date3', '失效日期');
-                $this->number('num3', '生成数量');
-                $this->textarea('remark3', '备注');
-            })
-            ->options($this->options)
-            ->default(1);
+            });
+
+        $this->number('enable_days', '有效天数');
+        $this->datetime('unable_date', '失效日期');
+        $this->number('num', '生成数量');
+        $this->textarea('remark', '备注');
+
+//        $this->radio('radio', '')->when(1, function() {
+//
+//        })->when(2,function(){
+//            $this->number('min_amount2', '满')->required();
+//            $this->number('value2', '减');
+//        });
+//        $this->radio('radio', '')
+//            ->when(1, function() {
+//                $this->number('enable_days1', '有效天数');
+//                $this->datetime('unable_date1', '失效日期');
+//                $this->number('num1', '生成数量');
+//                $this->textarea('remark1', '备注');
+//            })
+//            ->when(2, function() {
+//                $this->number('min_amount2', '满')->required();
+//                $this->number('value2', '减');
+//                $this->select('cid2', '生效系统')->options('/category_options');
+//                $this->number('enable_days2', '有效天数');
+//                $this->datetime('unable_date2', '失效日期');
+//                $this->number('num2', '生成数量');
+//                $this->textarea('remark2', '备注');
+//            })
+//            ->when(3, function() {
+//                $this->select('value3', '卡密折扣')->options([
+//                    '6' => '6折',
+//                    '6.5' => '6.5折',
+//                    '7' => '7折',
+//                    '7.5' => '7.5折',
+//                    '8' => '8折',
+//                    '8.5' => '8.5折',
+//                    '9' => '9折',
+//                    '9.5' => '9.5折',
+//                ])->default(6);
+//                $this->select('cid3', '生效系统')->options('/category_options');
+//                $this->number('enable_days3', '有效天数');
+//                $this->datetime('unable_date3', '失效日期');
+//                $this->number('num3', '生成数量');
+//                $this->textarea('remark3', '备注');
+//            })
+//            ->options($this->options)
+//            ->default(1);
     }
 
     /**

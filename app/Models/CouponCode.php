@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Exceptions\CouponCodeUnavailableException;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -64,11 +66,39 @@ class CouponCode extends Model
             return $str . '减' . str_replace('.00', '', $this->value);
         }
         if($this->type === self::TYPE_PERCENT) {
-            return $str = $this->value . '折';
+            return $str . '优惠' . str_replace('.00', '', $this->value) . '%';
         }
 
     }
 
+    // 检查折扣卡
+    public function checkAvailable($orderAmount = null)
+    {
+        if(!$this->status == 'used') {
+            throw new CouponCodeUnavailableException('优惠券已经使用!');
+        }
+        if(!$this->status == 'actived') {
+            throw new CouponCodeUnavailableException('优惠券未激活!');
+        }
+        if($this->enable_days <= 0) {
+            throw new CouponCodeUnavailableException('优惠券已过期!');
+        }
+        if($this->unabled_date->lt(Carbon::now())) {
+            throw new CouponCodeUnavailableException('优惠券已过期!');
+        }
+        if($orderAmount < $this->min_amount) {
+            throw new CouponCodeUnavailableException('订单金额不满足该优惠券最低金额');
+        }
+    }
+
+    public function getAdjustedPrice($orderAmount)
+    {
+        // 折扣
+        if($this->type === self::TYPE_FIXED) {
+            return max(0.01, $orderAmount - $this->value);
+        }
+        return number_format($orderAmount * (100 - $this->value) / 100, 2, '.', '');
+    }
 
     //创建时生成卡号
     public static function findAvailableCode($length = 16)

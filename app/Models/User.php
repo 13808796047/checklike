@@ -41,6 +41,12 @@ class User extends Authenticatable implements JWTSubject
         return $this->decrement('jc_times', 1);
     }
 
+    // 折扣卡
+    public function couponCodes()
+    {
+        return $this->hasMany(CouponCode::class, 'uid');
+    }
+
     //增加次数
     public function increaseJcTimes($times)
     {
