@@ -6,16 +6,19 @@ use App\Admin\Repositories\Category;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 use Illuminate\Http\Request;
 
 class CategoryController extends AdminController
 {
-    /**
-     * Make a grid builder.
-     *
-     * @return Grid
-     */
+    public function index(Content $content)
+    {
+        return $content
+            ->header('系统列表')
+            ->body($this->grid());
+    }
+
     protected function grid()
     {
         return Grid::make(new Category(), function(Grid $grid) {

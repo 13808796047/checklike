@@ -27,6 +27,13 @@ use Ramsey\Uuid\Uuid;
 
 class OrderController extends AdminController
 {
+    public function index(Content $content)
+    {
+        return $content
+            ->header('订单列表')
+            ->body($this->grid());
+    }
+
     protected function grid()
     {
         // 第二个参数为 `Column` 对象， 第三个参数是自定义参数
@@ -117,6 +124,7 @@ class OrderController extends AdminController
             $grid->disableBatchDelete();
             // 禁用
             $grid->disableCreateButton();
+            $grid->disableEditButton();
 //            $grid->actions(new ResetOrderStatus());
 //            $grid->actions(new UploadOrderFile());
             $grid->filter(function($filter) {
