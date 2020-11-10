@@ -23,4 +23,5 @@ Route::group([
     $router->post('orders/{order}/receved', 'OrderController@receved')->name('admin.orders.receved');
     $router->get('coupon_codes', 'CouponCodesController@index');
     $router->get('category_options', 'CategoryController@categories');
+    $router->any('orders/files', 'FileController@handle');
 });

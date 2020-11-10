@@ -7,6 +7,8 @@ use App\Admin\Actions\BatchQueue;
 use App\Admin\Actions\Grid\ResetOrderStatus;
 use App\Admin\Actions\Grid\UploadOrderFile;
 use App\Admin\Actions\OrderBatchDelete;
+use App\Admin\Forms\CreateCouponCode;
+use App\Admin\Forms\OrderEdit;
 use App\Handlers\FileUploadHandler;
 use App\Jobs\getOrderStatus;
 use App\Jobs\UploadCheckFile;
@@ -19,6 +21,7 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
+use Dcat\Admin\Widgets\Modal;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 
@@ -84,9 +87,10 @@ class OrderController extends AdminController
                 6 => Admin::color()->cyanDarker(),
                 7 => Admin::color()->blue(),
             ]);
-            $grid->column('title', '标题')->link(function($title) {
-                return admin_url('/orders/' . $this->id . '/edit');
-            })->copyable()->width('200px');
+//            $grid->column('title', '标题')->link(function($title) {
+//                return admin_url('/orders/' . $this->id . '/edit');
+//            })->copyable();
+            $grid->column('title', '标题')->modal('订单修改', OrderEdit::make());
 //            $grid->model()->sum("pay_price");
             $grid->column('writer', '作者')->width('100px');
             $grid->column('words', '字数')->width('50px');
@@ -147,6 +151,17 @@ class OrderController extends AdminController
         });
     }
 
+    // 异步加载弹窗内容
+    protected function modal()
+    {
+        return Modal::make()
+            ->lg()
+            ->delay(300) // loading 效果延迟时间设置长一些，否则图表可能显示不出来
+            ->title('批量生成')
+            ->body(CreateCouponCode::make())
+            ->button('<button class="btn btn-white"><i class="feather icon-bar-chart-2"></i> 批量生成</button>');
+    }
+
     public function edit($id, Content $content)
     {
         return $content->body(view('admin.orders.edit', ['order' => Order::find($id)]));
@@ -203,9 +218,27 @@ class OrderController extends AdminController
         ];
     }
 
+    public function uploadZip(Request $request)
+    {
+        dd($request->report_path);
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            if(!$file->isValid()) {
+                abort(400, '无效的上传文件');
+            }
+            $path = 'downloads/report-' . $order->api_orderid . '.zip';
+            \Storage::delete($path);
+            $result = \Storage::putFileAs('downloads', $file, 'report-' . $order->api_orderid . '.zip');
+            if($result) {
+                return $path;
+            }
+        }
+    }
+
     public function downloadPaper(Order $order)
     {
         if(!$order->paper_path) {
+            abort(400, '无效的上传文件');
             return admin_error('标题', '没有文件!');
         }
         return response()->download($order->paper_path);
@@ -214,6 +247,9 @@ class OrderController extends AdminController
     public function downloadReport(Order $order)
     {
 //        return \Storage::download(storage_path() . '/app/' . $order->report_path);
+        if(!$order->report_path) {
+            return admin_error('错误!', '订单支付后才能下载论文');
+        }
         return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
 }

@@ -12,10 +12,17 @@ use App\Admin\Forms\CreateCouponCode;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Widgets\Modal;
 
 class CouponCodesController extends AdminController
 {
+    public function index(Content $content)
+    {
+        return $content
+            ->header('卡密列表')
+            ->body($this->grid());
+    }
 
     public function grid()
     {

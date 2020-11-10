@@ -71,7 +71,9 @@ class CreateCouponCode extends Form
 
         // return $this->error('Your error message.');
 //
-        return $this->response()->success('生成成功!');
+        return $this->response()
+            ->success('生成成功!')
+            ->refresh();;
     }
 
     /**
