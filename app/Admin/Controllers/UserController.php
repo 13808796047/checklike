@@ -6,15 +6,18 @@ use App\Admin\Repositories\User;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 
 class UserController extends AdminController
 {
-    /**
-     * Make a grid builder.
-     *
-     * @return Grid
-     */
+    public function index(Content $content)
+    {
+        return $content
+            ->header('用户列表')
+            ->body($this->grid());
+    }
+
     protected function grid()
     {
         return Grid::make(new User(), function(Grid $grid) {
