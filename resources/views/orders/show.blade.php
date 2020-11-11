@@ -26,6 +26,32 @@
     .discount_curbg{
       background-color: #D1D1D1;
     }
+    .currentBoder{
+        border: 2px solid #E43A3D;
+        position: relative;
+		    box-shadow:0px 2px 7px 0px rgba(85,110,97,0.35);
+      }
+      .currentBoder:before {
+	    	content: '';
+		    position: absolute;
+		    right: 0;
+		    bottom: 0;
+		    border: 17px solid #E43A3D;
+		    border-top-color: transparent;
+		    border-left-color: transparent;
+	    }
+	    .currentBoder:after {
+		    content: '';
+		    width: 5px;
+		    height: 12px;
+		    position: absolute;
+		    right: 6px;
+		    bottom: 6px;
+		    border: 2px solid #fff;
+		    border-top-color: transparent;
+		    border-left-color: transparent;
+		    transform: rotate(45deg);
+	    }
   </style>
 @stop
 @section('content')
@@ -71,7 +97,7 @@
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;">
-							<div class="discount_box" style="width:210px;margin:10px 20px;">
+							<div class="currentBoder" style="width:210px;margin:10px 20px;">
 								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
