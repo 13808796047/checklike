@@ -59,13 +59,17 @@ class CouponCodesController extends AdminController
                 $filter->panel();
                 $filter->equal('type', '卡密类型')->select(\App\Models\CouponCode::$typeMap)->width(2);
                 $filter->equal('status', '卡密状态')->select(\App\Models\CouponCode::$statusMap)->width(2);
-                $filter->equal('cid', '生效系统')->select('/category_options')->width(2);
+//                dd(\App\Models\Category::get(['id', 'name as text'])->toArray());
+                $filter->equal('column')->select('api');
 
 //                // 在这里添加字段过滤器
 //                $filter->equal('id', '产品序列号');
 //                $filter->like('name', 'name');
 
             });
+            $grid->toolsWithOutline(false);
+            // 禁用
+            $grid->disableRefreshButton();
         });
     }
 

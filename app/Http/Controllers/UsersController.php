@@ -93,4 +93,10 @@ class UsersController extends Controller
         return redirect($this->redirectPath())
             ->with('status', trans($response));
     }
+
+    public function show(User $user)
+    {
+        return view('users.show', compact('user'));
+    }
+
 }
