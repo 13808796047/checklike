@@ -711,7 +711,7 @@
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
 
-        $("#tuichuBtn").mouseover(function(){
+        $("#tuichuBtn").click(function(){
           $("#myself").css("display","block")
           $(window).scroll(function() {
            if($('#navigation').hasClass('affix')){
@@ -721,9 +721,9 @@
            }
         });
         })
-        $("#tuichuBtn").mouseout(function(){
+        $('body').click( function() {
           $("#myself").css("display","none")
-        })
+        });
 
       var isBindPhone = {!!Auth::user()!!}
       console.log(isBindPhone,"那哈哈")
