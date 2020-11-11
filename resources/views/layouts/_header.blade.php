@@ -36,7 +36,7 @@
             id="RegisterDialogBtn">注册</a></li>
             @else
               <li class="menu-btn"><a href="javascript:;" style="position:">退出登录</a>
-              <div style="height:30px;width:100px;background:#FFF;position:fixed;top:85px;">
+              <div style="height:30px;width:100px;background:#FFF;position:fixed;top:85px;" id="myself">
               </div>
               </li>
             <!-- <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li> -->

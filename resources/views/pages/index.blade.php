@@ -712,9 +712,9 @@
        //模态框打开
        $(window).scroll(function() {
            if($('#navigation').hasClass('affix')){
-              console.log("含有")
+             $("#myself").css('top:62px')
            }else{
-              console.log("不含有")
+            $("#myself").css('top:85px')
            }
         });
 
