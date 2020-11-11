@@ -9,6 +9,49 @@
     .curfont{
       font-size:16px;
     }
+    table tr td{
+				border:1px solid;
+				text-align: center;
+				padding:5px 0;
+		}
+    .discount_box{
+       border: 1px solid #74D2C3;
+    }
+    .discount_boxborder{
+      border: 1px solid #D1D1D1;
+    }
+    .discount_topbox{
+      background-color: #74D2D4;
+    }
+    .discount_curbg{
+      background-color: #D1D1D1;
+    }
+    .currentBoder{
+        border: 2px solid #E43A3D;
+        position: relative;
+		    box-shadow:0px 2px 7px 0px rgba(85,110,97,0.35);
+      }
+      .currentBoder:before {
+	    	content: '';
+		    position: absolute;
+		    right: 0;
+		    bottom: 0;
+		    border: 17px solid #E43A3D;
+		    border-top-color: transparent;
+		    border-left-color: transparent;
+	    }
+	    .currentBoder:after {
+		    content: '';
+		    width: 5px;
+		    height: 12px;
+		    position: absolute;
+		    right: 6px;
+		    bottom: 6px;
+		    border: 2px solid #fff;
+		    border-top-color: transparent;
+		    border-left-color: transparent;
+		    transform: rotate(45deg);
+	    }
   </style>
 @stop
 @section('content')
@@ -21,118 +64,143 @@
 {{--  </div>--}}
 <div class="main clearfix" style="flex:1">
 	<div class="lbox fl">
-		<div>
-			<div class="cbox submit yh">
-				<div class="down clearfix">
+  <p style="font-weight: bold;font-size: 17px;">订单信息</p>
+    <table style="border:1px solid;border-collapse: collapse;padding: 2px;width: 780px;margin: 5px 0;">
+        <tr>
+          <td >订单编号</td>
+          <td>{{ $order->orderid }}</td>
+        </tr>
+        <tr>
+          <td >论文题目</td>
+          <td>{{$order->title}}</td>
+        </tr>
+        <tr>
+          <td>论文作者</td>
+          <td>{{$order->writer}}</td>
+        </tr>
+        <tr>
+          <td>检测系统</td>
+          <td>{{$order->category->name}}</td>
+        </tr>
+        <tr>
+          <td>订单价格</td>
+          <td ><span style="font-size:17px;color: #FF5300;font-weight: bold;">
+          {{$order->price}}元
+          </span>({{$order->words}}字)</td>
+        </tr>
+        <tr>
+          <td>上传时间</td>
+          <td>{{$order->created_at}}</td>
+        </tr>
+        </table>
+        <div>
+						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
+						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
+						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;">
+							<div class="currentBoder" style="width:210px;margin:10px 20px;">
+								<div class="discount_topbox" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div class="discount_box" style="width:210px;margin:10px 20px;">
+								<div class="discount_topbox" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="discount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="discount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="discount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="discount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="discount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="discount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="discount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
 
-						<table class="mylist" style="line-height: 30px">
-							<tr>
-								<td width="149">
-									<span>检测编号</span>
-								</td>
-								<td style="text-align: left;">
-									<span>{{ $order->orderid }}</span>
-								</td>
-							</tr>
-							<tr>
-								<td width="">论文标题</td>
-								<td style="text-align: left;">
-									{{$order->title}}
-								</td>
-							</tr>
-              <tr>
-								<td width="">作者</td>
-								<td style="text-align: left;">
-									{{$order->writer}}
-								</td>
-							</tr>
-							<tr>
-								<td width="">检测系统</td>
-								<td style="text-align: left;">{{$order->category->name}}</td>
-							</tr>
-							<tr>
-								<td>检测价格</td>
-								<td style="text-align: left;">
-									<span style="color:#FF5300; font-weight:bold;">￥{{$order->price}} 元</span>
-									(总共{{$order->words}}字)
-								</td>
-							</tr>
-							<tr bgcolor="#D0EAFF">
-								<td colspan="2" align="center">
-									<b>
-										<font color="#BF2020">支付检测费用（请选择以下任意一种方式支付）</font>
-									</b>
-								</td>
-							</tr>
-							<tr style="display: none">
-								<td class="td">②、淘宝订单号支付</td>
-								<td class="td">
-									<input type="checkbox" name="usetaobao" id="usetaobao" checked="checked" />
-									<input type="text" style="width:300px;" class="txt" name="taobao" size="40" placeholder="使用在线支付请留空，多个订单号用,分隔"
-									 value="" />
-									<div class="tips">
-										通过淘宝担保交易，检测完成后可在淘宝网评价，适合经常淘宝购物的同学使用。<span class="hl bgreen">不要等卖家发货</span>，记下淘宝订单号返回这里将单号填到上面的框框↑，再点击提交，如订单金额不足，需使用支付宝或微信支付差额。
-									</div>
-								</td>
-							</tr>
-							<tr style="display: none">
-								<td class="td">③、代金券/秘钥支付</td>
-								<td class="td">
-									<input type="checkbox" name="usecoupon" id="usecoupon" checked="checked" />
-									<!--<input type="hidden" name="coupon" class="txt"
-                                                 placeholder="请输入8位秘钥/代金券密码，没有请留空" value="" style="width:300px;">-->
-									<select name="coupon"> </select>
-									<script>
-										//let a = document.getElementById('djq');
-                        //a.addEventListener('change', function () {
 
-                        //});
-                      </script>
-									<div class="tips">
-										持有手机版购买检测秘钥、或者赠送的代金券，输入后↑即可抵扣相应的检测金额，如秘钥/代金券不足以支付需使用支付宝或微信↓支付差额。
-									</div>
-								</td>
-							</tr>
-							<tr style="display: none">
-								<td class="td">④、折扣券</td>
-								<td class="td">
-									<input type="checkbox" name="usedaze" id="usedaze" checked="checked" />
-									<input type="text" name="daze" class="txt" placeholder="请输入8位折扣券密码，没有请留空" value="" style="width:300px;" />
-									<a href="./zt/dazhe.html" target="_blank" style="color:#0000FF">点击获取折扣券</a>
-									<div class="tips">
-										<font color="#ff0000">折扣券需配合“⑤在线支付”方可享受折扣</font>，使用后享受全平台检测费九折优惠(知网检测九五折)。
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="td">
-									在线支付<font color="#FF0004">(推荐)</font>
-								</td>
-								<td class="td">
-									<div style="display:flex;align-items: center">
-										<input type="radio" name="paytype" value="alipay" checked="checked" />
-										<img src="{{asset('asset/images/alipay.png')}}" style="margin-left:17px;" />
-									</div>
-									&nbsp;&nbsp;
-									<!--<label><input type="radio" name="paytype" value="tenpay" > <img src="./asset/imgs/tenpay.png" /></label> -->
-									<div style="display:flex;align-items: center">
-										<input type="radio" name="paytype" value="wxpay" />
-										<img src="{{asset('asset/images/wxpay.png')}}" style="width:99px;margin-left:17px;" />
-									</div>
-									<div class="tips">
-										直接使用支付宝或者微信支付，即时返回支付结果，方便快捷，推荐使用。
-									</div>
-								</td>
-							</tr>
-						</table>
-						<a type="button" id="bottonsubmit" style="height:33px; margin-left:20px; margin-left:320px;" href="javascript:;"
+            </div>
+            <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
+            <div style="margin-bottom: 23px;">
+              <p>订单原价:25.00元，卡券优惠:-9.09元，应付金额：<span style="font-size: 19px;color: #FF5300;">15.10元</span>，请选择以下任一一种方式完成支付。</p>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: center;">
+            <div style="display: flex;align-items: center;margin-right: 30px;">
+              <input type="radio" name="paytype" value="alipay" checked="checked">
+              <img src="{{asset('asset/images/alipay.png')}}" style="margin-left:17px;">
+            </div>
+            <div style="display: flex;align-items: center;">
+            <input type="radio" name="paytype" value="wxpay" />
+              <img src="{{asset('asset/images/wxpay.png')}}" style="margin-left:17px;
+              height: auto;width:100px;">
+            </div>
+        </div>
+        <a type="button" id="bottonsubmit" style="height:33px;margin:13px auto" href="javascript:;"
 						 class="btn btn-primary btn-sm sbtn">提交</a>
-						<a type="button" id="btn-wechat" style="height:33px; margin-left:20px; margin-left:320px;display: none" href="javascript:;"
-						 class="btn btn-primary btn-sm sbtn">提交</a>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
+				<a type="button" id="btn-wechat" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
+						class="btn btn-primary btn-sm sbtn">提交</a>
 	</div>
 	<div class="rbox fr">
 		<div style="background:#fff;padding:20px;">

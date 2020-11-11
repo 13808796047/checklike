@@ -274,8 +274,7 @@
 <header id="header" style="position:relative;">
 	<div class="header-content">
 		<div class="container">
-			<div class="row header-row">3e
-
+			<div class="row header-row">
 				<div class="col-sm-7 col-md-8 col-lg-7">
 					<div class="header-txt">
 						<h1>移动版全新上线<br>完美支持手机/微信/小程序</h1>
@@ -711,6 +710,21 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
+
+        $("#tuichuBtn").mouseenter(function(){
+          $("#myself").css("display","block")
+          $(window).scroll(function() {
+           if($('#navigation').hasClass('affix')){
+             $("#myself").css("top","62px")
+           }else{
+            $("#myself").css("top","93px")
+           }
+        });
+        })
+        $("#tuichuBtn").mouseleave(function(){
+          $("#myself").css("display","none")
+        })
+
       var isBindPhone = {!!Auth::user()!!}
       console.log(isBindPhone,"那哈哈")
       if(isBindPhone && isBindPhone.phone){
