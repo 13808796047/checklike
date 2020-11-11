@@ -15,7 +15,12 @@
 
 <div class="main clearfix" style="flex:1">
 	<div class="lbox fl">
-
+     <div class="card topic-reply mt-4">
+            <div>上班部分</div>
+          <div class="card-body">
+            @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->recent()->paginate(5)])
+          </div>
+  </div>
 	</div>
 	<div class="rbox fr">
 		<div style="background:#fff;padding:20px;">
