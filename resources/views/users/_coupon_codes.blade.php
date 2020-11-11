@@ -1,7 +1,13 @@
 <div>
- <p>卡券封建士大夫就是的法律</p>
+@foreach($coupon_codes as $item)
+            <li class="float-left position-relative mr-4 ">
+
+              <p class="text-center text-xs py-2">
+                <span>{{$item}}</span>
+
+            </li>
+@endforeach
 </div>
-@yield('scripts')
 <script>
     var isBindPhone = {!!$coupon_codes!!}
     console.log(isBindPhone,"sdfsdajfksdfj")
