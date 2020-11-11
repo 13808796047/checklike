@@ -712,6 +712,7 @@
        //模态框打开
 
         $("#tuichuBtn").click(function(){
+          e.preventDefault();
           $("#myself").css("display","block")
           $(window).scroll(function() {
            if($('#navigation').hasClass('affix')){
