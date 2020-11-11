@@ -35,7 +35,19 @@
             <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
             id="RegisterDialogBtn">注册</a></li>
             @else
-            <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li>
+            <div class="btn-group">
+            <!-- <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li> -->
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+            </div>
             @endguest
 					</ul>
           </nav>
