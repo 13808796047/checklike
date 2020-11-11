@@ -64,7 +64,7 @@
         </tr>
         <tr>
           <td>上传时间</td>
-          <td>2012年3月31日</td>
+          <td>{{$order->created_at}}</td>
         </tr>
         </table>
         <div>
