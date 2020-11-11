@@ -717,7 +717,12 @@
             $("#myself").css("top","93px")
            }
         });
-
+        $("#tuichuBtn").mouseover(function(){
+          console.log("xi")
+        })
+        $("#tuichuBtn").mouseout(function(){
+          console.log("fsa")
+        })
 
       var isBindPhone = {!!Auth::user()!!}
       console.log(isBindPhone,"那哈哈")
