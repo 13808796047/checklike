@@ -90,7 +90,7 @@ class CouponCode extends Model
             throw new CouponCodeUnavailableException('订单金额不满足该优惠券最低金额');
         }
     }
-
+    
     public function getAdjustedPrice($orderAmount)
     {
         // 折扣
