@@ -9,6 +9,5 @@
 @endforeach
 </div>
 <script>
-    var isBindPhone = {!!$coupon_codes!!}
-    console.log(isBindPhone,"sdfsdajfksdfj")
+
 </script>
