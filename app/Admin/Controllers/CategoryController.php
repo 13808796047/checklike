@@ -5,17 +5,20 @@ namespace App\Admin\Controllers;
 use App\Admin\Repositories\Category;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
-use Dcat\Admin\Controllers\AdminController;
 use Illuminate\Http\Request;
 
 class CategoryController extends AdminController
 {
-    /**
-     * Make a grid builder.
-     *
-     * @return Grid
-     */
+    public function index(Content $content)
+    {
+        return $content
+            ->header('系统列表')
+            ->body($this->grid());
+    }
+
     protected function grid()
     {
         return Grid::make(new Category(), function(Grid $grid) {
@@ -49,8 +52,8 @@ class CategoryController extends AdminController
             // 显示记录id
             $form->hidden('id', 'ID');
             // 第一列占据1/2的页面宽度
-            $form->number('cid', 'cid');
-            $form->number('classid', '分类ID');
+//            $form->number('cid', 'cid');
+//            $form->number('classid', '分类ID');
             $form->text('classname', '分类名称')->rules('required');
             $form->text('name', '系统名称')->rules('required');
             $form->text('sname', '系统简称')->rules('required');
@@ -58,9 +61,10 @@ class CategoryController extends AdminController
                 0 => '千字/元',
                 1 => '万字/元',
                 2 => '篇']);
-            $form->decimal('price', '检测单价')->default(0.00);
-            $form->decimal('agent_price1', '普通代理价')->default(0.00);
-            $form->decimal('agent_price2', '高级代理价')->default(0.00);
+            $form->currency('price', '检测单价')->default(0.00);
+            $form->currency('agent_price1', '普通代理价')->default(0.00);
+            $form->currency('agent_price2', '高级代理价')->default(0.00);
+            $form->currency('vip_price', 'VIP价格');
             $checkTypeOption = [
                 0 => '手动',
                 1 => 'API'
@@ -100,6 +104,6 @@ class CategoryController extends AdminController
     {
         $q = $request->get('q');
 
-        return \App\Models\Category::where('name', 'like', "%$q%")->paginate(null, ['id', 'name as text']);
+        return \App\Models\Category::where('name', 'like', "%$q%")->get(['id', 'name as text']);
     }
 }

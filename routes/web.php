@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('reset_password', 'UsersController@resetPassword')->name('users.reset_password');
     //绑定手机号
     Route::put('bond_phone', 'UsersController@boundPhone')->name('users.bound_phone');
+    // 个人中心优惠券
+    Route::get('coupon_codes', 'CouponCodesController@index')->name('coupon_code.index');
 });
 //下载
 Route::get('orders/{orderid}/download', 'OrdersController@download')

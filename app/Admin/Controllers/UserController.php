@@ -3,18 +3,21 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\User;
-use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
+use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 
 class UserController extends AdminController
 {
-    /**
-     * Make a grid builder.
-     *
-     * @return Grid
-     */
+    public function index(Content $content)
+    {
+        return $content
+            ->header('用户列表')
+            ->body($this->grid());
+    }
+
     protected function grid()
     {
         return Grid::make(new User(), function(Grid $grid) {
@@ -27,13 +30,16 @@ class UserController extends AdminController
                     0 => '普通用户',
                     1 => '普通代理 ',
                     2 => '高级代理 ',
+                    3 => 'VIP用户',
                 ])->label([
                     0 => 'default',
                     1 => 'info',
                     2 => 'success',
+                    3 => 'danger'
                 ]);
             $grid->consumption_amount('消费金额');
             $grid->created_at('注册时间');
+            $grid->vip_days('vip时间');
             $grid->inviter('邀请人id');
             // 不在页面显示 `新建` 按钮，因为我们不需要在后台新建用户
             $grid->disableCreateButton();
