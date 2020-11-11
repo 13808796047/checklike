@@ -711,7 +711,7 @@
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
 
-        $("#tuichuBtn").click(function(){
+        $("#tuichuBtn").click(function(e){
           e.preventDefault();
           $("#myself").css("display","block")
           $(window).scroll(function() {
