@@ -73,7 +73,7 @@
               <img src="{{asset('asset/images/alipay.png')}}" style="margin-left:17px;">
             </div>
             <div style="display: flex;align-items: center;">
-              <input type="radio" name="paytype" value="alipay" checked="checked">
+            <input type="radio" name="paytype" value="wxpay" />
               <img src="{{asset('asset/images/wxpay.png')}}" style="margin-left:17px;
               height: auto;width:100px;">
             </div>
