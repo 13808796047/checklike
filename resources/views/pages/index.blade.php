@@ -721,7 +721,7 @@
            }
         });
         })
-        $("#tuichuBtn").mouseleave(function(){
+        $("#myself").mouseleave(function(){
           console.log("xkixsaf")
           $("#myself").css("display","none")
         })
