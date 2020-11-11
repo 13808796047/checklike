@@ -33,7 +33,7 @@
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
-      $("#lwfoot").css("position","absolute")
+      $("#lwfooter").css("position","absolute")
     });
   </script>
 @stop
