@@ -1,53 +1,72 @@
 <style>
 </style>
 
-<div id="header1">
-     <nav id="navigation" class="navbar scrollspy">
-				<div class="container">
-					<div class="navbar-brand" style="width:316px;">
-						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-					</div>
-					<ul class="nav navbar-nav" style="flex:1">
-						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
-            @else
-            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-            @endguest
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
-            @else
-            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-            @endguest
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
-            @else
-            <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
-            @endguest
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a></li>
-            @else
-            <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
-            @endguest
-            @guest
-						<li class="menu-btn" style="padding-right:0"><a class="nav-link" href="javascript:;" data-toggle="modal"
-            data-target="#staticBackdrop" >登录</a></li>
-            <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
-            id="RegisterDialogBtn">注册</a></li>
-            @else
-              <li class="menu-btn" id="tuichuBtn"><a href="javascript:;">退出登录</a>
-              <div style="color: black;font-size: 10px;background:#F5F5F5;position:fixed;;top:85px;display:none;width:230px;height:100px;" id="myself">
-                  <div>您还不是会员 <span>立即开通</span> <span>VIP特权</span></div>
-                  <div>卡券:10张<span>卡券管理</span></div>
-              </div>
-              </li>
-            <!-- <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
+     style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
+  <div class="container">
+    <!-- Branding Image -->
+    <a class="navbar-brand " href="{{ url('/') }}">
+      <img src="{{ asset('asset/images/checklike.png') }}" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-            @endguest
-					</ul>
-          </nav>
-        </div>
-</div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left Side Of Navbar -->
+      <ul class="navbar-nav mr-auto" id="headerlw">
+        <li class="nav-item px-4 {{ active_class(if_route('pages.index')) }}"><a class="nav-link text-blue-300"
+                                                                                 href="{{ url('/') }}">首页</a>
+        </li>
+        <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 4))) }}">
+        @guest
+          <a class="nav-link" href="javascript:;" data-toggle="modal"
+                                  data-target="#staticBackdrop">万方查重</a>
+        @else
+        <a
+            class="nav-link"
+            href="{{route('categories.show',['classid'=>4])}}"
+            >万方查重</a>
+        @endguest
+        </li>
+        <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 4))) }}">
+        @guest
+          <a class="nav-link" href="javascript:;" data-toggle="modal"
+                                  data-target="#staticBackdrop">查看报告</a>
+        @else
+        <a class="nav-link" href="{{route('orders.index')}}">查看报告</a>
+        @endguest
+        </li>
+        <li class="nav-item px-4"><a class="nav-link" href="javascript:void(0)"
+                                     onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
+        </li>
+        {{--        <li class="active"><a href="/" class="scroll">首页<span> </span></a></li>--}}
+
+        {{--        <li class="page-scroll"><a href="{{route('categories.show',['classid'=>4])}}" id="login1"--}}
+        {{--                                   class="scroll">万方查重<span> </span></a></li>--}}
+
+        {{--        <li class="page-scroll"><a href="{{route('orders.index')}}" id="down" class="scroll">查看报告<span> </span></a></li>--}}
+        {{--        <li class="contatct-active" class="page-scroll"><a href="javascript:void(0)"--}}
+        {{--                                                           onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')"--}}
+        {{--                                                           class="scroll">在线咨询</a></li>--}}
+
+      </ul>
+
+      <!-- Right Side Of Navbar -->
+      <ul class="navbar-nav navbar-right">
+      @guest
+        <!-- Authentication Links -->
+          <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
+                                  data-target="#staticBackdrop">登录</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+        @else
+          <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+        @endguest
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
 
