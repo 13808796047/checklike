@@ -18,7 +18,7 @@
      <div class="card topic-reply mt-4">
             <div>上班部分</div>
           <div class="card-body">
-            @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->recent()->paginate(5)])
+            @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->paginate(5)])
           </div>
   </div>
 	</div>
