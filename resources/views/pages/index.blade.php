@@ -274,8 +274,7 @@
 <header id="header" style="position:relative;">
 	<div class="header-content">
 		<div class="container">
-			<div class="row header-row">3e
-
+			<div class="row header-row">
 				<div class="col-sm-7 col-md-8 col-lg-7">
 					<div class="header-txt">
 						<h1>移动版全新上线<br>完美支持手机/微信/小程序</h1>
