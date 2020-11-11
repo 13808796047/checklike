@@ -35,17 +35,9 @@
             <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
             id="RegisterDialogBtn">注册</a></li>
             @else
-
+              <li class="menu-btn">退出登录</li>
             <!-- <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li> -->
-            <div class="dropdown">
-  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown trigger
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dLabel">
-    ...
-  </ul>
-</div>
+
             @endguest
 					</ul>
           </nav>
