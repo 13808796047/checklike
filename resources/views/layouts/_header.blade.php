@@ -2,7 +2,7 @@
 </style>
 
 <div id="header1">
-     <nav id="navigation" class="navbar scrollspy">
+     <nav id="navigation" class="navbar">
 				<div class="container">
 					<div class="navbar-brand" style="width:316px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
