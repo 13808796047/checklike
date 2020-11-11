@@ -53,6 +53,19 @@ class CouponCodesController extends AdminController
             $grid->tools("{$this->modal()}");
             // 禁用
             $grid->disableCreateButton();
+            $grid->quickSearch('user.phone', 'code');
+            $grid->filter(function($filter) {
+                // 更改为 panel 布局
+                $filter->panel();
+                $filter->equal('type', '卡密类型')->select(\App\Models\CouponCode::$typeMap)->width(2);
+                $filter->equal('status', '卡密状态')->select(\App\Models\CouponCode::$statusMap)->width(2);
+                $filter->equal('cid', '生效系统')->select('/category_options')->width(2);
+
+//                // 在这里添加字段过滤器
+//                $filter->equal('id', '产品序列号');
+//                $filter->like('name', 'name');
+
+            });
         });
     }
 
