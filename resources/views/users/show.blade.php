@@ -32,6 +32,7 @@
      $(document).ready(function () {
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
+      $('#app').removeClass('newmain')
       $('#lwfooter').removeClass('absolute');
     });
   </script>
