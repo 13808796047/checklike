@@ -35,7 +35,7 @@
             <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
             id="RegisterDialogBtn">注册</a></li>
             @else
-              <li class="menu-btn">退出登录</li>
+              <li class="menu-btn"><a href="javascript:;">退出登录</a></li>
             <!-- <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li> -->
 
             @endguest
