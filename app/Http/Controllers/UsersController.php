@@ -96,6 +96,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.show', compact('user'));
     }
 
