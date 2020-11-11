@@ -10,7 +10,6 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>@yield('title', '联文') _学信检测</title>
-
   <!-- Styles -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
@@ -221,17 +220,17 @@
        $("#sendRegisterYzCode").text(counts +' '+'S');
       }
       count--;
-     }, 1000)
-      axios.post('https://p.checklike.com/api/v1/verificationCodes', {
-          phone: iszcphone,
-        }).then(res => {
-          if(res.data&&res.data.key){
-            registerCode=res.data.key
-          }
-        })
+    }, 1000)
+    axios.post('https://p.checklike.com/api/v1/verificationCodes', {
+      phone: iszcphone,
+    }).then(res => {
+        if(res.data&&res.data.key){
+          registerCode=res.data.key
+        }
+      })
     }
   })
-  })
+})
   $("#registerphones").blur(()=>{
     axios.post('https://p.checklike.com/api/v1/check-phone', {
           phone: $('#registerphones').val(),
@@ -268,7 +267,7 @@
               }
               console.log(err,"注册")
             })
-          })
+  })
 </script>
 </body>
 
