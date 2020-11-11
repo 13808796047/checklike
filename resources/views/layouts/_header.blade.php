@@ -36,7 +36,7 @@
             id="RegisterDialogBtn">注册</a></li>
             @else
               <li class="menu-btn" id="tuichuBtn"><a href="javascript:;">退出登录</a>
-              <div style="color: black;font-size: 10px;background:#F5F5F5;position: fixed;;top:85px;display:none;width:230px;height:100px;" id="myself">
+              <div style="color: black;font-size: 10px;background:#F5F5F5;position:fixed;;top:85px;display:none;width:230px;height:100px;" id="myself">
                   <div>您还不是会员 <span>立即开通</span> <span>VIP特权</span></div>
                   <div>卡券:10张<span>卡券管理</span></div>
               </div>
