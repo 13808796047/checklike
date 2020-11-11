@@ -718,10 +718,10 @@
            }
         });
         $("#tuichuBtn").mouseover(function(){
-          console.log("xi")
+          $("#myself").css("display","block")
         })
         $("#tuichuBtn").mouseout(function(){
-          console.log("fsa")
+          $("#myself").css("display","none")
         })
 
       var isBindPhone = {!!Auth::user()!!}
