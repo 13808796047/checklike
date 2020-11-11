@@ -712,6 +712,7 @@
        //模态框打开
 
         $("#tuichuBtn").click(function(e){
+          console.log("xixi")
           e.preventDefault();
           $("#myself").css("display","block")
           $(window).scroll(function() {
@@ -722,9 +723,7 @@
            }
         });
         })
-        $('body').click( function() {
-          $("#myself").css("display","none")
-        });
+
 
       var isBindPhone = {!!Auth::user()!!}
       console.log(isBindPhone,"那哈哈")
