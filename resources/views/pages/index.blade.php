@@ -710,11 +710,14 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-       if($('#navigation').hasClass('affix')){
+       $(window).scoll(()=>{
+        if($('#navigation').hasClass('affix')){
          console.log("含有")
-       }else{
+        }else{
          console.log("不含有")
-       }
+        }
+       })
+
       var isBindPhone = {!!Auth::user()!!}
       console.log(isBindPhone,"那哈哈")
       if(isBindPhone && isBindPhone.phone){
