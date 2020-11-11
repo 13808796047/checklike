@@ -51,7 +51,7 @@
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
       $('#lwfooter').removeClass('absolute');
-      var isBindPhone = {!!coupon_codes()!!}
+      var isBindPhone = {!!coupon_codes!!}
       console.log(isBindPhone,"那哈哈")
     });
   </script>
