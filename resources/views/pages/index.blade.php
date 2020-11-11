@@ -710,15 +710,16 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-       $(window).scroll(function() {
+
+        $("#tuichuBtn").mouseover(function(){
+          $("#myself").css("display","block")
+          $(window).scroll(function() {
            if($('#navigation').hasClass('affix')){
              $("#myself").css("top","62px")
            }else{
             $("#myself").css("top","93px")
            }
         });
-        $("#tuichuBtn").mouseover(function(){
-          $("#myself").css("display","block")
         })
         $("#tuichuBtn").mouseout(function(){
           $("#myself").css("display","none")
