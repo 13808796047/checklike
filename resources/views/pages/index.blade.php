@@ -712,9 +712,9 @@
        //模态框打开
        $(window).scroll(function() {
            if($('#navigation').hasClass('affix')){
-             $("#myself").css('top:62px')
+             $("#myself").css("top","62px")
            }else{
-            $("#myself").css('top:85px')
+            $("#myself").css("top","85px")
            }
         });
 
