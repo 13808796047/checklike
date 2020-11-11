@@ -37,7 +37,8 @@
             @else
               <li class="menu-btn"><a href="javascript:;">退出登录</a></li>
             <!-- <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li> -->
-
+              <div style="height:30px;width:100px;background:#FFF">
+              </div>
             @endguest
 					</ul>
           </nav>
