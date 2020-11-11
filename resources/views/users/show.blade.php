@@ -51,7 +51,6 @@
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
       $('#lwfooter').removeClass('absolute');
-
     });
   </script>
 @stop

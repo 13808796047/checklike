@@ -9,5 +9,4 @@
 @endforeach
 </div>
 <script>
-
 </script>
