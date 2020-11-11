@@ -710,7 +710,7 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-       if($('#navigation').hasClass('affix'){
+       if($('#navigation').hasClass('affix')){
          console.log("含有")
        }else{
          console.log("不含有")
