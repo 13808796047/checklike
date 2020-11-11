@@ -37,6 +37,8 @@
             @else
               <li class="menu-btn" id="tuichuBtn"><a href="javascript:;" style="position:">退出登录</a>
               <div style="height:30px;width:100px;background:#F5F5F5;position:fixed;top:85px;display:none;" id="myself">
+                  <p>您还不是会员 <span>立即开通</span> <span>VIP特权</span></p>
+                  <p>卡券:10张<span>卡券管理</span></p>
               </div>
               </li>
             <!-- <li class="menu-btn"><a class="logout" href="javascript:;">退出登录</a></li> -->
