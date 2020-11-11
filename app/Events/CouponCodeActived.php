@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Order;
+use App\Models\CouponCode;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,19 +11,19 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderPaid
+class CouponCodeActived
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $order;
+    protected $coupon_code;
 
-    public function __construct(Order $order)
+    public function __construct(CouponCode $coupon_code)
     {
-        $this->order = $order;
+        $this->coupon_code = $coupon_code;
     }
 
-    public function getOrder()
+    public function getCouponCode()
     {
-        return $this->order;
+        return $this->coupon_code;
     }
 }

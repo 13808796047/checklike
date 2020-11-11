@@ -33,5 +33,6 @@ class CouponCodesController extends Controller
         }
         $couponCode->checkAvailable();
         $couponCode->user()->associate($user);
+        $couponCode->save();
     }
 }
