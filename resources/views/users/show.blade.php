@@ -38,7 +38,7 @@
           @if(Auth::user()->user_group !=3)
             <span class="userword">开通会员</span>
           @else
-            <span>会员还剩余{{Auth::user()->vip_days}}</span>
+            <span>会员还剩余{{Auth::user()->vip_days}}天</span>
           @endif
         </div>
 
