@@ -86,7 +86,6 @@
                   },
                   cancel: {
                     text: '取消',
-                    btnClass: 'btn-info'
                   },
              },
                onContentReady: function () {
