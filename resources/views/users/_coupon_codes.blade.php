@@ -29,18 +29,22 @@
 <div>
 <div style="display: flex;flex-wrap: wrap;">
 @foreach($coupon_codes as $item)
-            <!-- <div class="yhcard">
+            <div class="yhcard">
               <div style="text-align: center;padding-top: 23px;font-size: 29px;font-weight: bold;">
-               ￥5
+                @if($item->type =="fixed")
+                ￥{{$item->value}}
+                @else
+                {{$item->value}}折
+                @endif
               </div>
-              <div style="text-align:center;font-size:11px;">{{$item->remark}}</div>
+              <div style="text-align:center;font-size:11px;">满{{$item->min_amount}}元可用，限一次</div>
               <div class="cardpline">
-                <p>使用系统:维普大学生版</p>
-                <p>有效期:{{$item->datetime}}</p>
+                <p>适用系统:{{$item->category? $item->category->name:"不限"}}</p>
+                <p>有效期:{{$item->unabled_date}}</p>
                 <p>卡券编号:{{$item->code}}</p>
               </div>
-          </div> -->
-          <p>{{$item}}</p>
+          </div>
+
 @endforeach
 </div>
 </div>
