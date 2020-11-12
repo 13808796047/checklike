@@ -85,9 +85,7 @@
                           axios.post("/coupon_codes/active-coupon-code",{code:name}).then(res=>{
                             console.log(res,"xixi")
                           }).catch(err=>{
-                            // console.log(err,"fadsfs")
-                            // err.response.data.msg
-                            console.log(err.response.data.msg)
+                            $.alert(err.response.data.msg)
                           })
                       }
                   },
