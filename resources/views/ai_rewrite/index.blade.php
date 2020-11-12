@@ -195,8 +195,9 @@
   $("#aiSubmitBtn").click(()=>{
     let words =  $('#words span').text();
     if(words>5000){
-      alertify.set('notifier','position', 'top-center');
-      alertify.notify("字数不能大于5000字",'custom',3)
+      toastr.error('你有新消息了！');
+      // alertify.set('notifier','position', 'top-center');
+      // alertify.notify("字数不能大于5000字",'custom',3)
       return;
     }
     optionChange();
