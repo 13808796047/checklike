@@ -44,4 +44,6 @@
 </div>
 </div>
 <script>
+  var ss = {{!!$item!!}}
+  console.log(ss,"fasdfds")
 </script>
