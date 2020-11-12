@@ -42,7 +42,7 @@
 
               <p></p>
           </div>
-          <div class="usertitle" style="display:flex;justify-content: space-between;">卡券管理<p style="color: #1E90FF;cursor: pointer;margin-right:10px;">卡券激活</p></div>
+          <div class="usertitle" style="display:flex;justify-content: space-between;">卡券管理<p style="color: #1E90FF;cursor: pointer;margin-right:10px;" id="activationBtn">卡券激活</p></div>
           <div></div>
           <div class="card-body">
             @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->with('category')->paginate(5)])
@@ -61,7 +61,42 @@
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
       $("#lwfooter").css("position","absolute")
-
+      $("#activationBtn").click(()=>{
+        console.log("xixi")
+        $.confirm({
+          title: 'Prompt!',
+              content: '' +
+              '<form action="" class="formName">' +
+              '<div class="form-group">' +
+              '<label>Enter something here</label>' +
+              '<input type="text" placeholder="Your name" class="name form-control" required />' +
+              '</div>' +
+              '</form>',
+              buttons: {
+                  formSubmit: {
+                      text: 'Submit',
+                      btnClass: 'btn-blue',
+                      action: function () {
+                          var name = this.$content.find('.name').val();
+                          if(!name){
+                              $.alert('provide a valid name');
+                              return false;
+                          }
+                          $.alert('Your name is ' + name);
+                      }
+                  },
+                  cancel: function () {
+                  },
+             },
+               onContentReady: function () {
+                  var jc = this;
+                  this.$content.find('form').on('submit', function (e) {
+                      e.preventDefault();
+                      jc.$formSubmit.trigger('click');
+                  });
+              }
+});
+      })
     });
   </script>
 @stop
