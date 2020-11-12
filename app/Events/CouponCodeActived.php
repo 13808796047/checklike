@@ -21,7 +21,7 @@ class CouponCodeActived
 
     public function __construct(CouponCode $coupon_code, $user)
     {
-        dd($user);
+        $this->user = $user;
         $this->coupon_code = $coupon_code;
     }
 
