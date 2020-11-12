@@ -137,7 +137,7 @@
       })
       //修改密码
       $("#userxiugaipsd").click(()=>{
-        $("#xgtoast").val("")
+        $("#xgtoast").text("")
         $("#xgpsd").val("")
         $("#xgsurepsd").val("")
         $("#staticXiugai").modal("show")
