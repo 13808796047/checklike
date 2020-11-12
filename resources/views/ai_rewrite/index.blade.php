@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','智能查重')
 @section('styles')
-<link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" />
+<!-- <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" /> -->
 <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
 <style>
   del { background: #FF4040; }
@@ -156,7 +156,7 @@
 </div>
 @stop
 @section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
 <script type="text/javascript" src="{{ asset('asset/js/qrcode.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
@@ -173,10 +173,7 @@
         }
     }
   }
-  toastr.options = {
-    positionClass: "toast-center-center",
-    timeOut:1500 // 超时时间，即窗口显示的时间
-  }
+
   var optionVal = "3"
   function optionChange(){
     var sel=document.getElementById('sel');
