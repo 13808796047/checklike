@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
     // 优惠价格
     Route::get('orders/{order}/coupon-price', 'OrdersController@couponPrice');
+    Route::post('coupon_codes/active-coupon-code', 'CouponCodesController@activeCouponCode');
 });
 //下载
 Route::get('orders/{orderid}/download', 'OrdersController@download')
