@@ -27,13 +27,12 @@
               <p>手机号：{{Auth::user()->phone}}</p>
               <p>自动降重次数: {{Auth::user()->jc_times}}</p>
               <div>
-                  <P>会员:{{Auth::user()->is_free ==1 ? "您还不是会员" : "会员" }}</P>
+                  <span>会员:{{Auth::user()->is_free ==1 ? "您还不是会员" : "会员" }}</span>
                   @if(Auth::user()->is_free ==1)
                      <span>开通会员</span>
                   @else
                      <span>会员还剩余{{Auth::user()->vip_days}}</span>
                   @endif
-
               </div>
               <p></p>
           </div>
