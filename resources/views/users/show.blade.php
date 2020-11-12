@@ -114,6 +114,7 @@
         console.log("xifsadf")
         $("#bindTitle").modal("show")
       })
+      var currentCode="";
       // 绑定手机号
       $("#bindnow").click(()=>{
         axios.put("https://p.checklike.com/bond_phone",{
@@ -124,12 +125,16 @@
           icon: "success",
         }).then(willDelete => {
           $("#bindTitle").modal("hide")
-          location.replace('https://p.checklike.com')
+          // location.replace('https://p.checklike.com')
       });
       }).catch(err=>{
         console.log(err,"fsadfjdsafjdsajfj")
+        toastr.error(err.response.data.message);
       })
-  })
+      })
+      $("#bindno").click(()=>{
+        $("#bindTitle").modal("hide")
+      })
     });
   </script>
 @stop
