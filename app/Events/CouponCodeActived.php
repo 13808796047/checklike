@@ -19,7 +19,7 @@ class CouponCodeActived
     protected $coupon_code;
     protected $user;
 
-    public function __construct(CouponCode $coupon_code, User $user)
+    public function __construct(CouponCode $coupon_code, $user)
     {
         $this->coupon_code = $coupon_code;
     }
