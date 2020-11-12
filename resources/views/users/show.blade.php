@@ -78,7 +78,7 @@
                   cancel: {
                     text: '取消',
                     btnClass: 'btn-info'
-                  }
+                  },
                   formSubmit: {
                       text: 'Submit',
                       action: function () {
