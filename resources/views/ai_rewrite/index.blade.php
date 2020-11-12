@@ -173,6 +173,10 @@
         }
     }
   }
+  toastr.options = {
+    positionClass: "toast-center-center",
+    timeOut:1500 // 超时时间，即窗口显示的时间
+  }
   var optionVal = "3"
   function optionChange(){
     var sel=document.getElementById('sel');
