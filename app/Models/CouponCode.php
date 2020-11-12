@@ -35,6 +35,7 @@ class CouponCode extends Model
     protected $fillable = [
         'code',
         'type',
+        'uid',
         'value',
         'min_amount',
         'enable_days',
@@ -75,16 +76,19 @@ class CouponCode extends Model
     public function checkAvailable($orderAmount = null)
     {
         if(!$this->status == 'used') {
-            throw new CouponCodeUnavailableException('优惠券已经使用!');
+            throw new CouponCodeUnavailableException('卡券已经使用!');
         }
         if(!$this->status == 'actived') {
-            throw new CouponCodeUnavailableException('优惠券未激活!');
+            throw new CouponCodeUnavailableException('卡券未激活!');
+        }
+        if($this->status == 'actived') {
+            throw new CouponCodeUnavailableException('卡券已激活!');
         }
         if($this->enable_days <= 0) {
-            throw new CouponCodeUnavailableException('优惠券已过期!');
+            throw new CouponCodeUnavailableException('卡券已过期!');
         }
         if($this->unabled_date->lt(Carbon::now())) {
-            throw new CouponCodeUnavailableException('优惠券已过期!');
+            throw new CouponCodeUnavailableException('卡券激活时间已过期!');
         }
         if(!is_null($orderAmount) && $orderAmount < $this->min_amount) {
             throw new CouponCodeUnavailableException('订单金额不满足该优惠券最低金额');
