@@ -7,7 +7,12 @@
     .curfont{
       font-size:16px;
     }
-
+    .usertitle{
+      font-size: 17px;
+      font-weight: bold;
+      border-bottom: 1px solid;
+      margin: 10px 18px;
+    }
   </style>
 @stop
 @section('content')
@@ -16,14 +21,14 @@
 <div class="main clearfix" style="flex:1">
 
      <div class="card topic-reply mt-4" style="margin:30px 60px;">
-          <div>基本信息</div>
+          <div class="usertitle">基本信息</div>
           <div>
               <p>用户名：{{Auth::user()->phone}}</p>
               <p>手机号：{{Auth::user()->phone}}</p>
               <p>自动降重次数: {{Auth::user()->jc_times}}</p>
               <p>会员:{{Auth::user()->is_free}}</p>
           </div>
-          <div>卡券管理</div>
+          <div class="usertitle">卡券管理</div>
           <div></div>
           <div class="card-body">
             @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->paginate(5)])
