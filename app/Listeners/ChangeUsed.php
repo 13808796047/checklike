@@ -14,6 +14,7 @@ class ChangeUsed
     {
         $couponCode = $event->getCouponCode();
         $user = $event->getUser();
+        dd($user);
         $couponCode->update([
             'status' => CouponCode::STATUS_ACTIVED,
             'uid' => $user->id
