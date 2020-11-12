@@ -62,9 +62,8 @@ class CouponCodesController extends AdminController
 //                dd(\App\Models\Category::get(['id', 'name as text'])->toArray());
                 $cate = \App\Models\Category::get(['id', 'name'])->map(function($item) {
                     return [$item->id => $item->name];
-                });
-                dd($cate->toArray());
-                $filter->equal('column')->select($cate->toArray());
+                })->flatten();
+                $filter->equal('column')->select($cate);
 
 //                // 在这里添加字段过滤器
 //                $filter->equal('id', '产品序列号');
