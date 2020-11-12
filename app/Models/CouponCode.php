@@ -86,7 +86,7 @@ class CouponCode extends Model
         if($this->unabled_date->lt(Carbon::now())) {
             throw new CouponCodeUnavailableException('优惠券已过期!');
         }
-        if($orderAmount < $this->min_amount) {
+        if(!is_null($orderAmount) && $orderAmount < $this->min_amount) {
             throw new CouponCodeUnavailableException('订单金额不满足该优惠券最低金额');
         }
     }
