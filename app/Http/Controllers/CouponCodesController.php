@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CouponCodeActived;
 use App\Exceptions\CouponCodeUnavailableException;
+use App\Listeners\ChangeUsed;
 use App\Models\CouponCode;
 use App\Models\Order;
 use App\Services\OrderService;
@@ -32,11 +34,12 @@ class CouponCodesController extends Controller
     public function activeCouponCode(Request $request)
     {
         $user = $request->user();
-        if(!$couponCode = CouponCode::where('code', $code)->first()) {
+        if(!$couponCode = CouponCode::where('code', $request->code)->first()) {
             throw new CouponCodeUnavailableException('折扣卡不存在!');
         }
         $couponCode->checkAvailable();
         $couponCode->user()->associate($user);
         $couponCode->save();
+        event(new CouponCodeActived($couponCode));
     }
 }
