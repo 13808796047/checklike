@@ -23,7 +23,6 @@ class ChangeUsed
                 $couponCode->user()->update([
                     'user_group' => 3
                 ]);
-                dd($couponCode->enable_days);
                 $couponCode->user->changeDays($couponCode->enable_days);
             });
         }
