@@ -49,7 +49,7 @@
         </div>
         <div class="cardpline">
           <p>适用系统：{{$item->category? $item->category->name:"不限"}}</p>
-          <p>有效期：{{$item->enable_days}}</p>
+          <p>有效期：剩余{{$item->enable_days}}天</p>
           <p>卡券编号：{{$item->code}}</p>
         </div>
       </div>
