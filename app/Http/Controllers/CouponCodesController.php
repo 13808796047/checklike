@@ -33,11 +33,11 @@ class CouponCodesController extends Controller
 
     public function activeCouponCode(Request $request)
     {
-        dd($request->code);
         $user = $request->user();
         if(!$couponCode = CouponCode::where('code', $request->code)->first()) {
             throw new CouponCodeUnavailableException('折扣卡不存在!');
         }
+        dd($couponCode);
         $couponCode->checkAvailable();
         event(new CouponCodeActived($couponCode, $user));
         return response()->json([
