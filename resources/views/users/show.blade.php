@@ -10,8 +10,9 @@
     .usertitle{
       font-size: 17px;
       font-weight: bold;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #D5D5D5;
       margin: 10px 18px;
+      color:#D5D5D5;
     }
   </style>
 @stop
