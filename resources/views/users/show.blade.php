@@ -13,6 +13,10 @@
       border-bottom: 1px solid;
       margin: 10px 18px;
     }
+    .userword{
+      margin-left: 52px;
+      color: #1E90FF;
+    }
   </style>
 @stop
 @section('content')
@@ -23,13 +27,13 @@
      <div class="card topic-reply mt-4" style="margin:30px 60px;">
           <div class="usertitle">基本信息</div>
           <div style="margin:0 18px;">
-              <p>用户名：{{Auth::user()->phone}}<span>修改密码</span></p>
+              <p>用户名：{{Auth::user()->phone}}<span class="userword">修改密码</span></p>
               <p>手机号：{{Auth::user()->phone}}</p>
               <p>自动降重次数: {{Auth::user()->jc_times}}次<span>充值</span></p>
               <div>
                   <span>会员:{{Auth::user()->is_free ==1 ? "您还不是会员" : "会员" }}</span>
                   @if(Auth::user()->is_free ==1)
-                     <span>开通会员</span>
+                     <span class="userword">开通会员</span>
                   @else
                      <span>会员还剩余{{Auth::user()->vip_days}}</span>
                   @endif
