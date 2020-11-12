@@ -44,7 +44,7 @@
           <div class="usertitle">卡券管理</div>
           <div></div>
           <div class="card-body">
-            @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->paginate(5)])
+            @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->with('category')->paginate(5)])
           </div>
     </div>
 </div>
