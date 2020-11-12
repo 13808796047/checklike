@@ -81,7 +81,12 @@
                               $.alert('密钥不能为空');
                               return false;
                           }
-                          $.alert('Your name is ' + name);
+                          // $.alert('Your name is ' + name);
+                          axios.post("/coupon_codes/active-coupon-code",{code:name}).then(res=>{
+                            console.log(res,"xixi")
+                          }).catch(err=>{
+                            console.log(err,"fadsfs")
+                          })
                       }
                   },
                   cancel: {
