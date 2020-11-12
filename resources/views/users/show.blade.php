@@ -63,7 +63,7 @@
       $("#lwfooter").css("position","absolute")
       $("#activationBtn").click(()=>{
         $.confirm({
-          title: 'Prompt!',
+          title: '请输入密钥',
               content: '' +
               '<form action="" class="formName">' +
               '<div class="form-group">' +
@@ -72,15 +72,9 @@
               '</div>' +
               '</form>',
               buttons: {
-                  ok:{
-                    text:"确认",
-                  },
-                  cancel: {
-                    text: '取消',
-                    btnClass: 'btn-info'
-                  },
                   formSubmit: {
-                      text: 'Submit',
+                      text: '确认',
+                      btnClass:  'btn-blue',
                       action: function () {
                           var name = this.$content.find('.name').val();
                           if(!name){
@@ -89,6 +83,10 @@
                           }
                           $.alert('Your name is ' + name);
                       }
+                  },
+                  cancel: {
+                    text: '取消',
+                    btnClass: 'btn-info'
                   },
                   cancel: function () {
                   },
