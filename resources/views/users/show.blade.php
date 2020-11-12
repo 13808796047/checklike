@@ -62,7 +62,6 @@
       $('#app').removeClass('newmain')
       $("#lwfooter").css("position","absolute")
       $("#activationBtn").click(()=>{
-        console.log("xixi")
         $.confirm({
           title: 'Prompt!',
               content: '' +
@@ -73,9 +72,15 @@
               '</div>' +
               '</form>',
               buttons: {
+                  ok:{
+                    text:"确认",
+                  },
+                  cancel: {
+                    text: '取消',
+                    btnClass: 'btn-info'
+                  }
                   formSubmit: {
                       text: 'Submit',
-                      btnClass: 'btn-blue',
                       action: function () {
                           var name = this.$content.find('.name').val();
                           if(!name){
