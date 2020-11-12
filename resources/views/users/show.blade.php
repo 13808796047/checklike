@@ -26,7 +26,15 @@
               <p>用户名：{{Auth::user()->phone}}</p>
               <p>手机号：{{Auth::user()->phone}}</p>
               <p>自动降重次数: {{Auth::user()->jc_times}}</p>
-              <p>会员:{{Auth::user()->is_free ==1 ? "非会员" : "会员" }}</p>
+              <div>
+                  <P>会员:{{Auth::user()->is_free ==1 ? "您还不是会员" : "会员" }}</P>
+                  @if(Auth::user()->is_free ==1)
+                     <span>开通会员</span>
+                  @else
+                     <span>会员还剩余{{Auth::user()->vip_days}}</span>
+                  @endif
+
+              </div>
               <p></p>
           </div>
           <div class="usertitle">卡券管理</div>
