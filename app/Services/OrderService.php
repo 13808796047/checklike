@@ -13,6 +13,7 @@ use App\Handlers\WordHandler;
 use App\Jobs\CloudCouvertFile;
 use App\Jobs\OrderPendingMsg;
 use App\Models\Category;
+use App\Models\CouponCode;
 use App\Models\File;
 use App\Models\Order;
 

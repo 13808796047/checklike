@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CouponCodeActived;
 use App\Exceptions\CouponCodeUnavailableException;
+use App\Listeners\ChangeUsed;
 use App\Models\CouponCode;
+use App\Models\Order;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 
 class CouponCodesController extends Controller
@@ -16,23 +20,26 @@ class CouponCodesController extends Controller
         return view('coupon_codes.index', compact('coupon_codes'));
     }
 
-    public function show($code)
-    {
-        if(!$record = CouponCode::where('code', $code)->first()) {
-            throw new CouponCodeUnavailableException('折扣卡不存在!');
-        }
-        $record->checkAvailable();
-        return $record;
-    }
+//    public function show(OrderService $orderService, $code)
+//    {
+//        // 如果用户提交了优惠码
+//
+//        $coupon_code = CouponCode::where('code', $code)->first();
+//        if(!$coupon_code) {
+//            throw new CouponCodeUnavailableException('优惠券不存在');
+//        }
+//        return $orderService->calcPrice();
+//    }
 
     public function activeCouponCode(Request $request)
     {
         $user = $request->user();
-        if(!$couponCode = CouponCode::where('code', $code)->first()) {
+        if(!$couponCode = CouponCode::where('code', $request->code)->first()) {
             throw new CouponCodeUnavailableException('折扣卡不存在!');
         }
         $couponCode->checkAvailable();
         $couponCode->user()->associate($user);
         $couponCode->save();
+        event(new CouponCodeActived($couponCode));
     }
 }

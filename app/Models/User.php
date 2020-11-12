@@ -47,6 +47,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(CouponCode::class, 'uid');
     }
 
+    public function changeDays($days)
+    {
+        return $this->where('id', $this->id)->increment('vip_days', $days);
+    }
+
     //增加次数
     public function increaseJcTimes($times)
     {

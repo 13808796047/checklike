@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\CouponCodeActived;
 use App\Events\OrderPaid;
 use App\Events\RechargePaid;
+use App\Listeners\ChangeUsed;
 use App\Listeners\CheckDoc;
 use App\Listeners\UpdateUserJctimes;
 use Illuminate\Auth\Events\Registered;
@@ -31,7 +33,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         RechargePaid::class => [
             UpdateUserJctimes::class,
+        ],
+        CouponCodeActived::class => [
+            ChangeUsed::class
         ]
+
     ];
 
     /**
