@@ -39,12 +39,13 @@
                      <span>会员还剩余{{Auth::user()->vip_days}}</span>
                   @endif
               </div>
+
               <p></p>
           </div>
-          <div class="usertitle">卡券管理</div>
+          <div class="usertitle" style="display:flex;justify-content: space-between;">卡券管理<p style="color: #1E90FF;cursor: pointer;margin-right:10px;" id="activationBtn">卡券激活</p></div>
           <div></div>
           <div class="card-body">
-            @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->paginate(5)])
+            @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->with('category')->paginate(5)])
           </div>
     </div>
 </div>
@@ -60,7 +61,47 @@
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
       $("#lwfooter").css("position","absolute")
-
+      $("#activationBtn").click(()=>{
+        $.confirm({
+              title:"提示",
+              content: '' +
+              '<form action="" class="formName">' +
+              '<div class="form-group" style="display:flex">' +
+              '<label style="margin-right:10px;">密匙</label>' +
+              '<input type="text" placeholder="请输入密匙" class="name form-control" required style="width:80%"/>' +
+              '</div>' +
+              '</form>',
+              buttons: {
+                  formSubmit: {
+                      text: '确认',
+                      btnClass:  'btn-blue',
+                      action: function () {
+                          var name = this.$content.find('.name').val();
+                          if(!name){
+                              $.alert('密钥不能为空');
+                              return false;
+                          }
+                          // $.alert('Your name is ' + name);
+                          axios.post("/coupon_codes/active-coupon-code",{code:name}).then(res=>{
+                            console.log(res,"xixi")
+                          }).catch(err=>{
+                            console.log(err,"fadsfs")
+                          })
+                      }
+                  },
+                  cancel: {
+                    text: '取消',
+                  },
+             },
+               onContentReady: function () {
+                  var jc = this;
+                  this.$content.find('form').on('submit', function (e) {
+                      e.preventDefault();
+                      jc.$formSubmit.trigger('click');
+                  });
+              }
+});
+      })
     });
   </script>
 @stop

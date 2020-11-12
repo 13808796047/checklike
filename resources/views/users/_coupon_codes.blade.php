@@ -1,12 +1,12 @@
 <style>
-    .yhcard{
+        .yhcard{
           width: 220px;
           position: relative;
           color:#FFFAFA;
           background: radial-gradient(circle at 110px 0, transparent 10px, #74D2D4 0) top left/220px 100% no-repeat;
           margin:10px 15px;
         }
-        .yhcaed::after {
+        .yhcard::after {
           content: '';
           position: absolute;
           height: 5px;
@@ -31,17 +31,23 @@
 @foreach($coupon_codes as $item)
             <div class="yhcard">
               <div style="text-align: center;padding-top: 23px;font-size: 29px;font-weight: bold;">
-               ￥5
+                @if($item->type =="fixed")
+                ￥{{$item->value}}
+                @else
+                {{$item->value}}折
+                @endif
               </div>
-              <div style="text-align:center;font-size:11px;">满20元用一次，限一次</div>
+              <div style="text-align:center;font-size:11px;">满{{$item->min_amount}}元可用，限一次</div>
               <div class="cardpline">
-                <p>使用系统:维普大学生版</p>
-                <p>有效期:2020-11-30 20:30:00</p>
-                <p>卡券编号:{{$item->code}}</p>
+                <p>适用系统：{{$item->category? $item->category->name:"不限"}}</p>
+                <p>有效期：{{$item->unabled_date}}</p>
+                <p>卡券编号：{{$item->code}}</p>
               </div>
           </div>
+
 @endforeach
 </div>
 </div>
 <script>
+
 </script>
