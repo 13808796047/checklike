@@ -63,6 +63,7 @@
       $("#lwfooter").css("position","absolute")
       $("#activationBtn").click(()=>{
         $.confirm({
+              title:"",
               content: '' +
               '<form action="" class="formName">' +
               '<div class="form-group" style="display:flex">' +
