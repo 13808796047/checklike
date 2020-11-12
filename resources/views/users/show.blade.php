@@ -84,9 +84,8 @@
                   $.alert('密钥不能为空');
                   return false;
                 }
-                // $.alert('Your name is ' + name);
                 axios.post("/coupon_codes/active-coupon-code", {code: name}).then(res => {
-                  $.alert(res.data.data.msg)
+                  $.alert(res.data.msg)
                 }).catch(err => {
                   $.alert(err.response.data.msg)
                 })
@@ -96,13 +95,13 @@
               text: '取消',
             },
           },
-          onContentReady: function () {
-            var jc = this;
-            this.$content.find('form').on('submit', function (e) {
-              e.preventDefault();
-              jc.$formSubmit.trigger('click');
-            });
-          }
+          // onContentReady: function () {
+          //   var jc = this;
+          //   this.$content.find('form').on('submit', function (e) {
+          //     e.preventDefault();
+          //     jc.$formSubmit.trigger('click');
+          //   });
+          // }
         });
       })
     });
