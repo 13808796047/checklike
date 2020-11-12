@@ -34,7 +34,7 @@
         @if(Auth::user()->phone)
         <span class="userword">修改密码</span>
         @elseif(!Auth::user()->phone && Auth::user()->nick_name)
-        <span class="userword">绑定手机号</span>
+        <span class="userword" id="bindnow">绑定手机号</span>
         @endif
         </p>
         <p>手机号：{{Auth::user()->phone}}</p>
@@ -110,6 +110,22 @@
           // }
         });
       })
+      // 绑定手机号
+      $("#bindnow").click(()=>{
+        axios.put("https://p.checklike.com/bond_phone",{
+        verification_key:currentCode,
+        verification_code:$("#bindCodeNow").val()
+      }).then(res=>{
+        swal("绑定成功", {
+          icon: "success",
+        }).then(willDelete => {
+          $("#bindTitle").modal("hide")
+          location.replace('https://p.checklike.com')
+      });
+      }).catch(err=>{
+        console.log(err,"fsadfjdsafjdsajfj")
+      })
+  })
     });
   </script>
 @stop
