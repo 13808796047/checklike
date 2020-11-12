@@ -14,7 +14,7 @@
 
 
 <div class="main clearfix" style="flex:1">
-
+      <p>用户名：{{Auth::user()->phone}}</p>
      <div class="card topic-reply mt-4">
           <p>
             用户:<span>{{Auth::user()->id}}</span>
@@ -36,6 +36,7 @@
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
       $("#lwfooter").css("position","absolute")
+
     });
   </script>
 @stop
