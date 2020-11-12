@@ -32,7 +32,7 @@
       <div style="margin:0 18px;">
         <p>用户名：{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
         @if(Auth::user()->phone)
-        <span class="userword">修改密码</span>
+        <span class="userword" id="userxiugaipsd">修改密码</span>
         @elseif(!Auth::user()->phone && Auth::user()->nick_name)
         <span class="userword" id="userbindPhone">绑定手机号</span>
         @endif
@@ -133,6 +133,32 @@
       })
       $("#bindno").click(()=>{
         $("#bindTitle").modal("hide")
+      })
+      //修改密码
+      $("#userxiugaipsd").click(()=>{
+        $("#staticXiugai").modal("show")
+      })
+      $("#xiugaicancel").click(()=>{
+        $("#staticXiugai").modal("hide")
+      })
+      $("#xiugaisure").click(()=>{
+        if($("#xgpsd").val().length<8){
+           $("#xgtoast").text("密码不少于8位")
+           return;
+       }
+       if($("#xgpsd").val()!=$("#xgsurepsd").val()){
+         $("#xgtoast").text("两次密码不一致")
+         return;
+       }
+        axios.post('https://p.checklike.com/password/reset', {
+          password: $("#xgpsd").val(),
+          password_confirmation: $("#xgsurepsd").val()
+        }).then(res=>{
+            toastr.success(res.data.message);
+            $("#staticXiugai").modal("hide")
+        }).catch(err=>{
+            toastr.error(err.response.data.message);
+        })
       })
     });
   </script>

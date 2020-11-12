@@ -176,35 +176,35 @@
   // $("#bindno").click(()=>{
   //   $("#bindTitle").modal("hide")
   // })
-  $("#xiugaisure").click(()=>{
-    if($("#xgpsd").val().length<8){
-      $("#xgtoast").text("密码不少于8位")
-      return;
-    }
-    if($("#xgpsd").val()!=$("#xgsurepsd").val()){
-      $("#xgtoast").text("两次密码不一致")
-      return;
-    }
-    axios.post('https://p.checklike.com/password/reset', {
-      password: $("#xgpsd").val(),
-      password_confirmation: $("#xgsurepsd").val()
-    }).then(res=>{
-      // swal(res.data.message, {
-      //   buttons: false,
-      //   timer: 2000,
-      // })
-      $("#staticXiugai").modal("hide")
-      alertify.set('notifier','position', 'top-center');
-      alertify.notify(res.data.message,'custom',3)
-    }).catch(err=>{
-      console.log(err,"xixi")
-      // swal(err.data.message, {
-      //   icon: "error",
-      // }).then(willDelete => {
-      //   $("#staticXiugai").modal("hide")
-      // });
-    })
-  })
+  // $("#xiugaisure").click(()=>{
+  //   if($("#xgpsd").val().length<8){
+  //     $("#xgtoast").text("密码不少于8位")
+  //     return;
+  //   }
+  //   if($("#xgpsd").val()!=$("#xgsurepsd").val()){
+  //     $("#xgtoast").text("两次密码不一致")
+  //     return;
+  //   }
+  //   axios.post('https://p.checklike.com/password/reset', {
+  //     password: $("#xgpsd").val(),
+  //     password_confirmation: $("#xgsurepsd").val()
+  //   }).then(res=>{
+  //     // swal(res.data.message, {
+  //     //   buttons: false,
+  //     //   timer: 2000,
+  //     // })
+  //     $("#staticXiugai").modal("hide")
+  //     alertify.set('notifier','position', 'top-center');
+  //     alertify.notify(res.data.message,'custom',3)
+  //   }).catch(err=>{
+  //     console.log(err,"xixi")
+  //     // swal(err.data.message, {
+  //     //   icon: "error",
+  //     // }).then(willDelete => {
+  //     //   $("#staticXiugai").modal("hide")
+  //     // });
+  //   })
+  // })
   var registerCode="";
   $("#RegisterDialogBtn").click(()=>{
     console.log("xixi，点击了")
