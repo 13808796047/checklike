@@ -42,7 +42,7 @@
 
               <p></p>
           </div>
-          <div class="usertitle" style="display:flex;">卡券管理<p>卡券激活</p></div>
+          <div class="usertitle" style="display:flex;justify-content: space-between;">卡券管理<p style="color: #1E90FF;cursor: pointer;margin-right:10px;">卡券激活</p></div>
           <div></div>
           <div class="card-body">
             @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->with('category')->paginate(5)])
