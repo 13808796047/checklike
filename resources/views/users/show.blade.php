@@ -126,6 +126,7 @@
         }).then(willDelete => {
           $("#bindTitle").modal("hide")
           // location.replace('https://p.checklike.com')
+          window.location.reload()
       });
       }).catch(err=>{
         toastr.error(err.response.data.message);
@@ -156,6 +157,7 @@
         }).then(res=>{
             toastr.success(res.data.message);
             $("#staticXiugai").modal("hide")
+            window.location.reload()
         }).catch(err=>{
             toastr.error(err.response.data.message);
         })
