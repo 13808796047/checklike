@@ -29,7 +29,7 @@
 <div>
 <div style="display: flex;flex-wrap: wrap;">
 @foreach($coupon_codes as $item)
-            <div class="yhcard">
+            <!-- <div class="yhcard">
               <div style="text-align: center;padding-top: 23px;font-size: 29px;font-weight: bold;">
                ￥5
               </div>
@@ -39,11 +39,11 @@
                 <p>有效期:{{$item->datetime}}</p>
                 <p>卡券编号:{{$item->code}}</p>
               </div>
-          </div>
+          </div> -->
+          <p>{{$item}</p>
 @endforeach
 </div>
 </div>
 <script>
-  var ss = {!!$item!!}
-  console.log(ss,"fasdfds")
+
 </script>
