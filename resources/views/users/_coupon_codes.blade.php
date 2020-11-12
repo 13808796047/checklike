@@ -39,6 +39,7 @@
               </div>
               <div style="text-align:center;font-size:11px;">
               @if($item->type =="vip")
+              VIP专属
               @else
               满{{$item->min_amount}}元可用，限一次
               @endif
