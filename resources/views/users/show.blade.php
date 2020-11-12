@@ -14,11 +14,9 @@
 
 
 <div class="main clearfix" style="flex:1">
-      <p>用户名：{{Auth::user()->phone}}</p>
+
      <div class="card topic-reply mt-4">
-          <p>
-            用户:<span>{{Auth::user()->id}}</span>
-          </p>
+          <p>用户名：{{Auth::user()->phone}}</p>
           <div class="card-body">
             @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->paginate(5)])
           </div>
