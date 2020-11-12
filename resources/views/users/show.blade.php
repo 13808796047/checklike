@@ -70,8 +70,8 @@
           content: '' +
             '<form action="" class="formName">' +
             '<div class="form-group" style="display:flex">' +
-            '<label style="margin-right:10px;">密匙</label>' +
-            '<input type="text" placeholder="请输入密匙" class="name form-control" required style="width:80%"/>' +
+            '<label style="margin-right:10px;">卡券编号</label>' +
+            '<input type="text" placeholder="请输入卡券编号" class="name form-control" required style="width:80%"/>' +
             '</div>' +
             '</form>',
           buttons: {
