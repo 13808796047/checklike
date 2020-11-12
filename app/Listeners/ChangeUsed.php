@@ -20,6 +20,7 @@ class ChangeUsed
         ]);
         if($couponCode->type == CouponCode::TYPE_VIP) {
             DB::transaction(function() use ($couponCode) {
+                dd($couponCode);
                 $couponCode->user()->update([
                     'user_group' => 3
                 ]);
