@@ -143,7 +143,7 @@
         $("#staticXiugai").modal("hide")
       })
       $("#xiugaisure").click(()=>{
-        $("#xgtoast").text("")
+        $("#xgtoast").val("")
         $("#xgpsd").val("")
         $("#xgsurepsd").val("")
         if($("#xgpsd").val().length<8){
