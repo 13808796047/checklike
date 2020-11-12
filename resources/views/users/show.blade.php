@@ -34,7 +34,7 @@
         @if(Auth::user()->phone)
         <span class="userword">修改密码</span>
         @elseif(!Auth::user()->phone && Auth::user()->nick_name)
-        <span class="userword" id="bindnow">绑定手机号</span>
+        <span class="userword" id="bindno">绑定手机号</span>
         @endif
         </p>
         <p>手机号：{{Auth::user()->phone}}</p>
@@ -109,6 +109,9 @@
           //   });
           // }
         });
+      })
+      $("#bindno").click(()=>{
+        $("#bindTitle").modal("hide")
       })
       // 绑定手机号
       $("#bindnow").click(()=>{
