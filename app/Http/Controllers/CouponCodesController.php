@@ -38,8 +38,6 @@ class CouponCodesController extends Controller
             throw new CouponCodeUnavailableException('折扣卡不存在!');
         }
         $couponCode->checkAvailable();
-        $couponCode->user()->associate($user);
-        $couponCode->save();
-        event(new CouponCodeActived($couponCode));
+        event(new CouponCodeActived($couponCode, $user));
     }
 }

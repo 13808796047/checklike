@@ -13,8 +13,10 @@ class ChangeUsed
     public function handle(CouponCodeActived $event)
     {
         $couponCode = $event->getCouponCode();
+        $user = $event->getUser();
         $couponCode->update([
-            'status' => CouponCode::STATUS_ACTIVED
+            'status' => CouponCode::STATUS_ACTIVED,
+            'uid' => $user->id
         ]);
         if($couponCode->type == CouponCode::TYPE_VIP) {
             DB::transaction(function() use ($couponCode) {
