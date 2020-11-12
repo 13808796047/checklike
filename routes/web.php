@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function() {
     // 个人中心优惠券
     Route::get('coupon_codes', 'CouponCodesController@index')->name('coupon_code.index');
     Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+    // 优惠价格
+    Route::get('orders/{order}/coupon-price', 'OrdersController@couponPrice');
 });
 //下载
 Route::get('orders/{orderid}/download', 'OrdersController@download')

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Events\OrderPaid;
 use App\Events\RechargePaid;
+use App\Exceptions\CouponCodeUnavailableException;
 use App\Exceptions\InvalidRequestException;
 use App\Handlers\OpenidHandler;
 use App\Jobs\CheckOrderStatus;
 use App\Jobs\CloudCouvertFile;
 use App\Jobs\OrderPaidMsg;
 use App\Jobs\OrderPendingMsg;
+use App\Models\CouponCode;
 use App\Models\Order;
 use App\Models\Recharge;
 use Carbon\Carbon;
@@ -59,10 +61,11 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确!');
                 }
+                $totalAmount = $this->calcPrice($order, $request->code);
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
-                    'total_amount' => $order->price, // 订单金额，单位元，支持小数点后两位
+                    'total_amount' => $totalAmount, // 订单金额，单位元，支持小数点后两位
                     'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
                 ]);
         }
@@ -120,6 +123,22 @@ class PaymentsController extends Controller
                 return view('orders.index', compact('orders'));
         }
 
+    }
+
+    public function calcPrice(Order $order, $code)
+    {
+        // 如果用户提交了优惠码
+
+        $coupon_code = CouponCode::where('code', $code)->first();
+        if(!$coupon_code) {
+            throw new CouponCodeUnavailableException('优惠券不存在');
+        }
+        $coupon_code->checkAvailable($order->price);
+        $totalAmount = $coupon_code->getAdjustedPrice($order->price);
+        $order->couponCode()->associate($coupon_code);
+        $order->save();
+        // 如果用户通过Api请求,则返回JSON格式的错误信息
+        return $totalAmount;
     }
 
     // 服务器端回调
@@ -210,11 +229,11 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确');
                 }
-
+                $totalAmount = $this->calcPrice($order, $request->code);
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
-                    'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
+                    'total_fee' => $totalAmount * 100, // 与支付宝不同，微信支付的金额单位是分。
                     'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
                 ]);
                 //把要转换的字符串作为QrCode的构造函数

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderPaid;
+use App\Exceptions\CouponCodeUnavailableException;
 use App\Exceptions\InvalidRequestException;
 use App\Handlers\DocxConversionHandler;
 use App\Handlers\FileUploadHandler;
@@ -18,6 +19,7 @@ use App\Jobs\OrderCheckedMsg;
 use App\Jobs\OrderPendingMsg;
 use App\Mail\OrderReport;
 use App\Models\Category;
+use App\Models\CouponCode;
 use App\Models\Order;
 use App\Services\OrderService;
 use Endroid\QrCode\QrCode;
@@ -53,6 +55,20 @@ class OrdersController extends Controller
         // 校验权限
         $this->authorize('own', $order);
         return view('orders.show', compact('order'));
+    }
+
+    public function couponPrice(Request $request, Order $order)
+    {
+        // 如果用户提交了优惠码
+
+        $coupon_code = CouponCode::where('code', $request->code)->first();
+        if(!$coupon_code) {
+            throw new CouponCodeUnavailableException('优惠券不存在');
+        }
+        $coupon_code->checkAvailable($order->price);
+        $totalAmount = $coupon_code->getAdjustedPrice($order->price);
+        // 如果用户通过Api请求,则返回JSON格式的错误信息
+        return $totalAmount;
     }
 
     public function viewReport(Order $order, OrderApiHandler $apiHandler)
