@@ -10,9 +10,8 @@
     .usertitle{
       font-size: 17px;
       font-weight: bold;
-      border-bottom: 1px solid #D5D5D5;
+      border-bottom: 1px solid;
       margin: 10px 18px;
-      color:#D5D5D5;
     }
   </style>
 @stop
@@ -23,7 +22,7 @@
 
      <div class="card topic-reply mt-4" style="margin:30px 60px;">
           <div class="usertitle">基本信息</div>
-          <div>
+          <div style="margin:0 18px;">
               <p>用户名：{{Auth::user()->phone}}</p>
               <p>手机号：{{Auth::user()->phone}}</p>
               <p>自动降重次数: {{Auth::user()->jc_times}}</p>
