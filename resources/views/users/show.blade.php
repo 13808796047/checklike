@@ -137,15 +137,16 @@
       })
       //修改密码
       $("#userxiugaipsd").click(()=>{
+        $("#xgtoast").val("")
+        $("#xgpsd").val("")
+        $("#xgsurepsd").val("")
         $("#staticXiugai").modal("show")
       })
       $("#xiugaicancel").click(()=>{
         $("#staticXiugai").modal("hide")
       })
       $("#xiugaisure").click(()=>{
-        $("#xgtoast").val("")
-        $("#xgpsd").val("")
-        $("#xgsurepsd").val("")
+
         if($("#xgpsd").val().length<8){
            $("#xgtoast").text("密码不少于8位")
            return;
