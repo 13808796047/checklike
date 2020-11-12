@@ -35,6 +35,7 @@ class CouponCode extends Model
     protected $fillable = [
         'code',
         'type',
+        'uid',
         'value',
         'min_amount',
         'enable_days',
