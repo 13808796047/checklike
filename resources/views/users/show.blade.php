@@ -78,7 +78,7 @@
                       action: function () {
                           var name = this.$content.find('.name').val();
                           if(!name){
-                              $.alert('provide a valid name');
+                              $.alert('密钥不能为空');
                               return false;
                           }
                           $.alert('Your name is ' + name);
@@ -87,8 +87,6 @@
                   cancel: {
                     text: '取消',
                     btnClass: 'btn-info'
-                  },
-                  cancel: function () {
                   },
              },
                onContentReady: function () {
