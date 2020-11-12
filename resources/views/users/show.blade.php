@@ -143,6 +143,9 @@
         $("#staticXiugai").modal("hide")
       })
       $("#xiugaisure").click(()=>{
+        $("#xgtoast").text("")
+        $("#xgpsd").val("")
+        $("#xgsurepsd").val("")
         if($("#xgpsd").val().length<8){
            $("#xgtoast").text("密码不少于8位")
            return;
@@ -157,7 +160,6 @@
         }).then(res=>{
             toastr.success(res.data.message);
             $("#staticXiugai").modal("hide")
-            window.location.reload()
         }).catch(err=>{
             toastr.error(err.response.data.message);
         })
