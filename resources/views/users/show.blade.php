@@ -39,9 +39,10 @@
                      <span>会员还剩余{{Auth::user()->vip_days}}</span>
                   @endif
               </div>
+
               <p></p>
           </div>
-          <div class="usertitle">卡券管理</div>
+          <div class="usertitle" style="display:flex;">卡券管理<p>卡券激活</p></div>
           <div></div>
           <div class="card-body">
             @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->with('category')->paginate(5)])
