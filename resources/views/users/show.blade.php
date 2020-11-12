@@ -85,9 +85,9 @@
                   return false;
                 }
                 axios.post("/coupon_codes/active-coupon-code", {code: name}).then(res => {
-                  $.alert(res.data.msg)
+                  toastr.success(res.data.msg);
                 }).catch(err => {
-                  $.alert(err.response.data.msg)
+                  toastr.error(err.response.data.msg);
                 })
               }
             },
