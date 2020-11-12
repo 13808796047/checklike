@@ -34,11 +34,11 @@
         <p>手机号：{{Auth::user()->phone}}</p>
         <p>自动降重次数: {{Auth::user()->jc_times}}次<span class="userword">充值</span></p>
         <div>
-          <span>会员:{{Auth::user()->is_free ==1 ? "您还不是会员" : "会员" }}</span>
-          @if(Auth::user()->is_free ==1)
+          <span>会员:{{Auth::user()->user_group ==3 ? "会员" : "您还不是会员" }}</span>
+          @if(Auth::user()->user_group !=3)
             <span class="userword">开通会员</span>
           @else
-            <span>会员还剩余{{Auth::user()->vip_days}}</span>
+            <span>会员还剩余{{Auth::user()->vip_days}}天</span>
           @endif
         </div>
 
