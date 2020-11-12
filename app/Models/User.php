@@ -49,7 +49,6 @@ class User extends Authenticatable implements JWTSubject
 
     public function changeDays($days)
     {
-        dd($days);
         return $this->where('id', $this->id)->increment('vip_days', $days);
     }
 

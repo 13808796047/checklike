@@ -20,10 +20,10 @@ class ChangeUsed
         ]);
         if($couponCode->type == CouponCode::TYPE_VIP) {
             DB::transaction(function() use ($couponCode) {
-                $couponCode->user()->update([
+                $user->update([
                     'user_group' => 3
                 ]);
-                $couponCode->user()->increment('vip_days', $couponCode->enable_days);
+                $user->changeDays($couponCode->enable_days);
             });
         }
     }
