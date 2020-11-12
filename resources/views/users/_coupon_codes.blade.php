@@ -1,12 +1,12 @@
 <style>
-    .yhcard{
+        .yhcard{
           width: 220px;
           position: relative;
           color:#FFFAFA;
           background: radial-gradient(circle at 110px 0, transparent 10px, #74D2D4 0) top left/220px 100% no-repeat;
           margin:10px 15px;
         }
-        .yhcaed::after {
+        .yhcard::after {
           content: '';
           position: absolute;
           height: 5px;
