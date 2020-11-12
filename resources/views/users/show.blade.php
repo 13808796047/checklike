@@ -14,8 +14,9 @@
       margin: 10px 18px;
     }
     .userword{
-      margin-left: 52px;
+      margin-left: 20px;
       color: #1E90FF;
+      cursor: pointer;
     }
   </style>
 @stop
@@ -29,7 +30,7 @@
           <div style="margin:0 18px;">
               <p>用户名：{{Auth::user()->phone}}<span class="userword">修改密码</span></p>
               <p>手机号：{{Auth::user()->phone}}</p>
-              <p>自动降重次数: {{Auth::user()->jc_times}}次<span>充值</span></p>
+              <p>自动降重次数: {{Auth::user()->jc_times}}次<span class="userword">充值</span></p>
               <div>
                   <span>会员:{{Auth::user()->is_free ==1 ? "您还不是会员" : "会员" }}</span>
                   @if(Auth::user()->is_free ==1)
