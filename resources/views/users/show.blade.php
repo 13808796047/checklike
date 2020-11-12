@@ -36,7 +36,7 @@
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
       $("#lwfooter").css("position","absolute")
-      console.log({{!!Auth!!})
+      console.log({{!!Auth!!}})
     });
   </script>
 @stop
