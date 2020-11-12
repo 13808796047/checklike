@@ -39,9 +39,9 @@
               </div>
               <div style="text-align:center;font-size:11px;">满{{$item->min_amount}}元可用，限一次</div>
               <div class="cardpline">
-                <p>适用系统:{{$item->category? $item->category->name:"不限"}}</p>
-                <p>有效期:{{$item->unabled_date}}</p>
-                <p>卡券编号:{{$item->code}}</p>
+                <p>适用系统：{{$item->category? $item->category->name:"不限"}}</p>
+                <p>有效期：{{$item->unabled_date}}</p>
+                <p>卡券编号：{{$item->code}}</p>
               </div>
           </div>
 
