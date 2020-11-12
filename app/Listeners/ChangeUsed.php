@@ -23,7 +23,7 @@ class ChangeUsed
                 $couponCode->user()->update([
                     'user_group' => 3
                 ]);
-                $couponCode->user->changeDays($couponCode->enable_days);
+                $couponCode->user()->increment('vip_days', $couponCode->enable_days);
             });
         }
     }
