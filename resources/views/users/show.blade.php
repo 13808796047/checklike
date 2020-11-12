@@ -111,7 +111,8 @@
         });
       })
       $("#bindno").click(()=>{
-        $("#bindTitle").modal("hide")
+        console.log("xifsadf")
+        $("#bindTitle").modal("show")
       })
       // 绑定手机号
       $("#bindnow").click(()=>{
