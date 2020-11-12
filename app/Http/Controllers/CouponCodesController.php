@@ -39,5 +39,8 @@ class CouponCodesController extends Controller
         }
         $couponCode->checkAvailable();
         event(new CouponCodeActived($couponCode, $user));
+        return response()->json([
+            'message' => '激活成功!'
+        ]);
     }
 }
