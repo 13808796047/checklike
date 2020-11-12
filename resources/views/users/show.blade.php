@@ -30,7 +30,13 @@
     <div class="card topic-reply mt-4" style="margin:30px 60px;width:100%;">
       <div class="usertitle">基本信息</div>
       <div style="margin:0 18px;">
-        <p>用户名：{{Auth::user()->phone}}<span class="userword">修改密码</span></p>
+        <p>用户名：{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
+        @if(Auth::user()->phone)
+        <span class="userword">修改密码</span>
+        @elseif(!Auth::user()->phone && Auth::user()->nick_name)
+        <span class="userword">绑定手机号</span>
+        @endif
+        </p>
         <p>手机号：{{Auth::user()->phone}}</p>
         <p>自动降重次数: {{Auth::user()->jc_times}}次<span class="userword">充值</span></p>
         <div>
