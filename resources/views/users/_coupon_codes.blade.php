@@ -33,10 +33,10 @@
               <div style="text-align: center;padding-top: 23px;font-size: 29px;font-weight: bold;">
                ￥5
               </div>
-              <div style="text-align:center;font-size:11px;">满20元用一次，限一次</div>
+              <div style="text-align:center;font-size:11px;">{{$item->remark}}</div>
               <div class="cardpline">
                 <p>使用系统:维普大学生版</p>
-                <p>有效期:2020-11-30 20:30:00</p>
+                <p>有效期:{{$item->datetime}}</p>
                 <p>卡券编号:{{$item->code}}</p>
               </div>
           </div>
