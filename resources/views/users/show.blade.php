@@ -27,7 +27,7 @@
 
   <div class="main clearfix" style="flex:1">
 
-    <div class="card topic-reply mt-4" style="margin:30px 60px;width:100%;">
+    <div class="card topic-reply mt-4" style="margin:30px 60px;width:100%;height:calc(100vh * 0.75)">
       <div class="usertitle">基本信息</div>
       <div style="margin:0 18px;">
         <p>用户名：{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
@@ -69,7 +69,6 @@
       $('.navbar').css('position', 'static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
-      $("#lwfooter").css("position", "absolute")
       $("#activationBtn").click(() => {
         $.confirm({
           title: "提示",
