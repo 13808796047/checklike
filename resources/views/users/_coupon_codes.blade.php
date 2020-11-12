@@ -37,7 +37,12 @@
                 {{$item->value}}折
                 @endif
               </div>
-              <div style="text-align:center;font-size:11px;">满{{$item->min_amount}}元可用，限一次</div>
+              <div style="text-align:center;font-size:11px;">
+              @if($item->type =="vip")
+              @else
+              满{{$item->min_amount}}元可用，限一次
+              @endif
+              </div>
               <div class="cardpline">
                 <p>适用系统：{{$item->category? $item->category->name:"不限"}}</p>
                 <p>有效期：{{$item->unabled_date}}</p>

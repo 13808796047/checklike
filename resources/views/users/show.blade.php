@@ -83,7 +83,7 @@
                           }
                           // $.alert('Your name is ' + name);
                           axios.post("/coupon_codes/active-coupon-code",{code:name}).then(res=>{
-                            console.log(res,"xixi")
+                            $.alert(res.data.data.msg)
                           }).catch(err=>{
                             $.alert(err.response.data.msg)
                           })
