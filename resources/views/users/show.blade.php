@@ -63,12 +63,11 @@
       $("#lwfooter").css("position","absolute")
       $("#activationBtn").click(()=>{
         $.confirm({
-          title: '请输入密钥',
               content: '' +
               '<form action="" class="formName">' +
-              '<div class="form-group">' +
-              '<label>Enter something here</label>' +
-              '<input type="text" placeholder="Your name" class="name form-control" required />' +
+              '<div class="form-group" style="display:flex">' +
+              '<label style="margin-right:10px;">密匙</label>' +
+              '<input type="text" placeholder="Your name" class="name form-control" required style="width:80%"/>' +
               '</div>' +
               '</form>',
               buttons: {
