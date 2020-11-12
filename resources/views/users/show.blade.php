@@ -128,7 +128,6 @@
           // location.replace('https://p.checklike.com')
       });
       }).catch(err=>{
-        console.log(err,"fsadfjdsafjdsajfj")
         toastr.error(err.response.data.message);
       })
       })
