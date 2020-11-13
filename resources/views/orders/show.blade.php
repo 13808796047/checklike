@@ -218,7 +218,7 @@
        function judgeClass(data){
         let currentCid = {!!$order->cid!!} //当前订单CID
         let currentPrice =  {{$order->price}} //当前订单价格
-        data.foreach(e=>{
+        data.forEach(e=>{
              //判断是否可用(不限系统且满足使用金额)
            if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
              console.log($("#couponBorder"))
