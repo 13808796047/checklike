@@ -56,6 +56,7 @@ class OrdersController extends Controller
         $this->authorize('own', $order);
         $user = $request->user();
         $coupon_codes = $user->couponCodes()
+            ->with('category')
             ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
             ->where('status', CouponCode::STATUS_ACTIVED)
             ->get();
