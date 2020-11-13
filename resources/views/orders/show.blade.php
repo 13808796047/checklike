@@ -199,6 +199,7 @@
          })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
+          judgeClass(e)
            arrStr +=`
               <div style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
 								<div style="padding: 8px;" id="coupontop">
@@ -210,7 +211,6 @@
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
             `
-          judgeClass(e)
         })
         $("#couponbox").html(arrStr)
        }
