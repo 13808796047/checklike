@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\DB;
 
-class ChangeUsed
+class ChangeUsed implements ShouldQueue
 {
     public function handle(CouponCodeActived $event)
     {

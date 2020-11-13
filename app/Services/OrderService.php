@@ -10,6 +10,7 @@ use App\Handlers\FileUploadHandler;
 use App\Handlers\FileWordsHandle;
 use App\Handlers\OrderApiHandler;
 use App\Handlers\WordHandler;
+use App\Jobs\CloseOrder;
 use App\Jobs\CloudCouvertFile;
 use App\Jobs\OrderPendingMsg;
 use App\Models\Category;
@@ -111,7 +112,8 @@ class OrderService
             if($order->status == 0) {
                 dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
             }
-//            dd($order);
+            // 开启关闭订单
+            $this->dispatch(new CloseOrder($order), 30);
             return $order;
         });
 //        $this->checkWords($order);
