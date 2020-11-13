@@ -206,6 +206,7 @@
      $(document).ready(function () {
        var couponArr=[];
        var arrStr = "";
+       var couponItem = {};
        axios.get("/coupon_codes").then(res=>{
          couponArr=res.data.data;
          changeCoupon(couponArr)
@@ -215,8 +216,9 @@
 
        function changeCoupon(item){
         item.forEach(e=>{
+         couponItem = e
          arrStr +=`
-              <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;">
+              <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
 								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -225,10 +227,13 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-            `
+          `
+          judgeClass(e)
         })
-        console.log(arrStr,"fadfsf")
         $("#couponbox").html(arrStr)
+       }
+       function judgeClass(e){
+          console.log(e,'范德萨发')
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
