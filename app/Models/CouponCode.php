@@ -89,7 +89,7 @@ class CouponCode extends Model
 
     public function calcEnableDate()
     {
-        return Carbon::parse($this->actived_at)->addDays($this->enable_days);
+        return Carbon::parse($this->actived_at)->addDays($this->enable_days)->format('Y-m-d H:i:s');
     }
 
     //分类
