@@ -27,10 +27,20 @@
 
   <div class="main clearfix" style="flex:1">
 
-    <div class="card topic-reply mt-4" style="margin:30px 60px;width:100%;">
+    <div class="card topic-reply mt-4" style="margin:30px auto;width:100%;min-height:calc(100vh * 0.81);max-width:1200px;">
       <div class="usertitle">基本信息</div>
-      <div style="margin:0 18px;">
-        <p>用户名：{{Auth::user()->phone}}<span class="userword">修改密码</span></p>
+      <div style="margin:0 18px;display:flex;align-items:center;margin:20px;">
+      <div>
+        <img src="{{Auth::user()->avatar ? Auth::user()->avatar : asset('asset/images/avtarno.jpg')}}" alt="" style="width:130px;height:130px;border-radius: 50%;">
+      </div>
+      <div style="margin-left:30px;">
+        <p>用户名：{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
+        @if(Auth::user()->phone)
+        <span class="userword" id="userxiugaipsd">修改密码</span>
+        @elseif(!Auth::user()->phone && Auth::user()->nick_name)
+        <span class="userword" id="userbindPhone">绑定手机号</span>
+        @endif
+        </p>
         <p>手机号：{{Auth::user()->phone}}</p>
         <p>自动降重次数: {{Auth::user()->jc_times}}次<span class="userword">充值</span></p>
         <div>
@@ -41,6 +51,7 @@
             <span>会员还剩余{{Auth::user()->vip_days}}天</span>
           @endif
         </div>
+      </div>
 
         <p></p>
       </div>
@@ -52,10 +63,7 @@
       </div>
     </div>
   </div>
-
-
   <!--/.fluid-container-->
-
 @endsection
 @section('scripts')
   <script>
@@ -63,7 +71,6 @@
       $('.navbar').css('position', 'static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
-      $("#lwfooter").css("position", "absolute")
       $("#activationBtn").click(() => {
         $.confirm({
           title: "提示",
@@ -103,6 +110,61 @@
           //   });
           // }
         });
+      })
+      $("#userbindPhone").click(()=>{
+        console.log("xifsadf")
+        $("#bindTitle").modal("show")
+      })
+      var currentCode="";
+      // 绑定手机号
+      $("#bindnow").click(()=>{
+        axios.put("https://p.checklike.com/bond_phone",{
+        verification_key:currentCode,
+        verification_code:$("#bindCodeNow").val()
+      }).then(res=>{
+        swal("绑定成功", {
+          icon: "success",
+        }).then(willDelete => {
+          $("#bindTitle").modal("hide")
+          // location.replace('https://p.checklike.com')
+          window.location.reload()
+      });
+      }).catch(err=>{
+        toastr.error(err.response.data.message);
+      })
+      })
+      $("#bindno").click(()=>{
+        $("#bindTitle").modal("hide")
+      })
+      //修改密码
+      $("#userxiugaipsd").click(()=>{
+        $("#xgtoast").text("")
+        $("#xgpsd").val("")
+        $("#xgsurepsd").val("")
+        $("#staticXiugai").modal("show")
+      })
+      $("#xiugaicancel").click(()=>{
+        $("#staticXiugai").modal("hide")
+      })
+      $("#xiugaisure").click(()=>{
+
+        if($("#xgpsd").val().length<8){
+           $("#xgtoast").text("密码不少于8位")
+           return;
+       }
+       if($("#xgpsd").val()!=$("#xgsurepsd").val()){
+         $("#xgtoast").text("两次密码不一致")
+         return;
+       }
+        axios.post('https://p.checklike.com/password/reset', {
+          password: $("#xgpsd").val(),
+          password_confirmation: $("#xgsurepsd").val()
+        }).then(res=>{
+            toastr.success(res.data.message);
+            $("#staticXiugai").modal("hide")
+        }).catch(err=>{
+            toastr.error(err.response.data.message);
+        })
       })
     });
   </script>

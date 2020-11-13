@@ -126,10 +126,10 @@
   $("#xiugaicancel").click(()=>{
     $("#staticXiugai").modal("hide")
   })
-  $("#bindSelfPhone").click(()=>{
-    $("#bindTitle").modal("show")
-  })
-  var currentCode="";
+  // $("#bindSelfPhone").click(()=>{
+  //   $("#bindTitle").modal("show")
+  // })
+  // var currentCode="";
   $("#sendYzCode").click(()=>{
     let isYZphone =$("#bindphonenum").val();
     console.log(isYZphone)
@@ -158,53 +158,25 @@
         })
     }
   })
-  $("#bindnow").click(()=>{
-    axios.put("https://p.checklike.com/bond_phone",{
-      verification_key:currentCode,
-      verification_code:$("#bindCodeNow").val()
-    }).then(res=>{
-      swal("绑定成功", {
-        icon: "success",
-      }).then(willDelete => {
-        $("#bindTitle").modal("hide")
-        location.replace('https://p.checklike.com')
-      });
-    }).catch(err=>{
-      console.log(err,"fsadfjdsafjdsajfj")
-    })
-  })
-  $("#bindno").click(()=>{
-    $("#bindTitle").modal("hide")
-  })
-  $("#xiugaisure").click(()=>{
-    if($("#xgpsd").val().length<8){
-      $("#xgtoast").text("密码不少于8位")
-      return;
-    }
-    if($("#xgpsd").val()!=$("#xgsurepsd").val()){
-      $("#xgtoast").text("两次密码不一致")
-      return;
-    }
-    axios.post('https://p.checklike.com/password/reset', {
-      password: $("#xgpsd").val(),
-      password_confirmation: $("#xgsurepsd").val()
-    }).then(res=>{
-      // swal(res.data.message, {
-      //   buttons: false,
-      //   timer: 2000,
-      // })
-      $("#staticXiugai").modal("hide")
-      alertify.set('notifier','position', 'top-center');
-      alertify.notify(res.data.message,'custom',3)
-    }).catch(err=>{
-      console.log(err,"xixi")
-      // swal(err.data.message, {
-      //   icon: "error",
-      // }).then(willDelete => {
-      //   $("#staticXiugai").modal("hide")
-      // });
-    })
-  })
+  // $("#bindnow").click(()=>{
+  //   axios.put("https://p.checklike.com/bond_phone",{
+  //     verification_key:currentCode,
+  //     verification_code:$("#bindCodeNow").val()
+  //   }).then(res=>{
+  //     swal("绑定成功", {
+  //       icon: "success",
+  //     }).then(willDelete => {
+  //       $("#bindTitle").modal("hide")
+  //       location.replace('https://p.checklike.com')
+  //     });
+  //   }).catch(err=>{
+  //     console.log(err,"fsadfjdsafjdsajfj")
+  //   })
+  // })
+  // $("#bindno").click(()=>{
+  //   $("#bindTitle").modal("hide")
+  // })
+  //
   var registerCode="";
   $("#RegisterDialogBtn").click(()=>{
     console.log("xixi，点击了")
