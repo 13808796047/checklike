@@ -40,6 +40,7 @@ class CouponCode extends Model
         'min_amount',
         'enable_days',
         'unabled_date',
+        'actived_at',
         'status',
         'remark',
     ];
