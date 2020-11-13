@@ -185,7 +185,7 @@
        var arrStr = "";
        var couponItem = {};
        axios.get("/coupon_codes").then(res=>{
-         console.log(res,"fsadfdsadfdsaf")
+         console.log(res)
          couponArr=res.data.data;
          changeCoupon(couponArr)
        }).catch(err=>{
