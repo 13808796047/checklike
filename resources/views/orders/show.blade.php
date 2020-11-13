@@ -206,7 +206,6 @@
        var couponArr=[];
        var arrStr = "";
        axios.get("/coupon_codes").then(res=>{
-         console.log(res.data.data,"xifisadf")
          couponArr=res.data.data;
          changeCoupon(couponArr)
        }).catch(err=>{
@@ -215,8 +214,19 @@
 
        function changeCoupon(item){
         item.forEach(e=>{
-         console.log(e,"会发生大火附件活动时间发")
-       })
+         arrStr +=`
+            <div class="discount_boxborder" style="width:210px;margin:10px 20px;">
+								<div class="$itemdiscount_curbg" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+                    ${e.value}
+                  </p>
+									<p style="color:#F5FFFA;font-size:9px;">剩余${e.enable_days}天</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.category.name}</p>
+            </div>
+            `
+        })
+        console.log(arrStr,"fadfsf")
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
