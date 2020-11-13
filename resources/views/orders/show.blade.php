@@ -178,7 +178,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-              <!-- @foreach($coupon_codes as $item) -->
+              @foreach($coupon_codes as $item)
               <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
 								<div class="discount_curbg" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
@@ -188,7 +188,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：{{$item->code}}</p>
               </div>
-              <!-- @endforeach -->
+              @endforeach
 
             </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
@@ -263,7 +263,8 @@
       //  }).catch(err=>{
       //    console.log(err,"错误")
       //  })
-      console.log(!!$coupon_codes!!)
+      let aar = {!!$coupon_codes!!};
+      console.log(aar,"fasdf")
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
