@@ -16,7 +16,10 @@ class CouponCodesController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $coupon_codes = $user->couponCodes->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])->where('status', CouponCode::STATUS_ACTIVED)->get();
+        $coupon_codes = $user->couponCodes
+            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+            ->where('status', CouponCode::STATUS_ACTIVED)
+            ->get();
         return response()->json([
             'coupon_codes' => $coupon_codes
         ]);
