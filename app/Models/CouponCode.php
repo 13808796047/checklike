@@ -11,6 +11,7 @@ class CouponCode extends Model
 {
     protected $casts = [
         'unabled_date' => 'datetime:Y-m-d H:i:s',
+        'actived_at' => 'datetime:Y-m-d H:i:s',
     ];
     // 类型
     const TYPE_VIP = 'vip';
