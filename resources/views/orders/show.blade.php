@@ -217,7 +217,7 @@
         item.forEach(e=>{
          arrStr +=`
             <div class="discount_boxborder" style="width:210px;margin:10px 20px;">
-								<div class="$itemdiscount_curbg" style="padding: 8px;">
+								<div class="discount_curbg" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
                     ${e.value}
                   </p>
