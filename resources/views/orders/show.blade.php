@@ -208,14 +208,16 @@
        axios.get("/coupon_codes").then(res=>{
          console.log(res.data.data,"xifisadf")
          couponArr=res.data.data;
-         couponArr.forEach(e=>{
-         console.log(e,"fsafdaf")
-       })
+         changeCoupon(couponArr)
        }).catch(err=>{
          console.log(err,"错误")
        })
 
-
+       function changeCoupon(item){
+        item.forEach(e=>{
+         console.log(e,"会发生大火附件活动时间发")
+       })
+       }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
       $('.navbar').css('position','static')
