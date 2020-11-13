@@ -182,8 +182,18 @@
               <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
 								<div class="discount_curbg" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
+                  @if($item->type =="fixed")
+                      ￥{{$item->value}}
+                       @else
+                  {{$item->value}}折
+                  @endif
+									</span>
+                   @if($item->type =="vip")
+                     VIP专属
+                   @else
+                     满{{$item->min_amount}}元可用，限一次
+                   @endif
+                  </p>
 									<p style="color:#F5FFFA;font-size:9px;">剩余{{$item->enable_days}}天</p>
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：{{$item->category->classname}}</p>
