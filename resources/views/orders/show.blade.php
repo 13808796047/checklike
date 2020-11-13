@@ -193,14 +193,13 @@
        })
 
        function changeCoupon(item){
-        let current = item.filter(curitem=>{
+         //过滤掉已过期的
+        let currentArr = item.filter(curitem=>{
            return curitem.is_enable
          })
-         console.log(current,"fadsdsfsadf")
-        item.forEach(e=>{
-         couponItem = e
-
-         arrStr +=`
+         //遍历所有未过期的项目
+         currentArr.forEach(e=>{
+           arrStr +=`
               <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
 								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
@@ -210,16 +209,17 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.categry.name : '不限' }</p>
               </div>
-          `
+            `
           judgeClass(e)
         })
         $("#couponbox").html(arrStr)
        }
        function judgeClass(e){
-          console.log(e,'范德萨发')
-          //有效期内
-          if(!e.is_enable){
-
+          //判断是否可用
+          if(e.cid){
+            console.log("vcx")
+          }else{
+            console.log("不存在")
           }
        }
       // let aar = {!!$coupon_codes!!};
