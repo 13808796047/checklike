@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 
 class CouponCode extends Model
 {
+
+
     protected $casts = [
         'unabled_date' => 'datetime:Y-m-d H:i:s',
         'actived_at' => 'datetime:Y-m-d H:i:s',
@@ -47,6 +49,17 @@ class CouponCode extends Model
     ];
     protected $dates = ['unabled_date', 'actived_at'];
     protected $appends = ['description'];
+
+    /**
+     * 为数组 / JSON 序列化准备日期。
+     *
+     * @param \DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format($this->dateFormat ?: 'Y-m-d H:i:s');
+    }
 
     public function user()
     {
