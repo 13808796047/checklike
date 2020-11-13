@@ -30,7 +30,7 @@
     <div class="card topic-reply mt-4" style="margin:30px auto;width:100%;min-height:calc(100vh * 0.81);max-width:1200px;">
       <div class="usertitle">基本信息</div>
       <div style="margin:0 18px;">
-        <img src="{{Auth::user()->avatar ? Auth::user()->avatar : asset('asset/images/avtarno.jpg')}}" alt="" style="width:130px;height:130px;">
+        <img src="{{Auth::user()->avatar ? Auth::user()->avatar : asset('asset/images/avtarno.jpg')}}" alt="" style="width:130px;height:130px;border-radius: 50%;">
         <p>用户名：{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
         @if(Auth::user()->phone)
         <span class="userword" id="userxiugaipsd">修改密码</span>
