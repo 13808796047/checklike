@@ -196,7 +196,7 @@
          //过滤掉已过期的
         let currentArr = item.filter(curitem=>{
           console.log(curitem,"no1111111111")
-           return curitem.is_enable
+           return !curitem.is_enable
          })
          console.log(currentArr,"fsdaf")
          //遍历所有未过期的项目
