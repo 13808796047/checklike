@@ -199,7 +199,7 @@
          })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
-          judgeClass(e)
+
            arrStr +=`
               <div style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
 								<div style="padding: 8px;" id="coupontop">
@@ -211,6 +211,7 @@
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
             `
+            judgeClass(e)
         })
         $("#couponbox").html(arrStr)
        }
@@ -219,8 +220,9 @@
         let currentPrice =  {{$order->price}} //当前订单价格
           //判断是否可用(不限系统且满足使用金额)
         if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
-          $("#couponBorder").addClass("discount_box");
-          $("#coupontop").addClass("discount_topbox")
+          $("#couponBorder").css("background","red")
+          // $("#couponBorder").addClass("discount_box");
+          // $("#coupontop").addClass("discount_topbox")
         }else{
 
           $("#couponBorder").addClass("discount_curbg");
