@@ -36,7 +36,7 @@ class OrderPendingMsg implements ShouldQueue
                 'keyword5' => ['value' => $this->order->price, 'color' => '#173177'],
                 'remark' => ['value' => '点击去支付', 'color' => '#173177']
             ];
-            $touser = $this->order->user->wf_weixin_openid;
+            $touser = $this->order->user->weixin_openid;
             $template_id = config('wechat.official_account.templates.pending.template_id');
             $appid = config('wechat.official_account.templates.pending.appid');
             $pagepath = config('wechat.official_account.templates.pending.page_path');
