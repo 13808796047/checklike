@@ -115,29 +115,6 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div> -->
-              <!-- @foreach($coupon_codes as $item)
-              <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
-								<div class="$itemdiscount_curbg" style="padding: 8px;">
-									<p style="color:#fff;"><span style="font-size: 19px;">
-                  @if($item->type =="fixed")
-                      ￥{{$item->value}}
-                       @else
-                  {{$item->value}}折
-                  @endif
-									</span>
-                   @if($item->type =="vip")
-                     VIP专属
-                   @else
-                     满{{$item->min_amount}}元可用
-                   @endif
-                  </p>
-									<p style="color:#F5FFFA;font-size:9px;">剩余{{$item->enable_days}}天</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：{{$item->category->name}}</p>
-              </div>
-              @endforeach -->
-
-
             </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
             <div style="margin-bottom: 23px;">
@@ -206,6 +183,7 @@
      $(document).ready(function () {
        var couponArr=[];
        var arrStr = "";
+       var couponItem = {};
        axios.get("/coupon_codes").then(res=>{
          couponArr=res.data.data;
          changeCoupon(couponArr)
@@ -215,8 +193,9 @@
 
        function changeCoupon(item){
         item.forEach(e=>{
+         couponItem = e
          arrStr +=`
-              <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;">
+              <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
 								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -225,10 +204,13 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-            `
+          `
+          judgeClass(e)
         })
-        console.log(arrStr,"fadfsf")
         $("#couponbox").html(arrStr)
+       }
+       function judgeClass(e){
+          console.log(e,'范德萨发')
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
