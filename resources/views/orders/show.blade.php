@@ -201,7 +201,7 @@
          currentArr.forEach(e=>{
 
            arrStr +=`
-              <div style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
+              <div style="width:210px;margin:10px 20px;height:110px;" >
 								<div style="padding: 8px;" id="coupontop">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -219,6 +219,7 @@
         let currentCid = {!!$order->cid!!} //当前订单CID
         let currentPrice =  {{$order->price}} //当前订单价格
         data.forEach(e=>{
+          console.log(e,"fsasdfs")
              //判断是否可用(不限系统且满足使用金额)
            if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
             $("#couponBorder").removeClass()
