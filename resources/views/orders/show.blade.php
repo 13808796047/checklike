@@ -196,7 +196,7 @@
                   </p>
 									<p style="color:#F5FFFA;font-size:9px;">剩余{{$item->enable_days}}天</p>
 								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：{{$item->category->classname}}</p>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：{{$item->category->name}}</p>
               </div>
               @endforeach
 
