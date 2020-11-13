@@ -191,7 +191,7 @@
                    @if($item->type =="vip")
                      VIP专属
                    @else
-                     满{{$item->min_amount}}元可用，限一次
+                     满{{$item->min_amount}}元可用
                    @endif
                   </p>
 									<p style="color:#F5FFFA;font-size:9px;">剩余{{$item->enable_days}}天</p>
