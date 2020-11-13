@@ -200,7 +200,7 @@
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
            arrStr +=`
-              <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
+              <div style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
 								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
