@@ -210,6 +210,10 @@
        }).catch(err=>{
          console.log(err,"错误")
        })
+       var arrStr = "";
+       couponArr.forEach(e=>{
+         console.log(e,"fsafdaf")
+       })
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
       $('.navbar').css('position','static')
