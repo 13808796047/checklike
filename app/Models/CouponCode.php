@@ -43,7 +43,7 @@ class CouponCode extends Model
         'status',
         'remark',
     ];
-    protected $dates = ['unabled_date'];
+    protected $dates = ['unabled_date', 'actived_at'];
     protected $appends = ['description'];
 
     public function user()
