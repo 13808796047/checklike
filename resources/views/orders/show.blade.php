@@ -215,8 +215,8 @@
         $("#couponbox").html(arrStr)
        }
        function judgeClass(e){
-        let order = {!!$order!!}
-        console.log(order,"fsajdfjsdf")
+        let currentCid = {!!$order->cid!!}
+        console.log(currentCid,"恢复沙发")
           //判断是否可用
 
        }
