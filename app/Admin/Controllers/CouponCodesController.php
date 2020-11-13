@@ -55,6 +55,10 @@ class CouponCodesController extends AdminController
             // 禁用
             $grid->disableCreateButton();
             $grid->quickSearch('user.phone', 'code');
+            $grid->selector(function(Grid\Tools\Selector $selector) {
+                $selector->select('type', '卡密类型', \App\Models\CouponCode::$typeMap);
+                $selector->select('status', '卡密状态', \App\Models\CouponCode::$statusMap);
+            });
             $grid->filter(function($filter) {
                 // 更改为 panel 布局
                 $filter->panel();
