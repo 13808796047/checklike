@@ -38,7 +38,7 @@ class OrderController extends AdminController
     {
         // 第二个参数为 `Column` 对象， 第三个参数是自定义参数
 
-        return Grid::make(Order::with(['category', 'user']), function(Grid $grid) {
+        return Grid::make(Order::with(['category', 'user'])->whereNull('deleted_at'), function(Grid $grid) {
             $grid->id->sortable()->display(function($id) {
                 return "<a href='orders/{$this->id}/download_report'>$id</a>";
             });

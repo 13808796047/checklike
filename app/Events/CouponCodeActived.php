@@ -13,7 +13,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CouponCodeActived implements ShouldQueue
+class CouponCodeActived
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
