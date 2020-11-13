@@ -178,7 +178,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-              @foreach(couponArr as $item)
+              @foreach($couponArr as $item)
               <div  class="discount_boxborder" style="width:210px;margin:10px 20px;">
 								<div class="discount_curbg" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
