@@ -193,15 +193,20 @@
        })
 
        function changeCoupon(item){
+        let current = e.filter(item=>{
+           !item.is_enable
+         })
+         console.log(current,"fadsdsfsadf")
         item.forEach(e=>{
          couponItem = e
+
          arrStr +=`
               <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
 								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_days}</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.categry.name : '不限' }</p>
               </div>
@@ -212,6 +217,10 @@
        }
        function judgeClass(e){
           console.log(e,'范德萨发')
+          //有效期内
+          if(!e.is_enable){
+
+          }
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
