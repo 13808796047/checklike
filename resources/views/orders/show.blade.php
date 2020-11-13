@@ -246,6 +246,11 @@
 @section('scripts')
   <script>
      $(document).ready(function () {
+       axios.get("/coupon_codes").then(res=>{
+         console.log(res,"xifisadf")
+       }).catch(err=>{
+         console.log(err,"错误")
+       })
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
