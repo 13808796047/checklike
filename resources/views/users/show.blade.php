@@ -92,7 +92,8 @@
                   return false;
                 }
                 axios.post("/coupon_codes/active-coupon-code", {code: name}).then(res => {
-                  toastr.success(res.data.msg);
+                  toastr.success(res.data.message);
+                  window.location.replace();
                 }).catch(err => {
                   toastr.error(err.response.data.msg);
                 })
