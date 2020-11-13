@@ -220,12 +220,13 @@
         let currentPrice =  {{$order->price}} //当前订单价格
         data.forEach(e=>{
              //判断是否可用(不限系统且满足使用金额)
-             console.log(currentCid,"fasdf")
            if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
+            $("#couponBorder").removeClass()
              $("#couponBorder").addClass("discount_box");
              $("#coupontop").addClass("discount_topbox")
            }else{
              console.log("fsadf")
+             $("#couponBorder").removeClass()
              $("#couponBorder").addClass("discount_curbg");
              $("#coupontop").addClass("discount_curbg")
            }
