@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Events\CouponCodeActived;
 use App\Exceptions\CouponCodeUnavailableException;
+use App\Http\Resources\CouponCodeResource;
 use App\Listeners\ChangeUsed;
 use App\Models\CouponCode;
 use App\Models\Order;
 use App\Services\OrderService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CouponCodesController extends Controller
@@ -20,10 +22,9 @@ class CouponCodesController extends Controller
             ->with('category')
             ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
             ->where('status', CouponCode::STATUS_ACTIVED)
+//            ->where(Carbon::parse('actived_at')->addDays('enable_days')->lt(Carbon::now()))
             ->get();
-        return response()->json([
-            'coupon_codes' => $coupon_codes
-        ]);
+        return CouponCodeResource::collection($coupon_codes);
     }
 
 //    public function show(OrderService $orderService, $code)
