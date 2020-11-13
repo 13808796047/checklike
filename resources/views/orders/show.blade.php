@@ -211,24 +211,25 @@
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
             `
-            judgeClass(e)
         })
         $("#couponbox").html(arrStr)
+        judgeClass(currentArr)
        }
        function judgeClass(e){
+        console.log(e)
         let currentCid = {!!$order->cid!!} //当前订单CID
         let currentPrice =  {{$order->price}} //当前订单价格
           //判断是否可用(不限系统且满足使用金额)
-        if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
-          console.log($("#couponBorder"))
-          $("#couponBorder").css("background","red")
-          // $("#couponBorder").addClass("discount_box");
-          // $("#coupontop").addClass("discount_topbox")
-        }else{
+        // if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
+        //   console.log($("#couponBorder"))
+        //   $("#couponBorder").css("background","red")
+        //   // $("#couponBorder").addClass("discount_box");
+        //   // $("#coupontop").addClass("discount_topbox")
+        // }else{
 
-          $("#couponBorder").addClass("discount_curbg");
-          $("#coupontop").addClass("discount_curbg")
-        }
+        //   $("#couponBorder").addClass("discount_curbg");
+        //   $("#coupontop").addClass("discount_curbg")
+        // }
 
        }
       // let aar = {!!$coupon_codes!!};
