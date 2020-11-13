@@ -203,17 +203,19 @@
 @section('scripts')
   <script>
      $(document).ready(function () {
-       var couponArr=[]
+       var couponArr=[];
+       var arrStr = "";
        axios.get("/coupon_codes").then(res=>{
          console.log(res.data.data,"xifisadf")
          couponArr=res.data.data;
+         couponArr.forEach(e=>{
+         console.log(e,"fsafdaf")
+       })
        }).catch(err=>{
          console.log(err,"错误")
        })
-       var arrStr = "";
-       couponArr.forEach(e=>{
-         console.log(e,"fsafdaf")
-       })
+
+
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
       $('.navbar').css('position','static')
