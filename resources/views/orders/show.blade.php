@@ -215,9 +215,14 @@
         $("#couponbox").html(arrStr)
        }
        function judgeClass(e){
-        let currentCid = {!!$order->cid!!}
-        console.log(currentCid,"恢复沙发")
-          //判断是否可用
+        let currentCid = {!!$order->cid!!} //当前订单CID
+        let currentPrice =  {{$order->price}} //当前订单价格
+          //判断是否可用(不限系统且满足使用金额)
+        if((!e.cid&&currentPrice>=min_amount)||(e.cid==currentCid&&currentPrice>=min_amount)){
+          console.log("xixi")
+        }else{
+          console.log("不可用")
+        }
 
        }
       // let aar = {!!$coupon_codes!!};
