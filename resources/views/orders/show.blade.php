@@ -256,13 +256,14 @@
 @section('scripts')
   <script>
      $(document).ready(function () {
-       var couponArr=[]
-       axios.get("/coupon_codes").then(res=>{
-         console.log(res.data.coupon_codes,"xifisadf")
-         couponArr=res.data.coupon_codes
-       }).catch(err=>{
-         console.log(err,"错误")
-       })
+      //  var couponArr=[]
+      //  axios.get("/coupon_codes").then(res=>{
+      //    console.log(res.data.coupon_codes,"xifisadf")
+      //    couponArr=res.data.coupon_codes
+      //  }).catch(err=>{
+      //    console.log(err,"错误")
+      //  })
+      console.log(!!$coupon_codes!!)
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
