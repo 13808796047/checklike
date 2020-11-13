@@ -54,7 +54,12 @@ class OrdersController extends Controller
     {
         // 校验权限
         $this->authorize('own', $order);
-        return view('orders.show', compact('order'));
+        $user = $request->user();
+        $coupon_codes = $user->couponCodes()
+            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+            ->where('status', CouponCode::STATUS_ACTIVED)
+            ->get();
+        return view('orders.show', compact('order', 'coupon_codes'));
     }
 
     public function couponPrice(Request $request, Order $order)
