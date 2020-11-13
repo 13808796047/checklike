@@ -263,6 +263,8 @@
       //  }).catch(err=>{
       //    console.log(err,"错误")
       //  })
+      let aar = {!!$coupon_codes!!};
+      console.log(arr,"fasdf")
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
