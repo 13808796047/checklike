@@ -216,15 +216,15 @@
        function changeCoupon(item){
         item.forEach(e=>{
          arrStr +=`
-            <div class="discount_boxborder" style="width:210px;margin:10px 20px;">
-								<div class="discount_curbg" style="padding: 8px;">
+              <div class="currentBoder" style="width:210px;margin:10px 20px;">
+								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
-                    ${e.value}
-                  </p>
-									<p style="color:#F5FFFA;font-size:9px;">剩余${e.enable_days}天</p>
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.category.name}</p>
-            </div>
+              </div>
             `
         })
         console.log(arrStr,"fadfsf")
