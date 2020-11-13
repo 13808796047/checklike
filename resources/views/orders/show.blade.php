@@ -215,12 +215,10 @@
         $("#couponbox").html(arrStr)
        }
        function judgeClass(e){
+        let order = {!!$order!!}
+        console.log(order,"fsajdfjsdf")
           //判断是否可用
-          if(e.cid){
-            console.log("vcx")
-          }else{
-            console.log("不存在")
-          }
+
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
