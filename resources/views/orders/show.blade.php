@@ -247,7 +247,7 @@
   <script>
      $(document).ready(function () {
        axios.get("/coupon_codes").then(res=>{
-         console.log(res,"xifisadf")
+         console.log(res.data.coupon_codes,"xifisadf")
        }).catch(err=>{
          console.log(err,"错误")
        })
