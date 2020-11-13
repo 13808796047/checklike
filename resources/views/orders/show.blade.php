@@ -98,7 +98,7 @@
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
 							<!-- <div class="currentBoder" style="width:210px;margin:10px 20px;">
-								<div class="discount_topbox" style="padding: 8px;">
+								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
@@ -201,7 +201,7 @@
          currentArr.forEach(e=>{
            arrStr +=`
               <div style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
-								<div class="discount_topbox" style="padding: 8px;">
+								<div style="padding: 8px;" id="coupontop">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
@@ -220,9 +220,11 @@
           //判断是否可用(不限系统且满足使用金额)
         if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
           $("#couponBorder").addClass("discount_box");
+          $("#coupontop").addClass("discount_topbox")
         }else{
-          console.log("不可用")
+
           $("#couponBorder").addClass("discount_curbg");
+          $("#coupontop").addClass("discount_curbg")
         }
 
        }
