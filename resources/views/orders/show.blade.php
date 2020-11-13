@@ -184,9 +184,9 @@
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+									<p style="color:#F5FFFA;font-size:9px;">剩余{{$item->enable_days}}天</p>
 								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：{{$item->code}}</p>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：{{$item->category->classname}}</p>
               </div>
               @endforeach
 
