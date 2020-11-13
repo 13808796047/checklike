@@ -77,7 +77,7 @@ class CouponCode extends Model
         return $this->calcEnableDate();
     }
 
-    public function getIsEnable()
+    public function getIsEnableAttribute()
     {
         $enable_date = $this->calcEnableDate();
         if(!$enable_date->lt(Carbon::now())) {
