@@ -50,7 +50,7 @@ class OrdersController extends Controller
         return new OrderResource($order);
     }
 
-    public function show(Order $order)
+    public function show(Request $request, Order $order)
     {
         // 校验权限
         $this->authorize('own', $order);
