@@ -221,12 +221,11 @@
         data.forEach(e=>{
              //判断是否可用(不限系统且满足使用金额)
            if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
-             console.log($("#couponBorder"))
-             $("#couponBorder").css("background","red")
-             // $("#couponBorder").addClass("discount_box");
-             // $("#coupontop").addClass("discount_topbox")
+            //  console.log($("#couponBorder"))
+            //  $("#couponBorder").css("background","red")
+             $("#couponBorder").addClass("discount_box");
+             $("#coupontop").addClass("discount_topbox")
            }else{
-
              $("#couponBorder").addClass("discount_curbg");
              $("#coupontop").addClass("discount_curbg")
            }
