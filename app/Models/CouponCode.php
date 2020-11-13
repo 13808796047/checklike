@@ -75,7 +75,7 @@ class CouponCode extends Model
 //}
     public function getEnableDateAttribute()
     {
-        return $this->calcEnableDate();
+        return $this->calcEnableDate()->format('Y-m-d H:i:s');
     }
 
     public function getIsEnableAttribute()
@@ -89,7 +89,7 @@ class CouponCode extends Model
 
     public function calcEnableDate()
     {
-        return Carbon::parse($this->actived_at)->addDays($this->enable_days)->format('Y-m-d H:i:s');
+        return Carbon::parse($this->actived_at)->addDays($this->enable_days);
     }
 
     //分类
