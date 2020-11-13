@@ -193,8 +193,8 @@
        })
 
        function changeCoupon(item){
-        let current = e.filter(item=>{
-           !item.is_enable
+        let current = item.filter(curitem=>{
+           !curitem.is_enable
          })
          console.log(current,"fadsdsfsadf")
         item.forEach(e=>{
