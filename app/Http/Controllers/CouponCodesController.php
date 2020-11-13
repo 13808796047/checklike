@@ -24,10 +24,7 @@ class CouponCodesController extends Controller
             ->where('status', CouponCode::STATUS_ACTIVED)
 //            ->where(Carbon::parse('actived_at')->addDays('enable_days')->lt(Carbon::now()))
             ->get();
-        return $coupon_codes;
-        return response()->json([
-            'data' => $coupon_codes
-        ]);
+        return CouponCodeResource::collection($coupon_codes);
     }
 
 //    public function show(OrderService $orderService, $code)
