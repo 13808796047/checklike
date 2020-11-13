@@ -15,6 +15,8 @@ class CouponCodeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+
+        $data = parent::toArray($request);
+        return $data;
     }
 }
