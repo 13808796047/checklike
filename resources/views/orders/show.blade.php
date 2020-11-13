@@ -98,7 +98,7 @@
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
 							<!-- <div class="currentBoder" style="width:210px;margin:10px 20px;">
-								<div class="discount_topbox" style="padding: 8px;">
+								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
@@ -193,25 +193,43 @@
        })
 
        function changeCoupon(item){
-        item.forEach(e=>{
-         couponItem = e
-         arrStr +=`
-              <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
-								<div class="discount_topbox" style="padding: 8px;">
+         //过滤掉已过期的
+        let currentArr = item.filter(curitem=>{
+           return !curitem.is_enable
+         })
+         //遍历所有未过期的项目
+         currentArr.forEach(e=>{
+
+           arrStr +=`
+              <div style="width:210px;margin:10px 20px;height:110px;" id="couponBorder">
+								<div style="padding: 8px;" id="coupontop">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
 								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
-          `
-          judgeClass(e)
+            `
+            judgeClass(e)
         })
         $("#couponbox").html(arrStr)
        }
        function judgeClass(e){
-          console.log(e,'范德萨发')
+        let currentCid = {!!$order->cid!!} //当前订单CID
+        let currentPrice =  {{$order->price}} //当前订单价格
+          //判断是否可用(不限系统且满足使用金额)
+        if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
+          console.log($("#couponBorder"))
+          $("#couponBorder").css("background","red")
+          // $("#couponBorder").addClass("discount_box");
+          // $("#coupontop").addClass("discount_topbox")
+        }else{
+
+          $("#couponBorder").addClass("discount_curbg");
+          $("#coupontop").addClass("discount_curbg")
+        }
+
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
