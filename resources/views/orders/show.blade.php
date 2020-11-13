@@ -210,8 +210,8 @@
        }).catch(err=>{
          console.log(err,"错误")
        })
-      let aar = {!!$coupon_codes!!};
-      console.log(aar,"fasdf")
+      // let aar = {!!$coupon_codes!!};
+      // console.log(aar,"fasdf")
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
