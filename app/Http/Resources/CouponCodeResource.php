@@ -15,6 +15,15 @@ class CouponCodeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+
+        $data = parent::toArray($request);
+        $enable_date = Carbon::parse($this->actived_at)->addDays($this->enable_days);
+        $data['enable_date'] = $enable_date;
+        if($enable_date->lt(Carbon::now())) {
+            $data['is_enable'] = true;
+        } else {
+            $data['is_enable'] = false;
+        }
+        return $data;
     }
 }
