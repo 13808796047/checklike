@@ -195,10 +195,8 @@
        function changeCoupon(item){
          //过滤掉已过期的
         let currentArr = item.filter(curitem=>{
-          console.log(curitem,"no1111111111")
            return !curitem.is_enable
          })
-         console.log(currentArr,"fsdaf")
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
            arrStr +=`
@@ -221,9 +219,10 @@
         let currentPrice =  {{$order->price}} //当前订单价格
           //判断是否可用(不限系统且满足使用金额)
         if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
-          console.log("xixi")
+          $("#couponBorder").addClass("discount_box");
         }else{
           console.log("不可用")
+          $("#couponBorder").addClass("discount_curbg");
         }
 
        }
