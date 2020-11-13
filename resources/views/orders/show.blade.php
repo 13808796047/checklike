@@ -197,6 +197,7 @@
         let currentArr = item.filter(curitem=>{
            return curitem.is_enable
          })
+         console.log(currentArr,"fsdaf")
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
            arrStr +=`
