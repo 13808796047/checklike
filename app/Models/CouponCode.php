@@ -48,7 +48,7 @@ class CouponCode extends Model
         'remark',
     ];
     protected $dates = ['unabled_date', 'actived_at'];
-    protected $appends = ['description'];
+    protected $appends = ['description', 'enable_date', 'is_enable'];
 
     /**
      * 为数组 / JSON 序列化准备日期。
@@ -64,6 +64,31 @@ class CouponCode extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'uid');
+    }
+//$enable_date = Carbon::parse($this->actived_at)->addDays($this->enable_days);
+//$data['enable_date'] = $enable_date;
+//if($enable_date->lt(Carbon::now())) {
+//$data['is_enable'] = true;
+//} else {
+//    $data['is_enable'] = false;
+//}
+    public function getEnableDateAttribute()
+    {
+        return $this->calcEnableDate();
+    }
+
+    public function getIsEnable()
+    {
+        $enable_date = $this->calcEnableDate();
+        if(!$enable_date->lt(Carbon::now())) {
+            return false;
+        }
+        return true;
+    }
+
+    public function calcEnableDate()
+    {
+        return Carbon::parse($this->actived_at)->addDays($this->enable_days);
     }
 
     //分类
