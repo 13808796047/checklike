@@ -210,7 +210,7 @@
         $("#couponbox").html(arrStr)
        }
        function judgeClass(e){
-          console.log(e.actived_at,'范德萨发')
+          console.log(e,'范德萨发')
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
