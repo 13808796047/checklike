@@ -205,8 +205,8 @@
      $(document).ready(function () {
        var couponArr=[]
        axios.get("/coupon_codes").then(res=>{
-         console.log(res,"xifisadf")
-         couponArr=res.data.coupon_codes
+         console.log(res.data.data,"xifisadf")
+         couponArr=res.data.data;
        }).catch(err=>{
          console.log(err,"错误")
        })
