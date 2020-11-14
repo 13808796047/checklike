@@ -52,6 +52,16 @@
 		    border-left-color: transparent;
 		    transform: rotate(45deg);
 	    }
+      .iconBox{
+          width: 50px;
+          height: 50px;
+          background-color: white;
+          border: 1px solid black;
+          border-radius: 100%;
+          outline: 10px solid black;
+          outline-offset: -35px;
+          cursor: pointer;
+      }
   </style>
 @stop
 @section('content')
@@ -97,7 +107,8 @@
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
-							<div class="currentBoder" style="width:210px;margin:10px 20px;">
+              <div>
+							<div class="currentBoder" style="width:210px;margin:10px 20px;height:110px;">
 								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -106,7 +117,10 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-              <div class="discount_box" style="width:210px;margin:10px 20px;">
+                <p><span class="iconBox"></span>已减8元</p>
+              </div>
+              <div>
+              <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;">
 								<div class="discount_topbox" style="padding: 8px;">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -115,7 +129,9 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-            </div>
+                </div>
+                <p><span class="iconBox"></span>已减10元</p>
+              </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
             <div style="margin-bottom: 23px;">
               <p>订单原价:25.00元，卡券优惠:-9.09元，应付金额：<span style="font-size: 19px;color: #FF5300;">15.10元</span>，请选择以下任一一种方式完成支付。</p>
