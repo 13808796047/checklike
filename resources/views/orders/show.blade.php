@@ -232,7 +232,7 @@
        }
 
        function doStyle(){
-        let CardBox = $("#couponbox").children("div").hasClass("discount_box")
+        let CardBox = $("#couponbox").children("div").children(".discount_box")
 
        }
 
