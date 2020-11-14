@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\BindPhoneSuccess;
+use App\Models\CouponCode;
 use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
@@ -97,7 +98,12 @@ class UsersController extends Controller
     public function show(User $user)
     {
         $this->authorize('update', $user);
-        return view('users.show', compact('user'));
+        $coupon_codes = $user->couponCodes()
+            ->with('category')
+            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+            ->where('status', CouponCode::STATUS_ACTIVED)
+            ->get();
+        return view('users.show', compact('user', 'coupon_codes'));
     }
 
 }
