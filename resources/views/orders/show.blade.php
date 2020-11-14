@@ -244,7 +244,7 @@
        function countPrice(e){
           //当前CODE
           let clickCode = e.find('.codedisplay').text()
-          axios.get(`orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
+          axios.get(`/orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
             console.log(res,"fasdsfasf")
           }).catch(err=>{
             console.log(err,"err")
