@@ -235,7 +235,8 @@
           let CardBox = $("#couponbox").children("div").children(".discount_box")
           CardBox.click(function(){
             $(this).addClass('currentBoder')
-            console.log($(this).siblings())
+            let a = $(this).parents();
+            console.log(a,"fasdfa")
           })
        }
 
