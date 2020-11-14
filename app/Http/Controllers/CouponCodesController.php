@@ -28,7 +28,7 @@ class CouponCodesController extends Controller
                 if($order->price < $item->min_amount) {
                     $item['reason'] = '满减金额不符合';
                 }
-                if($order->cid != $item->cid) {
+                if(!is_null($item->cid) && $order->cid != $item->cid) {
                     $item['reason'] = '此系统不符合使用';
                 }
                 if($order->price < $item->min_amount || !is_null($item->cid) && $order->cid != $item->cid) {
