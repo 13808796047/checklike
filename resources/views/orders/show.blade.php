@@ -204,7 +204,7 @@
           let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
            arrStr +=`
               <div style="width:210px;margin:10px 20px;height:110px;" >
-								<div style="padding: 8px;" id="coupontop" class="${judgeTerm?discount_box : discount_curbg}">
+								<div style="padding: 8px;" id="coupontop" class="${judgeTerm ? 'discount_box' : 'discount_curbg'}">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
