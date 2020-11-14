@@ -242,7 +242,7 @@
        }
        //计算价格
        function countPrice(e){
-          console.log(e.find('.codedisplay'))
+          console.log(e.find('.codedisplay').text())
        }
 
       $('.navbar').css('position','static')
