@@ -222,6 +222,7 @@
 									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
+                <div style="display:none;" class="codedisplay">${e.code}</div>
               </div>
               <div style="display:flex;align-items:center;" class="infofooter"><img src="${e.reason!=""?'/asset/images/gantanhao.png':''}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
             </div>
@@ -232,14 +233,23 @@
        }
        //tab切换
        function doStyle(){
-          let CardBox = $(".cardToast").children()
+          let CardBox = $(".cardToast").children(".discount_box")
           CardBox.click(function(){
             $(this).addClass('currentBoder')
-            console.log($(this).parent().siblings().children())
-            $(this).parent().siblings().children().removeClass("currentBoder")
+            $(this).parent().siblings().children(".discount_box").removeClass("currentBoder")
+            countPrice($(this))
           })
        }
-
+       //计算价格
+       function countPrice(e){
+          //当前CODE
+          let clickCode = e.find('.codedisplay').text()
+          axios.get(`/orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
+            console.log(res,"fasdsfasf")
+          }).catch(err=>{
+            console.log(err,"err")
+          })
+       }
 
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
