@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
     Route::get('orders/{order}/view-report', 'OrdersController@viewReport')->name('orders.view-report');
     Route::delete('orders', 'OrdersController@destroy')->name('orders.destroy');
+
+    Route::get('orders/{order}/coupon_codes', 'CouponCodesController@index');
     //异步上传文件
     Route::post('files', 'FilesController@store')->name('files.store');
 
@@ -33,11 +35,12 @@ Route::group(['middleware' => 'auth'], function() {
     //绑定手机号
     Route::put('bond_phone', 'UsersController@boundPhone')->name('users.bound_phone');
     // 个人中心优惠券
-    Route::get('coupon_codes', 'CouponCodesController@index')->name('coupon_code.index');
+
+//    Route::get('coupon_codes', 'CouponCodesController@index')->name('coupon_code.index');
     Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
     // 优惠价格
     Route::get('orders/{order}/coupon-price', 'OrdersController@couponPrice');
-    Route::post('coupon_codes/{order}/active-coupon-code', 'CouponCodesController@activeCouponCode');
+    Route::post('coupon_codes/active-coupon-code', 'CouponCodesController@activeCouponCode');
 });
 //下载
 Route::get('orders/{orderid}/download', 'OrdersController@download')
