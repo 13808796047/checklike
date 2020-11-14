@@ -145,7 +145,7 @@
                   </div>
                   <div style="display:flex;align-items:center"><img src="{{asset('asset/images/gantanhao.png')}}" alt="" srcset="" style="height:16px;width:16px;"> <p>已减去8元</p></div>
                 </div>
-
+                </div>
             </div>
         <div style="display: flex;justify-content: center;">
             <div style="display: flex;align-items: center;margin-right: 30px;">
