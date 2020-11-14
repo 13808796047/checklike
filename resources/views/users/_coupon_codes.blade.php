@@ -60,7 +60,7 @@
     @endforeach
   </div>
   <div>
-    <p>{{$coupon_codes}}</p>
+  <div class="usertitle">过期卡券</div>
   </div>
 </div>
 </div>
