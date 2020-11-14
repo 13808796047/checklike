@@ -183,7 +183,7 @@
        axios.get("/coupon_codes").then(res=>{
          console.log(res)
          couponArr=res.data.data;
-        //  changeCoupon(couponArr)
+         changeCoupon(couponArr)
        }).catch(err=>{
          console.log(err,"错误")
        })
