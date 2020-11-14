@@ -220,8 +220,8 @@
         judgeClass(currentArr)
        }
        function judgeClass(data){
-         console.log($(".cardToast"))
-         console.log($(".cardToast").children("div:eq(0)").hasClass("discount_box"))
+         let currentSty=$(".cardToast").children("div:eq(0)")
+         console.log(currentSty,"fassdf")
         //  if($(".cardToast").children("div:eq(1)")
        }
       // let aar = {!!$coupon_codes!!};
