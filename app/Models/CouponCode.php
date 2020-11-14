@@ -134,7 +134,7 @@ class CouponCode extends Model
         if(!is_null($orderAmount) && $orderAmount < $this->min_amount) {
             throw new CouponCodeUnavailableException('订单金额不满足该优惠券最低金额');
         }
-        $used = Order::where('uid', $user->id)
+        $used = Order::where('userid', $user->id)
             ->where('coupon_code_id', $this->id)
             ->where(function($query) {
                 $query->whereNull('date_pay');
