@@ -229,8 +229,11 @@
         })
         $("#couponbox").html(arrStr)
        }
-       let CardBox = ${"#couponbox"}.children("div")
+
+
+       let CardBox = ${"#couponbox"}.children()
        console.log(CardBox,"fsadf")
+
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
