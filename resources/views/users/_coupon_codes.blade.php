@@ -33,7 +33,7 @@
 
   <div style="display: flex;flex-wrap: wrap;">
     @foreach($coupon_codes as $item)
-        @if ($item->is_enable == false)
+        @if ($item->is_enable == true)
           @continue
         @endif
       <div class="yhcard">
@@ -62,7 +62,7 @@
   <div class="usertitle">过期卡券</div>
   <div style="display: flex;flex-wrap: wrap;">
     @foreach($coupon_codes as $item)
-        @if ($item->is_enable == true)
+        @if ($item->is_enable == false)
           @continue
         @endif
       <div class="yhcard">
