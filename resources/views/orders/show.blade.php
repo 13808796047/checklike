@@ -234,8 +234,8 @@
        function doStyle(){
           let CardBox = $("#couponbox").children("div").children(".discount_box")
           CardBox.click(function(){
+            $(this).addClass('currentBoder')
             console.log($(this).siblings())
-            $(this).addClass('currentBoder').siblings().addClass("discount_box").removeClass('currentBoder')
           })
        }
 
