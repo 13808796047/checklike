@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::delete('orders', 'OrdersController@destroy')->name('orders.destroy');
 
     Route::get('orders/{order}/coupon_codes', 'CouponCodesController@index');
+    // 优惠价格
+    Route::get('orders/{order}/coupon-price', 'CouponCodesController@couponPrice');
     //异步上传文件
     Route::post('files', 'FilesController@store')->name('files.store');
 
@@ -38,8 +40,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 //    Route::get('coupon_codes', 'CouponCodesController@index')->name('coupon_code.index');
     Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
-    // 优惠价格
-    Route::get('orders/{order}/coupon-price', 'OrdersController@couponPrice');
+
     Route::post('coupon_codes/active-coupon-code', 'CouponCodesController@activeCouponCode');
 });
 //下载

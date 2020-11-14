@@ -63,19 +63,7 @@ class OrdersController extends Controller
         return view('orders.show', compact('order'));
     }
 
-    public function couponPrice(Request $request, Order $order)
-    {
-        // 如果用户提交了优惠码
 
-        $coupon_code = CouponCode::where('code', $request->code)->first();
-        if(!$coupon_code) {
-            throw new CouponCodeUnavailableException('优惠券不存在');
-        }
-        $coupon_code->checkAvailable($order->price);
-        $totalAmount = $coupon_code->getAdjustedPrice($order->price);
-        // 如果用户通过Api请求,则返回JSON格式的错误信息
-        return $totalAmount;
-    }
 
     public function viewReport(Order $order, OrderApiHandler $apiHandler)
     {
