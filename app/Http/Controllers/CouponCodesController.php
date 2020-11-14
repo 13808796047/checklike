@@ -56,7 +56,7 @@ class CouponCodesController extends Controller
         if(!$couponCode = CouponCode::where('code', $request->code)->first()) {
             throw new CouponCodeUnavailableException('折扣卡不存在!');
         }
-        $couponCode->checkAvailable();
+        $couponCode->checkAvailable($user);
         event(new CouponCodeActived($couponCode, $user));
         return response()->json([
             'message' => '激活成功!'
