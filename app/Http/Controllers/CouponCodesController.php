@@ -62,4 +62,18 @@ class CouponCodesController extends Controller
             'message' => '激活成功!'
         ]);
     }
+
+    public function couponPrice(Request $request, Order $order)
+    {
+        // 如果用户提交了优惠码
+        $user = $request->user();
+        $coupon_code = CouponCode::where('code', $request->code)->first();
+        if(!$coupon_code) {
+            throw new CouponCodeUnavailableException('优惠券不存在');
+        }
+        $coupon_code->checkAvailable($user, $order->price);
+        $totalAmount = $coupon_code->getAdjustedPrice($order->price);
+        // 如果用户通过Api请求,则返回JSON格式的错误信息
+        return $totalAmount;
+    }
 }

@@ -122,7 +122,7 @@ class CouponCode extends Model
         if(!$this->status == 'actived') {
             throw new CouponCodeUnavailableException('卡券未激活!');
         }
-        if($this->status == 'actived') {
+        if(is_null($orderAmount) && $this->status == 'actived') {
             throw new CouponCodeUnavailableException('卡券已激活!');
         }
         if($this->enable_days <= 0) {
