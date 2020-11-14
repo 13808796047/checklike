@@ -98,8 +98,8 @@
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
 
-            <div>
-							<div class="currentBoder" style="width:210px;margin:10px 20px;">
+            <div style="margin:10px 20px;">
+							<div class="currentBoder" style="width:210px;height:110px;">
 								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -111,8 +111,8 @@
               <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p>已减去8元</p></div>
             </div>
 
-            <div>
-							<div class="currentBoder" style="width:210px;margin:10px 20px;">
+            <div style="margin:10px 20px;">
+							<div class="currentBoder" style="width:210px;height:110px;">
 								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -124,8 +124,8 @@
               <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p>已减去8元</p></div>
             </div>
 
-            <div>
-							<div class="currentBoder" style="width:210px;margin:10px 20px;">
+            <div style="margin:10px 20px;">
+							<div class="currentBoder" style="width:210px;height:110px;">
 								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -137,31 +137,10 @@
               <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p>已减去8元</p></div>
             </div>
 
-            <div>
-							<div class="currentBoder" style="width:210px;margin:10px 20px;">
-								<div class="discount_topbox" style="padding: 8px;" i>
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p>已减去8元</p></div>
-            </div>
 
-            <div>
-							<div class="currentBoder" style="width:210px;margin:10px 20px;">
-								<div class="discount_topbox" style="padding: 8px;" i>
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p>已减去8元</p></div>
-            </div>
+
+
+
 
             </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
