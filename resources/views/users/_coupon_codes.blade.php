@@ -33,6 +33,9 @@
 <div>
   <div style="display: flex;flex-wrap: wrap;">
     @foreach($coupon_codes as $item)
+        @if ($item->is_enable == false)
+          @continue
+        @endif
       <div class="yhcard">
         <div style="text-align: center;padding-top: 23px;font-size: 29px;font-weight: bold;">
           @if($item->type =="fixed")
