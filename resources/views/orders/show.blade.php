@@ -228,15 +228,9 @@
             `
         })
         $("#couponbox").html(arrStr)
-        judgeClass(currentArr)
        }
-       function judgeClass(data){
-         let currentSty=$(".cardToast").children("div:eq(0)")
-         console.log(currentSty,"fassdf")
-        //  if($(".cardToast").children("div:eq(1)")
-       }
-      // let aar = {!!$coupon_codes!!};
-      // console.log(aar,"fasdf")
+       let CardBox = ${"#couponbox"}.children("div")
+       console.log(CardBox,"fsadf")
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
