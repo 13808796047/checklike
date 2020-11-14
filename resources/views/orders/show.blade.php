@@ -206,8 +206,6 @@
         currentArr.sort((a,b)=>{
           // let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
           // let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
-          // let val1 = a.reason
-          // let val
           return (b.reason=="") - (a.reason=="")
         })
          //遍历所有未过期的项目
@@ -224,7 +222,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
-              <div style="display:flex;align-items:center;" class="infofooter"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
+              <div style="display:flex;align-items:center;" class="infofooter"><img src="${e.reason!=""?'/asset/images/gantanhao.png':''}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
             </div>
             `
         })
