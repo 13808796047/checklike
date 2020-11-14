@@ -230,11 +230,12 @@
         $("#couponbox").html(arrStr)
         doStyle()
        }
-
+       //tab切换
        function doStyle(){
           let CardBox = $("#couponbox").children("div").children(".discount_box")
           CardBox.click(function(){
-            console.log(11,22)
+            $(this).addClass('currentBoder');
+            $(this).siblings().removeClass('currentBoder');
           })
        }
 
