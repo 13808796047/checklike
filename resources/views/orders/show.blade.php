@@ -187,7 +187,7 @@
        }).catch(err=>{
          console.log(err,"错误")
        })
-       let currentId = {{!!$order->id!!}}
+       let currentId = {!!$order->id!!}
        axios.get(`/coupon_codes/${currentId}/active-coupon-code`).then(res=>{
         console.log(res,"fsafs")
        }).catch(err=>{})
