@@ -231,7 +231,7 @@
        }
 
 
-       let CardBox = ${"#couponbox"}.children()
+       let CardBox = $("#couponbox").children()
        console.log(CardBox,"fsadf")
 
       $('.navbar').css('position','static')
