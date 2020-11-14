@@ -236,9 +236,13 @@
           CardBox.click(function(){
             $(this).addClass('currentBoder')
             $(this).parent().siblings().children(".discount_box").removeClass("currentBoder")
+            countPrice($(this))
           })
        }
-
+       //计算价格
+       function countPrice(e){
+          console.log(e,"fasdf")
+       }
 
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
