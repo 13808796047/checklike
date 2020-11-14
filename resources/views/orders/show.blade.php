@@ -232,8 +232,8 @@
        }
 
        function doStyle(){
-        let CardBox = $("#couponbox").children("div")
-        console.log(CardBox,"fsadf")
+        let CardBox = $("#couponbox").children("div").hasClass("discount_box")
+
        }
 
 
