@@ -221,7 +221,7 @@
        }
        function judgeClass(data){
          console.log($(".cardToast"))
-         console.log($(".cardToast").children("div:eq(1)"),"xixi")
+         console.log($(".cardToast").children("div:eq(0)").hasClass("discount_box"))
         //  if($(".cardToast").children("div:eq(1)")
        }
       // let aar = {!!$coupon_codes!!};
