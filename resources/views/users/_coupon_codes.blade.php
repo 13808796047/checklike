@@ -53,8 +53,12 @@
           <p>卡券编号：{{$item->code}}</p>
         </div>
       </div>
-
     @endforeach
+  </div>
+  <div>
+    <p>{{$coupon_codes}}</p>
+    <div>
+    ffsdaf</div>
   </div>
 </div>
 <script>

@@ -115,7 +115,7 @@
             </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
             <div style="margin-bottom: 23px;">
-              <p>订单原价:25.00元，卡券优惠:-9.09元，应付金额：<span style="font-size: 19px;color: #FF5300;">15.10元</span>，请选择以下任一一种方式完成支付。</p>
+              <p id="dingdanprice" style="display:none;">订单原价:25.00元，卡券优惠:-9.09元，应付金额：<span style="font-size: 19px;color: #FF5300;" id="">15.10元</span>，请选择以下任一一种方式完成支付。</p>
             </div>
         </div>
         <div style="display: flex;justify-content: center;">
