@@ -6,6 +6,7 @@
   <link href="{{asset('asset/css/font-awesome.min.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/alertify.css')}}" rel="stylesheet"/>
   <style>
+    img[src=""],img:not([src]){opacity:0;}
     .curfont{
       font-size:16px;
     }
