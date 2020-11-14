@@ -98,7 +98,7 @@
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
 
-            <div style="margin:10px 20px;">
+            <!-- <div style="margin:10px 20px;">
 							<div class="currentBoder" style="width:210px;height:110px;">
 								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
@@ -109,67 +109,7 @@
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
               <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
-            </div>
-
-            <div style="margin:10px 20px;">
-							<div class="currentBoder" style="width:210px;height:110px;">
-								<div class="discount_topbox" style="padding: 8px;" i>
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
-            </div>
-
-
-            <div style="margin:10px 20px;">
-							<div class="currentBoder" style="width:210px;height:110px;">
-								<div class="discount_topbox" style="padding: 8px;" i>
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
-            </div>
-
-            <div style="margin:10px 20px;">
-							<div class="currentBoder" style="width:210px;height:110px;">
-								<div class="discount_topbox" style="padding: 8px;" i>
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
-            </div>
-
-            <div style="margin:10px 20px;">
-							<div class="currentBoder" style="width:210px;height:110px;">
-								<div class="discount_topbox" style="padding: 8px;" i>
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
-            </div>
-
-
-
-
-
-
-
+            </div> -->
 
             </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
@@ -259,8 +199,9 @@
          currentArr.forEach(e=>{
           let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
            arrStr +=`
-              <div style="width:210px;margin:10px 20px;height:110px;" class="${judgeTerm ? 'discount_box' : 'discount_boxborder'}">
-								<div style="padding: 8px;" id="coupontop" class="${judgeTerm ? 'discount_topbox' : 'discount_curbg'}">
+              <div style="margin:10px 20px;">
+							<div style="width:210px;height:110px;" class="${judgeTerm ? 'discount_box' : 'discount_boxborder'}">
+								<div style="padding: 8px;" class="${judgeTerm ? 'discount_topbox' : 'discount_curbg'}">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
@@ -268,10 +209,12 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
+              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
+            </div>
             `
         })
         $("#couponbox").html(arrStr)
-        // judgeClass(currentArr)
+        judgeClass(currentArr)
        }
        function judgeClass(data){
        }
