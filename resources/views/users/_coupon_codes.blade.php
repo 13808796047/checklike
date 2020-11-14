@@ -30,6 +30,7 @@
   }
 </style>
 <div>
+<div>
   <div style="display: flex;flex-wrap: wrap;">
     @foreach($coupon_codes as $item)
       <div class="yhcard">
@@ -60,6 +61,7 @@
     <div>
     ffsdaf</div>
   </div>
+</div>
 </div>
 <script>
 
