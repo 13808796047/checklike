@@ -202,7 +202,7 @@
          currentArr.forEach(e=>{
           let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
            arrStr +=`
-              <div style="margin:10px 20px;">
+              <div style="margin:10px 20px;" class="cardToast">
 							<div style="width:210px;height:110px;" class="${judgeTerm ? 'discount_box' : 'discount_boxborder'}">
 								<div style="padding: 8px;" class="${judgeTerm ? 'discount_topbox' : 'discount_curbg'}">
 									<p style="color:#fff;"><span style="font-size: 19px;">
@@ -212,7 +212,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;" class="cardToast">已减去8元</p></div>
+              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
             </div>
             `
         })
