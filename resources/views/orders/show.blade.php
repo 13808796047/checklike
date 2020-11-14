@@ -232,10 +232,11 @@
        }
        //tab切换
        function doStyle(){
-          let CardBox = $(".cardToast").children(".discount_box")
+          let CardBox = $(".cardToast").children()
           CardBox.click(function(){
-            $(this).addClass('currentBoder').removeClass("discount_box")
-            console.log($(this).siblings('.discount_box'))
+            $(this).addClass('currentBoder')
+            console.log($(this).parent().siblings().children())
+            $(this).parent().siblings().children().removeClass("currentBoder")
           })
        }
 
