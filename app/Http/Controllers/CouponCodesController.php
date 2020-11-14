@@ -23,8 +23,19 @@ class CouponCodesController extends Controller
             ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
             ->where('status', CouponCode::STATUS_ACTIVED)
 //            ->where(Carbon::parse('actived_at')->addDays('enable_days')->lt(Carbon::now()))
-            ->get();
-        return CouponCodeResource::collection($coupon_codes)->showEnableReason($order);
+            ->get()->map(function($item) {
+                $item['reason'] = '';
+                if($order->price < $item->min_amount) {
+                    $item['reason'] = '满减金额不符合';
+                }
+                if($order->cid != $item->cid) {
+                    $item['reason'] = '此系统不符合使用';
+                }
+                if($order->price < $item->$min_amount || $order->cid != $item->cid) {
+                    $item['reason'] = '满减金额或此系统不符合使用';
+                }
+            });
+        return CouponCodeResource::collection($coupon_codes);
     }
 
 //    public function show(OrderService $orderService, $code)
