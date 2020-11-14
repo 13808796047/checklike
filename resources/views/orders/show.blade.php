@@ -117,7 +117,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-                <p><span class="iconBox"></span>已减8元</p>
+                <span><span class="iconBox"></span>已减8元</span>
               </div>
               <div>
               <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;">
@@ -130,7 +130,7 @@
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
                 </div>
-                <p><span class="iconBox"></span>已减10元</p>
+                <span><span class="iconBox"></span>已减10元</span>
               </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
             <div style="margin-bottom: 23px;">
