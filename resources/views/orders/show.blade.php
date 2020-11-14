@@ -236,9 +236,8 @@
           console.log(CardBox,"fasdf")
           console.log(CardBox.siblings())
           CardBox.click(function(){
-            $(this).addClass('currentBoder')
-            $(this).siblings().removeClass("currentBoder");
-            console.log($(this).siblings())
+            $(this).addClass('currentBoder').removeClass("discount_box")
+
           })
        }
 
