@@ -23,7 +23,7 @@ class CouponCodesController extends Controller
             ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
             ->where('status', CouponCode::STATUS_ACTIVED)
 //            ->where(Carbon::parse('actived_at')->addDays('enable_days')->lt(Carbon::now()))
-            ->get()->map(function($item) {
+            ->get()->map(function($item) use ($order) {
                 $item['reason'] = '';
                 if($order->price < $item->min_amount) {
                     $item['reason'] = '满减金额不符合';
