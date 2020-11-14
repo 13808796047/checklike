@@ -93,11 +93,15 @@ class OrderService
                 'keyword' => $referer['keyword']
             ]);
             $order->user()->associate($user);
-//            if($user->is_free && $category->id == 1) {
+            // 如果是会员
+            if($user->user_group == 3 && $user->is_free && $category->id == 1) {
+                $price = max($price - $category->price, 0);
+            }
+            if($user->is_free && $category->id == 1) {
 //                if($user->weixin_openid || $user->weapp_openid) {
-//                    $price = max($price - 3, 0);
+                $price = max($price - $category->price, 0);
 //                }
-//            }
+            }
             $order->price = $price;
             $order->save();
             if(isset($file)) {
@@ -116,29 +120,9 @@ class OrderService
             $this->dispatch(new CloseOrder($order), 30);
             return $order;
         });
-//        $this->checkWords($order);
         return $order;
     }
 
-//    protected function checkWords(Order $order)
-//    {
-//        if($order->category->classid == 4) {
-//            if($order->file->type == 'docx') {
-//                $content = read_docx($order->file->real_path);
-//                $words = count_words($content);
-//                if($words / $order->words > 1.15) {
-//                    $this->cloudConert($order);
-//                }
-//            } else {
-//                $this->cloudConert($order);
-//            }
-//        }
-//    }
-//
-//    protected function cloudConert(Order $order)
-//    {
-//        dispatch(new CloudCouvertFile($order));
-//    }
 
     //计算字数
     public function calcWords($words)

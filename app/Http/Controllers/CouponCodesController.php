@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class CouponCodesController extends Controller
 {
     //个人优惠券
-    public function index(Request $request)
+    public function index(Request $request, Order $order)
     {
         $user = $request->user();
         $coupon_codes = $user->couponCodes()
@@ -24,7 +24,7 @@ class CouponCodesController extends Controller
             ->where('status', CouponCode::STATUS_ACTIVED)
 //            ->where(Carbon::parse('actived_at')->addDays('enable_days')->lt(Carbon::now()))
             ->get();
-        return CouponCodeResource::collection($coupon_codes);
+        return CouponCodeResource::collection($coupon_codes)->showEnableReason($order);
     }
 
 //    public function show(OrderService $orderService, $code)

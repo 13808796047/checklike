@@ -20,7 +20,6 @@ class CheckDoc implements ShouldQueue
         $order->update([
             'status' => 1,
         ]);
-
         if($order->category->check_type == 1) {
             if($order->category->classid == 4) {
                 if($order->file->type == 'docx') {
