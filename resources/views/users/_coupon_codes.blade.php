@@ -56,6 +56,9 @@
       </div>
     @endforeach
   </div>
+  <div>
+    <p>{{$coupon_codes}}</p>
+  </div>
 </div>
 </div>
 <script>
