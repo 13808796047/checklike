@@ -187,10 +187,10 @@
        }).catch(err=>{
          console.log(err,"错误")
        })
-      //  let currentId = {!!$order->id!!}
-      //  axios.get(`/coupon_codes/${currentId}/active-coupon-code`).then(res=>{
-      //   console.log(res,"fsafs")
-      //  }).catch(err=>{})
+       let currentId = {!!$order->id!!}
+       axios.post(`/coupon_codes/${currentId}/active-coupon-code`).then(res=>{
+        console.log(res,"fsafs")
+       }).catch(err=>{})
        function changeCoupon(item){
         let currentCid = {!!$order->cid!!} //当前订单CID
         let currentPrice =  {{$order->price}} //当前订单价格
