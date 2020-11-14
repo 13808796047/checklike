@@ -196,7 +196,7 @@
            return !curitem.is_enable
          })
         currentArr.sort(function(a,b){
-          console.log(a,b)
+
         })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
@@ -212,7 +212,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
+              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;" class="cardToast">已减去8元</p></div>
             </div>
             `
         })
@@ -220,6 +220,7 @@
         judgeClass(currentArr)
        }
        function judgeClass(data){
+         console.log($(".cardToast"))
        }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
