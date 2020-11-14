@@ -6,6 +6,7 @@
   <link href="{{asset('asset/css/font-awesome.min.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/alertify.css')}}" rel="stylesheet"/>
   <style>
+    img[src=""],img:not([src]){opacity:0;}
     .curfont{
       font-size:16px;
     }
@@ -203,11 +204,11 @@
         let currentArr = item.filter(curitem=>{
            return !curitem.is_enable
          })
-        // currentArr.sort((a,b)=>{
-        //   let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
-        //   let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
-        //   return val2 - val1;
-        // })
+        currentArr.sort((a,b)=>{
+          // let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
+          // let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
+          return (b.reason=="") - (a.reason=="")
+        })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
           let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
@@ -222,20 +223,23 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
-              <div style="display:flex;align-items:center;" class="infofooter"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
+              <div style="display:flex;align-items:center;" class="infofooter"><img src="${e.reason!=""?'/asset/images/gantanhao.png':''}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
             </div>
             `
         })
         $("#couponbox").html(arrStr)
-        judgeClass(currentArr)
+        doStyle()
        }
-       function judgeClass(data){
-         let currentSty=$(".cardToast").children("div:eq(0)")
-         console.log(currentSty,"fassdf")
-        //  if($(".cardToast").children("div:eq(1)")
+       //tab切换
+       function doStyle(){
+          let CardBox = $("#couponbox").children("div").children(".discount_box")
+          CardBox.click(function(){
+            console.log($(this).siblings())
+            $(this).addClass('currentBoder').siblings().removeClass();
+          })
        }
-      // let aar = {!!$coupon_codes!!};
-      // console.log(aar,"fasdf")
+
+
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
