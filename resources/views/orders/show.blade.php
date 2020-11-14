@@ -209,7 +209,7 @@
 								<div style="padding: 8px;" class="${judgeTerm ? 'discount_topbox' : 'discount_curbg'}">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
+									</span> 满${e.min_amount}可用</p>
 									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
