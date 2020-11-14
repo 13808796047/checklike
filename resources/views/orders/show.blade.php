@@ -217,7 +217,7 @@
 							<div style="width:210px;height:110px;" class="${judgeTerm ? 'discount_box' : 'discount_boxborder'}">
 								<div style="padding: 8px;" class="${judgeTerm ? 'discount_topbox' : 'discount_curbg'}">
 									<p style="color:#fff;"><span style="font-size: 19px;">
-										${e.value}<span style="font-size:15px;margin-left:5px;">折</span>
+										${e.type=="fixed"? `￥${e.value}`:`${e.value}折`}
 									</span> 满${e.min_amount}可用</p>
 									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
 								</div>
