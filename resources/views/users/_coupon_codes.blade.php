@@ -57,7 +57,7 @@
     @endforeach
   </div>
   <div>
-    <p>{{$coupon_codes}}</p>
+    <span>{{$coupon_codes}}</span>
     <div>
     ffsdaf</div>
   </div>
