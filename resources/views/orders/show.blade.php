@@ -189,7 +189,7 @@
       //  })
 
        let currentId = {!!$order->id!!}
-       axios.get(`orders/${currentId}/coupon_codes`).then(res=>{
+       axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
         console.log(res,"fsafs")
        }).catch(err=>{})
 
