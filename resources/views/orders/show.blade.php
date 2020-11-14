@@ -235,7 +235,6 @@
           let CardBox = $(".cardToast").children(".discount_box")
           CardBox.click(function(){
             $(this).addClass('currentBoder')
-            console.log($(this).siblings().parent().parent().children(".discount_box"))
           })
        }
 
