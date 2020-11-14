@@ -55,12 +55,12 @@ class OrdersController extends Controller
         // 校验权限
         $this->authorize('own', $order);
         $user = $request->user();
-        $coupon_codes = $user->couponCodes()
-            ->with('category')
-            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
-            ->where('status', CouponCode::STATUS_ACTIVED)
-            ->get();
-        return view('orders.show', compact('order', 'coupon_codes'));
+//        $coupon_codes = $user->couponCodes()
+//            ->with('category')
+//            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+//            ->where('status', CouponCode::STATUS_ACTIVED)
+//            ->get();
+        return view('orders.show', compact('order'));
     }
 
     public function couponPrice(Request $request, Order $order)
