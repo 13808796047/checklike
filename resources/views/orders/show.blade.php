@@ -137,6 +137,16 @@
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
 
+              <div class="discount_box" style="width:210px;margin:10px 20px;">
+								<div class="discount_topbox" style="padding: 8px;">
+									<p style="color:#fff;"><span style="font-size: 19px;">
+										8.0<span style="font-size:15px;margin-left:5px;">折</span>
+									</span> 满10可用</p>
+									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
+								</div>
+								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
+              </div>
+
             </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
             <div style="margin-bottom: 23px;">
