@@ -97,7 +97,7 @@
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
-							<div class="currentBoder" style="width:210px;margin:10px 20px;">
+							<!-- <div class="currentBoder" style="width:210px;margin:10px 20px;">
 								<div class="discount_topbox" style="padding: 8px;" i>
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
@@ -114,7 +114,7 @@
 									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
+              </div> -->
             </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
             <div style="margin-bottom: 23px;">
@@ -187,7 +187,7 @@
        axios.get("/coupon_codes").then(res=>{
          console.log(res)
          couponArr=res.data.data;
-        //  changeCoupon(couponArr)
+         changeCoupon(couponArr)
        }).catch(err=>{
          console.log(err,"错误")
        })
