@@ -57,12 +57,12 @@
     @endforeach
   </div>
   <div>
-    <span>{{$coupon_codes}}</span>
+  {{$coupon_codes}}
     <div>
     ffsdaf</div>
   </div>
 </div>
 </div>
 <script>
-  console.log({!!$coupon_codes!!})
+  console.log({{!!$coupon_codes!!}})
 </script>
