@@ -193,16 +193,18 @@
        })
 
        function changeCoupon(item){
+        let currentCid = {!!$order->cid!!} //当前订单CID
+        let currentPrice =  {{$order->price}} //当前订单价格
          //过滤掉已过期的
         let currentArr = item.filter(curitem=>{
            return !curitem.is_enable
          })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
-
+          let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
            arrStr +=`
               <div style="width:210px;margin:10px 20px;height:110px;" >
-								<div style="padding: 8px;" id="coupontop">
+								<div style="padding: 8px;" id="coupontop" class="${judgeTerm?discount_box : discount_curbg}">
 									<p style="color:#fff;"><span style="font-size: 19px;">
 										8.0<span style="font-size:15px;margin-left:5px;">折</span>
 									</span> 满10可用</p>
@@ -213,7 +215,7 @@
             `
         })
         $("#couponbox").html(arrStr)
-        judgeClass(currentArr)
+        // judgeClass(currentArr)
        }
        function judgeClass(data){
         let currentCid = {!!$order->cid!!} //当前订单CID
