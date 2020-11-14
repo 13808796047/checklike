@@ -222,8 +222,8 @@
 									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
-                <div style="display:flex;align-items:center;" class="infofooter"><img src="${e.reason!=""?'/asset/images/gantanhao.png':''}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
               </div>
+              <div style="display:flex;align-items:center;" class="infofooter"><img src="${e.reason!=""?'/asset/images/gantanhao.png':''}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
             </div>
             `
         })
@@ -232,10 +232,10 @@
        }
        //tab切换
        function doStyle(){
-          let CardBox = $(".cardToast").children("div")
+          let CardBox = $(".cardToast").children(".discount_box")
           console.log(CardBox,"fasdf")
           CardBox.click(function(){
-            $(this).addClass('currentBoder').siblings().removeClass('currentBoder')
+            $(this).addClass('currentBoder')
             let a = $(this).parent();
             console.log(a,"fasdfa")
           })
