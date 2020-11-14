@@ -237,7 +237,8 @@
           console.log(CardBox.siblings())
           CardBox.click(function(){
             $(this).addClass('currentBoder').removeClass("discount_box")
-
+            $(this).previousSibling().removeClass("discount_box")
+            console.log($(this).previousSibling())
           })
        }
 
