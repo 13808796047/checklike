@@ -203,11 +203,13 @@
         let currentArr = item.filter(curitem=>{
            return !curitem.is_enable
          })
-        // currentArr.sort((a,b)=>{
-        //   let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
-        //   let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
-        //   return val2 - val1;
-        // })
+        currentArr.sort((a,b)=>{
+          // let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
+          // let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
+          // let val1 = a.reason
+          // let val
+          return a.reason - b.reason
+        })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
           let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
