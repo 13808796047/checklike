@@ -232,7 +232,8 @@
        }
        //tab切换
        function doStyle(){
-          let CardBox = $("#couponbox").children("div").children(".discount_box")
+          let CardBox = $(".cardToast").children("div")
+          console.log(CardBox,"fasdf")
           CardBox.click(function(){
             $(this).addClass('currentBoder')
             let a = $(this).parent();
