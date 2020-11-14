@@ -10,11 +10,11 @@ class CouponCodeResource extends JsonResource
 {
     protected $order;
 
-    public function __construct($resource, Order $order)
-    {
-        parent::__construct($resource);
-        $this->order = $order;
-    }
+//    public function __construct($resource, Order $order)
+//    {
+//        parent::__construct($resource);
+//        $this->order = $order;
+//    }
 
     public function toArray($request)
     {
@@ -32,9 +32,9 @@ class CouponCodeResource extends JsonResource
         return $data;
     }
 
-//    public function showEnableReason(Order $order)
-//    {
-//        $this->order = $order;
-//        return $this;
-//    }
+    public function showEnableReason($order)
+    {
+        $this->order = $order;
+        return $this;
+    }
 }
