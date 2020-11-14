@@ -208,7 +208,7 @@
           // let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
           // let val1 = a.reason
           // let val
-          return (a.reason=="") - (b.reason=="")
+          return (b.reason=="") - (a.reason=="")
         })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
