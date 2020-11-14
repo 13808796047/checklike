@@ -35,7 +35,7 @@
     left: 0;
     bottom: -5px;
     background-image: linear-gradient(to right, #D1D1D1 5px, transparent 5px, transparent),
-    radial-gradient(10px circle at 10px 5px, transparent 5px, #74D2D4 5px);
+    radial-gradient(10px circle at 10px 5px, transparent 5px, #D1D1D1 5px);
     background-size: 15px 5px;
   }
 
