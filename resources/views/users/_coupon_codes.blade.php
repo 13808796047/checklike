@@ -30,7 +30,36 @@
   }
 </style>
 <div>
-<div>
+
+  <div style="display: flex;flex-wrap: wrap;">
+    @foreach($coupon_codes as $item)
+        @if ($item->is_enable == false)
+          @continue
+        @endif
+      <div class="yhcard">
+        <div style="text-align: center;padding-top: 23px;font-size: 29px;font-weight: bold;">
+          @if($item->type =="fixed")
+            ￥{{$item->value}}
+          @else
+            {{$item->value}}折
+          @endif
+        </div>
+        <div style="text-align:center;font-size:11px;">
+          @if($item->type =="vip")
+            VIP专属
+          @else
+            满{{$item->min_amount}}元可用，限一次
+          @endif
+        </div>
+        <div class="cardpline">
+          <p>适用系统：{{$item->category? $item->category->name:"不限"}}</p>
+          <p>有效期：剩余{{$item->enable_days}}天</p>
+          <p>卡券编号：{{$item->code}}</p>
+        </div>
+      </div>
+    @endforeach
+  </div>
+  <div class="usertitle">过期卡券</div>
   <div style="display: flex;flex-wrap: wrap;">
     @foreach($coupon_codes as $item)
         @if ($item->is_enable == true)
@@ -59,10 +88,6 @@
       </div>
     @endforeach
   </div>
-  <div>
-  <div class="usertitle">过期卡券</div>
-  </div>
-</div>
 </div>
 <script>
 let fsdafasdf=  {!!$coupon_codes!!}
