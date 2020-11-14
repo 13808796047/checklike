@@ -198,7 +198,7 @@
         currentArr.sort((a,b)=>{
           let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
           let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
-          return val1 - val2;
+          return val2 - val1;
         })
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
