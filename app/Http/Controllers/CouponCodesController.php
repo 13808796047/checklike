@@ -34,6 +34,7 @@ class CouponCodesController extends Controller
                 if($order->price < $item->min_amount || $order->cid != $item->cid) {
                     $item['reason'] = '满减金额或此系统不符合使用';
                 }
+                return $item;
             });
         return CouponCodeResource::collection($coupon_codes);
     }
