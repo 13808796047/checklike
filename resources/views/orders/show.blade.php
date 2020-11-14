@@ -232,8 +232,10 @@
        }
 
        function doStyle(){
-        let CardBox = $("#couponbox").children("div").children(".discount_box")
-        console.log(CardBox,'fasdfas')
+          let CardBox = $("#couponbox").children("div").children(".discount_box")
+          CardBox.click(function(){
+            console.log(11,22)
+          })
        }
 
 
