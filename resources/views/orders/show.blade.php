@@ -218,25 +218,8 @@
         // judgeClass(currentArr)
        }
        function judgeClass(data){
-        // let currentCid = {!!$order->cid!!} //当前订单CID
-        // let currentPrice =  {{$order->price}} //当前订单价格
-        // data.forEach((e,item,pp)=>{
-        //   console.log(e,item,pp,"fsasdfs")
-        //      //判断是否可用(不限系统且满足使用金额)
-        //    if((!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)){
-        //     $("#couponBorder").removeClass()
-        //      $("#couponBorder").addClass("discount_box");
-        //      $("#coupontop").addClass("discount_topbox")
-        //    }else{
-        //      console.log("fsadf")
-        //      $("#couponBorder").removeClass()
-        //      $("#couponBorder").addClass("discount_curbg");
-        //      $("#coupontop").addClass("discount_curbg")
-        //    }
-        })
 
-
-       }
+      }
       // let aar = {!!$coupon_codes!!};
       // console.log(aar,"fasdf")
       $('.navbar').css('position','static')
