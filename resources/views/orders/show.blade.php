@@ -117,7 +117,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
-              <div><img src="{{asset('asset/iamges/gantanhao.png')}}" alt="" srcset=""> <span>已减去8元</span></div>
+              <div><img src="{{asset('asset/images/gantanhao.png')}}" alt="" srcset=""> <span>已减去8元</span></div>
               </div>
               <div>
               <div class="discount_box" style="width:210px;margin:10px 20px;height:110px;">
@@ -130,7 +130,7 @@
 								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
               </div>
                 </div>
-                <div><img src="{{asset('asset/iamges/gantanhao.png')}}" alt="" srcset=""> <span>已减去8元</span></div>
+                <div><img src="{{asset('asset/images/gantanhao.png')}}" alt="" srcset=""> <span>已减去8元</span></div>
               </div>
             <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
             <div style="margin-bottom: 23px;">
