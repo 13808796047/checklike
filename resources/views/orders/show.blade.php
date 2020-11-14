@@ -191,6 +191,8 @@
        let currentId = {!!$order->id!!}
        axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
         console.log(res,"fsafs")
+        couponArr=res.data.data;
+         changeCoupon(couponArr)
        }).catch(err=>{})
 
 
@@ -220,7 +222,7 @@
 								</div>
 								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
               </div>
-              <div style="display:flex;align-items:center;" class="infofooter"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
+              <div style="display:flex;align-items:center;" class="infofooter"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
             </div>
             `
         })
