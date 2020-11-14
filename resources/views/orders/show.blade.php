@@ -195,6 +195,7 @@
         let currentArr = item.filter(curitem=>{
            return !curitem.is_enable
          })
+        console.log(currentArr,"数据")
          //遍历所有未过期的项目
          currentArr.forEach(e=>{
           let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
