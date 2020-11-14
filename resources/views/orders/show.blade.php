@@ -234,10 +234,11 @@
        function doStyle(){
           let CardBox = $(".cardToast").children(".discount_box")
           console.log(CardBox,"fasdf")
+          console.log(CardBox.siblings())
           CardBox.click(function(){
             $(this).addClass('currentBoder')
-            let a = $(this).parent();
-            console.log(a,"fasdfa")
+            $(this).siblings().removeClass("currentBoder");
+            console.log($(this).siblings())
           })
        }
 
