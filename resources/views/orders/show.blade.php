@@ -235,7 +235,7 @@
           let CardBox = $(".cardToast").children("div")
           console.log(CardBox,"fasdf")
           CardBox.click(function(){
-            $(this).addClass('currentBoder')
+            $(this).addClass('currentBoder').siblings().removeClass('currentBoder')
             let a = $(this).parent();
             console.log(a,"fasdfa")
           })
