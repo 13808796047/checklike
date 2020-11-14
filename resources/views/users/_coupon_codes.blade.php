@@ -21,7 +21,7 @@
   .gqcard{
     width: 220px;
     position: relative;
-    color: #D1D1D1;
+    color: #FFFAFA;
     background: radial-gradient(circle at 110px 0, transparent 10px, #D1D1D1 0) top left/220px 100% no-repeat;
     margin: 10px 15px;
   }
