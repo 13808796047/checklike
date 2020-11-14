@@ -117,7 +117,7 @@ class OrderService
                 dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
             }
             // 开启关闭订单
-            $this->dispatch(new CloseOrder($order), 30);
+            dispatch(new CloseOrder($order), 30);
             return $order;
         });
         return $order;
