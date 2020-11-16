@@ -72,8 +72,8 @@
           <td>{{ $order->orderid }}</td>
         </tr>
         <tr>
-          <td >论文题目</td>
-          <td>{{$order->title}}</td>
+          <td>论文题目</td>
+          <td >{{$order->title}}</td>
         </tr>
         <tr>
           <td>论文作者</td>
@@ -266,7 +266,6 @@
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
         let order = {!!$order!!}
-        console.log(order,"fsajdfjsdf")
         $("#codeTcDialog").modal("show")
         $('#codeurl').attr("src", `/payments/${order.id}/wechat/order`);
         // swal({
@@ -290,6 +289,7 @@
       })
       //支付宝
       $('#bottonsubmit').click(function(){
+        console.log("xixi")
        let order = {!!$order!!};
        location.href=`/payments/${order.id}/alipay/order`
      })

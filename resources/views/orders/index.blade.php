@@ -15,7 +15,7 @@
         <thead class="thead-dark">
         <tr>
           <th scope="col"><input type="checkbox" id="allcheck"></th>
-          <th scope="col">论文题目</th>
+          <th scope="col" style="width:125px;">论文题目</th>
           <th scope="col">系统名称</th>
           <th scope="col">状态</th>
           <th scope="col">检测结果</th>
@@ -27,7 +27,7 @@
         @foreach($orders as $order)
           <tr>
             <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
-            <td>{{$order->title}}</td>
+            <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;max-width: 125px;">{{$order->title}}</td>
             <td>{{ $order->category->name ?? '' }}</td>
             <td>{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
             <td>{{ $order->rate }}</td>
@@ -154,49 +154,40 @@
         // 判断是否至少选择一项
         var checkedNum = $("input[name='delete']:checked").length;
         if (checkedNum == 0) {
-          swal('请最少选择一项删除!')
+          toastr.error('请最少选择一项删除');
           return
         }
         // 选择后状态
-        alertify.confirm('提示', '您确认要删除数据?', function(){
-          var valuelist = [];
-            $("input[name='delete']:checked").each(function () {
-              var inputval = $(this).val()
-              valuelist.push(inputval);
-            });
-            axios.delete('{{route('orders.destroy')}}', {
-              data: {
-                ids: valuelist
+    $.confirm({
+        title: '提示',
+        content: '您确认要删除数据?',
+        buttons: {
+            ok: {
+                text: '确认',
+                btnClass:  'btn-danger',
+                action: function() {
+                  var valuelist = [];
+                  $("input[name='delete']:checked").each(function () {
+                  var inputval = $(this).val()
+                  valuelist.push(inputval);
+                });
+                axios.delete('{{route('orders.destroy')}}', {
+                data: {
+                  ids: valuelist
+                }
+                }).then(res => {
+                  toastr.success('删除成功');
+                  location.reload()
+                })
               }
-            }).then(res => {
-              // swal('删除成功!')
-              alertify.success('删除成功')
-              location.reload()
-            })
-     }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
-        // swal({
-        //   title: "您确认要删除数据?",
-        //   icon: "warning",
-        //   buttons: true,
-        //   dangerMode: true,
-        // }).then(willDelete => {
-        //   if (willDelete) {
-        //     var valuelist = [];
-        //     $("input[name='delete']:checked").each(function () {
-        //       var inputval = $(this).val()
-        //       valuelist.push(inputval);
-        //     });
-        //     axios.delete('{{route('orders.destroy')}}', {
-        //       data: {
-        //         ids: valuelist
-        //       }
-        //     }).then(res => {
-        //       swal('删除成功!')
-        //       location.reload()
-        //     })
-        //   }
-        // })
-      })
+            },
+            cancel: {
+                text: '取消',
+                btnClass: 'btn-info'
+            }
+        }
+      });
     })
+  })
   </script>
 @stop

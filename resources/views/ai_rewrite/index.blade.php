@@ -114,7 +114,7 @@
            <div style="margin-top:10px;">
 
               <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
-              <button type="button" class="btn btn-secondary">清除内容</button>
+              <button type="button" class="btn btn-secondary" id="clearcontainer">清除内容</button>
 
              <p style="float: right;font-size: 13px;padding-right: 30px;" id="words">当前输入<span>0</span>字</p>
           </div>
@@ -173,7 +173,28 @@
         }
     }
   }
+  //清空内容
+  $("#clearcontainer").click(()=>{
+    $.confirm({
+        title: '提示',
+        content: '您确认要清空内容吗?',
+        buttons: {
+            ok: {
+                text: '确认',
+                btnClass:  'btn-danger',
+                action: function() {
+                  $("#content").val("")
+                  $("#words span").text(0)
+                }
+            },
+            cancel: {
+                text: '取消',
+                btnClass: 'btn-info'
+            }
+        }
+      });
 
+  })
   var optionVal = "3"
   function optionChange(){
     var sel=document.getElementById('sel');
