@@ -84,6 +84,7 @@
           <p>卡券编号：{{$item->code}}</p>
         </div>
       </div>
+    </div>
     @endforeach
   </div>
 
