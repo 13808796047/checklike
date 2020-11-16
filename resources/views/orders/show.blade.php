@@ -246,8 +246,7 @@
           let clickCode = e.find('.codedisplay').text()
           //当前价格
           axios.get(`/orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
-            console.log(res.data,"fasdsfasf")
-
+            let currentPrice =  {{$order->price}} //当前订单价格
             $("#sjprice").text(res.data)
             $("#yhje").text(currentPrice-res.data)
             $("#dingdanprice").css("display","block")
