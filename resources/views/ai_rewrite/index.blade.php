@@ -176,6 +176,7 @@
   //清空内容
   $("#clearcontainer").click(()=>{
     $("#content").val("")
+    $("#words span").val(0)
   })
   var optionVal = "3"
   function optionChange(){
