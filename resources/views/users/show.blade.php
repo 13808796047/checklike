@@ -59,7 +59,7 @@
           style="color: #1E90FF;cursor: pointer;margin-right:10px;" id="activationBtn">卡券激活</p></div>
       <div></div>
       <div class="card-body">
-        @include('users._coupon_codes', ['coupon_codes' => $user->couponCodes()->whereIn('type',[\App\Models\CouponCode::TYPE_PERCENT,\App\Models\CouponCode::TYPE_FIXED])->where('status',\App\Models\CouponCode::STATUS_ACTIVED)->with('category')->paginate(5)])
+        @include('users._coupon_codes', ['coupon_codes' => $coupon_codes])
       </div>
     </div>
   </div>
