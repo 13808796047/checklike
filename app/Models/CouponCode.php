@@ -153,7 +153,7 @@ class CouponCode extends Model
         if($this->type === self::TYPE_FIXED) {
             return max(0.01, $orderAmount - $this->value);
         }
-        return number_format($orderAmount * (100 - $this->value) / 100, 2, '.', '');
+        return number_format($orderAmount * ($this->value / 100), 2, '.', '');
     }
 
     //创建时生成卡号
