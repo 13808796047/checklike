@@ -158,22 +158,51 @@
           return
         }
         // 选择后状态
-        alertify.confirm('提示', '您确认要删除数据?', function(){
-          var valuelist = [];
-            $("input[name='delete']:checked").each(function () {
-              var inputval = $(this).val()
-              valuelist.push(inputval);
-            });
-            axios.delete('{{route('orders.destroy')}}', {
-              data: {
-                ids: valuelist
+    //     alertify.confirm('提示', '您确认要删除数据?', function(){
+    //       var valuelist = [];
+    //         $("input[name='delete']:checked").each(function () {
+    //           var inputval = $(this).val()
+    //           valuelist.push(inputval);
+    //         });
+    //         axios.delete('{{route('orders.destroy')}}', {
+    //           data: {
+    //             ids: valuelist
+    //           }
+    //         }).then(res => {
+    //           // swal('删除成功!')
+    //           alertify.success('删除成功')
+    //           location.reload()
+    //         })
+    //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
+    $.confirm({
+        title: '提示',
+        content: '您确认要删除数据?',
+        buttons: {
+            ok: {
+                text: '确认',
+                btnClass:  'btn-danger',
+                action: function() {
+                  var valuelist = [];
+                  $("input[name='delete']:checked").each(function () {
+                  var inputval = $(this).val()
+                  valuelist.push(inputval);
+                });
+                axios.delete('{{route('orders.destroy')}}', {
+                data: {
+                  ids: valuelist
+                }
+                }).then(res => {
+                  toastr.success('删除成功');
+                  location.reload()
+                })
               }
-            }).then(res => {
-              // swal('删除成功!')
-              alertify.success('删除成功')
-              location.reload()
-            })
-     }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
+            },
+            cancel: {
+                text: '取消',
+                btnClass: 'btn-info'
+            }
+        }
+    });
         // swal({
         //   title: "您确认要删除数据?",
         //   icon: "warning",
