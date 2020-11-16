@@ -61,6 +61,7 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确!');
                 }
+                dd($request->code);
                 if($code = $request->code) {
                     $price = $this->calcPrice($order, $request->code);
                 }
