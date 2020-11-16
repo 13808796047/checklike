@@ -186,8 +186,8 @@
                 btnClass: 'btn-info'
             }
         }
-        });
-      })
+      });
     })
+  })
   </script>
 @stop
