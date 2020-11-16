@@ -72,8 +72,8 @@
           <td>{{ $order->orderid }}</td>
         </tr>
         <tr style="max-width:125px;">
-          <td >论文题目</td>
-          <td>{{$order->title}}</td>
+          <td style="max-width:125px;">论文题目</td>
+          <td style="max-width:125px;">{{$order->title}}</td>
         </tr>
         <tr>
           <td>论文作者</td>
