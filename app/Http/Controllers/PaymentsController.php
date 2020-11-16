@@ -63,8 +63,10 @@ class PaymentsController extends Controller
                 }
                 if($code = $request->code) {
                     $price = $this->calcPrice($order, $request->code);
+                } else {
+                    $price = $order->price;
                 }
-                $price = $order->price;
+
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
@@ -136,13 +138,10 @@ class PaymentsController extends Controller
         if(!$coupon_code) {
             throw new CouponCodeUnavailableException('优惠券不存在');
         }
-        if($coupon_code != $order->cid) {
-            throw new CouponCodeUnavailableException('系统不支持此卡券');
-        }
         $coupon_code->checkAvailable($order->user, $order->price);
         $totalAmount = $coupon_code->getAdjustedPrice($order->price);
         // 将订单与优惠券关联
-        $order->couponCode()->associate($coupon);
+        $order->couponCode()->associate($coupon_code);
         $order->couponCode->status = 'used';
         $order->save();
         // 如果用户通过Api请求,则返回JSON格式的错误信息
@@ -239,8 +238,9 @@ class PaymentsController extends Controller
                 }
                 if($code = $request->code) {
                     $price = $this->calcPrice($order, $request->code);
+                } else {
+                    $price = $order->price;
                 }
-                $price = $order->price;
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
