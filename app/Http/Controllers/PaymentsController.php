@@ -62,6 +62,7 @@ class PaymentsController extends Controller
                     throw new InvalidRequestException('订单状态不正确!');
                 }
                 $totalAmount = $this->calcPrice($order, $request->code);
+                dd($totalAmount);
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
