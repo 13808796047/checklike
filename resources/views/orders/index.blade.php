@@ -27,7 +27,7 @@
         @foreach($orders as $order)
           <tr>
             <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
-            <td style="overflow: hidden;text-overflow:ellipsis; white-space: nowrap;">{{$order->title}}</td>
+            <td>{{$order->title}}</td>
             <td>{{ $order->category->name ?? '' }}</td>
             <td>{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
             <td>{{ $order->rate }}</td>
