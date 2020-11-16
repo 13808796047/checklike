@@ -71,7 +71,7 @@
           <td >订单编号</td>
           <td>{{ $order->orderid }}</td>
         </tr>
-        <tr>
+        <tr style="max-width:125px;">
           <td >论文题目</td>
           <td>{{$order->title}}</td>
         </tr>
@@ -266,7 +266,6 @@
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
         let order = {!!$order!!}
-        console.log(order,"fsajdfjsdf")
         $("#codeTcDialog").modal("show")
         $('#codeurl').attr("src", `/payments/${order.id}/wechat/order`);
         // swal({
