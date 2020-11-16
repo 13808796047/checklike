@@ -68,7 +68,7 @@
           @if($item->type =="fixed")
             ￥{{$item->value}}
           @else
-            {{$item->value}}折
+            {{$item->description}}
           @endif
         </div>
         <div style="text-align:center;font-size:11px;">
@@ -98,7 +98,7 @@
           @if($item->type =="fixed")
             ￥{{$item->value}}
           @else
-            {{$item->value}}折
+            {{$item->description}}
           @endif
         </div>
         <div style="text-align:center;font-size:11px;">
