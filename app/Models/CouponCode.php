@@ -108,7 +108,7 @@ class CouponCode extends Model
             return $str . '减' . str_replace('.00', '', $this->value);
         }
         if($this->type === self::TYPE_PERCENT) {
-            return $str . str_replace('.00', '', $this->value) . '折';
+            return $str . str_replace('0.00', '', $this->value) . '折';
         }
 
     }
