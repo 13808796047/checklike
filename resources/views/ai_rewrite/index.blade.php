@@ -184,9 +184,8 @@
                 btnClass:  'btn-danger',
                 action: function() {
                   $("#content").val("")
-                  console.log($("#words span"))
-                 $("#words span").text(0)
-              }
+                  $("#words span").text(0)
+                }
             },
             cancel: {
                 text: '取消',
