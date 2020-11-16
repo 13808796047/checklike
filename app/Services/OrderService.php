@@ -93,13 +93,20 @@ class OrderService
                 'keyword' => $referer['keyword']
             ]);
             $order->user()->associate($user);
+            if(!$user->is_free) {
+                throw new InvalidRequestException('你的免费次数已用完');
+            }
             // 如果是会员
             if($user->user_group == 3 && $user->is_free && $category->id == 1) {
                 $price = max($price - $category->price, 0);
             }
+            // 非会员
             if($user->is_free && $category->id == 1) {
 //                if($user->weixin_openid || $user->weapp_openid) {
                 $price = max($price - $category->price, 0);
+                $user->update([
+                    'is_free' => false
+                ]);
 //                }
             }
             $order->price = $price;
