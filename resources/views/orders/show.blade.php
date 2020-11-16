@@ -247,7 +247,7 @@
           //当前价格
           axios.get(`/orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
             let currentPrice =  {{$order->price}} //当前订单价格
-            $("#sjprice").text(res.data)
+            $("#sjprice").text(res.data+"元")
             $("#yhje").text((currentPrice-res.data).toFixed(2))
             $("#dingdanprice").css("display","block")
           }).catch(err=>{
