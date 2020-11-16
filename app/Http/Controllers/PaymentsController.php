@@ -142,7 +142,7 @@ class PaymentsController extends Controller
 //        $coupon_code->checkAvailable($order->user, $order->price);
         $totalAmount = $coupon_code->getAdjustedPrice($order->price);
         // 将订单与优惠券关联
-        $order->couponCode()->associate($coupon);
+        $order->couponCode()->associate($coupon_code);
         $order->couponCode->status = 'used';
         $order->save();
         // 如果用户通过Api请求,则返回JSON格式的错误信息
