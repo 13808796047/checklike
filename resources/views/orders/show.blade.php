@@ -240,10 +240,11 @@
             countPrice($(this))
           })
        }
+       var clickCode =""
        //计算价格
        function countPrice(e){
           //当前CODE
-          let clickCode = e.find('.codedisplay').text()
+          clickCode = e.find('.codedisplay').text()
           //当前价格
           axios.get(`/orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
             let currentPrice =  {{$order->price}} //当前订单价格
@@ -291,7 +292,7 @@
       $('#bottonsubmit').click(function(){
         console.log("xixi")
         let order = {!!$order!!};
-        location.href=`/payments/${order.id}/alipay/order`
+        location.href=`/payments/${order.id}/alipay/order?code=${clickCode}`
       })
     });
   </script>
