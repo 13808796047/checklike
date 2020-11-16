@@ -196,8 +196,6 @@
          changeCoupon(couponArr)
        }).catch(err=>{})
 
-      //判断是否选择
-
        function changeCoupon(item){
         let currentCid = {!!$order->cid!!} //当前订单CID
         let currentPrice =  {{$order->price}} //当前订单价格
@@ -267,7 +265,8 @@
       })
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
-        console.log($(".cardToast").children().hasClass("currentBoder"))
+
+
         let order = {!!$order!!}
         $("#codeTcDialog").modal("show")
         $('#codeurl').attr("src", `/payments/${order.id}/wechat/order`);
@@ -293,7 +292,11 @@
       //支付宝
       $('#bottonsubmit').click(function(){
         let order = {!!$order!!};
-        console.log(`/payments/${order.id}/alipay/order?code=${clickCode}`)
+        //判断是否选择优惠
+        let isCode = $(".cardToast").children().hasClass("currentBoder")
+        if(!isCode){
+          clickCode = ""
+        }
         location.href=`/payments/${order.id}/alipay/order?code=${clickCode}`
       })
     });
