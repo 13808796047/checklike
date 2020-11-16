@@ -267,7 +267,7 @@
       })
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
-        console.log($(".cardToast").children())
+        console.log($(".cardToast").children().hasClass("currentBoder"))
         let order = {!!$order!!}
         $("#codeTcDialog").modal("show")
         $('#codeurl').attr("src", `/payments/${order.id}/wechat/order`);
