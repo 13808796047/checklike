@@ -61,12 +61,14 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确!');
                 }
-                $totalAmount = $this->calcPrice($order, $request->code);
-                dd($totalAmount);
+                if($code = $request->code) {
+                    $price = $this->calcPrice($order, $request->code);
+                }
+                $price = $order->price;
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
-                    'total_amount' => $totalAmount, // 订单金额，单位元，支持小数点后两位
+                    'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
                     'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
                 ]);
         }
@@ -235,11 +237,14 @@ class PaymentsController extends Controller
                 if($order->status == 1 || $order->del) {
                     throw new InvalidRequestException('订单状态不正确');
                 }
-                $totalAmount = $this->calcPrice($order, $request->code);
+                if($code = $request->code) {
+                    $price = $this->calcPrice($order, $request->code);
+                }
+                $price = $order->price;
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
-                    'total_fee' => $totalAmount * 100, // 与支付宝不同，微信支付的金额单位是分。
+                    'total_fee' => $price * 100, // 与支付宝不同，微信支付的金额单位是分。
                     'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
                 ]);
                 //把要转换的字符串作为QrCode的构造函数
