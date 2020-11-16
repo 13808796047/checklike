@@ -291,6 +291,7 @@
       //支付宝
       $('#bottonsubmit').click(function(){
         let order = {!!$order!!};
+        console.log(`/payments/${order.id}/alipay/order?code=${clickCode}`)
         location.href=`/payments/${order.id}/alipay/order?code=${clickCode}`
       })
     });
