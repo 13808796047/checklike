@@ -289,6 +289,7 @@
       })
       //支付宝
       $('#bottonsubmit').click(function(){
+        console.log("xixi")
        let order = {!!$order!!};
        location.href=`/payments/${order.id}/alipay/order`
      })
