@@ -133,13 +133,13 @@ class PaymentsController extends Controller
         // 如果用户提交了优惠码
 
         $coupon_code = CouponCode::where('code', $code)->first();
-        if(!$coupon_code) {
-            throw new CouponCodeUnavailableException('优惠券不存在');
-        }
-        if($coupon_code->cid != $order->cid) {
-            throw new CouponCodeUnavailableException('系统不支持此卡券');
-        }
-        $coupon_code->checkAvailable($order->user, $order->price);
+//        if(!$coupon_code) {
+//            throw new CouponCodeUnavailableException('优惠券不存在');
+//        }
+//        if($coupon_code->cid != $order->cid) {
+//            throw new CouponCodeUnavailableException('系统不支持此卡券');
+//        }
+//        $coupon_code->checkAvailable($order->user, $order->price);
         $totalAmount = $coupon_code->getAdjustedPrice($order->price);
         // 将订单与优惠券关联
         $order->couponCode()->associate($coupon);
