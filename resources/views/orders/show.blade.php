@@ -198,7 +198,6 @@
 
       //判断是否选择
 
-      currentBoder
        function changeCoupon(item){
         let currentCid = {!!$order->cid!!} //当前订单CID
         let currentPrice =  {{$order->price}} //当前订单价格
