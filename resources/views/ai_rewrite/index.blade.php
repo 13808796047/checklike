@@ -175,8 +175,26 @@
   }
   //清空内容
   $("#clearcontainer").click(()=>{
-    $("#content").val("")
-    $("#words span").val(0)
+    $.confirm({
+        title: '提示',
+        content: '您确认要清空内容吗?',
+        buttons: {
+            ok: {
+                text: '确认',
+                btnClass:  'btn-danger',
+                action: function() {
+                  $("#content").val("")
+                  console.log($("#words span"))
+                 $("#words span").text(0)
+              }
+            },
+            cancel: {
+                text: '取消',
+                btnClass: 'btn-info'
+            }
+        }
+      });
+
   })
   var optionVal = "3"
   function optionChange(){
