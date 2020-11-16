@@ -114,7 +114,7 @@
            <div style="margin-top:10px;">
 
               <button type="button" class="btn btn-primary" id="aiSubmitBtn">提交</button>
-              <button type="button" class="btn btn-secondary">清除内容</button>
+              <button type="button" class="btn btn-secondary" id="clearcontainer">清除内容</button>
 
              <p style="float: right;font-size: 13px;padding-right: 30px;" id="words">当前输入<span>0</span>字</p>
           </div>
@@ -173,7 +173,10 @@
         }
     }
   }
-
+  //清空内容
+  $("#clearcontainer").click(()=>{
+    $("#content").val("")
+  })
   var optionVal = "3"
   function optionChange(){
     var sel=document.getElementById('sel');
