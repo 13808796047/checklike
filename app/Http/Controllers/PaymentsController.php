@@ -136,7 +136,7 @@ class PaymentsController extends Controller
         if(!$coupon_code) {
             throw new CouponCodeUnavailableException('优惠券不存在');
         }
-        if($coupon_code != $order->cid) {
+        if($coupon_code->cid != $order->cid) {
             throw new CouponCodeUnavailableException('系统不支持此卡券');
         }
         $coupon_code->checkAvailable($order->user, $order->price);
