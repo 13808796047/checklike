@@ -15,7 +15,7 @@
         <thead class="thead-dark">
         <tr>
           <th scope="col"><input type="checkbox" id="allcheck"></th>
-          <th scope="col" style="max-width:125px;">论文题目</th>
+          <th scope="col" style="width:125px;">论文题目</th>
           <th scope="col">系统名称</th>
           <th scope="col">状态</th>
           <th scope="col">检测结果</th>
@@ -27,7 +27,7 @@
         @foreach($orders as $order)
           <tr>
             <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
-            <td>{{$order->title}}</td>
+            <td style="overflow: hidden;text-overflow:ellipsis; white-space: nowrap;">{{$order->title}}</td>
             <td>{{ $order->category->name ?? '' }}</td>
             <td>{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
             <td>{{ $order->rate }}</td>
