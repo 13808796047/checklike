@@ -68,7 +68,6 @@ class CouponCodesController extends Controller
         // 如果用户提交了优惠码
         $user = $request->user();
         $coupon_code = CouponCode::where('code', $request->code)->first();
-        dd($coupon_code);
         if(!$coupon_code) {
             throw new CouponCodeUnavailableException('优惠券不存在');
         }
