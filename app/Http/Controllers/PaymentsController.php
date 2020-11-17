@@ -68,10 +68,7 @@ class PaymentsController extends Controller
                 } else {
                     $price = $order->price;
                 }
-                dd($order->user->is_free);
-                if($order->user->is_free) {
-                    $this->freePay($order);
-                } else {
+                if(!$order->user->is_free) {
                     // 调用支付宝的网页支付
                     return app('alipay')->web([
                         'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
@@ -79,7 +76,7 @@ class PaymentsController extends Controller
                         'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
                     ]);
                 }
-
+                $this->freePay($order);
         }
     }
 
