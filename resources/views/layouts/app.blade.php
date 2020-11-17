@@ -87,7 +87,6 @@
 
 @yield('scripts')
 <script !src="">
-  console.log(Router::currentRouteName(),"fasdfsadf")
   //退出登录
   toastr.options = {
     positionClass: "toast-center-center",
