@@ -97,23 +97,17 @@ class OrderService
             if(!$user->is_free) {
                 throw new InvalidRequestException('你的免费次数已用完');
             }
-
-            // 如果是会员
-            if($user->user_group == 3 && $user->is_free && $category->id == 1) {
-//                $price = max($price - $category->price, 0);
-                $price = max($words - 10000, 0) * $category->vip_price;
+            if($user->is_free && $category->id == 1) {
+                if($user->user_group == 3) {
+                    $price = max($words - 10000, 0) * $category->vip_price;
+                } else {
+                    $price = max($words - 10000, 0) * $category->price;
+                }
+                $user->update([
+                    'is_free' => false
+                ]);
                 dispatch(new UpdateIsFree($user))->delay(now()->addDay());
             }
-            // 非会员
-            if($user->is_free && $category->id == 1) {
-//                if($user->weixin_openid || $user->weapp_openid) {
-                $price = max($words - 10000, 0) * $category->price;
-
-//                }
-            }
-            $user->update([
-                'is_free' => false
-            ]);
             $order->price = $price;
             $order->save();
             if(isset($file)) {
