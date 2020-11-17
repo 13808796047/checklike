@@ -18,18 +18,18 @@
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
             @else
             <li id="headerfree"><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-            <li class="nav-item dropdown" style="display: inline;display:none;" id="headerfree1">
-              <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-          定稿查重
-              </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
-              <div class="dropdown-divider"></div>
-                <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
-                </div>
-            </li>
+            <div class="btn-group" id="headerfree1" style="display:none;">
+               <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
             @endguest
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
