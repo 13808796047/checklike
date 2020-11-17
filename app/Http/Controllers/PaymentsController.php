@@ -66,7 +66,9 @@ class PaymentsController extends Controller
                 } else {
                     $price = $order->price;
                 }
-
+                if($price == 0) {
+                    $this->freePay($order);
+                }
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
@@ -89,9 +91,6 @@ class PaymentsController extends Controller
     public function freePay(Order $order)
     {
         $this->authorize('own', $order);
-        if($order->status == 1 || $order->del || $order->category->id != 1 || !$order->user->is_free) {
-            throw new InvalidRequestException('订单状态不正确!');
-        }
         $order->update([
             'date_pay' => Carbon::now(), // 支付时间
             'pay_type' => '免费检测', // 支付方式
@@ -99,8 +98,6 @@ class PaymentsController extends Controller
             'pay_price' => $order->price,//支付金额
             'status' => 1,
         ]);
-        $order->user->is_free = false;
-        $order->user->save();
         $this->afterOrderPaid($order);
         $this->afterPaidMsg($order);
         return response(compact('order'), 200);
@@ -238,6 +235,9 @@ class PaymentsController extends Controller
                     $price = $this->calcPrice($order, $request->code);
                 } else {
                     $price = $order->price;
+                }
+                if($price == 0) {
+                    $this->freePay($order);
                 }
                 // scan 方法为拉起微信扫码支付
                 $wechatOrder = app('wechat_pay')->scan([
