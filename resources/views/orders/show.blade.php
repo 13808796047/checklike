@@ -135,11 +135,12 @@
 				<a type="button" id="btn-wechat" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
 						class="btn btn-primary btn-sm sbtn">提交</a>
 	</div>
+      <div id="iszero" style="display:none;">
+          <p style="font-size: 13px;color:gray;">本次订单免费检测，限10000字内，每日一次。</p>
+          <p style="color:#fff;background: red;width: 10%;margin: 0 auto;text-align:center;" id="freefee">提交</p>
        </div>
-       <div id="iszero" style="displaynone;">
-          <p>本次订单免费检测，限1000字内，每日一次。</p>
-          <p>提交</p>
        </div>
+
 	<div class="rbox fr">
 		<div style="background:#fff;padding:20px;">
 		    <b>1、检测结果是否准确？</b>
@@ -194,8 +195,24 @@
       //  }).catch(err=>{
       //    console.log(err,"错误")
       //  })
+       let curPrice = {{$order->price}};
+       if(curPrice==0){
+         $("#iszero").css("display","block")
+         $("#isfeizero").css("display","none")
+       }else{
+        $("#iszero").css("display","none")
+         $("#isfeizero").css("display","block")
+       }
+
 
        let currentId = {!!$order->id!!}
+
+       $("#freefee").click(()=>{
+          axios.get(`/payments/${currentId}/free_pay`).then(res=>{
+              location.href = "/orders"
+          })
+       })
+
        axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
         console.log(res,"fsafs")
         couponArr=res.data.data;
