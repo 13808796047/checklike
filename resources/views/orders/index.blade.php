@@ -158,7 +158,7 @@
           return
         }
         // 选择后状态
-    $.confirm({
+      $.confirm({
         title: '提示',
         content: '您确认要删除数据?',
         buttons: {
