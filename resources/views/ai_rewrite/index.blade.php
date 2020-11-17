@@ -201,6 +201,18 @@
     var sid=sel.selectedIndex;
     optionVal = sel[sid].value
   }
+  //增加降重字数
+  $("#addjctime").click(()=>{
+    let current = Number($("#curjctime").text())+1;
+    $("#curjctime").text(current)
+  })
+  //减少降重次数
+  $("#cutjctime").click(()=>{
+    let current = Number($("#curjctime").text());
+    if(current==1) return;
+    let cur = current -1;
+    $("#curjctime").text(cur)
+  })
   // 增加次数
   $("#addjctimes").click(()=>{
         $('#exampleModal').modal('hide')
