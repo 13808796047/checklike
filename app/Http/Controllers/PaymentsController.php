@@ -68,6 +68,7 @@ class PaymentsController extends Controller
                 } else {
                     $price = $order->price;
                 }
+                dd($order->user->is_free);
                 if($order->user->is_free) {
                     $this->freePay($order);
                 } else {
