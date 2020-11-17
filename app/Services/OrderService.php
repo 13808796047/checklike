@@ -98,7 +98,7 @@ class OrderService
                 throw new InvalidRequestException('你的免费次数已用完');
             }
             if($user->is_free && $category->id == 1) {
-                dd($user->is_free);
+
                 if($user->user_group == 3) {
                     $price = max($words - 10000, 0) * $category->vip_price;
                 } else {
@@ -107,6 +107,7 @@ class OrderService
                 $user->update([
                     'is_free' => false
                 ]);
+                dd($user->is_free);
                 dispatch(new UpdateIsFree($user))->delay(now()->addDay());
             }
             $order->price = $price;
