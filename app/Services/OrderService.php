@@ -94,11 +94,7 @@ class OrderService
                 'keyword' => $referer['keyword']
             ]);
             $order->user()->associate($user);
-            if(!$user->is_free) {
-                throw new InvalidRequestException('你的免费次数已用完');
-            }
             if($user->is_free && $category->id == 1) {
-
                 if($user->user_group == 3) {
                     $price = max($words - 10000, 0) * $category->vip_price;
                 } else {
