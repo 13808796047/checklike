@@ -87,7 +87,7 @@
 
 @yield('scripts')
 <script !src="">
-console.log({!!router!!})
+console.log({{router}})
   //退出登录
   toastr.options = {
     positionClass: "toast-center-center",
