@@ -54,7 +54,7 @@
   <!-- 购买降重字数模态框 -->
   @auth
   <div class="modal fade bd-example-modal-sm" id="jctimeModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    aria-labelledby="exampleModalLabel" aria-hidden="true" style="user-select: none;">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -66,7 +66,7 @@
         <div class="modal-body" style="text-align:center;">
           <p>购买自动降重次数</p>
           <p style="margin: 6px 0;font-size: 11px;color: #F4A460;">(价格:1元/次)</p>
-          <p>请输入购买次数<span style="padding:0 10px;" id="cutjctime">-</span><span style="border: 1px solid;padding: 3px;" id="curjctime">10</span><span style="padding:0 10px;" id="addjctime">+</span></p>
+          <p>请输入购买次数<span style="padding:0 10px;cursor:pointer" id="cutjctime">-</span><span style="border: 1px solid;padding: 3px;" id="curjctime">10</span><span style="padding:0 10px;cursor:pointer" id="addjctime">+</span></p>
         </div>
         <div class="modal-footer">
           <p style="color:#4876FF;margin-right:25%;" id="freeadd">免费增加</p>
