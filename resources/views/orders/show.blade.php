@@ -196,7 +196,7 @@
       //    console.log(err,"错误")
       //  })
        let curPrice = =  {{$order->price}};
-       if(curPrice==0){
+       if(curPrice=="0"){
          $("#iszero").css("display","block")
          $("#isfeizero").css("display","none")
        }else{
