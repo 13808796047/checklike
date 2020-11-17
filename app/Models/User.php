@@ -107,5 +107,6 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
         'subscribe_time' => 'datetime',
+        'is_free'=>'boolean'
     ];
 }

@@ -100,13 +100,14 @@ class OrderService
 
             // 如果是会员
             if($user->user_group == 3 && $user->is_free && $category->id == 1) {
-                $price = max($price - $category->price, 0);
+//                $price = max($price - $category->price, 0);
+                $price = max($words - 10000, 0) * $category->vip_price;
                 dispatch(new UpdateIsFree($user))->delay(now()->addDay());
             }
             // 非会员
             if($user->is_free && $category->id == 1) {
 //                if($user->weixin_openid || $user->weapp_openid) {
-                $price = max($price - $category->price, 0);
+                $price = max($words - 10000, 0) * $category->price;
 
 //                }
             }
