@@ -201,7 +201,7 @@
          $("#isfeizero").css("display","none")
        }else{
         $("#iszero").css("display","none")
-         $("#isfeizero").css("display","black")
+         $("#isfeizero").css("display","block")
        }
 
 
