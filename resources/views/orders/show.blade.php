@@ -135,11 +135,12 @@
 				<a type="button" id="btn-wechat" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
 						class="btn btn-primary btn-sm sbtn">提交</a>
 	</div>
-       </div>
-       <div id="iszero" style="displaynone;">
+  <div id="iszero" style="displaynone;">
           <p>本次订单免费检测，限1000字内，每日一次。</p>
           <p>提交</p>
        </div>
+       </div>
+
 	<div class="rbox fr">
 		<div style="background:#fff;padding:20px;">
 		    <b>1、检测结果是否准确？</b>
