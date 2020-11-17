@@ -107,7 +107,6 @@ class OrderService
                 $user->update([
                     'is_free' => false
                 ]);
-                dd($user->is_free);
                 dispatch(new UpdateIsFree($user))->delay(now()->addDay());
             }
             $order->price = $price;
