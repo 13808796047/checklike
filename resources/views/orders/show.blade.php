@@ -136,8 +136,8 @@
 						class="btn btn-primary btn-sm sbtn">提交</a>
 	</div>
       <div id="iszero" style="display:none;">
-          <p style="font-size: 13px;color:gray;">本次订单免费检测，限1000字内，每日一次。</p>
-          <p style="color:#fff;background: red;width: 10%;margin: 0 auto;" id="freefee">提交</p>
+          <p style="font-size: 13px;color:gray;">本次订单免费检测，限10000字内，每日一次。</p>
+          <p style="color:#fff;background: red;width: 10%;margin: 0 auto;text-align:center;" id="freefee">提交</p>
        </div>
        </div>
 
