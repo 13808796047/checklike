@@ -11,6 +11,7 @@ use App\Jobs\CheckOrderStatus;
 use App\Jobs\CloudCouvertFile;
 use App\Jobs\OrderPaidMsg;
 use App\Jobs\OrderPendingMsg;
+use App\Jobs\UpdateIsFree;
 use App\Models\CouponCode;
 use App\Models\Order;
 use App\Models\Recharge;
@@ -21,6 +22,7 @@ use http\Exception\InvalidArgumentException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Uuid;
 use Yansongda\Pay\Exceptions\GatewayException;
@@ -66,7 +68,7 @@ class PaymentsController extends Controller
                 } else {
                     $price = $order->price;
                 }
-                if($price == 0) {
+                if($order->user->is_free) {
                     $this->freePay($order);
                 }
                 // 调用支付宝的网页支付
@@ -91,13 +93,20 @@ class PaymentsController extends Controller
     public function freePay(Order $order)
     {
         $this->authorize('own', $order);
-        $order->update([
-            'date_pay' => Carbon::now(), // 支付时间
-            'pay_type' => '免费检测', // 支付方式
-            'payid' => time(), // 支付宝订单号
-            'pay_price' => $order->price,//支付金额
-            'status' => 1,
-        ]);
+        $order = DB::transaction(function() use ($order) {
+            $order->update([
+                'date_pay' => Carbon::now(), // 支付时间
+                'pay_type' => '免费检测', // 支付方式
+                'payid' => time(), // 支付宝订单号
+                'pay_price' => $order->price,//支付金额
+                'status' => 1,
+            ]);
+            $order->user()->update([
+                'is_free' => false
+            ]);
+            return $order;
+        });
+        dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
         $this->afterOrderPaid($order);
         $this->afterPaidMsg($order);
         return response(compact('order'), 200);
@@ -236,7 +245,7 @@ class PaymentsController extends Controller
                 } else {
                     $price = $order->price;
                 }
-                if($price == 0) {
+                if($order->user->is_free) {
                     $this->freePay($order);
                 }
                 // scan 方法为拉起微信扫码支付

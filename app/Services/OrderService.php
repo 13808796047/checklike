@@ -100,10 +100,6 @@ class OrderService
                 } else {
                     $order->price = max($words - 10000, 0) * $category->price;
                 }
-                $user->update([
-                    'is_free' => false
-                ]);
-                dispatch(new UpdateIsFree($user))->delay(now()->addDay());
             } else {
                 $order->price = $price;
             }
