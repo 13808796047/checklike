@@ -133,7 +133,6 @@ class PaymentsController extends Controller
     public function calcPrice(Order $order, $code)
     {
         // 如果用户提交了优惠码
-
         $coupon_code = CouponCode::where('code', $code)->first();
         if(!$coupon_code) {
             throw new CouponCodeUnavailableException('优惠券不存在');
