@@ -70,13 +70,15 @@ class PaymentsController extends Controller
                 }
                 if($order->user->is_free) {
                     $this->freePay($order);
+                } else {
+                    // 调用支付宝的网页支付
+                    return app('alipay')->web([
+                        'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
+                        'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
+                        'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
+                    ]);
                 }
-                // 调用支付宝的网页支付
-                return app('alipay')->web([
-                    'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
-                    'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
-                    'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
-                ]);
+
         }
     }
 
@@ -247,17 +249,19 @@ class PaymentsController extends Controller
                 }
                 if($order->user->is_free) {
                     $this->freePay($order);
+                } else {
+                    // scan 方法为拉起微信扫码支付
+                    $wechatOrder = app('wechat_pay')->scan([
+                        'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
+                        'total_fee' => $price * 100, // 与支付宝不同，微信支付的金额单位是分。
+                        'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
+                    ]);
+                    //把要转换的字符串作为QrCode的构造函数
+                    $qrCode = new QrCode($wechatOrder->code_url);
+                    //将生成的二维码图片数据以字符串形式输出，并带上相应的响应类型
+                    return response($qrCode->writeString(), 200, ['Content-Type' => $qrCode->getContentType()]);
                 }
-                // scan 方法为拉起微信扫码支付
-                $wechatOrder = app('wechat_pay')->scan([
-                    'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
-                    'total_fee' => $price * 100, // 与支付宝不同，微信支付的金额单位是分。
-                    'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
-                ]);
-                //把要转换的字符串作为QrCode的构造函数
-                $qrCode = new QrCode($wechatOrder->code_url);
-                //将生成的二维码图片数据以字符串形式输出，并带上相应的响应类型
-                return response($qrCode->writeString(), 200, ['Content-Type' => $qrCode->getContentType()]);
+
 
         }
     }
