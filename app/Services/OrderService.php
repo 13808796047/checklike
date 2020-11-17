@@ -94,26 +94,15 @@ class OrderService
                 'keyword' => $referer['keyword']
             ]);
             $order->user()->associate($user);
-            if(!$user->is_free) {
-                throw new InvalidRequestException('你的免费次数已用完');
+            if($category->id == 1 && $user->is_free) { // checklike
+                if($user->user_group == 3) { // 会员
+                    $order->price = max($words - 10000, 0) * $category->vip_price;
+                } else {
+                    $order->price = max($words - 10000, 0) * $category->price;
+                }
+            } else {
+                $order->price = $price;
             }
-
-            // 如果是会员
-            if($user->user_group == 3 && $user->is_free && $category->id == 1) {
-                $price = max($price - $category->price, 0);
-                dispatch(new UpdateIsFree($user))->delay(now()->addDay());
-            }
-            // 非会员
-            if($user->is_free && $category->id == 1) {
-//                if($user->weixin_openid || $user->weapp_openid) {
-                $price = max($price - $category->price, 0);
-
-//                }
-            }
-            $user->update([
-                'is_free' => false
-            ]);
-            $order->price = $price;
             $order->save();
             if(isset($file)) {
                 $file->update([

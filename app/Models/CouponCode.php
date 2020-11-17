@@ -114,15 +114,15 @@ class CouponCode extends Model
     }
 
     // 检查折扣卡
-    public function checkAvailable(User $user, $orderAmount = null)
+    public function checkAvailable($orderAmount = null)
     {
-        if(!$this->status == 'used') {
-            throw new CouponCodeUnavailableException('卡券已经使用!');
+        if($this->status == self::STATUS_USED) {
+            throw new CouponCodeUnavailableException('你已经使用过这张优惠券了');
         }
-        if(!$this->status == 'actived') {
+        if(!$this->status == self::STATUS_UNACTIVED) {
             throw new CouponCodeUnavailableException('卡券未激活!');
         }
-        if(is_null($orderAmount) && $this->status == 'actived') {
+        if(is_null($orderAmount) && $this->status == self::STATUS_ACTIVED) {
             throw new CouponCodeUnavailableException('卡券已激活!');
         }
         if($this->enable_days <= 0) {
@@ -134,17 +134,17 @@ class CouponCode extends Model
         if(!is_null($orderAmount) && $orderAmount < $this->min_amount) {
             throw new CouponCodeUnavailableException('订单金额不满足该优惠券最低金额');
         }
-        $used = Order::where('userid', $user->id)
-            ->where('coupon_code_id', $this->id)
-            ->where(function($query) {
-                $query->whereNull('date_pay');
-            })->orWhere(function($query) {
-                $query->whereNotNull('deleted_at');
-            })
-            ->exists();
-        if($used) {
-            throw new CouponCodeUnavailableException('你已经使用过这张优惠券了');
-        }
+//        $used = Order::where('userid', $user->id)
+//            ->where('coupon_code_id', $this->id)
+//            ->where(function($query) {
+//                $query->whereNull('date_pay');
+//            })->orWhere(function($query) {
+//                $query->whereNotNull('deleted_at');
+//            })
+//            ->exists();
+//        if($used) {
+//            throw new CouponCodeUnavailableException('你已经使用过这张优惠券了');
+//        }
     }
 
     public function getAdjustedPrice($orderAmount)

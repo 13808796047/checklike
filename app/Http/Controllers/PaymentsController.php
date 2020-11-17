@@ -11,6 +11,7 @@ use App\Jobs\CheckOrderStatus;
 use App\Jobs\CloudCouvertFile;
 use App\Jobs\OrderPaidMsg;
 use App\Jobs\OrderPendingMsg;
+use App\Jobs\UpdateIsFree;
 use App\Models\CouponCode;
 use App\Models\Order;
 use App\Models\Recharge;
@@ -21,6 +22,7 @@ use http\Exception\InvalidArgumentException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Uuid;
 use Yansongda\Pay\Exceptions\GatewayException;
@@ -67,12 +69,12 @@ class PaymentsController extends Controller
                     $price = $order->price;
                 }
 
-                // 调用支付宝的网页支付
                 return app('alipay')->web([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
                     'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
                     'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
                 ]);
+
         }
     }
 
@@ -89,24 +91,27 @@ class PaymentsController extends Controller
     public function freePay(Order $order)
     {
         $this->authorize('own', $order);
-        if($order->status == 1 || $order->del || $order->category->id != 1 || !$order->user->is_free) {
-            throw new InvalidRequestException('订单状态不正确!');
-        }
-        $order->update([
-            'date_pay' => Carbon::now(), // 支付时间
-            'pay_type' => '免费检测', // 支付方式
-            'payid' => time(), // 支付宝订单号
-            'pay_price' => $order->price,//支付金额
-            'status' => 1,
-        ]);
-        $order->user->is_free = false;
-        $order->user->save();
+        $order = DB::transaction(function() use ($order) {
+            $order->update([
+                'date_pay' => Carbon::now(), // 支付时间
+                'pay_type' => '免费检测', // 支付方式
+                'payid' => time(), // 支付宝订单号
+                'pay_price' => $order->price,//支付金额
+                'status' => 1,
+            ]);
+            $order->user()->update([
+                'is_free' => false
+            ]);
+            return $order;
+        });
+        dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
         $this->afterOrderPaid($order);
         $this->afterPaidMsg($order);
-        return response(compact('order'), 200);
+        $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(10);
+        return view('orders.index', compact('orders'));
     }
 
-    // 前端回调页面
+// 前端回调页面
     public function alipayReturn()
     {
         try {
@@ -133,22 +138,20 @@ class PaymentsController extends Controller
     public function calcPrice(Order $order, $code)
     {
         // 如果用户提交了优惠码
-
         $coupon_code = CouponCode::where('code', $code)->first();
         if(!$coupon_code) {
             throw new CouponCodeUnavailableException('优惠券不存在');
         }
-        $coupon_code->checkAvailable($order->user, $order->price);
+        $coupon_code->checkAvailable($order->price);
         $totalAmount = $coupon_code->getAdjustedPrice($order->price);
         // 将订单与优惠券关联
         $order->couponCode()->associate($coupon_code);
-        $order->couponCode->status = 'used';
         $order->save();
         // 如果用户通过Api请求,则返回JSON格式的错误信息
         return $totalAmount;
     }
 
-    // 服务器端回调
+// 服务器端回调
     public function alipayNotify()
     {
         // 校验输入参数
@@ -205,7 +208,7 @@ class PaymentsController extends Controller
         }
     }
 
-    //微信支付
+//微信支付
     public function wechatPay(Request $request)
     {
         $id = $request->id;
@@ -251,11 +254,10 @@ class PaymentsController extends Controller
                 $qrCode = new QrCode($wechatOrder->code_url);
                 //将生成的二维码图片数据以字符串形式输出，并带上相应的响应类型
                 return response($qrCode->writeString(), 200, ['Content-Type' => $qrCode->getContentType()]);
-
         }
     }
 
-    //微信支付
+//微信支付
     public function wechatPayWap(Order $order, Request $request)
     {
         //校验权限
@@ -383,27 +385,28 @@ class PaymentsController extends Controller
     {
         event(new RechargePaid($recharge));
     }
-    //百度回调
+
+//百度回调
     /*
      *   [unitPrice] => 100 //单价分
-	    [orderId] => 81406526123456 //百度平台订单ID【幂等性标识参数】(用于重入判断)
-	    [payTime] => 1573875414 //支付完成时间，时间戳
-	    [dealId] => 436123456 //百度收银台的财务结算凭证
-	    [tpOrderId] => a11358de8febff55ea78e1 //业务方唯一订单号
-	    [count] => 1 //数量
-	    [totalMoney] => 3 //订单的实际金额，单位：分
-	    [hbBalanceMoney] => 0 //余额支付金额
-	    [userId] => 2091123456   //百度用户ID
-	    [promoMoney] => 0 //营销优惠金额
-	    [promoDetail] => //订单参与的促销优惠的详细信息
-	    [hbMoney] => 0  //红包支付金额
-	    [giftCardMoney] => 0 //抵用券金额
-	    [payMoney] => 3 //实付金额 扣除各种优惠后用户还需要支付的金额，单位：分
-	    [payType] => 1117 //支付渠道值
-	    [returnData] =>  //业务方下单时传入的数据
-	    [partnerId] => 6000001 //支付平台标识值
-	    [rsaSign] => L9bmkYxBveoGZnrwayCySgQcWcCmwR0A+w2VX256odFZavUJMSYOATwH0myAl5xY9qcPwVJHfEyxEZcd+GktMEeg/zkkK92v+jOgq/B7pQxzGW5Lc6VZWAB/U2b3nooNsf+jKwPaTdlYU7ql9SgSNhRG2vk=
-	    [status] => 2 //1：未支付；2：已支付；-1：订单取消
+        [orderId] => 81406526123456 //百度平台订单ID【幂等性标识参数】(用于重入判断)
+        [payTime] => 1573875414 //支付完成时间，时间戳
+        [dealId] => 436123456 //百度收银台的财务结算凭证
+        [tpOrderId] => a11358de8febff55ea78e1 //业务方唯一订单号
+        [count] => 1 //数量
+        [totalMoney] => 3 //订单的实际金额，单位：分
+        [hbBalanceMoney] => 0 //余额支付金额
+        [userId] => 2091123456   //百度用户ID
+        [promoMoney] => 0 //营销优惠金额
+        [promoDetail] => //订单参与的促销优惠的详细信息
+        [hbMoney] => 0  //红包支付金额
+        [giftCardMoney] => 0 //抵用券金额
+        [payMoney] => 3 //实付金额 扣除各种优惠后用户还需要支付的金额，单位：分
+        [payType] => 1117 //支付渠道值
+        [returnData] =>  //业务方下单时传入的数据
+        [partnerId] => 6000001 //支付平台标识值
+        [rsaSign] => L9bmkYxBveoGZnrwayCySgQcWcCmwR0A+w2VX256odFZavUJMSYOATwH0myAl5xY9qcPwVJHfEyxEZcd+GktMEeg/zkkK92v+jOgq/B7pQxzGW5Lc6VZWAB/U2b3nooNsf+jKwPaTdlYU7ql9SgSNhRG2vk=
+        [status] => 2 //1：未支付；2：已支付；-1：订单取消
      */
     public function baiduNotify()
     {
