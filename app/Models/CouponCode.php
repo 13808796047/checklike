@@ -116,9 +116,6 @@ class CouponCode extends Model
     // 检查折扣卡
     public function checkAvailable($orderAmount = null)
     {
-        if($this->status == 'used') {
-            throw new CouponCodeUnavailableException('你已经使用过这张优惠券了!');
-        }
         if(!$this->status == 'actived') {
             throw new CouponCodeUnavailableException('卡券未激活!');
         }

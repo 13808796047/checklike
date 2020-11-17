@@ -6,6 +6,7 @@ use App\Events\OrderPaid;
 use App\Handlers\OrderApiHandler;
 use App\Jobs\CloudCouvertFile;
 use App\Jobs\UploadCheckFile;
+use App\Models\CouponCode;
 use App\Models\Order;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -17,8 +18,8 @@ class CheckDoc implements ShouldQueue
     {
         //从事件对象中取出对应的订单
         $order = $event->getOrder();
-        $order->update([
-            'status' => 1,
+        $order->couponCode()->update([
+            'status' => CouponCode::STATUS_USED
         ]);
         if($order->category->check_type == 1) {
             if($order->category->classid == 4) {
