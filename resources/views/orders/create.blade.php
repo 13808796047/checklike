@@ -202,7 +202,7 @@
             正在提交
           </button>
         </form>
-      @if(auth()->user()->user_group==3)
+      @if(auth()->user()->user_group==99)
         <!-- 批量上传 -->
           <div id="newelement" style="display:none;">
             <div id="newelement_container">

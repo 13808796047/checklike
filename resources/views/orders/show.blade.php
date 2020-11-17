@@ -94,6 +94,7 @@
           <td>{{$order->created_at}}</td>
         </tr>
         </table>
+        <div id="isfeizero">
         <div>
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
 						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
@@ -118,7 +119,7 @@
               <p id="dingdanprice" style="display:none;">订单原价:{{$order->price}}元，卡券优惠:<span id="yhje"></span>元，应付金额：<span style="font-size: 19px;color: #FF5300;" id="sjprice">元</span>，请选择以下任一一种方式完成支付。</p>
             </div>
         </div>
-        <div style="display: flex;justify-content: center;">
+        <div style="display: flex;justify-content: center;" >
             <div style="display: flex;align-items: center;margin-right: 30px;">
               <input type="radio" name="paytype" value="alipay" checked="checked">
               <img src="{{asset('asset/images/alipay.png')}}" style="margin-left:17px;">
@@ -134,6 +135,11 @@
 				<a type="button" id="btn-wechat" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
 						class="btn btn-primary btn-sm sbtn">提交</a>
 	</div>
+       </div>
+       <div id="iszero" style="displaynone;">
+          <p>本次订单免费检测，限1000字内，每日一次。</p>
+          <p>提交</p>
+       </div>
 	<div class="rbox fr">
 		<div style="background:#fff;padding:20px;">
 		    <b>1、检测结果是否准确？</b>
