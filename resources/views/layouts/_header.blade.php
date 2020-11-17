@@ -17,7 +17,19 @@
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
             @else
-            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+            <li id="headerfree"><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+            <li class="nav-item dropdown" style="display: inline;display:none;" id="headerfree1">
+              <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+          定稿查重
+              </span>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
+              <div class="dropdown-divider"></div>
+                <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
+                </div>
+            </li>
             @endguest
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
