@@ -94,18 +94,19 @@ class OrderService
                 'keyword' => $referer['keyword']
             ]);
             $order->user()->associate($user);
-            if($user->is_free && $category->id == 1) {
-                if($user->user_group == 3) {
-                    $price = max($words - 10000, 0) * $category->vip_price;
+            if($category->id == 1 && $user->is_free) { // checklike
+                if($user->user_group == 3) { // 会员
+                    $order->price = max($words - 10000, 0) * $category->vip_price;
                 } else {
-                    $price = max($words - 10000, 0) * $category->price;
+                    $order->price = max($words - 10000, 0) * $category->price;
                 }
                 $user->update([
                     'is_free' => false
                 ]);
                 dispatch(new UpdateIsFree($user))->delay(now()->addDay());
+            } else {
+                $order->price = $price;
             }
-            $order->price = $price;
             $order->save();
             if(isset($file)) {
                 $file->update([
