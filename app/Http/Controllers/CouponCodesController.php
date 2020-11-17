@@ -56,7 +56,7 @@ class CouponCodesController extends Controller
         if(!$couponCode = CouponCode::where('code', $request->code)->first()) {
             throw new CouponCodeUnavailableException('折扣卡不存在!');
         }
-        $couponCode->checkAvailable($user);
+        $couponCode->checkAvailable();
         event(new CouponCodeActived($couponCode, $user));
         return response()->json([
             'message' => '激活成功!'
@@ -71,7 +71,7 @@ class CouponCodesController extends Controller
         if(!$coupon_code) {
             throw new CouponCodeUnavailableException('优惠券不存在');
         }
-        $coupon_code->checkAvailable($user, $order->price);
+        $coupon_code->checkAvailable($order->price);
         $totalAmount = $coupon_code->getAdjustedPrice($order->price);
         // 如果用户通过Api请求,则返回JSON格式的错误信息
         return $totalAmount;
