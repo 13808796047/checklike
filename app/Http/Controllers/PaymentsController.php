@@ -109,7 +109,7 @@ class PaymentsController extends Controller
         dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
         $this->afterOrderPaid($order);
         $this->afterPaidMsg($order);
-        return response(compact('order'), 200);
+        return view('orders.index', compact('orders'));
     }
 
     // 前端回调页面
