@@ -127,6 +127,7 @@
         $('#btn-wechat').toggle();
       })
       $('#lwfoot').removeClass('footers')
+      $("#app").removeClass("newmain")
       //微信支付
       $('#btn-wechat').click(function () {
         let order = {!!$recharge!!}
