@@ -93,12 +93,6 @@
     timeOut:1500 // 超时时间，即窗口显示的时间
   }
   $('.logout').click(() => {
-    // alertify.confirm('提示', '您确认要退出登录吗?', function(){
-    //   axios.post('{{route('logout')}}').then(res => {
-    //           location.replace('https://p.checklike.com')
-    //           alertify.success('注销成功')
-    //       })
-    //  }, function(){}).set({'movable':false,'reverseButtons':true,'closable':false,'labels':{ok:'确定',cancel:'取消'}});
     $.confirm({
         title: '提示',
         content: '您确认要退出登录吗?',

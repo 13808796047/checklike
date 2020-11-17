@@ -17,7 +17,7 @@
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
             @else
-            <li id="headerfree"><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
             @endguest
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
