@@ -26,8 +26,8 @@ class ChangeUsed implements ShouldQueue
                 'user_group' => 3
             ]);
             $user->changeDays($couponCode->enable_days);
-            $couponCode = CouponCode::where('uid', $user->id)->first();
-            dispatch(new ChangeVip($user))->delay(Carbon::parse($couponCode->actived_at)->addDays($user->vip_days));
+            $activedAt = CouponCode::where('uid', $user->id)->value('actived_at');
+            dispatch(new ChangeVip($user))->delay(Carbon::parse($activedAt)->addDays($user->vip_days));
         }
     }
 }
