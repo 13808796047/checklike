@@ -87,6 +87,7 @@
 
 @yield('scripts')
 <script !src="">
+  console.log($request->route()->getAction();)
   //退出登录
   toastr.options = {
     positionClass: "toast-center-center",
