@@ -87,7 +87,7 @@
 
 @yield('scripts')
 <script !src="">
- console.log({{\App\Models}})
+ console.log({\App\Models})
   //退出登录
   toastr.options = {
     positionClass: "toast-center-center",
