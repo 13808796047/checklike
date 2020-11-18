@@ -143,8 +143,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div>账号注册</div>
       <div class="modal-body">
-        <div>账号注册</div>
+
          <div style="padding:10px 17px;">
             <div class="input-group">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
