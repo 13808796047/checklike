@@ -57,7 +57,7 @@
 
       <div class="col-span-5 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
          <!-- 新添加 -->
-         <ul class="nav nav-pills" id="catergatya">
+         <ul class="nav nav-pills" id="catergatya" style="margin-bottom:13px;">
            <li class="nav-item">
            <a class="nav-link active" href="/categories/1">初稿查重</a>
            </li>
