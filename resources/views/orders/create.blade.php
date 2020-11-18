@@ -270,6 +270,7 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
+      console.log(window.location.pathname,"i发生大火发")
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $("#headerfree").css("display","none")
