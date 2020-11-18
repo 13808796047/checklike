@@ -10,8 +10,8 @@
 @stop
 @section('content')
       <div>
-				<div class="container">
-					<div class="navbar-brand" style="width:316px;">
+				<div class="flex items-center justify-between flex-wrap bg-white-100" style="background:#fff;box-shadow: 0px 0px 3px #c1bebd;margin-bottom: 6px;font-size:0.965rem;">
+					<div class="flex items-center flex-shrink-0 text-white mr-6 bg-blue-600" style="padding:0.5rem 1.5rem">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
 					<ul class="nav navbar-nav" style="flex:1">
