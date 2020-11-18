@@ -44,8 +44,10 @@
             <li><a href="/ai_rewrite">自动降重</a></li>
             <li><a href="{{route('orders.index')}}">报告下载</a></li>
 
-            <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
+            <div style="float:right;">
             <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
+            </div>
 					</ul>
           </div>
         </div>
