@@ -189,7 +189,7 @@
             <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;">
                 提交注册
             </button>
-            <p>微信登录（免注册）</p>
+            <p style="margin-top:5px;color:#26AEF2;text-align:center;">微信登录（免注册）</p>
         </div>
          </div>
       </div>
