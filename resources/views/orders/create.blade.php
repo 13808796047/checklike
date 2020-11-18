@@ -272,6 +272,10 @@
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
 
+          $("#catergatya li a").each(function(){
+            $(this).attr("href")
+            console.log( $(this).attr("href"))
+          })
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $("#headerfree").css("display","none")
