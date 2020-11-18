@@ -756,6 +756,7 @@
       })
       //注册
       $("#quiklyRegister").click(()=>{
+        $("#staticBackdrop").modal("hide")
         $("#registerTcDialog").modal('show')
       })
       //模态框关闭
