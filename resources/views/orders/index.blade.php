@@ -9,50 +9,6 @@
   </style>
 @stop
 @section('content')
-      <div>
-				<div class="flex items-center justify-between flex-wrap bg-white-100" style="background:#fff;box-shadow: 0px 0px 3px #c1bebd;margin-bottom: 6px;font-size:0.965rem;">
-					<div class="flex items-center flex-shrink-0 text-white mr-6 bg-blue-600" style="padding:0.5rem 1.5rem">
-						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-					</div>
-					<ul class="w-full flex-grow lg:flex lg:items-center lg:w-auto" style="margin-left:30px;">
-						<li style="margin-right:11px;"><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-
-            <li class="nav-item dropdown" style="display: inline;">
-              <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-                初稿查重
-              </span>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
-              </div>
-            </li>
-
-            <li class="nav-item dropdown" style="display: inline;">
-              <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-                定稿查重
-              </span>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
-              </div>
-            </li>
-
-            <li><a href="/ai_rewrite">自动降重</a></li>
-            <li><a href="{{route('orders.index')}}">报告下载</a></li>
-
-            <div style="float:right;">
-            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
-            </div>
-					</ul>
-          </div>
-        </div>
-
-
   <div class="main clearfix" style="min-height:800px;">
     <div class="lbox fl">
       <table class="table table-hover table-sm text-center">
