@@ -66,13 +66,7 @@ class CouponCode extends Model
     {
         return $this->belongsTo(User::class, 'uid');
     }
-//$enable_date = Carbon::parse($this->actived_at)->addDays($this->enable_days);
-//$data['enable_date'] = $enable_date;
-//if($enable_date->lt(Carbon::now())) {
-//$data['is_enable'] = true;
-//} else {
-//    $data['is_enable'] = false;
-//}
+
     public function getEnableDateAttribute()
     {
         return $this->calcEnableDate()->format('Y-m-d H:i:s');
@@ -162,7 +156,9 @@ class CouponCode extends Model
         do {
             // 生成一个指定长度的随机字符串,并转换为大写
             $code = strtoupper(Str::random($length));
+            //查询是否已经存在code
         } while (self::query()->where('code', $code)->exists());
+        // 返回生成的code
         return $code;
     }
 
