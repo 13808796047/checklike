@@ -762,6 +762,7 @@
       $("#noregister").click(()=>{
         $("#registerTcDialog").modal('hide')
         $("#staticBackdrop").modal("show")
+        console.log($("#pills-tab"),"fsdaf")
       })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
