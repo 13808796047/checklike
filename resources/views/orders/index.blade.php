@@ -10,7 +10,7 @@
 @stop
 @section('content')
       <div>
-				<div class="container">
+				<div class="navbar scrollspy">
 					<div class="navbar-brand" style="width:316px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
