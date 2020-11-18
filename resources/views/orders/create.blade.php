@@ -270,7 +270,6 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
-      console.log(window.location.pathname,"i发生大火发")
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
         if(currenthref == window.location.pathname){
