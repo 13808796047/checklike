@@ -17,9 +17,29 @@
 					<ul class="w-full flex-grow lg:flex lg:items-center lg:w-auto" style="margin-left:30px;">
 						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 
-            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+            <li class="nav-item dropdown" style="display: inline;">
+              <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+                初稿查重
+              </span>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
+              </div>
+            </li>
 
-            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+            <li class="nav-item dropdown" style="display: inline;">
+              <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+                定稿查重
+              </span>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
+              </div>
+            </li>
 
             <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
             <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
