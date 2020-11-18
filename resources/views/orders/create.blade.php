@@ -52,7 +52,7 @@
   </div>
   <!-- 二维码弹窗 -->
   <!-- 二维码弹窗结束 -->
-  <div style="max-width:1280px;margin:20px auto;">
+  <div class="container">
     <div class="grid grid-cols-6 gap-4">
 
       <div class="col-span-5 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
