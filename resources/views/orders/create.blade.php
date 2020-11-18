@@ -15,6 +15,9 @@
       border: 1px solid;
       margin-right: 10px;
     }
+    #catergatya li a:visited{
+      color:black;
+    }
   </style>
 @stop
 @section('content')
@@ -54,7 +57,7 @@
 
       <div class="col-span-5 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
          <!-- 新添加 -->
-         <ul class="nav nav-pills">
+         <ul class="nav nav-pills" id="catergatya">
            <li class="nav-item">
            <a class="nav-link active" href="/categories/1">初稿查重</a>
            </li>
