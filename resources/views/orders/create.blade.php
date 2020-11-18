@@ -51,6 +51,8 @@
   <!-- 二维码弹窗结束 -->
   <div class="p-4 mb-24">
     <div class="grid grid-cols-6 gap-4">
+
+      <div class="col-span-5 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
          <!-- 新添加 -->
          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
@@ -71,7 +73,6 @@
 
 
       <!-- 添加结束 -->
-      <div class="col-span-5 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-4 "
