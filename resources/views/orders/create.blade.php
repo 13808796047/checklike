@@ -271,9 +271,7 @@
   <script>
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
-      $("#catergatya li a").each((index,e)=> {
-        console.log(e.href())
-      });
+
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $("#headerfree").css("display","none")
