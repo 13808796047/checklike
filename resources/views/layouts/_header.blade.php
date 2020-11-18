@@ -30,10 +30,10 @@
             <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
             @endguest
             @guest
-						<!-- <li class="menu-btn" style="padding-right:0">
+						<li class="menu-btn">
             <a class="nav-link" href="javascript:;" data-toggle="modal"
-            data-target="#staticBackdrop" >哈哈</a>
-            </li> -->
+            data-target="#staticBackdrop" >登录/注册</a>
+            </li>
             @else
             <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
             <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
