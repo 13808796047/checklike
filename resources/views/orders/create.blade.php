@@ -271,6 +271,9 @@
   <script>
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
+      $("#catergatya li a").forEach(element => {
+          console.log(element,"fsadf")
+      });
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $("#headerfree").css("display","none")
@@ -315,10 +318,6 @@
         var currentdate = year + seperator1 + month + seperator1 + strDate
         return currentdate;
       }
-      //切换累样式
-      $("#catergatya li a").click((e)=>{
-        console.log(e,"fasdf")
-      })
       //   //时间选择结束
       //多文件上传
       $('#customFiles').change(function (e) {
