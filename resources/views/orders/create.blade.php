@@ -52,26 +52,26 @@
   </div>
   <!-- 二维码弹窗 -->
   <!-- 二维码弹窗结束 -->
-  <div style="max-width:1280px;margin:20px auto;">
+  <div class="container" style="margin:18px auto">
     <div class="grid grid-cols-6 gap-4">
 
       <div class="col-span-5 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
          <!-- 新添加 -->
          <ul class="nav nav-pills" id="catergatya" style="margin-bottom:18px;">
            <li class="nav-item">
-           <a class="window.location.pathname =='/categories/1'? 'nav-link active':'nav-link' " href="/categories/1">初稿查重</a>
+           <a class="nav-link" href="/categories/1">初稿查重</a>
            </li>
            <li class="nav-item">
-            <a class="window.location.pathname =='/categories/2'? 'nav-link active':'nav-link' " href="/categories/2">维普查重</a>
+            <a class="nav-link" href="/categories/2">维普查重</a>
            </li>
            <li class="nav-item">
-            <a class="window.location.pathname =='/categories/3'? 'nav-link active':'nav-link' " href="/categories/3">万方查重</a>
+            <a class="nav-link" href="/categories/4">万方查重</a>
            </li>
            <li class="nav-item">
-           <a class="window.location.pathname =='/categories/4'? 'nav-link active':'nav-link' " href="/categories/4">知网查重</a>
+           <a class="nav-link" href="/categories/3">知网查重</a>
            </li>
            <li class="nav-item">
-           <a class="window.location.pathname =='/categories/5'? 'nav-link active':'nav-link' " href="/categories/5">PaperPass</a>
+           <a class="nav-link" href="/categories/5">PaperPass</a>
            </li>
           </ul>
 
@@ -270,7 +270,12 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
-      console.log(window.location.pathname,"i发生大火发")
+      $("#catergatya li a").each(function(){
+        let currenthref = $(this).attr("href")
+        if(currenthref == window.location.pathname){
+          $(this).addClass("active")
+        }
+      })
 
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')

@@ -30,13 +30,13 @@
             <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
             @endguest
             @guest
-						<li class="menu-btn" style="padding-right:0"><a class="nav-link" href="javascript:;" data-toggle="modal"
-            data-target="#staticBackdrop" >登录</a></li>
-            <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
-            id="RegisterDialogBtn">注册</a></li>
+						<li class="menu-btn">
+            <a class="nav-link" href="javascript:;" data-toggle="modal"
+            data-target="#staticBackdrop" >登录/注册</a>
+            </li>
             @else
-            <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
-            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
             @endguest
 					</ul>
           </nav>
@@ -144,6 +144,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <div>账号注册</div>
          <div style="padding:10px 17px;">
             <div class="input-group">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">

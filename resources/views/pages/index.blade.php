@@ -120,14 +120,13 @@
                     <div class="flex items-center justify-between my-4">
                       <button
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="button" id="accountLogin" style="text-align:center;">
+                        type="button" id="accountLogin" style="text-align:center;border:none;">
                         登录
                       </button>
                     </div>
                     <div style="display: flex;font-size: 10px;justify-content: space-between;color: #999;">
                        <p id="forgetpsw">忘记密码</p>
-                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                        href="{{route('register')}}">
+                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" id="quiklyRegister">
                           立即注册
                         </a>
                     </div>
@@ -269,47 +268,6 @@
 
 	<!-- #navigation -->
 	<!-- #navigation end -->
-  <div id="header1">
-     <nav id="navigation" class="navbar scrollspy">
-				<div class="container">
-					<div class="navbar-brand" style="width:316px;">
-						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-					</div>
-					<ul class="nav navbar-nav" style="flex:1">
-						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
-            @else
-            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-            @endguest
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
-            @else
-            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-            @endguest
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
-            @else
-            <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
-            @endguest
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a></li>
-            @else
-            <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
-            @endguest
-            @guest
-						<li class="menu-btn" style="padding-right:0"><a class="nav-link" href="javascript:;" data-toggle="modal"
-            data-target="#staticBackdrop" >登录</a></li>
-            <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
-            id="RegisterDialogBtn">注册</a></li>
-            @else
-            <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
-            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            @endguest
-					</ul>
-          </nav>
-        </div>
-</div>
 	<!-- .header-content -->
 <header id="header" style="position:relative;">
 	<div class="header-content">
@@ -795,6 +753,11 @@
             })
           }, 1000);
         })
+      })
+      //注册
+      $("#quiklyRegister").click(()=>{
+        $("#staticBackdrop").modal("hide")
+        $("#registerTcDialog").modal('show')
       })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
