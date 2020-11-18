@@ -31,7 +31,7 @@
     <div style="margin:15px 50px;">
       <div class="usertitle">基本信息</div>
       <div style="margin:0 18px;display:flex;align-items:center;margin:20px;">
-      <div>
+      <div style="margin-left:17px;">
         <img src="{{Auth::user()->avatar ? Auth::user()->avatar : asset('asset/images/avtarno.jpg')}}" alt="" style="width:130px;height:130px;border-radius: 50%;">
       </div>
       <div style="margin-left:30px;">
@@ -59,7 +59,7 @@
       <div class="usertitle" style="display:flex;justify-content: space-between;">卡券管理<p
           style="color: #1E90FF;cursor: pointer;margin-right:10px;" id="activationBtn">卡券激活</p></div>
       <div></div>
-      <div class="card-body">
+      <div class="card-body" style="margin:0 17px;">
         @include('users._coupon_codes', ['coupon_codes' => $coupon_codes])
       </div>
       </div>
