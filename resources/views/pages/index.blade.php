@@ -759,6 +759,10 @@
         $("#staticBackdrop").modal("hide")
         $("#registerTcDialog").modal('show')
       })
+      $("#noregister").click(()=>{
+        $("#registerTcDialog").modal('hide')
+        $("#staticBackdrop").modal("show")
+      })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
           clearInterval(timer);
