@@ -766,10 +766,9 @@
         $("#pills-home-tab").addClass('active')
         $("#pills-profile-tab").attr("aria-selected",false)
         $("#pills-profile-tab").removeClass('active')
-        $("#pills-profile").removeClass('active')
-        $("#pills-profile").removeClass('show')
-        $("#pills-home").addClass("active")
-        $("#pills-home").addClass("show")
+        $("#pills-profile").removeClass('active show')
+        $("#pills-home").addClass("active show")
+
       })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
