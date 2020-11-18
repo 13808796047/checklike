@@ -30,7 +30,7 @@
             <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
             @endguest
             @guest
-						<li class="menu-btn" style="padding-right:0"><a class="nav-link" href="javascript:;" data-toggle="modal"
+						<li class="menu-btn"><a href="javascript:;" data-toggle="modal"
             data-target="#staticBackdrop" >登录/注册</a></li>
             <!-- <li class="menu-btn" style="padding-left:0"><a class="nav-link" href="javascript:;"
             id="RegisterDialogBtn">注册</a></li> -->
