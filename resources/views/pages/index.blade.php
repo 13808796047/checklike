@@ -768,6 +768,8 @@
         $("#pills-profile-tab").removeClass('active')
         $("#pills-profile").removeClass('active')
         $("#pills-profile").removeClass('show')
+        $("#pills-home").addClass("active")
+        $("#pills-home").addClass("show")
       })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
