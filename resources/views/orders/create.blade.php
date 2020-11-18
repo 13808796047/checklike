@@ -314,7 +314,10 @@
         var currentdate = year + seperator1 + month + seperator1 + strDate
         return currentdate;
       }
-
+      //切换累样式
+      $("#catergatya li a").click((e)=>{
+        console.log(e,"fasdf")
+      })
       //   //时间选择结束
       //多文件上传
       $('#customFiles').change(function (e) {
