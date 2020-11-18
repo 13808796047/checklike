@@ -59,19 +59,19 @@
          <!-- 新添加 -->
          <ul class="nav nav-pills" id="catergatya" style="margin-bottom:18px;">
            <li class="nav-item">
-           <a class="window.location.pathname =='/categories/1'? 'nav-link active':'nav-link' " href="/categories/1">初稿查重</a>
+           <a class="nav-link" href="/categories/1">初稿查重</a>
            </li>
            <li class="nav-item">
-            <a class="window.location.pathname =='/categories/2'? 'nav-link active':'nav-link' " href="/categories/2">维普查重</a>
+            <a class="nav-link" href="/categories/2">维普查重</a>
            </li>
            <li class="nav-item">
-            <a class="window.location.pathname =='/categories/3'? 'nav-link active':'nav-link' " href="/categories/3">万方查重</a>
+            <a class="nav-link" href="/categories/3">万方查重</a>
            </li>
            <li class="nav-item">
-           <a class="window.location.pathname =='/categories/4'? 'nav-link active':'nav-link' " href="/categories/4">知网查重</a>
+           <a class="nav-link" href="/categories/4">知网查重</a>
            </li>
            <li class="nav-item">
-           <a class="window.location.pathname =='/categories/5'? 'nav-link active':'nav-link' " href="/categories/5">PaperPass</a>
+           <a class="nav-link" href="/categories/5">PaperPass</a>
            </li>
           </ul>
 
@@ -271,11 +271,13 @@
   <script>
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
+      $("#catergatya li a").each(function(){
+        let currenthref = $(this).attr("href")
+        if(currenthref == window.location.pathname){
+          $(this).addClass("active")
+        }
+      })
 
-          $("#catergatya li a").each(function(){
-            $(this).attr("href")
-            console.log( $(this).attr("href"))
-          })
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $("#headerfree").css("display","none")
