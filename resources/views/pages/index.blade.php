@@ -244,11 +244,11 @@
 	            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
 		            验证码:
 	            </label>
-	            <div class="d-flex justify-content-between py-2">
+	            <div class="d-flex justify-content-between py-2" style="align-items: center;">
 		            <input class="appearance-none border border-red-500 rounded   py-2 px-2  w-full mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 		             id="verification_code" type="text" placeholder="请输入短信验证码" />
 
-             <button type="button" class="btn btn-primary btn-sm" id="verificationCode">发送验证码</button>
+             <button type="button" class="btn btn-primary btn-sm" id="verificationCode" style="height:80%;">发送验证码</button>
 
 	            </div>
           </div>
