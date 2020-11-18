@@ -283,7 +283,7 @@ return [
 
         'body_class' => '',
 
-        'sidebar_collapsed' => true,
+        'sidebar_collapsed' => false,
 
         // light, primary, dark
         'sidebar_style' => 'light',
