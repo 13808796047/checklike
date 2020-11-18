@@ -762,7 +762,7 @@
       $("#noregister").click(()=>{
         $("#registerTcDialog").modal('hide')
         $("#staticBackdrop").modal("show")
-        let ccc = $("#pills-home-tab").attr("aria-selected");
+        let ccc = $("#pills-home-tab").attr("aria-selected","true")
         console.log(ccc,"fsdaf")
       })
       //模态框关闭
