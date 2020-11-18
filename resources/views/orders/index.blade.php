@@ -9,59 +9,26 @@
   </style>
 @stop
 @section('content')
-<nav class="flex items-center justify-between flex-wrap bg-white-100" style="background:#fff;box-shadow: 0px 0px 3px #c1bebd;margin-bottom: 6px;font-size:0.965rem;" id="headernav">
-    <div class="navbar-brand" style="width:316px;">
-				<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-		</div>
-  <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto" style="margin-left:30px;">
-    <div class="text-sm lg:flex-grow" id="categories">
+      <div>
+				<div class="container">
+					<div class="navbar-brand" style="width:316px;">
+						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
+					</div>
+					<ul class="nav navbar-nav" style="flex:1">
+						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 
-      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
 
-      <li class="nav-item dropdown" style="display: inline;">
-        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-          初稿查重
-        </span>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item istoaster" href="/categories/1">联文检测</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item istoaster" href="/categories/5">PaperPass</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown" style="display: inline;">
-        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-          定稿查重
-        </span>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item istoaster" href="/categories/4">万方检测</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item istoaster" href="/categories/2">维普查重</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item istoaster" href="/categories/3">知网查重</a>
-        </div>
-      </li>
+            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
 
-      <a href="{{route('orders.index')}}"
-         class="block  lg:inline-block lg:mt-0 text-black-500 hover:text-blue-600 mr-4 text-decoration-none istoaster" style="margin-left:15px;">
-        查看报告
-      </a>
-      <a href="/ai_rewrite"
-         class="block  lg:inline-block lg:mt-0 text-black-500 hover:text-blue-600 mr-4 text-decoration-none" style="margin-left:15px;">
-        自动降重
-      </a>
-      <a href="javascript:void(0)" style="margin-left:15px;"
-         class="block  lg:inline-block lg:mt-0 text-black-500 hover:text-blue-600 mr-4 text-decoration-none" onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">
-        在线客服
-      </a>
-    </div>
-    @auth
-      <div class="flex justify-content-around w-25 align-items-center">
-      <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
-      <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+            <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
+
+            <li class="menu-btn" style="padding-right:0"><a class="logout" href="javascript:;">退出</a></li>
+            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+					</ul>
+          </div>
       </div>
-    @endauth
-  </div>
-</nav>
 
 
   <div class="main clearfix" style="min-height:800px;">
