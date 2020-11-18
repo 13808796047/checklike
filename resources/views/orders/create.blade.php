@@ -65,10 +65,10 @@
             <a class="nav-link" href="/categories/2">维普查重</a>
            </li>
            <li class="nav-item">
-            <a class="nav-link" href="/categories/3">万方查重</a>
+            <a class="nav-link" href="/categories/4">万方查重</a>
            </li>
            <li class="nav-item">
-           <a class="nav-link" href="/categories/4">知网查重</a>
+           <a class="nav-link" href="/categories/3">知网查重</a>
            </li>
            <li class="nav-item">
            <a class="nav-link" href="/categories/5">PaperPass</a>
