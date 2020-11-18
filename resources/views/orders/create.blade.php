@@ -271,8 +271,14 @@
   <script>
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
-      $("#catergatya li a").each((element,s)=> {
-          console.log(element,s,this,"fsadf")
+      $("#catergatya li a").each((index,element)=> {
+         let curhref = element.attr("href");
+         console.log(curhref,"fdsaf")
+         if(curhref==window.location.pathname){
+           console.log("xixi")
+         }else{
+           cosole.log("fjsdajfjaf")
+         }
       });
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
