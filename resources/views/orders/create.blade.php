@@ -271,15 +271,8 @@
   <script>
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
-      $("#catergatya li a").each((index,element)=> {
-        console.log(element,"fsdaf")
-         let curhref = element.attr("href");
-
-         if(curhref==window.location.pathname){
-           console.log("xixi")
-         }else{
-           cosole.log("fjsdajfjaf")
-         }
+      $("#catergatya li a").map((index,e)=> {
+        console.log(index,e,'fdsa')
       });
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
