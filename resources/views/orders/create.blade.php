@@ -272,8 +272,7 @@
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
       $("#catergatya li a").each((index,e)=> {
-        console.log(index,e,'fsaddfd')
-        console.log(e[index].attr("href"))
+        console.log(e.attr())
       });
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
