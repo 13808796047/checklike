@@ -271,8 +271,8 @@
   <script>
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
-      $("#catergatya li a").each(element => {
-          console.log(element,"fsadf")
+      $("#catergatya li a").each(element,s => {
+          console.log(element,s,this,"fsadf")
       });
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
