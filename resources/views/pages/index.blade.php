@@ -252,7 +252,7 @@
 	            </div>
           </div>
           <div class="flex items-center justify-between my-4">
-	          <button class="btn btn-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
+	          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
 	           type="button" id="phoneLogin" style="border:none;">
 		          登录
 	          </button>
