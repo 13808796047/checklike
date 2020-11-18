@@ -10,7 +10,7 @@
 @stop
 @section('content')
       <div>
-				<div class="navbar scrollspy">
+				<div>
 					<div class="navbar-brand" style="width:316px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
@@ -28,7 +28,7 @@
             <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
 					</ul>
           </div>
-      </div>
+        </div>
 
 
   <div class="main clearfix" style="min-height:800px;">
