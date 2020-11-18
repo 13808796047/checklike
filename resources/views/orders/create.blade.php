@@ -271,7 +271,7 @@
   <script>
     $(() => {
       console.log(window.location.pathname,"i发生大火发")
-      $("#catergatya li a").forEach(element => {
+      $("#catergatya li a").each(element => {
           console.log(element,"fsadf")
       });
       $('.navbar').css('position','static')
