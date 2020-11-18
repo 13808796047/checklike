@@ -14,7 +14,7 @@
 					<div class="flex items-center flex-shrink-0 text-white mr-6 bg-blue-600" style="padding:0.5rem 1.5rem">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="nav navbar-nav" style="flex:1">
+					<ul class="w-full flex-grow lg:flex lg:items-center lg:w-auto" style="margin-left:30px;">
 						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
 
             <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
