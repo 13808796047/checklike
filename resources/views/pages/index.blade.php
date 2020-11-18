@@ -310,7 +310,6 @@
           </nav>
         </div>
 </div>
-
 	<!-- .header-content -->
 <header id="header" style="position:relative;">
 	<div class="header-content">
