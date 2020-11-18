@@ -11,7 +11,7 @@
     .usertitle {
       font-size: 17px;
       font-weight: bold;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #dee2e6;
       margin: 10px 18px;
     }
 
