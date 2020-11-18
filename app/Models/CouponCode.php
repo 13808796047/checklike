@@ -151,7 +151,7 @@ class CouponCode extends Model
     {
         // 折扣
         if($this->type === self::TYPE_FIXED) {
-            return max(0.01, $orderAmount - $this->value);
+            return max(0, $orderAmount - $this->value);
         }
         return number_format($orderAmount * ($this->value / 100), 2, '.', '');
     }
