@@ -126,8 +126,7 @@
                     </div>
                     <div style="display: flex;font-size: 10px;justify-content: space-between;color: #999;">
                        <p id="forgetpsw">忘记密码</p>
-                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                        href="{{route('register')}}">
+                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" id="quiklyRegister">
                           立即注册
                         </a>
                     </div>
@@ -754,6 +753,10 @@
             })
           }, 1000);
         })
+      })
+      //注册
+      $("#quiklyRegister").click(()=>{
+        $("#registerTcDialog").modal('show')
       })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
