@@ -246,6 +246,8 @@
     $(() => {
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
+      $("#headerfree").css("display","none")
+      $("#headerfree1").css("display","block")
       let set = new Set();
       let name = '';
       var oneid = ''
