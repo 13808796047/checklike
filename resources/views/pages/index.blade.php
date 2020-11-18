@@ -762,8 +762,8 @@
       $("#noregister").click(()=>{
         $("#registerTcDialog").modal('hide')
         $("#staticBackdrop").modal("show")
-        let ccc = $("#pills-home-tab").attr("aria-selected","true")
-        console.log(ccc,"fsdaf")
+        $("#pills-home-tab").attr("aria-selected",true)
+        $("#pills-home-tab").addClass('active')
       })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {
