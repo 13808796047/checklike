@@ -79,7 +79,7 @@
   @endauth
   <!-- 购买降重字数模态框结束 -->
   <!-- 模态框2结束-->
-  <div class="main clearfix" style="min-height:800px;">
+  <div class="main clearfix container" style="min-height:800px;">
     <div class="lbox fl">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
