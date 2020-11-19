@@ -27,7 +27,6 @@ class ChangeUsed implements ShouldQueue
                 $vip_expir_at = Carbon::now()->addDays($couponCode->enable_days);
             }
             $vip_expir_at = Carbon::parse($couponCode->actived_at)->addDays($couponCode->enable_days);
-            Log::info('时间', [$vip_expir_at]);
             $user->update([
                 'user_group' => 3,
                 'vip_expir_at' => $vip_expir_at,
