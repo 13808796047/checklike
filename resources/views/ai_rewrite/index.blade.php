@@ -79,8 +79,9 @@
   @endauth
   <!-- 购买降重字数模态框结束 -->
   <!-- 模态框2结束-->
-  <div class="main clearfix container" style="min-height:800px;">
-    <div class="lbox fl">
+  <div class="container" style="min-height:800px;">
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-9 p-4">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
           <span>模式：</span>
@@ -139,7 +140,7 @@
         </div>
       </div>
       </div>
-  <div class="rbox fr">
+  <div class="col-span-3 p-4">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       <div class="box mt10">
@@ -152,6 +153,7 @@
         <b>4、检测报告有网页版、pdf格式的吗？</b>
         <p>检测完成后会提供网页版和pdf格式的检测报告，报告只是格式不同，重复率都一样的。</p>
       </div>
+    </div>
     </div>
 </div>
 @stop
