@@ -152,7 +152,7 @@
               手机号:
               </label>
               <input
-              class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  name="phone"
                  id="registerphones" type="text" placeholder="请输入手机号码">
             </div>
@@ -161,7 +161,7 @@
                  密码:
                </label>
                <input
-               class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                  name="password"
                  id="registerpassword" type="password" placeholder="请输入密码" >
             </div>
@@ -170,7 +170,7 @@
                  确认密码:
                </label>
                <input
-               class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 class="appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                  name="password"
                  id="password_confirmation" type="password" placeholder="请输入密码" value="{{ old('password') }}">
             </div>
@@ -180,7 +180,7 @@
                 </label>
                 <div>
                   <input
-                  class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="yzmcode"
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
                   <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
