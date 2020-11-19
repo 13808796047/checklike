@@ -141,10 +141,8 @@
       </div>
       </div>
   <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
-      <div class="rbox">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
-      </div>
       <div class="box mt10">
         <b>1、怎么选择适合自己的论文检测系统？</b>
         <p>只有使用和学校相同的数据库，才能保证重复率与学校、杂志社100%一致：</br>论文初次修改可使用联文检测、PaperPass，定稿再使用与学校一样的系统。</p>
