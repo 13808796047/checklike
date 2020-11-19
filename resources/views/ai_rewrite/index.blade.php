@@ -139,7 +139,7 @@
         </div>
       </div>
       </div>
-  <div class="rbox fr" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
+    <div class="rbox fr">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       <div class="box mt10">
