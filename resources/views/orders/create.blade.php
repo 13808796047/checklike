@@ -89,7 +89,9 @@
                      style="width:100%;height:90px">
               </a>
               <p class="text-center text-xs py-2">
+
                 <span>{{$item->name}}</span>
+                <span>{{$item-> vip_price }}</span>
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
