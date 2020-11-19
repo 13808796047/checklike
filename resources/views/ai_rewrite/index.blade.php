@@ -79,7 +79,7 @@
   @endauth
   <!-- 购买降重字数模态框结束 -->
   <!-- 模态框2结束-->
-  <div class="container" style="min-height:800px;">
+  <div class="container" style="margin:18px auto">
   <div class="grid grid-cols-12 gap-4">
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
