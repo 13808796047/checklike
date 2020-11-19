@@ -222,7 +222,7 @@
             </div>
           </div>
           <!-- <input type="submit" value="提交论文" class="btn btn-danger my-4 px-8"> -->
-          <input type="button" value="提交论文" class="btn btn-danger my-4 px-8" id="tosubmit">
+          <input type="button" value="提交论文" class="btn btn-danger my-4 px-8 rounded" id="tosubmit">
           <button class="btn btn-danger" type="button" disabled style="display:none;margin:20px 0" id="submitBtn">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             正在提交
