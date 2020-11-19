@@ -244,16 +244,17 @@
 	            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
 		            验证码:
 	            </label>
-	            <div class="d-flex justify-content-between py-2">
+	            <div class="d-flex justify-content-between py-2" style="align-items:center;">
 		            <input class="appearance-none border border-red-500 rounded   py-2 px-2  w-full mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 		             id="verification_code" type="text" placeholder="请输入短信验证码" />
 		            <input class="bg-blue-500 hover:bg-blue-700 px-2 py-1  text-white font-bold rounded" type="button" id="verificationCode"
-		             value="发送验证码">
+		             value="发送验证码" >
+
 	            </div>
           </div>
           <div class="flex items-center justify-between my-4">
 	          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full px-4 rounded focus:outline-none focus:shadow-outline"
-	           type="button" id="phoneLogin">
+	           type="button" id="phoneLogin" style="border:none;text-align:center;">
 		          登录
 	          </button>
           </div>
@@ -758,6 +759,17 @@
       $("#quiklyRegister").click(()=>{
         $("#staticBackdrop").modal("hide")
         $("#registerTcDialog").modal('show')
+      })
+      $("#noregister").click(()=>{
+        $("#registerTcDialog").modal('hide')
+        $("#staticBackdrop").modal("show")
+        $("#pills-home-tab").attr("aria-selected",true)
+        $("#pills-home-tab").addClass('active')
+        $("#pills-profile-tab").attr("aria-selected",false)
+        $("#pills-profile-tab").removeClass('active')
+        $("#pills-profile").removeClass('active show')
+        $("#pills-home").addClass("active show")
+
       })
       //模态框关闭
       $('#staticBackdrop').on('hidden.bs.modal', function () {

@@ -106,7 +106,7 @@
           function time(o) {
             if (wait == 0) {
               o.removeAttribute("disabled");
-              o.value = "点击获取验证码";
+              o.value = "获取验证码";
               wait = 60;
             } else {
               o.setAttribute("disabled", true);

@@ -63,7 +63,7 @@
 {{--      </h5>--}}
 {{--    </div>--}}
 {{--  </div>--}}
-<div class="main clearfix" style="flex:1">
+<div class="main clearfix container" style="flex:1">
 	<div class="lbox fl">
   <p style="font-weight: bold;font-size: 17px;">订单信息</p>
     <table style="border:1px solid;border-collapse: collapse;padding: 2px;width: 780px;margin: 5px 0;">

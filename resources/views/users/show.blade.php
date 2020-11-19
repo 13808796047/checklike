@@ -11,7 +11,7 @@
     .usertitle {
       font-size: 17px;
       font-weight: bold;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #dee2e6;
       margin: 10px 18px;
     }
 
@@ -25,12 +25,13 @@
 @section('content')
 
 
-  <div class="main clearfix" style="flex:1">
+  <div class="main clearfix container" style="flex:1;">
 
-    <div class="card topic-reply mt-4" style="margin:30px auto;width:100%;min-height:calc(100vh * 0.81);max-width:1200px;">
+    <div class="card topic-reply mt-4" style="margin:30px auto;width:100%;min-height:calc(100vh * 0.81);">
+    <div style="margin:15px 50px;">
       <div class="usertitle">基本信息</div>
       <div style="margin:0 18px;display:flex;align-items:center;margin:20px;">
-      <div>
+      <div style="margin-left:17px;">
         <img src="{{Auth::user()->avatar ? Auth::user()->avatar : asset('asset/images/avtarno.jpg')}}" alt="" style="width:130px;height:130px;border-radius: 50%;">
       </div>
       <div style="margin-left:30px;">
@@ -58,10 +59,12 @@
       <div class="usertitle" style="display:flex;justify-content: space-between;">卡券管理<p
           style="color: #1E90FF;cursor: pointer;margin-right:10px;" id="activationBtn">卡券激活</p></div>
       <div></div>
-      <div class="card-body">
+      <div class="card-body" style="margin:0 17px;">
         @include('users._coupon_codes', ['coupon_codes' => $coupon_codes])
       </div>
+      </div>
     </div>
+
   </div>
   <!--/.fluid-container-->
 @endsection
@@ -113,7 +116,6 @@
         });
       })
       $("#userbindPhone").click(()=>{
-        console.log("xifsadf")
         $("#bindTitle").modal("show")
       })
       var currentCode="";
