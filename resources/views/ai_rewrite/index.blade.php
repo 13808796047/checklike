@@ -80,7 +80,7 @@
   <!-- 购买降重字数模态框结束 -->
   <!-- 模态框2结束-->
   <div class="main clearfix container" style="min-height:800px;">
-    <div class="lbox fl">
+    <div class="lbox fl" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
           <span>模式：</span>
@@ -139,7 +139,7 @@
         </div>
       </div>
       </div>
-  <div class="rbox fr">
+  <div class="rbox fr" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       <div class="box mt10">
