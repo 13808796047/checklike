@@ -116,7 +116,6 @@
         });
       })
       $("#userbindPhone").click(()=>{
-        console.log("xifsadf")
         $("#bindTitle").modal("show")
       })
       var currentCode="";
