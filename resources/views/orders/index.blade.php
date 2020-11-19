@@ -9,7 +9,7 @@
   </style>
 @stop
 @section('content')
-  <div class="main clearfix" style="min-height:800px;">
+  <div class="main clearfix container" style="min-height:800px;">
     <div class="lbox fl">
       <table class="table table-hover table-sm text-center">
         <thead class="thead-dark">
