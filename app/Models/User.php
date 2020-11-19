@@ -87,7 +87,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'username', 'phone', 'email', 'password', 'weixin_openid', 'weixin_unionid',
         'weapp_openid', 'weixin_session_key', 'nick_name', 'avatar', 'user_group', 'consumption_amount', 'inviter',
-        'subscribe', 'subscribe_time', 'is_free'
+        'subscribe', 'subscribe_time', 'is_free', 'vip_expir_at'
     ];
 
     /**
@@ -106,6 +106,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'vip_expir_at' => 'datetime',
         'subscribe_time' => 'datetime',
         'is_free' => 'boolean'
     ];

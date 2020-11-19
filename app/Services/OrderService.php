@@ -94,15 +94,32 @@ class OrderService
                 'keyword' => $referer['keyword']
             ]);
             $order->user()->associate($user);
-            if($category->id == 1 && $user->is_free) { // checklike
-                if($user->user_group == 3) { // 会员
-                    $order->price = max($words - 10000, 0) * $category->vip_price;
-                } else {
-                    $order->price = max($words - 10000, 0) * $category->price;
+            if($user->user_group == 3) {
+                $order->price = $category->vip_price;
+                if($category->id == 1) {
+                    if($user->is_free) {
+                        $order->price = max($words - 10000, 0) * $category->vip_price;
+                    }
+
                 }
             } else {
                 $order->price = $price;
+                if($category->id == 1) {
+                    if($user->is_free) {
+                        $order->price = max($words - 10000, 0) * $category->price;
+                    }
+                }
             }
+
+//            if($category->id == 1 && $user->is_free) { // checklike
+//                if($user->user_group == 3) { // 会员
+//                    $order->price = max($words - 10000, 0) * $category->vip_price;
+//                } else {
+//                    $order->price = max($words - 10000, 0) * $category->price;
+//                }
+//            } else {
+//                $order->price = $price;
+//            }
             $order->save();
             if(isset($file)) {
                 $file->update([
