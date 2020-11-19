@@ -9,8 +9,9 @@
   </style>
 @stop
 @section('content')
-  <div class="main clearfix container" style="min-height:800px;">
-    <div class="lbox fl">
+  <div class="container" style="min-height:800px;">
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
       <table class="table table-hover table-sm text-center">
         <thead class="thead-dark">
         <tr>
@@ -61,61 +62,9 @@
           </ul>
         </nav>
       </div>
-      {{--      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="orderlist">--}}
-      {{--        <tbody>--}}
-      {{--        <tr>--}}
-      {{--          <th scope="col" width="30" align="center"><input type="checkbox" id="allcheck">--}}
-      {{--          </th>--}}
-      {{--          <th scope="col">论文题目</th>--}}
-      {{--          <th scope="col" width="130">系统名称</th>--}}
-      {{--          <th scope="col" width="75">状态</th>--}}
-      {{--          <th scope="col" width="70">检测结果</th>--}}
-      {{--          <th scope="col" width="168">提交日期</th>--}}
-      {{--          <th scope="col" width="100">操作</th>--}}
-      {{--        </tr>--}}
-      {{--        @foreach($orders as $order)--}}
-      {{--          <tr>--}}
-      {{--            <td align="center"><input type='checkbox' name='delete' value='{{$order->id}}'/></td>--}}
-      {{--            <td>{{$order->title}}</td>--}}
-      {{--            <td align="center">{{ $order->category->name }}</td>--}}
-      {{--            <td align="center">{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>--}}
-      {{--            <td align="center">{{ $order->rate }}</td>--}}
-      {{--            <td align="center">{{$order->created_at}}</td>--}}
-      {{--            @if($order->status==0)--}}
-      {{--              <td align="center"><a href='{{route('orders.show',$order)}}' class="bbtn">支付</a></td>--}}
-      {{--            @elseif($order->status==4)--}}
-      {{--              <td align="center"><a href='{{route('orders.view-report',$order)}}' class="bbtn">查看报告</a></td>--}}
-      {{--            @else--}}
-      {{--              <td align="center"><a href='javascript:;' class="bbtn">-</a></td>--}}
-      {{--            @endif--}}
-      {{--          </tr>--}}
-      {{--        @endforeach--}}
-
-      {{--        <tr>--}}
-      {{--          <td colspan="2" align="left">&ensp;<a class="rbtn" id="del_item">删除</a></td>--}}
-      {{--          <td colspan="5" align="right">--}}
-      {{--            共{{$orders->lastPage()}}页--}}
-      {{--            <span>共{{$orders->total()}}条</span>--}}
-      {{--            <span><a href="{{$orders->previousPageUrl()	}}">上一页</a></span>--}}
-      {{--            <span>--}}
-      {{--              @for($i=1;$i<=$orders->lastPage();$i++)--}}
-      {{--                @if($i==$orders->currentPage())--}}
-      {{--                  <span>&nbsp;</span><a style="color: red;" href='{{$orders->url($i)}}'>{{$i}}</a><span>&nbsp;</span>--}}
-      {{--                  <span>&nbsp;</span>--}}
-      {{--                @else--}}
-      {{--                  <span>&nbsp;</span><a href='{{$orders->url($i)}}'>{{$i}}</a><span>&nbsp;</span><span>&nbsp;</span>--}}
-      {{--                @endif--}}
-      {{--              @endfor--}}
-      {{--            </span>--}}
-      {{--            <span><a href="{{$orders->nextPageUrl()}}">下一页</a></span>--}}
-      {{--          </td>--}}
-      {{--        </tr>--}}
-
-      {{--        </tbody>--}}
-      {{--      </table>--}}
     </div>
 
-    <div class="rbox fr">
+    <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       <div class="box mt10">
@@ -129,6 +78,7 @@
         <p>检测完成后会提供网页版和pdf格式的检测报告，报告只是格式不同，重复率都一样的。</p>
 
       </div>
+    </div>
     </div>
 
   </div>
