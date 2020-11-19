@@ -53,9 +53,9 @@
   <!-- 二维码弹窗 -->
   <!-- 二维码弹窗结束 -->
   <div class="container" style="margin:18px auto">
-    <div class="grid grid-cols-6 gap-4">
+    <div class="grid grid-cols-12 gap-4">
 
-      <div class="col-span-5 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
+      <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
          <!-- 新添加 -->
          <ul class="nav nav-pills" id="catergatya" style="margin-bottom:18px;">
            <li class="nav-item">
@@ -249,7 +249,7 @@
           <!-- 批量上传结束 -->
         @endif
       </div>
-      <div class="col-span-1 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
+      <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
         <b>1、检测结果是否准确？</b>
         <p>如果你们学校也是用维普检测，那结果是一致的。同一个的系统、同样的比对库、同样的算法，所以只要在本系统提交的内容和学校的一致，那检测结果是一致的。</p>
         <b>2、检测需要多少时间？</b>
