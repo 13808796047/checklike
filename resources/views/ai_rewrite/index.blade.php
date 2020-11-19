@@ -140,7 +140,7 @@
         </div>
       </div>
       </div>
-  <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
+  <div class="col-span-3 p-4 rbox" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       <div class="box mt10">
