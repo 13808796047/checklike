@@ -11,7 +11,7 @@
 @section('content')
   <div class="container" style="margin:18px auto">
   <div class="grid grid-cols-12 gap-4">
-    <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
+    <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);">
       <table class="table table-hover table-sm text-center">
         <thead class="thead-dark">
         <tr>
