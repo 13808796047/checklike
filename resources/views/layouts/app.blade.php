@@ -70,7 +70,7 @@
 <div id="app" class="{{ route_class() }}-page newmain">
 
 
-
+  @include('layouts._header')
 
 
   @include('shared._messages')
