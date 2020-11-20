@@ -289,9 +289,11 @@
     $(() => {
       var user = {!!Auth::user()!!}
       if(user.user_group==0){
-        $("#usergroupname").addClass("isusergroup")
-      }else{
+        console.log("a")
         $("#usergroupname").removeClass("isusergroup")
+      }else{
+        console.log("b")
+        $("#usergroupname").addClass("isusergroup")
       }
 
       $("#catergatya li a").each(function(){
