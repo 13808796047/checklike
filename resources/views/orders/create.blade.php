@@ -97,6 +97,8 @@
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 </span>
                 <br>
+                <span>{{auth()->user()->user_group}}xxx</span>
+                <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
                   <span>VIP价:</span>
