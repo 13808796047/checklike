@@ -55,6 +55,23 @@
   </div>
   <!-- 二维码弹窗 -->
   <!-- 二维码弹窗结束 -->
+  <div id="header1">
+     <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
+				<div class="container">
+					<div class="navbar-brand" style="width:316px;">
+						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
+					</div>
+					<ul class="nav navbar-nav" style="flex:1">
+						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+                        <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+                                    <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+                                    <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+                                    <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
+                                    <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+            					</ul>
+          </div></nav>
+  </div>
   <div class="container" style="margin:18px auto">
     <div class="grid grid-cols-12 gap-4">
 
@@ -299,10 +316,8 @@
         }
       })
 
-      $('.navbar').css('position','static')
-      $('#navigation').addClass('affix')
-      $("#headerfree").css("display","none")
-      $("#headerfree1").css("display","block")
+      // $("#headerfree").css("display","none")
+      // $("#headerfree1").css("display","block")
       let set = new Set();
       let name = '';
       var oneid = ''

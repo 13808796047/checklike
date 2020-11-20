@@ -24,7 +24,23 @@
 @stop
 @section('content')
 
-
+<div id="header1">
+     <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
+				<div class="container">
+					<div class="navbar-brand" style="width:316px;">
+						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
+					</div>
+					<ul class="nav navbar-nav" style="flex:1">
+						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+                        <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+                                    <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+                                    <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+                                    <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
+                                    <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+            					</ul>
+          </div></nav>
+  </div>
   <div class="main clearfix container" style="flex:1;">
 
     <div class="card topic-reply mt-4" style="margin:30px auto;width:100%;min-height:calc(100vh * 0.81);">
@@ -71,8 +87,7 @@
 @section('scripts')
   <script>
     $(document).ready(function () {
-      $('.navbar').css('position', 'static')
-      $('#navigation').addClass('affix')
+
       $('#app').removeClass('newmain')
       $("#activationBtn").click(() => {
         $.confirm({

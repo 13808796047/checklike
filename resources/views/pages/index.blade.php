@@ -177,57 +177,7 @@
   @endguest
   <!----//End-slider-script---->
   <!-- Slideshow 4 -->
-  {{--  <div id="top" class="callbacks_container">--}}
-  {{--    <ul class="rslides" id="slider4">--}}
-  {{--      <li>--}}
-  {{--        <div class="caption text-center">--}}
-  {{--          <div class="slide-text-info">--}}
-  {{--            --}}{{--            <a class="btn1" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop"><span>万方查重</span></a>--}}
-  {{--            <h1>本科大学生 <span>毕业论文</span> 学术不端检测</h1>--}}
-  {{--            <div class="slide-text">--}}
-  {{--              <p>用于检测大学生毕业论文是否存在抄袭剽窃等学术不端行为，全国多个高校在使用，与学校检测结果一致。</p>--}}
-  {{--            </div>--}}
-  {{--            @guest--}}
-  {{--              <a class="btn2" href="javascript:;" data-toggle="modal"--}}
-  {{--                 data-target="#staticBackdrop"><span>立即查重</span></a>--}}
-  {{--            @else--}}
-  {{--              <a class="btn2" href="{{route('categories.show',['classid'=>2])}}" target="_blank"><span>立即查重</span></a>--}}
-  {{--            @endguest--}}
-  {{--          </div>--}}
-  {{--        </div>--}}
-  {{--      </li>--}}
-  {{--      <li>--}}
-  {{--        <div class="caption text-center">--}}
-  {{--          <div class="slide-text-info">--}}
-  {{--            <a class="btn1" href="#"><span>万方查重</span></a>--}}
-  {{--            <h1>硕博研究生 <span> 学位论文 </span> 学术不端检测</h1>--}}
-  {{--            <div class="slide-text">--}}
-  {{--              <p>为高校研究生院部提供检测服务，仅限检测研究生毕业论文。可检测抄袭与剽窃、伪造、篡改等学术不端行为。</p>--}}
-  {{--            </div>--}}
-  {{--            <a class="btn2" href="javascript:;" id="login3"><span>立即查重</span></a>--}}
-  {{--            @auth--}}
-  {{--              <a class="btn2" href="{{route('categories.show',['classid'=>2])}}" id="login3"><span>立即查重</span></a>--}}
-  {{--            @endauth--}}
-  {{--          </div>--}}
-  {{--        </div>--}}
-  {{--      </li>--}}
-  {{--      <li>--}}
-  {{--        <div class="caption text-center">--}}
-  {{--          <div class="slide-text-info">--}}
-  {{--            <a class="btn1" href="#"><span>万方查重</span></a>--}}
-  {{--            <h1>职称评比 <span>期刊发表</span> 学术不端检测</h1>--}}
-  {{--            <div class="slide-text">--}}
-  {{--              <p>为编辑部提供检测服务，可检测抄袭与剽窃、伪造、篡改、不当署名、一稿多投等学术不端文献。</p>--}}
-  {{--            </div>--}}
-  {{--            @auth--}}
-  {{--              <a class="btn2" href="{{route('categories.show',['classid'=>2])}}" id="login4"><span>立即查重</span></a>--}}
-  {{--            @endauth--}}
-  {{--            <a class="btn2" href="javascript:;" id="login4"><span>立即查重</span></a>--}}
-  {{--          </div>--}}
-  {{--        </div>--}}
-  {{--      </li>--}}
-  {{--    </ul>--}}
-  {{--  </div>--}}
+
   <div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="width:330px;height:330px;">
       <div class="modal-content" style="width:330px;height:360px;">
@@ -270,6 +220,48 @@
 	<!-- #navigation -->
 	<!-- #navigation end -->
 	<!-- .header-content -->
+  <div id="header1">
+     <nav id="navigation" class="navbar scrollspy">
+				<div class="container">
+					<div class="navbar-brand" style="width:316px;">
+						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
+					</div>
+					<ul class="nav navbar-nav" style="flex:1">
+						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
+            @else
+            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
+            @else
+            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
+            @else
+            <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a></li>
+            @else
+            <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
+            @endguest
+            @guest
+						<li class="menu-btn">
+            <a class="nav-link" href="javascript:;" data-toggle="modal"
+            data-target="#staticBackdrop" >登录/注册</a>
+            </li>
+            @else
+            <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+            @endguest
+					</ul>
+          </nav>
+        </div>
+</div>
+
 <header id="header" style="position:relative;">
 	<div class="header-content">
 		<div class="container">
