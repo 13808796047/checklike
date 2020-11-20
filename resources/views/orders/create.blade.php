@@ -99,14 +99,17 @@
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
+                  <span>VIP价:</span>
                   <b class="text-danger">{{  $item->vip_price  }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                   @case(2)
+                  <span>代理价:</span>
                   <b class="text-danger">{{ $item->agent_price2 }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                   @case(1)
+                  <span>代理价:</span>
                   <b class="text-danger">{{ $item->agent_price1 }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
