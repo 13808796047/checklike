@@ -93,6 +93,8 @@
                 <span>{{$item->name}}</span>
                 <span>{{$item-> vip_price }}</span>
                 <br>
+                {{$item}}
+                <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
                   <b class="text-danger">{{ count($item->users) ? $item->users[0]->pivot->price : $item->price }}</b>
