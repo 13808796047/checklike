@@ -37,8 +37,7 @@ class UploadCheckFile implements ShouldQueue
     public function failed(\Throwable $exception)
     {
         $data = [
-            'first' => '有订单异常,请尽快处理!',
-            'keyword1' => ['value' => '检测文件上传队列发生错误!', 'color' => '#173177'],
+            'first' => '有订单异常,请尽快处理!(上传队列)',
             'keyword1' => ['value' => $this->order->title, 'color' => '#173177'],
             'keyword2' => ['value' => $this->order->category->name, 'color' => '#173177'],
             'keyword3' => ['value' => $this->order->rate, 'color' => '#173177'],
