@@ -95,12 +95,12 @@
 
                 <span>{{$item->name}}</span>
                 <br>
-                <span class="auth()->user()->user_group == 0 ? '' : 'isusergroup'">
+                <span>
                 <span>{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 </span>
                 <br>
-                <span>{{auth()->user()->user_group}}xxx</span>
+
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
@@ -285,8 +285,13 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
-      let obj1 = {!!$categories!!}
-      console.log(obj1)
+
+
+      if(auth()->user()->user_group == 0){
+        $("#usergroupnum").addClass("isusergroup")
+      }else{
+        $("#usergroupnum").removeClass("isusergroup")
+      }
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
         if(currenthref == window.location.pathname){
