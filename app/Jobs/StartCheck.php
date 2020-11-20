@@ -45,11 +45,6 @@ class StartCheck implements ShouldQueue
         $data = [
             'first' => '开始检测通知',
             'keyword1' => ['value' => '开始检测发生队列错误', 'color' => '#173177'],
-//            'keyword2' => ['value' => OrderEnum::getStatusName($this->order->status), 'color' => '#173177'],
-//            'keyword3' => ['value' => $this->order->created_at->format("Y-m-d H:i:s"), 'color' => '#173177'],
-//            'keyword4' => ['value' => $this->order->category->name, 'color' => '#173177'],
-//            'keyword5' => ['value' => $this->order->price, 'color' => '#173177'],
-//            'remark' => ['value' => '点击去支付', 'color' => '#173177']
         ];
         $touser = config('wechat.notify_openid');
         $template_id = config('wechat.official_account.templates.pending.template_id');

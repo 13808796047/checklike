@@ -37,28 +37,13 @@ class OrderPaidMsg implements ShouldQueue
                 'keyword5' => ['value' => $this->order->price, 'color' => '#173177'],
                 'remark' => ['value' => '点击查看详情', 'color' => '#173177']
             ];
-            switch ($this->host) {
-                case config('app.host.wf_host'):
-                    $touser = $this->order->user->wf_weixin_openid;
-                    $template_id = config('wechat.official_account.wf.templates.paid.template_id');
-                    $appid = config('wechat.official_account.wf.templates.paid.appid');
-                    $pagepath = config('wechat.official_account.wf.templates.paid.page_path');
-                    $config = config('wechat.official_account.wf');
-                    break;
-                case config('app.host.wp_host'):
-                    $touser = $this->order->user->wp_weixin_openid;
-                    $template_id = config('wechat.official_account.wp.templates.paid.template_id');
-                    $appid = config('wechat.official_account.wp.templates.paid.appid');
-                    $pagepath = config('wechat.official_account.wp.templates.paid.page_path');
-                    $config = config('wechat.official_account.wp');
-                    break;
-                default:
-                    $touser = $this->order->user->dev_weixin_openid;
-                    $template_id = config('wechat.official_account.dev.templates.paid.template_id');
-                    $appid = config('wechat.official_account.dev.templates.paid.appid');
-                    $pagepath = config('wechat.official_account.dev.templates.paid.page_path');
-                    $config = config('wechat.official_account.dev');
-            }
+
+            $touser = $this->order->user->weixin_openid;
+            $template_id = config('wechat.official_account.templates.paid.template_id');
+            $appid = config('wechat.official_account.templates.paid.appid');
+            $pagepath = config('wechat.official_account.templates.paid.page_path');
+            $config = config('wechat.official_account');
+
             if($touser) {
                 Factory::officialAccount($config)->template_message->send([
                     'touser' => $touser,

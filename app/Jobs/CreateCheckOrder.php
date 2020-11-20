@@ -40,4 +40,24 @@ class CreateCheckOrder implements ShouldQueue
             dispatch(new StartCheck($this->order));
         }
     }
+
+    /**
+     * 任务未能处理
+     */
+    public function failed(\Throwable $exception)
+    {
+        $data = [
+            'first' => '检测文件创建队列通知',
+            'keyword1' => ['value' => '检测文件创建队列发生错误', 'color' => '#173177'],
+        ];
+        $touser = config('wechat.notify_openid');
+        $template_id = config('wechat.official_account.templates.pending.template_id');
+        if($touser) {
+            app('official_account')->template_message->send([
+                'touser' => $touser,
+                'template_id' => $template_id,
+                'data' => $data,
+            ]);
+        }
+    }
 }
