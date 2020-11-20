@@ -88,7 +88,7 @@ class PaymentsController extends Controller
         ]);
     }
 
-    public function freePay(Order $order)
+    public function freePay(Request $request, Order $order)
     {
         $this->authorize('own', $order);
         if($code = $request->code) {
