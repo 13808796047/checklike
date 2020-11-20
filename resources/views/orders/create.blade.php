@@ -92,7 +92,7 @@
 
                 <span>{{$item->name}}</span>
                 <br>
-                <span>
+                <span style="text-decoration: line-through;">
                 <span>{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 </span>
