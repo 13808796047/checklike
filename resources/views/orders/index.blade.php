@@ -103,8 +103,6 @@
 @section('scripts')
   <script>
     $(function () {
-      $('.navbar').css('position','static')
-      $('#navigation').addClass('affix')
       setTimeout(() => {
         window.location.reload();
       }, 120000);
