@@ -220,6 +220,48 @@
 	<!-- #navigation -->
 	<!-- #navigation end -->
 	<!-- .header-content -->
+  <div id="header1">
+     <nav id="navigation" class="navbar scrollspy">
+				<div class="container">
+					<div class="navbar-brand" style="width:316px;">
+						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
+					</div>
+					<ul class="nav navbar-nav" style="flex:1">
+						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
+            @else
+            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">免费查重</a></li>
+            @else
+            <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
+            @else
+            <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+            @endguest
+            @guest
+            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a></li>
+            @else
+            <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
+            @endguest
+            @guest
+						<li class="menu-btn">
+            <a class="nav-link" href="javascript:;" data-toggle="modal"
+            data-target="#staticBackdrop" >登录/注册</a>
+            </li>
+            @else
+            <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+            @endguest
+					</ul>
+          </nav>
+        </div>
+</div>
+
 <header id="header" style="position:relative;">
 	<div class="header-content">
 		<div class="container">
