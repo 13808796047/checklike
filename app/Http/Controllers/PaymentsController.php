@@ -96,7 +96,7 @@ class PaymentsController extends Controller
         } else {
             $price = $order->price;
         }
-        $order = DB::transaction(function() use ($order) {
+        $order = DB::transaction(function() use ($order, $price) {
             $order->update([
                 'date_pay' => Carbon::now(), // 支付时间
                 'pay_type' => '免费检测', // 支付方式
