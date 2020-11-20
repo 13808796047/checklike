@@ -138,7 +138,6 @@
 	     </div>
       </div>
       <div id="iszero" style="display:none;">
-          <p style="font-size: 13px;color:gray;">本次订单免费检测，限10000字内，每日一次。</p>
           <p style="color:#fff;background: red;width: 10%;margin: 0 auto;text-align:center;" id="freefee">提交</p>
        </div>
        </div>
@@ -207,13 +206,6 @@
        }
 
 
-       let currentId = {!!$order->id!!}
-
-       $("#freefee").click(()=>{
-          axios.get(`/payments/${currentId}/free_pay`).then(res=>{
-              location.href = "/orders"
-          })
-       })
 
        axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
         console.log(res,"fsafs")
@@ -288,6 +280,15 @@
             console.log(err,"err")
           })
        }
+
+
+       let currentId = {!!$order->id!!}
+
+       $("#freefee").click(()=>{
+          axios.get(`/payments/${currentId}/free_pay?code=${clickCode}`).then(res=>{
+              location.href = "/orders"
+          })
+       })
 
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
