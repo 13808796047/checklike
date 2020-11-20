@@ -95,14 +95,13 @@
 
                 <span>{{$item->name}}</span>
                 <br>
-                @if(Auth::user()->user_group ==0)
+                @if(auth()->user()->user_group ==0)
                 @elseif
                 <span class="isusergroup">
                 <span>{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 </span>
                 @endif
-                <br>
 
                 <br>
                 @switch(auth()->user()->user_group)
