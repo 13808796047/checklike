@@ -18,6 +18,9 @@
     #catergatya li a:visited{
       color:black;
     }
+    .isusergroup:{
+      text-decoration: line-through;
+    }
   </style>
 @stop
 @section('content')
@@ -92,7 +95,7 @@
 
                 <span>{{$item->name}}</span>
                 <br>
-                <span style="text-decoration: line-through;">
+                <span class="{{auth()->user()->user_group == 0 ? '' : 'isusergroup'}}">
                 <span>{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 </span>
