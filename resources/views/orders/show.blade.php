@@ -206,7 +206,7 @@
        }
 
 
-
+       let currentId = {!!$order->id!!}
        axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
         console.log(res,"fsafs")
         couponArr=res.data.data;
@@ -282,7 +282,7 @@
        }
 
 
-       let currentId = {!!$order->id!!}
+
 
        $("#freefee").click(()=>{
           axios.get(`/payments/${currentId}/free_pay?code=${clickCode}`).then(res=>{
