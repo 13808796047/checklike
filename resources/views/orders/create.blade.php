@@ -97,7 +97,7 @@
                 <br>
                 @if(auth()->user()->user_group==0)
                 <span>
-                <span>{{$item-> price }}</span>
+                <span class="text-danger">{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 </span>
                 @else
