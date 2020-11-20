@@ -18,7 +18,7 @@
     #catergatya li a:visited{
       color:black;
     }
-    .isusergroup:{
+    .isusergroup{
       text-decoration: line-through;
     }
   </style>
@@ -289,10 +289,8 @@
     $(() => {
       var user = {!!Auth::user()!!}
       if(user.user_group==0){
-        console.log("a")
         $("#usergroupname").removeClass("isusergroup")
       }else{
-        console.log("b")
         $("#usergroupname").addClass("isusergroup")
       }
 
