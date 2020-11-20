@@ -96,6 +96,10 @@
                 <span>{{$item->name}}</span>
                 <br>
                 @if(auth()->user()->user_group==0)
+                <span>
+                <span>{{$item-> price }}</span>
+                <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
+                </span>
                 @else
                 <span class="isusergroup">
                 <span>{{$item-> price }}</span>
