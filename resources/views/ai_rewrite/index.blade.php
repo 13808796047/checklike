@@ -91,8 +91,10 @@
                                     <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
                                     <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
                                     <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-                                    <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <div>
+            <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
             <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+            </div>
             					</ul>
           </div></nav>
   </div>
