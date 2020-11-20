@@ -111,7 +111,6 @@ class PaymentsController extends Controller
         });
         dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
         $this->afterOrderPaid($order);
-        $this->afterPaidMsg($order);
         $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(10);
         return view('orders.index', compact('orders'));
     }
@@ -448,7 +447,6 @@ class PaymentsController extends Controller
                     'status' => 1,
                 ]);
                 $this->afterOrderPaid($order);
-                $this->afterPaidMsg($order);
                 //返回付款成功
                 $ret['errno'] = 0;
                 $ret['msg'] = 'success';
