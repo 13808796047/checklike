@@ -208,7 +208,6 @@ class PaymentsController extends Controller
                     'status' => 1,
                 ]);
                 $this->afterOrderPaid($order);
-                $this->afterPaidMsg($order);
                 return app('alipay')->success();
         }
     }
@@ -340,7 +339,6 @@ class PaymentsController extends Controller
                     'status' => 1,
                 ]);
                 $this->afterOrderPaid($order);
-                $this->afterPaidMsg($order);
                 return app('wechat_pay')->success();
         }
 
@@ -371,19 +369,15 @@ class PaymentsController extends Controller
             'status' => 1,
         ]);
         $this->afterOrderPaid($order);
-        $this->afterPaidMsg($order);
         return app('wechat_pay_mp')->success();
     }
 
 
-    protected function afterPaidMsg(Order $order)
-    {
-        dispatch(new OrderPaidMsg($order));
-    }
-
     protected function afterOrderPaid(Order $order)
     {
+        dispatch(new CheckOrderStatus($order))->delay(now()->addMinute(30));
         event(new OrderPaid($order));
+        dispatch(new OrderPaidMsg($order));
     }
 
     protected function afterRechargePaid(Recharge $recharge)
