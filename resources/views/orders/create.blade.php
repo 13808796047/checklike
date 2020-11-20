@@ -92,8 +92,10 @@
 
                 <span>{{$item->name}}</span>
                 <br>
+                <div>
                 <span>{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
+                </div>
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
