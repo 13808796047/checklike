@@ -10,6 +10,7 @@
  */
 
 return [
+    'notify_openid' => env('NOTIFY_OPENID'),
     /*
      * 默认配置，将会合并到各模块中
      */
