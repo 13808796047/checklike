@@ -91,12 +91,17 @@ class PaymentsController extends Controller
     public function freePay(Order $order)
     {
         $this->authorize('own', $order);
+        if($code = $request->code) {
+            $price = $this->calcPrice($order, $request->code);
+        } else {
+            $price = $order->price;
+        }
         $order = DB::transaction(function() use ($order) {
             $order->update([
                 'date_pay' => Carbon::now(), // 支付时间
                 'pay_type' => '免费检测', // 支付方式
                 'payid' => time(), // 支付宝订单号
-                'pay_price' => $order->price,//支付金额
+                'pay_price' => $price,//支付金额
                 'status' => 1,
             ]);
             $order->user()->update([
