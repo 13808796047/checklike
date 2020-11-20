@@ -93,8 +93,6 @@
                 <span>{{$item->name}}</span>
                 <span>{{$item-> vip_price }}</span>
                 <br>
-                {{$item}}
-                <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
                   <b class="text-danger">{{ count($item->users) ? $item->users[0]->pivot->price : $item->price }}</b>
@@ -274,6 +272,8 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
+      let obj1 = {!!$categories!!}
+      console.log(obj1)
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
         if(currenthref == window.location.pathname){
