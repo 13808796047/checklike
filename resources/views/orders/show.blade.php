@@ -276,7 +276,14 @@
             $("#sjprice").text(res.data+"元")
             $("#yhje").text((currentPrice-res.data).toFixed(2))
             $("#dingdanprice").css("display","block")
-            console.log($("#sjprice").text()=="0元")
+
+            if($("#sjprice").text()=="0元"){
+              $("#isshowicon").css("display","none")
+              $("#iszero").css("display","block")
+            }else{
+              $("#isshowicon").css("display","block")
+              $("#iszero").css("display","none")
+            }
           }).catch(err=>{
             console.log(err,"err")
           })
