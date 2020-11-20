@@ -17,12 +17,10 @@ class OrderPaidMsg implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $order;
-    protected $host;
 
     public function __construct(Order $order)
     {
         $this->order = $order;
-        $this->host = request()->getHost();
     }
 
     public function handle()
