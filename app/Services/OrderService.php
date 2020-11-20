@@ -18,6 +18,7 @@ use App\Models\Category;
 use App\Models\CouponCode;
 use App\Models\File;
 use App\Models\Order;
+use App\Models\User;
 
 class OrderService
 {
@@ -67,16 +68,7 @@ class OrderService
             if($words <= $category->min_words && $words >= $category->max_words) {
                 throw new InvalidRequestException("检测字数必须在" . $category->min_words . "与" . $category->max_words . "之间", 500);
             }
-            switch ($category->price_type) {
-                case Category::PRICE_TYPE_THOUSAND:
-                    $price = round($category->price * ceil($words / 1000), 2);
-                    break;
-                case Category::PRICE_TYPE_MILLION:
-                    $price = round($category->price * ceil($words / 10000), 2);
-                    break;
-                default:
-                    $price = $category->price;
-            }
+
             $referer = \Cache::get('word');
             //创建订单
             $order = new Order([
@@ -94,32 +86,33 @@ class OrderService
                 'keyword' => $referer['keyword']
             ]);
             $order->user()->associate($user);
-            if($user->user_group == 3) {
-                $order->price = $category->vip_price;
-                if($category->id == 1) {
-                    if($user->is_free) {
-                        $order->price = max($words - 10000, 0) * $category->vip_price;
-                    }
-
-                }
-            } else {
-                $order->price = $price;
-                if($category->id == 1) {
-                    if($user->is_free) {
-                        $order->price = max($words - 10000, 0) * $category->price;
-                    }
-                }
+            switch ($user->user_group) {
+                case 1:
+                    $price = $category->agent_price1;
+                    break;
+                case 2:
+                    $price = $category->agent_price2;
+                    break;
+                case 3:
+                    $price = $category->vip_price;
+                    break;
+                default:
+                    $price = $category->price;
             }
-
-//            if($category->id == 1 && $user->is_free) { // checklike
-//                if($user->user_group == 3) { // 会员
-//                    $order->price = max($words - 10000, 0) * $category->vip_price;
-//                } else {
-//                    $order->price = max($words - 10000, 0) * $category->price;
-//                }
-//            } else {
-//                $order->price = $price;
-//            }
+            switch ($category->price_type) {
+                case Category::PRICE_TYPE_THOUSAND:
+                    $amount = round($price * ceil($words / 1000), 2);
+                    break;
+                case Category::PRICE_TYPE_MILLION:
+                    $amount = round($price * ceil($words / 10000), 2);
+                    break;
+                default:
+                    $amount = $price;
+            }
+            if($user->is_free) {
+                $amount = max($words - 10000, 0) * $price;
+            }
+            $order->price = $amount;
             $order->save();
             if(isset($file)) {
                 $file->update([
@@ -140,6 +133,23 @@ class OrderService
         return $order;
     }
 
+    public function calcPrice(User $user, Category $category, $words, $price)
+    {
+        switch ($category->price_type) {
+            case Category::PRICE_TYPE_THOUSAND:
+                $price = round($price * ceil($words / 1000), 2);
+                break;
+            case Category::PRICE_TYPE_MILLION:
+                $price = round($price * ceil($words / 10000), 2);
+                break;
+            default:
+                $price = $price;
+        }
+        if($user->is_free) {
+            $price = max($words - 10000, 0) * $price;
+        }
+        return $price;
+    }
 
     //计算字数
     public function calcWords($words)
