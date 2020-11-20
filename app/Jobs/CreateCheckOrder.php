@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Handlers\OrderApiHandler;
+use App\Models\Enum\OrderEnum;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -47,8 +48,13 @@ class CreateCheckOrder implements ShouldQueue
     public function failed(\Throwable $exception)
     {
         $data = [
-            'first' => '检测文件创建队列通知',
-            'keyword1' => ['value' => '检测文件创建队列发生错误', 'color' => '#173177'],
+            'first' => '有订单异常,请尽快处理!(创建检测队列)',
+            'keyword1' => ['value' => $this->order->title, 'color' => '#173177'],
+            'keyword2' => ['value' => OrderEnum::getStatusName($this->order->status), 'color' => '#173177'],
+            'keyword3' => ['value' => $this->order->created_at->format("Y-m-d H:i:s"), 'color' => '#173177'],
+            'keyword4' => ['value' => $this->order->category->name, 'color' => '#173177'],
+            'keyword5' => ['value' => $this->order->price, 'color' => '#173177'],
+            'remark' => ['value' => '点击查看详情！', 'color' => '#173177']
         ];
         $touser = config('wechat.notify_openid');
         $template_id = config('wechat.official_account.templates.pending.template_id');
