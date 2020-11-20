@@ -262,6 +262,7 @@
             $(this).addClass('currentBoder')
             $(this).parent().siblings().children(".discount_box").removeClass("currentBoder")
             countPrice($(this))
+
           })
        }
        var clickCode =""
@@ -275,6 +276,7 @@
             $("#sjprice").text(res.data+"元")
             $("#yhje").text((currentPrice-res.data).toFixed(2))
             $("#dingdanprice").css("display","block")
+            console.log($("#sjprice").text()==0)
           }).catch(err=>{
             console.log(err,"err")
           })
