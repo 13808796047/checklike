@@ -91,23 +91,26 @@
               <p class="text-center text-xs py-2">
 
                 <span>{{$item->name}}</span>
-                <span>{{$item-> vip_price }}</span>
+                <br>
+                <span>{{$item-> price }}</span>
+                <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
-                  <b class="text-danger">{{ count($item->users) ? $item->users[0]->pivot->price : $item->price }}</b>
+                  <b class="text-danger">{{  $item->vip_price  }}</b>
+                  <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                   @case(2)
                   <b class="text-danger">{{ $item->agent_price2 }}</b>
+                  <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                   @case(1)
                   <b class="text-danger">{{ $item->agent_price1 }}</b>
+                  <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
-                  @default
-                  <b class="text-danger">{{ $item->price }}</b>
                 @endswitch
 
-                <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
+
               </p>
             </li>
           @endforeach
