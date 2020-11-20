@@ -276,7 +276,7 @@
             $("#sjprice").text(res.data+"元")
             $("#yhje").text((currentPrice-res.data).toFixed(2))
             $("#dingdanprice").css("display","block")
-            console.log($("#sjprice").text()==0)
+            console.log($("#sjprice").text()=="0元")
           }).catch(err=>{
             console.log(err,"err")
           })
