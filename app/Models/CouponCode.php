@@ -122,7 +122,7 @@ class CouponCode extends Model
         if($this->enable_days <= 0) {
             throw new CouponCodeUnavailableException('卡券已过期!');
         }
-        if($this->unabled_date->lt(Carbon::now())) {
+        if($this->unabled_date->lt(Carbon::now()) && $this->status == self::STATUS_UNACTIVED) {
             throw new CouponCodeUnavailableException('卡券激活时间已过期!');
         }
         if(!is_null($orderAmount) && $orderAmount < $this->min_amount) {
