@@ -95,10 +95,13 @@
 
                 <span>{{$item->name}}</span>
                 <br>
-                <span>
+                @if(Auth::user()->user_group ==0)
+                @elseif
+                <span class="isusergroup">
                 <span>{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                 </span>
+                @endif
                 <br>
 
                 <br>
@@ -286,12 +289,6 @@
   <script>
     $(() => {
 
-
-      if(auth()->user()->user_group == 0){
-        $("#usergroupnum").addClass("isusergroup")
-      }else{
-        $("#usergroupnum").removeClass("isusergroup")
-      }
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
         if(currenthref == window.location.pathname){
