@@ -18,6 +18,9 @@
     #catergatya li a:visited{
       color:black;
     }
+    .isusergroup{
+      text-decoration: line-through;
+    }
   </style>
 @stop
 @section('content')
@@ -92,19 +95,32 @@
 
                 <span>{{$item->name}}</span>
                 <br>
+                @if(auth()->user()->user_group==0)
+                <span>
+                <span class="text-danger">{{$item-> price }}</span>
+                <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
+                </span>
+                @else
+                <span class="isusergroup">
                 <span>{{$item-> price }}</span>
                 <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
+                </span>
+                @endif
+
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
+                  <span>VIP价:</span>
                   <b class="text-danger">{{  $item->vip_price  }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                   @case(2)
+                  <span>代理价:</span>
                   <b class="text-danger">{{ $item->agent_price2 }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                   @case(1)
+                  <span>代理价:</span>
                   <b class="text-danger">{{ $item->agent_price1 }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
@@ -275,8 +291,7 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
-      let obj1 = {!!$categories!!}
-      console.log(obj1)
+
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
         if(currenthref == window.location.pathname){

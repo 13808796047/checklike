@@ -119,6 +119,7 @@
               <p id="dingdanprice" style="display:none;">订单原价:{{$order->price}}元，卡券优惠:<span id="yhje"></span>元，应付金额：<span style="font-size: 19px;color: #FF5300;" id="sjprice">元</span>，请选择以下任一一种方式完成支付。</p>
             </div>
         </div>
+        <div id="isshowicon">
         <div style="display: flex;justify-content: center;" >
             <div style="display: flex;align-items: center;margin-right: 30px;">
               <input type="radio" name="paytype" value="alipay" checked="checked">
@@ -134,9 +135,9 @@
 						 class="btn btn-primary btn-sm sbtn">提交</a>
 				<a type="button" id="btn-wechat" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
 						class="btn btn-primary btn-sm sbtn">提交</a>
-	</div>
+	     </div>
+      </div>
       <div id="iszero" style="display:none;">
-          <p style="font-size: 13px;color:gray;">本次订单免费检测，限10000字内，每日一次。</p>
           <p style="color:#fff;background: red;width: 10%;margin: 0 auto;text-align:center;" id="freefee">提交</p>
        </div>
        </div>
@@ -205,13 +206,6 @@
        }
 
 
-       let currentId = {!!$order->id!!}
-
-       $("#freefee").click(()=>{
-          axios.get(`/payments/${currentId}/free_pay`).then(res=>{
-              location.href = "/orders"
-          })
-       })
 
        axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
         console.log(res,"fsafs")
@@ -260,6 +254,7 @@
             $(this).addClass('currentBoder')
             $(this).parent().siblings().children(".discount_box").removeClass("currentBoder")
             countPrice($(this))
+
           })
        }
        var clickCode =""
@@ -273,10 +268,27 @@
             $("#sjprice").text(res.data+"元")
             $("#yhje").text((currentPrice-res.data).toFixed(2))
             $("#dingdanprice").css("display","block")
+
+            if($("#sjprice").text()=="0元"){
+              $("#isshowicon").css("display","none")
+              $("#iszero").css("display","block")
+            }else{
+              $("#isshowicon").css("display","block")
+              $("#iszero").css("display","none")
+            }
           }).catch(err=>{
             console.log(err,"err")
           })
        }
+
+
+       let currentId = {!!$order->id!!}
+
+       $("#freefee").click(()=>{
+          axios.get(`/payments/${currentId}/free_pay?code=${clickCode}`).then(res=>{
+              location.href = "/orders"
+          })
+       })
 
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
