@@ -61,6 +61,7 @@ class OrdersController extends Controller
     public function store(OrderRequest $request)
     {
         $order = $this->orderService->add($request);
+        dd($order);
         return new OrderResource($order);
     }
 
