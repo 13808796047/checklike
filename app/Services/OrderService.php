@@ -113,7 +113,6 @@ class OrderService
             if($user->is_free) {
                 $amount = max($words - 10000, 0) * $price;
             }
-            dd($amount);
             $order->price = $amount;
             $order->save();
             if(isset($file)) {
