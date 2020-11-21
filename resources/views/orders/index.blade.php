@@ -28,7 +28,7 @@
   </div>
   <div class="container" style="margin:18px auto">
   <div class="grid grid-cols-12 gap-4">
-    <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);">
+    <div class="col-span-12 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);">
       <table class="table table-hover table-sm text-center">
         <thead class="thead-dark">
         <tr>
@@ -51,11 +51,11 @@
             <td>{{ $order->rate }}</td>
             <td>{{$order->created_at}}</td>
             @if($order->status==0)
-              <td><a href='{{route('orders.show',$order)}}' class="bbtn">支付</a></td>
+              <td><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
             @elseif($order->status==4)
-              <td><a href='{{route('orders.view-report',$order)}}' class="bbtn">查看报告</a></td>
+              <td><a href='{{route('orders.view-report',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">查看报告</a></td>
             @else
-              <td><a href='javascript:;' class="bbtn">-</a></td>
+              <td><a href='javascript:;' class="bbtn" style="color:#fff;background:#3490dc;">-</a></td>
             @endif
           </tr>
         @endforeach
@@ -81,7 +81,7 @@
       </div>
     </div>
 
-    <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
+    <!-- <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       <div class="box mt10">
@@ -95,7 +95,7 @@
         <p>检测完成后会提供网页版和pdf格式的检测报告，报告只是格式不同，重复率都一样的。</p>
 
       </div>
-    </div>
+    </div> -->
     </div>
 
   </div>

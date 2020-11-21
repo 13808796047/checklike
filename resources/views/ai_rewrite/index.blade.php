@@ -100,7 +100,7 @@
   </div>
   <div class="container" style="margin:18px auto">
       <div class="grid grid-cols-12 gap-4">
-    <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);">
+    <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
         <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
         <div>
           <span>模式：</span>
@@ -148,7 +148,7 @@
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
                 <p>降重后</p>
-                <div id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
+                <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
             </div>
         </div>
         <div>
@@ -159,7 +159,7 @@
         </div>
       </div>
       </div>
-    <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
+    <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff" id="jcright">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       <div class="box mt10">
@@ -297,9 +297,12 @@
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
           .then(res => {
             $('#beingModal').modal('hide')
+            $("#jcright").css("display",'none')
+            $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
             $('#jcqian').css('display', 'none')
             var htmlstring=res.data.data;
             $("#jchou").css('display', 'block')
+
             changed(contents,htmlstring)
           })
           .catch(err =>{

@@ -89,8 +89,16 @@
 									微信扫一扫 享免费检测
 								</div>
 								<div style="margin: 5px 0;">
+                <div id="loginIcon">
+                <div class="d-flex justify-content-center" style="width:200px;height:200px;position:relative;margin:0 auto;" >
+                    <div class="spinner-border" role="status" style="position:absolute;top:95px;">
+                                <span class="sr-only">Loading...</span>
+                </div>
+                </div>
+                </div>
+
 									<img src=""
-									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: block;">
+									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: none;">
 								</div>
 								<div style="color: #999;font-size: 13px;text-align: center;">
 									无需注册，关注后自动登录
@@ -731,6 +739,8 @@
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
+            $("#qrimg").css("display","block");
+            $("#loginIcon").css("display","none");
           }
           img.src = res.data.url;
           var wechatFlag = res.data.wechatFlag;
