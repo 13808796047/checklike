@@ -19,6 +19,7 @@ return [
         'pp_host' => env('PP_HOST'),
         'cn_host' => env('CN_HOST'),
     ],
+    'service_wechat' => env('SERVICE_WECHAT'),
     'name' => env('APP_NAME', 'Laravel'),
 
     /*

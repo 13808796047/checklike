@@ -43,7 +43,7 @@ class ProductOrders extends Round
                 $this->withContent(23043, 14658, 4758);
 
                 // 图表数据
-                $this->withChart([70, 52, 26]);
+//                $this->withChart([70, 52, 26]);
 
                 // 总数
                 $this->chartTotal('Total', 344);

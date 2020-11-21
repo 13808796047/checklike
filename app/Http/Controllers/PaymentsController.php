@@ -15,6 +15,7 @@ use App\Jobs\UpdateIsFree;
 use App\Models\CouponCode;
 use App\Models\Order;
 use App\Models\Recharge;
+use App\Services\PaymentService;
 use Carbon\Carbon;
 use EasyWeChatComposer\EasyWeChat;
 use Endroid\QrCode\QrCode;
@@ -53,7 +54,7 @@ class PaymentsController extends Controller
                 return app('alipay')->web([
                     'out_trade_no' => $recharge->no . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
                     'total_amount' => $recharge->total_amount, // 订单金额，单位元，支持小数点后两位
-                    'subject' => '支付充值降重次数的订单:' . $recharge->no, // 订单标题
+                    'subject' => $order->category->name . '-' . config('service_wechat'), // 订单标题
                 ]);
                 break;
             default:
@@ -72,7 +73,7 @@ class PaymentsController extends Controller
                 return app('alipay')->web([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
                     'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
-                    'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题,
+                    'subject' => $order->category->name . '-' . config('service_wechat'), // 订单标题,
                 ]);
 
         }
@@ -84,35 +85,13 @@ class PaymentsController extends Controller
         return app('alipay_wap')->wap([
             'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
             'total_amount' => $order->price, // 订单金额，单位元，支持小数点后两位
-            'subject' => '支付' . $order->category->name . '的订单：' . $order->orderid, // 订单标题
+            'subject' => $order->category->name . '-' . config('service_wechat'), // 订单标题
         ]);
     }
 
-    public function freePay(Request $request, Order $order)
+    public function freePay(Request $request, Order $order, PaymentService $paymentService)
     {
-        $this->authorize('own', $order);
-        if($code = $request->code) {
-            $price = $this->calcPrice($order, $request->code);
-        } else {
-            $price = $order->price;
-        }
-        $order = DB::transaction(function() use ($order, $price) {
-            $order->update([
-                'date_pay' => Carbon::now(), // 支付时间
-                'pay_type' => '免费检测', // 支付方式
-                'payid' => time(), // 支付宝订单号
-                'pay_price' => $price,//支付金额
-                'status' => 1,
-            ]);
-            $order->user()->update([
-                'is_free' => false
-            ]);
-            return $order;
-        });
-        dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
-        $this->afterOrderPaid($order);
-        $this->afterPaidMsg($order);
-        $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(10);
+        $orders = $paymentService->payFree($request, $order);
         return view('orders.index', compact('orders'));
     }
 
@@ -140,21 +119,6 @@ class PaymentsController extends Controller
 
     }
 
-    public function calcPrice(Order $order, $code)
-    {
-        // 如果用户提交了优惠码
-        $coupon_code = CouponCode::where('code', $code)->first();
-        if(!$coupon_code) {
-            throw new CouponCodeUnavailableException('优惠券不存在');
-        }
-        $coupon_code->checkAvailable($order->price);
-        $totalAmount = $coupon_code->getAdjustedPrice($order->price);
-        // 将订单与优惠券关联
-        $order->couponCode()->associate($coupon_code);
-        $order->save();
-        // 如果用户通过Api请求,则返回JSON格式的错误信息
-        return $totalAmount;
-    }
 
 // 服务器端回调
     public function alipayNotify()
@@ -208,7 +172,6 @@ class PaymentsController extends Controller
                     'status' => 1,
                 ]);
                 $this->afterOrderPaid($order);
-                $this->afterPaidMsg($order);
                 return app('alipay')->success();
         }
     }
@@ -231,7 +194,7 @@ class PaymentsController extends Controller
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $recharge->no . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
                     'total_fee' => $recharge->total_amount * 100, // 与支付宝不同，微信支付的金额单位是分。
-                    'body' => '支付充值降重次数的订单：' . $recharge->no, // 订单描述
+                    'body' => $order->category->name . '-' . config('service_wechat'), // 订单描述
                 ]);
                 //把要转换的字符串作为QrCode的构造函数
                 $qrCode = new QrCode($wechatOrder->code_url);
@@ -253,7 +216,7 @@ class PaymentsController extends Controller
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
                     'total_fee' => $price * 100, // 与支付宝不同，微信支付的金额单位是分。
-                    'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
+                    'body' => $order->category->name . '-' . config('service_wechat'), // 订单描述
                 ]);
                 //把要转换的字符串作为QrCode的构造函数
                 $qrCode = new QrCode($wechatOrder->code_url);
@@ -275,7 +238,7 @@ class PaymentsController extends Controller
         $attributes = [
             'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
             'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
-            'body' => '支付' . $order->category->name . ' 的订单：' . $order->orderid, // 订单描述
+            'body' => $order->category->name . '-' . config('service_wechat'), // 订单描述
         ];
         return app('wechat_pay_wap')->wap($attributes);
     }
@@ -340,7 +303,6 @@ class PaymentsController extends Controller
                     'status' => 1,
                 ]);
                 $this->afterOrderPaid($order);
-                $this->afterPaidMsg($order);
                 return app('wechat_pay')->success();
         }
 
@@ -371,19 +333,15 @@ class PaymentsController extends Controller
             'status' => 1,
         ]);
         $this->afterOrderPaid($order);
-        $this->afterPaidMsg($order);
         return app('wechat_pay_mp')->success();
     }
 
 
-    protected function afterPaidMsg(Order $order)
-    {
-        dispatch(new OrderPaidMsg($order));
-    }
-
     protected function afterOrderPaid(Order $order)
     {
+        dispatch(new CheckOrderStatus($order))->delay(now()->addMinute(30));
         event(new OrderPaid($order));
+        dispatch(new OrderPaidMsg($order));
     }
 
     protected function afterRechargePaid(Recharge $recharge)
@@ -454,7 +412,6 @@ class PaymentsController extends Controller
                     'status' => 1,
                 ]);
                 $this->afterOrderPaid($order);
-                $this->afterPaidMsg($order);
                 //返回付款成功
                 $ret['errno'] = 0;
                 $ret['msg'] = 'success';

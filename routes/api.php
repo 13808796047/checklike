@@ -58,6 +58,7 @@ Route::prefix('v1')
             //文件上传
             Route::post('files', 'FilesController@store')->name('files.store');
             Route::get('qcrode/generate_img', 'OrdersController@generateImg')->name('qcrode.img');
+            Route::get('payments/{order}/pay-by-free', 'PaymentsController@payByFree');
         });
 
 

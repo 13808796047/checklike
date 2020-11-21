@@ -99,6 +99,9 @@ class OrderService
                 default:
                     $price = $category->price;
             }
+            if($user->is_free) {
+                $words = max($words - 10000, 0);
+            }
             switch ($category->price_type) {
                 case Category::PRICE_TYPE_THOUSAND:
                     $amount = round($price * ceil($words / 1000), 2);
@@ -109,9 +112,8 @@ class OrderService
                 default:
                     $amount = $price;
             }
-            if($user->is_free) {
-                $amount = max($words - 10000, 0) * $price;
-            }
+
+
             $order->price = $amount;
             $order->save();
             if(isset($file)) {

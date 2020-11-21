@@ -15,14 +15,24 @@ class TotalUsers extends Card
      */
     protected $footer;
 
-    /**
-     * 初始化卡片.
-     */
+    // 保存自定义参数
+    protected $data = [];
+
+    // 构造方法参数必须设置默认值
+    public function __construct(array $data = [])
+    {
+        $this->data = [];
+
+        parent::__construct();
+    }
+
     protected function init()
     {
         parent::init();
 
+        // 设置标题
         $this->title('Total Users');
+        // 设置下拉菜单
         $this->dropdown([
             '7' => 'Last 7 Days',
             '28' => 'Last 28 Days',
@@ -40,6 +50,9 @@ class TotalUsers extends Card
      */
     public function handle(Request $request)
     {
+        // 获取外部传递的自定义参数
+        $key1 = $request->get('key1');
+
         switch ($request->get('option')) {
             case '365':
                 $this->content(mt_rand(600, 1500));
@@ -58,6 +71,12 @@ class TotalUsers extends Card
                 $this->content(143);
                 $this->up(15);
         }
+    }
+
+    // 传递自定义参数到 handle 方法
+    public function parameters(): array
+    {
+        return $this->data;
     }
 
     /**
@@ -85,7 +104,7 @@ class TotalUsers extends Card
     }
 
     /**
-     * 设置卡片底部内容.
+     * 设置卡片底部内容
      *
      * @param string|Renderable|\Closure $footer
      *
@@ -109,7 +128,7 @@ class TotalUsers extends Card
 
         return <<<HTML
 <div class="d-flex justify-content-between align-items-center mt-1" style="margin-bottom: 2px">
-    <h2 class="ml-1 font-lg-1">{$content}</h2>
+    <h2 class="ml-1 font-large-1">{$content}</h2>
 </div>
 <div class="ml-1 mt-1 font-weight-bold text-80">
     {$this->renderFooter()}
@@ -118,8 +137,6 @@ HTML;
     }
 
     /**
-     * 渲染卡片底部内容.
-     *
      * @return string
      */
     public function renderFooter()
