@@ -51,11 +51,11 @@
             <td>{{ $order->rate }}</td>
             <td>{{$order->created_at}}</td>
             @if($order->status==0)
-              <td><a href='{{route('orders.show',$order)}}' class="bbtn">支付</a></td>
+              <td><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
             @elseif($order->status==4)
-              <td><a href='{{route('orders.view-report',$order)}}' class="bbtn">查看报告</a></td>
+              <td><a href='{{route('orders.view-report',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">查看报告</a></td>
             @else
-              <td><a href='javascript:;' class="bbtn">-</a></td>
+              <td><a href='javascript:;' class="bbtn" style="color:#fff;background:#3490dc;">-</a></td>
             @endif
           </tr>
         @endforeach
