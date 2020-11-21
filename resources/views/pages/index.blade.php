@@ -89,9 +89,11 @@
 									微信扫一扫 享免费检测
 								</div>
 								<div style="margin: 5px 0;">
-                <div class="d-flex justify-content-center" style="width:200px;height:200px;position:relative;margin:0 auto;" id="loginIcon">
+                <div id="loginIcon">
+                <div class="d-flex justify-content-center" style="width:200px;height:200px;position:relative;margin:0 auto;" >
                     <div class="spinner-border" role="status" style="position:absolute;top:95px;">
                                 <span class="sr-only">Loading...</span>
+                </div>
                 </div>
                 </div>
 
