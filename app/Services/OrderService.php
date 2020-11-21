@@ -109,6 +109,7 @@ class OrderService
                 default:
                     $amount = $price;
             }
+            dd($amount);
             if($user->is_free) {
                 $amount = max($words - 10000, 0) * $price;
             }
