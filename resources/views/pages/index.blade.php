@@ -93,10 +93,10 @@
                   <div class="spinner-border" role="status">
                       <span class="sr-only">Loading...</span>
                   </div>
-                </div id="loginImg" style="display:none;">
+
 									<img src=""
-									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: block;">
-								</div>
+									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: none;">
+
 								<div style="color: #999;font-size: 13px;text-align: center;">
 									无需注册，关注后自动登录
 								</div>
