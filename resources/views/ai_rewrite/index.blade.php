@@ -297,11 +297,12 @@
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
           .then(res => {
             $('#beingModal').modal('hide')
+            $("#jcright").css("display",'none')
+            $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
             $('#jcqian').css('display', 'none')
             var htmlstring=res.data.data;
             $("#jchou").css('display', 'block')
-            $("#jcright").css("display",'none')
-            $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
+
             changed(contents,htmlstring)
           })
           .catch(err =>{
