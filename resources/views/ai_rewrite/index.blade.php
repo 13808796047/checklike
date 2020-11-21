@@ -148,7 +148,7 @@
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
                 <p>降重后</p>
-                <div id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
+                <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
             </div>
         </div>
         <div>
