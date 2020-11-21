@@ -6,7 +6,9 @@ use App\Events\OrderPaid;
 use App\Exceptions\InvalidRequestException;
 use App\Handlers\NuomiRsaSign;
 use App\Handlers\OpenidHandler;
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
+use App\Services\PaymentService;
 use Carbon\Carbon;
 use EasyWeChat\Factory;
 use Endroid\QrCode\QrCode;
@@ -20,6 +22,18 @@ use Yansongda\Pay\Pay;
 class PaymentsController extends Controller
 {
     protected $orderfix;
+    protected $paymentService;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+
+    public function payByFree(Request $request, Order $order)
+    {
+        $orders = $this->paymentService->payFree($request, $order);
+        return OrderResource::collection($orders);
+    }
 
     //
     public function wechatPayMp(Order $order, Request $request, OpenidHandler $openidHandler)
