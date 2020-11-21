@@ -96,7 +96,7 @@
 
 									<img src=""
 									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: none;">
-
+								</div>
 								<div style="color: #999;font-size: 13px;text-align: center;">
 									无需注册，关注后自动登录
 								</div>
