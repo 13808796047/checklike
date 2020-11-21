@@ -31,6 +31,7 @@ class PaymentsController extends Controller
 
     public function payByFree(Request $request, Order $order)
     {
+        $this->authorize('own', $order);
         $orders = $this->paymentService->payFree($request, $order);
         return OrderResource::collection($orders);
     }

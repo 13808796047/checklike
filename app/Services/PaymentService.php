@@ -15,7 +15,7 @@ class PaymentService
 {
     public function payFree($request, Order $order)
     {
-        $this->authorize('own', $order);
+
         if($code = $request->code) {
             $price = $this->calcPrice($order, $request->code);
         } else {
