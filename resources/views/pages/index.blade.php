@@ -89,10 +89,11 @@
 									微信扫一扫 享免费检测
 								</div>
 								<div style="margin: 5px 0;">
-                <div class="d-flex justify-content-center" id="loginIcon">
-                  <div class="spinner-border" role="status">
-                      <span class="sr-only">Loading...</span>
-                  </div>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                </div>
+                </div>
 
 									<img src=""
 									 id="qrimg" style="width:200px;height:200px;margin: 0 auto;display: none;">
