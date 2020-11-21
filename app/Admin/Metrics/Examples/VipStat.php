@@ -18,15 +18,15 @@ class VipStat extends Donut
         parent::init();
         // 设置下拉菜单
         $this->dropdown([
-            '7' => '今天',
-            '28' => '昨天',
-            '30' => '本月',
-            '365' => '上月',
+            '0' => '今天',
+            '1' => '昨天',
+            '2' => '本月',
+            '3' => '上月',
         ]);
         $color = Admin::color();
         $colors = [$color->primary(), $color->alpha('blue2', 0.5)];
 
-        $this->title('New Devices');
+        $this->title('VIP卡');
 //        $this->subTitle('Last 30 days');
         $this->chartLabels($this->labels);
         // 设置图表颜色
@@ -59,17 +59,15 @@ class VipStat extends Donut
         $key1 = $request->get('key1');
 
         switch ($request->get('option')) {
-            case '365':
-                $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
-
-                break;
-            case '30':
+            case '1':
                 $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
                 break;
-            case '28':
+            case '2':
                 $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
                 break;
-            case '7':
+            case '3':
+                $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
+                break;
             default:
                 $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
         }

@@ -31,7 +31,7 @@ class CouponCodesController extends AdminController
             ->body(function(Row $row) {
                 $row->column(4, new VipStat());
                 $row->column(4, new VipStat());
-                $row->column(4, new VipStat());
+                $row->column(4, new TotalUsers());
             })
             ->body($this->grid());
     }

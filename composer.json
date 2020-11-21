@@ -11,7 +11,7 @@
         "php": "^7.2.5",
         "cloudconvert/cloudconvert-laravel": "^1.1",
         "dcat/easy-excel": "^1.0",
-        "dcat/laravel-admin": "2.*",
+        "dcat/laravel-admin": "2.0.9-beta",
         "doctrine/dbal": "^2.10",
         "endroid/qr-code": "^3.7",
         "fideloper/proxy": "^4.2",
