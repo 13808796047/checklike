@@ -4,7 +4,10 @@
 namespace App\Services;
 
 
+use App\Events\OrderPaid;
 use App\Exceptions\CouponCodeUnavailableException;
+use App\Jobs\CheckOrderStatus;
+use App\Jobs\OrderPaidMsg;
 use App\Jobs\UpdateIsFree;
 use App\Models\CouponCode;
 use App\Models\Order;
@@ -34,10 +37,17 @@ class PaymentService
             ]);
             return $order;
         });
-        dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
         $this->afterOrderPaid($order);
         $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(10);
         return $orders;
+    }
+
+    protected function afterOrderPaid(Order $order)
+    {
+        dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
+        dispatch(new CheckOrderStatus($order))->delay(now()->addMinute(30));
+        event(new OrderPaid($order));
+        dispatch(new OrderPaidMsg($order));
     }
 
     public function calcPrice(Order $order, $code)
