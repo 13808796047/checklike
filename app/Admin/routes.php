@@ -24,4 +24,5 @@ Route::group([
     $router->get('coupon_codes', 'CouponCodesController@index');
     $router->get('category_options', 'CategoryController@categories');
     $router->any('orders/files', 'FileController@handle');
+    $router->get('coupon_codes/stat', 'CouponCodesController@stat');
 });

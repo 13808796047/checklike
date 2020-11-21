@@ -9,10 +9,17 @@ use App\Admin\Actions\BatchQueue;
 use App\Admin\Actions\Grid\GenerateCouponCode;
 use App\Admin\Actions\OrderBatchDelete;
 use App\Admin\Forms\CreateCouponCode;
+use App\Admin\Metrics\Examples\NewDevices;
+use App\Admin\Metrics\Examples\NewUsers;
+use App\Admin\Metrics\Examples\ProductOrders;
+use App\Admin\Metrics\Examples\TotalUsers;
+use App\Admin\Metrics\Examples\TotalVip;
+use App\Admin\Metrics\Examples\VipStat;
 use App\Admin\Repositories\CouponCode;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Layout\Content;
+use Dcat\Admin\Layout\Row;
 use Dcat\Admin\Widgets\Modal;
 
 class CouponCodesController extends AdminController
@@ -21,6 +28,11 @@ class CouponCodesController extends AdminController
     {
         return $content
             ->header('卡密列表')
+            ->body(function(Row $row) {
+                $row->column(4, new VipStat());
+                $row->column(4, new VipStat());
+                $row->column(4, new VipStat());
+            })
             ->body($this->grid());
     }
 
@@ -84,5 +96,10 @@ class CouponCodesController extends AdminController
             ->title('批量生成')
             ->body(CreateCouponCode::make())
             ->button('<button class="btn btn-white"><i class="feather icon-bar-chart-2"></i> 批量生成</button>');
+    }
+
+    public function stat()
+    {
+
     }
 }
