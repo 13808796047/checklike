@@ -162,11 +162,10 @@
                 @endswitch
               </p>
             </li>
+
           @endforeach
-          <div>
-            djsakf
-          </div>
         </ul>
+        <div>双方的哈哈技术发达</div>
       <!-- <form action="{{route('orders.store')}}" method="post" id="form"> -->
 
         <form>
