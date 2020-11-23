@@ -96,7 +96,7 @@
               </li>
               <li class="nav-item mr-4">
                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                   aria-controls="pills-profile" aria-selected="false">账号登录</a>
+                   aria-controls="pills-profile" aria-selected="false">手机号登录</a>
               </li>
             </ul>
             <div class="tab-content" id="pills-tabContent" style="margin:17px 0;">
@@ -126,7 +126,7 @@
                   <div style="padding:0 17px;">
                     <div>
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                        用户名:
+                        手机号:
                       </label>
                       <input
                         class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
