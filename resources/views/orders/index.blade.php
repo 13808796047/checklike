@@ -54,7 +54,7 @@
           <th scope="col" style="width:230px;">系统名称</th>
           <th scope="col" style="width:117px;">状态</th>
           <th scope="col" style="width:117px;">检测结果</th>
-          <th scope="col" style="width:260px;">提交日期</th>
+          <th scope="col" style="width:249px;">提交日期</th>
           <th scope="col" style="width:110px;">操作</th>
         </tr>
         </thead>
@@ -66,7 +66,7 @@
             <td style="width:230px;">{{ $order->category->name ?? '' }}</td>
             <td style="width:117px;">{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
             <td style="width:117px;">{{ $order->rate }}</td>
-            <td style="width:260px;">{{$order->created_at}}</td>
+            <td style="width:249px;">{{$order->created_at}}</td>
             @if($order->status==0)
               <td style="width:110px;"><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
             @elseif($order->status==4)
