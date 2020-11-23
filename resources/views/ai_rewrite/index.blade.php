@@ -192,7 +192,7 @@
           <p style="text-align:center;margin-top:7px;font-size:13px;">微信扫一扫，与客服在线沟通</p>
       </div>
       </div>
-      <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);" class="p-4">
+      <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
         <b>1、怎么选择适合自己的论文检测系统？</b>
         <p>只有使用和学校相同的数据库，才能保证重复率与学校、杂志社100%一致：</br>论文初次修改可使用联文检测、PaperPass，定稿再使用与学校一样的系统。</p>
         <b>2、检测要多长时间，报告怎么还没出来？</b>
