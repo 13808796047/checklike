@@ -24,15 +24,19 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
-      justify-content: space-around;
+
+    }
+    .newul li{
+      margin:0 17px;
     }
     .newul li a{
       color:#fff;
+      font-size:15px;
     }
     .ambtn{
       border-radius: 16px;
       border: 1px solid #fff;
-      padding: 5px 13px;
+      padding: 5px 17px;
     }
     a:hover{
       text-decoration:none ;
@@ -44,18 +48,24 @@
 <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
-					<div class="navbar-brand" style="width:25%;">
+					<div class="navbar-brand" style="width:25%;margin-right:10px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="newul" style="flex:1;width:75%;">
-						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-                        <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-                                    <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-                                    <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
-                                    <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-                                    <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
-            					</ul>
+					<ul class="newul" style="flex:1;width:72%;">
+            <div style="display:flex;justify-content:space-between;width:100%;">
+            <div style="display:flex;align-items: center;margin-left:13px;">
+						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+                  <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+                  <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+                  <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+                  <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
+            </div>
+            <div style="display:flex;align-items: center;">
+                <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+                <li class="ambtn" style="margin:0;"><a class="logout" href="javascript:;">退出</a></li>
+            </div>
+            </div>
+          </ul>
           </div></nav>
   </div>
   <div class="main clearfix container" style="flex:1;">
