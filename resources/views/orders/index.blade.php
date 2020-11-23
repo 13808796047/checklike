@@ -106,6 +106,7 @@
 @section('scripts')
   <script>
     $(function () {
+      refreshPages('25','1')
       function refreshPages(totalPage, currentPage) {
 
         //安全判断
@@ -209,7 +210,7 @@ function getPagination(totalPage, currentPage){
 
 
 
-refreshPages(25,1)
+
 
       setTimeout(() => {
         window.location.reload();
