@@ -38,11 +38,11 @@ class OrderCheckedMsg implements ShouldQueue
         if($touser) {
             app('official_account')->template_message->send([
                 'touser' => $touser,
-                'template_id' => config('wechat.official_account.templates.paid.template_id'),
+                'template_id' => config('wechat.official_account.templates.checked.template_id'),
 //                'url' => 'https://wap.lianwen.com/bading?openid=' . $this->order->user->weixin_openid,
                 'miniprogram' => [
-                    'appid' => config('wechat.official_account.templates.paid.appid'),
-                    'pagepath' => config('wechat.official_account.templates.paid.page_path'),
+                    'appid' => config('wechat.official_account.templates.checked.appid'),
+                    'pagepath' => config('wechat.official_account.templates.checked.page_path'),
                 ],
                 'data' => $data,
             ]);
