@@ -174,7 +174,7 @@
           <input type="hidden" name="file_id" value="" id="hidden_form_id">
           <input type="hidden" name="type" value="content" id="hideen_type">
           <div>
-              <div class="input-group">
+              <div class="input-group" id="sintroTips">
                 支付接口数量大幅刷卡的封建士大夫看法撒旦看发
               </div>
           </div>
@@ -345,8 +345,8 @@
       var oneid = ''
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
-      let obj = {!!$categories!!}
-      console.log(obj,"fsdaf")
+      let datas = {!!$categories!!}
+      $("#sintroTips").val(data.sintro)
       console.log($('#cid').val($('.category>li:first-child').data('sintro')),"fadsfdas")
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
