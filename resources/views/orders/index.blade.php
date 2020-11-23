@@ -94,35 +94,11 @@
     padding: 5px 10px;">删除</span></a>
 
         <span class="p-2">共{{$orders->total()}}条</span>
-        <nav aria-label="Page navigation ">
-          <ul class="pagination ">
-            <li class="page-item"><a class="page-link" href="{{$orders->previousPageUrl()	}}">上一页</a></li>
-            @for($i=1;$i<=$orders->lastPage();$i++)
-              <li class="page-item {{ $i==$orders->currentPage()?'active':'' }}"><a class="page-link"
-                                                                                    href="{{$orders->url($i)}}">{{$i}}</a>
-              </li>
-            @endfor
-            <li class="page-item"><a class="page-link" href="{{$orders->nextPageUrl()}}">下一页</a></li>
-          </ul>
+        <nav aria-label="Page navigation" id="nav_navigation">
+
         </nav>
       </div>
     </div>
-
-    <!-- <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
-      <div class="tit">在线客服</div>
-      <div class="box">客服微信:cx5078</div>
-      <div class="box mt10">
-        <b>1、怎么选择适合自己的论文检测系统？</b>
-        <p>只有使用和学校相同的数据库，才能保证重复率与学校、杂志社100%一致：</br>论文初次修改可使用联文检测、PaperPass，定稿再使用与学校一样的系统。</p>
-        <b>2、检测要多长时间，报告怎么还没出来？</b>
-        <p>正常检测20分钟左右，毕业高峰期，服务器检测压力大，时间会有延长，请大家提前做好时间准备。超过2小时没出结果可以联系客服处理！</p>
-        <b>3、同一篇论文可以多次检测吗？？</b>
-        <p>本站不限制论文检测次数，但检测一次需支付一次费用。</p>
-        <b>4、检测报告有网页版、pdf格式的吗？</b>
-        <p>检测完成后会提供网页版和pdf格式的检测报告，报告只是格式不同，重复率都一样的。</p>
-
-      </div>
-    </div> -->
     </div>
 
   </div>
@@ -130,6 +106,111 @@
 @section('scripts')
   <script>
     $(function () {
+      function refreshPages(totalPage, currentPage) {
+
+        //安全判断
+        if (currentPage < 1 ) {
+         currentPage = 1;
+      }
+      if (currentPage > totalPage) {
+        currentPage = totalPage;
+    }
+      var paginationInfo = getPagination(totalPage, currentPage);
+        //用id选择器写入页码部分代码（根据需求修改）
+      $("#nav_navigation").html(paginationInfo);
+
+}
+
+
+function getPagination(totalPage, currentPage){
+
+ var paginationInfo = "<ul class='pagination .pagination-sm' >";
+ if (currentPage == 1) {
+     paginationInfo += "<li class='disabled'><a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+(currentPage-1) + ");searchJob(" + (currentPage-1) + ")'"+">«</a></li>";
+ }else {
+     //前一页
+     paginationInfo += "<li><a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+(currentPage-1) + ");searchJob(" + (currentPage-1) + ")'"+">«</a></li>";
+
+ }
+
+ if(totalPage<=10){
+     //totalPage<=10
+     for(var i=1; i<=totalPage; i++){
+         if (i == currentPage) {
+             paginationInfo += "<li class='active'> <a href='javascript:void(0);' onclick='refreshPages(" + totalPage + " , " + i + " );searchJob(" + i + ")'>" + i + " </a></li>";
+         }else {
+             paginationInfo += "<li><a href='javascript:void(0);' onclick='refreshPages(" + totalPage + " , " + i + " );searchJob(" + i + ")'>" + i + " </a></li>";
+         }
+     }
+ }
+ else{
+     //totalPage > 10
+     if(currentPage<=3){
+         for(var i=1; i<=currentPage+2; i++){
+             //页码1、2
+             if (i == currentPage) {
+                 paginationInfo += "<li class='active'> <a href='javascript:void(0);' onclick='refreshPages(" + totalPage + " , " + i + ");searchJob(" + i + ")'>" + i + "</a></li>";
+             } else {
+                 paginationInfo += "<li > <a href='javascript:void(0);' onclick='refreshPages("+ totalPage + " , " + i + ");searchJob(" + i + ")'>" + i + "</a></li>";
+             }
+         }
+         paginationInfo += "<li><a href='javascript:void(0);'>...</a></li>";
+         //最后一页的页码
+         paginationInfo += "<li><a href='javascript:void(0);' onclick='refreshPages(" + totalPage + " , " + totalPage + ");searchJob(" + totalPage + ")'>" + totalPage + "</a></li>";
+     }else if(currentPage<=totalPage-5){
+         //totalPage > 10   currentPage > 3 currentPage<=totalPage-5，  页码在中间部分
+         //页码为1的代码
+         paginationInfo += "<li><a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+ 1 +");searchJob(1)'>" + 1 + "</a></li>";
+
+         //页码1后面的省略号
+         paginationInfo += "<li><a href='javascript:void(0);'>...</a></li>";
+
+         //中间部分代码
+         for(var i=currentPage-1; i<=currentPage+2; i++){
+             if (i == currentPage) {
+                 paginationInfo += "<li class='active'> <a href='javascript:void(0);' onclick='refreshPages(" + totalPage + " , " + i + ");searchJob(" + i + ")'>" + i + "</a></li>";
+             } else {
+                 paginationInfo += "<li> <a href='javascript:void(0);' onclick='refreshPages(" + totalPage + " , " + i + ");searchJob(" + i + ")'>" + i + "</a></li>";
+             }
+         }
+         //后面的省略号
+         paginationInfo += "<li><a href='javascript:void(0);'>...</a></li>";
+         //最后一个页码
+         paginationInfo += "<li><a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+totalPage+");searchJob(" + totalPage + ")'>"+totalPage+"</a></li>";
+     }else{
+         //totalPage > 10  并且currentPage > totalPage-5 显示后面的页码
+
+         //页码1
+         paginationInfo += "<li><a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+1+");searchJob(1)'>"+1+"</a></li>";
+         //省略号
+         paginationInfo += "<li><a href='javascript:void(0);'>...</a></li>";
+         //最后几位页码
+         for(var i=currentPage-1; i<=totalPage; i++){
+             if (i == currentPage) {
+                 paginationInfo += "<li class='active'> <a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+i+");searchJob(" + i + "'>"+i+"</a></li>";
+             }else {
+                 paginationInfo += "<li> <a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+i+");searchJob(" + i + ")'>"+i+"</a></li>";
+             }
+         }
+     }
+ }
+
+ //下一页
+ if (currentPage == totalPage) {
+     paginationInfo += "<li class='disabled'> <a href='javascript:void(0);' onclick='refreshPages(" + totalPage + " , " + (currentPage + 1) + ");searchJob(" + (currentPage + 1) + ")'" + ">»</a></li>";
+ } else {
+     paginationInfo += "<li><a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+(currentPage+1)+");searchJob(" + (currentPage+1) + ")'"+">»</a></li>";
+ }
+ paginationInfo += "</ul>";
+ //返回结果
+ return paginationInfo;
+}
+
+
+
+
+refreshPages(25,1)
+
       setTimeout(() => {
         window.location.reload();
       }, 120000);
