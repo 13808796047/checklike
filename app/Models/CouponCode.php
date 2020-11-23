@@ -84,7 +84,7 @@ class CouponCode extends Model
 
     public function scopeCouponCodeActived(Builder $query, $type, $date)
     {
-        return $query->where(['type' => $type, 'status' => 'actived'])->whereBetween('actived_at', $date);
+        return $query->where(['type' => $type, 'status' => self::STATUS_ACTIVED])->whereBetween('actived_at', $date);
     }
 
 

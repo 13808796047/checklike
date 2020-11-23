@@ -9,7 +9,7 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Widgets\Metrics\Donut;
 use Illuminate\Http\Request;
 
-class VipStat extends Donut
+class FixStat extends Donut
 {
     protected $labels = ['激活量', '使用量'];
 
@@ -29,7 +29,7 @@ class VipStat extends Donut
         $color = Admin::color();
         $colors = [$color->primary(), $color->alpha('blue2', 0.5)];
 
-        $this->title('VIP卡');
+        $this->title('满减卡');
 //        $this->subTitle('Last 30 days');
         $this->chartLabels($this->labels);
         // 设置图表颜色
@@ -75,8 +75,8 @@ class VipStat extends Donut
                 $date = [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()];
 
         }
-        $activedData = CouponCode::couponCodeActived(CouponCode::TYPE_VIP, $date)->count();
-        $usedData = Order::usedCouponCode(CouponCode::TYPE_VIP, $date)->count();
+        $activedData = CouponCode::couponCodeActived(CouponCode::TYPE_FIXED, $date)->count();
+        $usedData = Order::usedCouponCode(CouponCode::TYPE_FIXED, $date)->count();
         $this->fill($activedData, $usedData);
     }
 
