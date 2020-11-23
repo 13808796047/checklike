@@ -345,7 +345,7 @@
       var oneid = ''
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
-      console.log($('#cid').val($('.category>li:first-child'),"fsdafddf")
+      console.log($('#cid').val($('.category>li:first-child')))
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
         $(this).children('i').addClass('selected')
