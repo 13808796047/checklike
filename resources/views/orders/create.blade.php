@@ -329,7 +329,7 @@
       </div>
       <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
       <b>1、检测结果是否准确？</b>
-        <p>CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。</p>
+        <p id="rightcontainer">CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。</p>
         <b>2、检测需要多少时间？</b>
         <p>正常情况，检测需要10分钟左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
         <b>3、论文上传之后安全吗？</b>
@@ -355,6 +355,7 @@
         if(currenthref == window.location.pathname){
           $(this).addClass("active")
         }
+        console.log(currenthref,"fasdf")
       })
 
       // $("#headerfree").css("display","none")
