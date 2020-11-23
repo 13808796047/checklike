@@ -41,7 +41,7 @@ class CouponCodesController extends AdminController
     public function grid()
     {
         return Grid::make(new CouponCode(['user', 'category']), function(Grid $grid) {
-            $grid->paginate(8);
+            $grid->paginate(20);
             // 默认按创建时间倒序排序
             $grid->model()->orderBy('id', 'desc');
             // 第一列显示id字段，并将这一列设置为可排序列
