@@ -30,7 +30,7 @@ class OrderCheckedMsg implements ShouldQueue
             'first' => '您的论文已经检测完成,点击查看结果',
             'keyword1' => ['value' => $this->order->title, 'color' => '#173177'],
             'keyword2' => ['value' => $this->order->category->name, 'color' => '#173177'],
-            'keyword3' => ['value' => $this->order->rate, 'color' => '#173177'],
+            'keyword3' => ['value' => $this->order->rate . '%', 'color' => '#173177'],
             'keyword4' => ['value' => $this->order->created_at->format("Y-m-d H:i:s"), 'color' => '#173177'],
             'remark' => ['value' => '点击查看详情！', 'color' => '#173177']
         ];
