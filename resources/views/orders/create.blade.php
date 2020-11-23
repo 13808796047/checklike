@@ -27,10 +27,11 @@
       align-items:center;
     }
     .newul li{
-      margin:0 15px;
+      margin:0 17px;
     }
     .newul li a{
       color:#fff;
+      font-size:15px;
     }
     .ambtn{
       border-radius: 16px;
