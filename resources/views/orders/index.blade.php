@@ -29,9 +29,7 @@
       text-decoration:none ;
     }
     #page {
-            margin: 20px auto;
             color: #666;
-            display: block;
             text-align: center;
     }
 
@@ -71,14 +69,14 @@
 		}
 
         #page li.xl-active {
-            background-color: #0073A9;
-            border-color: #0073A9;
+            background-color: #3490dc;
+            border-color: #3490dc;
             color: #FFF
         }
 
 		#page li:hover{
-			background-color: #0073A9 !important;
-            border-color: #0073A9;
+			background-color: #3490dc!important;
+            border-color: #3490dc;
             color: #FFF
 		}
 
