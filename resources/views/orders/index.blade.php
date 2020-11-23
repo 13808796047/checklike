@@ -184,8 +184,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      let cc = {!! $order->total !!}
-      console.log(cc,"fsdaf")
+
       let a =new Paging('page', {
         nowPage: 2, // 当前页码
         pageNum: 23, // 总页码
@@ -196,6 +195,7 @@
           window.location.href=`https://p.checklike.com/orders?page=${num}`;
         }
     })
+
       setTimeout(() => {
         window.location.reload();
       }, 120000);
@@ -203,6 +203,8 @@
       $('#allcheck').click(function () {
         $("input[name='delete']").prop("checked", this.checked);
       })
+      let cc = {!! $order->total !!}
+      console.log(cc,"fsdaf")
       // 单选
       let single = $("input[name='delete']")
       single.click(function () {
