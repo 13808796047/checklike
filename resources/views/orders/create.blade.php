@@ -174,8 +174,8 @@
           <input type="hidden" name="file_id" value="" id="hidden_form_id">
           <input type="hidden" name="type" value="content" id="hideen_type">
           <div>
-              <div class="input-group" id="sintroTips">
-                支付接口数量大幅刷卡的封建士大夫看法撒旦看发
+              <div class="input-group" id="sintroTips" style="margin:13px 0;font-size:13px;">
+
               </div>
           </div>
           <div>
