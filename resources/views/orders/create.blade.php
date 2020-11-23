@@ -35,6 +35,9 @@
       border: 1px solid #fff;
       padding: 5px 13px;
     }
+    a:hover{
+      text-decoration:none ;
+    }
   </style>
 @stop
 @section('content')
