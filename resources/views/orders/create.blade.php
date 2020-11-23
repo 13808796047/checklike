@@ -25,7 +25,9 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
-      justify-content: space-around;
+    }
+    .newul li{
+      margin:0 15px;
     }
     .newul li a{
       color:#fff;
