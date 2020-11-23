@@ -175,6 +175,7 @@
           <input type="hidden" name="type" value="content" id="hideen_type">
           <div class="form-group">
             <div class="input-group mt-3">
+              <div>ixxixixifsjdalfkjjjjjjjjjjjjjjj</div>
               <div class="input-group-prepend">
                 <span class="input-group-text">论文标题</span>
               </div>
