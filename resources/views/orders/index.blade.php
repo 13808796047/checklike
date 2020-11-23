@@ -96,7 +96,7 @@
 
         <span class="p-2">共{{$orders->total()}}条</span>
 
-            <div class="Pagination" id="pagination"></div>
+            <nav aria-label="Page navigation" id="pagination"></nav>
       </div>
     </div>
     </div>
