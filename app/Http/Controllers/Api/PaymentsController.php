@@ -68,7 +68,7 @@ class PaymentsController extends Controller
         $data['totalAmount'] = $order->price * 100;
         $data['tpOrderId'] = $order->orderid;
         $data['rsaSign'] = app('baidu_pay')->getSign($data);
-        $data['dealTitle'] = $order->category->name . '-' . config('wechat.service_wechat'),// 订单的名称
+        $data['dealTitle'] = $order->category->name . '-' . config('wechat.service_wechat');// 订单的名称
         $data['signFieldsRange'] = 1; // 固定值1
         $data['bizInfo'] = ''; // 其他信息
         return response()->json($data)->setStatusCode(200);
