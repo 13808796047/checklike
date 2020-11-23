@@ -51,9 +51,9 @@
         <tr>
           <th scope="col"><input type="checkbox" id="allcheck"></th>
           <th scope="col">论文题目</th>
-          <th scope="col">系统名称</th>
-          <th scope="col" style="width:100px;">状态</th>
-          <th scope="col" style="width:100px;">检测结果</th>
+          <th scope="col" style="width:230px;">系统名称</th>
+          <th scope="col" style="width:117px;">状态</th>
+          <th scope="col" style="width:117px;">检测结果</th>
           <th scope="col" style="width:260px;">提交日期</th>
           <th scope="col" style="width:110px;">操作</th>
         </tr>
@@ -62,10 +62,10 @@
         @foreach($orders as $order)
           <tr>
             <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
-            <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;max-width: 125px;">{{$order->title}}</td>
-            <td>{{ $order->category->name ?? '' }}</td>
-            <td style="width:100px;">{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
-            <td style="width:100px;">{{ $order->rate }}</td>
+            <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;">{{$order->title}}</td>
+            <td style="width:230px;">{{ $order->category->name ?? '' }}</td>
+            <td style="width:117px;">{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
+            <td style="width:117px;">{{ $order->rate }}</td>
             <td style="width:260px;">{{$order->created_at}}</td>
             @if($order->status==0)
               <td style="width:110px;"><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
