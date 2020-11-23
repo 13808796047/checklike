@@ -88,8 +88,10 @@
                                     <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
                                     <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
                                     <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
+                                    <div>
                                     <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
             <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
+            </div>
             					</ul>
           </div></nav>
   </div>
