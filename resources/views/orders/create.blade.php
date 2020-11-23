@@ -347,7 +347,7 @@
       $('#cid').val($('.category>li:first-child').data('id'))
       let obj = {!!$categories!!}
       console.log(obj,"fsdaf")
-      console.log($('#cid').val($('.category>li:first-child').data('sintro')))
+      console.log($('#cid').val($('.category>li:first-child').data('sintro')),"fadsfdas")
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
         $(this).children('i').addClass('selected')
