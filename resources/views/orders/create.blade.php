@@ -118,7 +118,7 @@
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
-                data-id="{{ $item->id }}" data-sintro="{{$item->sintro}">
+                data-id="{{ $item->id }}" data-sintro="{{ $item->sintro }}">
               <i class="position-absolute hidden"><img src="{{ asset('asset/images/icon-y.png') }}"
                                                        style="width:100%;height:90px"
                                                        alt=""></i>
@@ -355,7 +355,7 @@
         $(this).siblings().children('i').removeClass('selected')
         $(this).children('i').addClass('selected')
         $('#cid').val($(this).data('id'))
-        $("sintroTips").html($(this).data('sintro'))
+        $("#sintroTips").html($(this).data('sintro'))
         if ($(this).data('id') == 6|| $(this).data('id') == 15) {
           $('#element_id').val(getNowFormatDate())
           $('#isfbtime').css('display', 'block')
