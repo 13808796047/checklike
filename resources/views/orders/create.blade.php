@@ -115,7 +115,6 @@
 
 
       <!-- 添加结束 -->
-      <div>
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
@@ -166,7 +165,6 @@
 
           @endforeach
         </ul>
-      </div>
       <!-- <form action="{{route('orders.store')}}" method="post" id="form"> -->
 
         <form>
