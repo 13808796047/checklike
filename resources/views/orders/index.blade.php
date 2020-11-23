@@ -6,23 +6,40 @@
     .curfont {
       font-size: 16px;
     }
+    .newul{
+      display:flex;
+      margin-bottom:0 !important;
+      align-items:center;
+      justify-content: space-around;
+    }
+    .newul li a{
+      color:#fff;
+    }
+    .ambtn{
+      border-radius: 16px;
+      border: 1px solid #fff;
+      padding: 5px 13px;
+    }
+    a:hover{
+      text-decoration:none ;
+    }
   </style>
 @stop
 @section('content')
 <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
-					<div class="navbar-brand" style="width:316px;">
+					<div class="navbar-brand" style="width:25%;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="nav navbar-nav" style="flex:1">
+					<ul class="newul" style="flex:1;width:75%;">
 						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
                         <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
                                     <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
                                     <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
                                     <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-                                    <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+                                    <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
             					</ul>
           </div></nav>
   </div>

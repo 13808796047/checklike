@@ -70,6 +70,14 @@
     .newul li a{
       color:#fff;
     }
+    .ambtn{
+      border-radius: 16px;
+      border: 1px solid #fff;
+      padding: 5px 13px;
+    }
+    a:hover{
+      text-decoration:none ;
+    }
 
   </style>
 @stop
@@ -267,12 +275,12 @@
             @endguest
             @guest
 						<li class="menu-btn">
-            <a class="nav-link" href="javascript:;" data-toggle="modal"
+            <a class="ambtn" href="javascript:;" data-toggle="modal"
             data-target="#staticBackdrop" >登录/注册</a>
             </li>
             @else
-            <li class="menu-btn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="menu-btn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+            <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
             @endguest
 					</ul>
           </nav>
