@@ -115,6 +115,7 @@
 
 
       <!-- 添加结束 -->
+      <div>
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
@@ -165,11 +166,10 @@
 
           @endforeach
         </ul>
-
+      </div>
       <!-- <form action="{{route('orders.store')}}" method="post" id="form"> -->
 
         <form>
-        <div>双方的哈哈技术发达</div>
         <!-- @csrf -->
           <input type="hidden" name="cid" id="cid">
           <input type="hidden" name="from" value="wp-pc">
