@@ -94,7 +94,7 @@
     padding: 5px 10px;">删除</span></a>
 
         <span class="p-2">共{{$orders->total()}}条</span>
-        <nav aria-label="Page navigation" id="nav_navigation">
+        <nav aria-label="Page navigation " id="nav_navigation">
 
         </nav>
       </div>
@@ -106,26 +106,9 @@
 @section('scripts')
   <script>
     $(function () {
-      refreshPages('25','1')
-      function refreshPages(totalPage, currentPage) {
+      function getPagination(totalPage, currentPage){
 
-        //安全判断
-        if (currentPage < 1 ) {
-         currentPage = 1;
-      }
-      if (currentPage > totalPage) {
-        currentPage = totalPage;
-    }
-      var paginationInfo = getPagination(totalPage, currentPage);
-        //用id选择器写入页码部分代码（根据需求修改）
-      $("#nav_navigation").html(paginationInfo);
-
-}
-
-
-function getPagination(totalPage, currentPage){
-
- var paginationInfo = "<ul class='pagination .pagination-sm' >";
+ var paginationInfo = "<ul class='pagination' >";
  if (currentPage == 1) {
      paginationInfo += "<li class='disabled'><a href='javascript:void(0);' onclick='refreshPages("+totalPage+" , "+(currentPage-1) + ");searchJob(" + (currentPage-1) + ")'"+">«</a></li>";
  }else {
@@ -207,11 +190,22 @@ function getPagination(totalPage, currentPage){
  return paginationInfo;
 }
 
+function refreshPages(totalPage, currentPage) {
 
+ //安全判断
+ if (currentPage < 1 ) {
+     currentPage = 1;
+ }
+ if (currentPage > totalPage) {
+     currentPage = totalPage;
+ }
+ var paginationInfo = getPagination(totalPage, currentPage);
+ //用id选择器写入页码部分代码（根据需求修改）
+ $("#nav_navigation").html(paginationInfo);
 
+}
 
-
-
+refreshPages(25,1)
       setTimeout(() => {
         window.location.reload();
       }, 120000);
