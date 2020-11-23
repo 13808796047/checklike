@@ -95,8 +95,9 @@
     padding: 5px 10px;">删除</span></a>
 
         <span class="p-2">共{{$orders->total()}}条</span>
-
-            <nav aria-label="Page navigation" id="pagination"></nav>
+        <div class="row ">
+          <div class="page-container"></div>
+        </div>
       </div>
     </div>
     </div>
@@ -107,30 +108,16 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      $('#pagination').pagination(255, {
-        items_per_page: 10, //每页的 item 数
+      const pageSize = 10 // 默认页码大小
+      const dataCount = 235 // 测试数据数量
+      const pager = new Pagination('.page-container', {
+      pageSize: pageSize,
+      autoLoad: true,
+      unit: '条',
+      toPage: function(index, _pageSize) {
 
-num_display_entries: 5, //显示的页码数
-
-current_page: 0, //当前页
-
-num_edge_entries: 1, //前后显示的页码数
-
-link_to: "javascript:void(0)", //链接地址
-
-prev_text: "«", //上一页
-
-next_text: "»", //下一页
-
-ellipse_text: "...", //显示的省略文本信息
-
-prev_show_always: true, //是否一直显示上一页
-
-next_show_always: true, //是否一直显示下一页
-	        callback: function(page, component) {
-		       console.info(page);
-	        }
-      });
+      }
+})
       setTimeout(() => {
         window.location.reload();
       }, 120000);
