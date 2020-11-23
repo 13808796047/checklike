@@ -187,7 +187,9 @@
     <div class="col-span-3" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);" id="jcright">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">在线客服</div>
-      <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">客服微信:cx5078</div>
+      <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
+          <img src="{{asset('asset/images/qrcode/sz-work.png')}}">
+      </div>
       </div>
       <div class="box mt10">
         <b>1、怎么选择适合自己的论文检测系统？</b>
