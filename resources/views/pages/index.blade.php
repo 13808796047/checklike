@@ -61,6 +61,15 @@
       line-height: 28px;
       color: #56565e;
     }
+    .newul{
+      display:flex;
+      margin-bottom:0 !important;
+      align-items:center;
+      justify-content: space-around;
+    }
+    .newul li a{
+      color:#fff;
+    }
 
   </style>
 @stop
@@ -231,10 +240,10 @@
   <div id="header1">
      <nav id="navigation" class="navbar scrollspy">
 				<div class="container">
-					<div class="navbar-brand" style="width:316px;">
+					<div class="navbar-brand" style="width:25%;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="nav navbar-nav" style="flex:1">
+					<ul class="newul" style="flex:1;width:75%;">
 						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
