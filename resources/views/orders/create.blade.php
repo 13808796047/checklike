@@ -173,8 +173,10 @@
           <input type="hidden" name="from" value="wp-pc">
           <input type="hidden" name="file_id" value="" id="hidden_form_id">
           <input type="hidden" name="type" value="content" id="hideen_type">
-          <div  class="form-group">
-          fdasssssssssssssssssssssssssfaaaaaaaaaaffffffff
+          <div>
+              <div class="input-group">
+                支付接口数量大幅刷卡的封建士大夫看法撒旦看发
+              </div>
           </div>
           <div>
             <div class="input-group mt-3">
