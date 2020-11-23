@@ -358,7 +358,6 @@
         switch (currenthref) {
           console.log(currenthref,"fsadfdasf")
           case "/categories/1":
-            console.log(1)
               $("#rightcontainer").text("CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
             break;
           case "/categories/2":
