@@ -50,7 +50,7 @@ class PaymentsController extends Controller
         return app('wechat_pay_mp')->mp([
             'out_trade_no' => $order->orderid,  // 商户订单流水号，与支付宝 out_trade_no 一样
             'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
-            'body' => $order->category->name . '-' . config('wechat.service_wechat'),
+            'body' => $order->category->name . '-' . config('app.service_wechat'),
             'openid' => $openid
         ]);
     }
@@ -68,7 +68,7 @@ class PaymentsController extends Controller
         $data['totalAmount'] = $order->price * 100;
         $data['tpOrderId'] = $order->orderid;
         $data['rsaSign'] = app('baidu_pay')->getSign($data);
-        $data['dealTitle'] = $order->category->name . '-' . config('wechat.service_wechat');// 订单的名称
+        $data['dealTitle'] = $order->category->name . '-' . config('app.service_wechat');// 订单的名称
         $data['signFieldsRange'] = 1; // 固定值1
         $data['bizInfo'] = ''; // 其他信息
         return response()->json($data)->setStatusCode(200);
@@ -95,7 +95,7 @@ class PaymentsController extends Controller
         $jssdk = $payment->jssdk;
         try {
             $result = $payment->order->unify([
-                'body' => $order->category->name . '-' . config('wechat.service_wechat'),
+                'body' => $order->category->name . '-' . config('app.service_wechat'),
                 'out_trade_no' => $order->orderid . '_' . $this->orderfix,
                 'total_fee' => $order->price * 100,//todo
                 'attach' => $order->id,
