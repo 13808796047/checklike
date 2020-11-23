@@ -2,6 +2,7 @@
 @section('title', '检测报告')
 @section('styles')
   <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/pagination.css')}}">
   <style>
     .curfont {
       font-size: 16px;
@@ -94,17 +95,8 @@
     padding: 5px 10px;">删除</span></a>
 
         <span class="p-2">共{{$orders->total()}}条</span>
-        <nav aria-label="Page navigation " id="nav_navigation">
-          <ul class="pagination ">
-            <li class="page-item"><a class="page-link" href="{{$orders->previousPageUrl()	}}">上一页</a></li>
-            @for($i=1;$i<=$orders->lastPage();$i++)
-              <li class="page-item {{ $i==$orders->currentPage()?'active':'' }}"><a class="page-link"
-                                                                                    href="{{$orders->url($i)}}">{{$i}}</a>
-              </li>
-            @endfor
-            <li class="page-item"><a class="page-link" href="{{$orders->nextPageUrl()}}">下一页</a></li>
-          </ul>
-        </nav>
+
+            <nav aria-label="Page navigation" id="pagination"></nav>
       </div>
     </div>
     </div>
@@ -112,8 +104,33 @@
   </div>
 @stop
 @section('scripts')
+<script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
+      $('#pagination').pagination(255, {
+        items_per_page: 10, //每页的 item 数
+
+num_display_entries: 5, //显示的页码数
+
+current_page: 0, //当前页
+
+num_edge_entries: 1, //前后显示的页码数
+
+link_to: "javascript:void(0)", //链接地址
+
+prev_text: "«", //上一页
+
+next_text: "»", //下一页
+
+ellipse_text: "...", //显示的省略文本信息
+
+prev_show_always: true, //是否一直显示上一页
+
+next_show_always: true, //是否一直显示下一页
+	        callback: function(page, component) {
+		       console.info(page);
+	        }
+      });
       setTimeout(() => {
         window.location.reload();
       }, 120000);
