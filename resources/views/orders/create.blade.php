@@ -25,15 +25,19 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
-      justify-content: space-around;
+
+    }
+    .newul li{
+      margin:0 17px;
     }
     .newul li a{
       color:#fff;
+      font-size:15px;
     }
     .ambtn{
       border-radius: 16px;
       border: 1px solid #fff;
-      padding: 5px 13px;
+      padding: 5px 17px;
     }
     a:hover{
       text-decoration:none ;
@@ -75,18 +79,24 @@
   <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
-					<div class="navbar-brand" style="width:25%;">
+					<div class="navbar-brand" style="width:25%;margin-right:10px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="newul" style="flex:1;width:75%;">
-						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-                        <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-                                    <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-                                    <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
-                                    <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-                                    <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
-            					</ul>
+					<ul class="newul" style="flex:1;width:72%;">
+            <div style="display:flex;justify-content:space-between;width:100%;">
+            <div style="display:flex;align-items: center;margin-left:13px;">
+						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+                  <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+                  <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+                  <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+                  <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
+            </div>
+            <div style="display:flex;align-items: center;">
+                <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+                <li class="ambtn" style="margin:0;"><a class="logout" href="javascript:;">退出</a></li>
+            </div>
+            </div>
+          </ul>
           </div></nav>
   </div>
   <div class="container" style="margin:18px auto">
@@ -118,7 +128,7 @@
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
-                data-id="{{ $item->id }}">
+                data-id="{{ $item->id }}" data-sintro="{{ $item->sintro }}">
               <i class="position-absolute hidden"><img src="{{ asset('asset/images/icon-y.png') }}"
                                                        style="width:100%;height:90px"
                                                        alt=""></i>
@@ -160,10 +170,9 @@
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                 @endswitch
-
-
               </p>
             </li>
+
           @endforeach
         </ul>
       <!-- <form action="{{route('orders.store')}}" method="post" id="form"> -->
@@ -174,7 +183,12 @@
           <input type="hidden" name="from" value="wp-pc">
           <input type="hidden" name="file_id" value="" id="hidden_form_id">
           <input type="hidden" name="type" value="content" id="hideen_type">
-          <div class="form-group">
+          <div>
+              <div class="input-group" id="sintroTips" style="margin:13px 0;font-size:13px;">
+
+              </div>
+          </div>
+          <div>
             <div class="input-group mt-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">论文标题</span>
@@ -231,8 +245,8 @@
               <div id="contentfile" class="tab-pane active">
                 <br>
                 <p class="text-xs">
-                  <img class="inline-block" src="http://check.lianwen.com/portal/weipu/static2/images/icon-01.png"
-                       alt="">
+                  <!-- <img class="inline-block" src="http://check.lianwen.com/portal/weipu/static2/images/icon-01.png"
+                       alt=""> -->
                   系统在检测时会分析论文的前后文关系， 所以请您提交论文的全部内容，如果是非全文的检测将不能保证检测的准确性。
                 </p>
                 <div class="custom-file my-2">
@@ -259,8 +273,8 @@
               <div id="contenttext" class="tab-pane fade">
                 <br>
                 <p class="text-xs">
-                  <img class="inline-block" src="http://check.lianwen.com/portal/weipu/static2/images/icon-01.png"
-                       alt="">
+                  <!-- <img class="inline-block" src="http://check.lianwen.com/portal/weipu/static2/images/icon-01.png"
+                       alt=""> -->
                   系统在检测时会分析论文的前后文关系， 所以请您提交论文的全部内容，如果是非全文的检测将不能保证检测的准确性。
                 </p>
                 <div class="form-group">
@@ -305,20 +319,29 @@
           <!-- 批量上传结束 -->
         @endif
       </div>
-      <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff">
-        <b>1、检测结果是否准确？</b>
-        <p>如果你们学校也是用维普检测，那结果是一致的。同一个的系统、同样的比对库、同样的算法，所以只要在本系统提交的内容和学校的一致，那检测结果是一致的。</p>
+      <div class="col-span-3">
+      <div>
+      <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
+      <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
+          <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
+          <p style="text-align:center;margin-top:7px;font-size:13px;">微信扫一扫，与客服在线沟通</p>
+      </div>
+      </div>
+      <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
+      <b>1、检测结果是否准确？</b>
+        <p id="rightcontainer"></p>
         <b>2、检测需要多少时间？</b>
-        <p>正常情况，维普检测需要10分钟左右，高峰期可能会延迟，但不会超过1个小时，如果长时间未出结果请联系客服微信：cx5078解决。</p>
+        <p>正常情况，检测需要10分钟左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
         <b>3、论文上传之后安全吗？</b>
         <p>本系统有明确的条文规定并遵守严格的论文保密规定，对所有用户提交的送检文档仅做检测分析，绝不保留全文，承诺对用户送检的文档不做任何形式的收录和泄露。</p>
         <b>4、提交以后能不能退款？</b>
-        <p>此系统一旦提交，系统开始检测后，即产生消费，无法退款！</p>
+        <p>系统一旦提交，开始检测后，即产生消费，无法退款，请谅解！</p>
         <b>5、检测内容范围？</b>
-        <p>系统不检测文章中的封面、致谢、学校(需要替换成"X")等个人信息，请在提交前自己删除，若提交后由系统自动删除时出现的任何问题责任自负！</p>
+        <p>系统主要检测论文正文，封面、目录、致谢以及个人信息可以删除后再上传。</p>
         <b>6、检测时作者需要填吗？</b>
-        <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则会有“去除本人已发表文献复制比”的结果。</p>
+        <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则需要填写真实作者姓名。</p>
       </div>
+    </div>
     </div>
   </div>
 @stop
@@ -326,12 +349,33 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
     $(() => {
+      let currentright=window.location.pathname;
+      switch (currentright) {
+        case "/categories/1":
+        $("#rightcontainer").text("CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
+        break;
+        case "/categories/2":
+        $("#rightcontainer").text("如果你们学校也是用维普检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
+        break;
+        case "/categories/4":
+        $("#rightcontainer").text("如果你们学校也是用万方检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
+        break;
+        case "/categories/3":
+        $("#rightcontainer").text("我们使用的是跟知网同一套系统，但是每个版本有轻微差别，具体参考系统介绍。")
+        break;
+        case "/categories/5":
+        $("#rightcontainer").text("PaperPass是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
+        break;
+        default:
+        break;
+      }
 
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
         if(currenthref == window.location.pathname){
           $(this).addClass("active")
         }
+
       })
 
       // $("#headerfree").css("display","none")
@@ -341,10 +385,17 @@
       var oneid = ''
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
+
+      let datas = {!!$categories!!}
+      $("#sintroTips").html(datas[0].sintro)
+
+
+
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
         $(this).children('i').addClass('selected')
         $('#cid').val($(this).data('id'))
+        $("#sintroTips").html($(this).data('sintro'))
         if ($(this).data('id') == 6|| $(this).data('id') == 15) {
           $('#element_id').val(getNowFormatDate())
           $('#isfbtime').css('display', 'block')
@@ -572,62 +623,6 @@
           })
         }
       })
-
-
-      // function checkType(e) {
-      //   var ext = $('#customFile').val().split('.').pop().toLowerCase();
-      //   if ($.inArray(ext, ['docx', 'txt']) == -1) {
-      //     alert('不允许上传文件类型!');
-      //   }
-      // }
-
-      // var formData = new FormData()
-      // $('.versionlist li:first').addClass('i-select')
-      // var cid = $('.versionlist li:first').data('id');
-      // $('#cid').val(cid);
-      // $(".versionlist li").click(function () {
-      //   // var isshow = $(".tips").children('span'
-      //   var index = $(this).index();
-      //   cid = $(this).data('id');
-      //   $('#cid').val(cid);
-      //   $(this).addClass("i-select").siblings().removeClass("i-select");
-      //
-      //   $('.tips').children('span').eq(index).show().siblings().hide();
-      // });
-      // $('input[type=radio][name=radio]').change(function () {
-      //   if (this.value == 'paste') {
-      //     $('#paste').show()
-      //     $('#upload').hide()
-      //   } else if (this.value == 'upload') {
-      //     $('#paste').hide()
-      //     $('#upload').show()
-      //   }
-      // });
-      // $('.txts').bind('input propertychange', (e) => {
-      //   $('.words').html(e.target.value.length)
-      // })
-      {{--$('input[name=file]').change((e) => {--}}
-      {{--  var file = e.target.files[0]--}}
-
-      {{--  formData.append('file', file);--}}
-      {{--})--}}
-      {{--$('#subBtn').click(() => {--}}
-      {{--  formData.append('cid', cid)--}}
-      {{--  formData.append('title', $('input[name=title]').val())--}}
-      {{--  formData.append('writer', $('input[name=writer]').val())--}}
-      {{--  formData.append('content', $('textarea[name=content]').val())--}}
-      {{--  axios.post('{{route('orders.store')}}', formData,--}}
-      {{--    {--}}
-      {{--      headers: {--}}
-      {{--        'Content-Type':--}}
-      {{--          'multipart/form-data'--}}
-      {{--      }--}}
-      {{--    }--}}
-      {{--  ).then(res => {--}}
-      {{--    location.href = '{{route('orders.show',['id'=>res.data.id])}}'--}}
-      {{--  })--}}
-      {{--})--}}
-
     })
   </script>
 @stop

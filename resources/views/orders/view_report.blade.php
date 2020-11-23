@@ -11,15 +11,19 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
-      justify-content: space-around;
+
+    }
+    .newul li{
+      margin:0 17px;
     }
     .newul li a{
       color:#fff;
+      font-size:15px;
     }
     .ambtn{
       border-radius: 16px;
       border: 1px solid #fff;
-      padding: 5px 13px;
+      padding: 5px 17px;
     }
     a:hover{
       text-decoration:none ;

@@ -10,15 +10,19 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
-      justify-content: space-around;
+
+    }
+    .newul li{
+      margin:0 17px;
     }
     .newul li a{
       color:#fff;
+      font-size:15px;
     }
     .ambtn{
       border-radius: 16px;
       border: 1px solid #fff;
-      padding: 5px 13px;
+      padding: 5px 17px;
     }
     a:hover{
       text-decoration:none ;
@@ -99,18 +103,24 @@
   <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
-					<div class="navbar-brand" style="width:25%;">
+					<div class="navbar-brand" style="width:25%;margin-right:10px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="newul" style="flex:1;width:75%;">
-						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-                        <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-                                    <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-                                    <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
-                                    <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-                                    <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
-            					</ul>
+					<ul class="newul" style="flex:1;width:72%;">
+            <div style="display:flex;justify-content:space-between;width:100%;">
+            <div style="display:flex;align-items: center;margin-left:13px;">
+						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
+                  <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
+                  <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+                  <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+                  <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
+            </div>
+            <div style="display:flex;align-items: center;">
+                <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+                <li class="ambtn" style="margin:0;"><a class="logout" href="javascript:;">退出</a></li>
+            </div>
+            </div>
+          </ul>
           </div></nav>
   </div>
   <div class="container" style="margin:18px auto">
@@ -174,10 +184,15 @@
         </div>
       </div>
       </div>
-    <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff" id="jcright">
-      <div class="tit">在线客服</div>
-      <div class="box">客服微信:cx5078</div>
-      <div class="box mt10">
+    <div class="col-span-3"  id="jcright">
+      <div>
+      <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
+      <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
+          <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
+          <p style="text-align:center;margin-top:7px;font-size:13px;">微信扫一扫，与客服在线沟通</p>
+      </div>
+      </div>
+      <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
         <b>1、怎么选择适合自己的论文检测系统？</b>
         <p>只有使用和学校相同的数据库，才能保证重复率与学校、杂志社100%一致：</br>论文初次修改可使用联文检测、PaperPass，定稿再使用与学校一样的系统。</p>
         <b>2、检测要多长时间，报告怎么还没出来？</b>
