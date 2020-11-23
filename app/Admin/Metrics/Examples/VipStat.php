@@ -2,13 +2,15 @@
 
 namespace App\Admin\Metrics\Examples;
 
+use App\Models\CouponCode;
+use Carbon\Carbon;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Widgets\Metrics\Donut;
 use Illuminate\Http\Request;
 
 class VipStat extends Donut
 {
-    protected $labels = ['Desktop', 'Mobile'];
+    protected $labels = ['激活量', '使用量'];
 
     /**
      * 初始化卡片内容
@@ -60,17 +62,20 @@ class VipStat extends Donut
 
         switch ($request->get('option')) {
             case '1':
-                $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
+                $date = [Carbon::now()->subDay()->startOfDay(), Carbon::now()->subDay()->endOfDay()];
                 break;
             case '2':
-                $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
+                $date = [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()];
                 break;
             case '3':
-                $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
+                $date = [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()];
                 break;
             default:
-                $this->fill(mt_rand(600, 1500), mt_rand(1, 30));
+                $date = [Carbon::now()->subMonth()->startOfMonth(), Carbon::now()->subMonth()->endOfMonth()];
+
         }
+        $todayActivedData = CouponCode::couponCodeActived('vip', $date)->count();
+        $this->fill($todayActivedData, mt_rand(1, 30));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Exceptions\CouponCodeUnavailableException;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -80,6 +81,12 @@ class CouponCode extends Model
         }
         return true;
     }
+
+    public function scopeCouponCodeActived(Builder $query, $type, $date)
+    {
+        return $query->where(['type' => $type, 'status' => 'actived'])->whereBetween('actived_at', $date);
+    }
+
 
     public function calcEnableDate()
     {
