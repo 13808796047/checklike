@@ -188,7 +188,8 @@
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">在线客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
-          <img src="https://www.checklike.com/images/qrcode/sz-work.png">
+          <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
+          <p style="text-align:center;">微信扫一扫，与客服在线沟通</p>
       </div>
       </div>
       <div class="box mt10">
