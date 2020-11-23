@@ -203,8 +203,7 @@
       $('#allcheck').click(function () {
         $("input[name='delete']").prop("checked", this.checked);
       })
-      let cc = {!! $order->total !!}
-      console.log(cc,"fsdaf")
+
       // 单选
       let single = $("input[name='delete']")
       single.click(function () {
