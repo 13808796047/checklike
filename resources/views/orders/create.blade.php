@@ -162,8 +162,10 @@
                 @endswitch
               </p>
             </li>
-            <div>askdlfjsaflkkajsdfkslkdfjsaklfdlk</div>
           @endforeach
+          <div>
+            djsakf
+          </div>
         </ul>
       <!-- <form action="{{route('orders.store')}}" method="post" id="form"> -->
 
