@@ -18,7 +18,6 @@ class OrderCheckedMsg implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $order;
-    protected $easySms;
 
     public function __construct(Order $order, EasySms $easySms)
     {
