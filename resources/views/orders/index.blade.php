@@ -75,8 +75,8 @@
         }
 
 		#page li:hover{
-			background-color: #3490dc!important;
-            border-color: #3490dc;
+			background-color:  #3490dc !important;
+            border-color: #0073A9;
             color: #FFF
 		}
 
@@ -170,9 +170,10 @@
 
         <a class="inline-block text-white py-2 px-4" id="del_item"><span style="background: red;
     padding: 5px 10px;">删除</span></a>
-
+        <div>
         <span class="p-2">共{{$orders->total()}}条</span>
         <div id="page"></div>
+        </div>
       </div>
     </div>
     </div>
