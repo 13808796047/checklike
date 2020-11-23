@@ -111,7 +111,7 @@
 
           <!-- Modal-end -->
             @if($order->report->content)
-              {!! $order->report->content !!}
+             <div>抱歉，报告暂不支持预览，请下载完整报告查看</div>
            @else
               <!-- <h2 class="text-center text-5xl">暂无内容!!!!</h2> -->
               <iframe src="https://dev.lianwen.com/pdf/{{$order->orderid}}.pdf" width="100%" height="650"></iframe>
