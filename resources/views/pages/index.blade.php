@@ -231,10 +231,10 @@
   <div id="header1">
      <nav id="navigation" class="navbar scrollspy">
 				<div class="container">
-					<div class="navbar-brand">
+					<div class="navbar-brand" style="width:33%;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="nav navbar-nav" style="flex:1">
+					<ul class="nav navbar-nav" style="flex:1;width:67%;">
 						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
