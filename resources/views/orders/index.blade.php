@@ -184,7 +184,8 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-
+      let cc = {!!$$orders!!}
+      console.log(cc,"fsdaf")
       let a =new Paging('page', {
         nowPage: 2, // 当前页码
         pageNum: 23, // 总页码
