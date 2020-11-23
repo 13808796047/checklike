@@ -26,7 +26,7 @@
   </style>
 @stop
 @section('content')
-<<div id="header1">
+<div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
 					<div class="navbar-brand" style="width:25%;">
