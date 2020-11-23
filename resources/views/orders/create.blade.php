@@ -100,7 +100,7 @@
       <!-- 添加结束 -->
         <ul class=" category">
           @foreach($categories as $item)
-            <li class="float-left position-relative mr-4 "
+            <li class="float-left position-relative mr-3 "
                 data-id="{{ $item->id }}">
               <i class="position-absolute hidden"><img src="{{ asset('asset/images/icon-y.png') }}"
                                                        style="width:93%;height:90px"
