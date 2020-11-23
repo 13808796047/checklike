@@ -65,6 +65,7 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
+      justify-content: space-around;
     }
     .newul li a{
       color:#fff;
