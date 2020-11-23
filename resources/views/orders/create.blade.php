@@ -345,6 +345,7 @@
       var oneid = ''
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
+      console.log($('#cid').val($('.category>li:first-child'),"fsdafddf")
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
         $(this).children('i').addClass('selected')
@@ -576,62 +577,6 @@
           })
         }
       })
-
-
-      // function checkType(e) {
-      //   var ext = $('#customFile').val().split('.').pop().toLowerCase();
-      //   if ($.inArray(ext, ['docx', 'txt']) == -1) {
-      //     alert('不允许上传文件类型!');
-      //   }
-      // }
-
-      // var formData = new FormData()
-      // $('.versionlist li:first').addClass('i-select')
-      // var cid = $('.versionlist li:first').data('id');
-      // $('#cid').val(cid);
-      // $(".versionlist li").click(function () {
-      //   // var isshow = $(".tips").children('span'
-      //   var index = $(this).index();
-      //   cid = $(this).data('id');
-      //   $('#cid').val(cid);
-      //   $(this).addClass("i-select").siblings().removeClass("i-select");
-      //
-      //   $('.tips').children('span').eq(index).show().siblings().hide();
-      // });
-      // $('input[type=radio][name=radio]').change(function () {
-      //   if (this.value == 'paste') {
-      //     $('#paste').show()
-      //     $('#upload').hide()
-      //   } else if (this.value == 'upload') {
-      //     $('#paste').hide()
-      //     $('#upload').show()
-      //   }
-      // });
-      // $('.txts').bind('input propertychange', (e) => {
-      //   $('.words').html(e.target.value.length)
-      // })
-      {{--$('input[name=file]').change((e) => {--}}
-      {{--  var file = e.target.files[0]--}}
-
-      {{--  formData.append('file', file);--}}
-      {{--})--}}
-      {{--$('#subBtn').click(() => {--}}
-      {{--  formData.append('cid', cid)--}}
-      {{--  formData.append('title', $('input[name=title]').val())--}}
-      {{--  formData.append('writer', $('input[name=writer]').val())--}}
-      {{--  formData.append('content', $('textarea[name=content]').val())--}}
-      {{--  axios.post('{{route('orders.store')}}', formData,--}}
-      {{--    {--}}
-      {{--      headers: {--}}
-      {{--        'Content-Type':--}}
-      {{--          'multipart/form-data'--}}
-      {{--      }--}}
-      {{--    }--}}
-      {{--  ).then(res => {--}}
-      {{--    location.href = '{{route('orders.show',['id'=>res.data.id])}}'--}}
-      {{--  })--}}
-      {{--})--}}
-
     })
   </script>
 @stop
