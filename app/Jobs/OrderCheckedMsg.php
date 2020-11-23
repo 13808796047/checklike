@@ -19,10 +19,9 @@ class OrderCheckedMsg implements ShouldQueue
 
     protected $order;
 
-    public function __construct(Order $order, EasySms $easySms)
+    public function __construct(Order $order)
     {
         $this->order = $order;
-        $this->easySms = $easySms;
     }
 
     public function handle()
@@ -49,7 +48,7 @@ class OrderCheckedMsg implements ShouldQueue
             ]);
         } else {
             try {
-                $result = $this->easySms->send($this->order->user->phone, [
+                $result = app('easysms')->send($this->order->user->phone, [
                     'template' => config('easysms.gateways.aliyun.templates.checked'),
                 ]);
             } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
