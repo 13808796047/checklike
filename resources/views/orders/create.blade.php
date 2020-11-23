@@ -273,8 +273,8 @@
               <div id="contenttext" class="tab-pane fade">
                 <br>
                 <p class="text-xs">
-                  <img class="inline-block" src="http://check.lianwen.com/portal/weipu/static2/images/icon-01.png"
-                       alt="">
+                  <!-- <img class="inline-block" src="http://check.lianwen.com/portal/weipu/static2/images/icon-01.png"
+                       alt=""> -->
                   系统在检测时会分析论文的前后文关系， 所以请您提交论文的全部内容，如果是非全文的检测将不能保证检测的准确性。
                 </p>
                 <div class="form-group">
