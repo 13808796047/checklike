@@ -115,7 +115,8 @@
       autoLoad: true,
       unit: '条',
       toPage: function(index, _pageSize) {
-
+        let pageListHtml = ''
+        $('.page-list').html(pageListHtml)
       }
 })
       setTimeout(() => {
