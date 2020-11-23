@@ -346,7 +346,7 @@
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
       let datas = {!!$categories!!}
-      $("#sintroTips").val(datas[0].sintro)
+      $("#sintroTips").html(datas[0].sintro)
       console.log($('#cid').val($('.category>li:first-child').data('sintro')),"fadsfdas")
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
