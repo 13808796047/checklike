@@ -160,10 +160,9 @@
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
                 @endswitch
-
-
               </p>
             </li>
+            <div>askdlfjsaflkkajsdfkslkdfjsaklfdlk</div>
           @endforeach
         </ul>
       <!-- <form action="{{route('orders.store')}}" method="post" id="form"> -->
