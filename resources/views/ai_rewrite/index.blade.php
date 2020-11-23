@@ -185,7 +185,7 @@
       </div>
       </div>
     <div class="col-span-3 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff" id="jcright">
-      <div>
+      <div class="p-4">
       <div class="tit">在线客服</div>
       <div class="box">客服微信:cx5078</div>
       </div>
