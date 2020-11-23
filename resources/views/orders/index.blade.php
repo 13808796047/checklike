@@ -184,8 +184,9 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
+
       let a =new Paging('page', {
-        nowPage: 1, // 当前页码
+        nowPage: 2, // 当前页码
         pageNum: 23, // 总页码
         buttonNum: 5, //要展示的页码数量
         canJump: 0,// 是否能跳转。0=不显示（默认），1=显示
