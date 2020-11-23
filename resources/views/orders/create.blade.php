@@ -83,7 +83,7 @@
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
 					<ul class="newul" style="flex:1;width:72%;">
-            <div style="display:flex;justify-content:space-between;">
+            <div style="display:flex;justify-content:space-between;width:100%;">
             <div style="display:flex;align-items: center;">
 						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
                   <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
