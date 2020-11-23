@@ -50,12 +50,12 @@
         <thead class="thead-dark">
         <tr>
           <th scope="col"><input type="checkbox" id="allcheck"></th>
-          <th scope="col" style="width:125px;">论文题目</th>
+          <th scope="col">论文题目</th>
           <th scope="col">系统名称</th>
           <th scope="col">状态</th>
           <th scope="col">检测结果</th>
           <th scope="col">提交日期</th>
-          <th scope="col">操作</th>
+          <th scope="col" style="width:80px;">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -68,11 +68,11 @@
             <td>{{ $order->rate }}</td>
             <td>{{$order->created_at}}</td>
             @if($order->status==0)
-              <td><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
+              <td style="width:80px;"><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
             @elseif($order->status==4)
-              <td><a href='{{route('orders.view-report',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">查看报告</a></td>
+              <td style="width:80px;"><a href='{{route('orders.view-report',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">查看报告</a></td>
             @else
-              <td><a href='javascript:;' class="bbtn" style="color:#fff;background:#3490dc;">-</a></td>
+              <td style="width:80px;"><a href='javascript:;' class="bbtn" style="color:#fff;background:#3490dc;">-</a></td>
             @endif
           </tr>
         @endforeach
