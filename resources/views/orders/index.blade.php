@@ -170,7 +170,7 @@
 
         <a class="inline-block text-white py-2 px-4" id="del_item"><span style="background: red;
     padding: 5px 10px;">删除</span></a>
-        <div>
+        <div style="display:flex;align-items:center;">
         <span class="p-2">共{{$orders->total()}}条</span>
         <div id="page"></div>
         </div>
