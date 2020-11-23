@@ -118,7 +118,7 @@
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
-                data-id="{{ $item->id }}">
+                data-id="{{ $item->id }}" data-sintro="{{$item->sintro}">
               <i class="position-absolute hidden"><img src="{{ asset('asset/images/icon-y.png') }}"
                                                        style="width:100%;height:90px"
                                                        alt=""></i>
@@ -345,13 +345,17 @@
       var oneid = ''
       $('.category>li:first-child i').addClass('selected')
       $('#cid').val($('.category>li:first-child').data('id'))
+
       let datas = {!!$categories!!}
       $("#sintroTips").html(datas[0].sintro)
-      console.log($('#cid').val($('.category>li:first-child').data('sintro')),"fadsfdas")
+
+
+
       $('.category>li').click(function () {
         $(this).siblings().children('i').removeClass('selected')
         $(this).children('i').addClass('selected')
         $('#cid').val($(this).data('id'))
+        $("sintroTips").html($(this).data('sintro'))
         if ($(this).data('id') == 6|| $(this).data('id') == 15) {
           $('#element_id').val(getNowFormatDate())
           $('#isfbtime').css('display', 'block')
