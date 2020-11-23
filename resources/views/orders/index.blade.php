@@ -108,17 +108,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      const pageSize = 10 // 默认页码大小
-      const dataCount = 235 // 测试数据数量
-      const pager = new Pagination('.page-container', {
-      pageSize: pageSize,
-      autoLoad: true,
-      unit: '条',
-      toPage: function(index, _pageSize) {
-        let pageListHtml = ''
-        $('.page-list').html(pageListHtml)
-      }
-})
+
       setTimeout(() => {
         window.location.reload();
       }, 120000);
