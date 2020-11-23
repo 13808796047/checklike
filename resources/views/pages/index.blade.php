@@ -276,8 +276,8 @@
             data-target="#staticBackdrop" >登录/注册</a>
             </li>
             @else
-            <li class="ambtn" style="padding-right:0"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="ambtn" style="padding-left:0;margin-left:2px;"><a class="logout" href="javascript:;">退出</a></li>
+            <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
+            <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
             @endguest
 					</ul>
           </nav>
