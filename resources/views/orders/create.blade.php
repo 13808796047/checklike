@@ -25,6 +25,7 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
+
     }
     .newul li{
       margin:0 17px;
@@ -81,7 +82,7 @@
 					<div class="navbar-brand" style="width:25%;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="newul" style="flex:1;width:75%;">
+					<ul class="newul" style="flex:1;width:73%;margin-left:10px;">
 						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
                         <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
                                     <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
