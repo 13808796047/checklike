@@ -2,6 +2,7 @@
 @section('title', '检测报告')
 @section('styles')
   <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/pagination.css')}}">
   <style>
     .curfont {
       font-size: 16px;
@@ -94,17 +95,9 @@
     padding: 5px 10px;">删除</span></a>
 
         <span class="p-2">共{{$orders->total()}}条</span>
-        <nav aria-label="Page navigation " id="nav_navigation">
-          <ul class="pagination ">
-            <li class="page-item"><a class="page-link" href="{{$orders->previousPageUrl()	}}">上一页</a></li>
-            @for($i=1;$i<=$orders->lastPage();$i++)
-              <li class="page-item {{ $i==$orders->currentPage()?'active':'' }}"><a class="page-link"
-                                                                                    href="{{$orders->url($i)}}">{{$i}}</a>
-              </li>
-            @endfor
-            <li class="page-item"><a class="page-link" href="{{$orders->nextPageUrl()}}">下一页</a></li>
-          </ul>
-        </nav>
+        <div class="setPageDiv">
+            <div class="Pagination" id="pagination"></div>
+        </div>
       </div>
     </div>
     </div>
@@ -112,6 +105,7 @@
   </div>
 @stop
 @section('scripts')
+<script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
       setTimeout(() => {
