@@ -37,7 +37,7 @@
     .ambtn{
       border-radius: 16px;
       border: 1px solid #fff;
-      padding: 5px 13px;
+      padding: 6px 15px;
     }
     a:hover{
       text-decoration:none ;
@@ -93,7 +93,7 @@
             </div>
             <div style="display:flex;align-items: center;">
                 <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-                <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
+                <li class="ambtn" style="margin:0;"><a class="logout" href="javascript:;">退出</a></li>
             </div>
             </div>
           </ul>
