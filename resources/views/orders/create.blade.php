@@ -37,7 +37,7 @@
     .ambtn{
       border-radius: 16px;
       border: 1px solid #fff;
-      padding: 6px 15px;
+      padding: 5px 17px;
     }
     a:hover{
       text-decoration:none ;
