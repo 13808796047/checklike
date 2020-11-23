@@ -21,6 +21,20 @@
     .isusergroup{
       text-decoration: line-through;
     }
+    .newul{
+      display:flex;
+      margin-bottom:0 !important;
+      align-items:center;
+      justify-content: space-around;
+    }
+    .newul li a{
+      color:#fff;
+    }
+    .ambtn{
+      border-radius: 16px;
+      border: 1px solid #fff;
+      padding: 5px 13px;
+    }
   </style>
 @stop
 @section('content')
