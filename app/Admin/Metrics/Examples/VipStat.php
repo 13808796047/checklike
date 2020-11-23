@@ -75,6 +75,7 @@ class VipStat extends Donut
                 $date = [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()];
 
         }
+       
         $activedData = CouponCode::couponCodeActived(CouponCode::TYPE_VIP, $date)->count();
         $usedData = Order::usedCouponCode(CouponCode::TYPE_VIP, $date)->count();
         $this->fill($activedData, $usedData);
