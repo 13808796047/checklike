@@ -86,6 +86,29 @@ class Order extends Model
         return $query->whereBetween('date_pay', [Carbon::now()->subMonth()->startOfMonth(), Carbon::now()->subMonth()->endOfMonth()]);
     }
 
+    public function scopeUsedCouponCode(Builder $query, $type, $date)
+    {
+        $builder = $query->withTrashed()->whereNotNull('date_pay');
+        switch ($type) {
+            case CouponCode::TYPE_FIXED:
+                $builder->whereHas('couponCode', function($query) {
+                    $query->where('type', CouponCode::TYPE_FIXED);
+                });
+                break;
+            case CouponCode::TYPE_PERCENT:
+                $builder->whereHas('couponCode', function($query) {
+                    $query->where('type', CouponCode::TYPE_PERCENT);
+                });
+                break;
+            default:
+                $builder->whereNull('coupon_code_id')
+                    ->whereHas('user', function($query) {
+                        $query->where('user_group', 3);
+                    });
+        }
+        return $builder->whereBetween('date_pay', $date);
+    }
+
     //分类
     public function category()
     {

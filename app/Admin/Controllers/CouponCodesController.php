@@ -9,8 +9,10 @@ use App\Admin\Actions\BatchQueue;
 use App\Admin\Actions\Grid\GenerateCouponCode;
 use App\Admin\Actions\OrderBatchDelete;
 use App\Admin\Forms\CreateCouponCode;
+use App\Admin\Metrics\Examples\FixStat;
 use App\Admin\Metrics\Examples\NewDevices;
 use App\Admin\Metrics\Examples\NewUsers;
+use App\Admin\Metrics\Examples\PercentStat;
 use App\Admin\Metrics\Examples\ProductOrders;
 use App\Admin\Metrics\Examples\TotalUsers;
 use App\Admin\Metrics\Examples\TotalVip;
@@ -30,8 +32,8 @@ class CouponCodesController extends AdminController
             ->header('卡密列表')
             ->body(function(Row $row) {
                 $row->column(4, new VipStat());
-                $row->column(4, new VipStat());
-                $row->column(4, new TotalUsers());
+                $row->column(4, new FixStat());
+                $row->column(4, new PercentStat());
             })
             ->body($this->grid());
     }
@@ -39,7 +41,7 @@ class CouponCodesController extends AdminController
     public function grid()
     {
         return Grid::make(new CouponCode(['user', 'category']), function(Grid $grid) {
-            $grid->paginate(8);
+            $grid->paginate(20);
             // 默认按创建时间倒序排序
             $grid->model()->orderBy('id', 'desc');
             // 第一列显示id字段，并将这一列设置为可排序列
