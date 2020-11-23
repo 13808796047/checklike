@@ -107,7 +107,7 @@
                                                        alt=""></i>
               <a href="javascript:;" class="icon-img checkpro-1">
                 <img src="{{$item->sys_logo}}" alt=""
-                     style="width:100%;height:90px">
+                     style="width:97%;height:90px">
               </a>
               <p class="text-center text-xs py-2">
 
