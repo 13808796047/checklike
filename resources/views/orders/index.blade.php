@@ -62,7 +62,7 @@
         @foreach($orders as $order)
           <tr>
             <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
-            <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;">{{$order->title}}</td>
+            <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;max-width: 160px;">{{$order->title}}</td>
             <td style="width:230px;">{{ $order->category->name ?? '' }}</td>
             <td style="width:117px;">{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
             <td style="width:117px;">{{ $order->rate }}</td>
