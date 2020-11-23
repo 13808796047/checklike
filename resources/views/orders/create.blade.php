@@ -173,9 +173,11 @@
           <input type="hidden" name="from" value="wp-pc">
           <input type="hidden" name="file_id" value="" id="hidden_form_id">
           <input type="hidden" name="type" value="content" id="hideen_type">
-          <div class="form-group">
+          <div  class="form-group">
+          fdasssssssssssssssssssssssssfaaaaaaaaaaffffffff
+          </div>
+          <div>
             <div class="input-group mt-3">
-              <div>ixxixixifsjdalfkjjjjjjjjjjjjjjj</div>
               <div class="input-group-prepend">
                 <span class="input-group-text">论文标题</span>
               </div>
