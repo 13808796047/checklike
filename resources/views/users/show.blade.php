@@ -44,7 +44,31 @@
   </style>
 @stop
 @section('content')
-
+<!-- 降重模态 -->
+<div class="modal fade bd-example-modal-sm" id="jctimeModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true" style="user-select: none;">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">提示</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <p>购买自动降重次数</p>
+          <p style="margin: 6px 0;font-size: 11px;color: #F4A460;">(价格:1元/次)</p>
+          <p>请输入购买次数<span style="padding:0 10px;cursor:pointer" id="cutjctime">-</span><span style="border: 1px solid;padding: 3px;" id="curjctime">10</span><span style="padding:0 10px;cursor:pointer" id="addjctime">+</span></p>
+        </div>
+        <div class="modal-footer">
+          <p style="color:#4876FF;margin-right:25%;display:none;" id="freeadd">免费增加</p>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="sureshop">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 降重模态 -->
 <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
@@ -87,7 +111,7 @@
         </p>
         <p>手机号：{{Auth::user()->phone}}</p>
         <div>
-        <span>自动降重次数: {{Auth::user()->jc_times}}次</span><span  class="userword">充值</span>
+        <span>自动降重次数: {{Auth::user()->jc_times}}次</span><span  class="userword" id="jcchongzhi">充值</span>
         </div>
 
         <div>
@@ -165,6 +189,37 @@
       })
       $("#kaitonghuiyuan").click(()=>{
         window.open("https://detail.tmall.com/item.htm?spm=a212k0.12153887.0.0.4d7c687dvfKPtV&id=631864348638","_blank");
+      })
+      $("#jcchongzhi").click(()=>{
+        $("#jctimeModal").modal('show')
+      })
+      //增加降重字数
+  $("#addjctime").click(()=>{
+    let current = Number($("#curjctime").text())+1;
+    $("#curjctime").text(current)
+  })
+  //减少降重次数
+  $("#cutjctime").click(()=>{
+    let current = Number($("#curjctime").text());
+    if(current==1) return;
+    let cur = current -1;
+    $("#curjctime").text(cur)
+  })
+     //确认购买
+      $("#sureshop").click(()=>{
+        let totalprice=$("#curjctime").text();
+        console.log(totalprice,3131)
+        axios.post('{{ route('recharges.store') }}',{
+          total_amount:totalprice,
+          amount:totalprice
+        }).then(res => {
+          let number = res.data.data.amount;
+          let id =res.data.data.id;
+          let price=res.data.data.total_amount;
+          location.href=`/recharges/${id}`
+        }).catch(err => {
+          console.log(err,31312)
+        })
       })
       var currentCode="";
       // 绑定手机号
