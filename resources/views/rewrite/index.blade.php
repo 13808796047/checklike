@@ -103,10 +103,10 @@
   <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
-					<div class="navbar-brand" style="width:25%;margin-right:10px;">
+					<div class="navbar-brand" style="width:395px;margin-right:70px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
-					<ul class="newul" style="flex:1;width:72%;">
+					<ul class="newul" style="flex:1;">
             <div style="display:flex;justify-content:space-between;width:100%;">
             <div style="display:flex;align-items: center;margin-left:13px;">
 						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
