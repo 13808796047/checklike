@@ -41,7 +41,7 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
-        return OrderResource::collection($orders);
+        return view('orders.index', compact('orders'));
     }
 
     public function store(OrderRequest $request)
@@ -62,6 +62,7 @@ class OrdersController extends Controller
 //            ->get();
         return view('orders.show', compact('order'));
     }
+
 
 
     public function viewReport(Order $order, OrderApiHandler $apiHandler)
