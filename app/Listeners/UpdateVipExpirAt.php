@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class UpdateVipExpirAt implements ShouldQueue
 {
-    
+
     public function handle(CheckVipExpirAt $event)
     {
         $user = $event->getUser();
@@ -18,7 +18,7 @@ class UpdateVipExpirAt implements ShouldQueue
         }
         if($user->vip_expir_at->lt(Carbon::now())) {
             $user->update([
-                'user_group' => 3
+                'user_group' => 0
             ]);
         }
     }
