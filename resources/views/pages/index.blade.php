@@ -726,7 +726,9 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-
+       if (document.referrer.indexOf("checklike.com") > -1) {
+        alert("从google或baidu来");
+        }
         $("#tuichuBtn").mouseenter(function(){
           $("#myself").css("display","block")
           $(window).scroll(function() {
