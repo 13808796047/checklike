@@ -185,7 +185,7 @@
   <script>
     $(function () {
       var last_page={{$orders->lastPage()}}
-      var current_page = {{$orders->page()}}
+      var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
         nowPage: current_page, // 当前页码
         pageNum: last_page, // 总页码
