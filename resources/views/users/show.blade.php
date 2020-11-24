@@ -115,7 +115,18 @@
         </div>
 
         <div>
-          <span>会员:{{Auth::user()->user_group ==3 ? "会员" : "您还不是会员" }}</span>
+          <span>会员等级 ：
+          @if(Auth::user()->user_group ==3)
+            VIP会员
+          @elseif(Auth::user()->user_group ==0)
+            普通会员
+          @elseif(Auth::user()->user_group ==2)
+            高级代理
+          @elseif(Auth::user()->user_group ==2)
+            普通代理
+          @endif
+
+          </span>
           @if(Auth::user()->user_group !=3)
             <span class="userword" id="kaitonghuiyuan">开通会员</span>
           @else
