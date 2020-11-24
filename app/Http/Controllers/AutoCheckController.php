@@ -45,4 +45,9 @@ class AutoCheckController extends Controller
     {
         return new AutoCheckResource($autoCheck);
     }
+
+    public function rewrite()
+    {
+        return view('rewrite.index');
+    }
 }
