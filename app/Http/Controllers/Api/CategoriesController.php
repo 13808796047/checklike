@@ -20,6 +20,7 @@ class CategoriesController extends Controller
         }
         $categories = Category::query()->where('status', 1)->get();
         $user = $request->user();
+        dd($user);
         event(new CheckVipExpirAt($user));
         return CategoryResource::collection($categories)->collection->groupBy('classid');
     }
