@@ -166,6 +166,9 @@
 
       $("#qrcode").click(function(){
           let order = {!!$order!!};
+          let cc ={{$order}}
+          console.log(order,"fasdfa");
+          console.log(cc,"fassf")
           $('#qrimgs').children().remove();
           //判断是否存在重复率
           if(order.rate==0.00 ||order.rate=='0.0%'){
