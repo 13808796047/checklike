@@ -128,6 +128,11 @@ class OfficialAccountController extends Controller
         $wxUser->save();
     }
 
+    public function afterLogin(User $user)
+    {
+        $this->dispatch(new SendLoginMessage($user));
+    }
+
     /**
      * 订阅
      *
@@ -172,10 +177,6 @@ class OfficialAccountController extends Controller
 
     }
 
-    public function afterLogin($user)
-    {
-        $this->dispatch(new SendLoginMessage($user));
-    }
 
     public function makeTheUser($event, $wxUser)
     {
