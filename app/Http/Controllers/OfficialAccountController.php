@@ -106,12 +106,12 @@ class OfficialAccountController extends Controller
         if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
             // 标记前端可登录
             $this->markTheLogin($event, $wxUser->id);
+            $this->afterLogin($wxUser);
             return;
         }
         $openId = $this->openid;
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
-        $this->makeTheUser($event, $wxUser);
     }
 
 
@@ -168,11 +168,12 @@ class OfficialAccountController extends Controller
         if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
             // 标记可以登录
             $this->markTheLogin($event, $wxUser->id);
+            $this->afterLogin($wxUser);
             return;
         }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
-        $this->afterLogin($wxUser);
+
         $this->makeTheUser($event, $wxUser);
 
     }
@@ -198,6 +199,7 @@ class OfficialAccountController extends Controller
 
     public function markTheLogin($event, $uid)
     {
+
         if(empty($event['EventKey'])) {
             return;
         }
