@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class SendLoginMessage implements ShouldQueue
 {
@@ -25,6 +26,7 @@ class SendLoginMessage implements ShouldQueue
 
     public function handle()
     {
+        Log::info('发送', $this->user->weixin_openid);
         if(!$touser = $this->user->weixin_openid) {
             return;
         }
