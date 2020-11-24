@@ -107,34 +107,42 @@
 	<div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
   <p style="font-weight: bold;font-size: 17px;">订单信息</p>
   <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
-    <table style="border:1px solid;border-collapse: collapse;padding: 2px;width: 780px;margin: 5px 0;">
-        <tr>
-          <td >订单编号</td>
-          <td>{{ $order->orderid }}</td>
-        </tr>
-        <tr>
-          <td>论文题目</td>
-          <td >{{$order->title}}</td>
-        </tr>
-        <tr>
-          <td>论文作者</td>
-          <td>{{$order->writer}}</td>
-        </tr>
-        <tr>
-          <td>检测系统</td>
-          <td>{{$order->category->name}}</td>
-        </tr>
-        <tr>
-          <td>订单价格</td>
-          <td ><span style="font-size:17px;color: #FF5300;font-weight: bold;">
-          {{$order->price}}元
-          </span>({{$order->words}}字)</td>
-        </tr>
-        <tr>
-          <td>上传时间</td>
-          <td>{{$order->created_at}}</td>
-        </tr>
-        </table>
+
+
+      <div>
+        <div>
+          <p>订单编号：</p>
+          <p>{{ $order->orderid }}</p>
+        </div>
+        <div>
+          <p>论文题目：</p>
+          <p>{{$order->title}}</p>
+        </div>
+        <div>
+          <p>论文作者：</p>
+          <p>{{$order->writer}}</p>
+        </div>
+        <div>
+          <p>检测系统：</p>
+          <p>{{$order->category->name}}</p>
+        </div>
+        <div>
+          <p>订单价格：</p>
+          <p><span style="font-size:17px;color: #FF5300;font-weight: bold;">
+          {{$order->price}}元
+          </span>({{$order->words}}字)</p>
+        </div>
+        <div>
+          <p>上传时间：</p>
+          <p>{{$order->created_at}}</p>
+        </div>
+
+
+      </div>
+
+
+
+
         <div id="isfeizero">
         <div>
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
@@ -296,7 +304,6 @@
             </div>
             `
         })
-        console.log(arrStr,"fasdfa")
         if(arrStr==""){
           arrStr = `<div style="margin-top:13%;width:100%;color:#666;font-size:19px;text-align:center;">暂无可用优惠券</div>`
         }
