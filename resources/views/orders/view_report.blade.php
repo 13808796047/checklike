@@ -179,7 +179,9 @@
       if(current_cid==16){
         $("#rightcontainer").text("PaperPass是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
       }
+      var order = {!!$order!!}
       $("#qrcode").click(function(){
+
           $('#qrimgs').children().remove();
           //判断是否存在重复率
           if(order.rate==0.00 ||order.rate=='0.0%'){
