@@ -156,7 +156,7 @@
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
-                  <span>VIP价:</span>
+                  <span>VIP专享:</span>
                   <b class="text-danger">{{  $item->vip_price  }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
