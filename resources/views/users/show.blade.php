@@ -113,7 +113,7 @@
       <div class="user_info_message">
 
 			<div>
-				<p>用户名：</p>
+				<p>用户名 ：</p>
 				<p>{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
         </p>
         @if(Auth::user()->phone)
@@ -124,17 +124,17 @@
 			</div>
 
 			<div>
-				<p>手机号：</p>
+				<p>手机号 ：</p>
 				<p>{{Auth::user()->phone}}</p>
 			</div>
 			<div>
-				<p>自动降重次数：</p>
+				<p>降重次数 ：</p>
 				<p>{{Auth::user()->jc_times}}次</p>
         <span  class="userword" id="jcchongzhi">充值</span>
 			</div>
 			<div>
-				<p>会员等级：</p>
-				<p> @if(Auth::user()->user_group ==3)
+				<p>会员等级 ：</p>
+				<p style="color:#FFA500"> @if(Auth::user()->user_group ==3)
             VIP会员
           @elseif(Auth::user()->user_group ==0)
             普通会员
