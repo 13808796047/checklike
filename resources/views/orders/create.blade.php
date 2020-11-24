@@ -80,7 +80,7 @@
   <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
-					<div class="navbar-brand" style="width:395px;margin-right:50px;">
+					<div class="navbar-brand" style="width:395px;margin-right:70px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
 					<ul class="newul" style="flex:1;">
