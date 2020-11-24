@@ -4,8 +4,8 @@
 <!-- <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" /> -->
 <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
 <style>
-  del { background: #FF4040; }
-  ins { background: #00ff21;text-decoration:none; }
+  del { background: #FFB6C1; }
+  ins { background: #90EE90;text-decoration:none; }
   .newul{
       display:flex;
       margin-bottom:0 !important;
