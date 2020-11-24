@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class SendLoginMessage implements ShouldQueue
 {
@@ -25,12 +26,13 @@ class SendLoginMessage implements ShouldQueue
 
     public function handle()
     {
+        Log::info('发送', [$this->user->weixin_openid]);
         if(!$touser = $this->user->weixin_openid) {
             return;
         }
         $data = [
             'first' => '您已成功登录',
-            'keyword1' => ['value' => Carbon::now()],
+            'keyword1' => ['value' => Carbon::now()->format('Y-m-d H:i:s')],
             'keyword2' => ['value' => '登录成功'],
             'keyword3' => ['value' => 'www.checklike.com'],
             'remark' => ['value' => '点击使用小程序', 'color' => '#173177']

@@ -3,6 +3,7 @@
 namespace App\Admin\Forms;
 
 use App\Jobs\getOrderStatus;
+use App\Jobs\OrderCheckedMsg;
 use App\Jobs\UploadCheckFile;
 use App\Models\Order;
 use Dcat\Admin\Contracts\LazyRenderable;
@@ -37,10 +38,16 @@ class OrderEdit extends Form implements LazyRenderable
             'rate' => $input['rate'],
             'report_path' => $input['report_path']
         ]);
-        if($order->status == 3) {
-            dispatch(new getOrderStatus($order));
-        } elseif($order->status == 1) {
-            dispatch(new UploadCheckFile($order));
+        switch ($order->status) {
+            case 1:
+                dispatch(new UploadCheckFile($order));
+                break;
+            case 3:
+                dispatch(new getOrderStatus($order));
+                break;
+            case 4:
+                dispatch(new OrderCheckedMsg($order));
+                break;
         }
         return $this
             ->response()

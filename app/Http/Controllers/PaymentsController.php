@@ -194,7 +194,7 @@ class PaymentsController extends Controller
                 $wechatOrder = app('wechat_pay')->scan([
                     'out_trade_no' => $recharge->no . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
                     'total_fee' => $recharge->total_amount * 100, // 与支付宝不同，微信支付的金额单位是分。
-                    'body' => $order->category->name . '-' . config('app.service_wechat'), // 订单描述
+                    'body' => $recharge->no . '-' . config('app.service_wechat'), // 订单描述
                 ]);
                 //把要转换的字符串作为QrCode的构造函数
                 $qrCode = new QrCode($wechatOrder->code_url);
