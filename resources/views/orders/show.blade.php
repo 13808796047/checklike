@@ -77,6 +77,17 @@
     .order_msg div{
       display:flex;
     }
+    .order_msg{
+      margin-left:145px;
+    }
+    .order_msg div p:nth-child(1){
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .order_msg div p:nth-child(2){
+      font-size: 14px;
+      margin-left:33px;
+    }
   </style>
 @stop
 @section('content')
@@ -131,7 +142,7 @@
         </div>
         <div>
           <p>订单价格：</p>
-          <p><span style="color:#FF5300;font-size:bold;">{{$order->price}}元</span>({{$order->words}}字)</p>
+          <p><span style="color:#FF5300;font-weight:bold;">{{$order->price}}元</span>({{$order->words}}字)</p>
         </div>
         <div>
           <p>上传时间：</p>
