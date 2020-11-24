@@ -76,9 +76,9 @@
     }
     .order_msg div{
       display:flex;
-    }
-    .order_msg{
-      margin-left:145px;
+      border-bottom: 1px solid #DCDCDC;
+      line-height: 2.9;
+      padding-left: 145px;
     }
     .order_msg div p:nth-child(1){
       font-size: 15px;
