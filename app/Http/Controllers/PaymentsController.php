@@ -7,6 +7,7 @@ use App\Events\RechargePaid;
 use App\Exceptions\CouponCodeUnavailableException;
 use App\Exceptions\InvalidRequestException;
 use App\Handlers\OpenidHandler;
+use App\Http\Resources\OrderResource;
 use App\Jobs\CheckOrderStatus;
 use App\Jobs\CloudCouvertFile;
 use App\Jobs\OrderPaidMsg;
@@ -92,7 +93,7 @@ class PaymentsController extends Controller
     public function freePay(Request $request, Order $order, PaymentService $paymentService)
     {
         $orders = $paymentService->payFree($request, $order);
-        return view('orders.index', compact('orders'));
+        return OrderResource::collection($orders);
     }
 
 // 前端回调页面
@@ -114,7 +115,7 @@ class PaymentsController extends Controller
             default:
                 $order = Order::where('payid', $result->out_trade_no)->first();
                 $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(10);
-                return view('orders.index', compact('orders'));
+                return OrderResource::collection($orders);
         }
 
     }
@@ -251,7 +252,7 @@ class PaymentsController extends Controller
                 break;
             default:
                 $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
-                return view('orders.index', compact('orders'));
+                return OrderResource::collection($orders);
         }
     }
 
