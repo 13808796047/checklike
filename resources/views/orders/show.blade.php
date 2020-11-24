@@ -106,6 +106,7 @@
 <div class="grid grid-cols-12 gap-4">
 	<div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
   <p style="font-weight: bold;font-size: 17px;">订单信息</p>
+  <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
     <table style="border:1px solid;border-collapse: collapse;padding: 2px;width: 780px;margin: 5px 0;">
         <tr>
           <td >订单编号</td>
@@ -137,7 +138,7 @@
         <div id="isfeizero">
         <div>
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
-						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
+            <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
 
             <!-- <div style="margin:10px 20px;">
