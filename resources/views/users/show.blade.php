@@ -87,7 +87,7 @@
         </p>
         <p>手机号：{{Auth::user()->phone}}</p>
         <div>
-        <span>自动降重次数: {{Auth::user()->jc_times}}次</span><span>充值</span>
+        <span>自动降重次数: {{Auth::user()->jc_times}}次</span><span  class="userword">充值</span>
         </div>
 
         <div>
