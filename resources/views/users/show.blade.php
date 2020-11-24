@@ -45,7 +45,7 @@
       display:flex;
     }
     .user_info_message div p:nth-child(1){
-				width:130px;
+				width:100px;
 				text-align: right;
 			}
   </style>
@@ -134,8 +134,9 @@
 			</div>
 			<div>
 				<p>会员等级 ：</p>
-				<p style="color:#FFA500"> @if(Auth::user()->user_group ==3)
-            VIP会员
+				<p>
+          @if(Auth::user()->user_group ==3)
+            <span style="color:#FF8C00">VIP会员</span>
           @elseif(Auth::user()->user_group ==0)
             普通会员
           @elseif(Auth::user()->user_group ==2)
