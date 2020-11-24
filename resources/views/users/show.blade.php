@@ -116,16 +116,17 @@
 				<p>用户名 ：</p>
 				<p>{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
         </p>
-        @if(Auth::user()->phone)
-        <span class="userword" id="userxiugaipsd">修改密码</span>
-        @elseif(!Auth::user()->phone && Auth::user()->nick_name)
-        <span class="userword" id="userbindPhone">绑定手机号</span>
-        @endif
+
 			</div>
 
 			<div>
 				<p>手机号 ：</p>
+        @if(Auth::user()->phone)
 				<p>{{Auth::user()->phone}}</p>
+        <span class="userword" id="userxiugaipsd">修改密码</span>
+        @else
+        <span class="userword" id="userbindPhone">绑定手机号</span>
+        @endif
 			</div>
 			<div>
 				<p>降重次数 ：</p>
