@@ -128,7 +128,7 @@
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
         <div style="display:flex;align-items:center;font-size:15px;">
           <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
-          <p style="margin-left:13px;font-size:15px;">当前剩余次数 ：<span>999次</span><span style="margin-left: 15px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
+          <p style="margin-left:13px;font-size:13px;">当前剩余次数 ：<span>999次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
         </div>
 
 
