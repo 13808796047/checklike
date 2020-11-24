@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CheckVipExpirAt;
 use App\Jobs\BindPhoneSuccess;
 use App\Models\CouponCode;
 use App\Models\User;
@@ -98,6 +99,7 @@ class UsersController extends Controller
     public function show(User $user)
     {
         $this->authorize('update', $user);
+        event(new CheckVipExpirAt($user));
         $coupon_codes = $user->couponCodes()
             ->with('category')
             ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
