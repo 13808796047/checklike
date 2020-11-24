@@ -297,8 +297,8 @@
             `
         })
         console.log(arrStr,"fasdfa")
-        if(!arrStr){
-          arrstr = `<div>暂无可用优惠券</div>`
+        if(arrStr==""){
+          arrStr = `<div>暂无可用优惠券</div>`
         }
         $("#couponbox").html(arrStr)
         doStyle()
