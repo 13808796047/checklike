@@ -298,7 +298,7 @@
         })
         console.log(arrStr,"fasdfa")
         if(arrStr==""){
-          arrStr = `<div>暂无可用优惠券</div>`
+          arrStr = `<div style="margin-top:13%;width:100%;color:#666;font-size:19px;">暂无可用优惠券</div>`
         }
         $("#couponbox").html(arrStr)
         doStyle()
