@@ -26,7 +26,7 @@ class SendLoginMessage implements ShouldQueue
 
     public function handle()
     {
-        Log::info('发送', $this->user->weixin_openid);
+        Log::info('发送', [$this->user->weixin_openid]);
         if(!$touser = $this->user->weixin_openid) {
             return;
         }
