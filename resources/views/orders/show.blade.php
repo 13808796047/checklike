@@ -131,9 +131,7 @@
         </div>
         <div>
           <p>订单价格：</p>
-          <p><span style="font-size:17px;color: #FF5300;font-weight: bold;">
-          {{$order->price}}元
-          </span>({{$order->words}}字)</p>
+          <p><span style="font-size:17px;color:#FF5300;font-weight:bold;">{{$order->price}}元</span>({{$order->words}}字)</p>
         </div>
         <div>
           <p>上传时间：</p>
