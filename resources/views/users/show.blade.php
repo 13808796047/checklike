@@ -149,7 +149,7 @@
           @if(Auth::user()->user_group !=3)
             <span class="userword" id="kaitonghuiyuan">开通会员</span>
           @else
-            <span style="margin-left:20px;">有效期：{{Auth::user()->vip_days}}天</span>
+            <span style="margin-left:20px;">(有效期：{{Auth::user()->vip_expir_at}})</span>
           @endif
 			</div>
 		</div>
@@ -174,7 +174,6 @@
 @section('scripts')
   <script>
     $(document).ready(function () {
-      console.log({!!Auth::user()!!})
       $('#app').removeClass('newmain')
       $("#activationBtn").click(() => {
         $.confirm({
