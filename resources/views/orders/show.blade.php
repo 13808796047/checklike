@@ -296,6 +296,7 @@
             </div>
             `
         })
+        console.log(arrStr,"fasdfa")
         if(arrStr==""){
           arrstr = `<div>暂无可用优惠券</div>`
         }
