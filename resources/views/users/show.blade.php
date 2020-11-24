@@ -102,20 +102,31 @@
         <img src="{{Auth::user()->avatar ? Auth::user()->avatar : asset('asset/images/avtarno.jpg')}}" alt="" style="width:130px;height:130px;border-radius: 50%;">
       </div>
       <div style="margin-left:30px;">
-        <p>用户名：{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
+        <p><span>用户名 ：</span>{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
         @if(Auth::user()->phone)
         <span class="userword" id="userxiugaipsd">修改密码</span>
         @elseif(!Auth::user()->phone && Auth::user()->nick_name)
         <span class="userword" id="userbindPhone">绑定手机号</span>
         @endif
         </p>
-        <p>手机号：{{Auth::user()->phone}}</p>
+        <p><span>手机号 ：</span> ：{{Auth::user()->phone}}</p>
         <div>
-        <span>自动降重次数: {{Auth::user()->jc_times}}次</span><span  class="userword" id="jcchongzhi">充值</span>
+        <span><span>自动降重次数 : </span> {{Auth::user()->jc_times}}次</span><span  class="userword" id="jcchongzhi">充值</span>
         </div>
 
         <div>
-          <span>会员:{{Auth::user()->user_group ==3 ? "会员" : "您还不是会员" }}</span>
+          <span>会员等级 ：
+          @if(Auth::user()->user_group ==3)
+            VIP会员
+          @elseif(Auth::user()->user_group ==0)
+            普通会员
+          @elseif(Auth::user()->user_group ==2)
+            高级代理
+          @elseif(Auth::user()->user_group ==2)
+            普通代理
+          @endif
+
+          </span>
           @if(Auth::user()->user_group !=3)
             <span class="userword" id="kaitonghuiyuan">开通会员</span>
           @else
