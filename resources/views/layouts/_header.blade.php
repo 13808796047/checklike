@@ -102,7 +102,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div style="font-weight:bold;text-align:center;">账号注册</div>
+      <div style="font-weight:bold;text-align:center;font-size:22px;">账号注册</div>
       <div class="modal-body">
 
          <div style="padding:10px 17px;">
@@ -142,10 +142,10 @@
                     class="appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="yzmcode"
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
-                  <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px;" id="sendRegisterYzCode">发送验证码</button>
+                  <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px;height:50px;border:none;" id="sendRegisterYzCode">发送验证码</button>
             </div>
             <div id="registerTip" style="color:red;margin-bottom:10px;"></div>
-            <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;">
+            <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;border:none;">
                 提交注册
             </button>
             <p style="margin:5px auto;color:#26AEF2;text-align:center;cursor:pointer;" id="noregister">微信登录（免注册）</p>

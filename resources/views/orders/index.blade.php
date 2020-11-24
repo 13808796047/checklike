@@ -28,6 +28,83 @@
     a:hover{
       text-decoration:none ;
     }
+    #page {
+            color: #666;
+            text-align: center;
+    }
+
+    #page li {
+            display: inline-block;
+            min-width: 30px;
+            height: 28px;
+            cursor: pointer;
+            color: #666;
+            font-size: 13px;
+            line-height: 28px;
+            background-color: #f9f9f9;
+            border: 1px solid #dce0e0;
+            text-align: center;
+            margin: 0 4px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .xl-nextPage,
+        .xl-prevPage {
+            width: 60px;
+            color: #0073A9;
+            height: 28px;
+        }
+
+        #page li.xl-disabled {
+            opacity: .5;
+            cursor: no-drop;
+        }
+
+		#page li.xl-disabled:hover{
+			background-color: #f9f9f9 !important;
+            border: 1px solid #dce0e0 !important;
+			color: #666 !important;
+		}
+
+        #page li.xl-active {
+            background-color: #3490dc;
+            border-color: #3490dc;
+            color: #FFF
+        }
+
+		#page li:hover{
+			background-color:  #3490dc !important;
+            border-color: #0073A9;
+            color: #FFF
+		}
+
+		 #page li.xl-jumpText {
+		    background-color: rgba(0,0,0,0);
+			border-color: rgba(0,0,0,0);
+			opacity: 1;
+		}
+
+		#page li.xl-jumpText:hover{
+			background-color: rgba(0,0,0,0) !important;
+			border-color: rgba(0,0,0,0) !important;
+		}
+
+		#page li.xl-jumpButton{
+			padding: 0 5px;
+		}
+
+		#xlJumpNum {
+			width: 35px;
+			margin: 0 3px;
+		}
+		input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+			-webkit-appearance: none !important;
+		}
+		input[type="number"]{
+			-moz-appearance:textfield;
+		}
   </style>
 @stop
 @section('content')
@@ -76,7 +153,7 @@
             <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;max-width: 160px;">{{$order->title}}</td>
             <td style="width:230px;">{{ $order->category->name ?? '' }}</td>
             <td style="width:117px;">{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
-            <td style="width:117px;">{{ $order->rate }}</td>
+            <td style="width:117px;">{{ $order->rate }}%</td>
             <td style="width:249px;">{{$order->created_at}}</td>
             @if($order->status==0)
               <td style="width:110px;"><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
@@ -93,10 +170,10 @@
 
         <a class="inline-block text-white py-2 px-4" id="del_item"><span style="background: red;
     padding: 5px 10px;">删除</span></a>
-
+        <div style="display:flex;align-items:center;">
         <span class="p-2">共{{$orders->total()}}条</span>
-
-            <nav aria-label="Page navigation" id="pagination"></nav>
+        <div id="page"></div>
+        </div>
       </div>
     </div>
     </div>
@@ -107,30 +184,18 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      $('#pagination').pagination(255, {
-        items_per_page: 10, //每页的 item 数
 
-num_display_entries: 5, //显示的页码数
+      let a =new Paging('page', {
+        nowPage: 2, // 当前页码
+        pageNum: 23, // 总页码
+        buttonNum: 5, //要展示的页码数量
+        canJump: 0,// 是否能跳转。0=不显示（默认），1=显示
+        showOne: 1,//只有一页时，是否显示。0=不显示,1=显示（默认）
+        callback: function (num) { //回调函数
+          window.location.href=`https://p.checklike.com/orders?page=${num}`;
+        }
+    })
 
-current_page: 0, //当前页
-
-num_edge_entries: 1, //前后显示的页码数
-
-link_to: "javascript:void(0)", //链接地址
-
-prev_text: "«", //上一页
-
-next_text: "»", //下一页
-
-ellipse_text: "...", //显示的省略文本信息
-
-prev_show_always: true, //是否一直显示上一页
-
-next_show_always: true, //是否一直显示下一页
-	        callback: function(page, component) {
-		       console.info(page);
-	        }
-      });
       setTimeout(() => {
         window.location.reload();
       }, 120000);
@@ -138,6 +203,7 @@ next_show_always: true, //是否一直显示下一页
       $('#allcheck').click(function () {
         $("input[name='delete']").prop("checked", this.checked);
       })
+
       // 单选
       let single = $("input[name='delete']")
       single.click(function () {

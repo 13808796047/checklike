@@ -50,7 +50,7 @@
           <p>剩余次数：<span id="requestcishuNum">{{ auth()->user()->jc_times}}</span><span style="color:#4876FF;margin-left:10px;cursor:pointer;" id="addjctimes">增加次数</span></p>
         </div>
         <div class="modal-footer">
-          <p style="color:#4876FF;margin-right:25%;" id="freeadds">免费增加</p>
+          <p style="color:#4876FF;margin-right:25%;display:none;" id="freeadds">免费增加</p>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
           <button type="button" class="btn btn-primary" id="surecheck">确定</button>
         </div>
@@ -90,7 +90,7 @@
           <p>请输入购买次数<span style="padding:0 10px;cursor:pointer" id="cutjctime">-</span><span style="border: 1px solid;padding: 3px;" id="curjctime">10</span><span style="padding:0 10px;cursor:pointer" id="addjctime">+</span></p>
         </div>
         <div class="modal-footer">
-          <p style="color:#4876FF;margin-right:25%;" id="freeadd">免费增加</p>
+          <p style="color:#4876FF;margin-right:25%;display:none;" id="freeadd">免费增加</p>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
           <button type="button" class="btn btn-primary" id="sureshop">确定</button>
         </div>
