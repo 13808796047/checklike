@@ -184,7 +184,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      console.log({$orders->total()})
+      console.log({{$orders->total()}},"fjdsajflksdfj")
       let a =new Paging('page', {
         nowPage: 2, // 当前页码
         pageNum: 23, // 总页码
