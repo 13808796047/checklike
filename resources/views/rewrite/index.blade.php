@@ -4,8 +4,8 @@
 <!-- <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" /> -->
 <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
 <style>
-  del { background: #FF4040; }
-  ins { background: #00ff21;text-decoration:none; }
+  del { background: #FFB6C1; }
+  ins { background: #90EE90;text-decoration:none; }
   .newul{
       display:flex;
       margin-bottom:0 !important;
@@ -126,35 +126,16 @@
   <div class="container" style="margin:18px auto">
       <div class="grid grid-cols-12 gap-4">
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
-        <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
-        <div>
-          <span>模式：</span>
-          <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="0" checked>智能换词</label>
-          <label class="radio-inline" style="margin:0 10px;"><input type="radio" name="radio" style="margin-right:5px;" value="1">智能改写</label>
-          <label class="radio-inline"><input type="radio" name="radio" style="margin-right:5px;" value="-1">智能换词、智能改写同时改写</label>
+        <div style="display:flex;align-items:flex-end;font-size:15px;">
+          <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
+          <p style="margin-left:13px;font-size:13px;">当前剩余次数 ：<span>999次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
         </div>
-        <div style="display:flex;">
-          <label for="sel">原创度:</label>
-          <select class="custom-select custom-select-sm" id="sel" style="width:10%;margin:0 20px;"  onchange="optionChange()">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-          <p>(数值越大、可读性越高)</p>
-        </div>
-        <div>
-          <p>关键词锁定:(智能原创时，保护以下关键词不被替换，多个关键词以 "|" 搁开)</p>
-          <div>
-              <textarea class="form-control" rows="3" id="filter"></textarea>
-          </div>
-        </div>
+
+
         <div style="margin-top:25px;" id="jcqian">
-           <textarea class="form-control" rows="13" id="content"></textarea>
-           <div>
-              <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
+           <textarea class="form-control" rows="19" id="content" placeholder="请输入降重内容，不能超4000字"></textarea>
+           <div style="margin:10px 0;">
+              <p style="color:#A9A9A9;font-size:13px;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
             </div>
            <div style="margin-top:10px;">
 
@@ -167,12 +148,12 @@
       <div style="margin-top:25px;display:none;" id="jchou">
         <div style="display:flex;">
             <div style="width:100%;">
-                <p>降重前</p>
+                <p style="margin-bottom:10px;">降重前</p>
                 <div id="content_after" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
-                <p>降重后</p>
+                <p style="margin-bottom:10px;">降重后</p>
                 <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
             </div>
         </div>
@@ -213,16 +194,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
 
-   var checkvalue = "";
-  function getRadioVal(){
-    var radio_tag = document.getElementsByName("radio");
-    for(let i=0;i<radio_tag.length;i++){
-        if(radio_tag[i].checked){
-          checkvalue = radio_tag[i].value
-          return checkvalue
-        }
-    }
-  }
+
   //清空内容
   $("#clearcontainer").click(()=>{
     $.confirm({
@@ -245,12 +217,7 @@
       });
 
   })
-  var optionVal = "3"
-  function optionChange(){
-    var sel=document.getElementById('sel');
-    var sid=sel.selectedIndex;
-    optionVal = sel[sid].value
-  }
+
   //增加降重字数
   $("#addjctime").click(()=>{
     let current = Number($("#curjctime").text())+1;
@@ -284,8 +251,8 @@
       // alertify.notify("字数不能大于5000字",'custom',3)
       return;
     }
-    optionChange();
-    getRadioVal();
+
+
     $('#exampleModal').modal('show')
   })
   $("#surecheck").click(()=>{
@@ -317,14 +284,11 @@
         })
       })
   function togetJc(num){
-    optionChange();
-    getRadioVal();
-    let filter = $("#filter").val().replace(/\s*/g,"")
     let contents = $('#content').val();
     $('#beingModal').modal('hide')
     $('#jcqian').css('display', 'none')
     $("#jchou").css('display', 'block')
-        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
+        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:3,retype:1,filter:""})
           .then(res => {
             $('#beingModal').modal('hide')
             $("#jcright").css("display",'none')
