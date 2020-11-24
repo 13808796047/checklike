@@ -20,6 +20,7 @@
     }
     .isusergroup{
       text-decoration: line-through;
+      color:#999;
     }
     .newul{
       display:flex;
@@ -79,7 +80,7 @@
   <div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
-					<div class="navbar-brand" style="width:25%;margin-right:10px;">
+					<div class="navbar-brand" style="width:395px;margin-right:30px;">
 						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
 					</div>
 					<ul class="newul" style="flex:1;width:72%;">
@@ -155,7 +156,7 @@
                 <br>
                 @switch(auth()->user()->user_group)
                   @case(3)
-                  <span>VIP价:</span>
+                  <span>VIP专享:</span>
                   <b class="text-danger">{{  $item->vip_price  }}</b>
                   <span>/{{\App\Models\Category::$priceTypeMap[$item->price_type]}}</span>
                   @break
@@ -184,7 +185,7 @@
           <input type="hidden" name="file_id" value="" id="hidden_form_id">
           <input type="hidden" name="type" value="content" id="hideen_type">
           <div>
-              <div class="input-group" id="sintroTips" style="margin:13px 0;font-size:13px;">
+              <div class="input-group" id="sintroTips" style="margin:13px 0;font-size:13px;color:#666;line-height:28px;">
 
               </div>
           </div>
@@ -331,7 +332,7 @@
       <b>1、检测结果是否准确？</b>
         <p id="rightcontainer"></p>
         <b>2、检测需要多少时间？</b>
-        <p>正常情况，检测需要10分钟左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
+        <p>正常情况，检测需要<span id="banbentimer">10分钟</span>左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
         <b>3、论文上传之后安全吗？</b>
         <p>本系统有明确的条文规定并遵守严格的论文保密规定，对所有用户提交的送检文档仅做检测分析，绝不保留全文，承诺对用户送检的文档不做任何形式的收录和泄露。</p>
         <b>4、提交以后能不能退款？</b>
@@ -353,18 +354,23 @@
       switch (currentright) {
         case "/categories/1":
         $("#rightcontainer").text("CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
+        $("#banbentimer").text("10分钟")
         break;
         case "/categories/2":
         $("#rightcontainer").text("如果你们学校也是用维普检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
+        $("#banbentimer").text("10分钟")
         break;
         case "/categories/4":
         $("#rightcontainer").text("如果你们学校也是用万方检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
+        $("#banbentimer").text("10分钟")
         break;
         case "/categories/3":
         $("#rightcontainer").text("我们使用的是跟知网同一套系统，但是每个版本有轻微差别，具体参考系统介绍。")
+        $("#banbentimer").text("2小时")
         break;
         case "/categories/5":
         $("#rightcontainer").text("PaperPass是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
+        $("#banbentimer").text("10分钟")
         break;
         default:
         break;

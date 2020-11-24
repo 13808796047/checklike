@@ -726,6 +726,33 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
+       //判断访问源
+        var sourceUrl = document.referrer;
+        if(sourceUrl.indexOf("p.checklike.com")=="-1"){
+
+          $("#staticBackdrop").modal("show")
+          axios.get("/official_account").then(res=>{
+          var img = new Image();
+          img.onload = function() {
+            $("#qrimg").attr('src',res.data.url);
+            $("#qrimg").css("display","block");
+            $("#loginIcon").css("display","none");
+          }
+          img.src = res.data.url;
+          var wechatFlag = res.data.wechatFlag;
+          timer = setInterval(() => {
+            axios.post("login_check",{
+              wechat_flag:wechatFlag
+            }).then(res=>{
+              if(res.status==200){
+                clearInterval(timer);
+                swal("提示", "登录成功", "success");
+                location.reload();
+              }
+            })
+          }, 1000);
+        })
+        }
 
         $("#tuichuBtn").mouseenter(function(){
           $("#myself").css("display","block")

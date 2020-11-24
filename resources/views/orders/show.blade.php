@@ -74,6 +74,23 @@
     a:hover{
       text-decoration:none ;
     }
+    .order_msg{
+      padding:0 30px;
+    }
+    .order_msg div{
+      display:flex;
+      border-bottom: 1px dashed #ececec;
+      line-height: 2.9;
+      padding-left: 145px;
+    }
+    .order_msg div p:nth-child(1){
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .order_msg div p:nth-child(2){
+      font-size: 14px;
+      margin-left:33px;
+    }
   </style>
 @stop
 @section('content')
@@ -106,55 +123,49 @@
 <div class="grid grid-cols-12 gap-4">
 	<div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
   <p style="font-weight: bold;font-size: 17px;">订单信息</p>
-    <table style="border:1px solid;border-collapse: collapse;padding: 2px;width: 780px;margin: 5px 0;">
-        <tr>
-          <td >订单编号</td>
-          <td>{{ $order->orderid }}</td>
-        </tr>
-        <tr>
-          <td>论文题目</td>
-          <td >{{$order->title}}</td>
-        </tr>
-        <tr>
-          <td>论文作者</td>
-          <td>{{$order->writer}}</td>
-        </tr>
-        <tr>
-          <td>检测系统</td>
-          <td>{{$order->category->name}}</td>
-        </tr>
-        <tr>
-          <td>订单价格</td>
-          <td ><span style="font-size:17px;color: #FF5300;font-weight: bold;">
-          {{$order->price}}元
-          </span>({{$order->words}}字)</td>
-        </tr>
-        <tr>
-          <td>上传时间</td>
-          <td>{{$order->created_at}}</td>
-        </tr>
-        </table>
+  <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
+
+
+      <div class="order_msg">
+        <div>
+          <p>订单编号：</p>
+          <p>{{$order->orderid}}</p>
+        </div>
+        <div>
+          <p>论文题目：</p>
+          <p>{{$order->title}}</p>
+        </div>
+        <div>
+          <p>论文作者：</p>
+          <p>{{$order->writer}}</p>
+        </div>
+        <div>
+          <p>检测系统：</p>
+          <p>{{$order->category->name}}</p>
+        </div>
+        <div>
+          <p>订单价格：</p>
+          <p><span style="color:#FF5300;font-weight:bold;">{{$order->price}}元</span>({{$order->words}}字)</p>
+        </div>
+        <div>
+          <p>上传时间：</p>
+          <p>{{$order->created_at}}</p>
+        </div>
+
+
+      </div>
+
+
+
+
         <div id="isfeizero">
         <div>
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
-						<div style="width:100%;border-bottom:1px solid;margin:10px 0;"></div>
+            <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
 
-            <!-- <div style="margin:10px 20px;">
-							<div class="currentBoder" style="width:210px;height:110px;">
-								<div class="discount_topbox" style="padding: 8px;" i>
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										8.0<span style="font-size:15px;margin-left:5px;">折</span>
-									</span> 满10可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至2020-11-10 16:33:00</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：维普大学生版</p>
-              </div>
-              <div style="display:flex;align-items:center;"><img src="{{asset('asset/images/gantanhao.png')}}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">已减去8元</p></div>
-            </div> -->
-
             </div>
-            <div style="width:100%;border-bottom:1px solid;margin:15px 0 10px 0;"></div>
+            <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
             <div style="margin-bottom: 23px;">
               <p id="dingdanprice" style="display:none;">订单原价:{{$order->price}}元，卡券优惠:<span id="yhje"></span>元，应付金额：<span style="font-size: 19px;color: #FF5300;" id="sjprice">元</span>，请选择以下任一一种方式完成支付。</p>
             </div>
@@ -194,7 +205,7 @@
       <b>1、检测结果是否准确？</b>
         <p id="rightcontainer"></p>
         <b>2、检测需要多少时间？</b>
-        <p>正常情况，检测需要10分钟左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
+        <p>正常情况，检测需要<span id="banbentimer">10分钟</span>左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
         <b>3、论文上传之后安全吗？</b>
         <p>本系统有明确的条文规定并遵守严格的论文保密规定，对所有用户提交的送检文档仅做检测分析，绝不保留全文，承诺对用户送检的文档不做任何形式的收录和泄露。</p>
         <b>4、提交以后能不能退款？</b>
@@ -236,18 +247,23 @@
      $(document).ready(function () {
       let current_cid ={{$order->cid}}
       if(current_cid==1||current_cid==2){
+        $("#banbentimer").text("10分钟")
         $("#rightcontainer").text("CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
       }
       if( current_cid==3 || current_cid==4 || current_cid==5 || current_cid == 6){
+        $("#banbentimer").text("10分钟")
         $("#rightcontainer").text("如果你们学校也是用维普检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
       }
       if(current_cid==12||current_cid==13||current_cid==14||current_cid==15){
+        $("#banbentimer").text("10分钟")
         $("#rightcontainer").text("如果你们学校也是用万方检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
       }
       if(current_cid==7||current_cid==8||current_cid==8||current_cid==10||current_cid==11){
+        $("#banbentimer").text("2小时")
         $("#rightcontainer").text("我们使用的是跟知网同一套系统，但是每个版本有轻微差别，具体参考系统介绍。")
       }
       if(current_cid==16){
+        $("#banbentimer").text("10分钟")
         $("#rightcontainer").text("PaperPass是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
       }
        var couponArr=[];
@@ -308,6 +324,9 @@
             </div>
             `
         })
+        if(arrStr==""){
+          arrStr = `<div style="margin-top:13%;width:100%;color:#666;font-size:19px;text-align:center;">暂无可用优惠券</div>`
+        }
         $("#couponbox").html(arrStr)
         doStyle()
        }

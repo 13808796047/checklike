@@ -41,6 +41,13 @@
     a:hover{
       text-decoration:none ;
     }
+    .user_info_message div{
+      display:flex;
+    }
+    .user_info_message div p:nth-child(1){
+				width:100px;
+				text-align: right;
+			}
   </style>
 @stop
 @section('content')
@@ -102,22 +109,35 @@
         <img src="{{Auth::user()->avatar ? Auth::user()->avatar : asset('asset/images/avtarno.jpg')}}" alt="" style="width:130px;height:130px;border-radius: 50%;">
       </div>
       <div style="margin-left:30px;">
-        <p><span>用户名 ：</span>{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
+
+      <div class="user_info_message">
+
+			<div>
+				<p>用户名 ：</p>
+				<p>{{Auth::user()->nick_name? Auth::user()->nick_name : Auth::user()->phone }}
+        </p>
+
+			</div>
+
+			<div>
+				<p>手机号 ：</p>
         @if(Auth::user()->phone)
+				<p>{{Auth::user()->phone}}</p>
         <span class="userword" id="userxiugaipsd">修改密码</span>
-        @elseif(!Auth::user()->phone && Auth::user()->nick_name)
+        @else
         <span class="userword" id="userbindPhone">绑定手机号</span>
         @endif
-        </p>
-        <p><span>手机号 ：</span> ：{{Auth::user()->phone}}</p>
-        <div>
-        <span><span>自动降重次数 : </span> {{Auth::user()->jc_times}}次</span><span  class="userword" id="jcchongzhi">充值</span>
-        </div>
-
-        <div>
-          <span>会员等级 ：
+			</div>
+			<div>
+				<p>降重次数 ：</p>
+				<p>{{Auth::user()->jc_times}}次</p>
+        <span  class="userword" id="jcchongzhi">充值</span>
+			</div>
+			<div>
+				<p>会员等级 ：</p>
+				<p>
           @if(Auth::user()->user_group ==3)
-            VIP会员
+            <span style="color:#FF8C00">VIP会员</span>
           @elseif(Auth::user()->user_group ==0)
             普通会员
           @elseif(Auth::user()->user_group ==2)
@@ -125,14 +145,16 @@
           @elseif(Auth::user()->user_group ==2)
             普通代理
           @endif
-
-          </span>
+        </p>
           @if(Auth::user()->user_group !=3)
             <span class="userword" id="kaitonghuiyuan">开通会员</span>
           @else
-            <span>会员还剩余{{Auth::user()->vip_days}}天</span>
+            <span style="margin-left:20px;">(有效期：{{Auth::user()->vip_expir_at}})</span>
           @endif
-        </div>
+			</div>
+		</div>
+
+
       </div>
 
         <p></p>
@@ -152,7 +174,6 @@
 @section('scripts')
   <script>
     $(document).ready(function () {
-
       $('#app').removeClass('newmain')
       $("#activationBtn").click(() => {
         $.confirm({
