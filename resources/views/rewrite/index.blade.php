@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','查重')
+@section('title','自动降重')
 @section('styles')
 <!-- <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" /> -->
 <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
@@ -128,7 +128,7 @@
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
         <div style="display:flex;align-items:flex-end;font-size:15px;">
           <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
-          <p style="margin-left:13px;font-size:13px;">当前剩余次数 ：<span>999次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
+          <p style="margin-left:13px;font-size:13px;">当前剩余次数 ：<span>{{ auth()->user()->jc_times}}次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
         </div>
 
 
