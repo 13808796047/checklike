@@ -20,6 +20,7 @@
     }
     .isusergroup{
       text-decoration: line-through;
+      color:#999;
     }
     .newul{
       display:flex;
