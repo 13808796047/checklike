@@ -148,7 +148,14 @@
       <div style="margin-top:25px;display:none;" id="jchou">
         <div style="display:flex;">
             <div style="width:100%;">
+                <div style="display:flex;">
                 <p style="margin-bottom:10px;">降重前</p>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">显示修改对比</label>
+                </div>
+                </div>
+
                 <div id="content_after" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
             <div style="margin:0 17px;"></div>
@@ -157,7 +164,7 @@
                 <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
             </div>
         </div>
-        <div>
+        <div style="margin:10px 0;">
           <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
         </div>
         <div style="margin-top:10px;">
