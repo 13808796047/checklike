@@ -526,8 +526,7 @@
 
 		<!-- .row -->
 		<div class="row row-clients">
-
-					<img src="https://www.checklike.com/images/kehu.jpg" >
+					<img src="{{asset('asset/images/content/clients/kehu.jpg')}}" >
 		</div>
 		<!-- .row end -->
 
