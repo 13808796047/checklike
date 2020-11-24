@@ -19,7 +19,8 @@ class CategoriesController extends Controller
             \Cache::put('word', $word, now()->addDay());
         }
         $categories = Category::query()->where('status', 1)->get();
-        event(new CheckVipExpirAt($request->user));
+        $user = $request->user();
+        event(new CheckVipExpirAt($user));
         return CategoryResource::collection($categories)->collection->groupBy('classid');
     }
 }
