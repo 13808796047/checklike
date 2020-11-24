@@ -726,9 +726,8 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-       if (document.referrer.indexOf(".com") > -1) {
-          console.log("从来")
-        }
+       var sourceUrl = document.referrer;
+      console.log(sorceUrl,"来源页面")
         $("#tuichuBtn").mouseenter(function(){
           $("#myself").css("display","block")
           $(window).scroll(function() {
