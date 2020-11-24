@@ -33,7 +33,7 @@ class AutoCheckController extends Controller
             $request->input('th', ''),
             $request->input('filter', ''),
             $request->input('corewordfilter', ''),
-            $request->input('sim', ''),
+            $request->input('sim', 1),
             $request->input('retype', ''),
             $request->type,
         );
