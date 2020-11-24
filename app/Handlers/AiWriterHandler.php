@@ -8,17 +8,25 @@ use GuzzleHttp\Client;
 
 class AiWriterHandler
 {
-    protected $api;
     protected $http;
 
     public function __construct(Client $client)
     {
-        $this->api = 'http://apis.5118.com/wyc/akey';
         $this->http = $client;
     }
 
-    public function getContent($txt, $th, $filter, $corewordfilter, $sim, $retype)
+    public function getContent($txt, $th, $filter, $corewordfilter, $sim, $retype, $type)
     {
+        switch ($type) {
+            case 'ai':
+                $api = 'http://apis.5118.com/wyc/akey';
+                $key = '20FED99DBE644B818379C20653A8806F';
+                break;
+            case 'rewrite':
+                $api = 'http://apis.5118.com/wyc/rewrite';
+                $key = '8A6473D0C0824E029E2C07AE453AC302';
+                break;
+        }
         $data = [
             'txt' => $txt, //文件資源
             'th' => $th,
@@ -31,12 +39,12 @@ class AiWriterHandler
         // 构建请求参数
         $option = [
             'headers' => [
-                'Authorization' => '20FED99DBE644B818379C20653A8806F',
+                'Authorization' => $key,
                 "Content-Type" => "application/x-www-form-urlencoded; charset=UTF-8"
             ],
             'form_params' => $data,
         ];
-        $response = $this->http->post($this->api, $option);
+        $response = $this->http->post($api, $option);
 //        dd($response->getbody()->getContents());
         return $response->getbody()->getContents();
 //        $host = "http://apis.5118.com";
