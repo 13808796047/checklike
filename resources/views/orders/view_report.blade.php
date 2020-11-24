@@ -163,12 +163,19 @@
 @section('scripts')
   <script !src="">
     $(function () {
-
+      let current_cid ={{$order->cid}}
+      if(current_cid==1||current_cid==2){
+        $("#rightcontainer").text("CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
+      }elseif(current_cid==3||current_cid==4||current_cid==5||current_cid==6){
+        $("#rightcontainer").text("如果你们学校也是用维普检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
+      }elseif(current_cid==12||current_cid==13||current_cid==14||current_cid==15){
+        $("#rightcontainer").text("如果你们学校也是用万方检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
+      }elseif(current_cid==7||current_cid==8||current_cid==8||current_cid==10||current_cid==11){
+        $("#rightcontainer").text("我们使用的是跟知网同一套系统，但是每个版本有轻微差别，具体参考系统介绍。")
+      }elseif(current_cid==16){
+        $("#rightcontainer").text("PaperPass是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
+      }
       $("#qrcode").click(function(){
-          let order = {!!$order!!};
-          let cc ={{$order->cid}}
-          console.log(order,"fasdfa");
-          console.log(cc,"fassf")
           $('#qrimgs').children().remove();
           //判断是否存在重复率
           if(order.rate==0.00 ||order.rate=='0.0%'){
