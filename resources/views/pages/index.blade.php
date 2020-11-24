@@ -727,7 +727,7 @@
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
        if (document.referrer.indexOf(".com") > -1) {
-        alert("从google或baidu来");
+          console.log("从来")
         }
         $("#tuichuBtn").mouseenter(function(){
           $("#myself").css("display","block")
