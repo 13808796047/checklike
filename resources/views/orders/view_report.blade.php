@@ -166,7 +166,7 @@
 
       $("#qrcode").click(function(){
           let order = {!!$order!!};
-          let cc ={{$order}}
+          let cc ={{$order->cid}}
           console.log(order,"fasdfa");
           console.log(cc,"fassf")
           $('#qrimgs').children().remove();
