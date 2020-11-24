@@ -74,6 +74,9 @@
     a:hover{
       text-decoration:none ;
     }
+    .order_msg div{
+      display:flex;
+    }
   </style>
 @stop
 @section('content')
@@ -109,7 +112,7 @@
   <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
 
 
-      <div>
+      <div class="order_msg">
         <div>
           <p>订单编号：</p>
           <p>{{ $order->orderid }}</p>
