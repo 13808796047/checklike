@@ -115,7 +115,7 @@
       <div class="order_msg">
         <div>
           <p>订单编号：</p>
-          <p>{{ $order->orderid }}</p>
+          <p>{{$order->orderid}}</p>
         </div>
         <div>
           <p>论文题目：</p>
