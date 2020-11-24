@@ -8,6 +8,7 @@ use App\Events\RechargePaid;
 use App\Listeners\ChangeUsed;
 use App\Listeners\CheckDoc;
 use App\Listeners\UpdateUserJctimes;
+use App\Listeners\UpdateVipExpirAt;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -36,8 +37,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         CouponCodeActived::class => [
             ChangeUsed::class
+        ],
+        CheckVipExpirAt::class => [
+            UpdateVipExpirAt::class
         ]
-
     ];
 
     /**

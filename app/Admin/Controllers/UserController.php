@@ -39,7 +39,7 @@ class UserController extends AdminController
                 ]);
             $grid->consumption_amount('消费金额');
             $grid->created_at('注册时间');
-            $grid->vip_days('vip时间');
+            $grid->vip_expir_at('vip时间');
             $grid->inviter('邀请人id');
             // 不在页面显示 `新建` 按钮，因为我们不需要在后台新建用户
             $grid->disableCreateButton();
@@ -51,6 +51,7 @@ class UserController extends AdminController
                     $batch->disableDelete();
                 });
             });
+            $grid->quickSearch('phone', 'nickname', 'user_group');
         });
     }
 }
