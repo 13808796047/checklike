@@ -28,9 +28,7 @@ class OrderService
         $order = \DB::transaction(function() use ($request) {
             $category = Category::findOrFail($request->cid);
             $user = \Auth()->user();
-            if($user->group == 3 && $user->vip_expir_at->lt(Carbon::now())) {
-                throw new InvalidRequestException('会员已经到期!');
-            }
+            $user->checkVip();
             $wordHandler = app(WordHandler::class);
 
             if($request->type == 'file') {

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Exceptions\InvalidRequestException;
+use Carbon\Carbon;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -33,6 +35,13 @@ class User extends Authenticatable implements JWTSubject
     public function isBelongOf($model)
     {
         return $this->id == $model->user_id;
+    }
+
+    public function checkVip()
+    {
+        if($this->group == 3 && $this->vip_expir_at->lt(Carbon::now())) {
+            throw new InvalidRequestException('会员已经到期!');
+        }
     }
 
     //减少降重次数
