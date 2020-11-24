@@ -34,7 +34,8 @@ class AutoCheckController extends Controller
             $request->input('filter', ''),
             $request->input('corewordfilter', ''),
             $request->input('sim', ''),
-            $request->input('retype', '')
+            $request->input('retype', ''),
+            $request->type,
         );
 
         $user->decreaseJcTimes();
