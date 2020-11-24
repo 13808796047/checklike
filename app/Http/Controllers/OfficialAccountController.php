@@ -174,7 +174,7 @@ class OfficialAccountController extends Controller
 
     public function afterLogin($user)
     {
-        $this->dispatch(new SendLoginMessage($$user));
+        $this->dispatch(new SendLoginMessage($user));
     }
 
     public function makeTheUser($event, $wxUser)
