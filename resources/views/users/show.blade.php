@@ -161,7 +161,7 @@
         $("#bindTitle").modal("show")
       })
       $("#kaitonghuiyuan").click(()=>{
-        window.open("https://detail.tmall.com/item.htm?spm=a212k0.12153887.0.0.4d7c687dvfKPtV&id=631864348638"，“_blank”);
+        window.open("https://detail.tmall.com/item.htm?spm=a212k0.12153887.0.0.4d7c687dvfKPtV&id=631864348638"，"_blank");
       })
       var currentCode="";
       // 绑定手机号
