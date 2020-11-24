@@ -324,7 +324,7 @@
     $('#beingModal').modal('hide')
     $('#jcqian').css('display', 'none')
     $("#jchou").css('display', 'block')
-        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter})
+        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:optionVal,retype:checkvalue,filter:filter,type:"ai"})
           .then(res => {
             $('#beingModal').modal('hide')
             $("#jcright").css("display",'none')
