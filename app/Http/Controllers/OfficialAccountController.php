@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendLoginMessage;
 use App\Jobs\Subscribed;
 use App\Models\User;
 use EasyWeChat\Factory;
@@ -183,6 +184,7 @@ class OfficialAccountController extends Controller
                 'weixin_openid' => $wxUser['openid'],
             ]);
             $this->markTheLogin($event, $user->id);
+            $this->dispatch(new SendLoginMessage($user));
         });
     }
 

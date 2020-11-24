@@ -89,6 +89,11 @@ return [
                 'appid' => env('MINIPROGRAM_APPID'),
                 'page_path' => env('MINIPROGRAM_BINDED_URL'),
             ],
+            'logined' => [
+                'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_LOGINED_TEMPLATE_ID'),
+                'appid' => env('MINIPROGRAM_APPID'),
+                'page_path' => env('MINIPROGRAM_BINDED_URL'),
+            ]
         ]
         /*
          * OAuth 配置
