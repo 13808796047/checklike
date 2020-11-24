@@ -86,7 +86,10 @@
         @endif
         </p>
         <p>手机号：{{Auth::user()->phone}}</p>
-        <p>自动降重次数: {{Auth::user()->jc_times}}次<span>充值</span></p>
+        <div>
+        <span>自动降重次数: {{Auth::user()->jc_times}}次</span><span>充值</span>
+        </div>
+
         <div>
           <span>会员:{{Auth::user()->user_group ==3 ? "会员" : "您还不是会员" }}</span>
           @if(Auth::user()->user_group !=3)
