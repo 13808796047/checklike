@@ -167,7 +167,14 @@ class OfficialAccountController extends Controller
         }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
+        $this->afterLogin($wxUser);
         $this->makeTheUser($event, $wxUser);
+
+    }
+
+    public function afterLogin($user)
+    {
+        $this->dispatch(new SendLoginMessage($$user));
     }
 
     public function makeTheUser($event, $wxUser)
@@ -184,7 +191,7 @@ class OfficialAccountController extends Controller
                 'weixin_openid' => $wxUser['openid'],
             ]);
             $this->markTheLogin($event, $user->id);
-            $this->dispatch(new SendLoginMessage($user));
+            $this->afterLogin($user);
         });
     }
 
