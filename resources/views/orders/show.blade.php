@@ -74,9 +74,12 @@
     a:hover{
       text-decoration:none ;
     }
+    .order_msg{
+      padding:0 30px;
+    }
     .order_msg div{
       display:flex;
-      border-bottom: 1px solid #DCDCDC;
+      border-bottom: 1px dashed #ececec;
       line-height: 2.9;
       padding-left: 145px;
     }
