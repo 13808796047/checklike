@@ -266,7 +266,7 @@
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
             @else
-            <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+            <li><a href="/rewrite" class="smooth-scroll">自动降重</a></li>
             @endguest
             @guest
             <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a></li>

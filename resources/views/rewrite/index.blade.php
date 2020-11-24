@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','查重')
+@section('title','自动降重')
 @section('styles')
 <!-- <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" /> -->
 <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
@@ -112,7 +112,7 @@
 						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
                   <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
                   <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
-                  <li><a href="/ai_rewrite" class="smooth-scroll">自动降重</a></li>
+                  <li><a href="/rewrite" class="smooth-scroll">自动降重</a></li>
                   <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
             </div>
             <div style="display:flex;align-items: center;">
@@ -128,7 +128,7 @@
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
         <div style="display:flex;align-items:flex-end;font-size:15px;">
           <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
-          <p style="margin-left:13px;font-size:13px;">当前剩余次数 ：<span>999次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
+          <p style="margin-left:13px;font-size:13px;" id="isshowtimes">当前剩余次数 ：<span>{{ auth()->user()->jc_times}}次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
         </div>
 
 
@@ -245,10 +245,9 @@
       })
   $("#aiSubmitBtn").click(()=>{
     let words =  $('#words span').text();
-    if(words>5000){
-      toastr.error('你有新消息了！');
-      // alertify.set('notifier','position', 'top-center');
-      // alertify.notify("字数不能大于5000字",'custom',3)
+    if(words>4000){
+      toastr.error('字数不能大于4000字');
+
       return;
     }
 
@@ -260,8 +259,7 @@
 
     let num = $("#requestcishuNum").html();
     if(num == 0){
-      alertify.set('notifier','position', 'top-center');
-      alertify.notify("您的降重次数不足",'custom',3);
+      toastr.error('您的降重次数不足');
       return;
     }
     $('#beingModal').modal('show')
@@ -296,7 +294,7 @@
             $('#jcqian').css('display', 'none')
             var htmlstring=res.data.data;
             $("#jchou").css('display', 'block')
-
+            $("#isshowtimes").css("display","none")
             changed(contents,htmlstring)
           })
           .catch(err =>{
@@ -306,8 +304,7 @@
               return;
             }else{
               $('#beingModal').modal('hide')
-              alertify.set('notifier','position', 'top-center');
-              alertify.notify("降重失败，请重试",'custom',3)
+              toastr.error('降重失败，请重试');
             }
           }
           );
