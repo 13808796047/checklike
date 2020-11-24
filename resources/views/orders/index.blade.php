@@ -184,11 +184,11 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      console.log({{$orders->lastPage()}},"fsadf")
-      console.log({{$orders->total()}},"fjdsajflksdfj")
+      var last_page={{$orders->lastPage()}}
+      var current_page = {{$orders->page()}}
       let a =new Paging('page', {
-        nowPage: 2, // 当前页码
-        pageNum: 23, // 总页码
+        nowPage: current_page, // 当前页码
+        pageNum: last_page, // 总页码
         buttonNum: 5, //要展示的页码数量
         canJump: 0,// 是否能跳转。0=不显示（默认），1=显示
         showOne: 1,//只有一页时，是否显示。0=不显示,1=显示（默认）
