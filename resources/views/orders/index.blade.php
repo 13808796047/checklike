@@ -132,6 +132,51 @@
           </div></nav>
   </div>
   <div class="container" style="margin:18px auto">
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-12 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);">
+      <table class="table table-hover table-sm text-center">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col"><input type="checkbox" id="allcheck"></th>
+          <th scope="col">论文题目</th>
+          <th scope="col" style="width:230px;">系统名称</th>
+          <th scope="col" style="width:117px;">状态</th>
+          <th scope="col" style="width:117px;">检测结果</th>
+          <th scope="col" style="width:249px;">提交日期</th>
+          <th scope="col" style="width:110px;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($orders as $order)
+          <tr>
+            <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
+            <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;max-width: 160px;">{{$order->title}}</td>
+            <td style="width:230px;">{{ $order->category->name ?? '' }}</td>
+            <td style="width:117px;">{{\App\Models\Enum\OrderEnum::getStatusName($order->status)}}</td>
+            <td style="width:117px;">{{ $order->rate }}%</td>
+            <td style="width:249px;">{{$order->created_at}}</td>
+            @if($order->status==0)
+              <td style="width:110px;"><a href='{{route('orders.show',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">支付</a></td>
+            @elseif($order->status==4)
+              <td style="width:110px;"><a href='{{route('orders.view-report',$order)}}' class="bbtn" style="color:#fff;background:#3490dc;">查看报告</a></td>
+            @else
+              <td style="width:110px;"><a href='javascript:;' class="bbtn" style="color:#fff;background:#3490dc;">-</a></td>
+            @endif
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+      <div class="flex justify-between">
+
+        <a class="inline-block text-white py-2 px-4" id="del_item"><span style="background: red;
+    padding: 5px 10px;">删除</span></a>
+        <div style="display:flex;align-items:center;">
+        <span class="p-2">共{{$orders->total()}}条</span>
+        <div id="page"></div>
+        </div>
+      </div>
+    </div>
+    </div>
 
   </div>
 @stop
@@ -139,7 +184,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-
+      console.log({$orders->total()})
       let a =new Paging('page', {
         nowPage: 2, // 当前页码
         pageNum: 23, // 总页码
