@@ -296,6 +296,9 @@
             </div>
             `
         })
+        if(arrStr==""){
+          arrstr = `<div>暂无可用优惠券</div>`
+        }
         $("#couponbox").html(arrStr)
         doStyle()
        }
