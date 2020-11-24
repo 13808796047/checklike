@@ -49,6 +49,7 @@ Route::get('orders/{orderid}/download', 'OrdersController@download')
 //自动查重
 
 Route::get('ai_rewrite', 'AutoCheckController@index')->name('ai_rewrite.index');
+Route::get('rewrite', 'AutoCheckController@rewrite')->name('rewrite.index');
 //支付宝
 Route::get('payments/{id}/alipay/{type}', 'PaymentsController@alipay')
     ->name('payments.alipay');
