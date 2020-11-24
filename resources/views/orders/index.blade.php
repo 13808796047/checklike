@@ -2,7 +2,6 @@
 @section('title', '检测报告')
 @section('styles')
   <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
-  <link rel="stylesheet" href="{{asset('asset/css/pagination.css')}}">
   <style>
     .curfont {
       font-size: 16px;
