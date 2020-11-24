@@ -521,36 +521,13 @@
 	<div class="container">
 
 		<div class="post-heading-center">
-			<h2>合作机构</h2>
+		  <h2>客户分布<small>(部分)</small></h2>
 		</div>
 
 		<!-- .row -->
 		<div class="row row-clients">
 
-			<div class="col-sm-3"> <!-- 1 -->
-				<div class="affa-client-logo">
-					<img src="{{asset('asset/images/content/clients/1.png')}}" alt="Logo">
-				</div>
-			</div>
-
-			<div class="col-sm-3"> <!-- 2 -->
-				<div class="affa-client-logo">
-					<img src="{{asset('asset/images/content/clients/2.png')}}" alt="Logo">
-				</div>
-			</div>
-
-			<div class="col-sm-3"> <!-- 3 -->
-				<div class="affa-client-logo">
-					<img src="{{asset('asset/images/content/clients/3.png')}}" alt="Logo">
-				</div>
-			</div>
-
-			<div class="col-sm-3"> <!-- 4 -->
-				<div class="affa-client-logo">
-					<img src="{{asset('asset/images/content/clients/4.png')}}" alt="Logo">
-				</div>
-			</div>
-
+					<img src="https://www.checklike.com/images/kehu.jpg" >
 		</div>
 		<!-- .row end -->
 
@@ -569,114 +546,8 @@
   <!----start-team----->
   <!----//End-team----->
   <!--登陆模态框-->
-  {{--  <div class="login-box" style="display: none" id="loginbox">--}}
-  {{--    <div class="header">--}}
-  {{--      <ul id="loginTitle">--}}
-  {{--        <li class="banner-li li-current" id="wx">微信登陆</li>--}}
-  {{--        <li class="banner-li" id="zh">账号登陆</li>--}}
-  {{--        <span class="closebox" id="closebox">X</span>--}}
-  {{--      </ul>--}}
-
-  {{--    </div>--}}
-  {{--    <div class="box-main">--}}
-  {{--      <div class="content listbox" id="wxlogin">--}}
-  {{--        <div class="tit">--}}
-  {{--          <p>用微信扫码 安全查重</p>--}}
-  {{--        </div>--}}
-  {{--        <div class="codeimg">--}}
-  {{--          <img id="login_mpweixin_img" src="" alt="更新二维码"/>--}}
-  {{--        </div>--}}
-
-  {{--        <div class="box-word">无需注册，一键登录</div>--}}
-  {{--      </div>--}}
-  {{--      <div class="ch-input-wrap listbox remove" id="zhlogin" style="display: none">--}}
-  {{--        <form action="/redirect.php?url=/user/login" method="post" class="form">--}}
-  {{--          <div class="form-item">--}}
-  {{--                <span id="logerror" class="wrong c-red" style="display:none;"--}}
-  {{--                >* <em></em--}}
-  {{--                  ></span>--}}
-  {{--            <div class="hd">用户名：</div>--}}
-  {{--            <div class="input-div">--}}
-  {{--              <input--}}
-  {{--                class="input"--}}
-  {{--                name="name"--}}
-  {{--                id="name"--}}
-  {{--                type="text"--}}
-  {{--                placeholder="请输入用户名"--}}
-  {{--                autocomplete="off"--}}
-  {{--              />--}}
-  {{--            </div>--}}
-  {{--          </div>--}}
-  {{--          <div class="form-item">--}}
-  {{--            <div class="hd">密 码：</div>--}}
-  {{--            <div class="input-div">--}}
-  {{--              <input--}}
-  {{--                class="input"--}}
-  {{--                name="password"--}}
-  {{--                id="password"--}}
-  {{--                type="password"--}}
-  {{--                placeholder="密码"--}}
-  {{--                autocomplete="new-password"--}}
-  {{--              />--}}
-  {{--            </div>--}}
-  {{--          </div>--}}
-
-  {{--          <div class="form-item">--}}
-  {{--            <div class="agreement">--}}
-
-  {{--              <input id="chkLoginType" type="checkbox" name="chkLoginType"/>--}}
-  {{--              记住密码--}}
-  {{--            </div>--}}
-  {{--          </div>--}}
-  {{--          <div class="form-item">--}}
-  {{--            <input--}}
-  {{--              id="btnSubmit"--}}
-  {{--              type="button"--}}
-  {{--              class="btn-login"--}}
-  {{--              value="登 录"--}}
-  {{--              onclick="getLogin()"--}}
-  {{--            />--}}
-  {{--          </div>--}}
-
-  {{--          <div class="form-item">--}}
-  {{--            还没有账号？<a href="javascript:void(0)" onclick="window.location.href='/register'">立即注册</a>--}}
-  {{--          </div>--}}
-  {{--        </form>--}}
-  {{--      </div>--}}
-  {{--    </div>--}}
-  {{--  </div>--}}
-  {{--  <!-- main轮播登陆块 -->--}}
-  {{--  <div class="login-banner">--}}
-  {{--    <div class="login-banner-box">--}}
-  {{--      <div style="left:18%; top:88px;position: absolute;">--}}
-  {{--        <img src="{{asset('asset/images/bg2i.png')}}" width="100%"/>--}}
-  {{--      </div>--}}
 
 
-
-  {{--  <!-- 文字内容 -->--}}
-  {{--  <div class="main">--}}
-  {{--    <div class="main-wrap">--}}
-  {{--      <div class="item fl first">--}}
-  {{--        <h4 class="ind1_txt">专业</h4>--}}
-  {{--        <div class="text">--}}
-  {{--          不仅提供查重服务，更是提供专业的全套论文解决方案，为你解除论文烦恼。--}}
-  {{--        </div>--}}
-  {{--      </div>--}}
-  {{--      <div class="item fl">--}}
-  {{--        <h4 class="ind1_txt">省心</h4>--}}
-  {{--        <div class="text">--}}
-  {{--          各种论文问题均可一键解决，省心，省力，极其方便的解决论文痛点--}}
-  {{--        </div>--}}
-  {{--      </div>--}}
-  {{--      <div class="item fl">--}}
-  {{--        <h4 class="ind1_txt">安全</h4>--}}
-  {{--        <div class="text">--}}
-  {{--          全站https协议传输，基于阿里云OSS文档上传，报告支持密码加密，安全无痕迹--}}
-  {{--        </div>--}}
-  {{--      </div>--}}
-  {{--    </div>--}}
-  {{--  </div>--}}
 @stop
 @section('scripts')
   <!-- <script type="text/javascript" src="{{ asset('asset/js/move-top.js') }}"></script>
@@ -753,6 +624,7 @@
           }, 1000);
         })
         }
+
 
         $("#tuichuBtn").mouseenter(function(){
           $("#myself").css("display","block")
