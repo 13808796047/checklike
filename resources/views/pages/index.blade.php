@@ -726,9 +726,12 @@
       // });
       // $().UItoTop({easingType: 'easeOutQuart'});
        //模态框打开
-       var sourceUrl = document.referrer;
-      console.log(sourceUrl,"来源页面")
-      console.log(sourceUrl.indexOf("p.checklike.com"),"访问员")
+       //判断访问源
+        var sourceUrl = document.referrer;
+        if(sourceUrl.indexOf("p.checklike.com")=="-1"){
+
+          $("#staticBackdrop").modal("show")
+        }
 
         $("#tuichuBtn").mouseenter(function(){
           $("#myself").css("display","block")
