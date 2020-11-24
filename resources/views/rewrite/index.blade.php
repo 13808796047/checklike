@@ -126,11 +126,14 @@
   <div class="container" style="margin:18px auto">
       <div class="grid grid-cols-12 gap-4">
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
-        <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
+        <div style="display:flex;">
+          <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
+          <p>当前剩余次数 ：<span>999次</span><span style="margin-left: 20px;color: #1E90FF;cursor:pointer;">增加次数</span></p>
+        </div>
 
 
         <div style="margin-top:25px;" id="jcqian">
-           <textarea class="form-control" rows="13" id="content" placeholder="请输入降重内容，不能超4000字"></textarea>
+           <textarea class="form-control" rows="19" id="content" placeholder="请输入降重内容，不能超4000字"></textarea>
            <div>
               <p style="color:#A9A9A9;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
             </div>
