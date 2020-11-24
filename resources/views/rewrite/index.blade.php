@@ -288,7 +288,7 @@
     $('#beingModal').modal('hide')
     $('#jcqian').css('display', 'none')
     $("#jchou").css('display', 'block')
-        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:3,retype:1,filter:""})
+        axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
             $('#beingModal').modal('hide')
             $("#jcright").css("display",'none')
