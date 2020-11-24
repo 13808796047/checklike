@@ -728,6 +728,8 @@
        //模态框打开
        var sourceUrl = document.referrer;
       console.log(sourceUrl,"来源页面")
+      console.log(sourceUrl.indexOf("p.checklike.com"),"访问员")
+
         $("#tuichuBtn").mouseenter(function(){
           $("#myself").css("display","block")
           $(window).scroll(function() {
