@@ -86,11 +86,14 @@
         @endif
         </p>
         <p>手机号：{{Auth::user()->phone}}</p>
-        <p>自动降重次数: {{Auth::user()->jc_times}}次</p>
+        <div>
+        <span>自动降重次数: {{Auth::user()->jc_times}}次</span><span>充值</span>
+        </div>
+
         <div>
           <span>会员:{{Auth::user()->user_group ==3 ? "会员" : "您还不是会员" }}</span>
           @if(Auth::user()->user_group !=3)
-            <span class="userword">开通会员</span>
+            <span class="userword" id="kaitonghuiyuan">开通会员</span>
           @else
             <span>会员还剩余{{Auth::user()->vip_days}}天</span>
           @endif
@@ -159,6 +162,9 @@
       })
       $("#userbindPhone").click(()=>{
         $("#bindTitle").modal("show")
+      })
+      $("#kaitonghuiyuan").click(()=>{
+        window.open("https://detail.tmall.com/item.htm?spm=a212k0.12153887.0.0.4d7c687dvfKPtV&id=631864348638","_blank");
       })
       var currentCode="";
       // 绑定手机号
