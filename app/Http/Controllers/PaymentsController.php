@@ -113,7 +113,7 @@ class PaymentsController extends Controller
                 break;
             default:
                 $order = Order::where('payid', $result->out_trade_no)->first();
-                $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(10);
+                $orders = auth()->user()->orders()->with('category:id,name')->latest()->paginate(20);
                 return view('orders.index', compact('orders'));
         }
 
@@ -250,8 +250,8 @@ class PaymentsController extends Controller
                 return view('auto_checks.index');
                 break;
             default:
-                $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(10);
-                return response(compact('orders'));
+                $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate(20);
+                return view('orders.index', compact('orders'));
         }
     }
 
