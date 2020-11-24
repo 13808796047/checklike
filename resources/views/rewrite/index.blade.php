@@ -134,7 +134,7 @@
 
         <div style="margin-top:25px;" id="jcqian">
            <textarea class="form-control" rows="19" id="content" placeholder="请输入降重内容，不能超4000字"></textarea>
-           <div>
+           <div style="margin:10px 0;">
               <p style="color:#A9A9A9;font-size:13px;">注:本工具是通过运用AI技术对原文进行智能原创，需要稍作调整让语句更加通顺。如需高质量人工降重请联系微信:cx5078</p>
             </div>
            <div style="margin-top:10px;">
