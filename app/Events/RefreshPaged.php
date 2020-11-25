@@ -18,9 +18,9 @@ class RefreshPaged
 
     public $user;
 
-    public function __construct(User $user, $classid)
+    public function __construct(User $user)
     {
-        $this->classid = $classid;
         $this->user = $user;
+        Log::alert('user', [$this->user]);
     }
 }
