@@ -222,6 +222,13 @@
        // /payments/7/alipay/recharge
        location.href=`/payments/${id.id}/alipay/recharge`
      })
+
+     $("#closewxCodeDialog").click(()=>{
+      $("#wxcodeTcDialog").modal("hide")
+     })
+     $("#completewxCodeDialog").click(()=>{
+       location.href = `/users/{{Auth::user()->id}}`
+     })
     })
   </script>
 @stop
