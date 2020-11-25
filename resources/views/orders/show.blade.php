@@ -190,7 +190,7 @@
 	     </div>
       </div>
       <div id="iszero" style="display:none;">
-      <a type="button" id="freefee" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
+      <a type="button" id="freefee" style="height:33px;margin:13px auto;" href="javascript:;"
 						class="btn btn-primary btn-sm sbtn">提交</a>
 
        </div>
