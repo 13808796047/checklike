@@ -83,6 +83,7 @@ Route::get('orders/{order}/qrcode', 'OrdersController@generateQrcode')->name('or
 Route::get('qcrode/generate_img', 'OrdersController@generateImg')->name('qcrode.img');
 //充值
 Route::resource('recharges', 'RechargesController', ['only' => ['show', 'store', 'index']]);
+Route::get('freecheck', 'FreeCheckController@index');
 //邀请注册
 Route::get('zt/jc', 'InvitsController@index')->name('invit.index');
 Route::get('invit_official', 'InvitOfficialController@index')->name('invit_official.index');
