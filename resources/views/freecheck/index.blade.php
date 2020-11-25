@@ -385,7 +385,7 @@
         }).then(res => {
           if (res.status == 200) {
             swal("提示", res.data.message, "success");
-            location.href("/");
+            location.reload();
           } else {
             swal("提示", res.data.message);
           }
