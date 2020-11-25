@@ -279,7 +279,7 @@
       toastr.error('您的降重次数不足');
       return;
     }
-    $('#beingModal').modal('show')
+
     togetJc(num)
   })
   //确认购买
@@ -301,17 +301,18 @@
   var Similarity = ""
   function togetJc(num){
     let contents = $('#content').val();
-    $('#beingModal').modal('hide')
-    $('#jcqian').css('display', 'none')
-    $("#jchou").css('display', 'block')
+    // $('#beingModal').modal('hide')
+        $('#beingModal').modal('show')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
             console.log(res,"按时发了")
             if(res.data.errcode==100101){
-              toastr.error('今日配额已满，请明天再试或联系客服');
               $('#beingModal').modal('hide');
+              toastr.error('今日配额已满，请明天再试或联系客服');
               return;
             }
+            $('#jcqian').css('display', 'none')
+            $("#jchou").css('display', 'block')
             $('#beingModal').modal('hide')
             $("#jcright").css("display",'none')
             $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
@@ -332,7 +333,9 @@
               $('#beingModal').modal('hide')
               toastr.error('降重失败，请重试');
             }
-          }
+          }.finally(()=>{
+            $('#beingModal').modal('hide')
+          })
           );
     }
     var currentJcContainer = ""
