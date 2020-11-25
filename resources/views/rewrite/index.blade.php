@@ -333,10 +333,10 @@
               $('#beingModal').modal('hide')
               toastr.error('降重失败，请重试');
             }
-          }.finally(()=>{
+          }
+          ).finally(()=>{
             $('#beingModal').modal('hide')
           })
-          );
     }
     var currentJcContainer = ""
     var currentAllContainer = ""
