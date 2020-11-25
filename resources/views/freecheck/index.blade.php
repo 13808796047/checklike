@@ -281,6 +281,12 @@
     <p><b>规则说明：</b>活动期间，所有用户均可使用CheckLike专业版免费查重一篇1万字以内的论文（一万字以内免费，超过一万字部分按3元/万字收费）。</p >
     <p><b>活动时间：</b>2020-10-01 至2021-07-31</p>
 
+    @guest
+    <a class="btn btn-primary btn-sm sbtn" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop" type="button" style="height:33px;margin:50px auto;">立即去提交论文</a>
+    @else
+    <a href="/categories/1" type="button" style="height:33px;margin:50px auto;" class="btn btn-primary btn-sm sbtn">立即去提交论文</a>
+    @endguest
+
 </div>
 
 
