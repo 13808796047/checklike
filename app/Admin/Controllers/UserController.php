@@ -20,7 +20,7 @@ class UserController extends AdminController
 
     protected function grid()
     {
-        return Grid::make(new User(), function(Grid $grid) {
+        return Grid::make(new User(['orders']), function(Grid $grid) {
             $grid->id('ID')->sortable();
             $grid->model()->orderBy('created_at', 'desc');
             $grid->phone('手机号');
@@ -37,7 +37,7 @@ class UserController extends AdminController
                     2 => 'success',
                     3 => 'danger'
                 ]);
-            $grid->consumption_amount('消费金额');
+//            $grid->consumption_amount('消费金额')->display(function($));
             $grid->created_at('注册时间');
             $grid->vip_expir_at('vip时间');
             $grid->inviter('邀请人id');
