@@ -69,6 +69,11 @@
     a:hover{
       text-decoration:none ;
     }
+    .freecheckleft p{
+      text-indent:2em;
+      line-height:2;
+      font-size:15px;
+    }
   </style>
 @stop
 @section('content')
