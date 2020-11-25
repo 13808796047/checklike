@@ -61,7 +61,7 @@
   <!-- 模态框结束 -->
    <!-- 模态框2 -->
    @auth
-   <div class="modal fade bd-example-modal-sm" id="beingModal" tabindex="-1" role="dialog"
+   <div class="modal fade bd-example-modal-sm" id="beingModal11" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" >
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
       <div class="modal-content">
@@ -302,18 +302,18 @@
   function togetJc(num){
     let contents = $('#content').val();
     // $('#beingModal').modal('hide')
-        $('#beingModal').modal('show')
+        $('#beingModal11').modal('show')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
             console.log(res,"按时发了")
             if(res.data.errcode==100101){
-              $('#beingModal').modal('hide');
+              $('#beingModal11').modal('hide');
               toastr.error('今日配额已满，请明天再试或联系客服');
               return;
             }
             $('#jcqian').css('display', 'none')
             $("#jchou").css('display', 'block')
-            $('#beingModal').modal('hide')
+            $('#beingModal11').modal('hide')
             $("#jcright").css("display",'none')
             $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
             $('#jcqian').css('display', 'none')
@@ -330,13 +330,13 @@
               togetJc(num)
               return;
             }else{
-              $('#beingModal').modal('hide')
+              $('#beingModal11').modal('hide')
               toastr.error('降重失败，请重试');
             }
-          }.finally(()=>{
-            $('#beingModal').modal('hide')
+          }
+          ).finally(()=>{
+            $('#beingModal11').modal('hide')
           })
-          );
     }
     var currentJcContainer = ""
     var currentAllContainer = ""
