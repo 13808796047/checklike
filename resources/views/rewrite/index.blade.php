@@ -156,7 +156,7 @@
                 </div>
                 </div>
 
-                <div id="content_after" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
+                <div id="content_after" style="height:450px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;"></div>
             </div>
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
@@ -166,7 +166,7 @@
                    <p style="color:#3490dc;font-size:13px;">与原稿相似度：<span id="xiangsiduNum"></span></p>
                 </div>
                 </div>
-                <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
+                <textarea id="content_later" style="height:450px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
             </div>
         </div>
         <div style="margin:10px 0;">
