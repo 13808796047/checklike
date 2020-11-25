@@ -58,9 +58,9 @@
               <img src="" alt="" srcset="" id="wxcodeurl" style="width:210px;height:210px;display:block;margin:0 auto;">
             </div>
             <div style="display:flex;justify-content: center;margin-top:5px;">
-              <button type="button" class="btn btn-secondary" id="closewxCodeDialog">关闭</button>
+              <button type="button" class="btn btn-secondary" id="closeCodeDialog">关闭</button>
               <div style="margin:0 10px;"></div>
-              <button type="button" class="btn btn-primary" id="completewxCodeDialog">已完成付款</button>
+              <button type="button" class="btn btn-primary" id="completeCodeDialog">已完成付款</button>
             </div>
          </div>
       </div>
@@ -233,26 +233,22 @@
       $('#btn-wechat').click(function () {
         let order = {!!$recharge!!}
         console.log(order,213)
-        // swal({
-        //   title: "打开微信使用扫一扫完成付款",
-        //   // content 参数可以是一个 DOM 元素，这里我们用 jQuery 动态生成一个 img 标签，并通过 [0] 的方式获取到 DOM 元素
-        //   content: $(`<img src="/payments/${order.id}/wechat/recharge" style="display: block;margin: 0 auto;"/>`)[0],
-        //   // buttons 参数可以设置按钮显示的文案
-        //   buttons: ['关闭', '已完成付款'],
-        // })
-        //   .then(function (result) {
-        //     //如果用户点击了 已完成付款 按钮，则重新加载页面
-        //     if (result) {
-        //       location.href=`https://p.checklike.com/ai_rewrite`
-        //     //location.href=`/payments/${order.id}/wechat/return/order`
-        //     }
-        //   })
-        $("#wxcodeTcDialog").modal("show")
-        $('#wxcodeurl').attr("src", `/payments/${order.id}/wechat/recharge`);
+        swal({
+          title: "打开微信使用扫一扫完成付款",
+          // content 参数可以是一个 DOM 元素，这里我们用 jQuery 动态生成一个 img 标签，并通过 [0] 的方式获取到 DOM 元素
+          content: $(`<img src="/payments/${order.id}/wechat/recharge" style="display: block;margin: 0 auto;"/>`)[0],
+          // buttons 参数可以设置按钮显示的文案
+          buttons: ['关闭', '已完成付款'],
+        })
+          .then(function (result) {
+            //如果用户点击了 已完成付款 按钮，则重新加载页面
+            if (result) {
+              location.href=`https://p.checklike.com/ai_rewrite`
+            //location.href=`/payments/${order.id}/wechat/return/order`
+            }
+          })
 
       });
-
-
      //支付宝支付
      $('#bottonsubmit').click(function(){
        let id = {!!$recharge!!};
@@ -261,13 +257,5 @@
        location.href=`/payments/${id.id}/alipay/recharge`
      })
     })
-    $("#closewxCodeDialog").click(()=>{
-        $("#wxcodeTcDialog").modal("hide")
-      })
-      $("#completewxCodeDialog").click(()=>{
-        let order = {!!$order!!}
-        location.href=`/payments/${order.id}/wechat/return/order`
-      })
-
   </script>
 @stop
