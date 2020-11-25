@@ -598,7 +598,10 @@
        //模态框打开
        //判断访问源
         var sourceUrl = document.referrer;
-        console.log(sourceUrl.indexOf("p.checklike.com"),"系士大夫")
+
+        if(!sourceUrl){
+          console.log(sourceUrl,"系士大夫")
+        }
         if(sourceUrl.indexOf("p.checklike.com")=="-1"){
 
           $("#staticBackdrop").modal("show")
