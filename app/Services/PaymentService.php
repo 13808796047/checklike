@@ -44,7 +44,6 @@ class PaymentService
 
     protected function afterOrderPaid(Order $order)
     {
-        dispatch(new UpdateIsFree($order->user))->delay(now()->addDay());
         dispatch(new CheckOrderStatus($order))->delay(now()->addMinute(30));
         event(new OrderPaid($order));
         dispatch(new OrderPaidMsg($order));
