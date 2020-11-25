@@ -365,9 +365,12 @@
 
         //切换显示详情
         $("#customSwitch1").change((e)=>{
-          console.log(e,"xixi")
-         let cc = $("#customSwitch1").prop('checked')
-         console.log(cc,"fasfda")
+          let currentStatus = $("#customSwitch1").prop('checked')
+          if(currentStatus){
+            $("#content_after").html(currentAllContainer)
+          }else{
+            $("#content_after").html(currentJcContainer)
+          }
         })
 
   </script>
