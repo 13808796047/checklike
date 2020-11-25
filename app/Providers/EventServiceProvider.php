@@ -38,7 +38,10 @@ class EventServiceProvider extends ServiceProvider
         CouponCodeActived::class => [
             ChangeUsed::class
         ],
-        CheckVipExpirAt::class => [
+//        CheckVipExpirAt::class => [
+//            UpdateVipExpirAt::class
+//        ],
+        RefreshPaged::class=>[
             UpdateVipExpirAt::class
         ]
     ];
