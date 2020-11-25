@@ -372,6 +372,10 @@
             // document.getElementById('content_later').innerHTML = html;
             // document.getElementById('content_after').innerHTML = a;
             currentAllContainer = html;
+
+            a = a.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+            a = a.replace(/\n/g, '<br/>'); //IE7-8
+            a = a.replace(/\s/g, ' '); //空格处理
             currentJcContainer = a;
             document.getElementById('content_later').innerHTML = b;
             document.getElementById('content_after').innerHTML = html;
