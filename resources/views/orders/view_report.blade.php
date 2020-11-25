@@ -98,7 +98,7 @@
                 <a href="{{ route('orders.download',['orderid'=>$order->orderid]) }}"
                    class="bg-blue-500 px-2 rounded-sm text-white">下载报告</a>
                 <span class="bg-blue-500 px-2 rounded-sm text-white" style="margin-left:13px" id="qrcode">生成二维码</span> -->
-                <span style="color:red;">注:查重报告系统仅保存10天，请及时下载保存(下载后需用< a href=" " target="_blank">WinRAR</ a>解压后再查看)，修改论文请联系微信：cx5078</span>
+                <span style="color:red;">注:查重报告系统仅保存10天，请及时下载保存(下载后需用<a href=" " target="_blank">WinRAR</a>解压后再查看)，修改论文请联系微信：cx5078</span>
               <div style="margin-top:10px;">
               <a href="{{ route('orders.download',['orderid'=>$order->orderid]) }}"
                    class="bg-blue-500 px-2 rounded-sm text-white" style="display: inline-block;width: 203px;padding:5px 0;" >下载完整报告</a>
