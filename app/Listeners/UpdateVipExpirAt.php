@@ -13,7 +13,7 @@ class UpdateVipExpirAt implements ShouldQueue
 
     public function handle(CheckVipExpirAt $event)
     {
-        $user = $event->getUser();
+        $user = $event->user;
         Log::info('user', [$user]);
         if($user->user_group != 3) {
             return;
