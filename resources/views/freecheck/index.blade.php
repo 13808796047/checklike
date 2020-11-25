@@ -5,6 +5,23 @@
   <link href="{{asset('asset/css/theme.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
   <style>
+  .newul{
+      display:flex;
+      margin-bottom:0 !important;
+      align-items:center;
+      justify-content: space-around;
+    }
+    .newul li a{
+      color:#fff;
+    }
+    .ambtn{
+      border-radius: 16px;
+      border: 1px solid #fff;
+      padding: 5px 13px;
+    }
+    a:hover{
+      text-decoration:none ;
+    }
   </style>
 @stop
 @section('content')
@@ -32,7 +49,7 @@
             </div>
           </ul>
           </div></nav>
-  </div>
+</div>
 <div class="container" style="margin:18px auto;">
 <div class="grid grid-cols-12 gap-4">
 	<div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
