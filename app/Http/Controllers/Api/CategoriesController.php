@@ -19,7 +19,7 @@ class CategoriesController extends Controller
             \Cache::put('word', $word, now()->addDay());
         }
         $categories = Category::query()->where('status', 1)->get();
-        $user = $request->user();
+        $user = \Auth::user();
         event(new CheckVipExpirAt($user));
         return CategoryResource::collection($categories)->collection->groupBy('classid');
     }
