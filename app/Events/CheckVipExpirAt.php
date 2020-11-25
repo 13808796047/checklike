@@ -10,6 +10,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class CheckVipExpirAt
 {
@@ -19,6 +20,7 @@ class CheckVipExpirAt
 
     public function __construct(User $user)
     {
+        Log::info('dsa', [$user]);
         $this->user = $user;
     }
 
