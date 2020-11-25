@@ -44,10 +44,10 @@ class AiWriterHandler
             ],
             'form_params' => $data,
         ];
-        dd($option);
-//        $response = $this->http->post($api, $option);
+        
+        $response = $this->http->post($api, $option);
 //        dd($response->getbody()->getContents());
-//        return $response->getbody()->getContents();
+        return $response->getbody()->getContents();
 //        $host = "http://apis.5118.com";
 //        $path = "/wyc/akey";
 //        $method = "POST";
