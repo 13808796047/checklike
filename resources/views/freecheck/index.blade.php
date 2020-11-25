@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', '查看订单')
 @section('styles')
+<link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}">
   <style>
   .newul{
       display:flex;
