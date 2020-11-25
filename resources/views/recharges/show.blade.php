@@ -172,7 +172,6 @@
 							</tr>
 						</table> -->
 
-  </div>
 </div>
     <div class="col-span-3">
       <div>
