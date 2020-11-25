@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Events\CouponCodeActived;
 use App\Events\OrderPaid;
 use App\Events\RechargePaid;
+use App\Events\RefreshPaged;
 use App\Listeners\ChangeUsed;
+use App\Listeners\ChangeVipExpir;
 use App\Listeners\CheckDoc;
 use App\Listeners\UpdateUserJctimes;
 use App\Listeners\UpdateVipExpirAt;
@@ -41,9 +43,9 @@ class EventServiceProvider extends ServiceProvider
         CouponCodeActived::class => [
             ChangeUsed::class
         ],
-//        CheckVipExpirAt::class => [
-//            UpdateVipExpirAt::class
-//        ],
+        RefreshPaged::class => [
+            ChangeVipExpir::class
+        ]
 
     ];
 
