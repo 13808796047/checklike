@@ -20,6 +20,7 @@ class CheckVipExpirAt
 
     public function __construct($user)
     {
+        Log::info('dsa', [$user]);
         $this->user = $user;
     }
 
