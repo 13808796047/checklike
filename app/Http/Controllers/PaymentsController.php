@@ -32,9 +32,11 @@ use Yansongda\Pay\Pay;
 class PaymentsController extends Controller
 {
     protected $orderfix;
+    protected $paymentService;
 
-    public function __construct()
+    public function __construct(PaymentService $paymentService)
     {
+        $this->paymentService = $paymentService;
         $this->orderfix = rand(1, 99);
     }
 
@@ -54,7 +56,7 @@ class PaymentsController extends Controller
                 return app('alipay')->web([
                     'out_trade_no' => $recharge->no . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
                     'total_amount' => $recharge->total_amount, // 订单金额，单位元，支持小数点后两位
-                    'subject' => $order->category->name . '-' . config('app.service_wechat'), // 订单标题
+                    'subject' => $recharge->no . '-' . config('app.service_wechat'), // 订单标题
                 ]);
                 break;
             default:
@@ -65,7 +67,8 @@ class PaymentsController extends Controller
                     throw new InvalidRequestException('订单状态不正确!');
                 }
                 if($code = $request->code) {
-                    $price = $this->calcPrice($order, $request->code);
+
+                    $price = $this->paymentService->calcPrice($order, $request->code);
                 } else {
                     $price = $order->price;
                 }
@@ -208,7 +211,7 @@ class PaymentsController extends Controller
                     throw new InvalidRequestException('订单状态不正确');
                 }
                 if($code = $request->code) {
-                    $price = $this->calcPrice($order, $request->code);
+                    $price = $this->paymentService->calcPrice($order, $request->code);
                 } else {
                     $price = $order->price;
                 }
