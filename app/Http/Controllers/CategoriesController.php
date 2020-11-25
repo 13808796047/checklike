@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function show($classid, Request $request, CategoryService $categoryService)
     {
         $user = $request->user();
-        event(new RefreshPaged($user));
+        event(new RefreshPaged($user, $classid));
         $categories = Category::where(['classid' => $classid, 'status' => 1])->with(['users' => function($query) use ($user) {
             return $query->where('users.id', $user->id);
         }])->get();

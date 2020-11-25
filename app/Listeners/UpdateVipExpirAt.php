@@ -13,8 +13,9 @@ class UpdateVipExpirAt implements ShouldQueue
 
     public function handle(RefreshPaged $event)
     {
+        Log::alert('event', $event);
         $user = $event->user;
-        Log::info('user', [$user]);
+        Log::alert('user' . $user->nickname);
         if($user->user_group != 3) {
             return;
         }

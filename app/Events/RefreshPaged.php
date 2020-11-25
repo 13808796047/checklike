@@ -18,8 +18,9 @@ class RefreshPaged
 
     public $user;
 
-    public function __construct(User $user)
+    public function __construct(User $user, $classid)
     {
+        $this->classid = $classid;
         $this->user = $user;
     }
 }
