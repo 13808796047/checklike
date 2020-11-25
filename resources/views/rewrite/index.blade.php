@@ -318,6 +318,7 @@
             changed(contents,htmlstring)
           })
           .catch(err =>{
+            console.log(err,"飞机撒发")
             num--;
             if(num>=0){
               togetJc(num)
