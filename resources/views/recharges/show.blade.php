@@ -133,7 +133,7 @@
               <img src="{{asset('asset/images/wxpay.png')}}" style="margin-left:17px;
               height: auto;width:100px;">
             </div>
-        </div>
+      </div>
         <a type="button" id="bottonsubmit" style="height:33px; margin-left:20px; margin-left:320px;" href="javascript:;" target="_blank"
 						 class="btn btn-primary btn-sm sbtn">提交</a>
 				<a type="button" id="btn-wechat" style="height:33px; margin-left:20px; margin-left:320px;display: none" href="javascript:;"
@@ -171,8 +171,6 @@
 								</td>
 							</tr>
 						</table> -->
-
-					<div class="clearfix"></div>
 
   </div>
 </div>
