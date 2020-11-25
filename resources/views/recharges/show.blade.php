@@ -215,6 +215,13 @@
         $("#wxcodeTcDialog").modal("show")
         $('#wxcodeurl').attr("src", `/payments/${order.id}/wechat/recharge`);
       });
+      $("#closewxCodeDialog").click(()=>{
+        $("#wxcodeTcDialog").modal("hide")
+      })
+      $("#completewxCodeDialog").click(()=>{
+        let order = {!!$order!!}
+        location.href=`/payments/${order.id}/wechat/return/order`
+      })
      //支付宝支付
      $('#bottonsubmit').click(function(){
        let id = {!!$recharge!!};
