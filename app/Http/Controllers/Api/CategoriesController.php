@@ -20,8 +20,8 @@ class CategoriesController extends Controller
             \Cache::put('word', $word, now()->addDay());
         }
         $categories = Category::query()->where('status', 1)->get();
-        $user = \Auth::user();
-        event(new RefreshPaged($user));
+//        $user = \Auth::user();
+//        event(new RefreshPaged($user));
         return CategoryResource::collection($categories)->collection->groupBy('classid');
     }
 }
