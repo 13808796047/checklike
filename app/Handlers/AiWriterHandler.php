@@ -27,6 +27,7 @@ class AiWriterHandler
                 $key = '8A6473D0C0824E029E2C07AE453AC302';
                 break;
         }
+        dd($api, $key, $type);
         $data = [
             'txt' => $txt, //文件資源
             'th' => $th,
@@ -44,7 +45,7 @@ class AiWriterHandler
             ],
             'form_params' => $data,
         ];
-        dd($option);
+
         $response = $this->http->post($api, $option);
 //        dd($response->getbody()->getContents());
         return $response->getbody()->getContents();
