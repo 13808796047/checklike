@@ -15,7 +15,6 @@ class RefreshPaged
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
 
     public function __construct(User $user)
     {
