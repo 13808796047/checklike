@@ -361,7 +361,7 @@
         }
 
         //切换显示详情
-        $("#customSwitch1").changed((e)=>{
+        $("#customSwitch1").click((e)=>{
           console.log(e,"xixi")
         })
 
