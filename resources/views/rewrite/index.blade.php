@@ -306,6 +306,7 @@
     $("#jchou").css('display', 'block')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
+            console.log(res,"fsadfsdaf")
             $('#beingModal').modal('hide')
             $("#jcright").css("display",'none')
             $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
@@ -331,7 +332,7 @@
     var currentJcContainer = ""
     var currentAllContainer = ""
     function changed(a,b) {
-            currentJcContainer = a;
+
             var diff = JsDiff['diffChars'](a, b);
             var arr = new Array();
             for (var i = 0; i < diff.length; i++) {
@@ -362,6 +363,7 @@
             // document.getElementById('content_later').innerHTML = html;
             // document.getElementById('content_after').innerHTML = a;
             currentAllContainer = html;
+            currentJcContainer = a;
             document.getElementById('content_later').innerHTML = b;
             document.getElementById('content_after').innerHTML = html;
             Similarity = Number(Similarity*100).toFixed(1);
