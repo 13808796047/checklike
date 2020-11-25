@@ -599,7 +599,7 @@
        //判断访问源
         var sourceUrl = document.referrer;
 
-        if(!sourceUrl){
+        if(sourceUrl!=""){
           console.log(sourceUrl,"系士大夫")
         }
         if(sourceUrl.indexOf("p.checklike.com")=="-1"){
