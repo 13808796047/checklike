@@ -21,6 +21,5 @@ class RefreshPaged
     public function __construct(User $user)
     {
         $this->user = $user;
-        Log::info('user', [$this->user]);
     }
 }
