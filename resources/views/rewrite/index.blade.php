@@ -306,7 +306,7 @@
     $("#jchou").css('display', 'block')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
-            console.log(res,"fsadfsdaf")
+            console.log(res,"按时发了")
             $('#beingModal').modal('hide')
             $("#jcright").css("display",'none')
             $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
