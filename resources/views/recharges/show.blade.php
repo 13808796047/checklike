@@ -37,6 +37,8 @@
     .order_msg div p:nth-child(1){
       font-size: 15px;
       font-weight: 600;
+      width: 110px;
+      text-align: end;
     }
     .order_msg div p:nth-child(2){
       font-size: 14px;
@@ -119,6 +121,24 @@
         </div>
 
       </div>
+      <p style="font-weight: bold;font-size: 17px;margin-top:21px;">支付方式</p>
+      <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
+      <div style="display: flex;justify-content: center;" >
+            <div style="display: flex;align-items: center;margin-right: 30px;">
+              <input type="radio" name="paytype" value="alipay" checked="checked">
+              <img src="{{asset('asset/images/alipay.png')}}" style="margin-left:17px;">
+            </div>
+            <div style="display: flex;align-items: center;">
+            <input type="radio" name="paytype" value="wxpay" />
+              <img src="{{asset('asset/images/wxpay.png')}}" style="margin-left:17px;
+              height: auto;width:100px;">
+            </div>
+        </div>
+        <a type="button" id="bottonsubmit" style="height:33px; margin-left:20px; margin-left:320px;" href="javascript:;" target="_blank"
+						 class="btn btn-primary btn-sm sbtn">提交</a>
+				<a type="button" id="btn-wechat" style="height:33px; margin-left:20px; margin-left:320px;display: none" href="javascript:;"
+						class="btn btn-primary btn-sm sbtn">提交</a>
+	     </div>
 
 						<!-- <table class="mylist" style="line-height: 30px">
             <tr>
@@ -151,10 +171,7 @@
 								</td>
 							</tr>
 						</table> -->
-						<a type="button" id="bottonsubmit" style="height:33px; margin-left:20px; margin-left:320px;" href="javascript:;" target="_blank"
-						 class="btn btn-primary btn-sm sbtn">提交</a>
-						<a type="button" id="btn-wechat" style="height:33px; margin-left:20px; margin-left:320px;display: none" href="javascript:;"
-						 class="btn btn-primary btn-sm sbtn">提交</a>
+
 					<div class="clearfix"></div>
 
   </div>
