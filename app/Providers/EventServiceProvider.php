@@ -31,9 +31,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        RefreshPaged::class => [
-            UpdateVipExpirAt::class,
-        ],
+//        RefreshPaged::class => [
+//            UpdateVipExpirAt::class,
+//        ],
         OrderPaid::class => [
             CheckDoc::class
         ],
