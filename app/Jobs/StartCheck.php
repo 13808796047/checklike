@@ -31,7 +31,7 @@ class StartCheck implements ShouldQueue
             return;
         }
         if($result->code == 200 && $this->order->status == 1) {
-            dispatch(new UpdateIsFree($this->order))->delay(now()->addDay());
+            dispatch(new UpdateIsFree($this->order));
             dispatch(new getOrderStatus($this->order))->delay(now()->addMinutes());
             $this->order->update([
                 'status' => 3,
