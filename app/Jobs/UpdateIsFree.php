@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -13,20 +14,20 @@ class UpdateIsFree implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
+    protected $order;
 
-    public function __construct(User $user)
+    public function __construct(Order $order)
     {
-        $this->user = $user;
+        $this->order = $order;
     }
 
     public function handle()
     {
-        if($this->user->user_group != 3) {
+        if($this->order->user->user_group != 3) {
             return;
         }
-        $this->user->update([
-            'is_free' => false,
+        $this->order->user->update([
+            'is_free' => true,
         ]);
     }
 }
