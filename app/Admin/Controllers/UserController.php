@@ -37,7 +37,11 @@ class UserController extends AdminController
                     2 => 'success',
                     3 => 'danger'
                 ]);
-//            $grid->consumption_amount('消费金额')->display(function($));
+            $grid->orders('消费金额')->display(function($orders) {
+                $count = collect($orders)->sum('pay_price');
+                return "<span>{$count}</span>";
+            });
+//            $grid->orders()->sum('name')->label();
             $grid->created_at('注册时间');
             $grid->vip_expir_at('vip时间');
             $grid->inviter('邀请人id');
@@ -51,7 +55,7 @@ class UserController extends AdminController
                     $batch->disableDelete();
                 });
             });
-            $grid->quickSearch('phone', 'nickname', 'user_group');
+            $grid->quickSearch('phone', 'nick_name', 'user_group');
         });
     }
 }
