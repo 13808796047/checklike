@@ -301,7 +301,7 @@
   var Similarity = ""
   function togetJc(num){
     let contents = $('#content').val();
-    $('#beingModal').modal('hide')
+    // $('#beingModal').modal('hide')
     $('#jcqian').css('display', 'none')
     $("#jchou").css('display', 'block')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
