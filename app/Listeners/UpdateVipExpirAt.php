@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 
-class UpdateVipExpirAt implements ShouldQueue
+class UpdateVipExpirAt
 {
 
     public function handle(RefreshPaged $event)
