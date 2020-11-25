@@ -13,7 +13,6 @@ class CategoriesController extends Controller
     public function show($classid, Request $request, CategoryService $categoryService)
     {
         $user = $request->user();
-        dd($user);
         event(new CheckVipExpirAt($user));
         $categories = Category::where(['classid' => $classid, 'status' => 1])->with(['users' => function($query) use ($user) {
             return $query->where('users.id', $user->id);
