@@ -1,11 +1,15 @@
 @extends('layouts.app')
-@section('title','免费查重')
+@section('title', '查看订单')
 @section('styles')
-<!-- <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" /> -->
-<link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
-<style>
-</style>
-  <div id="header1">
+  <link href="{{asset('asset/css/check.css')}}" rel="stylesheet"/>
+  <link href="{{asset('asset/css/theme.css')}}" rel="stylesheet"/>
+  <style>
+  </style>
+@stop
+@section('content')
+
+
+<div id="header1">
      <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
 				<div class="container">
 					<div class="navbar-brand" style="width:395px;margin-right:70px;">
@@ -28,10 +32,15 @@
           </ul>
           </div></nav>
   </div>
-  <div class="container" style="margin:18px auto">
-      <div class="grid grid-cols-12 gap-4">
-      </div>
-    <div class="col-span-3"  id="jcright">
+<div class="container" style="margin:18px auto;">
+<div class="grid grid-cols-12 gap-4">
+	<div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
+
+
+
+ </div>
+
+       <div class="col-span-3">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -40,21 +49,31 @@
       </div>
       </div>
       <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
-        <b>1、怎么选择适合自己的论文检测系统？</b>
-        <p>只有使用和学校相同的数据库，才能保证重复率与学校、杂志社100%一致：</br>论文初次修改可使用联文检测、PaperPass，定稿再使用与学校一样的系统。</p>
-        <b>2、检测要多长时间，报告怎么还没出来？</b>
-        <p>正常检测20分钟左右，毕业高峰期，服务器检测压力大，时间会有延长，请大家提前做好时间准备。超过2小时没出结果可以联系客服处理！</p>
-        <b>3、同一篇论文可以多次检测吗？？</b>
-        <p>本站不限制论文检测次数，但检测一次需支付一次费用。</p>
-        <b>4、检测报告有网页版、pdf格式的吗？</b>
-        <p>检测完成后会提供网页版和pdf格式的检测报告，报告只是格式不同，重复率都一样的。</p>
+      <b>1、检测结果是否准确？</b>
+        <p id="rightcontainer"></p>
+        <b>2、检测需要多少时间？</b>
+        <p>正常情况，检测需要<span id="banbentimer">10分钟</span>左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
+        <b>3、论文上传之后安全吗？</b>
+        <p>本系统有明确的条文规定并遵守严格的论文保密规定，对所有用户提交的送检文档仅做检测分析，绝不保留全文，承诺对用户送检的文档不做任何形式的收录和泄露。</p>
+        <b>4、提交以后能不能退款？</b>
+        <p>系统一旦提交，开始检测后，即产生消费，无法退款，请谅解！</p>
+        <b>5、检测内容范围？</b>
+        <p>系统主要检测论文正文，封面、目录、致谢以及个人信息可以删除后再上传。</p>
+        <b>6、检测时作者需要填吗？</b>
+        <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则需要填写真实作者姓名。</p>
       </div>
     </div>
   </div>
-</div>
-@stop
-@section('scripts')
 
+
+</div>
+
+<!--/.fluid-container-->
+
+@endsection
+@section('scripts')
   <script>
+     $(document).ready(function () {
+    });
   </script>
 @stop
