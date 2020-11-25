@@ -36,7 +36,7 @@ class StartCheck implements ShouldQueue
                     'is_free' => false,
                 ]);
             }
-            dispatch(new UpdateIsFree($this->order));
+            dispatch(new UpdateIsFree($this->order))->delay(now()->addMinute());
             dispatch(new getOrderStatus($this->order))->delay(now()->addMinutes());
             $this->order->update([
                 'status' => 3,
