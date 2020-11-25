@@ -16,16 +16,16 @@ class CheckVipExpirAt
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $tuser;
+    protected $user;
 
-    public function __construct(User $user)
+    public function __construct($user)
     {
-        $this->tuser = $user;
+        $this->user = $user;
     }
 
     public function getUser()
     {
-        Log::info('dsa', [$this->tuser]);
+        Log::info('dsa', [$this->user]);
 
         return $this->user;
     }
