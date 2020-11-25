@@ -47,30 +47,6 @@
   </style>
 @stop
 @section('content')
-<!-- 模态 -->
-<div class="modal fade" id="wxcodeTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="wxcodeTcDialogLabel" aria-hidden="true" data-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered" style="width:333px;">
-    <div class="modal-content">
-      <div class="modal-body">
-         <div style="padding:10px 17px;">
-            <p style="text-align:center;font-size:16px;color:#808080;">打开微信使用扫一扫完成付款</p>
-            <div>
-              <img src="" alt="" srcset="" id="wxcodeurl" style="width:210px;height:210px;display:block;margin:0 auto;">
-            </div>
-            <div style="display:flex;justify-content: center;margin-top:5px;">
-              <button type="button" class="btn btn-secondary" id="closeCodeDialog">关闭</button>
-              <div style="margin:0 10px;"></div>
-              <button type="button" class="btn btn-primary" id="completeCodeDialog">已完成付款</button>
-            </div>
-         </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-<!-- 模态 -->
 <!-- 购买降重字数模态框 -->
 <div class="modal fade bd-example-modal-sm" id="wxModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -195,7 +171,6 @@
 								</td>
 							</tr>
 						</table> -->
-
 </div>
     <div class="col-span-3">
       <div>
@@ -247,7 +222,7 @@
             //location.href=`/payments/${order.id}/wechat/return/order`
             }
           })
-
+        ;
       });
      //支付宝支付
      $('#bottonsubmit').click(function(){
