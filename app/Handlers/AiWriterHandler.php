@@ -44,7 +44,7 @@ class AiWriterHandler
             ],
             'form_params' => $data,
         ];
-
+        dd($option);
         $response = $this->http->post($api, $option);
 //        dd($response->getbody()->getContents());
         return $response->getbody()->getContents();
