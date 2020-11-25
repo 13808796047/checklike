@@ -128,7 +128,7 @@
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
         <div style="display:flex;align-items:flex-end;font-size:15px;">
           <div style="font-weight: bolder;font-size: 18px;">智能降重</div>
-          <p style="margin-left:13px;font-size:13px;" id="isshowtimes">当前剩余次数 ：<span>{{ auth()->user()->jc_times}}次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;">增加次数</span></p>
+          <p style="margin-left:13px;font-size:13px;" id="isshowtimes">当前剩余次数 ：<span>{{ auth()->user()->jc_times}}次</span><span style="margin-left: 11px;color: #1E90FF;cursor:pointer;font-size:13px;" id="pageAdd">增加次数</span></p>
         </div>
 
 
@@ -163,7 +163,7 @@
             <div style="display:flex;justify-content:space-between;">
                 <p style="margin-bottom:10px;">降重后</p>
                 <div>
-                   <p>与原稿相似度：<span id="xiangsiduNum"></span></p>
+                   <p style="color:#3490dc;font-size:13px;">与原稿相似度：<span id="xiangsiduNum"></span></p>
                 </div>
                 </div>
                 <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
@@ -247,6 +247,11 @@
         $('#exampleModal').modal('hide')
         $("#jctimeModal").modal('show')
     })
+
+  $("#pageAdd").click(()=>{
+    $("#jctimeModal").modal('show')
+  })
+
   //获取字数
   $("#content").bind('input',(e)=>{
         $('#words span').html(e.target.value.length)
