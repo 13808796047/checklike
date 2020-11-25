@@ -316,8 +316,10 @@
           }
           );
     }
-
+    var currentJcContainer = ""
+    var currentAllContainer = ""
     function changed(a,b) {
+            currentJcContainer = a;
             var diff = JsDiff['diffChars'](a, b);
             var arr = new Array();
             for (var i = 0; i < diff.length; i++) {
@@ -348,9 +350,15 @@
             var html = arr.join('');
             // document.getElementById('content_later').innerHTML = html;
             // document.getElementById('content_after').innerHTML = a;
+            currentAllContainer = html;
             document.getElementById('content_later').innerHTML = b;
             document.getElementById('content_after').innerHTML = html;
         }
+
+        //切换显示详情
+        $("#customSwitch1").changed((e)=>{
+          console.log(e,"xixi")
+        })
 
   </script>
 @stop
