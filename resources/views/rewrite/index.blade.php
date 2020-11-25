@@ -111,7 +111,7 @@
             <div style="display:flex;align-items: center;margin-left:13px;">
 						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
                   <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-                  <li><a href="/categories/4" class="smooth-scroll">免费查重</a></li>
+                  <li><a href="/freecheck" class="smooth-scroll">免费查重</a></li>
                   <li><a href="/rewrite" class="smooth-scroll">自动降重</a></li>
                   <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
             </div>
