@@ -190,7 +190,9 @@
 	     </div>
       </div>
       <div id="iszero" style="display:none;">
-          <p style="color:#fff;background: red;width: 10%;margin: 0 auto;text-align:center;" id="freefee">提交</p>
+      <a type="button" id="freefee" style="height:33px;margin:50px auto;" href="javascript:;"
+						class="btn btn-primary btn-sm sbtn">提交</a>
+
        </div>
        </div>
 

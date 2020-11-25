@@ -598,7 +598,8 @@
        //模态框打开
        //判断访问源
         var sourceUrl = document.referrer;
-        if(sourceUrl.indexOf("p.checklike.com")=="-1"){
+
+        if(sourceUrl.indexOf("p.checklike.com")=="-1" && sourceUrl!=""){
 
           $("#staticBackdrop").modal("show")
           axios.get("/official_account").then(res=>{
