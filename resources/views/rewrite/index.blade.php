@@ -160,7 +160,12 @@
             </div>
             <div style="margin:0 17px;"></div>
             <div style="width:100%;">
+            <div style="display:flex;justify-content:space-between;">
                 <p style="margin-bottom:10px;">降重后</p>
+                <div>
+                   <p>与原稿相似度：61.01%</p>
+                </div>
+                </div>
                 <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
             </div>
         </div>
