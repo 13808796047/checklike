@@ -306,6 +306,12 @@
     $("#jchou").css('display', 'block')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
+            console.log(res,"按时发了")
+            if(res.data.errcode==100101){
+              toastr.error('今日配额已满，请明天再试或联系客服');
+              $('#beingModal').modal('hide');
+              return;
+            }
             $('#beingModal').modal('hide')
             $("#jcright").css("display",'none')
             $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
@@ -317,6 +323,7 @@
             changed(contents,htmlstring)
           })
           .catch(err =>{
+            console.log(err,"飞机撒发")
             num--;
             if(num>=0){
               togetJc(num)
@@ -331,7 +338,7 @@
     var currentJcContainer = ""
     var currentAllContainer = ""
     function changed(a,b) {
-            currentJcContainer = a;
+
             var diff = JsDiff['diffChars'](a, b);
             var arr = new Array();
             for (var i = 0; i < diff.length; i++) {
@@ -362,6 +369,7 @@
             // document.getElementById('content_later').innerHTML = html;
             // document.getElementById('content_after').innerHTML = a;
             currentAllContainer = html;
+            currentJcContainer = a;
             document.getElementById('content_later').innerHTML = b;
             document.getElementById('content_after').innerHTML = html;
             Similarity = Number(Similarity*100).toFixed(1);
