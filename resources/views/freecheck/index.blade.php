@@ -2,23 +2,7 @@
 @section('title', '查看订单')
 @section('styles')
   <style>
-  .newul{
-      display:flex;
-      margin-bottom:0 !important;
-      align-items:center;
-      justify-content: space-around;
-    }
-    .newul li a{
-      color:#fff;
-    }
-    .ambtn{
-      border-radius: 16px;
-      border: 1px solid #fff;
-      padding: 5px 13px;
-    }
-    a:hover{
-      text-decoration:none ;
-    }
+
   </style>
 @stop
 @section('content')
