@@ -308,8 +308,8 @@
           .then(res => {
             console.log(res,"按时发了")
             if(res.data.errcode==100101){
-              toastr.error('今日配额已满，请明天再试或联系客服');
               $('#beingModal').modal('hide');
+              toastr.error('今日配额已满，请明天再试或联系客服');
               return;
             }
             $('#beingModal').modal('hide')
