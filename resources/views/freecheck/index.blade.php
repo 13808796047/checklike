@@ -1,9 +1,58 @@
 @extends('layouts.app')
 @section('title', '查看订单')
 @section('styles')
-<link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}">
   <style>
-  .newul{
+   .swal-modal {
+      width: 350px;
+    }
+
+    .swal-button {
+      padding: 7px 19px;
+      font-size: 12px;
+    }
+
+    .swal-title {
+      font-size: 20px;
+    }
+    .swal-text {
+      /* background-color: #FEFAE3;
+      padding: 17px;
+      border: 1px solid #F0E1A1;
+      display: block;
+      margin: 22px;
+      text-align: center;
+      color: #61534e; */
+    }
+  	.nav-link {
+			color: black;
+			}
+		.nav-pills .nav-link {
+			border-radius: 0;
+		}
+		.nav-pills .nav-link.active,
+		.nav-pills .show>.nav-link {
+			color: #3e8bdb;
+			background-color: #fff;
+			font-weight: bold;
+			border-bottom: 1px solid #3e8bdb;
+		}
+    .index_first{
+      width: 290px;
+      text-align: center;
+      float: left;
+    }
+    .index_first_title{
+      color: #333333;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    .index_first_content{
+      height: auto;
+      font-size: 16px;
+      line-height: 28px;
+      color: #56565e;
+    }
+    .newul{
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
@@ -19,11 +68,6 @@
     }
     a:hover{
       text-decoration:none ;
-    }
-    .freecheckleft p{
-      font-size:15px;
-      text-indent:2em;
-      line-height:2;
     }
   </style>
 @stop
