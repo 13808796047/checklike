@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\CheckVipExpirAt;
+use App\Events\RefreshPaged;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 class UpdateVipExpirAt implements ShouldQueue
 {
 
-    public function handle(CheckVipExpirAt $event)
+    public function handle(RefreshPaged $event)
     {
         $user = $event->user;
         Log::info('user', [$user]);
