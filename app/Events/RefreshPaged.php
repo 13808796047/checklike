@@ -10,6 +10,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class RefreshPaged
 {
@@ -20,5 +21,6 @@ class RefreshPaged
     public function __construct(User $user)
     {
         $this->user = $user;
+        Log::info('user', [$this->user]);
     }
 }
