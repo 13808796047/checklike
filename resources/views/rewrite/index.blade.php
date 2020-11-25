@@ -302,7 +302,7 @@
   function togetJc(num){
     let contents = $('#content').val();
     // $('#beingModal').modal('hide')
-        // $('#beingModal').modal('show')
+        $('#beingModal').modal('show')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
             console.log(res,"按时发了")
@@ -333,7 +333,9 @@
               $('#beingModal').modal('hide')
               toastr.error('降重失败，请重试');
             }
-          }
+          }.finally(()=>{
+            $('#beingModal').modal('hide')
+          })
           );
     }
     var currentJcContainer = ""
