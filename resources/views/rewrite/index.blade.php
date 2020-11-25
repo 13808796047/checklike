@@ -279,7 +279,7 @@
       toastr.error('您的降重次数不足');
       return;
     }
-    $('#beingModal').modal('show')
+
     togetJc(num)
   })
   //确认购买
@@ -302,7 +302,7 @@
   function togetJc(num){
     let contents = $('#content').val();
     // $('#beingModal').modal('hide')
-
+        $('#beingModal').modal('show')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
           .then(res => {
             console.log(res,"按时发了")
