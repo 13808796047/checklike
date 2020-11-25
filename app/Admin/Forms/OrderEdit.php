@@ -71,6 +71,7 @@ class OrderEdit extends Form implements LazyRenderable
         if(!$order) {
             return $this->response()->error('用户不存在');
         }
+        $this->text('orderid', '订单号')->readOnly()->default($order->orderid);
         $this->text('title', '标题')->readOnly()->default($order->title);
         $this->text('writer', '作者')->readOnly()->default($order->writer);
         $this->text('words', '字数')->readOnly()->default($order->words);
