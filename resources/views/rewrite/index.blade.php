@@ -367,7 +367,7 @@
         $("#customSwitch1").change((e)=>{
           console.log(e,"xixi")
           if(e.currentTarget)
-         let cc = $("#customSwitch1").is(':checked')
+         let cc = $("#customSwitch1").prop('checked')
          console.log(cc,"fasfda")
         })
 
