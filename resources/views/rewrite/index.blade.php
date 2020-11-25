@@ -366,7 +366,7 @@
         //切换显示详情
         $("#customSwitch1").change((e)=>{
           console.log(e,"xixi")
-         let cc = $("#customSwitch1").attr('checked)
+         let cc = $("#customSwitch1").attr('checked')
          console.log(cc,"fasfda")
         })
 
