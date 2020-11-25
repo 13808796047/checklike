@@ -282,13 +282,12 @@
     <p><b>活动时间：</b>2020-10-01 至2021-07-31</p>
 
     @guest
-    <div style="margin:50px auto;">
-    <a class="btn btn-primary btn-sm sbtn" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop" type="button" style="height:33px;color:#fff;">立即去提交论文</a>
-    </div>
+
+    <a class="btn btn-primary btn-sm sbtn" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop" type="button" style="color:#fff;display:block;margin:50px auto;">立即去提交论文</a>
     @else
-    <div style="margin:50px auto;">
-    <a href="/categories/1" type="button" style="height:33px;color:#fff;" class="btn btn-primary btn-sm sbtn">立即去提交论文</a>
-    </div>
+
+    <a href="/categories/1" type="button" style="color:#fff;display:block;margin:50px auto;" class="btn btn-primary btn-sm sbtn">立即去提交论文</a>
+
     @endguest
 
 </div>
