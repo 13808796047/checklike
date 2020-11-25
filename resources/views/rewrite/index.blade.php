@@ -148,10 +148,10 @@
       <div style="margin-top:25px;display:none;" id="jchou">
         <div style="display:flex;">
             <div style="width:100%;">
-                <div style="display:flex;">
+                <div style="display:flex;justify-content:space-between;">
                 <p style="margin-bottom:10px;">降重前</p>
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
                     <label class="custom-control-label" for="customSwitch1">显示修改对比</label>
                 </div>
                 </div>
