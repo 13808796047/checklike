@@ -25,6 +25,25 @@
     a:hover{
       text-decoration:none ;
     }
+    .order_msg{
+      padding:0 30px;
+    }
+    .order_msg div{
+      display:flex;
+      border-bottom: 1px dashed #ececec;
+      line-height: 2.9;
+      padding-left: 145px;
+    }
+    .order_msg div p:nth-child(1){
+      font-size: 15px;
+      font-weight: 600;
+      width: 110px;
+      text-align: end;
+    }
+    .order_msg div p:nth-child(2){
+      font-size: 14px;
+      margin-left:33px;
+    }
   </style>
 @stop
 @section('content')
@@ -79,31 +98,51 @@
 <div class="grid grid-cols-12 gap-4">
 <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
       <div>
-			<div class="cbox submit yh" >
-				<div class="down clearfix">
-						<table class="mylist" style="line-height: 30px">
+      <p style="font-weight: bold;font-size: 17px;">订单信息</p>
+      <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
+
+
+      <div class="order_msg">
+        <div>
+          <p>订单号：</p>
+          <p>{{$recharge->no}}</p>
+        </div>
+        <div>
+          <p>订单类型：</p>
+          <p>自动降重次数充值</p>
+        </div>
+        <div>
+          <p>购买次数：</p>
+          <p>{{$recharge->amount}}</p>
+        </div>
+        <div>
+          <p>价格：</p>
+          <p>￥{{ $recharge->total_amount}}</p>
+        </div>
+
+      </div>
+      <p style="font-weight: bold;font-size: 17px;margin-top:21px;">支付方式</p>
+      <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
+      <div style="display: flex;justify-content: center;" >
+            <div style="display: flex;align-items: center;margin-right: 30px;">
+              <input type="radio" name="paytype" value="alipay" checked="checked">
+              <img src="{{asset('asset/images/alipay.png')}}" style="margin-left:17px;">
+            </div>
+            <div style="display: flex;align-items: center;">
+            <input type="radio" name="paytype" value="wxpay" />
+              <img src="{{asset('asset/images/wxpay.png')}}" style="margin-left:17px;
+              height: auto;width:100px;">
+            </div>
+      </div>
+        <a type="button" id="bottonsubmit" style="height:33px; margin-left:20px; margin-left:320px;" href="javascript:;" target="_blank"
+						 class="btn btn-primary btn-sm sbtn">提交</a>
+				<a type="button" id="btn-wechat" style="height:33px; margin-left:20px; margin-left:320px;display: none" href="javascript:;"
+						class="btn btn-primary btn-sm sbtn">提交</a>
+	     </div>
+
+						<!-- <table class="mylist" style="line-height: 30px">
             <tr>
-								<td width="149">
-									<span>订单号</span>
-								</td>
-								<td style="text-align: left;">
-									<span>{{$recharge->no}}</span>
-								</td>
-							</tr>
-							<tr>
-								<td width="149">
-									<span>购买次数</span>
-								</td>
-								<td style="text-align: left;">
-									<span>{{$recharge->amount}}</span>
-								</td>
-							</tr>
-							<tr>
-								<td width="">价格</td>
-								<td style="text-align: left;">
-									￥{{ $recharge->total_amount}}
-								</td>
-							</tr>
+
 							<tr bgcolor="#D0EAFF">
 								<td colspan="2" align="center">
 									<b>
@@ -131,16 +170,9 @@
 									</div>
 								</td>
 							</tr>
-						</table>
-						<a type="button" id="bottonsubmit" style="height:33px; margin-left:20px; margin-left:320px;" href="javascript:;" target="_blank"
-						 class="btn btn-primary btn-sm sbtn">提交</a>
-						<a type="button" id="btn-wechat" style="height:33px; margin-left:20px; margin-left:320px;display: none" href="javascript:;"
-						 class="btn btn-primary btn-sm sbtn">提交</a>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-    </div>
+						</table> -->
+
+</div>
     <div class="col-span-3">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>

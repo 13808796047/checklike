@@ -165,6 +165,7 @@
 						<div style="display:flex;flex-wrap: wrap;height:255px;overflow: auto;" id="couponbox">
 
             </div>
+            <p style="font-weight: bold;font-size: 17px;margin-top:21px;">支付方式</p>
             <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
             <div style="margin-bottom: 23px;">
               <p id="dingdanprice" style="display:none;">订单原价:{{$order->price}}元，卡券优惠:<span id="yhje"></span>元，应付金额：<span style="font-size: 19px;color: #FF5300;" id="sjprice">元</span>，请选择以下任一一种方式完成支付。</p>
