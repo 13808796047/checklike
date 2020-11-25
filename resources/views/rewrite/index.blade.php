@@ -366,7 +366,6 @@
         //切换显示详情
         $("#customSwitch1").change((e)=>{
           console.log(e,"xixi")
-          if(e.currentTarget)
          let cc = $("#customSwitch1").prop('checked')
          console.log(cc,"fasfda")
         })
