@@ -25,7 +25,7 @@ class ChangeVip implements ShouldQueue
         $this->user->update([
             'user_group' => 1,
             'vip_days' => 0,
-            'vip_expir_at' => ''
+            'vip_expir_at' => null
         ]);
     }
 }
