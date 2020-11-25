@@ -366,7 +366,8 @@
         //切换显示详情
         $("#customSwitch1").change((e)=>{
           console.log(e,"xixi")
-         let cc = $("#customSwitch1").attr('checked')
+          if(e.currentTarget)
+         let cc = $("#customSwitch1").is(':checked')
          console.log(cc,"fasfda")
         })
 
