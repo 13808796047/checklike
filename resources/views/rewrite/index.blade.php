@@ -163,7 +163,7 @@
             <div style="display:flex;justify-content:space-between;">
                 <p style="margin-bottom:10px;">降重后</p>
                 <div>
-                   <p>与原稿相似度：61.01%</p>
+                   <p>与原稿相似度：<span id="xiangsiduNum"></span></p>
                 </div>
                 </div>
                 <textarea id="content_later" style="height:370px;overflow-y:auto;background:#fff;border: 1px solid #ddd;padding: 19px;width:100%;"></textarea>
@@ -293,6 +293,7 @@
           console.log(err,31312)
         })
       })
+  var Similarity = ""
   function togetJc(num){
     let contents = $('#content').val();
     $('#beingModal').modal('hide')
@@ -305,6 +306,7 @@
             $("#jcleft").addClass("col-span-12").removeClass("col-span-9")
             $('#jcqian').css('display', 'none')
             var htmlstring=res.data.data;
+            Similarity = res.data.like;
             $("#jchou").css('display', 'block')
             $("#isshowtimes").css("display","none")
             changed(contents,htmlstring)
@@ -333,7 +335,6 @@
                     diff[i] = diff[i + 1];
                     diff[i + 1] = swap;
                 }
-                console.log(diff[i]);
                 var diffObj = diff[i];
                 var content = diffObj.value;
                 //可以考虑启用，特别是后台清理HTML标签后的文本
@@ -358,11 +359,18 @@
             currentAllContainer = html;
             document.getElementById('content_later').innerHTML = b;
             document.getElementById('content_after').innerHTML = html;
+            Similarity = Number(Similarity*100).toFixed(1);
+            $("#xiangsiduNum").text(Similarity+"%")
         }
 
         //切换显示详情
-        $("#customSwitch1").click((e)=>{
-          console.log(e,"xixi")
+        $("#customSwitch1").change((e)=>{
+          let currentStatus = $("#customSwitch1").prop('checked')
+          if(currentStatus){
+            $("#content_after").html(currentAllContainer)
+          }else{
+            $("#content_after").html(currentJcContainer)
+          }
         })
 
   </script>
