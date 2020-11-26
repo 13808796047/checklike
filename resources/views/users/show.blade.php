@@ -176,6 +176,8 @@
     $(document).ready(function () {
       $('#app').removeClass('newmain')
       $("#activationBtn").click(() => {
+        var timer1 = null;
+        clearTimeout(timer1);
         $.confirm({
           title: "提示",
           content: '' +
@@ -197,7 +199,7 @@
                 }
                 axios.post("/coupon_codes/active-coupon-code", {code: name}).then(res => {
                   toastr.success(res.data.message);
-                  var timer1 = setTimeout(function(){
+                  timer1 = setTimeout(function(){
                     window.location.reload();
                   }, 2000);
 
