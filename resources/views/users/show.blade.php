@@ -24,14 +24,13 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
-
     }
     .newul li{
       margin:0 17px;
     }
     .newul li a{
       color:#fff;
-      font-size:15px;
+      font-size:1rem;
     }
     .ambtn{
       border-radius: 16px;
