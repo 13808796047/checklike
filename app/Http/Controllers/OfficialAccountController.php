@@ -166,6 +166,7 @@ class OfficialAccountController extends Controller
 //            $this->dispatch(new Subscribed($this->officialAccount, $loginUser));
 //        }
         if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
+            Log::info('wx', [$wxUser]);
             // 标记可以登录
             $this->markTheLogin($event, $wxUser->id);
             $this->afterLogin($wxUser);
