@@ -109,6 +109,7 @@ class OfficialAccountController extends Controller
             $user->update([
                 'weixin_unionid' => $wxUser['unionid']
             ]);
+            Log::info('用户', [$user]);
             // 标记前端可登录
             $this->markTheLogin($event, $user->id);
             $this->afterLogin($user);
