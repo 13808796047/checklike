@@ -197,7 +197,10 @@
                 }
                 axios.post("/coupon_codes/active-coupon-code", {code: name}).then(res => {
                   toastr.success(res.data.message);
-                  window.location.reload();
+                  var timer1 = setTimeout(function(){
+                    window.location.reload();
+                  }, 2000);
+
                 }).catch(err => {
                   toastr.error(err.response.data.msg);
                 })

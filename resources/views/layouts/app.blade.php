@@ -91,7 +91,7 @@
   //退出登录
   toastr.options = {
     positionClass: "toast-center-center",
-    timeOut:1500 // 超时时间，即窗口显示的时间
+    timeOut:2000 // 超时时间，即窗口显示的时间
   }
   $('.logout').click(() => {
     $.confirm({
