@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\CheckVipExpirAt;
+use App\Events\RefreshPaged;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -19,8 +20,8 @@ class CategoriesController extends Controller
             \Cache::put('word', $word, now()->addDay());
         }
         $categories = Category::query()->where('status', 1)->get();
-        $user = \Auth::user();
-        event(new CheckVipExpirAt($user));
+//        $user = \Auth::user();
+//        event(new RefreshPaged($user));
         return CategoryResource::collection($categories)->collection->groupBy('classid');
     }
 }
