@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '查看订单')
+@section('title', '免费查重')
 @section('styles')
   <style>
    .swal-modal {
