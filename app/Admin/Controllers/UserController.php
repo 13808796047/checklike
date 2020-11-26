@@ -21,8 +21,8 @@ class UserController extends AdminController
     protected function grid()
     {
         return Grid::make(new User(['orders']), function(Grid $grid) {
-            $grid->id('ID')->sortable()->link(function($value) {
-                return admin_url('orders?_search_=' . $value);
+            $grid->id('ID')->sortable()->display(function($value) {
+                return "<a href='orders?userid=$value'>$value</a>";
             });
 //            $grid->model()->orderBy('created_at', 'desc');
             $grid->phone('手机号');

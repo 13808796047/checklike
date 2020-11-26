@@ -102,16 +102,19 @@ class OfficialAccountController extends Controller
 //        [$type, $id] = explode('-', $eventKey);
 //        $loginUser = User::find($id);
 //        $this->handleUser($type, $wxUser, $user, $loginUser);
-
-        if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
-            // 标记前端可登录
-            $this->markTheLogin($event, $wxUser->id);
-            $this->afterLogin($wxUser);
-            return;
-        }
         $openId = $this->openid;
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
+        if($user = User::where('weixin_openid', $this->openid)->first()) {
+            Log::info('用户前', [$user]);
+            $user->update([
+                'weixin_unionid' => $wxUser['unionid'],
+            ]);
+            Log::info('用户后', [$user]);
+            // 标记前端可登录
+            $this->markTheLogin($event, $user->id);
+            $this->afterLogin($user);
+        }
     }
 
 
@@ -165,15 +168,20 @@ class OfficialAccountController extends Controller
 //        if(!$loginUser->phone) {
 //            $this->dispatch(new Subscribed($this->officialAccount, $loginUser));
 //        }
-        if($wxUser = User::where('weixin_openid', $this->openid)->first()) {
-            // 标记可以登录
-            $this->markTheLogin($event, $wxUser->id);
-            $this->afterLogin($wxUser);
-            return;
-        }
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
 
+        if($user = User::where('weixin_openid', $this->openid)->first()) {
+            $user->update([
+                'weixin_unionid' => $wxUser['unionid']
+            ]);
+            // 标记可以登录
+            $this->markTheLogin($event, $user->id);
+            $this->afterLogin($user);
+            return;
+        }
+
+//        Log::info('wx', [$wxUser]);
         $this->makeTheUser($event, $wxUser);
 
     }
@@ -191,6 +199,7 @@ class OfficialAccountController extends Controller
                 'subscribe' => $wxUser['subscribe'],
                 'subscribe_time' => $wxUser['subscribe_time'],
                 'weixin_openid' => $wxUser['openid'],
+                'weixin_unionid' => $wxUser['unionid'],
             ]);
             $this->markTheLogin($event, $user->id);
             $this->afterLogin($user);

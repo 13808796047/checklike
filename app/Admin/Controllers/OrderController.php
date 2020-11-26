@@ -129,7 +129,7 @@ class OrderController extends AdminController
             $grid->disableBatchDelete();
             $grid->disableCreateButton();
             $grid->filter(function($filter) {
-                $filter->panel();
+//                $filter->panel();
                 // 去掉默认的id过滤器
                 $filter->disableIdFilter();
                 // 在这里添加字段过滤器
@@ -138,6 +138,7 @@ class OrderController extends AdminController
                 $filter->like('orderid', '订单号');
                 $filter->like('api_orderid', 'api订单ID');
                 $filter->like('from', '来源');
+                $filter->equal('userid', '用户id');
                 $filter->where('phone', function($query) {
 
                     $query->whereHas('user', function($query) {
