@@ -60,6 +60,7 @@
     }
     .newul li a{
       color:#fff;
+      font-size:1rem;
     }
     .ambtn{
       border-radius: 16px;
