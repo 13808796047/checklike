@@ -26,9 +26,8 @@ class OrderService
     public function add($request)
     {
         $order = \DB::transaction(function() use ($request) {
-            $category = Category::findOrFail($request->cid);
+            $category = Category::find($request->cid);
             $user = \Auth()->user();
-            $user->checkVip();
             $wordHandler = app(WordHandler::class);
 
             if($request->type == 'file') {
