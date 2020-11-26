@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '查看订单')
+@section('title', '订单支付')
 @section('styles')
   <link href="{{asset('asset/css/check.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/theme.css')}}" rel="stylesheet"/>
