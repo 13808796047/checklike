@@ -295,7 +295,7 @@
 					</div>
 					<div class="header-btn">
 						<a href="#" class="btn-custom">微信扫码体验</a>
-						<a href="#download" class="btn-custom btn-border btn-icon smooth-scroll"><i class="ion ion-social-twitter"></i>免费查重</a>
+						<a href="/freecheck" class="btn-custom btn-border btn-icon smooth-scroll"><i class="ion ion-social-twitter"></i>免费查重</a>
 					</div>
 				</div>
 
