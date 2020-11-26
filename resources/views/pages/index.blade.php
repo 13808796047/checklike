@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '学信检测')
+@section('title', 'CheckLike论文相似度检测系统，首次查重免费')
 @section('styles')
   <link rel="stylesheet" href="{{asset('asset/css/ionicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
