@@ -114,7 +114,7 @@
              <div style="text-align:center;margin-top:100px;color:red;">抱歉，报告暂不支持预览，请下载完整报告查看</div>
            @else
               <!-- <h2 class="text-center text-5xl">暂无内容!!!!</h2> -->
-              <iframe src="https://p.checklike.com/pdf/{{$order->orderid}}.pdf" width="100%" height="650"></iframe>
+              <iframe src="/pdf/{{$order->orderid}}.pdf" width="100%" height="650"></iframe>
             @endif
           </div>
         </div>

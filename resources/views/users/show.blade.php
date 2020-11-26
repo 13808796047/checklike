@@ -260,7 +260,7 @@
       var currentCode="";
       // 绑定手机号
       $("#bindnow").click(()=>{
-        axios.put("https://p.checklike.com/bond_phone",{
+        axios.put("/bond_phone",{
         verification_key:currentCode,
         verification_code:$("#bindCodeNow").val()
       }).then(res=>{
@@ -268,7 +268,7 @@
           icon: "success",
         }).then(willDelete => {
           $("#bindTitle").modal("hide")
-          // location.replace('https://p.checklike.com')
+
           window.location.reload()
       });
       }).catch(err=>{
@@ -298,7 +298,7 @@
          $("#xgtoast").text("两次密码不一致")
          return;
        }
-        axios.post('https://p.checklike.com/password/reset', {
+        axios.post('/password/reset', {
           password: $("#xgpsd").val(),
           password_confirmation: $("#xgsurepsd").val()
         }).then(res=>{

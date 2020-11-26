@@ -104,7 +104,7 @@
                 action: function() {
                   axios.post('{{route('logout')}}').then(res => {
                      swal("提示","退出成功", "success");
-                     location.replace('https://p.checklike.com')
+                     location.replace('/')
                   })
                 }
             },
@@ -144,7 +144,7 @@
       }
       count--;
      }, 1000)
-      axios.post('https://p.checklike.com/api/v1/verificationCodes', {
+      axios.post('/api/v1/verificationCodes', {
           phone: isYZphone,
         }).then(res => {
           if(res.data&&res.data.key){
@@ -153,25 +153,7 @@
         })
     }
   })
-  // $("#bindnow").click(()=>{
-  //   axios.put("https://p.checklike.com/bond_phone",{
-  //     verification_key:currentCode,
-  //     verification_code:$("#bindCodeNow").val()
-  //   }).then(res=>{
-  //     swal("绑定成功", {
-  //       icon: "success",
-  //     }).then(willDelete => {
-  //       $("#bindTitle").modal("hide")
-  //       location.replace('https://p.checklike.com')
-  //     });
-  //   }).catch(err=>{
-  //     console.log(err,"fsadfjdsafjdsajfj")
-  //   })
-  // })
-  // $("#bindno").click(()=>{
-  //   $("#bindTitle").modal("hide")
-  // })
-  //
+
   var registerCode="";
   $("#RegisterDialogBtn").click(()=>{
     console.log("xixi，点击了")
@@ -195,7 +177,7 @@
       }
       count--;
     }, 1000)
-    axios.post('https://p.checklike.com/api/v1/verificationCodes', {
+    axios.post('/api/v1/verificationCodes', {
       phone: iszcphone,
     }).then(res => {
         if(res.data&&res.data.key){
@@ -206,7 +188,7 @@
   })
 })
   $("#registerphones").blur(()=>{
-    axios.post('https://p.checklike.com/api/v1/check-phone', {
+    axios.post('/api/v1/check-phone', {
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
