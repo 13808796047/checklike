@@ -31,7 +31,7 @@ class OrderService
 //            if($request->phone) {
 //                $result = $this->converFile($category, $request->type, $request->file_id, $phone);
 //            }
-            $result = $this->converFile($category, $request->type, $request->file_id, $user->id);
+            $result = $this->converFile($category, $request->type, $request->content, $request->file_id, $user->id);
             $words = $result['words'];
 
 
