@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '查看订单')
+@section('title', '订单支付')
 @section('styles')
   <link href="{{asset('asset/css/check.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/theme.css')}}" rel="stylesheet"/>
@@ -64,7 +64,7 @@
     }
     .newul li a{
       color:#fff;
-      font-size:15px;
+      font-size:1rem;
     }
     .ambtn{
       border-radius: 16px;

@@ -9,7 +9,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', '联文') _学信检测</title>
+  <title>@yield('title', '联文') _论文查重</title>
   <!-- Styles -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
@@ -91,7 +91,7 @@
   //退出登录
   toastr.options = {
     positionClass: "toast-center-center",
-    timeOut:1500 // 超时时间，即窗口显示的时间
+    timeOut:2000 // 超时时间，即窗口显示的时间
   }
   $('.logout').click(() => {
     $.confirm({
@@ -104,7 +104,7 @@
                 action: function() {
                   axios.post('{{route('logout')}}').then(res => {
                      swal("提示","退出成功", "success");
-                     location.replace('https://p.checklike.com')
+                     location.replace('/')
                   })
                 }
             },
@@ -144,7 +144,7 @@
       }
       count--;
      }, 1000)
-      axios.post('https://p.checklike.com/api/v1/verificationCodes', {
+      axios.post('/api/v1/verificationCodes', {
           phone: isYZphone,
         }).then(res => {
           if(res.data&&res.data.key){
@@ -153,25 +153,7 @@
         })
     }
   })
-  // $("#bindnow").click(()=>{
-  //   axios.put("https://p.checklike.com/bond_phone",{
-  //     verification_key:currentCode,
-  //     verification_code:$("#bindCodeNow").val()
-  //   }).then(res=>{
-  //     swal("绑定成功", {
-  //       icon: "success",
-  //     }).then(willDelete => {
-  //       $("#bindTitle").modal("hide")
-  //       location.replace('https://p.checklike.com')
-  //     });
-  //   }).catch(err=>{
-  //     console.log(err,"fsadfjdsafjdsajfj")
-  //   })
-  // })
-  // $("#bindno").click(()=>{
-  //   $("#bindTitle").modal("hide")
-  // })
-  //
+
   var registerCode="";
   $("#RegisterDialogBtn").click(()=>{
     console.log("xixi，点击了")
@@ -195,7 +177,7 @@
       }
       count--;
     }, 1000)
-    axios.post('https://p.checklike.com/api/v1/verificationCodes', {
+    axios.post('/api/v1/verificationCodes', {
       phone: iszcphone,
     }).then(res => {
         if(res.data&&res.data.key){
@@ -206,7 +188,7 @@
   })
 })
   $("#registerphones").blur(()=>{
-    axios.post('https://p.checklike.com/api/v1/check-phone', {
+    axios.post('/api/v1/check-phone', {
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")

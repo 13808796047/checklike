@@ -24,14 +24,13 @@
       display:flex;
       margin-bottom:0 !important;
       align-items:center;
-
     }
     .newul li{
       margin:0 17px;
     }
     .newul li a{
       color:#fff;
-      font-size:15px;
+      font-size:1rem;
     }
     .ambtn{
       border-radius: 16px;
@@ -176,6 +175,8 @@
     $(document).ready(function () {
       $('#app').removeClass('newmain')
       $("#activationBtn").click(() => {
+        var timer1 = null;
+        clearTimeout(timer1);
         $.confirm({
           title: "提示",
           content: '' +
@@ -197,7 +198,10 @@
                 }
                 axios.post("/coupon_codes/active-coupon-code", {code: name}).then(res => {
                   toastr.success(res.data.message);
-                  window.location.reload();
+                  timer1 = setTimeout(function(){
+                    window.location.reload();
+                  }, 2000);
+
                 }).catch(err => {
                   toastr.error(err.response.data.msg);
                 })
@@ -256,7 +260,7 @@
       var currentCode="";
       // 绑定手机号
       $("#bindnow").click(()=>{
-        axios.put("https://p.checklike.com/bond_phone",{
+        axios.put("/bond_phone",{
         verification_key:currentCode,
         verification_code:$("#bindCodeNow").val()
       }).then(res=>{
@@ -264,7 +268,7 @@
           icon: "success",
         }).then(willDelete => {
           $("#bindTitle").modal("hide")
-          // location.replace('https://p.checklike.com')
+
           window.location.reload()
       });
       }).catch(err=>{
@@ -294,7 +298,7 @@
          $("#xgtoast").text("两次密码不一致")
          return;
        }
-        axios.post('https://p.checklike.com/password/reset', {
+        axios.post('/password/reset', {
           password: $("#xgpsd").val(),
           password_confirmation: $("#xgsurepsd").val()
         }).then(res=>{

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '学信检测')
+@section('title', 'CheckLike论文相似度检测系统，首次查重免费')
 @section('styles')
   <link rel="stylesheet" href="{{asset('asset/css/ionicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
@@ -69,6 +69,7 @@
     }
     .newul li a{
       color:#fff;
+      font-size:1rem;
     }
     .ambtn{
       border-radius: 16px;
@@ -293,8 +294,13 @@
 						<p>CheckLike 论文查重系统移动版全新升级，支持手机提交论文(含文件上传)、检测完成后微信提醒、在线查看检测结果、原文比对等功能，方便随时随地查重论文，提升毕业论文写作效率。</p>
 					</div>
 					<div class="header-btn">
-						<a href="#" class="btn-custom">微信扫码体验</a>
-						<a href="#download" class="btn-custom btn-border btn-icon smooth-scroll"><i class="ion ion-social-twitter"></i>免费查重</a>
+            @guest
+            <a href="javascript:;" class="btn-custom" data-toggle="modal" data-target="#staticBackdrop">微信扫码体验</a>
+            @else
+            <a href="/categories/1" class="btn-custom">论文查重</a>
+            @endguest
+
+						<a href="/freecheck" class="btn-custom btn-border btn-icon smooth-scroll"><i class="ion ion-social-twitter"></i>免费查重</a>
 					</div>
 				</div>
 
