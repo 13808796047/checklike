@@ -146,9 +146,11 @@ class OrderService
         dispatch(new CloseOrder($order))->delay(now()->addMinute(30));
     }
 
-    public function converFile(Category $category, $type, $content, $file_id, $file_prefix, WordHandler $wordHandler, FileWordsHandle $fileWords, FileUploadHandler $upload)
+    public function converFile(Category $category, $type, $content, $file_id, $file_prefix)
     {
-//        $category = Category::find($cid);
+        $wordHandler = app(WordHandler::class);
+        $fileWords = app(FileWordsHandle::class);
+        $upload = app(FileUploadHandler::class);
         $file = File::find($file_id);
         if($type == 'file') {
             if($file->type == 'txt') {
