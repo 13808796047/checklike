@@ -105,9 +105,7 @@ class OfficialAccountController extends Controller
         $openId = $this->openid;
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
-        Log::info('user', [$wxUser]);
         if($user = User::where('weixin_openid', $this->openid)->first()) {
-            Log::info('user', [$user]);
             $user->update([
                 'weixin_unionid' => $wxUser['unionid'],
             ]);
@@ -115,6 +113,7 @@ class OfficialAccountController extends Controller
             $this->markTheLogin($event, $user->id);
             $this->afterLogin($user);
         }
+        $this->makeTheUser($event, $wxUser);
     }
 
 
