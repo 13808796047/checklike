@@ -171,7 +171,6 @@ class OfficialAccountController extends Controller
         $wxUser = $this->app->user->get($openId);
 
         if($user = User::where('weixin_openid', $this->openid)->first()) {
-            Log::info('user', [$user]);
             $user->update([
                 'weixin_unionid' => $wxUser['unionid']
             ]);
