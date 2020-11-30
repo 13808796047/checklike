@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Order extends Model
 {
     use Traits\CheckOrderHelper;
-    use SoftDeletes;
+//    use SoftDeletes;
     protected $guarded = [];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
@@ -88,7 +88,7 @@ class Order extends Model
 
     public function scopeUsedCouponCode(Builder $query, $type, $date)
     {
-        $builder = $query->withTrashed()->whereNotNull('date_pay');
+        $builder = $query->whereNotNull('date_pay');
         switch ($type) {
             case CouponCode::TYPE_FIXED:
                 $builder->whereHas('couponCode', function($query) {

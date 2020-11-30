@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function() {
     //异步上传文件
     Route::post('files', 'FilesController@store')->name('files.store');
 
+    Route::get('ai_rewrite', 'AutoCheckController@index')->name('ai_rewrite.index');
+    Route::get('rewrite', 'AutoCheckController@rewrite')->name('rewrite.index');
     Route::post('ai_rewrite', 'AutoCheckController@store')->name('ai_rewrite.store');
     Route::get('auto_check/{autoCheck}', 'AutoCheckController@show')->name('auto_check.show');
     Route::get('payments/{order}/free_pay', 'PaymentsController@freePay')->name('payments.freePay');
@@ -48,8 +50,6 @@ Route::get('orders/{orderid}/download', 'OrdersController@download')
     ->name('orders.download');
 //自动查重
 
-Route::get('ai_rewrite', 'AutoCheckController@index')->name('ai_rewrite.index');
-Route::get('rewrite', 'AutoCheckController@rewrite')->name('rewrite.index');
 //支付宝
 Route::get('payments/{id}/alipay/{type}', 'PaymentsController@alipay')
     ->name('payments.alipay');
@@ -87,8 +87,8 @@ Route::get('freecheck', 'FreeCheckController@index');
 //邀请注册
 Route::get('zt/jc', 'InvitsController@index')->name('invit.index');
 Route::get('invit_official', 'InvitOfficialController@index')->name('invit_official.index');
-Route::get('getKey', function() {
-    $data['dealId'] = config('pay.baidu_pay.dealId');
-    $data['appKey'] = config('pay.baidu_pay.appKey');
-    return app('baidu_pay')->getSign($data);
-});
+//Route::get('getKey', function() {
+//    $data['dealId'] = config('pay.baidu_pay.dealId');
+//    $data['appKey'] = config('pay.baidu_pay.appKey');
+//    return app('baidu_pay')->getSign($data);
+//});

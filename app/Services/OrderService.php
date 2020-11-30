@@ -27,35 +27,41 @@ class OrderService
     {
         $order = \DB::transaction(function() use ($request) {
             $category = Category::find($request->cid);
-            $user = \Auth()->user();
-            $wordHandler = app(WordHandler::class);
+            $user = \Auth::user();
+//            if($request->phone) {
+//                $result = $this->converFile($category, $request->type, $request->file_id, $phone);
+//            }
+            $result = $this->converFile($category, $request->type, $request->content, $request->file_id, $user->id);
+            $words = $result['words'];
 
-            if($request->type == 'file') {
-                $file = File::find($request->file_id);
-                if($file->type == 'txt') {
-                    $content = remove_spec_char(convert2utf8(file_get_contents($file->real_path)));
-                    $words = count_words(remove_spec_char(convert2utf8($content)));
-                    if($category->classid == 3) {
-                        $result = $wordHandler->save($content, 'files', $user->id);
-                    }
-                } else {
-                    $res = app(FileWordsHandle::class)->submitCheck($file->path);
-                    $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
-                    $result = $file;
-                    if($category->classid == 4 && $file->type == 'docx') {
-                        $content = read_docx($file->real_path);
-                        $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
-                    }
-                }
-            } else {
-                $content = remove_spec_char($request->input('content', ''));
-                $words = count_words($content);
-                if($category->classid == 3) {
-                    $result = $wordHandler->save($content, 'files', $user->id);
-                } else {
-                    $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
-                }
-            }
+
+//            if($request->type == 'file') {
+
+//                $file = File::find($request->file_id);
+//                if($file->type == 'txt') {
+//                    $content = remove_spec_char(convert2utf8(file_get_contents($file->real_path)));
+//                    $words = count_words(remove_spec_char(convert2utf8($content)));
+//                    if($category->classid == 3) {
+//                        $result = $wordHandler->save($content, 'files', $user->id);
+//                    }
+//                } else {
+//                    $res = app(FileWordsHandle::class)->submitCheck($file->path);
+//                    $words = app(FileWordsHandle::class)->queryParsing($res['data']['orderid'])['data']['wordCount'];
+//                    $result = $file;
+//                    if($category->classid == 4 && $file->type == 'docx') {
+//                        $content = read_docx($file->real_path);
+//                        $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
+//                    }
+//                }
+//            } else {
+//                $content = remove_spec_char($request->input('content', ''));
+//                $words = count_words($content);
+//                if($category->classid == 3) {
+//                    $result = $wordHandler->save($content, 'files', $user->id);
+//                } else {
+//                    $result = app(FileUploadHandler::class)->saveTxt($content, 'files', $user->id);
+//                }
+//            }
             if($words <= 0) {
                 throw new InvalidRequestException('还未解析完成', 400);
             }
@@ -65,7 +71,6 @@ class OrderService
                 });
                 $words += $resultWords;
             }
-
             if($words <= $category->min_words && $words >= $category->max_words) {
                 throw new InvalidRequestException("检测字数必须在" . $category->min_words . "与" . $category->max_words . "之间", 500);
             }
@@ -100,7 +105,7 @@ class OrderService
                 default:
                     $price = $category->price;
             }
-            if($user->is_free) {
+            if($user->is_free && $category->cid == 4) {
                 $words = max($words - 10000, 0);
             }
             switch ($category->price_type) {
@@ -126,15 +131,50 @@ class OrderService
             $order->orderContent()->create([
                 'content' => $content ?? ''
             ]);
-            if($order->status == 0) {
-                dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
-            }
-            // 开启关闭订单
-            dispatch(new CloseOrder($order))->delay(now()->addMinute(30));
+            $this->OrderCreated($order);
             return $order;
         });
         return $order;
     }
+
+    public function OrderCreated(Order $order)
+    {
+        dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
+    }
+
+    public function converFile(Category $category, $type, $content, $file_id, $file_prefix)
+    {
+        $wordHandler = app(WordHandler::class);
+        $fileWords = app(FileWordsHandle::class);
+        $upload = app(FileUploadHandler::class);
+        $file = File::find($file_id);
+        if($type == 'file') {
+            if($file->type == 'txt') {
+                $content = remove_spec_char(convert2utf8(file_get_contents($file->real_path)));
+                $words = count_words(remove_spec_char(convert2utf8($content)));
+                if($category->classid == 3) {
+                    $result = $wordHandler->save($content, 'files', $file_prefix);
+                }
+            } else {
+                $words = $fileWords->queryParsing($fileWords->submitCheck($file->path)['data']['orderid'])['data']['wordCount'];
+                $result = $file;
+                if($category->classid == 4 && $file->type == 'docx') {
+                    $content = read_docx($file->real_path);
+                    $result = $upload->saveTxt($content, 'files', $file_prefix);
+                }
+            }
+        } else {
+            $words = count_words(remove_spec_char($content));
+            if($category->classid == 3) {
+                $result = $wordHandler->save($content, 'files', $file_prefix);
+            } else {
+                $result = $upload->saveTxt($content, 'files', $file_prefix);
+            }
+        }
+        $result = ['path' => $result['path'], 'words' => $words];
+        return $result;
+    }
+
 
     public function calcPrice(User $user, Category $category, $words, $price)
     {
@@ -154,7 +194,6 @@ class OrderService
         return $price;
     }
 
-    //计算字数
     public function calcWords($words)
     {
         $diff = 1000 - substr($words, -3);

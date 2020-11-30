@@ -106,15 +106,14 @@ class OfficialAccountController extends Controller
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
         if($user = User::where('weixin_openid', $this->openid)->first()) {
-            Log::info('用户前', [$user]);
             $user->update([
                 'weixin_unionid' => $wxUser['unionid'],
             ]);
-            Log::info('用户后', [$user]);
             // 标记前端可登录
             $this->markTheLogin($event, $user->id);
             $this->afterLogin($user);
         }
+        $this->makeTheUser($event, $wxUser);
     }
 
 
