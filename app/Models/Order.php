@@ -88,7 +88,7 @@ class Order extends Model
 
     public function scopeUsedCouponCode(Builder $query, $type, $date)
     {
-        $builder = $query->withTrashed()->whereNotNull('date_pay');
+        $builder = $query->whereNotNull('date_pay');
         switch ($type) {
             case CouponCode::TYPE_FIXED:
                 $builder->whereHas('couponCode', function($query) {
