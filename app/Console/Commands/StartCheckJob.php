@@ -39,9 +39,14 @@ class StartCheckJob extends Command
      */
     public function handle()
     {
-        $orders = Order::query()->where('status', 1)->get();
+        $orders = Order::query()->where(['status' => 1, 'checked' => false])->get();
         foreach($orders as $order) {
-            event(new OrderPaid($order));
+            if($order->category->check_type == 1) {
+                event(new OrderPaid($order));
+            }
+            $order->update([
+                'checked' => true
+            ]);
         }
     }
 }
