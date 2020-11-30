@@ -402,6 +402,7 @@ class PaymentsController extends Controller
 //                $orderId = $notify_arr['orderId']; //百度平台订单ID
                 //检查订单状态 检查支付状态 检查订单号  检查金额
                 $order = Order::where('orderid', $notify_arr['tpOrderId'])->first();
+                Log::info('百度支付', [$order]);
                 // 订单不存在则告知微信支付
                 if(!$order) {
                     return 'fail';

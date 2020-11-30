@@ -139,10 +139,7 @@ class OrderService
 
     public function OrderCreated(Order $order)
     {
-        // 未支付消息
         dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
-
-        // 开启关闭订单
         dispatch(new CloseOrder($order))->delay(now()->addMinute(30));
     }
 
@@ -198,7 +195,6 @@ class OrderService
         return $price;
     }
 
-    //计算字数
     public function calcWords($words)
     {
         $diff = 1000 - substr($words, -3);
