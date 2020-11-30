@@ -46,8 +46,7 @@ class OrderCheckedMsg implements ShouldQueue
                 ],
                 'data' => $data,
             ]);
-        }
-        if($this->order->user->phone) {
+        } else {
             try {
                 $result = app('easysms')->send($this->order->user->phone, [
                     'template' => config('easysms.gateways.aliyun.templates.checked'),
