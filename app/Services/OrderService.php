@@ -105,7 +105,7 @@ class OrderService
                 default:
                     $price = $category->price;
             }
-            if($user->is_free) {
+            if($user->is_free && $category->cid == 4) {
                 $words = max($words - 10000, 0);
             }
             switch ($category->price_type) {
