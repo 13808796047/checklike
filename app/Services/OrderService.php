@@ -140,7 +140,6 @@ class OrderService
     public function OrderCreated(Order $order)
     {
         dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
-        dispatch(new CloseOrder($order))->delay(now()->addMinute(30));
     }
 
     public function converFile(Category $category, $type, $content, $file_id, $file_prefix)

@@ -87,8 +87,8 @@ Route::get('freecheck', 'FreeCheckController@index');
 //邀请注册
 Route::get('zt/jc', 'InvitsController@index')->name('invit.index');
 Route::get('invit_official', 'InvitOfficialController@index')->name('invit_official.index');
-Route::get('getKey', function() {
-    $data['dealId'] = config('pay.baidu_pay.dealId');
-    $data['appKey'] = config('pay.baidu_pay.appKey');
-    return app('baidu_pay')->getSign($data);
-});
+//Route::get('getKey', function() {
+//    $data['dealId'] = config('pay.baidu_pay.dealId');
+//    $data['appKey'] = config('pay.baidu_pay.appKey');
+//    return app('baidu_pay')->getSign($data);
+//});
