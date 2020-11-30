@@ -601,7 +601,7 @@
        //判断访问源
         var sourceUrl = document.referrer;
 
-        if(sourceUrl.indexOf("p.checklike.com")=="-1" && sourceUrl!=""){
+        if(sourceUrl.indexOf("u.checklike.com")=="-1" && sourceUrl!=""){
 
           $("#staticBackdrop").modal("show")
           axios.get("/official_account").then(res=>{
