@@ -19,6 +19,7 @@ class CouponCodeResource extends JsonResource
     public function toArray($request)
     {
         $data = parent::toArray($request);
+        $data['category'] = new CategoryResource($this->whenLoaded('category'));
         return $data;
     }
 

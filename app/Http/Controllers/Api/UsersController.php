@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\RefreshPaged;
 use App\Http\Requests\Api\BoundPhoneRequest;
 use App\Http\Requests\Api\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Jobs\BindPhoneSuccess;
+use App\Models\CouponCode;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Auth\AuthenticationException;
@@ -46,7 +48,14 @@ class UsersController extends Controller
 
     public function me(Request $request)
     {
-        return (new UserResource($request->user))->showSensitiveFields();
+        $this->authorize('update', $user);
+        event(new RefreshPaged($user));
+//        $coupon_codes = $user->couponCodes()
+//            ->with('category')
+//            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+//            ->where('status', CouponCode::STATUS_ACTIVED)
+//            ->get();
+        return (new UserResource($request->user->load('couponCodes')))->showSensitiveFields();
     }
 
     public function resetPassword(Request $request)
