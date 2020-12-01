@@ -104,7 +104,7 @@
       </div>
       <div style="font-weight:bold;text-align:center;font-size:22px;">账号注册</div>
       <div class="modal-body">
-
+          <div id="registerTip" style="color:red;"></div>
          <div style="padding:10px 17px;">
             <div class="input-group">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
@@ -144,6 +144,7 @@
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
                   <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px;height:50px;border:none;" id="sendRegisterYzCode">发送验证码</button>
             </div>
+            <div id="registerErroTip"></div>
             <div id="registerTip" style="color:red;margin-bottom:10px;"></div>
             <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;border:none;">
                 提交注册

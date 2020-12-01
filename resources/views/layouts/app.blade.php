@@ -172,7 +172,7 @@
        $("#sendRegisterYzCode").attr('disabled', true);
        $("#sendRegisterYzCode").text(counts +' '+'S');
       }
-      count--;
+      counts--;
     }, 1000)
     axios.post('/api/v1/verificationCodes', {
       phone: iszcphone,
@@ -191,7 +191,8 @@
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
-          toastr.success(res.data.message)
+          // toastr.success(res.data.message)
+          $("#registerTip").text(res.data.message)
           yanzheng()
           // alertify.set('notifier','position', 'top-center');
           // alertify.success(res.data.message)
@@ -199,7 +200,8 @@
           // console.log(err.response.data,"fafdd")
           // alertify.set('notifier','position', 'top-center');
           // alertify.warning(err.response.data.message)
-          toastr.error(err.response.data.message)
+          // toastr.error(err.response.data.message)
+          $("#registerTip").text(err.response.data.message)
 
         })
   })
@@ -214,15 +216,13 @@
               swal("注册成功!");
               location.href = '{{route('home.index')}}'
             }).catch(err => {
-              if (err.response.status == 422) {
+
                 // $('#message').show();
                 // $.each(err.response.data.errors, (field, errors) => {
                 //   $('#message').append('<strong>' + errors + '</strong> </br>');
                 // })
-                $.each(err.response.data.errors, (field, errors) => {
-                  $("#registerTip").text(errors)
-                })
-              }
+                $("#registerErroTip").text(err.response.data.message)
+
               console.log(err,"注册")
             })
   })
