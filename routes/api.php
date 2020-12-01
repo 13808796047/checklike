@@ -59,6 +59,10 @@ Route::prefix('v1')
             Route::post('files', 'FilesController@store')->name('files.store');
             Route::get('qcrode/generate_img', 'OrdersController@generateImg')->name('qcrode.img');
             Route::get('payments/{order}/pay-by-free', 'PaymentsController@payByFree');
+
+            Route::get('coupon-codes', 'CouponCodesController@index');
+            Route::post('coupon-codes/active-coupon-code', 'CouponCodesController@activeCouponCode');
+            Route::get('orders/{order}/coupon-price', 'CouponCodesController@couponPrice');
         });
 
 
