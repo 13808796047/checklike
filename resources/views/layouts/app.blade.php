@@ -155,7 +155,7 @@
 
   var registerCode="";
   $("#RegisterDialogBtn").click(()=>{
-    console.log("xixi，点击了")
+
     $("#registerTcDialog").modal("show")
     $("#sendRegisterYzCode").click(()=>{
     let iszcphone =$("#registerphones").val();
@@ -191,13 +191,14 @@
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
-          alertify.set('notifier','position', 'top-center');
-          alertify.success(res.data.message)
+          toast.success(res.data.message)
+          // alertify.set('notifier','position', 'top-center');
+          // alertify.success(res.data.message)
         }).catch(err=>{
-          console.log(err.response.data,"fafdd")
-          alertify.set('notifier','position', 'top-center');
-          alertify.warning(err.response.data.message)
-
+          // console.log(err.response.data,"fafdd")
+          // alertify.set('notifier','position', 'top-center');
+          // alertify.warning(err.response.data.message)
+          toast.error(err.response.data.message)
         })
   })
   $('#submitRegisterBtn').click(() => {
