@@ -20,6 +20,7 @@ return [
         'cn_host' => env('CN_HOST'),
     ],
     'service_wechat' => env('SERVICE_WECHAT'),
+    'jc_times' => env('JC_TIMES'),
     'name' => env('APP_NAME', 'Laravel'),
 
     /*

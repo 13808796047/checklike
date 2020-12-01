@@ -57,11 +57,9 @@ class AuthenticationsController extends Controller
                     if($uid) {
                         $inviter = User::findOrFail($uid);
                         $inviter->increaseJcTimes(5);
-                        $user->increaseJcTimes(5);
                         \Cache::forget('uid');
                     }
-                    $user->increaseJcTimes(2);
-
+                    $user->increaseJcTimes(Config('app.jc_times'));
                 }
 
                 break;

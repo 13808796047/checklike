@@ -51,6 +51,7 @@ class AuthorizationsController extends Controller
                         'weixin_openid' => $oauthUser->getId(),
                         'weixin_unionid' => $unionid,
                     ]);
+                    $user->increaseJcTimes(Config('app.jc_times'));
                 }
 
                 break;
@@ -85,7 +86,7 @@ class AuthorizationsController extends Controller
         $attributes['weixin_unionid'] = $data['unionid'];
         if(!$user) {
             $user = User::create($attributes);
-            $user->increaseJcTimes(2);
+            $user->increaseJcTimes(Config('app.jc_times'));
         } else {
             $user->update($attributes);
         }
