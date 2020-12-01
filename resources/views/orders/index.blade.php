@@ -207,13 +207,14 @@
 
       $("#lxkfimg").click(()=>{
         $.dialog({
-
-    title:"",
-    useBootstrap: false,
-    boxWidth: '300px',
-
-    content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
-    `,
+          title:"",
+          closeIcon: false,
+          useBootstrap: false,
+          boxWidth: '300px',
+          content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
+          <div style="margin:0 auto;">微信扫一扫，与客服在线沟通</div>
+          <div style="margin:0 auto;">关闭</div>
+          `,
 });
 
 })
