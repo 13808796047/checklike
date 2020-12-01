@@ -180,7 +180,9 @@
         <div id="page"></div>
         </div>
       </div>
+      <div style="margin-top:10px;font-size:13px;color:#696969;cursor:pointer;" id="isBindPhonetip">提示：点击绑定手机号，可将原来用手机号登陆查重的订单同步到此账号下</div>
     </div>
+
     </div>
 
   </div>
@@ -189,6 +191,20 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
+      //手机号不存在
+      var isbindPhone = {!!Auth::user()!!}
+      if(!isbindPhone.phone){
+        console.log("cunz")
+        $("#isBindPhonetip").css("display","block")
+      }else{
+        console.log("no")
+        $("#isBindPhonetip").css("display","none")
+      }
+      $("#isBindPhonetip").click(()=>{
+        $("#bindTitle").modal("show")
+      })
+
+
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
