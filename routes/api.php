@@ -61,7 +61,7 @@ Route::prefix('v1')
             Route::get('payments/{order}/pay-by-free', 'PaymentsController@payByFree');
 
             Route::get('coupon-codes', 'CouponCodesController@index');
-            Route::get('coupon-codes/active-coupon-code', 'CouponCodesController@activeCouponCode');
+            Route::post('coupon-codes/active-coupon-code', 'CouponCodesController@activeCouponCode');
             Route::get('orders/{order}/coupon-price', 'CouponCodesController@couponPrice');
         });
 
