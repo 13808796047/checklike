@@ -144,6 +144,7 @@
                     id="bindCoderegister" type="text" placeholder="验证码" style="width:63%;">
                   <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px;height:50px;border:none;" id="sendRegisterYzCode">发送验证码</button>
             </div>
+            <div id="registerErroTip"></div>
             <div id="registerTip" style="color:red;margin-bottom:10px;"></div>
             <button type="button" class="btn btn-large btn-block" id="submitRegisterBtn" style="background:#26AEF2;color:#fff;border:none;">
                 提交注册
