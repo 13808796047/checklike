@@ -43,21 +43,21 @@ class UsersController extends Controller
             'password' => Hash::make($request->password),
         ]);
         \Cache::forget($verification_key);
-        return new UserResource($user);
+        return new UserResource($user->load('couponCodes'));
     }
 
-    public function me(Request $request)
-    {
-        $user = $request->user();
-        $this->authorize('update', $user);
-        event(new RefreshPaged($user));
-//        $coupon_codes = $user->couponCodes()
-//            ->with('category')
-//            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
-//            ->where('status', CouponCode::STATUS_ACTIVED)
-//            ->get();
-        return (new UserResource($user->load('couponCodes')))->showSensitiveFields();
-    }
+//    public function me(Request $request)
+//    {
+//        $user = $request->user();
+//        $this->authorize('update', $user);
+//        event(new RefreshPaged($user));
+////        $coupon_codes = $user->couponCodes()
+////            ->with('category')
+////            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+////            ->where('status', CouponCode::STATUS_ACTIVED)
+////            ->get();
+//        return (new UserResource($user->load('couponCodes')))->showSensitiveFields();
+//    }
 
     public function resetPassword(Request $request)
     {

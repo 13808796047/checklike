@@ -21,7 +21,7 @@ class UserResource extends JsonResource
         // 是否绑定了微信
         $data['bound_wechat'] = ($this->resource->weixin_unionid || $this->resource->weixin_openid) ? true : false;
         $data ['coupon_codes'] = $this->whenLoaded('couponCodes', function() {
-            $this->couponCodes()->with('category')->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+            return $this->couponCodes()->with('category')->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
                 ->where('status', CouponCode::STATUS_ACTIVED)->get();
         });
         return $data;
