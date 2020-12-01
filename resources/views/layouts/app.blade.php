@@ -123,7 +123,7 @@
   // $("#bindSelfPhone").click(()=>{
   //   $("#bindTitle").modal("show")
   // })
-  // var currentCode="";
+  var currentCode="";
   $("#sendYzCode").click(()=>{
     let isYZphone =$("#bindphonenum").val();
     console.log(isYZphone)
@@ -152,6 +152,30 @@
         })
     }
   })
+
+
+        // 绑定手机号
+  $("#bindnow").click(()=>{
+        axios.put("/bond_phone",{
+        verification_key:currentCode,
+        verification_code:$("#bindCodeNow").val()
+      }).then(res=>{
+        swal("绑定成功", {
+          icon: "success",
+        }).then(willDelete => {
+          $("#bindTitle").modal("hide")
+
+          window.location.reload()
+      });
+      }).catch(err=>{
+        toastr.error(err.response.data.message);
+      })
+      })
+      $("#bindno").click(()=>{
+        $("#bindTitle").modal("hide")
+      })
+
+
 
   var registerCode="";
   function yanzheng() {

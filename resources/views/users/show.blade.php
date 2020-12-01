@@ -258,26 +258,7 @@
         })
       })
       var currentCode="";
-      // 绑定手机号
-      $("#bindnow").click(()=>{
-        axios.put("/bond_phone",{
-        verification_key:currentCode,
-        verification_code:$("#bindCodeNow").val()
-      }).then(res=>{
-        swal("绑定成功", {
-          icon: "success",
-        }).then(willDelete => {
-          $("#bindTitle").modal("hide")
 
-          window.location.reload()
-      });
-      }).catch(err=>{
-        toastr.error(err.response.data.message);
-      })
-      })
-      $("#bindno").click(()=>{
-        $("#bindTitle").modal("hide")
-      })
       //修改密码
       $("#userxiugaipsd").click(()=>{
         $("#xgtoast").text("")
