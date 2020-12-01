@@ -180,10 +180,10 @@
         <div id="page"></div>
         </div>
       </div>
-      <div>提示：点击绑定手机号，可将原来用手机号登陆查重的订单同步到此账号下</div>
-    </div>
-    </div>
 
+    </div>
+    </div>
+    <div>提示：点击绑定手机号，可将原来用手机号登陆查重的订单同步到此账号下</div>
   </div>
 @stop
 @section('scripts')
