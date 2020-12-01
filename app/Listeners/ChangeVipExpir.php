@@ -36,7 +36,7 @@ class ChangeVipExpir
             $user->update([
                 'user_group' => 0,
                 'vip_days' => 0,
-                'is_free' => 0,
+                'is_free' => false,
                 'vip_expir_at' => null
             ]);
         }
