@@ -191,7 +191,8 @@
   <script>
     $(function () {
       //手机号不存在
-      if({{Auth::user()->phone}}){
+      var isbindPhone = {!!Auth::user()!!}
+      if(!isbindPhone.phone){
         console.log("cunz")
       }else{
         console.log("no")
