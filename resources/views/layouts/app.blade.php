@@ -191,14 +191,14 @@
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
-          toast.success(res.data.message)
+          toastr.success(res.data.message)
           // alertify.set('notifier','position', 'top-center');
           // alertify.success(res.data.message)
         }).catch(err=>{
           // console.log(err.response.data,"fafdd")
           // alertify.set('notifier','position', 'top-center');
           // alertify.warning(err.response.data.message)
-          toast.error(err.response.data.message)
+          toastr.error(err.response.data.message)
         })
   })
   $('#submitRegisterBtn').click(() => {
