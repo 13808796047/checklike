@@ -180,6 +180,7 @@
         <div id="page"></div>
         </div>
       </div>
+      <div>提示：点击绑定手机号，可将原来用手机号登陆查重的订单同步到此账号下</div>
     </div>
     </div>
 
@@ -190,7 +191,10 @@
   <script>
     $(function () {
       var isbindPhone = {{Auth::user()->phone}}
-      console.log(!isbindPhone,"fsad")
+      //手机号不存在
+      if(!isbindPhone){
+
+      }
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
