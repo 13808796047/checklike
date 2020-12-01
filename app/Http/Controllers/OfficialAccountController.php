@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use League\Flysystem\Config;
 use Ramsey\Uuid\Uuid;
 
 class OfficialAccountController extends Controller
@@ -200,6 +201,7 @@ class OfficialAccountController extends Controller
                 'weixin_openid' => $wxUser['openid'],
                 'weixin_unionid' => $wxUser['unionid'],
             ]);
+            $user->increaseJcTimes(config('app.jc_times'));
             $this->markTheLogin($event, $user->id);
             $this->afterLogin($user);
         });

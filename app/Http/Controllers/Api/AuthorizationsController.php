@@ -51,7 +51,7 @@ class AuthorizationsController extends Controller
                         'weixin_openid' => $oauthUser->getId(),
                         'weixin_unionid' => $unionid,
                     ]);
-                    $user->increaseJcTimes(Config('app.jc_times'));
+                    $user->increaseJcTimes(config('app.jc_times'));
                 }
 
                 break;
@@ -86,7 +86,7 @@ class AuthorizationsController extends Controller
         $attributes['weixin_unionid'] = $data['unionid'];
         if(!$user) {
             $user = User::create($attributes);
-            $user->increaseJcTimes(Config('app.jc_times'));
+            $user->increaseJcTimes(config('app.jc_times'));
         } else {
             $user->update($attributes);
         }
@@ -136,7 +136,7 @@ class AuthorizationsController extends Controller
                 $user = User::create([
                     'phone' => $verifyData['phone']
                 ]);
-                $user->increaseJcTimes(2);
+                $user->increaseJcTimes(config('app.jc_times'));
             }
             $token = auth('api')->login($user);
             // 清除验证码缓存
