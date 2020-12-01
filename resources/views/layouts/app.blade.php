@@ -172,7 +172,7 @@
        $("#sendRegisterYzCode").attr('disabled', true);
        $("#sendRegisterYzCode").text(counts +' '+'S');
       }
-      count--;
+      counts--;
     }, 1000)
     axios.post('/api/v1/verificationCodes', {
       phone: iszcphone,
