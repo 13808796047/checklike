@@ -181,7 +181,7 @@
         </div>
       </div>
 
-      <div style="margin-top: 10px; font-size: 13px; color: rgb(105, 105, 105); cursor: pointer; display: none;" id="isBindPhonetip"><span style="background:rgb(0, 189, 42);padding:2px 5px;color:#FFF">提示</span>&nbsp;点击<font color="#0000ff">绑定手机号</font>，可将之前用手机号提交的查重订单同步到此账号下，如需帮助请 <font color="#0000ff" id="lxkfimg">联系客服</font>。</div>
+      <div style="margin-top: 10px; font-size: 13px; color: rgb(105, 105, 105); cursor: pointer; display: none;" ><span style="background:rgb(0, 189, 42);padding:2px 5px;color:#FFF">提示</span>&nbsp;点击<font color="#0000ff" id="isBindPhonetip">绑定手机号</font>，可将之前用手机号提交的查重订单同步到此账号下，如需帮助请 <font color="#0000ff" id="lxkfimg">联系客服</font>。</div>
     </div>
 
     </div>
@@ -204,6 +204,11 @@
       $("#isBindPhonetip").click(()=>{
         $("#bindTitle").modal("show")
       })
+
+      $("#lxkfimg").click(()=>{
+        console.log("xixi")
+      })
+
 
 
       var last_page={{$orders->lastPage()}}
