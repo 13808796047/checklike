@@ -54,7 +54,6 @@ class User extends Authenticatable implements JWTSubject
     public function couponCodes()
     {
         return $this->hasMany(CouponCode::class, 'uid');
-
     }
 
     public function changeDays($days)
