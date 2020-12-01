@@ -24,7 +24,7 @@ class OrderCheckedMsg implements ShouldQueue
         $this->order = $order;
     }
 
-    public function handle()
+    public function handle(EasySms $easySms)
     {
         $data = [
             'first' => '您的论文已经检测完成,点击查看结果',
@@ -48,7 +48,7 @@ class OrderCheckedMsg implements ShouldQueue
             ]);
         } else {
             try {
-                $result = app('easysms')->send($this->order->user->phone, [
+                $result = $easySms->send($this->order->user->phone, [
                     'template' => config('easysms.gateways.aliyun.templates.checked'),
                 ]);
             } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
