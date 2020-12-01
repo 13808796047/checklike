@@ -206,8 +206,29 @@
       })
 
       $("#lxkfimg").click(()=>{
-        console.log("xix")
-      })
+        $.confirm({
+    title: 'Prompt!',
+    content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`,
+    buttons: {
+        formSubmit: {
+            text: 'Submit',
+            btnClass: 'btn-blue',
+            action: function () {
+                var name = this.$content.find('.name').val();
+                if(!name){
+                    $.alert('provide a valid name');
+                    return false;
+                }
+                $.alert('Your name is ' + name);
+            }
+        },
+        cancel: function () {
+            //close
+        },
+    }
+});
+
+})
 
 
 
