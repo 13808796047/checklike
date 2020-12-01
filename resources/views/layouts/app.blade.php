@@ -214,7 +214,7 @@
               swal("注册成功!");
               location.href = '{{route('home.index')}}'
             }).catch(err => {
-              if (err.response.status == 422) {
+
                 // $('#message').show();
                 // $.each(err.response.data.errors, (field, errors) => {
                 //   $('#message').append('<strong>' + errors + '</strong> </br>');
@@ -222,7 +222,7 @@
                 $.each(err.response.data.errors, (field, errors) => {
                   $("#registerTip").text(errors)
                 })
-              }
+
               console.log(err,"注册")
             })
   })
