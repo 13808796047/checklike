@@ -207,7 +207,8 @@
 
       $("#lxkfimg").click(()=>{
         $.confirm({
-    title: 'Prompt!',
+          offsetTop: 60,
+    offsetBottom: 60,
     content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`,
     buttons: {
         formSubmit: {
