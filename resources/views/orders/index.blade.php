@@ -207,12 +207,14 @@
 
       $("#lxkfimg").click(()=>{
         $.confirm({
-          offsetTop: 60,
-    offsetBottom: 60,
+
+    title:"",
+    draggable: true,
+    dragWindowGap: 0,
     content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`,
     buttons: {
         formSubmit: {
-            text: 'Submit',
+            text: '关闭',
             btnClass: 'btn-blue',
             action: function () {
                 var name = this.$content.find('.name').val();
@@ -222,10 +224,7 @@
                 }
                 $.alert('Your name is ' + name);
             }
-        },
-        cancel: function () {
-            //close
-        },
+        }
     }
 });
 
