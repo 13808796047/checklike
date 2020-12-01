@@ -133,9 +133,13 @@ class OrderApiHandler
                 'Token' => $this->token
             ],
         ];
-        $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
+        try {
+            $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
 
-        return $response->getbody()->getContents();
+            return $response->getbody()->getContents();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 //        return file_put_contents(public_path().'/test.docx',$response->getbody()->getContents());
     }
 
