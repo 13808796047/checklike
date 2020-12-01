@@ -200,6 +200,11 @@
         console.log("no")
         $("#isBindPhonetip").css("display","none")
       }
+      $("#isBindPhonetip").click(()=>{
+        $("#bindTitle").modal("show")
+      })
+
+
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
