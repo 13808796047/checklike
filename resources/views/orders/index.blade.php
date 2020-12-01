@@ -206,19 +206,12 @@
       })
 
       $("#lxkfimg").click(()=>{
-        $.confirm({
+        $.dialog({
 
     title:"",
     useBootstrap: false,
     boxWidth: '300px',
-    buttons:{
-      no: {
-            keys: ['N'],
-      },
-      no: {
-            keys: ['N'],
-      }
-    },
+
     content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
           <div style="margin:0 auto;">关闭</div>
     `,
