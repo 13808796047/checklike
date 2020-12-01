@@ -210,22 +210,10 @@
 
     title:"",
     useBootstrap: false,
-    boxWidth: '200px',
-    content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`,
-    buttons: {
-        formSubmit: {
-            text: '关闭',
-            btnClass: 'btn-blue',
-            action: function () {
-                var name = this.$content.find('.name').val();
-                if(!name){
-                    $.alert('provide a valid name');
-                    return false;
-                }
-                $.alert('Your name is ' + name);
-            }
-        }
-    }
+    boxWidth: '300px',
+    content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
+          <div style="margin:0 auto;">关闭</div>
+    `,
 });
 
 })
