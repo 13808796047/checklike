@@ -212,8 +212,8 @@
           useBootstrap: false,
           boxWidth: '300px',
           content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
-          <div style="margin:0 auto;">微信扫一扫，与客服在线沟通</div>
-          <div style="margin:0 auto;">关闭</div>
+          <div style="color:#696969;text-align:center;margin:5px 0;font-size:13px;">微信扫一扫，与客服在线沟通</div>
+          <div style="background:#206CE1;text-align:center;margin:10px 100px;color:#fff;font-size: 15px;">关闭</div>
           `,
 });
 
