@@ -217,11 +217,6 @@
         });
       })
 
-      $("#closeDialogModel").click(()=>{
-
-      })
-
-
 
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
