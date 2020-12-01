@@ -190,12 +190,11 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      var isbindPhone = {{Auth::user()->phone}}
       //手机号不存在
-      if(!isbindPhone){
-
+      if(!{{Auth::user()->phone}}){
+        console.log("xox")
       }else{
-
+        console.log("cunz")
       }
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
