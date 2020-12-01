@@ -211,6 +211,7 @@
     title:"",
     draggable: true,
     dragWindowGap: 0,
+    boxWidth: '210px',
     content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`,
     buttons: {
         formSubmit: {
