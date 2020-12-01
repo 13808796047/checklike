@@ -181,7 +181,7 @@
         </div>
       </div>
 
-      <div style="margin-top: 10px; font-size: 13px; color: rgb(105, 105, 105); cursor: pointer; display: none;" ><span style="background:rgb(0, 189, 42);padding:2px 5px;color:#FFF">提示</span>&nbsp;点击<font color="#0000ff" id="isBindPhonetip">绑定手机号</font>，可将之前用手机号提交的查重订单同步到此账号下，如需帮助请 <font color="#0000ff" id="lxkfimg">联系客服</font>。</div>
+      <div style="margin-top: 10px; font-size: 13px; color: rgb(105, 105, 105); cursor: pointer; display: none;" id="bindModel"><span style="background:rgb(0, 189, 42);padding:2px 5px;color:#FFF">提示</span>&nbsp;点击<font color="#0000ff" id="isBindPhonetip">绑定手机号</font>，可将之前用手机号提交的查重订单同步到此账号下，如需帮助请 <font color="#0000ff" id="lxkfimg">联系客服</font>。</div>
     </div>
 
     </div>
@@ -196,10 +196,10 @@
       var isbindPhone = {!!Auth::user()!!}
       if(!isbindPhone.phone){
         console.log("cunz")
-        $("#isBindPhonetip").css("display","block")
+        $("#bindModel").css("display","block")
       }else{
         console.log("no")
-        $("#isBindPhonetip").css("display","none")
+        $("#bindModel").css("display","none")
       }
       $("#isBindPhonetip").click(()=>{
         $("#bindTitle").modal("show")
@@ -208,7 +208,7 @@
       $("#lxkfimg").click(()=>{
         $.confirm({
     title: 'Prompt!',
-    content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`
+    content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`,
     buttons: {
         formSubmit: {
             text: 'Submit',
