@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CouponCode;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -19,6 +20,10 @@ class UserResource extends JsonResource
         $data['bound_phone'] = $this->resource->phone ? true : false;
         // 是否绑定了微信
         $data['bound_wechat'] = ($this->resource->weixin_unionid || $this->resource->weixin_openid) ? true : false;
+        $data ['coupon_codes'] = $this->whenLoaded('couponCodes', function() {
+            $this->couponCodes()->with('category')->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
+                ->where('status', CouponCode::STATUS_ACTIVED)->get();
+        });
         return $data;
     }
 
