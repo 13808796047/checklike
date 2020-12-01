@@ -199,6 +199,7 @@
           // alertify.set('notifier','position', 'top-center');
           // alertify.warning(err.response.data.message)
           toastr.error(err.response.data.message)
+
         })
   })
   $('#submitRegisterBtn').click(() => {
