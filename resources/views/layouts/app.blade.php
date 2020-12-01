@@ -191,7 +191,8 @@
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
-          toastr.success(res.data.message)
+          // toastr.success(res.data.message)
+          $("#registerTip").text(res.data.message)
           yanzheng()
           // alertify.set('notifier','position', 'top-center');
           // alertify.success(res.data.message)
@@ -199,7 +200,8 @@
           // console.log(err.response.data,"fafdd")
           // alertify.set('notifier','position', 'top-center');
           // alertify.warning(err.response.data.message)
-          toastr.error(err.response.data.message)
+          // toastr.error(err.response.data.message)
+          $("#registerTip").text(err.response.data.message)
 
         })
   })
