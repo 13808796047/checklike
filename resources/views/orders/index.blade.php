@@ -180,7 +180,8 @@
         <div id="page"></div>
         </div>
       </div>
-      <div style="margin-top:10px;font-size:13px;color:#696969;cursor:pointer;" id="isBindPhonetip">提示：点击绑定手机号，可将原来用手机号登陆查重的订单同步到此账号下</div>
+
+      <div style="margin-top: 10px; font-size: 13px; color: rgb(105, 105, 105); cursor: pointer; display: none;" id="isBindPhonetip"><span style="background:rgb(0, 189, 42);padding:2px 5px;color:#FFF">提示</span>&nbsp;点击<font color="#0000ff">绑定手机号</font>，可将之前用手机号提交的查重订单同步到此账号下，如需帮助请 <font color="#0000ff" id="lxkfimg">联系客服</font>。</div>
     </div>
 
     </div>
