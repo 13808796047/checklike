@@ -822,6 +822,25 @@
           .siblings(".listbox")
           .css("display", "none");
       });
+
+
+      //注册
+      $("#registerphones").blur(()=>{
+    axios.post('/api/v1/check-phone', {
+          phone: $('#registerphones').val(),
+        }).then(res => {
+          console.log(res,"xii")
+          toastr.success(res.data.message)
+          // alertify.set('notifier','position', 'top-center');
+          // alertify.success(res.data.message)
+        }).catch(err=>{
+          // console.log(err.response.data,"fafdd")
+          // alertify.set('notifier','position', 'top-center');
+          // alertify.warning(err.response.data.message)
+          toastr.error(err.response.data.message)
+
+        })
+  })
     });
   </script>
 @stop
