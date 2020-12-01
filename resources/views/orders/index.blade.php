@@ -191,10 +191,10 @@
   <script>
     $(function () {
       //手机号不存在
-      if(!{{Auth::user()->phone}}){
-        console.log("xox")
-      }else{
+      if({{Auth::user()->phone}}){
         console.log("cunz")
+      }else{
+        console.log("no")
       }
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
