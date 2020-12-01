@@ -59,7 +59,7 @@ class AuthenticationsController extends Controller
                         $inviter->increaseJcTimes(5);
                         \Cache::forget('uid');
                     }
-                    $user->increaseJcTimes(Config('app.jc_times'));
+                    $user->increaseJcTimes(config('app.jc_times'));
                 }
 
                 break;
