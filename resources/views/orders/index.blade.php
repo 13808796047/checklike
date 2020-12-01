@@ -193,7 +193,7 @@
       var isbindPhone = {{Auth::user()->phone}}
       //手机号不存在
       if(!isbindPhone){
-        console.log("xixi")
+
       }else{
 
       }
