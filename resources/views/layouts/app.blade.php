@@ -154,10 +154,8 @@
   })
 
   var registerCode="";
-  $("#RegisterDialogBtn").click(()=>{
-    console.log("xixi，点击了")
-    $("#registerTcDialog").modal("show")
-    $("#sendRegisterYzCode").click(()=>{
+  function yanzheng() {
+  $("#sendRegisterYzCode").click(()=>{
     let iszcphone =$("#registerphones").val();
     console.log(iszcphone)
     if(!(/^1[3456789]\d{9}$/.test(iszcphone))){
@@ -185,18 +183,23 @@
       })
     }
   })
-})
+}
+
+
   $("#registerphones").blur(()=>{
     axios.post('/api/v1/check-phone', {
           phone: $('#registerphones').val(),
         }).then(res => {
           console.log(res,"xii")
-          alertify.set('notifier','position', 'top-center');
-          alertify.success(res.data.message)
+          toastr.success(res.data.message)
+          yanzheng()
+          // alertify.set('notifier','position', 'top-center');
+          // alertify.success(res.data.message)
         }).catch(err=>{
-          console.log(err.response.data,"fafdd")
-          alertify.set('notifier','position', 'top-center');
-          alertify.warning(err.response.data.message)
+          // console.log(err.response.data,"fafdd")
+          // alertify.set('notifier','position', 'top-center');
+          // alertify.warning(err.response.data.message)
+          toastr.error(err.response.data.message)
 
         })
   })

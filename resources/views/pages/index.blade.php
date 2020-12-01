@@ -822,6 +822,7 @@
           .siblings(".listbox")
           .css("display", "none");
       });
+
     });
   </script>
 @stop

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title','智能查重')
 @section('styles')
-<!-- <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" /> -->
 <link rel="stylesheet" href="{{asset('asset/css/check.css')}}">
 <style>
   del { background: #FFB6C1; }
