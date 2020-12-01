@@ -56,7 +56,7 @@ class UsersController extends Controller
 //            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
 //            ->where('status', CouponCode::STATUS_ACTIVED)
 //            ->get();
-        return (new UserResource($user->load('couponCodes')))->showSensitiveFields();
+        return (new UserResource($user))->showSensitiveFields();
     }
 
     public function resetPassword(Request $request)
