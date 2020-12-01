@@ -189,7 +189,7 @@
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
     $(function () {
-      console.log({{Auth::user()->phone}})
+      console.log({{Auth::user()->phone}},"fsdaf")
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
