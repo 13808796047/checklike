@@ -48,6 +48,7 @@ class UsersController extends Controller
 
     public function me(Request $request)
     {
+        $user = $request->user();
         $this->authorize('update', $user);
         event(new RefreshPaged($user));
 //        $coupon_codes = $user->couponCodes()
@@ -55,7 +56,7 @@ class UsersController extends Controller
 //            ->whereIn('type', [CouponCode::TYPE_FIXED, CouponCode::TYPE_PERCENT])
 //            ->where('status', CouponCode::STATUS_ACTIVED)
 //            ->get();
-        return (new UserResource($request->user->load('couponCodes')))->showSensitiveFields();
+        return (new UserResource($user->load('couponCodes')))->showSensitiveFields();
     }
 
     public function resetPassword(Request $request)
