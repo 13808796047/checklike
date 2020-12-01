@@ -56,10 +56,10 @@ class CheckOrderStatus implements ShouldQueue
                         $report = $api->extractReportDetail($this->order->api_orderid);
                         $content = $report->data->content;
                     } catch (\Exception $e) {
-                        $content = '';
+                        $e->getMessage();
                     }
                     $this->order->report()->create([
-                        'content' => $content
+                        'content' => $content ?? ""
                     ]);
                 });
             }
