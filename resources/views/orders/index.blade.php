@@ -190,7 +190,7 @@
   <script>
     $(function () {
       var isbindPhone = {{Auth::user()->phone}}
-      console.log(isbindPhone,"fsad")
+      console.log(!isbindPhone,"fsad")
       var last_page={{$orders->lastPage()}}
       var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
