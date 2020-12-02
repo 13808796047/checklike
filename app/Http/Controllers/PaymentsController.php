@@ -342,7 +342,7 @@ class PaymentsController extends Controller
 
     protected function afterOrderPaid(Order $order)
     {
-        dispatch(new CheckOrderStatus($order))->delay(now()->addMinute(30));
+//        dispatch(new CheckOrderStatus($order))->delay(now()->addMinute(30));
         event(new OrderPaid($order));
         dispatch(new OrderPaidMsg($order));
     }

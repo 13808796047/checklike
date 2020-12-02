@@ -45,11 +45,16 @@ class PaymentsController extends Controller
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
+        if($code = $request->code) {
 
+            $price = $this->paymentService->calcPrice($order, $request->code);
+        } else {
+            $price = $order->price;
+        }
         $openid = $request->user()->weapp_openid;
         return app('wechat_pay_mp')->mp([
             'out_trade_no' => $order->orderid,  // 商户订单流水号，与支付宝 out_trade_no 一样
-            'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
+            'total_fee' => $price * 100, // 与支付宝不同，微信支付的金额单位是分。
             'body' => $order->category->name . '-' . config('app.service_wechat'),
             'openid' => $openid
         ]);
@@ -93,11 +98,17 @@ class PaymentsController extends Controller
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
         $jssdk = $payment->jssdk;
+        if($code = $request->code) {
+
+            $price = $this->paymentService->calcPrice($order, $request->code);
+        } else {
+            $price = $order->price;
+        }
         try {
             $result = $payment->order->unify([
                 'body' => $order->category->name . '-' . config('app.service_wechat'),
                 'out_trade_no' => $order->orderid . '_' . $this->orderfix,
-                'total_fee' => $order->price * 100,//todo
+                'total_fee' => $price * 100,//todo
                 'attach' => $order->id,
                 'spbill_create_ip' => '', // 可选，如不传该参数，SDK 将会自动获取相应 IP 地址
                 'notify_url' => $config['notify_url'], // 支付结果通知网址，如果不设置则会使用配置里的默认地址
