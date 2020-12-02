@@ -147,7 +147,9 @@
         </thead>
         <tbody>
         @if($orders->total()==0)
-          <div>暂无报告</div>
+          <tr>
+          <div style="text-align:center;">暂无订单信息，<span>点击去查重</span></div>
+          </tr>
         @else
         @foreach($orders as $order)
           <tr>
