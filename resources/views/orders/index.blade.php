@@ -146,7 +146,7 @@
         </tr>
         </thead>
         <tbody>
-        @if({{$orders->total()}}==0)
+        @if($orders->total()==0)
           <div>暂无报告</div>
         @else
         @foreach($orders as $order)
