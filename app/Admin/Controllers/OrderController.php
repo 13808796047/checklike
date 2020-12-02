@@ -23,6 +23,7 @@ use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 use Dcat\Admin\Widgets\Modal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 
 class OrderController extends AdminController
@@ -260,6 +261,7 @@ class OrderController extends AdminController
         if(!$order->report_path) {
             return admin_error('错误!', '订单支付后才能下载论文');
         }
-        return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
+        return Storage::disk('downloads')->download($order->report_path, $order->writer . '-' . $order->title . '.zip');
+//        return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
 }

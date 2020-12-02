@@ -98,7 +98,7 @@ class OrdersController extends Controller
 //            return response()->download('/storage/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
 //        }
         return Storage::disk('downloads')->download($order->report_path, $order->writer . '-' . $order->title . '.zip');
-        return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
+//        return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
 
     public function generateQrcode(Request $request, Order $order)
