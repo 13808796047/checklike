@@ -41,7 +41,6 @@ class OrderController extends AdminController
 
         return Grid::make(Order::with(['category', 'user']), function(Grid $grid) {
             $grid->id->sortable()->display(function($id) {
-                dd($this);
 //                return "<a href='orders/{$this->id}/download_report'>$id</a>";
                 return Storage::disk('downloads')->download($this->report_path, $this->writer . '-' . $this->title . '.zip');
             });
