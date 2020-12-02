@@ -148,7 +148,7 @@
         <tbody>
         @if($orders->total()==0)
           <tr>
-           <td><div>暂无订单信息，<span>点击去查重</span></div></td>
+           <td><div class="col-span-12 p-4">暂无订单信息，<span>点击去查重</span></div></td>
           </tr>
         @else
         @foreach($orders as $order)
