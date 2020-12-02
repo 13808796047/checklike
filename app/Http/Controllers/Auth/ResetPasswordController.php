@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
     protected function rules()
     {
         return [
-            'password' => 'required|confirmed|min:8',
+            'password' => 'required|confirmed|min:6',
         ];
     }
 
