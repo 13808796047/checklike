@@ -271,8 +271,8 @@
       })
       $("#xiugaisure").click(()=>{
 
-        if($("#xgpsd").val().length<8){
-           $("#xgtoast").text("密码不少于8位")
+        if($("#xgpsd").val().length<6){
+           $("#xgtoast").text("密码不少于6位")
            return;
        }
        if($("#xgpsd").val()!=$("#xgsurepsd").val()){
