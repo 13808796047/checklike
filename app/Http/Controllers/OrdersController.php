@@ -97,6 +97,7 @@ class OrdersController extends Controller
 //        if($order->pay_type == '百度支付') {
 //            return response()->download('/storage/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
 //        }
+        return Storage::disk('downloads')->download($order->report_path, $order->writer . '-' . $order->title . '.zip');
         return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
 
