@@ -313,10 +313,12 @@ class PaymentsController extends Controller
 
     public function wechatMpNotify()
     {
+
         // 校验回调参数是否正确
         $data = app('wechat_pay_mp')->verify();
         // 找到对应的订单
-        $order = Order::where('orderid', $data->out_trade_no)->first();
+        [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
+        $order = Order::where('orderid', $out_trade_no)->first();
         // 订单不存在则告知微信支付
         if(!$order) {
             return 'fail';
@@ -331,7 +333,7 @@ class PaymentsController extends Controller
         $order->update([
             'date_pay' => Carbon::now(),
             'pay_type' => '微信小程序支付',
-            'payid' => $data->out_trade_no, //订单号
+            'payid' => $out_trade_no, //订单号
             'pay_price' => $data->total_fee / 100,//支付金额
             'status' => 1,
         ]);

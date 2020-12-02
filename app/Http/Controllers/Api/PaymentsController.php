@@ -27,6 +27,7 @@ class PaymentsController extends Controller
     public function __construct(PaymentService $paymentService)
     {
         $this->paymentService = $paymentService;
+        $this->orderfix = rand(1, 99);
     }
 
     public function payByFree(Request $request, Order $order)
@@ -53,7 +54,7 @@ class PaymentsController extends Controller
         }
         $openid = $request->user()->weapp_openid;
         return app('wechat_pay_mp')->mp([
-            'out_trade_no' => $order->orderid,  // 商户订单流水号，与支付宝 out_trade_no 一样
+            'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
             'total_fee' => $price * 100, // 与支付宝不同，微信支付的金额单位是分。
             'body' => $order->category->name . '-' . config('app.service_wechat'),
             'openid' => $openid
@@ -93,7 +94,7 @@ class PaymentsController extends Controller
         if($order->status == 1 || $order->del) {
             throw new InvalidRequestException('订单状态不正确');
         }
-        $this->orderfix = rand(1, 99);
+
         $config = config('pay.wechat');
         $config['notify_url'] = route('payments.wechat.notify');
         $payment = Factory::payment($config);
