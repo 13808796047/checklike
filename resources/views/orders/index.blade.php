@@ -219,6 +219,7 @@
 
 
       var last_page={{$orders->lastPage()}}
+      console.log({{$orders->total()}},"条条条")
       var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
         nowPage: current_page, // 当前页码
