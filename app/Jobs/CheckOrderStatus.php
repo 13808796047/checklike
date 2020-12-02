@@ -43,9 +43,6 @@ class CheckOrderStatus implements ShouldQueue
             \Storage::put($path, $file);
             //存储pdf
             $content = $api->extractReportPdf($this->order->api_orderid);
-            if(!$content){
-                dispatch(new CheckOrderStatus($this->order));
-            }
             file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
             $report_pdf_path = config('app.url') . '/pdf/' . $this->order->orderid . '.pdf';
             \DB::transaction(function() use ($path, $result, $report_pdf_path) {
