@@ -147,7 +147,7 @@
         </thead>
         <tbody>
         @if($orders->total()==0)
-          <tr>
+          <!-- <tr>
            <td></td>
            <td></td>
 
@@ -155,7 +155,8 @@
            <td></td>
            <td></td>
            <td></td>
-          </tr>
+          </tr> -->
+          <p>fjsadlfds</p>
         @else
         @foreach($orders as $order)
           <tr>
