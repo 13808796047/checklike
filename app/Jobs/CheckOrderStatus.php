@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use PhpOffice\PhpWord\Shared\ZipArchive;
 use function Psy\debug;
 
@@ -35,6 +36,7 @@ class CheckOrderStatus implements ShouldQueue
         $result = $api->getOrder($this->order->api_orderid);
         if($result->code == 200) {
             $file = $api->downloadReport($this->order->api_orderid);
+            Log::info('file', [$file]);
             if(!$file) {
                 dispatch(new CheckOrderStatus($this->order));
             }
