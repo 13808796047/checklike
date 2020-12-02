@@ -150,7 +150,7 @@
           <tr>
            <td></td>
            <td></td>
-           <td></td>
+
            <td><div>暂无订单信息，<span>点击去查重</span></div></td>
            <td></td>
            <td></td>
