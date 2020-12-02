@@ -181,7 +181,7 @@
         </div>
       </div>
 
-      <div style="margin-top: 10px; font-size: 13px; color: rgb(105, 105, 105); cursor: pointer; display: none;" id="bindModel"><span style="background:rgb(0, 189, 42);padding:2px 5px;color:#FFF">提示</span>&nbsp;点击<font color="#0000ff" id="isBindPhonetip">绑定手机号</font>，可将之前用手机号提交的查重订单同步到此账号下，如需帮助请 <font color="#0000ff" id="lxkfimg">联系客服</font>。</div>
+      <div style="margin-top: 10px; font-size: 13px; color: rgb(105, 105, 105); cursor: pointer; display: none;" id="Bindmodel"><span style="background:rgb(0, 189, 42);padding:2px 5px;color:#FFF">提示</span>&nbsp;点击<font color="#0000ff" id="isBindPhonetip">绑定手机号</font>，可将之前用手机号提交的查重订单同步到此账号下，如需帮助请 <font color="#0000ff" id="lxkfimg">联系客服</font>。</div>
     </div>
 
     </div>
@@ -196,38 +196,26 @@
       var isbindPhone = {!!Auth::user()!!}
       if(!isbindPhone.phone){
         console.log("cunz")
-        $("#bindModel").css("display","block")
+        $("#Bindmodel").css("display","block")
       }else{
         console.log("no")
-        $("#bindModel").css("display","none")
+        $("#Bindmodel").css("display","none")
       }
       $("#isBindPhonetip").click(()=>{
         $("#bindTitle").modal("show")
       })
 
       $("#lxkfimg").click(()=>{
-        $.confirm({
-    title: 'Prompt!',
-    content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">`,
-    buttons: {
-        formSubmit: {
-            text: 'Submit',
-            btnClass: 'btn-blue',
-            action: function () {
-                var name = this.$content.find('.name').val();
-                if(!name){
-                    $.alert('provide a valid name');
-                    return false;
-                }
-                $.alert('Your name is ' + name);
-            }
-        },
-        cancel: function () {
-            //close
-        },
-    },
+        $.dialog({
+          title:"",
+          closeIcon: true,
+          useBootstrap: false,
+          boxWidth: '300px',
+          content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
+          <div style="color:#696969;text-align:center;margin:5px 0;font-size:13px;">微信扫一扫，与客服在线沟通</div>
+          `,
+        });
       })
-
 
 
       var last_page={{$orders->lastPage()}}
