@@ -34,9 +34,8 @@ class CheckOrderStatus implements ShouldQueue
         $api = app(OrderApiHandler::class);
         $result = $api->getOrder($this->order->api_orderid);
         if($result->code == 200) {
-            try {
-                $file = $api->downloadReport($this->order->api_orderid);
-            } catch (\Exception $exception) {
+            $file = $api->downloadReport($this->order->api_orderid);
+            if(!$file) {
                 dispatch(new CheckOrderStatus($this->order));
             }
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
@@ -44,6 +43,9 @@ class CheckOrderStatus implements ShouldQueue
             \Storage::put($path, $file);
             //存储pdf
             $content = $api->extractReportPdf($this->order->api_orderid);
+            if(!$content){
+                dispatch(new CheckOrderStatus($this->order));
+            }
             file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
             $report_pdf_path = config('app.url') . '/pdf/' . $this->order->orderid . '.pdf';
             \DB::transaction(function() use ($path, $result, $report_pdf_path) {
