@@ -173,7 +173,7 @@
         </tbody>
       </table>
       @if($orders->total()==0)
-      <div style="text-align:center;">暂无订单信息<span>点击去查重</span></div>
+      <div style="text-align:center;">暂无订单信息，<a style="cursor:pointer;color: #1E90FF;" href="/categories/1">点击去查重</a></div>
       @else
       @endif
       <div class="flex justify-between">
