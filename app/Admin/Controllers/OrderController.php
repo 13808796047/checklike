@@ -41,8 +41,7 @@ class OrderController extends AdminController
 
         return Grid::make(Order::with(['category', 'user']), function(Grid $grid) {
             $grid->id->sortable()->display(function($id) {
-//                return "<a href='orders/{$this->id}/download_report'>$id</a>";
-                return Storage::disk('downloads')->download($this->report_path ?? '', $this->writer . '-' . $this->title);
+                return "<a target='_self' download='orders/{$this->id}/download_report'>$id</a>";
             });
             $grid->paginate(20);
             $grid->export()->disableExportAll();
@@ -262,7 +261,7 @@ class OrderController extends AdminController
         if(!$order->report_path) {
             return admin_error('错误!', '订单支付后才能下载论文');
         }
-        return Storage::disk('downloads')->download($order->report_path, $order->writer . '-' . $order->title . '.zip');
+        return Storage::disk('downloads')->download($this->report_path ?? '', $this->writer . '-' . $this->title);
 //        return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
 }
