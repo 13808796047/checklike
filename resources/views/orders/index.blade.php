@@ -146,6 +146,9 @@
         </tr>
         </thead>
         <tbody>
+        @if({{$orders->total()}}==0)
+          <div>暂无报告</div>
+        @else
         @foreach($orders as $order)
           <tr>
             <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
@@ -169,6 +172,7 @@
             @endif
           </tr>
         @endforeach
+        @endif
         </tbody>
       </table>
       <div class="flex justify-between">
@@ -218,8 +222,14 @@
       })
 
 
+
+
+
+
+
+
       var last_page={{$orders->lastPage()}}
-      console.log({{$orders->total()}},"条条条")
+
       var current_page = {{$orders->currentPage()}}
       let a =new Paging('page', {
         nowPage: current_page, // 当前页码
