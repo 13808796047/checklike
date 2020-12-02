@@ -146,18 +146,7 @@
         </tr>
         </thead>
         <tbody>
-        @if($orders->total()==0)
-          <!-- <tr>
-           <td></td>
-           <td></td>
 
-           <td><div>暂无订单信息，<span>点击去查重</span></div></td>
-           <td></td>
-           <td></td>
-           <td></td>
-          </tr> -->
-          <p>fjsadlfds</p>
-        @else
         @foreach($orders as $order)
           <tr>
             <td><input type='checkbox' name='delete' value='{{$order->id}}'/></td>
@@ -181,9 +170,9 @@
             @endif
           </tr>
         @endforeach
-        @endif
         </tbody>
       </table>
+      <div>暂无订单信息</div>
       <div class="flex justify-between">
 
         <a class="inline-block text-white py-2 px-4" id="del_item"><span style="background: red;
