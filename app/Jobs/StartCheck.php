@@ -31,7 +31,7 @@ class StartCheck implements ShouldQueue
             return;
         }
         if($result->code == 200 && $this->order->status == 1) {
-            $this->order->user->update([
+            $this->order->user()->update([
                 'is_free' => false,
             ]);
             if($this->order->user->user_group == 3) {
