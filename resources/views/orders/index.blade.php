@@ -172,7 +172,10 @@
         @endforeach
         </tbody>
       </table>
-      <div>暂无订单信息</div>
+      @if($orders->total()==0)
+      <div style="text-align:center;">暂无订单信息<span>点击去查重</span></div>
+      @else
+      @endif
       <div class="flex justify-between">
 
         <a class="inline-block text-white py-2 px-4" id="del_item"><span style="background: red;
