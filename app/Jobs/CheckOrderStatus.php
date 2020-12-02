@@ -36,8 +36,7 @@ class CheckOrderStatus implements ShouldQueue
         $result = $api->getOrder($this->order->api_orderid);
         if($result->code == 200) {
             $file = $api->downloadReport($this->order->api_orderid);
-            Log::info('file', [$file]);
-            if(!$file) {
+            if($file->code == 503 && $file->status == 0) {
                 dispatch(new CheckOrderStatus($this->order));
             }
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
