@@ -20,7 +20,7 @@ class CheckOrderStatus implements ShouldQueue
 
     protected $order;
     public $timeout = 120;
-    public $tries = 3;
+    public $tries = 10;
 
     public function __construct(Order $order)
     {

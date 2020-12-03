@@ -16,8 +16,8 @@ class getOrderStatus implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $order;
-    protected $timeout = 60;
-    protected $tries = 3;
+    public $timeout = 60;
+    public $tries = 3;
 
     public function __construct(Order $order)
     {
@@ -36,7 +36,7 @@ class getOrderStatus implements ShouldQueue
                     break;
                 case 9:
                     $status = OrderEnum::CHECKED;
-                    dispatch(new CheckOrderStatus($this->order));
+                    dispatch(new CheckOrderStatus($this->order))->delay(now()->addMinute());
                     break;
                 default:
                     $status = OrderEnum::CHECKING;
