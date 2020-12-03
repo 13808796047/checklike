@@ -104,11 +104,7 @@ class CheckOrderStatus implements ShouldQueue
 
         }
     }
-
-    public function retryUntil()
-    {
-        return now()->addSeconds(5);
-    }
+    
 
     /**
      * 任务未能处理
