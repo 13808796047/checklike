@@ -135,9 +135,10 @@ class OrderApiHandler
             ],
         ];
         try {
-            $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
-
-            return $response->getbody()->getContents();
+            do {
+                $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
+                Log::info('status', $response->getStatusCode());
+            } while ($response->getStatusCode() != 200);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -153,13 +154,8 @@ class OrderApiHandler
             ],
         ];
         try {
-
-            do {
-                $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
-                Log::info('status', $response->getStatusCode());
-            } while ($response->getStatusCode() != 200);
-            // $code = $response->getStatusCode(); // 200
-            return $response->getbody()->getContents();
+            $response = $this->http->get($this->api . 'order/extract-report-detail/' . $id, $option);
+            return json_decode($response->getbody()->getContents());
         } catch (Exception $e) {
             return $e->getMessage();
         }
