@@ -39,33 +39,33 @@ class CheckOrderStatus implements ShouldQueue
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
             \Storage::delete($path);
             $ret = \Storage::put($path, $file);
-            if($ret) {
-                $status = OrderEnum::CHECKED;
-                //存储pdf
-                $content = $api->extractReportPdf($this->order->api_orderid);
-                file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
-                $report_pdf_path = config('app.url') . '/pdf/' . $this->order->orderid . '.pdf';
-                \DB::transaction(function() use ($path, $result, $report_pdf_path, $status) {
-                    $this->order->update([
-                        'report_path' => $path,
-                        'report_pdf_path' => $report_pdf_path,
-                        'rate' => str_replace('%', '', $result->data->orderCheck->apiResultSemblance),
-                        'status' => $status,
-                    ]);
-                    if($this->order->status == 4) {
-                        dispatch(new OrderCheckedMsg($this->order));
-                    }
-                    try {
-                        $report = $api->extractReportDetail($this->order->api_orderid);
-                        $content = $report->data->content;
-                    } catch (\Exception $e) {
-                        $e->getMessage();
-                    }
-                    $this->order->report()->create([
-                        'content' => $content ?? ""
-                    ]);
-                });
+            if(!$ret) {
+                throw new \Exception('文件未获取');
             }
+            //存储pdf
+            $content = $api->extractReportPdf($this->order->api_orderid);
+            file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
+            $report_pdf_path = config('app.url') . '/pdf/' . $this->order->orderid . '.pdf';
+            \DB::transaction(function() use ($path, $result, $report_pdf_path) {
+                $this->order->update([
+                    'report_path' => $path,
+                    'report_pdf_path' => $report_pdf_path,
+                    'rate' => str_replace('%', '', $result->data->orderCheck->apiResultSemblance),
+                    'status' => OrderEnum::CHECKED
+                ]);
+                if($this->order->status == 4) {
+                    dispatch(new OrderCheckedMsg($this->order));
+                }
+                try {
+                    $report = $api->extractReportDetail($this->order->api_orderid);
+                    $content = $report->data->content;
+                } catch (\Exception $e) {
+                    $e->getMessage();
+                }
+                $this->order->report()->create([
+                    'content' => $content ?? ""
+                ]);
+            });
 
 
 //            info(storage_path('app/' . $path));
@@ -104,7 +104,7 @@ class CheckOrderStatus implements ShouldQueue
 
         }
     }
-    
+
 
     /**
      * 任务未能处理
