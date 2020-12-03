@@ -38,7 +38,10 @@ class CheckOrderStatus implements ShouldQueue
             $file = $api->downloadReport($this->order->api_orderid);
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
             \Storage::delete($path);
-            \Storage::put($path, $file);
+            $ret = \Storage::put($path, $file);
+            if($ret) {
+                $status = OrderEnum::CHECKED;
+            }
             //存储pdf
             $content = $api->extractReportPdf($this->order->api_orderid);
             file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
@@ -48,6 +51,7 @@ class CheckOrderStatus implements ShouldQueue
                     'report_path' => $path,
                     'report_pdf_path' => $report_pdf_path,
                     'rate' => str_replace('%', '', $result->data->orderCheck->apiResultSemblance),
+                    'status' => $status,
                 ]);
                 if($this->order->status == 4) {
                     dispatch(new OrderCheckedMsg($this->order));

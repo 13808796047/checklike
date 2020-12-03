@@ -35,7 +35,7 @@ class getOrderStatus implements ShouldQueue
                     $status = OrderEnum::INLINE;
                     break;
                 case 9:
-                    $status = OrderEnum::CHECKED;
+//                    $status = OrderEnum::CHECKED;
                     dispatch(new CheckOrderStatus($this->order))->delay(now()->addMinute());
                     break;
                 default:
