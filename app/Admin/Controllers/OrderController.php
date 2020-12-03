@@ -40,7 +40,9 @@ class OrderController extends AdminController
         // 第二个参数为 `Column` 对象， 第三个参数是自定义参数
 
         return Grid::make(Order::with(['category', 'user']), function(Grid $grid) {
-            $grid->id->sortable()->downloadable("orders/{$this->id}/download_report");
+            $grid->id->sortable()->display(function($id) {
+                return "<span >$id</span>";
+            })->downloadable("orders/{$this->id}/download_report");
             $grid->paginate(20);
             $grid->export()->disableExportAll();
             $grid->quickSearch('title', 'orderid', 'api_orderid', 'userid');
