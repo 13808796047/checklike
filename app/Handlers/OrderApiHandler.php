@@ -152,8 +152,13 @@ class OrderApiHandler
             ],
         ];
         try {
-            $response = $this->http->get($this->api . 'order/extract-report-detail/' . $id, $option);
-            return json_decode($response->getbody()->getContents());
+
+            do {
+                $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
+
+            } while ($response->getStatusCode() != 200);
+            // $code = $response->getStatusCode(); // 200
+            return $response->getbody()->getContents();
         } catch (Exception $e) {
             return $e->getMessage();
         }
