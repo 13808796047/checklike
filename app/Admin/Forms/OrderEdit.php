@@ -71,12 +71,12 @@ class OrderEdit extends Form implements LazyRenderable
         if(!$order) {
             return $this->response()->error('用户不存在');
         }
-        $this->text('orderid', '订单号')->readOnly()->default($order->orderid);
-        $this->text('title', '标题')->readOnly()->default($order->title);
-        $this->text('writer', '作者')->readOnly()->default($order->writer);
-        $this->text('words', '字数')->readOnly()->default($order->words);
-        $this->currency('price', '价格')->readOnly()->default($order->price);
-        $this->rate('rate', '重复率')->required()->default($order->rate);
+        $this->text('orderid', '订单号')->default($order->orderid);
+        $this->text('title', '标题')->default($order->title);
+        $this->text('writer', '作者')->default($order->writer);
+        $this->text('words', '字数')->default($order->words);
+        $this->currency('price', '价格')->default($order->price);
+        $this->rate('rate', '重复率')->default($order->rate);
         $this->select('status', '状态')->options([
             0 => '待支付',
             1 => '待检测',
