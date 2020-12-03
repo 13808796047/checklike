@@ -35,7 +35,11 @@ class CheckOrderStatus implements ShouldQueue
         $api = app(OrderApiHandler::class);
         $result = $api->getOrder($this->order->api_orderid);
         if($result->code == 200) {
-            $file = $api->downloadReport($this->order->api_orderid);
+            try {
+                $file = $api->downloadReport($this->order->api_orderid);
+            } catch (\Exception $e) {
+                throw new \Exception($e->getMessage());
+            }
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
             \Storage::delete($path);
             \Storage::put($path, $file);
