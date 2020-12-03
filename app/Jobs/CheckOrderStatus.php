@@ -36,12 +36,15 @@ class CheckOrderStatus implements ShouldQueue
         $result = $api->getOrder($this->order->api_orderid);
         if($result->code == 200) {
             $file = $api->downloadReport($this->order->api_orderid);
+            Log::info('file', [$file]);
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
             \Storage::delete($path);
             $ret = \Storage::put($path, $file);
+            Log::info('ret', [$ret]);
             if(!$ret) {
                 throw new \Exception('文件未获取');
             }
+            Log::info('11111');
             //存储pdf
             $content = $api->extractReportPdf($this->order->api_orderid);
             file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
