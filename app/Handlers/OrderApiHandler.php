@@ -134,14 +134,14 @@ class OrderApiHandler
                 'Token' => $this->token
             ],
         ];
-        try {
-            do {
-                $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
-                Log::info('status', $response->getStatusCode());
-            } while ($response->getStatusCode() != 200);
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
+//        try {
+//            do {
+        $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
+//            } while ($response->getStatusCode() != 200);
+//        } catch (\Exception $e) {
+//            return $e->getMessage();
+//        }
+        return $response->getbody()->getContents();
 //        return file_put_contents(public_path().'/test.docx',$response->getbody()->getContents());
     }
 
