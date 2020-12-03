@@ -9,6 +9,7 @@ use CloudConvert\Models\Job;
 use CloudConvert\Models\Task;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use mysql_xdevapi\Exception;
 
 class OrderApiHandler
@@ -155,7 +156,7 @@ class OrderApiHandler
 
             do {
                 $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
-
+                Log::info('status', $response->getStatusCode());
             } while ($response->getStatusCode() != 200);
             // $code = $response->getStatusCode(); // 200
             return $response->getbody()->getContents();
