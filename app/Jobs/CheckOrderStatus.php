@@ -39,7 +39,6 @@ class CheckOrderStatus implements ShouldQueue
             $path = 'downloads/report-' . $this->order->api_orderid . '.zip';
             \Storage::delete($path);
             $ret = \Storage::put($path, $file);
-            Log::info('ret', [$ret]);
             if($ret) {
                 $status = OrderEnum::CHECKED;
                 //存储pdf
