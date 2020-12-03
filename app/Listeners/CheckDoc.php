@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\OrderPaid;
 use App\Handlers\OrderApiHandler;
 use App\Jobs\CloudCouvertFile;
+use App\Jobs\UpdateIsFree;
 use App\Jobs\UploadCheckFile;
 use App\Models\CouponCode;
 use App\Models\Order;
@@ -18,6 +19,12 @@ class CheckDoc implements ShouldQueue
     {
         //从事件对象中取出对应的订单
         $order = $event->getOrder();
+        $order->user()->update([
+            'is_free' => false,
+        ]);
+        if($order->user->user_group == 3) {
+            dispatch(new UpdateIsFree($this->order))->delay(now()->addDay());
+        }
         $order->couponCode()->update([
             'status' => CouponCode::STATUS_USED
         ]);
