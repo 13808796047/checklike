@@ -41,8 +41,8 @@ class OrderController extends AdminController
 
         return Grid::make(Order::with(['category', 'user']), function(Grid $grid) {
             $grid->id->sortable()->display(function($id) {
-                return "<span >$id</span>";
-            })->downloadable("orders/{$this->id}/download_report");
+                return "<a target='_self'  href='orders/{$this->id}/download_report'>$id</a>";
+            });
             $grid->paginate(20);
             $grid->export()->disableExportAll();
             $grid->quickSearch('title', 'orderid', 'api_orderid', 'userid');
