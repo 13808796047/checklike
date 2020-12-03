@@ -19,8 +19,8 @@ class CheckOrderStatus implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $order;
-    protected $timeout = 120;
-    protected $tries = 3;
+    public $timeout = 120;
+    public $tries = 3;
 
     public function __construct(Order $order)
     {
