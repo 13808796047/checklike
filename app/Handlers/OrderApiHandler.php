@@ -137,6 +137,9 @@ class OrderApiHandler
 //        try {
 //            do {
         $response = $this->http->get($this->api . 'order/download-report/' . $id, $option);
+        if($response->getStatusCode() != 200) {
+            throw new \Exception('文件未取到');
+        }
 //            } while ($response->getStatusCode() != 200);
 //        } catch (\Exception $e) {
 //            return $e->getMessage();
