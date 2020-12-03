@@ -74,7 +74,7 @@ class OrderController extends AdminController
             $grid->column('category.name', '系统');
             // 展示关联关系的字段时，使用 column 方法
             $grid->column('userid', '买家')->display(function($userid) {
-                return User::find($userid)->phone ?? '';
+                return User::find($userid)->phone ?? $this->id;
             });
             $grid->column('status', '状态')->using([
                 0 => '未支付',
