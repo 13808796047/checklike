@@ -15,7 +15,6 @@ trait CheckOrderHelper
     public function getOrderStatus()
     {
         $orders = Order::query()->whereIn('status', [3, 4])->where('checked', false)->get();
-        dd($orders);
         foreach($orders as $order) {
             if($order->status == 3) {
                 dispatch(new getOrderStatus($order));
