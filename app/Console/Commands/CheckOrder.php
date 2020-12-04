@@ -38,8 +38,6 @@ class CheckOrder extends Command
      */
     public function handle(Order $order)
     {
-        $this->info('开始检测...');
         $order->getOrderStatus();
-        $this->info('检测完成...');
     }
 }
