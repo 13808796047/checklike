@@ -14,13 +14,16 @@ trait CheckOrderHelper
 {
     public function getOrderStatus()
     {
-        $orders = Order::query()->where('status', 4)->orWhere('status', 3)->get();
+        $orders = Order::query()->whereIn('status', [3, 4])->where('checked', false)->get();
         foreach($orders as $order) {
             if($order->status == 3) {
                 dispatch(new getOrderStatus($order));
             }
             if($order->status == 4 && $order->report_path == '') {
                 dispatch(new CheckOrderStatus($order));
+                $order->update([
+                    'checked' => true,
+                ]);
             }
         }
     }

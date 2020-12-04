@@ -31,6 +31,7 @@ class OrderController extends AdminController
     public function index(Content $content)
     {
         return $content
+            ->header('订单列表')
             ->body($this->grid());
     }
 
