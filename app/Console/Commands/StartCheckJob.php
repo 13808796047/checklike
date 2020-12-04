@@ -39,7 +39,7 @@ class StartCheckJob extends Command
      */
     public function handle()
     {
-        $orders = Order::query()->where(['status' => 1, 'checked' => false])->get();
+        $orders = Order::query()->where(['status' => 1, 'checked' => false, 'pay_type' => '百度支付'])->get();
         foreach($orders as $order) {
             if($order->category->check_type == 1) {
                 event(new OrderPaid($order));
