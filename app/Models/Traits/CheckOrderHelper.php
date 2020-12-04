@@ -2,6 +2,7 @@
 
 namespace App\Models\Traits;
 
+use App\Events\OrderPaid;
 use App\Handlers\OrderApiHandler;
 use App\Jobs\CheckOrderStatus;
 use App\Jobs\getOrderStatus;
@@ -14,17 +15,14 @@ trait CheckOrderHelper
 {
     public function getOrderStatus()
     {
-        $orders = Order::query()->whereIn('status', [3, 4])->where('checked', false)->get();
+        $orders = Order::query()->where(['status' => 1, 'checked' => false])->get();
         foreach($orders as $order) {
-            if($order->status == 3) {
-                dispatch(new getOrderStatus($order));
+            if($order->category->check_type == 1) {
+                event(new OrderPaid($order));
             }
-            if($order->status == 4 && $order->report_path == '') {
-                dispatch(new CheckOrderStatus($order));
-                $order->update([
-                    'checked' => true,
-                ]);
-            }
+            $order->update([
+                'checked' => true
+            ]);
         }
     }
 }
