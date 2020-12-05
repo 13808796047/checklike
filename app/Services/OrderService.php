@@ -129,7 +129,7 @@ class OrderService
             }
             \Cache::forget('word');
             $order->orderContent()->create([
-                'content' => $content ?? ''
+                'content' => $result['content'] ?? ''
             ]);
             $this->OrderCreated($order);
             return $order;
@@ -171,7 +171,7 @@ class OrderService
                 $result = $upload->saveTxt($content, 'files', $file_prefix);
             }
         }
-        $result = ['path' => $result['path'], 'words' => $words];
+        $result = ['path' => $result['path'], 'words' => $words, 'content' => $content];
         return $result;
     }
 

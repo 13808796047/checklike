@@ -11,6 +11,7 @@ use App\Models\User;
 use EasyWeChat\Factory;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthorizationsController extends Controller
@@ -42,7 +43,6 @@ class AuthorizationsController extends Controller
                 } else {
                     $user = User::where('weixin_openid', $oauthUser->getId())->first();
                 }
-
                 // 没有用户，默认创建一个用户
                 if(!$user) {
                     $user = User::create([
