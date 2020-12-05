@@ -261,7 +261,7 @@ class OrderController extends AdminController
         if(!$order->report_path) {
             return admin_error('错误!', '订单支付后才能下载论文');
         }
-        return Storage::disk('downloads')->download($order->report_path ?? '', $order->writer . '-' . $order->title . '.zip');
+        return Storage::disk('downloads')->download($order->report_path ?? '', $order->writer . '-' . preg_replace("/\//", "&", $order->title) . '.zip');
 //        return response()->download(storage_path() . '/app/' . $order->report_path, $order->writer . '-' . $order->title . '.zip');
     }
 }
