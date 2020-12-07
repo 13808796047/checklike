@@ -12,9 +12,8 @@ class WordHandler
     public function save($content, $folder, $file_prefix)
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        $section = $phpWord->addSection();
+        $section = $phpWord->createSection();
         $contentFormat = str_replace("\r\n", "<w:br/>", $content);
-        dd($contentFormat);
         $section->addText($contentFormat);
         // 保存文件
         //生成的文檔爲Word2007
