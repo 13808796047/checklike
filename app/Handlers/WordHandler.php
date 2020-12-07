@@ -26,6 +26,7 @@ class WordHandler
                 mkdir($upload_path, 0777, true);
                 chmod($upload_path, 0777);
             }
+            chmod($upload_path, 0777);
             $writer->save($upload_path . '/' . $filename);
             return [
                 'path' => config('app.url') . "/$folder_name/$filename"
