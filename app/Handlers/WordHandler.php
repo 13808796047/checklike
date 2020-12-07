@@ -18,10 +18,10 @@ class WordHandler
         $section->addText($contentFormat);
         // 保存文件
         //生成的文檔爲Word2007
-        $writer = IOFactory::createWriter($phpWord);
+        $writer = IOFactory::createWriter($phpWord, 'HTML');
         $folder_name = "uploads/$folder/" . date('Ym/d', time());
         $upload_path = public_path() . '/' . $folder_name;
-        $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.docx';
+        $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.doc';
         try {
             if(!file_exists($upload_path)) {
                 mkdir($upload_path, 0777, true);
