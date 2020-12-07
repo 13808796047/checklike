@@ -12,12 +12,12 @@ class WordHandler
     public function save($content, $folder, $file_prefix)
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        $section = $phpWord->createSection();
+        $section = $phpWord->addSection();
         $contentFormat = str_replace("\r\n", "<w:br/>", $content);
         $section->addText($contentFormat);
         // 保存文件
         //生成的文檔爲Word2007
-        $writer = IOFactory::createWriter($phpWord, 'Word2007');
+        $writer = IOFactory::createWriter($phpWord);
         $folder_name = "uploads/$folder/" . date('Ym/d', time());
         $upload_path = public_path() . '/' . $folder_name;
         $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.docx';
