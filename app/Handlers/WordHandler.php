@@ -13,8 +13,9 @@ class WordHandler
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
-//        $contentFormat = str_replace("\r\n", "<w:br/>", $content);
-        $section->addText($content);
+        $contentFormat = str_replace("\r\n", "<w:br/>", $content);
+        dd($contentFormat);
+        $section->addText($contentFormat);
         // 保存文件
         //生成的文檔爲Word2007
         $writer = IOFactory::createWriter($phpWord, 'HTML');
