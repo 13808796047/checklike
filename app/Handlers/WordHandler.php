@@ -13,12 +13,12 @@ class WordHandler
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
-        $contentFormat = str_replace("\r\n", "<br/>", $content);
+        $contentFormat = str_replace("\r\n", "<w:br/>", $content);
 //        $contentFormat = htmlspecialchars($content);
         $section->addText($contentFormat);
         // 保存文件
         //生成的文檔爲Word2007
-        $writer = IOFactory::createWriter($phpWord, 'HTML');
+        $writer = IOFactory::createWriter($phpWord);
         $folder_name = "uploads/$folder/" . date('Ym/d', time());
         $upload_path = public_path() . '/' . $folder_name;
         $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.doc';
