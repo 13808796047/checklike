@@ -14,7 +14,6 @@ class WordHandler
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
         $contentFormat = str_replace("\r\n", "<w:br />", $content);
-        dd($contentFormat);
 //        $contentFormat = htmlspecialchars($content);
         $section->addText($contentFormat);
         // 保存文件
