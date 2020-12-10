@@ -13,6 +13,7 @@ class WordHandler
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
+        dd($content);
         $contentFormat = str_replace("\r\n", "<w:br/>", $content);
 //        $contentFormat = htmlspecialchars($content);
         $section->addText($contentFormat);
