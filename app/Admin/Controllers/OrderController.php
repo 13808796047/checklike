@@ -231,7 +231,6 @@ class OrderController extends AdminController
 
     public function uploadZip(Request $request)
     {
-        dd($request->report_path);
         if($request->hasFile('file')) {
             $file = $request->file('file');
             if(!$file->isValid()) {
