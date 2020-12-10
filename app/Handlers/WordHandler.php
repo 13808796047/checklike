@@ -12,6 +12,7 @@ class WordHandler
     public function save($content, $folder, $file_prefix)
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        dd(public_path('template/template.docx'));
         $template = $phpWord->loadTemplate(public_path('template/template.docx'));
         $template->setValue('content', $content);
 //        $section = $phpWord->addSection();
