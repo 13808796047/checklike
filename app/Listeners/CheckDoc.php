@@ -30,10 +30,7 @@ class CheckDoc implements ShouldQueue
         ]);
         if($order->category->check_type == 1) {
             if($order->category->classid == 4) {
-                if(!$order->file) {
-                    dispatch(new UploadCheckFile($order));
-                }
-                if($order->file->type == 'docx') {
+                if($order->file && $order->file->type == 'docx') {
                     $content = read_docx($order->file->real_path);
                     $words = count_words($content);
                     if($words / $order->words > 1.15) {
