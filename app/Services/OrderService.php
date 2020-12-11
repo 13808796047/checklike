@@ -165,11 +165,8 @@ class OrderService
             }
         } else {
             $words = count_words(remove_spec_char($content));
-            if($category->classid == 3) {
-                $result = $wordHandler->save($content, 'files', $file_prefix);
-            } else {
-                $result = $upload->saveTxt($content, 'files', $file_prefix);
-            }
+            $result = $upload->saveTxt($content, 'files', $file_prefix);
+
         }
         $result = ['path' => $result['path'], 'words' => $words, 'content' => $content];
         return $result;
