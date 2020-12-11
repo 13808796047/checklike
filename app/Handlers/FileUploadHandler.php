@@ -30,11 +30,11 @@ class FileUploadHandler
         ];
     }
 
-    public function saveTxt($txt_content, $folder, $file_prefix)
+    public function saveTxt($txt_content, $folder, $file_prefix, $extension = 'txt')
     {
         $folder_name = "uploads/$folder/" . date('Ym/d', time());
         $upload_path = public_path() . '/' . $folder_name;
-        $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.txt';
+        $filename = $file_prefix . '_' . time() . '_' . \Str::random(10) . '.' . $extension;
         try {
             if(!is_dir($upload_path)) {
                 mkdir($upload_path, 0777, true);
