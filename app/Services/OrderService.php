@@ -128,9 +128,6 @@ class OrderService
                 ]);
             }
             \Cache::forget('word');
-            $order->orderContent()->create([
-                'content' => $result['content'] ?? ''
-            ]);
             $this->OrderCreated($order);
             return $order;
         });
