@@ -37,7 +37,6 @@ class CheckDoc implements ShouldQueue
                 if(!$order->file) {
                     $this->startCheck($order);
                 }
-
                 if($order->file->type == 'docx') {
                     $words = count_words(read_docx($order->file->real_path));
                     if($words / $order->words > 1.15) {

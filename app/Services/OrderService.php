@@ -27,11 +27,12 @@ class OrderService
     {
         $order = \DB::transaction(function() use ($request) {
             $category = Category::find($request->cid);
+            $file = File::find($request->file_id);
             $user = \Auth::user();
 //            if($request->phone) {
 //                $result = $this->converFile($category, $request->type, $request->file_id, $phone);
 //            }
-            $result = $this->converFile($category, $request->type, $request->content, $request->file_id, $user->id);
+            $result = $this->converFile($category, $request->type, $request->content, $file, $user->id);
             $words = $result['words'];
 
 
@@ -138,12 +139,12 @@ class OrderService
         dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
     }
 
-    public function converFile(Category $category, $type, $content, $file_id, $file_prefix)
+    public function converFile(Category $category, $type, $content, $file, $file_prefix)
     {
         $wordHandler = app(WordHandler::class);
         $fileWords = app(FileWordsHandle::class);
         $upload = app(FileUploadHandler::class);
-        $file = File::find($file_id);
+
         if($type == 'file') {
             if($file->type == 'txt') {
                 $content = remove_spec_char(convert2utf8(file_get_contents($file->real_path)));
