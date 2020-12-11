@@ -38,13 +38,11 @@ class CheckDoc implements ShouldQueue
                     $this->startCheck($order);
                 }
                 if($order->file->type == 'docx') {
-                    Log::info('云1');
                     $words = count_words(read_docx($order->file->real_path));
-                    Log::info('云ddd' . $words / $order->words);
                     if($words / $order->words > 1.15) {
-                        Log::info('云2');
                         $this->cloudConert($order, $order->file->path, 'txt');
                     }
+                    $this->startCheck($order);
                 } else {
                     $this->cloudConert($order, $order->file->path, 'txt');
                 }
