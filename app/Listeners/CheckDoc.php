@@ -19,6 +19,9 @@ class CheckDoc implements ShouldQueue
     {
         //从事件对象中取出对应的订单
         $order = $event->getOrder();
+        if($order->category->check_type != 1) {
+            return;
+        }
         $order->user()->update([
             'is_free' => false,
         ]);
@@ -28,25 +31,29 @@ class CheckDoc implements ShouldQueue
         $order->couponCode()->update([
             'status' => CouponCode::STATUS_USED
         ]);
-        if($order->category->check_type == 1) {
-            if($order->category->classid == 4) { // 万方特殊处理,docx
+
+        switch ($order->category->classid) {
+            case 4:
                 // 如果上传文件 docx 转换为txt,再启动检测
                 if($order->file && $order->file->type == 'docx') {
                     $content = read_docx($order->file->real_path);
                     $words = count_words($content);
                     if($words / $order->words > 1.15) {
-                        $this->cloudConert($order);
+                        $this->cloudConert($order, 'txt');
                     }
                 } else {
                     // 没有docx,直接检测
                     $this->startCheck($order);
                 }
-            } else {
-                //调用上传接口
+                break;
+            case 3:
+                $this->cloudConert($order, 'doc');
+                break;
+            default:
                 $this->startCheck($order);
-            }
         }
     }
+
 
     protected function startCheck(Order $order)
     {

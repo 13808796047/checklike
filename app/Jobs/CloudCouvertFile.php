@@ -22,9 +22,11 @@ class CloudCouvertFile implements ShouldQueue
     protected $order;
     protected $timeout = 60;
     protected $tries = 3;
+    protected $to;
 
-    public function __construct(Order $order)
+    public function __construct(Order $order, $to)
     {
+        $this->to = $to;
         $this->order = $order;
     }
 
@@ -42,7 +44,7 @@ class CloudCouvertFile implements ShouldQueue
                 ->addTask(
                     (new Task('convert', 'convert-my-file'))
                         ->set('input', 'import-my-file')
-                        ->set('output_format', 'txt')
+                        ->set('output_format', $this->to)
 //                        ->set('some_other_option', 'value')
                 )
                 ->addTask(
