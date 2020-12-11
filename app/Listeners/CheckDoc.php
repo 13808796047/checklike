@@ -39,7 +39,7 @@ class CheckDoc implements ShouldQueue
                     $content = read_docx($order->file->real_path);
                     $words = count_words($content);
                     if($words / $order->words > 1.15) {
-                        $this->cloudConert($order, 'txt');
+                        $this->cloudConert($order->file->path, 'txt');
                     }
                 } else {
                     // 没有docx,直接检测
@@ -47,7 +47,7 @@ class CheckDoc implements ShouldQueue
                 }
                 break;
             case 3:
-                $this->cloudConert($order, 'doc');
+                $this->cloudConert($order->paper_path, 'doc');
                 break;
             default:
                 $this->startCheck($order);
@@ -60,8 +60,8 @@ class CheckDoc implements ShouldQueue
         dispatch(new UploadCheckFile($order));
     }
 
-    protected function cloudConert(Order $order)
+    protected function cloudConert(Order $order, $from, $to)
     {
-        dispatch(new CloudCouvertFile($order));
+        dispatch(new CloudCouvertFile($order, $from, $to));
     }
 }

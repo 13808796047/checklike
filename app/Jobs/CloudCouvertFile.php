@@ -23,9 +23,11 @@ class CloudCouvertFile implements ShouldQueue
     protected $timeout = 60;
     protected $tries = 3;
     protected $to;
+    protected $from;
 
-    public function __construct(Order $order, $to)
+    public function __construct(Order $order, $from, $to)
     {
+        $this->from = $from;
         $this->to = $to;
         $this->order = $order;
     }
@@ -39,7 +41,7 @@ class CloudCouvertFile implements ShouldQueue
                 ->setTag('checklike')
                 ->addTask(
                     (new Task('import/url', 'import-my-file'))
-                        ->set('url', $this->order->file->path)
+                        ->set('url', $this->from)
                 )
                 ->addTask(
                     (new Task('convert', 'convert-my-file'))
