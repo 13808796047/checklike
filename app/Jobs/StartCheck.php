@@ -37,10 +37,7 @@ class StartCheck implements ShouldQueue
             ]);
         }
     }
-
-    /**
-     * 任务未能处理
-     */
+    
     public function failed(\Throwable $exception)
     {
         $data = [

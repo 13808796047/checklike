@@ -76,7 +76,6 @@ class OrderService
             }
 
             $referer = \Cache::get('word');
-            //创建订单
             $order = new Order([
                 'cid' => $request->cid,
                 'title' => $request->title,

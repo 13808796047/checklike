@@ -70,7 +70,6 @@ class CloudCouvertFile implements ShouldQueue
                 $this->order->update([
                     'paper_path' => $result['path']
                 ]);
-                //调用上传接口
                 dispatch(new UploadCheckFile($this->order));
             }
         }
