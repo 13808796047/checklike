@@ -37,7 +37,8 @@ class CheckDoc implements ShouldQueue
                         $this->cloudConert($order);
                     }
                 } else {
-                    $this->cloudConert($order);
+//                    $this->cloudConert($order);
+                    dispatch(new UploadCheckFile($order));
                 }
             } else {
                 //调用上传接口
