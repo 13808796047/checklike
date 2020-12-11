@@ -35,7 +35,6 @@ class CheckDoc implements ShouldQueue
         switch ($order->category->classid) {
             case 4:
                 if(!$order->file) {
-                    // 没有docx,直接检测
                     $this->startCheck($order);
                 }
 
