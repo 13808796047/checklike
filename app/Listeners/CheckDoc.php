@@ -47,7 +47,7 @@ class CheckDoc implements ShouldQueue
                 }
                 break;
             case 3:
-                $this->cloudConert($order, $order->paper_path, 'doc');
+                $this->cloudConert($order, $order->paper_path, 'docx');
                 break;
             default:
                 $this->startCheck($order);
