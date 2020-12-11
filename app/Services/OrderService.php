@@ -155,10 +155,10 @@ class OrderService
             } else {
                 $words = $fileWords->queryParsing($fileWords->submitCheck($file->path)['data']['orderid'])['data']['wordCount'];
                 $result = $file;
-                if($category->classid == 4 && $file->type == 'docx') {
-                    $content = read_docx($file->real_path);
-                    $result = $upload->saveTxt($content, 'files', $file_prefix);
-                }
+//                if($category->classid == 4 && $file->type == 'docx') {
+//                    $content = read_docx($file->real_path);
+//                    $result = $upload->saveTxt($content, 'files', $file_prefix);
+//                }
             }
         } else {
             $words = count_words(remove_spec_char($content));

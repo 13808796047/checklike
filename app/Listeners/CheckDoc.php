@@ -35,12 +35,16 @@ class CheckDoc implements ShouldQueue
         switch ($order->category->classid) {
             case 4:
                 // 如果上传文件 docx 转换为txt,再启动检测
-                if($order->file && $order->file->type == 'docx') {
-                    $content = read_docx($order->file->real_path);
-                    $words = count_words($content);
-                    if($words / $order->words > 1.15) {
+                if($order->file) {
+                    if($order->file->type == 'docx') {
+                        $words = count_words(read_docx($order->file->real_path));
+                        if($words / $order->words > 1.15) {
+                            $this->cloudConert($order, $order->file->path, 'txt');
+                        }
+                    } else {
                         $this->cloudConert($order, $order->file->path, 'txt');
                     }
+
                 } else {
                     // 没有docx,直接检测
                     $this->startCheck($order);
