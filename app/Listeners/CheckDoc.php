@@ -30,6 +30,7 @@ class CheckDoc implements ShouldQueue
         ]);
         if($order->category->check_type == 1) {
             if($order->category->classid == 4) { // 万方特殊处理,docx
+                // 如果上传文件 docx 转换为txt,再启动检测
                 if($order->file && $order->file->type == 'docx') {
                     $content = read_docx($order->file->real_path);
                     $words = count_words($content);
@@ -37,7 +38,7 @@ class CheckDoc implements ShouldQueue
                         $this->cloudConert($order);
                     }
                 } else {
-//                    $this->cloudConert($order);
+                    // 没有docx,直接检测
                     $this->startCheck($order);
                 }
             } else {
