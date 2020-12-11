@@ -29,7 +29,7 @@ class CheckDoc implements ShouldQueue
             'status' => CouponCode::STATUS_USED
         ]);
         if($order->category->check_type == 1) {
-            if($order->category->classid == 4) {
+            if($order->category->classid == 4) { // 万方特殊处理,docx
                 if($order->file && $order->file->type == 'docx') {
                     $content = read_docx($order->file->real_path);
                     $words = count_words($content);
@@ -38,29 +38,19 @@ class CheckDoc implements ShouldQueue
                     }
                 } else {
 //                    $this->cloudConert($order);
-                    dispatch(new UploadCheckFile($order));
+                    $this->startCheck($order);
                 }
             } else {
                 //调用上传接口
-                dispatch(new UploadCheckFile($order));
+                $this->startCheck($order);
             }
         }
     }
 
-//    protected function checkWords(Order $order)
-//    {
-//        if($order->category->classid == 4) {
-//            if($order->file->type == 'docx') {
-//                $content = read_docx($order->file->real_path);
-//                $words = count_words($content);
-//                if($words / $order->words > 1.15) {
-//                    $this->cloudConert($order);
-//                }
-//            } else {
-//                $this->cloudConert($order);
-//            }
-//        }
-//    }
+    protected function startCheck(Order $order)
+    {
+        dispatch(new UploadCheckFile($order));
+    }
 
     protected function cloudConert(Order $order)
     {
