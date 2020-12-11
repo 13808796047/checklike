@@ -40,6 +40,7 @@ class CheckDoc implements ShouldQueue
                 if($order->file->type == 'docx') {
                     Log::info('云1');
                     $words = count_words(read_docx($order->file->real_path));
+                    Log::info('云2' . $words);
                     if($words / $order->words > 1.15) {
                         Log::info('云2');
                         $this->cloudConert($order, $order->file->path, 'txt');

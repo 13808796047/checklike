@@ -2,6 +2,7 @@
 
 namespace App\Admin\Forms;
 
+use App\Events\OrderPaid;
 use App\Jobs\getOrderStatus;
 use App\Jobs\OrderCheckedMsg;
 use App\Jobs\UploadCheckFile;
@@ -40,7 +41,7 @@ class OrderEdit extends Form implements LazyRenderable
         ]);
         switch ($order->status) {
             case 1:
-                dispatch(new UploadCheckFile($order));
+                event(new OrderPaid($order));
                 break;
             case 3:
                 dispatch(new getOrderStatus($order));
