@@ -87,9 +87,8 @@ class AuthorizationsController extends Controller
         if(!$user) {
             $user = User::create($attributes);
             $user->increaseJcTimes(config('app.jc_times'));
-        } else {
-            $user->update($attributes);
         }
+        $user->update($attributes);
 //        if($user->weapp_openid == '') {
 //            $user->update([
 //                'weapp_openid' => $data['openid'],
