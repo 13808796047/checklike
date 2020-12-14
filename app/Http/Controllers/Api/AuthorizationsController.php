@@ -109,7 +109,7 @@ class AuthorizationsController extends Controller
 //        ])->setStatusCode(201);
     }
 
-    function decrypt($ciphertext, $iv, $app_key, $session_key)
+    public function decrypt($ciphertext, $iv, $app_key, $session_key)
     {
         $session_key = base64_decode($session_key);
         $iv = base64_decode($iv);
@@ -146,7 +146,7 @@ class AuthorizationsController extends Controller
         return $app_key == $app_key_decode ? $content : false;
     }
 
-    function curlPost($url, $postDataArr)
+    public function curlPost($url, $postDataArr)
     {
         $headerArr = [
             "Content-type:application/x-www-form-urlencoded"
