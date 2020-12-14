@@ -652,7 +652,7 @@
       }
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
-        axios.get("/official_account").then(function(){
+        axios.get("/official_account").then(function(res){
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
