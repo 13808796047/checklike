@@ -61,6 +61,108 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
+
+    public function baiduMiniProgramStore(Request $request)
+    {
+        if(!$code = $request->code) {
+            throw new AuthenticationException('参数code错误，未获取用户信息');
+        }
+        $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
+        $data = [
+            "code" => $code,
+            "client_id" => config('pay.app_id'),
+            "sk" => config('pay.appKey')
+        ];
+        $ret = $this->curlPost($url, $data);
+        if($iv = $request->iv) {
+            $encryptData = $request->encryptData;
+            $decryptedData = $this->decrypt($ret['session_key'], $iv, $encryptData);
+        }
+        dd($decryptedData);
+        // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
+//        if(isset($data['errcode'])) {
+//            throw new AuthenticationException('code 不正确');
+//        }
+//        // 找到 openid 对应的用户
+//        $user = User::where('weixin_unionid', $data['unionid'])->first();
+//        $attributes['weixin_session_key'] = $data['session_key'];
+//        $attributes['weapp_openid'] = $data['openid'];
+//        $attributes['weixin_unionid'] = $data['unionid'];
+//        if(!$user) {
+//            $user = User::create($attributes);
+//            $user->increaseJcTimes(config('app.jc_times'));
+//        }
+//        $user->update($attributes);
+////        if($user->weapp_openid == '') {
+////            $user->update([
+////                'weapp_openid' => $data['openid'],
+////            ]);
+////        }
+//        $token = auth('api')->login($user);
+//        return response()->json([
+//            'access_token' => $token,
+//            'user' => (new UserResource($user))->showSensitiveFields(),
+//            'token_type' => 'Bearer',
+//            'expires_in' => \Auth::guard('api')->factory()->getTTL(),
+//        ])->setStatusCode(201);
+    }
+
+    function decrypt($ciphertext, $iv, $app_key, $session_key)
+    {
+        $session_key = base64_decode($session_key);
+        $iv = base64_decode($iv);
+        $ciphertext = base64_decode($ciphertext);
+
+        $plaintext = false;
+        if(function_exists("openssl_decrypt")) {
+            $plaintext = openssl_decrypt($ciphertext, "AES-192-CBC", $session_key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);
+        } else {
+            $td = mcrypt_module_open(MCRYPT_RIJNDAEL_128, null, MCRYPT_MODE_CBC, null);
+            mcrypt_generic_init($td, $session_key, $iv);
+            $plaintext = mdecrypt_generic($td, $ciphertext);
+            mcrypt_generic_deinit($td);
+            mcrypt_module_close($td);
+        }
+        if($plaintext == false) {
+            return false;
+        }
+
+        // trim pkcs#7 padding
+        $pad = ord(substr($plaintext, -1));
+        $pad = ($pad < 1 || $pad > 32) ? 0 : $pad;
+        $plaintext = substr($plaintext, 0, strlen($plaintext) - $pad);
+
+        // trim header
+        $plaintext = substr($plaintext, 16);
+        // get content length
+        $unpack = unpack("Nlen/", substr($plaintext, 0, 4));
+        // get content
+        $content = substr($plaintext, 4, $unpack['len']);
+        // get app_key
+        $app_key_decode = substr($plaintext, $unpack['len'] + 4);
+
+        return $app_key == $app_key_decode ? $content : false;
+    }
+
+    function curlPost($url, $postDataArr)
+    {
+        $headerArr = [
+            "Content-type:application/x-www-form-urlencoded"
+        ];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $postDataArr);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headerArr);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($curl);
+        curl_close($curl);
+
+        return $output;
+    }
+
     //微信小程序登录
     public function miniProgramStore(MiniProgromAuthorizationRequest $request)
     {

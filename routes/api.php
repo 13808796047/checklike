@@ -72,6 +72,8 @@ Route::prefix('v1')
                 Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')->where('social_type', 'weixin')->name('socials.authorizations.store');
                 //微信小程序登录
                 Route::post('mini_program/authorizations', 'AuthorizationsController@miniProgramStore')->name('mini_program.store');
+                // 百度小程序登录
+                Route::post('baidu-weapp/authorizations', 'AuthorizationsController@baiduMiniProgramStore');
                 //分类
                 Route::get('categories', 'CategoriesController@index')->name('categories.index');
                 Route::post('user/offical_bound_phone', 'UsersController@officalBoundPhone')->name('user.offical_bound_phone');
