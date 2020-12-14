@@ -64,6 +64,7 @@ class AuthorizationsController extends Controller
 
     public function baiduMiniProgramStore(Request $request)
     {
+        dd($code);
         if(!$code = $request->code) {
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
