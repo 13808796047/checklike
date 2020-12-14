@@ -603,7 +603,7 @@
         if(sourceUrl.indexOf(currentHost)=="-1" && sourceUrl!=""){
 
           $("#staticBackdrop").modal("show")
-          axios.get("/official_account").then(res=>{
+          axios.get("/official_account").then(function(){
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
@@ -612,7 +612,7 @@
           }
           img.src = res.data.url;
           var wechatFlag = res.data.wechatFlag;
-          timer = setInterval(() => {
+          timer = setInterval(function(){
             axios.post("login_check",{
               wechat_flag:wechatFlag
             }).then(res=>{
