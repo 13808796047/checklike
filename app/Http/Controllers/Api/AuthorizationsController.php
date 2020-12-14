@@ -80,32 +80,29 @@ class AuthorizationsController extends Controller
             $decryptedData = $this->decrypt($encryptData, $iv, 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB', $ret['session_key']);
         }
         return $decryptedData;
-        // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
-//        if(isset($data['errcode'])) {
-//            throw new AuthenticationException('code 不正确');
-//        }
-//        // 找到 openid 对应的用户
-//        $user = User::where('weixin_unionid', $data['unionid'])->first();
-//        $attributes['weixin_session_key'] = $data['session_key'];
-//        $attributes['weapp_openid'] = $data['openid'];
-//        $attributes['weixin_unionid'] = $data['unionid'];
-//        if(!$user) {
-//            $user = User::create($attributes);
-//            $user->increaseJcTimes(config('app.jc_times'));
-//        }
+
+        // 找到 openid 对应的用户
+        $user = User::where('phone', $decryptedData['mobile'])->first();
+        if(!$user) {
+            $user = User::create([
+                'phone' => $decryptedData['mobile'],
+                'username' => 'bd' . $decryptedData['mobile']
+            ]);
+            $user->increaseJcTimes(config('app.jc_times'));
+        }
 //        $user->update($attributes);
-////        if($user->weapp_openid == '') {
-////            $user->update([
-////                'weapp_openid' => $data['openid'],
-////            ]);
-////        }
-//        $token = auth('api')->login($user);
-//        return response()->json([
-//            'access_token' => $token,
-//            'user' => (new UserResource($user))->showSensitiveFields(),
-//            'token_type' => 'Bearer',
-//            'expires_in' => \Auth::guard('api')->factory()->getTTL(),
-//        ])->setStatusCode(201);
+//        if($user->weapp_openid == '') {
+//            $user->update([
+//                'weapp_openid' => $data['openid'],
+//            ]);
+//        }
+        $token = auth('api')->login($user);
+        return response()->json([
+            'access_token' => $token,
+            'user' => (new UserResource($user))->showSensitiveFields(),
+            'token_type' => 'Bearer',
+            'expires_in' => \Auth::guard('api')->factory()->getTTL(),
+        ])->setStatusCode(201);
     }
 
     public function decrypt($ciphertext, $iv, $app_key, $session_key)
