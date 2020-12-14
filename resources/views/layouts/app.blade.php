@@ -92,7 +92,7 @@
     positionClass: "toast-center-center",
     timeOut:2000 // 超时时间，即窗口显示的时间
   }
-  $('.logout').click(() => {
+  $('.logout').click(function(){
     $.confirm({
         title: '提示',
         content: '您确认要退出登录吗?',
@@ -114,10 +114,10 @@
         }
     });
   });
-  $("#xiugai").click(()=>{
+  $("#xiugai").click(function(){
     $("#staticXiugai").modal("show")
   })
-  $("#xiugaicancel").click(()=>{
+  $("#xiugaicancel").click(function(){
     $("#staticXiugai").modal("hide")
   })
   // $("#bindSelfPhone").click(()=>{
