@@ -70,8 +70,8 @@ class AuthorizationsController extends Controller
         $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
         $data = [
             "code" => $code,
-            "client_id" => config('pay.app_id'),
-            "sk" => config('pay.appKey')
+            "client_id" => '16777148',
+            "sk" => 'o44OktR9qam1VQUVd5viGRbhnfCmPez7'
         ];
         $ret = $this->curlPost($url, $data);
         dd($ret);
