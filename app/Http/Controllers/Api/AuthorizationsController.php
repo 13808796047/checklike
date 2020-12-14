@@ -110,7 +110,6 @@ class AuthorizationsController extends Controller
 
     public function decrypt($ciphertext, $iv, $app_key, $session_key)
     {
-        return [$ciphertext, $iv, $app_key, $session_key];
         $session_key = base64_decode($session_key);
         $iv = base64_decode($iv);
         $ciphertext = base64_decode($ciphertext);
