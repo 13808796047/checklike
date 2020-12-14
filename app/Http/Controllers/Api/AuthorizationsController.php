@@ -138,7 +138,7 @@ class AuthorizationsController extends Controller
         // get app_key
         $app_key_decode = substr($plaintext, $unpack['len'] + 4);
 
-        return $app_key == $app_key_decode ? json_encode($content) : false;
+        return $app_key == $app_key_decode ? json_decode($content) : false;
     }
 
     public function curlPost($url, $postDataArr)
