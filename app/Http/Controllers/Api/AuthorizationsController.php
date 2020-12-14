@@ -74,13 +74,13 @@ class AuthorizationsController extends Controller
             "client_id" => 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB',
             "sk" => 'sximbwDoqFRtDbpPdKh8OQeB419y3Djh'
         ];
-        $ret = $this->curlPost($url, $data);
-        return $ret;
-        if($iv = $request->iv) {
-            $encryptData = $request->encryptData;
-            $decryptedData = $this->decrypt($encryptData, $iv, config('pay.app_id'), $ret['session_key']);
-        }
-        return $decryptedData;
+        $this->curlPost($url, $data);
+//        return $ret;
+//        if($iv = $request->iv) {
+//            $encryptData = $request->encryptData;
+//            $decryptedData = $this->decrypt($encryptData, $iv, config('pay.app_id'), $ret['session_key']);
+//        }
+//        return $decryptedData;
         // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
 //        if(isset($data['errcode'])) {
 //            throw new AuthenticationException('code 不正确');
