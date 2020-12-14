@@ -162,7 +162,7 @@
       }).then(function(res){
         swal("绑定成功", {
           icon: "success",
-        }).then(willDelete => {
+        }).then(function(){
           $("#bindTitle").modal("hide")
 
           window.location.reload()
