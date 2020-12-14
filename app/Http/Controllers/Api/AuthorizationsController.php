@@ -79,7 +79,6 @@ class AuthorizationsController extends Controller
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB', $ret['session_key']);
         }
-        return $decryptedData;
         // 找到 openid 对应的用户
         $user = User::where('phone', $decryptedData['mobile'])->first();
         if(!$user) {
