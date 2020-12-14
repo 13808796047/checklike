@@ -71,7 +71,7 @@ class AuthorizationsController extends Controller
         $data = [
             "code" => $code,
             "client_id" => 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB',
-            "sk" => 'o44OktR9qam1VQUVd5viGRbhnfCmPez7'
+            "sk" => 'sximbwDoqFRtDbpPdKh8OQeB419y3Djh'
         ];
         $ret = $this->curlPost($url, $data);
         return $ret;
