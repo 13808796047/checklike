@@ -68,7 +68,7 @@ class AuthorizationsController extends Controller
         if(!$code = $request->code) {
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
-        $url = ' https://spapi.baidu.com/oauth/jscode2sessionkey';
+        $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
         $data = [
             "code" => $code,
             "client_id" => 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB',
