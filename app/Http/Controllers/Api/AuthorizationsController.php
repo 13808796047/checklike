@@ -71,6 +71,7 @@ class AuthorizationsController extends Controller
         $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
         $data = [
             "code" => $code,
+            'tp_apppid' => '16777148',
             "client_id" => 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB',
             "sk" => 'sximbwDoqFRtDbpPdKh8OQeB419y3Djh'
         ];
