@@ -75,6 +75,7 @@ class AuthorizationsController extends Controller
             "sk" => config('services.baidu_weapp.client_secret')
         ];
         $ret = $this->curlPost($url, $data);
+        return $ret;
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, config('services.baidu_weapp.client_id'), $ret['session_key']);
