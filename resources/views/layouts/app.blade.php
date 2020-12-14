@@ -101,7 +101,7 @@
                 text: '确认',
                 btnClass:  'btn-danger',
                 action: function() {
-                  axios.post('{{route('logout')}}').then(res => {
+                  axios.post('{{route('logout')}}').then(function(){
                      swal("提示","退出成功", "success");
                      location.replace('/')
                   })
