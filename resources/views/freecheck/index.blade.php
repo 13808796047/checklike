@@ -409,12 +409,12 @@
           }
         }).catch(err => {
           if (err.response.status == 422) {
-            $.each(err.response.data.errors, (field, errors) => {
+            $.each(err.response.data.errors, function(field, errors){
               swal("提示", errors[0]);
             })
           }
           if (err.response.status == 401) {
-            $.each(err.response.data, (field, errors) => {
+            $.each(err.response.data, function(field, errors){
               swal("提示", errors);
             })
           }
@@ -457,7 +457,7 @@
         }).catch(err => {
           index.removeAttribute("disabled");
           if (err.response.status == 401) {
-            $.each(err.response.data.errors, (field, errors) => {
+            $.each(err.response.data.errors, function(field, errors){
               swal("提示", errors[0]);
             })
           }
@@ -477,15 +477,15 @@
           verification_code: $('#verification_code').val(),
           verification_key: verification_key,
           type: 'phone'
-        }).then(res => {
+        }).then(function(res){
           swal("提示", '登录成功', "success");
           location.reload();
-        }).catch(err => {
+        }).catch(function(err) {
           if (err.response.status == 401) {
             swal("提示", '用户不存在！！！');
           }
           if (err.response.status == 422) {
-            $.each(err.response.data.errors, (field, errors) => {
+            $.each(err.response.data.errors, function(field, errors){
               swal("提示", errors[0]);
             })
           }
