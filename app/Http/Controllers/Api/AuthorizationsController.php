@@ -77,7 +77,7 @@ class AuthorizationsController extends Controller
         $ret = $this->curlPost($url, $data);
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
-            $decryptedData = $this->decrypt($encryptData, $iv, config('pay.baidu_pay.app_id'), $ret['session_key']);
+            $decryptedData = $this->decrypt($encryptData, $iv, 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB', $ret['session_key']);
         }
         return $decryptedData;
         // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
