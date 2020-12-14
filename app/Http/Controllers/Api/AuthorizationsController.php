@@ -79,7 +79,6 @@ class AuthorizationsController extends Controller
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, config('services.baidu_weapp.client_id'), $ret['session_key']);
         }
-        // 找到 openid 对应的用户
         $user = User::where('phone', $decryptedData['mobile'])->first();
         if(!$user) {
             $user = User::create([
@@ -88,12 +87,6 @@ class AuthorizationsController extends Controller
             ]);
             $user->increaseJcTimes(config('app.jc_times'));
         }
-//        $user->update($attributes);
-//        if($user->weapp_openid == '') {
-//            $user->update([
-//                'weapp_openid' => $data['openid'],
-//            ]);
-//        }
         $token = auth('api')->login($user);
         return response()->json([
             'access_token' => $token,
