@@ -74,7 +74,7 @@ class AuthorizationsController extends Controller
             "sk" => 'o44OktR9qam1VQUVd5viGRbhnfCmPez7'
         ];
         $ret = $this->curlPost($url, $data);
-        dd($ret);
+        return $ret;
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, config('pay.app_id'), $ret['session_key']);
