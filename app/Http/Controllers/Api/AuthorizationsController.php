@@ -64,10 +64,11 @@ class AuthorizationsController extends Controller
 
     public function baiduMiniProgramStore(Request $request)
     {
-        dd($code);
+
         if(!$code = $request->code) {
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
+        dd($code);
         $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
         $data = [
             "code" => $code,
