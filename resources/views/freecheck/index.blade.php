@@ -346,7 +346,7 @@
           timer = setInterval(function(){
             axios.post("login_check",{
               wechat_flag:wechatFlag
-            }).then(res=>{
+            }).then(function(res){
               if(res.status==200){
                 clearInterval(timer);
                 swal("提示", "登录成功", "success");
