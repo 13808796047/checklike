@@ -74,28 +74,13 @@ class AuthorizationsController extends Controller
             "client_id" => 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB',
             "sk" => 'sximbwDoqFRtDbpPdKh8OQeB419y3Djh'
         ];
-        $headerArr = [
-            "Content-type:application/x-www-form-urlencoded"
-        ];
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headerArr);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($curl);
-        curl_close($curl);
-
-        return $output;
-//        $this->curlPost($url, $data);
-//        return $ret;
-//        if($iv = $request->iv) {
-//            $encryptData = $request->encryptData;
-//            $decryptedData = $this->decrypt($encryptData, $iv, config('pay.app_id'), $ret['session_key']);
-//        }
-//        return $decryptedData;
+        $this->curlPost($url, $data);
+        return $ret;
+        if($iv = $request->iv) {
+            $encryptData = $request->encryptData;
+            $decryptedData = $this->decrypt($encryptData, $iv, config('pay.app_id'), $ret['session_key']);
+        }
+        return $decryptedData;
         // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
 //        if(isset($data['errcode'])) {
 //            throw new AuthenticationException('code 不正确');
