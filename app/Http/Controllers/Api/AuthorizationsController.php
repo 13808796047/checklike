@@ -69,6 +69,7 @@ class AuthorizationsController extends Controller
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
         $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
+        return config('services.baidu_weapp.client_id');
         $data = [
             "code" => $code,
             "client_id" => config('services.baidu_weapp.client_id'),
