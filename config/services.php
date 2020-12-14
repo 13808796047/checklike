@@ -52,6 +52,11 @@ return [
         'client_secret' => env('DEV_WEIXIN_SECRET'),
         'redirect' => env('DEV_WEIXIN_REDIRECT'),
     ],
+    // 百度登录
+    'baidu_weapp' => [
+        'client_id' => env('BAIDU_AUTH_APP_KEY'),
+        'client_secret' => env('BAIDU_AUTH_APP_SECRET'),
+    ],
 //    'dev_lianwen_com' => [
 //        'wechat' => [
 //            'client_id' => env('DEV_WEIXIN_KEY'),

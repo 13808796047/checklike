@@ -71,13 +71,13 @@ class AuthorizationsController extends Controller
         $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
         $data = [
             "code" => $code,
-            "client_id" => 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB',
-            "sk" => 'sximbwDoqFRtDbpPdKh8OQeB419y3Djh'
+            "client_id" => config('services.baidu_weapp.client_id'),
+            "sk" => config('services.baidu_weapp.client_secret')
         ];
         $ret = $this->curlPost($url, $data);
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
-            $decryptedData = $this->decrypt($encryptData, $iv, 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB', $ret['session_key']);
+            $decryptedData = $this->decrypt($encryptData, $iv, config('services.baidu_weapp.client_id'), $ret['session_key']);
         }
         // 找到 openid 对应的用户
         $user = User::where('phone', $decryptedData['mobile'])->first();
