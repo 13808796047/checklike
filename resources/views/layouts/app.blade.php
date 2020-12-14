@@ -124,7 +124,7 @@
   //   $("#bindTitle").modal("show")
   // })
   var currentCode="";
-  $("#sendYzCode").click(()=>{
+  $("#sendYzCode").click(function(){
     let isYZphone =$("#bindphonenum").val();
     console.log(isYZphone)
     if(!(/^1[3456789]\d{9}$/.test(isYZphone))){
@@ -133,7 +133,7 @@
     }else{
       $("#bindphoneTip").text("")
       let count = 60;
-      const countDown = setInterval(() => {
+      const countDown = setInterval(function(){
       if (count === 0) {
        $("#sendYzCode").text('重新发送').removeAttr('disabled');
        clearInterval(countDown);
@@ -145,7 +145,7 @@
      }, 1000)
       axios.post('/api/v1/verificationCodes', {
           phone: isYZphone,
-        }).then(res => {
+        }).then(function(res){
           if(res.data&&res.data.key){
             currentCode=res.data.key
           }
@@ -155,11 +155,11 @@
 
 
         // 绑定手机号
-  $("#bindnow").click(()=>{
+  $("#bindnow").click(function(){
         axios.put("/bond_phone",{
         verification_key:currentCode,
         verification_code:$("#bindCodeNow").val()
-      }).then(res=>{
+      }).then(function(res){
         swal("绑定成功", {
           icon: "success",
         }).then(willDelete => {
@@ -167,11 +167,11 @@
 
           window.location.reload()
       });
-      }).catch(err=>{
+      }).catch(function(err){
         toastr.error(err.response.data.message);
       })
       })
-      $("#bindno").click(()=>{
+      $("#bindno").click(function(){
         $("#bindTitle").modal("hide")
       })
 
@@ -179,7 +179,7 @@
 
   var registerCode="";
   function yanzheng() {
-  $("#sendRegisterYzCode").click(()=>{
+  $("#sendRegisterYzCode").click(function(){
     let iszcphone =$("#registerphones").val();
     console.log(iszcphone)
     if(!(/^1[3456789]\d{9}$/.test(iszcphone))){
@@ -188,7 +188,7 @@
     }else{
       $("#registerTip").text("")
       let counts = 60;
-      const clearDown = setInterval(() => {
+      const clearDown = setInterval(function(){
       if (counts === 0) {
        $("#sendRegisterYzCode").text('重新发送').removeAttr('disabled');
        clearInterval(clearDown);
@@ -200,7 +200,7 @@
     }, 1000)
     axios.post('/api/v1/verificationCodes', {
       phone: iszcphone,
-    }).then(res => {
+    }).then(function(res){
         if(res.data&&res.data.key){
           registerCode=res.data.key
         }
@@ -210,17 +210,17 @@
 }
 
 
-  $("#registerphones").blur(()=>{
+  $("#registerphones").blur(function(){
     axios.post('/api/v1/check-phone', {
           phone: $('#registerphones').val(),
-        }).then(res => {
+        }).then(function(res){
           console.log(res,"xii")
           // toastr.success(res.data.message)
           $("#registerTip").text(res.data.message)
           yanzheng()
           // alertify.set('notifier','position', 'top-center');
           // alertify.success(res.data.message)
-        }).catch(err=>{
+        }).catch(function(err){
           // console.log(err.response.data,"fafdd")
           // alertify.set('notifier','position', 'top-center');
           // alertify.warning(err.response.data.message)
@@ -229,17 +229,17 @@
 
         })
   })
-  $('#submitRegisterBtn').click(() => {
+  $('#submitRegisterBtn').click(function(){
             axios.post('{{route('register')}}', {
               'verification_key': registerCode,
               'phone': $('#registerphones').val(),
               'password': $('#registerpassword').val(),
               'password_confirmation': $('#password_confirmation').val(),
               'verification_code': $('#bindCoderegister').val()
-            }).then(res => {
+            }).then(function(res) {
               swal("注册成功!");
               location.href = '{{route('home.index')}}'
-            }).catch(err => {
+            }).catch(function(err) {
 
                 // $('#message').show();
                 // $.each(err.response.data.errors, (field, errors) => {
