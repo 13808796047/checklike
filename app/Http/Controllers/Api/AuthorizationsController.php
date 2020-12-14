@@ -74,7 +74,7 @@ class AuthorizationsController extends Controller
             "client_id" => 'eSVYdwR78OPcxbdKhj0uXDAbdzBEUSQB',
             "sk" => 'sximbwDoqFRtDbpPdKh8OQeB419y3Djh'
         ];
-        $this->curlPost($url, $data);
+        $ret = $this->curlPost($url, $data);
         return $ret;
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
