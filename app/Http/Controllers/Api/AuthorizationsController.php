@@ -78,7 +78,7 @@ class AuthorizationsController extends Controller
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, config('pay.app_id'), $ret['session_key']);
         }
-        dd($decryptedData);
+        return $decryptedData;
         // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
 //        if(isset($data['errcode'])) {
 //            throw new AuthenticationException('code 不正确');
