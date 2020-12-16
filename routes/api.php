@@ -69,7 +69,7 @@ Route::prefix('v1')
                 //登录
                 Route::post('authorizations', 'AuthorizationsController@store')->name('api.authorizations.store');
                 // 第三方登录
-                Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')->where('social_type', 'weixin')->name('socials.authorizations.store');
+                Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')->where('social_type', 'wechat')->name('socials.authorizations.store');
                 //微信小程序登录
                 Route::post('mini_program/authorizations', 'AuthorizationsController@miniProgramStore')->name('mini_program.store');
                 // 百度小程序登录

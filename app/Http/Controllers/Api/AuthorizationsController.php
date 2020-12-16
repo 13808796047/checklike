@@ -12,6 +12,7 @@ use EasyWeChat\Factory;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Overtrue\Socialite\SocialiteManager;
 
 
 class AuthorizationsController extends Controller
@@ -19,7 +20,7 @@ class AuthorizationsController extends Controller
     //微信登录
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
-        $driver = \Overtrue\Socialite::driver($type);
+        $driver = SocialiteManager::driver($type);
         try {
             if($code = $request->code) {
                 $response = $driver->getAccessTokenResponse($code);
