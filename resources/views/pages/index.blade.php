@@ -603,7 +603,7 @@
         if(sourceUrl.indexOf(currentHost)=="-1" && sourceUrl!=""){
 
           $("#staticBackdrop").modal("show")
-          axios.get("/official_account").then(res=>{
+          axios.get("/official_account").then(function(){
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
@@ -612,10 +612,10 @@
           }
           img.src = res.data.url;
           var wechatFlag = res.data.wechatFlag;
-          timer = setInterval(() => {
+          timer = setInterval(function(){
             axios.post("login_check",{
               wechat_flag:wechatFlag
-            }).then(res=>{
+            }).then(function(res){
               if(res.status==200){
                 clearInterval(timer);
                 swal("提示", "登录成功", "success");
@@ -652,7 +652,7 @@
       }
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
-        axios.get("/official_account").then(res=>{
+        axios.get("/official_account").then(function(res){
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
@@ -661,10 +661,10 @@
           }
           img.src = res.data.url;
           var wechatFlag = res.data.wechatFlag;
-          timer = setInterval(() => {
+          timer = setInterval(function() {
             axios.post("login_check",{
               wechat_flag:wechatFlag
-            }).then(res=>{
+            }).then(function(res){
               if(res.status==200){
                 clearInterval(timer);
                 swal("提示", "登录成功", "success");
@@ -675,11 +675,11 @@
         })
       })
       //注册
-      $("#quiklyRegister").click(()=>{
+      $("#quiklyRegister").click(function(){
         $("#staticBackdrop").modal("hide")
         $("#registerTcDialog").modal('show')
       })
-      $("#noregister").click(()=>{
+      $("#noregister").click(function(){
         $("#registerTcDialog").modal('hide')
         $("#staticBackdrop").modal("show")
         $("#pills-home-tab").attr("aria-selected",true)
@@ -718,21 +718,21 @@
           phone: $("#phone").val(),
           password: $("#password").val(),
           type: 'account'
-        }).then(res => {
+        }).then(function(res) {
           if (res.status == 200) {
             swal("提示", res.data.message, "success");
             location.reload();
           } else {
             swal("提示", res.data.message);
           }
-        }).catch(err => {
+        }).catch(function(err){
           if (err.response.status == 422) {
-            $.each(err.response.data.errors, (field, errors) => {
+            $.each(err.response.data.errors, function(field, errors) {
               swal("提示", errors[0]);
             })
           }
           if (err.response.status == 401) {
-            $.each(err.response.data, (field, errors) => {
+            $.each(err.response.data, function(field, errors) {
               swal("提示", errors);
             })
           }
@@ -768,14 +768,14 @@
         }
         axios.post('/api/v1/verificationCodes', {
           phone: phone,
-        }).then(res => {
+        }).then(function(res) {
           swal('验证码已发送成功!,请注意查收!')
           time(index);
           verification_key = res.data.key;
-        }).catch(err => {
+        }).catch(function(err) {
           index.removeAttribute("disabled");
           if (err.response.status == 401) {
-            $.each(err.response.data.errors, (field, errors) => {
+            $.each(err.response.data.errors, function(field, errors){
               swal("提示", errors[0]);
             })
           }
@@ -789,21 +789,21 @@
       $('#verificationCode').click(function () {
         getcode(this)
       })
-      $('#phoneLogin').click(() => {
+      $('#phoneLogin').click(function() {
         axios.post('{{ route('login') }}', {
           phone: $('#mobile').val(),
           verification_code: $('#verification_code').val(),
           verification_key: verification_key,
           type: 'phone'
-        }).then(res => {
+        }).then(function(res){
           swal("提示", '登录成功', "success");
           location.reload();
-        }).catch(err => {
+        }).catch(function(err){
           if (err.response.status == 401) {
             swal("提示", '用户不存在！！！');
           }
           if (err.response.status == 422) {
-            $.each(err.response.data.errors, (field, errors) => {
+            $.each(err.response.data.errors, function(field, errors){
               swal("提示", errors[0]);
             })
           }
