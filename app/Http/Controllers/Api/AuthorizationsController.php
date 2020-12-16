@@ -24,21 +24,21 @@ class AuthorizationsController extends Controller
         dd($driver);
         try {
             if($code = $request->code) {
-                $response = $driver->getAccessTokenResponse($code);
-                $token = Arr::get($response, 'access_token');
+                $accessToken = $driver->getAccessToken($code);
             } else {
-                $token = $request->access_token;
-                if($type == 'weixin') {
-                    $driver->setOpenId($request->openid);
+                $tokenData['access_token'] = $request->access_token;
+                if($type == 'wechat') {
+                    $tokenData['openid'] = $request->openid;
                 }
+                $accessToken = new AccessToken($tokenData);
             }
-            $oauthUser = $driver->userFromToken($token);
+            $oauthUser = $driver->user($accessToken);
         } catch (\Exception $e) {
             throw new AuthenticationException('参数错误，未获取用户信息');
         }
         switch ($type) {
-            case 'weixin':
-                $unionid = $oauthUser->offsetExists('unionid') ? $oauthUser->offsetGet('unionid') : null;
+            case 'wechat':
+                $unionid = $oauthUser->getOriginal()['unionid'] ?? null;
 
                 if($unionid) {
                     $user = User::where('weixin_unionid', $unionid)->first();
