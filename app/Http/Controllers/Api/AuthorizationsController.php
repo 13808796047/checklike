@@ -19,7 +19,7 @@ class AuthorizationsController extends Controller
     //微信登录
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
-        $driver = \Socialite::driver($type);
+        $driver = \Overtrue\Socialite::driver($type);
         try {
             if($code = $request->code) {
                 $response = $driver->getAccessTokenResponse($code);

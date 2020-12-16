@@ -47,6 +47,6 @@ class OpenidHandler
         curl_close($ch);
         $json_obj = json_decode($res, true);
 //根据openid和access_token查询用户信息
-        return $json_obj['openid'];
+        return $json_obj;
     }
 }
