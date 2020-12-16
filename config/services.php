@@ -48,9 +48,9 @@ return [
     ],
     //微信登录
     'wechat' => [
-        'client_id' => env('DEV_WEIXIN_KEY'),
-        'client_secret' => env('DEV_WEIXIN_SECRET'),
-        'redirect' => env('DEV_WEIXIN_REDIRECT'),
+        'client_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID'),
+        'client_secret' => env('WECHAT_OFFICIAL_ACCOUNT_SECRET'),
+        'redirect' => env('WEIXIN_REDIRECT_URI'),
     ],
     // 百度登录
     'baidu_weapp' => [
