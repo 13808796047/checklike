@@ -59,7 +59,12 @@ class AuthorizationsController extends Controller
         }
         $token = auth('api')->login($user);
 
-        return $this->respondWithToken($token)->setStatusCode(201);
+        return response()->json([
+            'access_token' => $token,
+            'user' => (new UserResource($user))->showSensitiveFields(),
+            'token_type' => 'Bearer',
+            'expires_in' => \Auth::guard('api')->factory()->getTTL(),
+        ])->setStatusCode(201);
     }
 
 
