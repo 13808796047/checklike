@@ -169,8 +169,6 @@ class AuthorizationsController extends Controller
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
             $decryptedData = $app->encryptor->decryptData($result['session_key'], $iv, $encryptData);
-            return $decryptedData;
-            $data['unionid'] = $decryptedData['unionId'];
         }
 
         // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
@@ -178,10 +176,10 @@ class AuthorizationsController extends Controller
             throw new AuthenticationException('code 不正确');
         }
         // 找到 openid 对应的用户
-        $user = User::where('weixin_unionid', $data['unionid'])->first();
-        $attributes['weixin_session_key'] = $data['session_key'];
-        $attributes['weapp_openid'] = $data['openid'];
-        $attributes['weixin_unionid'] = $data['unionid'];
+        $user = User::where('weixin_unionid', $decryptedData['unionId'])->first();
+        $attributes['weixin_session_key'] = $result['session_key'];
+        $attributes['weapp_openid'] = $decryptedData['openId'];
+        $attributes['weixin_unionid'] = $decryptedData['unionId'];
         if(!$user) {
             $user = User::create($attributes);
             $user->increaseJcTimes(config('app.jc_times'));
