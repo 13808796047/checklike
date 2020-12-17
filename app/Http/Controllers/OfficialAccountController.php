@@ -106,10 +106,10 @@ class OfficialAccountController extends Controller
         $openId = $this->openid;
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
-        if($user = User::where('weixin_openid', $this->openid)->first()) {
-            $user->update([
-                'weixin_unionid' => $wxUser['unionid'],
-            ]);
+        if($user = User::where('weixin_unionid', $wxUser['unionid'])->first()) {
+//            $user->update([
+//                'weixin_unionid' => $wxUser['unionid'],
+//            ]);
             // 标记前端可登录
             $this->markTheLogin($event, $user->id);
             $this->afterLogin($user);
@@ -125,10 +125,11 @@ class OfficialAccountController extends Controller
      */
     protected function eventUnsubscribe($event)
     {
-        $wxUser = User::where('weixin_openid', $this->openid)->first();
-        $wxUser->subscribe = 0;
-        $wxUser->subscribe_time = null;
-        $wxUser->save();
+        $wxUser = $this->app->user->get($openId);
+        $user = User::where('weixin_unionid', $wxUser['unionid'])->first();
+        $user->subscribe = 0;
+        $user->subscribe_time = null;
+        $user->save();
     }
 
     public function afterLogin(User $user)
@@ -171,10 +172,10 @@ class OfficialAccountController extends Controller
         // 微信用户信息
         $wxUser = $this->app->user->get($openId);
 
-        if($user = User::where('weixin_openid', $this->openid)->first()) {
-            $user->update([
-                'weixin_unionid' => $wxUser['unionid']
-            ]);
+        if($user = User::where('weixin_unionid', $wxUser['unionid'])->first()) {
+//            $user->update([
+//                'weixin_unionid' => $wxUser['unionid']
+//            ]);
             // 标记可以登录
             $this->markTheLogin($event, $user->id);
             $this->afterLogin($user);
