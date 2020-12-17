@@ -142,8 +142,10 @@ class OrderService
     {
         if(!$order->phone) {
             dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
+        } else {
+            dispatch(new IOSPaidMessage($order));
         }
-        dispatch(new IOSPaidMessage($order));
+
     }
 
     public function converFile(Category $category, $type, $content, $file, $file_prefix)
