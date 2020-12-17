@@ -30,7 +30,7 @@ class OrderService
             $category = Category::find($request->cid);
             $file = File::find($request->file_id);
             $user = \Auth::user();
-            if($phone = $request->phone) {
+            if($phone = $request->phone && !$user->phone) {
                 $user->update([
                     'phone' => $phone,
                 ]);
