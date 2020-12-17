@@ -26,6 +26,7 @@ return [
             'templates' => [
                 'register' => env('SMS_ALIYUN_TEMPLATE_REGISTER'),
                 'checked' => env('SMS_ALIYUN_TEMPLATE_CHECKED'),
+                'ios_paiding' => env('SMS_ALIYUN_TEMPLATE_IOS_PAIDING')
             ]
         ],
     ],

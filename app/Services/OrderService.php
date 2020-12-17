@@ -12,6 +12,7 @@ use App\Handlers\OrderApiHandler;
 use App\Handlers\WordHandler;
 use App\Jobs\CloseOrder;
 use App\Jobs\CloudCouvertFile;
+use App\Jobs\IOSPaidMessage;
 use App\Jobs\OrderPendingMsg;
 use App\Jobs\UpdateIsFree;
 use App\Models\Category;
@@ -29,9 +30,11 @@ class OrderService
             $category = Category::find($request->cid);
             $file = File::find($request->file_id);
             $user = \Auth::user();
-//            if($request->phone) {
-//                $result = $this->converFile($category, $request->type, $request->file_id, $phone);
-//            }
+            if($phone = $request->phone) {
+                $user->update([
+                    'phone' => $phone,
+                ]);
+            }
             $result = $this->converFile($category, $request->type, $request->content, $file, $user->id);
             $words = $result['words'];
 
@@ -128,6 +131,9 @@ class OrderService
                 ]);
             }
             \Cache::forget('word');
+            if($request->is_ios) {
+                dispatch(new IOSPaidMessage($order));
+            }
             $this->OrderCreated($order);
             return $order;
         });

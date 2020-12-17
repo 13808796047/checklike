@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Handlers\OrderApiHandler;
 use App\Models\Enum\OrderEnum;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
@@ -10,8 +9,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Overtrue\EasySms\EasySms;
 
-class StartCheck implements ShouldQueue
+class IOSPaidMessage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -23,37 +23,42 @@ class StartCheck implements ShouldQueue
     }
 
 
-    public function handle()
-    {
-        $api = app(OrderApiHandler::class);
-        $result = $api->startCheck($this->order->api_orderid);
-        if($result->code == 200 && $this->order->status == 1) {
-            dispatch(new getOrderStatus($this->order))->delay(now()->addMinutes());
-            $this->order->update([
-                'status' => 3,
-            ]);
-        }
-    }
-
-    public function failed(\Throwable $exception)
+    public function handle(EasySms $easySms)
     {
         $data = [
-            'first' => '有订单异常,请尽快处理!(开始检测队列)',
+            'first' => '您有一个订单尚未完成支付，支付后开始检测',
             'keyword1' => ['value' => $this->order->title, 'color' => '#173177'],
             'keyword2' => ['value' => OrderEnum::getStatusName($this->order->status), 'color' => '#173177'],
             'keyword3' => ['value' => $this->order->created_at->format("Y-m-d H:i:s"), 'color' => '#173177'],
             'keyword4' => ['value' => $this->order->category->name, 'color' => '#173177'],
             'keyword5' => ['value' => $this->order->price, 'color' => '#173177'],
-            'remark' => ['value' => '点击查看详情！', 'color' => '#173177']
+            'remark' => ['value' => '点击去支付', 'color' => '#173177']
         ];
-        $touser = config('wechat.notify_openid');
+        $touser = $this->order->user->weixin_openid;
         $template_id = config('wechat.official_account.templates.pending.template_id');
+        $appid = config('wechat.official_account.templates.pending.appid');
+        $pagepath = config('wechat.official_account.templates.pending.page_path');
         if($touser) {
             app('official_account')->template_message->send([
                 'touser' => $touser,
                 'template_id' => $template_id,
+                'url' => 'https://wap.lianwen.com/bading?openid=' . $this->order->user->weixin_openid,
+//                'miniprogram' => [
+//                    'appid' => $appid,
+//                    'pagepath' => $pagepath,
+//                ],
                 'data' => $data,
             ]);
+        }
+        if($this->order->user->phone) {
+            try {
+                $result = $easySms->send($this->order->user->phone, [
+                    'template' => config('easysms.gateways.aliyun.templates.ios_paiding'),
+                ]);
+            } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
+                $message = $exception->getException('aliyun')->getMessage();
+                abort(500, $message ?: '短信发送异常!');
+            }
         }
     }
 }
