@@ -70,9 +70,9 @@ class OrdersController extends Controller
         $builder = Order::query()->with('category:id,name');
         if(!$user) {
             $builder->where('phone', $request->phone);
+        } else {
+            $builder->where('userid', $user->id);
         }
-        $builder->where('userid', $user->id);
-
 
         return OrderResource::collection($builder->latest()->paginate());
     }
