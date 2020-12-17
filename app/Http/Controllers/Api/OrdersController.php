@@ -69,9 +69,7 @@ class OrdersController extends Controller
         if(!$phone = $request->phone) {
             $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate();
         }
-        $orders = Order::query()->with('category:id,name')->whereHas('user', function($query) use ($phone) {
-            $query->where('phone', $phone);
-        })->latest()->paginate();
+        $orders = Order::query()->with('category:id,name')->where('phone', $phone)->latest()->paginate();
         return OrderResource::collection($orders);
     }
 
