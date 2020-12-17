@@ -175,7 +175,6 @@ class AuthorizationsController extends Controller
         if(isset($decryptedData['errcode'])) {
             throw new AuthenticationException('code 不正确');
         }
-        // 找到 openid 对应的用户
         $user = User::where('weixin_unionid', $decryptedData['unionId'])->first();
         $attributes['weixin_session_key'] = $result['session_key'];
         $attributes['weapp_openid'] = $decryptedData['openId'];
@@ -185,11 +184,6 @@ class AuthorizationsController extends Controller
             $user->increaseJcTimes(config('app.jc_times'));
         }
         $user->update($attributes);
-//        if($user->weapp_openid == '') {
-//            $user->update([
-//                'weapp_openid' => $data['openid'],
-//            ]);
-//        }
         $token = auth('api')->login($user);
         return response()->json([
             'access_token' => $token,
