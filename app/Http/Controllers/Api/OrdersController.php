@@ -66,12 +66,12 @@ class OrdersController extends Controller
 
     public function index(Request $request)
     {
-        if($phone = $request->phone) {
-            $orders = Order::query()->with('category:id,name')->whereHas('user', function($query) use ($phone) {
-                $query->where('phone', $phone);
-            })->latest()->paginate();
+        if(!$phone = $request->phone) {
+            $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate();
         }
-        $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate();
+        $orders = Order::query()->with('category:id,name')->whereHas('user', function($query) use ($phone) {
+            $query->where('phone', $phone);
+        })->latest()->paginate();
         return OrderResource::collection($orders);
     }
 
