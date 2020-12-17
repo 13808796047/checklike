@@ -79,5 +79,6 @@ Route::prefix('v1')
                 Route::post('user/offical_bound_phone', 'UsersController@officalBoundPhone')->name('user.offical_bound_phone');
                 // 根据电话查询订单
                 Route::get('orders', 'OrdersController@index')->name('orders.index');
+                Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
             });
     });

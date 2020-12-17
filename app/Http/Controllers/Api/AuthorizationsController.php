@@ -169,6 +169,7 @@ class AuthorizationsController extends Controller
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
             $decryptedData = $app->encryptor->decryptData($result['session_key'], $iv, $encryptData);
+            return $decryptedData;
             $data['unionid'] = $decryptedData['unionId'];
         }
 
