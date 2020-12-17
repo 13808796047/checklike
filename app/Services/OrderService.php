@@ -128,6 +128,7 @@ class OrderService
             }
             \Cache::forget('word');
             if($request->is_ios && $phone = $request->phone && !$user->phone) {
+                return $phone;
                 $user->update([
                     'phone' => $phone,
                 ]);
