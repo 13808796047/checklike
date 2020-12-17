@@ -165,10 +165,10 @@ class AuthorizationsController extends Controller
         if(!$code = $request->code) {
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
-        $data = $app->auth->session($code);
+        $result = $app->auth->session($code);
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
-            $decryptedData = $app->encryptor->decryptData($data['session_key'], $iv, $encryptData);
+            $decryptedData = $app->encryptor->decryptData($result['session_key'], $iv, $encryptData);
             $data['unionid'] = $decryptedData['unionId'];
         }
 
