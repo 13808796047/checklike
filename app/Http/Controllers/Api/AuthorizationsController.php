@@ -172,7 +172,7 @@ class AuthorizationsController extends Controller
         }
 
         // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
-        if(isset($data['errcode'])) {
+        if(isset($decryptedData['errcode'])) {
             throw new AuthenticationException('code 不正确');
         }
         // 找到 openid 对应的用户
