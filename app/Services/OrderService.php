@@ -30,11 +30,7 @@ class OrderService
             $category = Category::find($request->cid);
             $file = File::find($request->file_id);
             $user = \Auth::user();
-            if($phone = $request->phone && !$user->phone) {
-                $user->update([
-                    'phone' => $phone,
-                ]);
-            }
+
             $result = $this->converFile($category, $request->type, $request->content, $file, $user->id);
             $words = $result['words'];
 
@@ -131,9 +127,13 @@ class OrderService
                 ]);
             }
             \Cache::forget('word');
-            if($request->is_ios) {
+            if($request->is_ios && $phone = $request->phone && !$user->phone) {
+                $user->update([
+                    'phone' => $phone,
+                ]);
                 dispatch(new IOSPaidMessage($order));
             }
+
             $this->OrderCreated($order);
             return $order;
         });
