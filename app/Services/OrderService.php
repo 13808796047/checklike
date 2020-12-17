@@ -87,6 +87,7 @@ class OrderService
                 'paper_path' => $result['path'] ?? '',
                 'from' => $request->from,
                 'content' => '',
+                'phone' => $request->phone ?? '',
                 'referer' => $referer['from'],
                 'keyword' => $referer['keyword']
             ]);
@@ -120,19 +121,16 @@ class OrderService
 
 
             $order->price = $amount;
+
             $order->save();
+
             if(isset($file)) {
                 $file->update([
                     'order_id' => $order->id,
                 ]);
             }
             \Cache::forget('word');
-            if($request->is_ios && $request->has('phone') && !$user->phone) {
-                $user->update([
-                    'phone' => $request->phone,
-                ]);
-                dispatch(new IOSPaidMessage($order));
-            }
+
 
             $this->OrderCreated($order);
             return $order;
@@ -142,7 +140,10 @@ class OrderService
 
     public function OrderCreated(Order $order)
     {
-        dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
+        if(!$order->phone) {
+            dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
+        }
+        dispatch(new IOSPaidMessage($order));
     }
 
     public function converFile(Category $category, $type, $content, $file, $file_prefix)
