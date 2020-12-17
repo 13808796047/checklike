@@ -127,10 +127,9 @@ class OrderService
                 ]);
             }
             \Cache::forget('word');
-            if($request->is_ios && $phone = $request->phone && !$user->phone) {
-                return $phone;
+            if($request->is_ios && $request->has('phone') && !$user->phone) {
                 $user->update([
-                    'phone' => $phone,
+                    'phone' => $request->phone,
                 ]);
                 dispatch(new IOSPaidMessage($order));
             }
