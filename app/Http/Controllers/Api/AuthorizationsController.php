@@ -184,6 +184,7 @@ class AuthorizationsController extends Controller
             $user->increaseJcTimes(config('app.jc_times'));
         }
         $user->update($attributes);
+
         $token = auth('api')->login($user);
         return response()->json([
             'access_token' => $token,

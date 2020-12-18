@@ -80,5 +80,7 @@ Route::prefix('v1')
                 // 根据电话查询订单
                 Route::get('orders', 'OrdersController@index')->name('orders.index');
                 Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+                Route::delete('orders', 'OrdersController@destroy')->name('orders.destroy');
+                Route::get('orders/{orderid}/view_pdf', 'OrdersController@viewPdf')->name('orders.view_pdf');
             });
     });
