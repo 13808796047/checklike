@@ -66,7 +66,7 @@ class OrdersController extends Controller
 
     public function index(Request $request)
     {
-        return $request->user();
+        return '111' . auth()->user();
         $builder = Order::query()->with('category:id,name');
         if(!$user) {
             $builder->where('phone', $request->phone);
