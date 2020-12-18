@@ -66,15 +66,14 @@ class OrdersController extends Controller
 
     public function index(Request $request)
     {
-        return '111' . auth()->user();
-        $builder = Order::query()->with('category:id,name');
-        if(!$user) {
-            $builder->where('phone', $request->phone);
-        } else {
-            $builder->where('userid', $user->id);
-        }
+        $orders = $request->user()->orders()->with('category:id,name')->latest()->paginate();
+        return OrderResource::collection($orders);
+    }
 
-        return OrderResource::collection($builder->latest()->paginate());
+    public function miniOrders(Request $request)
+    {
+        $orders = Order::query()->with('category:id,name')->where('phone', $request->phone)->latest()->paginate();
+        return OrderResource::collection($orders);
     }
 
     public function show(Request $request, Order $order)
