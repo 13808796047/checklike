@@ -42,7 +42,7 @@ class IOSPaidMessage implements ShouldQueue
             app('official_account')->template_message->send([
                 'touser' => $touser,
                 'template_id' => $template_id,
-                'url' => 'https://wap.lianwen.com/bading?openid=' . $this->order->user->weixin_openid,
+                'url' => 'https://dev.checklike.com/p/#/queryorder?phone=' . $this->order->phone,
 //                'miniprogram' => [
 //                    'appid' => $appid,
 //                    'pagepath' => $pagepath,
