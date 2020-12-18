@@ -70,13 +70,20 @@ class OrdersController extends Controller
         return OrderResource::collection($orders);
     }
 
-    public function miniOrders(Request $request)
+    public function miniIndex(Request $request)
     {
         $orders = Order::query()->with('category:id,name')->where('phone', $request->phone)->latest()->paginate();
         return OrderResource::collection($orders);
     }
 
     public function show(Request $request, Order $order)
+    {
+        // 校验权限
+        $this->authorize('own', $order);
+        return new OrderResource($order);
+    }
+
+    public function miniShow(Request $request, Order $order)
     {
         // 校验权限
         $this->authorize('own', $order);

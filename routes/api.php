@@ -78,8 +78,8 @@ Route::prefix('v1')
                 Route::get('categories', 'CategoriesController@index')->name('categories.index');
                 Route::post('user/offical_bound_phone', 'UsersController@officalBoundPhone')->name('user.offical_bound_phone');
                 // 根据电话查询订单
-                Route::get('mini-orders', 'OrdersController@miniOrders');
-                Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+                Route::get('mini-orders', 'OrdersController@miniIndex');
+                Route::get('mini-orders/{order}', 'OrdersController@miniShow');
                 Route::delete('orders', 'OrdersController@destroy')->name('orders.destroy');
                 Route::get('orders/{orderid}/view_pdf', 'OrdersController@viewPdf')->name('orders.view_pdf');
             });
