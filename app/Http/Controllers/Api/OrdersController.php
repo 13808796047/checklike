@@ -96,6 +96,20 @@ class OrdersController extends Controller
         return new OrderResource($order);
     }
 
+    public function sendMail(Request $request, Order $order)
+    {
+        $to = $request->email_address;
+        // 发送
+        try {
+            Mail::to($to)->send(new OrderReport($order));
+        } catch (Exception $e) {
+            throw new InternalException($e->getMessage());
+        }
+        return response()->json([
+            'message' => '邮件发送成功,请注意查收！'
+        ]);
+    }
+
     public function viewPdf(Request $request)
     {
 
@@ -136,6 +150,20 @@ class OrdersController extends Controller
     }
 
     public function generateImg(Request $request)
+    {
+        $orderimg = app(OrderimgHandler::class);
+        $img_url = $orderimg->generate(
+            $request->title,
+            $request->writer,
+            $request->category_name,
+            $request->classid,
+            $request->created_at,
+            $request->rate
+        );
+        return response(compact('img_url'), 200);
+    }
+
+    public function miniGenerateImg(Request $request)
     {
         $orderimg = app(OrderimgHandler::class);
         $img_url = $orderimg->generate(
