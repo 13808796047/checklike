@@ -80,6 +80,7 @@ Route::prefix('v1')
                 // 根据电话查询订单
                 Route::get('mini-orders', 'OrdersController@miniIndex');
                 Route::get('mini-orders/{order}', 'OrdersController@miniShow');
+                Route::get('check-order/{orderid}', 'OrdersController@miniCheckOrder');
                 Route::delete('orders', 'OrdersController@destroy')->name('orders.destroy');
                 Route::get('orders/{orderid}/view_pdf', 'OrdersController@viewPdf')->name('orders.view_pdf');
             });
