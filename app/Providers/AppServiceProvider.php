@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('alipay_wap', function() {
             $config = config('pay.alipay');
             $config['notify_url'] = route('payments.alipay.notify');
-            $config['return_url'] = 'https://www.baidu.com/?tn=64075107_1_dg';
+            $config['return_url'] = 'https://m.checklike.com/p/#/report';
             //判断当前项目运行环境是否为线上环境
 //            if(app()->environment() != 'production') {
 //                $config['mode'] = 'dev';
