@@ -93,10 +93,7 @@ class OrdersController extends Controller
     public function miniCheckOrder(Request $request, $orderid)
     {
         $order = Order::where('orderid', $orderid)->first();
-        if(!$order->phone) {
-            return false;
-        }
-        return true;
+        return new OrderResource($order);
     }
 
     public function viewPdf(Request $request)
