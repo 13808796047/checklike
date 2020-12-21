@@ -26,7 +26,7 @@ class IOSPaidMessage implements ShouldQueue
     public function handle(EasySms $easySms)
     {
         $data = [
-            'first' => '您有一个订单尚未完成支付，支付后开始检测',
+            'first' => '订单尚未支付，支付后开始检测(如已付款请忽略)',
             'keyword1' => ['value' => $this->order->title, 'color' => '#173177'],
             'keyword2' => ['value' => OrderEnum::getStatusName($this->order->status), 'color' => '#173177'],
             'keyword3' => ['value' => $this->order->created_at->format("Y-m-d H:i:s"), 'color' => '#173177'],
@@ -42,7 +42,7 @@ class IOSPaidMessage implements ShouldQueue
             app('official_account')->template_message->send([
                 'touser' => $touser,
                 'template_id' => $template_id,
-                'url' => 'https://dev.checklike.com/p/#/queryorder?phone=' . $this->order->phone,
+                'url' => 'https://m.checklike.com/p/report?phone=' . $this->order->phone,
 //                'miniprogram' => [
 //                    'appid' => $appid,
 //                    'pagepath' => $pagepath,
