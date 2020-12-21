@@ -19,7 +19,7 @@ class CheckDoc implements ShouldQueue
     {
         //从事件对象中取出对应的订单
         $order = $event->getOrder();
-        if($order->category->check_type != 1) {
+        if($order->status != 1) {
             return;
         }
         $order->user()->update([
