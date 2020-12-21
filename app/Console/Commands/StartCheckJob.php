@@ -48,9 +48,8 @@ class StartCheckJob extends Command
             if($order->category->check_type == 1) {
                 event(new OrderPaid($order));
             }
-            $order->update([
-                'checked' => true
-            ]);
+            $order->checked = true;
+            $order->save();
         }
     }
 }

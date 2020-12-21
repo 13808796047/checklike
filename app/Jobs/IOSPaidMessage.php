@@ -55,8 +55,8 @@ class IOSPaidMessage implements ShouldQueue
                 $result = $easySms->send($this->order->phone, [
                     'template' => config('easysms.gateways.aliyun.templates.ios_paiding'),
                     'data' => [
-                    'phone' => $this->order->phone,
-                ]
+                        'phone' => $this->order->phone,
+                    ]
                 ]);
             } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
                 $message = $exception->getException('aliyun')->getMessage();
