@@ -22,7 +22,7 @@ return [
         'aliyun' => [
             'access_key_id' => env('SMS_ALIYUN_ACCESS_KEY_ID'),
             'access_key_secret' => env('SMS_ALIYUN_ACCESS_KEY_SECRET'),
-            'sign_name' => '论文检测',
+            'sign_name' => env('SIGN_NAME'),
             'templates' => [
                 'register' => env('SMS_ALIYUN_TEMPLATE_REGISTER'),
                 'checked' => env('SMS_ALIYUN_TEMPLATE_CHECKED'),
