@@ -51,6 +51,9 @@ class IOSPaidMessage implements ShouldQueue
             ]);
         }
         if($this->order->phone) {
+            $data = [
+                'phone' => $this->order->phone,
+            ];
             try {
                 $result = $easySms->send($this->order->phone, [
                     'template' => config('easysms.gateways.aliyun.templates.ios_paiding'),
