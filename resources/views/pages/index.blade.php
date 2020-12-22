@@ -603,7 +603,7 @@
         if(sourceUrl.indexOf(currentHost)=="-1" && sourceUrl!=""){
 
           $("#staticBackdrop").modal("show")
-          axios.get("/official_account").then(function(){
+          axios.get("/official_account").then(function(res){
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
@@ -822,7 +822,6 @@
           .siblings(".listbox")
           .css("display", "none");
       });
-
     });
   </script>
 @stop
