@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
 
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
+  <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" />
 
   <style>
     .newbody {
