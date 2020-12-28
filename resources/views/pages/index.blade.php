@@ -224,7 +224,7 @@
 		            <input class="appearance-none border border-red-500 rounded   py-2 px-2  w-full mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 		             id="verification_code" type="text" placeholder="请输入短信验证码" />
 		            <input class="bg-blue-500 hover:bg-blue-700 px-2 py-1  text-white font-bold rounded" type="button" id="verificationCode"
-		             value="发送验证码" style="border:none;height:50px;">
+		             value="发送验证码" style="border:none;height:50px;background: #26AEF2;">
 
 	            </div>
           </div>
