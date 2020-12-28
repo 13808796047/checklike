@@ -43,16 +43,6 @@
         <li class="nav-item px-4"><a class="nav-link" href="javascript:void(0)"
                                      onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
         </li>
-        {{--        <li class="active"><a href="/" class="scroll">首页<span> </span></a></li>--}}
-
-        {{--        <li class="page-scroll"><a href="{{route('categories.show',['classid'=>2])}}" id="login1"--}}
-        {{--                                   class="scroll">万方查重<span> </span></a></li>--}}
-
-        {{--        <li class="page-scroll"><a href="{{route('orders.index')}}" id="down" class="scroll">查看报告<span> </span></a></li>--}}
-        {{--        <li class="contatct-active" class="page-scroll"><a href="javascript:void(0)"--}}
-        {{--                                                           onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')"--}}
-        {{--                                                           class="scroll">在线咨询</a></li>--}}
-
       </ul>
 
       <!-- Right Side Of Navbar -->

@@ -87,46 +87,26 @@
     timeOut:2000 // 超时时间，即窗口显示的时间
   }
   $('.logout').click(function(){
-    // $.confirm({
-    //     title: '提示',
-    //     content: '您确认要退出登录吗?',
-    //     buttons: {
-    //         ok: {
-    //             text: '确认',
-    //             btnClass:  'btn-danger',
-    //             action: function() {
-    //               axios.post('{{route('logout')}}').then(function(){
-    //                  swal("提示","退出成功", "success");
-    //                  location.replace('/')
-    //               })
-    //             }
-    //         },
-    //         cancel: {
-    //             text: '取消',
-    //             btnClass: 'btn-info'
-    //         }
-    //     }
-    // });
-    swal({
-      title: "您确认要退出登录吗?",
-      icon: "warning",
-      buttons: ['取消','确定'],
-      dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          console.log('xixi')
-          axios.post('{{route('logout')}}').then(res => {
-            swal("注销成功!", {
-              icon: "success",
-            }).then(willDelete => {
-              // console.log(willDelete,42)
-              // location.reload();
-              location.replace('/')
-            });
-          })
+    $.confirm({
+        title: '提示',
+        content: '您确认要退出登录吗?',
+        buttons: {
+            ok: {
+                text: '确认',
+                btnClass:  'btn-danger',
+                action: function() {
+                  axios.post('{{route('logout')}}').then(function(){
+                     swal("提示","退出成功", "success");
+                     location.replace('/')
+                  })
+                }
+            },
+            cancel: {
+                text: '取消',
+                btnClass: 'btn-info'
+            }
         }
-      });
+    });
   });
   $("#xiugai").click(function(){
     $("#staticXiugai").modal("show")
