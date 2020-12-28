@@ -321,14 +321,14 @@
         @endif
       </div>
       <div class="col-span-3">
-      <div>
+        <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
           <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
           <p style="text-align:center;margin-top:7px;font-size:13px;">微信扫一扫，与客服在线沟通</p>
       </div>
       </div>
-    <!--[if !IE]>
+
       <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
       <b>1、检测结果是否准确？</b>
         <p id="rightcontainer"></p>
@@ -343,7 +343,6 @@
         <b>6、检测时作者需要填吗？</b>
         <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则需要填写真实作者姓名。</p>
       </div>
-      <![endif]-->
 
     </div>
     </div>

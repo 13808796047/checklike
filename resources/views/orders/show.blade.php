@@ -290,48 +290,65 @@
 
 
        let currentId = {!!$order->id!!}
-       axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
-        console.log(res,"fsafs")
-        couponArr=res.data.data;
-         changeCoupon(couponArr)
-       }).catch(err=>{})
+      //  axios.get(`/orders/${currentId}/coupon_codes`).then(res=>{
+      //   console.log(res,"fsafs")
+      //   couponArr=res.data.data;
+      //    changeCoupon(couponArr)
+      //  }).catch(err=>{})
+      axios.get("/orders/".concat(currentId, "/coupon_codes")).then(function (res) {
+
+        couponArr = res.data.data;
+        changeCoupon(couponArr);
+      }).catch(function (err) {});
 
        function changeCoupon(item){
         let currentCid = {!!$order->cid!!} //当前订单CID
         let currentPrice =  {{$order->price}} //当前订单价格
          //过滤掉已过期的
-        let currentArr = item.filter(curitem=>{
-           return !curitem.is_enable
-         })
-        currentArr.sort((a,b)=>{
-          // let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
-          // let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
-          return (b.reason=="") - (a.reason=="")
-        })
+        // let currentArr = item.filter(curitem=>{
+        //    return !curitem.is_enable
+        //  })
+        // currentArr.sort((a,b)=>{
+        //   // let val1=(!a.cid&&currentPrice>=a.min_amount)||(a.cid==currentCid&&currentPrice>=a.min_amount);
+        //   // let val2=(!b.cid&&currentPrice>=b.min_amount)||(b.cid==currentCid&&currentPrice>=b.min_amount);
+        //   return (b.reason=="") - (a.reason=="")
+        // })
+
+        var currentArr = item.filter(function (curitem) {
+          return !curitem.is_enable;
+        });
+        currentArr.sort(function (a, b) {
+          return (b.reason == "") - (a.reason == "");
+        });
          //遍历所有未过期的项目
-         currentArr.forEach(e=>{
-          let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
-           arrStr +=`
-              <div style="margin:10px 20px;" class="cardToast">
-							<div style="width:210px;height:110px;" class="${judgeTerm ? 'discount_box' : 'discount_boxborder'}">
-								<div style="padding: 8px;" class="${judgeTerm ? 'discount_topbox' : 'discount_curbg'}">
-									<p style="color:#fff;"><span style="font-size: 19px;">
-										${e.type=="fixed"? `￥${e.value}`:`${e.description}`}
-									</span> 满${e.min_amount}可用</p>
-									<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
-								</div>
-								<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
-                <div style="display:none;" class="codedisplay">${e.code}</div>
-              </div>
-              <div style="display:flex;align-items:center;" class="infofooter"><img src="${e.reason!=""?'/asset/images/gantanhao.png':''}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
-            </div>
-            `
-        })
-        if(arrStr==""){
-          arrStr = `<div style="margin-top:13%;width:100%;color:#666;font-size:19px;text-align:center;">暂无可用优惠券</div>`
-        }
-        $("#couponbox").html(arrStr)
-        doStyle()
+        //  currentArr.forEach(e=>{
+        //   let judgeTerm = (!e.cid&&currentPrice>=e.min_amount)||(e.cid==currentCid&&currentPrice>=e.min_amount)
+        //    arrStr +=`
+        //       <div style="margin:10px 20px;" class="cardToast">
+				// 			<div style="width:210px;height:110px;" class="${judgeTerm ? 'discount_box' : 'discount_boxborder'}">
+				// 				<div style="padding: 8px;" class="${judgeTerm ? 'discount_topbox' : 'discount_curbg'}">
+				// 					<p style="color:#fff;"><span style="font-size: 19px;">
+				// 						${e.type=="fixed"? `￥${e.value}`:`${e.description}`}
+				// 					</span> 满${e.min_amount}可用</p>
+				// 					<p style="color:#F5FFFA;font-size:9px;">有效期至${e.enable_date}</p>
+				// 				</div>
+				// 				<p style="padding:1px 8px;font-size:9px;">适用系统：${e.cid ? e.category.name : '不限' }</p>
+        //         <div style="display:none;" class="codedisplay">${e.code}</div>
+        //       </div>
+        //       <div style="display:flex;align-items:center;" class="infofooter"><img src="${e.reason!=""?'/asset/images/gantanhao.png':''}" style="width:15px;height:15px;"><p style="color:#D1D1D1;font-size:11px;margin-left:5px;">${e.reason}</p></div>
+        //     </div>
+        //     `
+        // })
+        currentArr.forEach(function (e) {
+  var judgeTerm = !e.cid && currentPrice >= e.min_amount || e.cid == currentCid && currentPrice >= e.min_amount;
+  arrStr += "\n              <div style=\"margin:10px 20px;\" class=\"cardToast\">\n\t\t\t\t\t\t\t<div style=\"width:210px;height:110px;\" class=\"".concat(judgeTerm ? 'discount_box' : 'discount_boxborder', "\">\n\t\t\t\t\t\t\t\t<div style=\"padding: 8px;\" class=\"").concat(judgeTerm ? 'discount_topbox' : 'discount_curbg', "\">\n\t\t\t\t\t\t\t\t\t<p style=\"color:#fff;\"><span style=\"font-size: 19px;\">\n\t\t\t\t\t\t\t\t\t\t").concat(e.type == "fixed" ? "\uFFE5".concat(e.value) : "".concat(e.description), "\n\t\t\t\t\t\t\t\t\t</span> \u6EE1").concat(e.min_amount, "\u53EF\u7528</p>\n\t\t\t\t\t\t\t\t\t<p style=\"color:#F5FFFA;font-size:9px;\">\u6709\u6548\u671F\u81F3").concat(e.enable_date, "</p>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p style=\"padding:1px 8px;font-size:9px;\">\u9002\u7528\u7CFB\u7EDF\uFF1A").concat(e.cid ? e.category.name : '不限', "</p>\n                <div style=\"display:none;\" class=\"codedisplay\">").concat(e.code, "</div>\n              </div>\n              <div style=\"display:flex;align-items:center;\" class=\"infofooter\"><img src=\"").concat(e.reason != "" ? '/asset/images/gantanhao.png' : '', "\" style=\"width:15px;height:15px;\"><p style=\"color:#D1D1D1;font-size:11px;margin-left:5px;\">").concat(e.reason, "</p></div>\n            </div>\n            ");
+});
+if (arrStr == "") {
+  arrStr = "<div style=\"margin-top:13%;width:100%;color:#666;font-size:19px;text-align:center;\">\u6682\u65E0\u53EF\u7528\u4F18\u60E0\u5238</div>";
+}
+
+$("#couponbox").html(arrStr);
+doStyle();
        }
        //tab切换
        function doStyle(){
@@ -345,11 +362,36 @@
        }
        var clickCode =""
        //计算价格
-       function countPrice(e){
+      //  function countPrice(e){
+      //     //当前CODE
+      //     clickCode = e.find('.codedisplay').text()
+      //     //当前价格
+      //     axios.get(`/orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
+      //       let currentPrice =  {{$order->price}} //当前订单价格
+      //       $("#sjprice").text(res.data+"元")
+      //       $("#yhje").text((currentPrice-res.data).toFixed(2))
+      //       $("#dingdanprice").css("display","block")
+
+      //       if($("#sjprice").text()=="0元"){
+      //         $("#isshowicon").css("display","none")
+      //         $("#iszero").css("display","block")
+      //       }else{
+      //         $("#isshowicon").css("display","block")
+      //         $("#iszero").css("display","none")
+      //       }
+      //     }).catch(err=>{
+      //       console.log(err,"err")
+      //     })
+      //  }
+        function countPrice(e){
           //当前CODE
           clickCode = e.find('.codedisplay').text()
           //当前价格
-          axios.get(`/orders/${currentId}/coupon-price`,{params:{code:clickCode}}).then(res=>{
+          axios.get("/orders/".concat(currentId, "/coupon-price"), {
+            params: {
+            code: clickCode
+            }
+          }).then(function (res) {
             let currentPrice =  {{$order->price}} //当前订单价格
             $("#sjprice").text(res.data+"元")
             $("#yhje").text((currentPrice-res.data).toFixed(2))
@@ -362,7 +404,7 @@
               $("#isshowicon").css("display","block")
               $("#iszero").css("display","none")
             }
-          }).catch(err=>{
+          }).catch(function(err){
             console.log(err,"err")
           })
        }
@@ -370,20 +412,19 @@
 
 
 
-       $("#freefee").click(()=>{
-          axios.get(`/payments/${currentId}/free_pay?code=${clickCode}`).then(res=>{
-              location.href = "/orders"
-          })
-       })
-
+       $("#freefee").click(function () {
+  axios.get("/payments/".concat(currentId, "/free_pay?code=").concat(clickCode)).then(function (res) {
+    location.href = "/orders";
+  });
+});
       $('.navbar').css('position','static')
       $('#navigation').addClass('affix')
       $('#app').removeClass('newmain')
       $('#lwfooter').removeClass('absolute');
-      $("input[name='paytype']").change(() => {
-        $('#bottonsubmit').toggle();
-        $('#btn-wechat').toggle();
-      })
+      $("input[name='paytype']").change(function () {
+  $('#bottonsubmit').toggle();
+  $('#btn-wechat').toggle();
+});
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
 
@@ -395,7 +436,7 @@
           clickCode = ""
         }
         $("#codeTcDialog").modal("show")
-        $('#codeurl').attr("src", `/payments/${order.id}/wechat/order?code=${clickCode}`);
+        $('#codeurl').attr("src", "/payments/".concat(order.id, "/wechat/order?code=").concat(clickCode));
         // swal({
         //   title: "打开微信使用扫一扫完成付款",
         //   content: $(`<img src="/payments/${order.id}/wechat/order" style="display: block;margin: 0 auto;"/>`)[0],
@@ -408,12 +449,12 @@
         //     }
         //   })
       });
-      $("#closeCodeDialog").click(()=>{
-        $("#codeTcDialog").modal("hide")
-      })
-      $("#completeCodeDialog").click(()=>{
+      $("#closeCodeDialog").click(function () {
+        $("#codeTcDialog").modal("hide");
+      });
+      $("#completeCodeDialog").click(function(){
         let order = {!!$order!!}
-        location.href=`/payments/${order.id}/wechat/return/order`
+        location.href = "/payments/".concat(order.id, "/wechat/return/order");
       })
       //支付宝
       $('#bottonsubmit').click(function(){
@@ -423,7 +464,7 @@
         if(!isCode){
           clickCode = ""
         }
-        location.href=`/payments/${order.id}/alipay/order?code=${clickCode}`
+        location.href = "/payments/".concat(order.id, "/alipay/order?code=").concat(clickCode);
       })
     });
   </script>
