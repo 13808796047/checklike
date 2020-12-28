@@ -14,10 +14,7 @@
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
 
-  <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
-  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-  <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" />
 
   <style>
     .newbody {
@@ -32,13 +29,13 @@
       flex-direction: column;
       height: 100%;
     }
-    .alertify-notifier.ajs-top {
+    /* .alertify-notifier.ajs-top {
       top: 89px;
     }
     .alertify-notifier .ajs-message.ajs-visible {
       padding: 8px;
     }
-    .ajs-message.ajs-custom { color: #67c23a;background-color: #f0f9eb;border-color: #e1f3d8;}
+    .ajs-message.ajs-custom { color: #67c23a;background-color: #f0f9eb;border-color: #e1f3d8;} */
   </style>
   @yield('styles')
   <script>
@@ -67,7 +64,7 @@
 
 <body class="newbody">
 <div id="app" class="{{ route_class() }}-page newmain">
-
+@include('layouts._header')
 
   @include('layouts._header')
 
@@ -82,8 +79,6 @@
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
-<script type="text/javascript" src="{{asset('asset/js/jquery-confirm.js')}}"></script>
-<script type="text/javascript" src="{{asset('asset/js/toast.js')}}" ></script>
 
 @yield('scripts')
 <script !src="">
@@ -93,26 +88,46 @@
     timeOut:2000 // 超时时间，即窗口显示的时间
   }
   $('.logout').click(function(){
-    $.confirm({
-        title: '提示',
-        content: '您确认要退出登录吗?',
-        buttons: {
-            ok: {
-                text: '确认',
-                btnClass:  'btn-danger',
-                action: function() {
-                  axios.post('{{route('logout')}}').then(function(){
-                     swal("提示","退出成功", "success");
-                     location.replace('/')
-                  })
-                }
-            },
-            cancel: {
-                text: '取消',
-                btnClass: 'btn-info'
-            }
+    // $.confirm({
+    //     title: '提示',
+    //     content: '您确认要退出登录吗?',
+    //     buttons: {
+    //         ok: {
+    //             text: '确认',
+    //             btnClass:  'btn-danger',
+    //             action: function() {
+    //               axios.post('{{route('logout')}}').then(function(){
+    //                  swal("提示","退出成功", "success");
+    //                  location.replace('/')
+    //               })
+    //             }
+    //         },
+    //         cancel: {
+    //             text: '取消',
+    //             btnClass: 'btn-info'
+    //         }
+    //     }
+    // });
+    swal({
+      title: "您确认要退出登录吗?",
+      icon: "warning",
+      buttons: ['取消','确定'],
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          console.log('xixi')
+          axios.post('{{route('logout')}}').then(res => {
+            swal("注销成功!", {
+              icon: "success",
+            }).then(willDelete => {
+              // console.log(willDelete,42)
+              // location.reload();
+              location.replace('/')
+            });
+          })
         }
-    });
+      });
   });
   $("#xiugai").click(function(){
     $("#staticXiugai").modal("show")

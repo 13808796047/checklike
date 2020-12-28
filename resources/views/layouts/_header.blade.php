@@ -2,6 +2,73 @@
 </style>
 
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
+     style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);">
+  <div class="container">
+    <!-- Branding Image -->
+    <a class="navbar-brand " href="{{ url('/') }}">
+      <img src="https://wanfang.lianwen.com/asset/images/vpcs-logo.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left Side Of Navbar -->
+      <ul class="navbar-nav mr-auto" id="headerlw">
+        <li class="nav-item px-4 {{ active_class(if_route('domained::pages.index')) }}"><a
+            class="nav-link text-blue-300"
+            href="{{ url('/') }}">首页</a>
+        </li>
+        <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
+          @guest
+            <a class="nav-link" href="javascript:;" data-toggle="modal"
+               data-target="#staticBackdrop">维普查重</a>
+          @else
+            <a
+              class="nav-link"
+              href="{{route('categories.show',['classid'=>2])}}"
+            >维普查重</a>
+          @endguest
+        </li>
+        <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
+          @guest
+            <a class="nav-link" href="javascript:;" data-toggle="modal"
+               data-target="#staticBackdrop">查看报告</a>
+          @else
+            <a class="nav-link" href="{{route('orders.index')}}">查看报告</a>
+          @endguest
+        </li>
+        <li class="nav-item px-4"><a class="nav-link" href="javascript:void(0)"
+                                     onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
+        </li>
+        {{--        <li class="active"><a href="/" class="scroll">首页<span> </span></a></li>--}}
+
+        {{--        <li class="page-scroll"><a href="{{route('categories.show',['classid'=>2])}}" id="login1"--}}
+        {{--                                   class="scroll">万方查重<span> </span></a></li>--}}
+
+        {{--        <li class="page-scroll"><a href="{{route('orders.index')}}" id="down" class="scroll">查看报告<span> </span></a></li>--}}
+        {{--        <li class="contatct-active" class="page-scroll"><a href="javascript:void(0)"--}}
+        {{--                                                           onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')"--}}
+        {{--                                                           class="scroll">在线咨询</a></li>--}}
+
+      </ul>
+
+      <!-- Right Side Of Navbar -->
+      <ul class="navbar-nav navbar-right">
+      @guest
+        <!-- Authentication Links -->
+          <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
+                                  data-target="#staticBackdrop">登录</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+        @else
+          <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+        @endguest
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
 <div class="modal fade" id="staticXiugai" tabindex="-1" role="dialog" aria-labelledby="staticXiugaiLabel" aria-hidden="true">
