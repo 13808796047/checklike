@@ -349,7 +349,7 @@
 @section('scripts')
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
-    $(() => {
+  $(function () {
       let currentright=window.location.pathname;
       switch (currentright) {
         case "/categories/1":
@@ -456,7 +456,7 @@
             headers: {
               'Content-Type': 'multipart/form-data'
             }
-          }).then(res => {
+          }).then(function(){
             array.push({
               'file_id': res.data.data.id, 'from': 'pc', 'type': 'file',
               'content': ''
@@ -483,7 +483,7 @@
             $('#progress_text').html("上传成功");
             // alert('上传成功')
             $("#newelement_container").append(`<div style='margin-bottom:10px;'><span style="margin-right:10px">订单${index}</span><input id='title' type='text' name='title' value=${item.name}>论文题目<input type='text' class='titlec' value=${item.name}>论文作者<input type='text' class='authorc' value='匿名'>检测系统<select>${option}</select></div>`);
-          }).catch(err => {
+          }).catch(function(err){
             console.log(err);
             index++;
             $('#progress_bar_line').css("width", "100%")
@@ -491,33 +491,33 @@
             $("#newelement_container").append(`<div style='margin-bottom:10px'><span style="margin-left:10px">订单${index}<span><input id='title' type='text' name='title' value=${item.name}><span style="margin-left:10px;">上传失败，请选择正确格式</span>`);
           })
         }
-        $('#batchBtn').click(_ => {
+        $('#batchBtn').click(function(){
           $('#newelement').css('display', 'none')
-          $('.titlec').each((index, ele) => {
+          $('.titlec').each(function(index, ele){
             console.log(index, ele, 312321)
             array[index]['title'] = ele.value;
           })
-          $('.authorc').each((index, ele) => {
+          $('.authorc').each(function(index, ele){
             console.log(index, ele, 312321)
             array[index]['writer'] = ele.value;
           })
-          $('select').each((index, ele) => {
+          $('select').each(function(index, ele){
             if (index + 1 > array.length) return;
             // array[index]['cid']=$("select").val();
             array[index]['cid'] = ele.value;
           })
-          console.log(array, 312, 'fsdafa');
+
           $('#paymsg').css('display', 'block')
-          for (let item of array) {
-            axios.post('{{route('orders.store')}}', item).then(res => {
+          for (let item in array) {
+            axios.post('{{route('orders.store')}}', item).then(function(res){
 
               if (res.status == 201) {
                 var paymsg = res.data.data;
-                $('#paymsg_container').append(`<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>论文题目:${paymsg.title}</p><p>作者：${paymsg.writer}</p><p>字数:${paymsg.words}</p><p>价格:${paymsg.price}元</p></div>`)
+                $('#paymsg_container').append("<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>论文题目:"+paymsg.title+"</p><p>作者："+paymsg.writer+"</p><p>字数:"+paymsg.words+"</p><p>价格:"+paymsg.price+"元</p></div>")
               }
 
-            }).catch(err => {
-              $('#paymsg_container').append(`<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>提交失败<p></div>`)
+            }).catch(function(err){
+              $('#paymsg_container').append("<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>提交失败<p></div>")
             })
           }
         })
@@ -540,7 +540,7 @@
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(res => {
+        }).then(function(res){
           console.log(res, 3123123)
           $('#tosubmit').attr("disabled", false);
           $("#tosubmit").val("提交论文")
@@ -548,7 +548,7 @@
           $('#alertbot').modal('show')
           setTimeout("$('#alertbot').modal('hide')", 1000);
           oneid = res.data.data.id;
-        }).catch(err => {
+        }).catch(function(err){
           $('#model-body-container').html('上传失败，仅支持docx和txt格式，最大支持15M')
           $('#alertbot').modal('show')
           setTimeout("$('#alertbot').modal('hide')", 2000);
@@ -590,12 +590,12 @@
               writer: $('#writer').val(),
               endDate: $('#element_id').val()
             }
-          ).then(res => {
+          ).then(function(res){
             console.log(res, 3123123)
             var order = res.data.data
             $("#submitAlertModal").modal('hide')
             location.href = '/orders/' + res.data.data.id
-          }).catch(err => {
+          }).catch(function(err){
             console.log(err.response.status, 3112312312)
             if(err.response.status == 400){
 
@@ -618,11 +618,11 @@
               writer: $('#writer').val(),
               endDate: $('#element_id').val()
             }
-          ).then(res => {
+          ).then(function(res){
             console.log(res, 3123123)
             var order = res.data.data
             location.href = '/orders/' + res.data.data.id
-          }).catch(err => {
+          }).catch(function(err){
             alert('提交失败，请重试')
             $('#tosubmit').css("display", "block");
             $('#submitBtn').css("display", "none")
