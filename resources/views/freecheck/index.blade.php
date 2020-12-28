@@ -449,11 +449,11 @@
         }
         axios.post('/api/v1/verificationCodes', {
           phone: phone,
-        }).then(res => {
+        }).then(function(res){
           swal('验证码已发送成功!,请注意查收!')
           time(index);
           verification_key = res.data.key;
-        }).catch(err => {
+        }).catch(function(err){
           index.removeAttribute("disabled");
           if (err.response.status == 401) {
             $.each(err.response.data.errors, function(field, errors){
