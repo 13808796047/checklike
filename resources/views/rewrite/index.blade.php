@@ -177,7 +177,7 @@
         </div>
       </div>
       </div>
-    <div class="col-span-3"  id="jcright">
+    <div class="col-span-3" id="jcright">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -208,8 +208,10 @@
   $(function () {
   if(!!window.ActiveXObject || "ActiveXObject" in window){
       $("#jcright").css("display","none")
+      console.log("风水大忌开")
     }else{
       $("#jcright").css("display","block")
+      console.log("fei IE")
 　　}
   })
   //清空内容
