@@ -483,13 +483,15 @@
             $('#progress_bar_line').html('上传成功')
             $('#progress_text').html("上传成功");
             // alert('上传成功')
-            $("#newelement_container").append(`<div style='margin-bottom:10px;'><span style="margin-right:10px">订单${index}</span><input id='title' type='text' name='title' value=${item.name}>论文题目<input type='text' class='titlec' value=${item.name}>论文作者<input type='text' class='authorc' value='匿名'>检测系统<select>${option}</select></div>`);
+            // $("#newelement_container").append(`<div style='margin-bottom:10px;'><span style="margin-right:10px">订单${index}</span><input id='title' type='text' name='title' value=${item.name}>论文题目<input type='text' class='titlec' value=${item.name}>论文作者<input type='text' class='authorc' value='匿名'>检测系统<select>${option}</select></div>`);
+            $("#newelement_container").append("<div style='margin-bottom:10px;'><span style='margin-right:10px'>订单"+index+"</span><input id='title' type='text' name='title' value="+item.name+">论文题目<input type='text' class='titlec' value="+item.name+">论文作者<input type='text' class='authorc' value='匿名'>检测系统<select>"+option+"</select></div>");
           }).catch(function(err){
             console.log(err);
             index++;
             $('#progress_bar_line').css("width", "100%")
             $('#progress_text').html("不允许上传的文件类型");
-            $("#newelement_container").append(`<div style='margin-bottom:10px'><span style="margin-left:10px">订单${index}<span><input id='title' type='text' name='title' value=${item.name}><span style="margin-left:10px;">上传失败，请选择正确格式</span>`);
+            // $("#newelement_container").append(`<div style='margin-bottom:10px'><span style="margin-left:10px">订单${index}<span><input id='title' type='text' name='title' value=${item.name}><span style="margin-left:10px;">上传失败，请选择正确格式</span>`);
+            $("#newelement_container").append("<div style='margin-bottom:10px'><span style='margin-left:10px'>订单"+index+"<span><input id='title' type='text' name='title' value="+item.name+"><span style='margin-left:10px;'>上传失败，请选择正确格式</span>");
           })
         }
         $('#batchBtn').click(function(){
