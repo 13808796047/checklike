@@ -471,7 +471,8 @@
             for (let i = 0; i < obj.length; i++) {
               var id = obj[i].id;
               var name = obj[i].name;
-              option += `<option value=${id} class='options'>${name}</option>`
+              // option += `<option value=${id} class='options'>${name}</option>`
+              option += "<option value="+id+" class='options'>"+name+"</option>"
             }
             console.log(option, "xixixifsaddjfa")
             var file_id = res.data.data.id;
