@@ -325,7 +325,7 @@
 @endsection
 @section('scripts')
   <script>
-     $(document).ready(function () {
+      $(function () {
       if(!!window.ActiveXObject || "ActiveXObject" in window){
         $("#Ieno").css("display","none")
       }else{
@@ -356,11 +356,11 @@
         })
       })
       //注册
-      $("#quiklyRegister").click(()=>{
+      $("#quiklyRegister").click(function(){
         $("#staticBackdrop").modal("hide")
         $("#registerTcDialog").modal('show')
       })
-      $("#noregister").click(()=>{
+      $("#noregister").click(function(){
         $("#registerTcDialog").modal('hide')
         $("#staticBackdrop").modal("show")
         $("#pills-home-tab").attr("aria-selected",true)
@@ -470,7 +470,7 @@
       $('#verificationCode').click(function () {
         getcode(this)
       })
-      $('#phoneLogin').click(() => {
+      $('#phoneLogin').click(function() {
         axios.post('{{ route('login') }}', {
           phone: $('#mobile').val(),
           verification_code: $('#verification_code').val(),
@@ -503,6 +503,6 @@
           .siblings(".listbox")
           .css("display", "none");
       });
-    });
+      })
   </script>
 @stop
