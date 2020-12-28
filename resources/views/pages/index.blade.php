@@ -603,7 +603,7 @@
         if(sourceUrl.indexOf(currentHost)=="-1" && sourceUrl!=""){
 
           $("#staticBackdrop").modal("show")
-          axios.get("/official_account").then(function(){
+          axios.get("/official_account").then(function(res){
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
@@ -757,30 +757,33 @@
       }
 
       function getcode(index) {
-        index.setAttribute('disabled', true);
-        var phone = $("#mobile").val();
-        var reg = /^1[34578]\d{9}$/;
-        if (!reg.test(phone)) {
-          index.removeAttribute("disabled");
-          $("input[name='phone']").focus();
-          swal('提示信息', "请输入正确的手机号码!!!");
-          return;
-        }
-        axios.post('/api/v1/verificationCodes', {
-          phone: phone,
-        }).then(function(res) {
-          swal('验证码已发送成功!,请注意查收!')
-          time(index);
-          verification_key = res.data.key;
-        }).catch(function(err) {
-          index.removeAttribute("disabled");
-          if (err.response.status == 401) {
-            $.each(err.response.data.errors, function(field, errors){
-              swal("提示", errors[0]);
-            })
-          }
-        })
-      }
+  index.setAttribute('disabled', true);
+  var phone = $("#mobile").val();
+  var reg = /^1[34578]\d{9}$/;
+
+  if (!reg.test(phone)) {
+    index.removeAttribute("disabled");
+    $("input[name='phone']").focus();
+    swal('提示信息', "请输入正确的手机号码!!!");
+    return;
+  }
+
+  axios.post('/api/v1/verificationCodes', {
+    phone: phone
+  }).then(function (res) {
+    swal('验证码已发送成功!,请注意查收!');
+    time(index);
+    verification_key = res.data.key;
+  }).catch(function (err) {
+    index.removeAttribute("disabled");
+
+    if (err.response.status == 401) {
+      $.each(err.response.data.errors, function (field, errors) {
+        swal("提示", errors[0]);
+      });
+    }
+  });
+}
       //忘记密码
       $("#forgetpsw").click(function(){
         $("#staticBackdrop").modal('hide')
