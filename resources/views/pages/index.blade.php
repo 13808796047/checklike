@@ -1,14 +1,7 @@
 @extends('layouts.app')
 @section('title', 'CheckLike论文相似度检测系统，首次查重免费')
 @section('styles')
-  <link rel="stylesheet" href="{{asset('asset/css/ionicons.min.css')}}">
-  <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
-  <link rel="stylesheet" href="{{asset('asset/css/slick-theme.css')}}">
-  <link rel="stylesheet" href="{{asset('asset/css/jquery.fancybox.css')}}">
-  <link rel="stylesheet" href="{{asset('asset/css/animate.min.css')}}">
-  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
-  <link rel="stylesheet" href="{{asset('asset/css/bootstrap4.css')}}">
-  <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
+  <link href="{{asset('asset/css/weipu-theme.css')}}" rel="stylesheet"/>
 
   <style>
     .swal-modal {
@@ -246,308 +239,254 @@
 	<!-- #navigation -->
 	<!-- #navigation end -->
 	<!-- .header-content -->
-  <div id="header1">
-     <nav id="navigation" class="navbar scrollspy">
-				<div class="container">
-					<div class="navbar-brand" style="width:395px;margin-right:70px;">
-						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-					</div>
-					<ul class="newul" style="flex:1;">
-						<li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">论文查重</a></li>
-            @else
-            <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-            @endguest
-            <li><a href="/freecheck" class="smooth-scroll">免费查重</a></li>
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">自动降重</a></li>
-            @else
-            <li><a href="/rewrite" class="smooth-scroll">自动降重</a></li>
-            @endguest
-            @guest
-            <li><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">报告下载</a></li>
-            @else
-            <li><a href="{{route('orders.index')}}" class="smooth-scroll">报告下载</a></li>
-            @endguest
-            @guest
-						<li class="menu-btn">
-            <a class="ambtn" href="javascript:;" data-toggle="modal"
-            data-target="#staticBackdrop" >登录/注册</a>
-            </li>
-            @else
-            <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-            <li class="ambtn"><a class="logout" href="javascript:;">退出</a></li>
-            @endguest
-					</ul>
-          </nav>
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="height: 500px">
+        <img src="{{ asset('asset/images/slide.jpg') }}" class="d-block w-100">
+        <div class="carousel-caption d-none d-md-block" style="bottom: 30%">
+          <h1 class="text-6xl">大学生 <span style="color: #F4BB36;">毕业论文</span> 查重</h1>
+          <p class="p-4">适合本科、专科、自考大学生毕业论文查重，全国多个高校在使用，与学校检测结果一致。</p>
+          @guest
+            <a class="bg-orange-500 px-4 py-2 text-decoration-none" href="javascript:;"
+               data-toggle="modal"
+               data-target="#staticBackdrop"><span>立即查重</span></a>
+          @else
+            <a class="bg-orange-500 px-4 py-2 text-decoration-none"
+               href="{{route('categories.show',['classid'=>2])}}" target="_blank"><span>立即查重</span></a>
+          @endguest
         </div>
-</div>
-
-<header id="header" style="position:relative;">
-	<div class="header-content">
-		<div class="container">
-			<div class="row header-row">
-				<div class="col-sm-7 col-md-8 col-lg-7">
-					<div class="header-txt">
-						<h1>移动版全新上线<br>完美支持手机/微信/小程序</h1>
-						<p>CheckLike 论文查重系统移动版全新升级，支持手机提交论文(含文件上传)、检测完成后微信提醒、在线查看检测结果、原文比对等功能，方便随时随地查重论文，提升毕业论文写作效率。</p>
-					</div>
-					<div class="header-btn">
-            @guest
-            <a href="javascript:;" class="btn-custom" data-toggle="modal" data-target="#staticBackdrop">微信扫码体验</a>
-            @else
-            <a href="/categories/1" class="btn-custom">论文查重</a>
-            @endguest
-
-						<a href="/freecheck" class="btn-custom btn-border btn-icon smooth-scroll"><i class="ion ion-social-twitter"></i>免费查重</a>
-					</div>
-				</div>
-
-				<div class="col-sm-5 col-md-4 col-lg-offset-1 header-img">
-					<div class="carousel-slider header-slider animation" data-animation="animation-fade-in-down">
-						<div><img src= "{{asset('asset/images/content/sliders/1.jpg')}}" alt="Image 1"></div>
-						<div><img src= "{{asset('asset/images/content/sliders/2.jpg')}}" alt="Image 2"></div>
-						<div><img src= "{{asset('asset/images/content/sliders/3.jpg')}}" alt="Image 3"></div>
-						<div><img src= "{{asset('asset/images/content/sliders/4.jpg')}}" alt="Image 4"></div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<div class="header-bg" style="background-image:url('asset/images/content/bg/1.jpg');">
-		<div class="header-bg-overlay"></div>
-	</div>
-</header>
-
+      </div>
+      <div class="carousel-item" style="height: 500px">
+      <img src="{{ asset('asset/images/slide.jpg') }}" class="d-block w-100">
+        <div class="carousel-caption d-none d-md-block" style="bottom: 30%">
+          <h1 class="text-6xl">研究生<span style="color: #F4BB36;"> 学位论文 </span> 查重</h1>
+          <p class="p-4">含有博士/硕士学位论文全文数据库，更适合硕士和博士生论文查重，全国多个高校在使用。</p>
+          @guest
+            <a class="bg-orange-500 px-4 py-2 text-decoration-none" href="javascript:;"
+               data-toggle="modal"
+               data-target="#staticBackdrop"><span>立即查重</span></a>
+          @else
+            <a class="bg-orange-500 px-4 py-2 text-decoration-none"
+               href="{{route('categories.show',['classid'=>2])}}" target="_blank"><span>立即查重</span></a>
+          @endguest
+        </div>
+      </div>
+      <div class="carousel-item" style="height: 500px;">
+      <img src="{{ asset('asset/images/slide.jpg') }}" class="d-block w-100">
+        <div class="carousel-caption d-none d-md-block" style="bottom: 30%">
+          <h1 class="text-6xl">职称评比 <span style="color: #F4BB36;"> 期刊论文 </span>查重</h1>
+          <p class="p-4">适合职称评比、已发表论文查重，可选发表时间避免出现与自己发表的论文重复的尴尬。</p>
+          @guest
+            <a class="bg-orange-500 px-4 py-2 text-decoration-none" href="javascript:;"
+               data-toggle="modal"
+               data-target="#staticBackdrop"><span>立即查重</span></a>
+          @else
+            <a class="bg-orange-500 px-4 py-2 text-decoration-none"
+               href="{{route('categories.show',['classid'=>2])}}" target="_blank"><span>立即查重</span></a>
+          @endguest
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="clearfix"></div>
+  <!----- //End-slider---->
+  <!----start-services---->
+  <div id="ser" class="services">
+    <div class="container">
+      <div class="services-head text-center">
+        <h3>维普论文检测系统全新升级</h3>
+        <p>采用国际领先的海量论文动态语义跨域识别加指纹比对技术，通过运用最新的云检测服务部署使其能够快捷、稳定、准确地检测到文章中存在的抄袭和不当引用现象，为教育机构、科研单位、各级论文评审单位和发表单位提供了论文原创性和新颖性评价的重要依据。</p>
+      </div>
+      <!-----start-services-grids---->
+      <div class="services-grids row">
+        <div class="col-md-4 services-grid">
+          <div class="row">
+            <div class="col-md-3 services-grid-left">
+              <a class="top-icon1" href="#"><span> </span></a>
+            </div>
+            <div class="col-md-9 services-grid-right">
+              <h4><a href="#">丰富的比对资源</a></h4>
+              <p>采用海量的论文比对数据，包含科技期刊、报纸、专利、会议、学位论文等多个论文数据库资源。</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 services-grid">
+          <div class="row">
+            <div class="col-md-3 services-grid-left">
+              <a class="top-icon2" href="#"><span> </span></a>
+            </div>
+            <div class="col-md-9 services-grid-right">
+              <h4><a href="#">智能的检测技术</a></h4>
+              <p>采用国际领先的海量论文动态语义跨域识别加指纹比对技术，做到快捷、安全、准确、全面。</p>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-4 services-grid">
+          <div class="row">
+            <div class="col-md-3 services-grid-left">
+              <a class="top-icon3" href="#"><span> </span></a>
+            </div>
+            <div class="col-md-9 services-grid-right">
+              <h4><a href="#">支持手机查看结果</a></h4>
+              <p>率先接入微信公众号，检测完成实时通知查重结果，随时随地方便查看，无需一直守在电脑前。</p>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="services-grids row">
+        <div class="col-md-4 services-grid">
+          <div class="row">
+            <div class="col-md-3 services-grid-left">
+              <a class="top-icon4" href="#"><span> </span></a>
+            </div>
+            <div class="col-md-9 services-grid-right">
+              <h4><a href="#">详细的检测报告</a></h4>
+              <p>提供原文对照报告、片段对照报告、格式分析报告、比对报告、PDF报告等5个报告适合不同应用场景。</p>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-4 services-grid">
+          <div class="row">
+            <div class="col-md-3 services-grid-left">
+              <a class="top-icon5" href="#"><span> </span></a>
+            </div>
+            <div class="col-md-9 services-grid-right">
+              <h4><a href="#">正版数据库支持</a></h4>
+              <p>本站为维普官方授权代理，所有检测报告均支持在线验证，检测结果与官方一致。</p>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-4 services-grid">
+          <div class="row">
+            <div class="col-md-3 services-grid-left">
+              <a class="top-icon6" href="#"><span> </span></a>
+            </div>
+            <div class="col-md-9 services-grid-right">
+              <h4><a href="#">卓越的用户体验</a></h4>
+              <p>经过不断发展和努力，已经在众多行业和部门得到了广泛使用，受到了用户的高度评价。</p>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
   <!----//End-services---->
-  <div id="features" class="section-wrap padding-top60">
-
-	<!-- .container -->
-	<div class="container">
-		<!-- .row -->
-		<div class="row padding-bottom20">
-
-			<div class="col-sm-4"> <!-- 1 -->
-				<div class="affa-feature-icon">
-					<i class="ion ion-ios-world-outline"></i>
-					<h4>海量的学术资源</h4>
-					<p>采用海量的论文比对数据，包含科技期刊、报纸、专利、会议、学位论文等多个论文数据库资源。</p>
-				</div>
-			</div>
-
-			<div class="col-sm-4"> <!-- 2 -->
-				<div class="affa-feature-icon">
-					<i class="ion ion-ios-locked-outline"></i>
-					<h4>安全的传输协议</h4>
-					<p>全站遵循HTTPS协议，传输解析技术安全可靠，保护您的文献不被泄露，检测过程放心安心。</p>
-				</div>
-			</div>
-
-			<div class="col-sm-4"> <!-- 3 -->
-				<div class="affa-feature-icon">
-					<i class="ion ion-ios-pulse"></i>
-					<h4>专业的检测算法</h4>
-					<p>采用国际领先的海量论文动态语义跨域识别加指纹比对技术，做到快捷、安全、准确、全面。</p>
-				</div>
-			</div>
-
-		</div>
-		<!-- .row end -->
-
-	</div>
-	<!-- .container end -->
-
-	<!-- .container-wrap -->
-	<div class="container-wrap container-padding8060">
-
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-lg-5 col-txt text-center-sm text-center-xs margin-bottom40-sm margin-bottom40-xs">
-					<div class="post-heading-left">
-						<h2>多端同步适配</h2>
-					</div>
-					<p>全新架构打通常终端设备，数据互通。电脑、手机、平板均可提交论文查重，下载查重报告，方不同使用场景。</p>
-					<p>提供多种版本检测报告帮助您轻松阅读检测结果、准确获取论文查重信息，检测结果客观、准确、详细！</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-pull-right">
-			<figure class="img-layers3 img-pull-left">
-				<div class="img-layer-lg">
-					<img src="{{asset('asset/images/content/landing/feature-1.png')}}" alt="Image Large" class="animation" data-animation="animation-fade-in-right">
-				</div>
-				<div class="img-layer-md">
-					<img src="{{asset('asset/images/content/landing/feature-2.png')}}" alt="Image Mediun" class="animation" data-animation="animation-fade-in-left" data-delay="300">
-				</div>
-				<div class="img-layer-sm">
-					<img src="{{asset('asset/images/content/landing/feature-3.png')}}" alt="Image Small" class="animation" data-animation="animation-fade-in-down" data-delay="600">
-				</div>
-			</figure>
-		</div>
-
-	</div>
-	<!-- .container-wrap end -->
-
-	<!-- .container-padding -->
-	<div class="container-padding60 bg-color">
-
-		<!-- .container -->
-		<div class="container">
-
-			<!-- .row -->
-			<div class="row">
-
-				<div class="col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-0 margin-bottom20">
-					<figure class="img-layers img-layer-right-front">
-						<div class="img-layer-left">
-							<img src="{{asset('asset/images/content/landing/feature-4.png')}}" alt="Image Left" class="animation" data-animation="animation-fade-in-left">
-						</div>
-						<div class="img-layer-right">
-							<img src="{{asset('asset/images/content/landing/feature-5.png')}}" alt="Image Right" class="animation" data-animation="animation-fade-in-right" data-delay="400">
-						</div>
-					</figure>
-				</div>
-
-				<div class="col-sm-10 col-md-7 col-lg-6 col-sm-offset-1 col-md-offset-0 col-lg-offset-1">
-					<div class="text-wrap40 text-center-sm text-center-xs">
-						<div class="post-heading-left">
-							<h2>丰富的论文写作解决方案</h2>
-						</div>
-						<div class="affa-feature-icon-left margin-bottom30"> <!-- 1 -->
-							<i class="ion ion-android-done"></i>
-							<h4>一键自动降重</h4>
-							<p>强大自然语言语义分析系统，在不改变原意的情况下通过AI智能技术重新编写原句，瞬间降低论文重复率。</p>
-						</div>
-						<div class="affa-feature-icon-left"> <!-- 3 -->
-							<i class="ion ion-android-done"></i>
-							<h4>智能语法纠错</h4>
-							<p>可以帮助用户检查一些单词错误、语法错误、时态错误等，并提供更准确的使用方法。</p>
-						</div>
-						<div class="affa-feature-icon-left margin-bottom30"> <!-- 2 -->
-							<i class="ion ion-android-done"></i>
-							<h4>PDF转Word</h4>
-							<p>快速把PDF文件转换成Word文件，一键操作，快速、方便，能最大限度的保留源文档的布局和格式。</p>
-						</div>
-
-						<div class="affa-feature-icon-left"> <!-- 3 -->
-							<i class="ion ion-android-done"></i>
-							<h4>海量文献资料下载</h4>
-							<p>海量专业学术文献免费下载，覆盖各个行业期刊论文,学位论文,会议论文,标准,专利等各类学术资源。</p>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<!-- .row end -->
-
-		</div>
-		<!-- .container end -->
-
-	</div>
-	<!-- .container-padding end -->
-
-</div>
-<!-- #features end -->
-<!-- #works -->
-<div id="works" class="container-padding8020">
-
-	<!-- .container -->
-	<div class="container">
-
-		<div class="post-heading-center no-border margin-bottom40">
-			<h2>用户评价</h2>
-		</div>
-
-		<!-- .row -->
-		<div class="row">
-
-			<div class="col-sm-3 affa-testimonial"> <!-- 1 -->
-				<div class="testimonial-name">
-						<img src="{{asset('asset/images/content/avatars/1.jpg')}}" alt="Avatar">
-					<div class="testimonial-txt">
-						<b>浅夏丿初晴</b> <small>(大学生)</small>
-						<p>“班级群里老师推荐的，价格不高，首次还免费，而且查重报告还比较详细，我们学校是用维普查重，检测结果跟这个差不多，一次性通过!”</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-3 affa-testimonial"> <!-- 2 -->
-				<div class="testimonial-name">
-						<img src="{{asset('asset/images/content/avatars/2.jpg')}}" alt="Avatar">
-					<div class="testimonial-txt">
-						<b>醉相思</b> <small>(研究生)</small>
-						<p>“导师推荐的，知网查重太贵了，只能用其他系统代替。初稿先用CheckLike检测，修改后用维普和万方查重检测，把查出来的全部改掉，顺利通过了学校知网查重。”</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 affa-testimonial"> <!-- 3 -->
-				<div class="testimonial-name">
-						<img src="{{asset('asset/images/content/avatars/3.jpg')}}" alt="Avatar">
-					<div class="testimonial-txt">
-						<b>岁月如歌</b> <small>(大学教师)</small>
-						<p>“经常用它给学生的作业进行的查重，可以批量上传，检测结果一目了然，而且比较准确，不像之前用的某些系统内容都没重复也飘红。”</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 affa-testimonial"> <!-- 4 -->
-				<div class="testimonial-name">
-						<img src="{{asset('asset/images/content/avatars/4.jpg')}}" alt="Avatar">
-					<div class="testimonial-txt">
-						<b>大号萝莉</b> <small>(主管护师)</small>
-						<p>“学信检测小程序很方便，可以在手机上提交论文查重而且检测完成后能查看详细的比对报告，充分利用了碎片时间，工作和写论文两不误。”</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- .row end -->
-
-	</div>
-	<!-- .container end -->
-
-</div>
-<!-- #works end -->
-
-<div class="container">
-	<div class="sep-border"></div> <!-- separator -->
-</div>
-
-
-<!-- #clients -->
-<div id="clients" class="container-padding60">
-
-	<!-- .container -->
-	<div class="container">
-
-		<div class="post-heading-center">
-		  <h2>客户分布<small>(部分)</small></h2>
-		</div>
-
-		<!-- .row -->
-		<div class="row row-clients">
-					<img src="{{asset('asset/images/content/clients/kehu.jpg')}}" >
-		</div>
-		<!-- .row end -->
-
-	</div>
-	<!-- .container end -->
-
-</div>
-<!-- #clients end -->
-
-<div class="container">
-	<div class="sep-border"></div> <!-- separator -->
-</div>
-
   <!-----//End-services-grids---->
   <!---- start-about----->
+  <div id="about" class="about">
+    <div class="container">
+      <div class="about-head">
+        <h4>多版本查重报告</h4>
+        <p>
+        维普查重提供片段对照报告、比对报告、原文对照报告、简介报告、格式分析报告等5个版本报告，其中格式分析报告可以针对封面、目录、摘要、关键词、正文、声明/致谢、参考文献、附录等进行分析，校验是格式否符合规范，同时为论文自动推荐先关参考文献。</p>
+      </div>
+      <!----- start-about-grids----->
+      <div class="about-grids row">
+        <div class="col-md-7 about-grid-left">
+          <span> </span>
+        </div>
+        <div class="col-md-5 about-grid-right">
+          <h5>片段对照报告</h5>
+          <p>片段对照报告通过表格的方式将送检论文引用及相似文献来源直观地展现出来，通过片段对照报告我们可以清楚的看出所有与送检论文相似的来源。</p>
+          <h6>比对报告</h6>
+          <p>比对报告原名“全文比对报告”是按照送检论文原来的格式将有相似源的内容以飘红的方式展现出来，方便用户查看哪些内容是有相似源的。</p>
+          @guest
+            <a class="about-btn" href="javascript:;" data-toggle="modal" data-target="#staticBackdrop">立即查重</a>
+          @else
+            <a class="about-btn" href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
+          @endguest
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <!----- //End-about-grids----->
+    </div>
+  </div>
   <!----start-team----->
-  <!----//End-team----->
-  <!--登陆模态框-->
+  <div id="team" class="mb-24">
+    <div class="container">
+      <div class=" text-center p-6">
+        <h1 class="text-orange-500 text-xl mb-4">系统说明</h1>
+        <p class="p-2">维普查重提供维普大学生版、维普研究生版、维普职称认定版、维普编辑部版四个版本，分别适合不同的场景使用。<font class="text-blue-500">（维普查重支持中文、英文、日文论文检测）</font>
+        </p>
+      </div>
+      <div class="grid grid-cols-4 gap-4">
+        <div class="border border-gray-300 text-center p-2">
+          <img src="{{ asset('asset/images/pmlc.jpg') }}" class="w-full"/>
+          <h5 class="py-2"><a>维普大学生版</a></h5>
+          <span class="text-red-500">3.00元/千字</span>
+          <p class="my-2 text-xs">适合本科、专科、自考大学生毕业论文查重，全国多个高校在使用，与学校检测结果一致。</p>
+          @guest
+            <a class="bg-blue-500 text-white  py-2 block" href="javascript:;" id="login6" data-toggle="modal"
+               data-target="#staticBackdrop">立即使用</a>
+          @else
+            <a class="bg-blue-500 text-white  py-2 block" id="login6"
+               href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
+          @endguest
+        </div>
+        <div class="border border-gray-300 text-center p-2">
+          <img src="{{ asset('asset/images/wpyjs.jpg') }}" class="w-full"/>
+          <h5 class="py-2"><a>维普研究生版</a></h5>
+          <span class="text-red-500">3.00元/千字</span>
+          <p class="my-2 text-xs">含有博士/硕士学位论文全文数据库，更适合硕士和博士生论文查重，全国多个高校在使用。</p>
+          @guest
+            <a class="bg-blue-500 text-white  py-2 block" href="javascript:;" id="login6" data-toggle="modal"
+               data-target="#staticBackdrop">立即使用</a>
+          @else
+            <a class="bg-blue-500 text-white  py-2 block" id="login6"
+               href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
+          @endguest
+        </div>
+        <div class="border border-gray-300 text-center p-2">
+          <img src=" {{ asset('asset/images/wpbjb.jpg') }}" title="name" class="w-full"/>
+          <h5 class="py-2"><a>维普编辑部版</a></h5>
+          <span class="text-red-500">3.00元/千字</span>
+          <p class="my-2 text-xs">适合期刊投稿、写作发表类论文查重，检测结果与期刊杂志编辑部的检测结果一致。</p>
+          @guest
+            <a class="bg-blue-500 text-white  py-2 block" href="javascript:;" id="login6" data-toggle="modal"
+               data-target="#staticBackdrop">立即使用</a>
+          @else
+            <a class="bg-blue-500 text-white  py-2 block" id="login6"
+               href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
+          @endguest
+        </div>
 
+        <div class="border border-gray-300 text-center p-2">
+          <img src="{{ asset('asset/images/zhicheng.png') }}" title="name" class="w-full"/>
+          <h5 class="py-2"><a>维普职称版</a></h5>
+          <span class="text-red-500">30.00元/篇</span>
+          <p class="my-2 text-xs">适合职称评比、已发表论文查重，可选发表时间避免出现与自己发表的论文重复的尴尬。</p>
+          @guest
+            <a class="bg-blue-500 text-white  py-2 block" href="javascript:;" id="login6" data-toggle="modal"
+               data-target="#staticBackdrop">立即使用</a>
+          @else
+            <a class="bg-blue-500 text-white  py-2 block" id="login6"
+               href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
+          @endguest
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
 
 @stop
 @section('scripts')
