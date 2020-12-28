@@ -205,8 +205,11 @@
 <script type="text/javascript" src="{{ asset('asset/js/copy_cliboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
-
-
+  if(!!window.ActiveXObject || "ActiveXObject" in window){
+      $("#jcright").css("display","none")
+    }else{
+      $("#jcright").css("display","block")
+　　}
   //清空内容
   $("#clearcontainer").click(()=>{
     $.confirm({
