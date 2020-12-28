@@ -399,14 +399,14 @@
           phone: $("#phone").val(),
           password: $("#password").val(),
           type: 'account'
-        }).then(res => {
+        }).then(function(res){
           if (res.status == 200) {
             swal("提示", res.data.message, "success");
             location.reload();
           } else {
             swal("提示", res.data.message);
           }
-        }).catch(err => {
+        }).catch(function(err){
           if (err.response.status == 422) {
             $.each(err.response.data.errors, function(field, errors){
               swal("提示", errors[0]);
