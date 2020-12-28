@@ -582,22 +582,7 @@
       {{--        // buttons 参数可以设置按钮显示的文案--}}
       {{--      })--}}
       {{--      @endauth--}}
-      // $("#slider4").responsiveSlides({
-      //   auto: true,
-      //   pager: true,
-      //   nav: true,
-      //   speed: 500,
-      //   namespace: "callbacks",
-      //   before: function () {
-      //     $('.events').append("<li>before event fired.</li>");
-      //   },
-      //   after: function () {
-      //     $('.events').append("<li>after event fired.</li>");
-      //   }
-      // });
-      // $().UItoTop({easingType: 'easeOutQuart'});
-       //模态框打开
-       //判断访问源
+
         var sourceUrl = document.referrer;
         var currentHost = window.location.host;
         if(sourceUrl.indexOf(currentHost)=="-1" && sourceUrl!=""){
@@ -757,33 +742,30 @@
       }
 
       function getcode(index) {
-  index.setAttribute('disabled', true);
-  var phone = $("#mobile").val();
-  var reg = /^1[34578]\d{9}$/;
-
-  if (!reg.test(phone)) {
-    index.removeAttribute("disabled");
-    $("input[name='phone']").focus();
-    swal('提示信息', "请输入正确的手机号码!!!");
-    return;
-  }
-
-  axios.post('/api/v1/verificationCodes', {
-    phone: phone
-  }).then(function (res) {
-    swal('验证码已发送成功!,请注意查收!');
-    time(index);
-    verification_key = res.data.key;
-  }).catch(function (err) {
-    index.removeAttribute("disabled");
-
-    if (err.response.status == 401) {
-      $.each(err.response.data.errors, function (field, errors) {
-        swal("提示", errors[0]);
-      });
-    }
-  });
-}
+        index.setAttribute('disabled', true);
+        var phone = $("#mobile").val();
+        var reg = /^1[34578]\d{9}$/;
+        if (!reg.test(phone)) {
+          index.removeAttribute("disabled");
+          $("input[name='phone']").focus();
+          swal('提示信息', "请输入正确的手机号码!!!");
+          return;
+        }
+        axios.post('/api/v1/verificationCodes', {
+          phone: phone,
+        }).then(function(res) {
+          swal('验证码已发送成功!,请注意查收!')
+          time(index);
+          verification_key = res.data.key;
+        }).catch(function(err) {
+          index.removeAttribute("disabled");
+          if (err.response.status == 401) {
+            $.each(err.response.data.errors, function(field, errors){
+              swal("提示", errors[0]);
+            })
+          }
+        })
+      }
       //忘记密码
       $("#forgetpsw").click(function(){
         $("#staticBackdrop").modal('hide')
