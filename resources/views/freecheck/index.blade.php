@@ -139,7 +139,7 @@
                       </button>
                     </div>
                     <div style="display: flex;font-size: 10px;justify-content: space-between;color: #999;">
-                       <p id="forgetpsw" style="font-size:0.87rem;font-weight:bold;">忘记密码</p>
+                       <p id="forgetpsw" style="font-size:0.875rem;font-weight:bold;">忘记密码</p>
                        <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" id="quiklyRegister">
                           立即注册
                         </a>
