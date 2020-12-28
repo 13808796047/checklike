@@ -320,7 +320,7 @@
           <!-- 批量上传结束 -->
         @endif
       </div>
-      <div class="col-span-3" id="#IeNO">
+      <div class="col-span-3" id="IeNO">
         <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
