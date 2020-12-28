@@ -122,5 +122,4 @@
 </div>
 <script>
 let fsdafasdf=  {!!$coupon_codes!!}
-  console.log(fsdafasdf,"fadsfhjkjkqeruwer")
 </script>
