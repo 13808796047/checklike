@@ -119,7 +119,7 @@
           </div>
         </div>
       </div>
-      <div class="col-span-3">
+      <div class="col-span-3" id="Ieno">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -162,7 +162,12 @@
 @stop
 @section('scripts')
   <script !src="">
-    $(function () {
+    $(document).ready(function () {
+      if(!!window.ActiveXObject || "ActiveXObject" in window){
+        $("#Ieno").css("display","none")
+      }else{
+        $("#Ieno").css("display","block")
+　　  }
       let current_cid ={{$order->cid}}
       if(current_cid==1||current_cid==2){
         $("#banbentimer").text("10分钟")
@@ -198,12 +203,12 @@
                 return;
               }
             $('#qrcodebox').modal('show')
-            $("#qrimgs").append(`<img src='/orders/${order.id}/qrcode/?rate=${$("#recipient-name").val()}' style="display: block;margin: 0 auto;"/>`)
+            $("#qrimgs").append("<img src='/orders/".concat(order.id, "/qrcode/?rate=").concat($("#recipient-name").val(), "' style=\"display: block;margin: 0 auto;\"/>"));
 
             $('#exampleModal').modal('hide')
             })
           }else{
-            $("#qrimgs").append(`<img src='/orders/${order.id}/qrcode' style="display: block;margin: 0 auto;"/>`)
+            $("#qrimgs").append("<img src='/orders/".concat(order.id, "/qrcode' style=\"display: block;margin: 0 auto;\"/>"));
             $('#qrcodebox').modal('show')
           }
       })

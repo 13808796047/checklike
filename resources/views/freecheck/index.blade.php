@@ -296,7 +296,7 @@
 
  </div>
 
-       <div class="col-span-3">
+       <div class="col-span-3" id="Ieno">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -326,6 +326,11 @@
 @section('scripts')
   <script>
      $(document).ready(function () {
+      if(!!window.ActiveXObject || "ActiveXObject" in window){
+        $("#Ieno").css("display","none")
+      }else{
+        $("#Ieno").css("display","block")
+　　  }
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
         axios.get("/official_account").then(function()=>{

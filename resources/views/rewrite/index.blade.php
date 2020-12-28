@@ -208,10 +208,8 @@
 
   if(!!window.ActiveXObject || "ActiveXObject" in window){
       $("#jcright").css("display","none")
-      console.log("风水大忌开")
     }else{
       $("#jcright").css("display","block")
-      console.log("fei IE")
 　　}
   //清空内容
   $("#clearcontainer").click(function(){

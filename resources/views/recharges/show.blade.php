@@ -161,7 +161,7 @@
 						class="btn btn-primary btn-sm sbtn">提交</a>
 	     </div>
 </div>
-    <div class="col-span-3">
+    <div class="col-span-3" id="Ieno">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -187,7 +187,12 @@
 @section('scripts')
   <script>
     $(document).ready(function () {
-      $("input[name='paytype']").change(() => {
+      if(!!window.ActiveXObject || "ActiveXObject" in window){
+        $("#Ieno").css("display","none")
+      }else{
+        $("#Ieno").css("display","block")
+　　  }
+      $("input[name='paytype']").change(function(){
         $('#bottonsubmit').toggle();
         $('#btn-wechat').toggle();
       })
@@ -196,24 +201,22 @@
       //微信支付
       $('#btn-wechat').click(function () {
         let order = {!!$recharge!!}
-        console.log(order,213)
-
         $("#wxcodeTcDialog").modal("show")
-        $('#wxcodeurl').attr("src", `/payments/${order.id}/wechat/recharge`);
+        $('#wxcodeurl').attr("src", "/payments/"+order.id+"/wechat/recharge");
       });
      //支付宝支付
      $('#bottonsubmit').click(function(){
        let id = {!!$recharge!!};
        console.log(id)
        // /payments/7/alipay/recharge
-       location.href=`/payments/${id.id}/alipay/recharge`
+       location.href="/payments/"+id.id+"/alipay/recharge"
      })
 
      $("#closewxCodeDialog").click(()=>{
       $("#wxcodeTcDialog").modal("hide")
      })
      $("#completewxCodeDialog").click(()=>{
-       location.href = `/users/{{Auth::user()->id}}`
+       location.href = "/users/"+{{Auth::user()->id}}
      })
     })
   </script>
