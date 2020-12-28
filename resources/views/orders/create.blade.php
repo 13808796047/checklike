@@ -410,7 +410,7 @@
           $('#element_id').val('')
         }
       })
-      $('#content').bind('input propertychange', (e) => {
+      $('#content').bind('input propertychange', function(e){
         $('#words span').html(e.target.value.length)
       })
       //  //时间选择
