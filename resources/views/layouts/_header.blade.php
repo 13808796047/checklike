@@ -19,28 +19,31 @@
       <ul class="navbar-nav mr-auto" id="headerlw">
         <li class="nav-item px-4 {{ active_class(if_route('domained::pages.index')) }}"><a
             class="nav-link text-blue-300"
+            style="font-size:16px;"
             href="{{ url('/') }}">首页</a>
         </li>
         <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
           @guest
             <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop">维普查重</a>
+               data-target="#staticBackdrop"   style="font-size:16px;">维普查重</a>
           @else
             <a
               class="nav-link"
               href="{{route('categories.show',['classid'=>2])}}"
+              style="font-size:16px;"
             >维普查重</a>
           @endguest
         </li>
         <li class="nav-item px-4 {{ active_class((if_route('categories.show') && if_route_param('classid', 2))) }}">
           @guest
             <a class="nav-link" href="javascript:;" data-toggle="modal"
-               data-target="#staticBackdrop">查看报告</a>
+               data-target="#staticBackdrop"   style="font-size:16px;">查看报告</a>
           @else
-            <a class="nav-link" href="{{route('orders.index')}}">查看报告</a>
+            <a class="nav-link" href="{{route('orders.index')}}"   style="font-size:16px;">查看报告</a>
           @endguest
         </li>
         <li class="nav-item px-4"><a class="nav-link" href="javascript:void(0)"
+                                    style="font-size:16px;"
                                      onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
         </li>
       </ul>
@@ -50,10 +53,10 @@
       @guest
         <!-- Authentication Links -->
           <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
-                                  data-target="#staticBackdrop">登录</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+                                  data-target="#staticBackdrop" style="font-size:16px;">登录</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}" style="font-size:16px;">注册</a></li>
         @else
-          <li class="nav-item"><a class="nav-link logout" href="javascript:;">退出登录</a></li>
+          <li class="nav-item"><a class="nav-link logout" href="javascript:;" style="font-size:16px;">退出登录</a></li>
         @endguest
       </ul>
     </div>
