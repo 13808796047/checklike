@@ -287,7 +287,7 @@
 
       <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
       <b>1、检测结果是否准确？</b>
-        <p id="rightcontainer"></p>
+        <p>如果你们学校也是用维普检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。</p>
         <b>2、检测需要多少时间？</b>
         <p>正常情况，检测需要<span id="banbentimer">10分钟</span>左右，高峰期可能会延迟。如果长时间未出结果请联系客服解决。</p>
         <b>3、论文上传之后安全吗？</b>
@@ -313,31 +313,6 @@
       }else{
         $("#IeNO").css("display","block")
 　　  }
-      let currentright=window.location.pathname;
-      switch (currentright) {
-        case "/categories/1":
-        $("#rightcontainer").text("CheckLike是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
-        $("#banbentimer").text("10分钟")
-        break;
-        case "/categories/2":
-        $("#rightcontainer").text("如果你们学校也是用维普检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
-        $("#banbentimer").text("10分钟")
-        break;
-        case "/categories/4":
-        $("#rightcontainer").text("如果你们学校也是用万方检测，那结果是一致的。我们是同一套系统，只要提交的内容一致那检测结果也相同。")
-        $("#banbentimer").text("10分钟")
-        break;
-        case "/categories/3":
-        $("#rightcontainer").text("我们使用的是跟知网同一套系统，但是每个版本有轻微差别，具体参考系统介绍。")
-        $("#banbentimer").text("2小时")
-        break;
-        case "/categories/5":
-        $("#rightcontainer").text("PaperPass是通用检测系统，能够检测出大部分相似文献内容，适合初稿。定稿建议使用与学校或评审机构一致的系统检测一遍，这样比较准确。")
-        $("#banbentimer").text("10分钟")
-        break;
-        default:
-        break;
-      }
 
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
