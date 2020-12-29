@@ -82,28 +82,6 @@
     <div class="grid grid-cols-12 gap-4">
 
       <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
-         <!-- 新添加 -->
-         <ul class="nav nav-tabs" id="catergatya" style="margin-bottom:18px;">
-           <li class="nav-item">
-           <a class="nav-link" href="/categories/1">初稿查重</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="/categories/2">维普查重</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="/categories/4">万方查重</a>
-           </li>
-           <li class="nav-item">
-           <a class="nav-link" href="/categories/3">知网查重</a>
-           </li>
-           <li class="nav-item">
-           <a class="nav-link" href="/categories/5">PaperPass</a>
-           </li>
-          </ul>
-
-
-
-      <!-- 添加结束 -->
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
