@@ -81,7 +81,7 @@
   <div class="container" style="margin:18px auto">
     <div style="display:flex;">
 
-      <div class="p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
+      <div class="p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;flex:1;">
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
@@ -276,7 +276,7 @@
           <!-- 批量上传结束 -->
         @endif
       </div>
-      <div style="margin-left:20px;width:38%;">
+      <div style="margin-left:20px;width:300px;">
         <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
