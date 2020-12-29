@@ -100,29 +100,6 @@
   @endauth
   <!-- 购买降重字数模态框结束 -->
   <!-- 模态框2结束-->
-  <div id="header1">
-     <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
-				<div class="container">
-					<div class="navbar-brand" style="width:395px;margin-right:70px;">
-						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-					</div>
-					<ul class="newul" style="flex:1;">
-            <div style="display:flex;justify-content:space-between;width:100%;">
-            <div style="display:flex;align-items: center;margin-left:13px;">
-						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-                  <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-                  <li><a href="/freecheck" class="smooth-scroll">免费查重</a></li>
-                  <li><a href="/rewrite" class="smooth-scroll">自动降重</a></li>
-                  <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-            </div>
-            <div style="display:flex;align-items: center;">
-                <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-                <li class="ambtn" style="margin:0;"><a class="logout" href="javascript:;">退出</a></li>
-            </div>
-            </div>
-          </ul>
-          </div></nav>
-  </div>
   <div class="container" style="margin:18px auto">
       <div class="grid grid-cols-12 gap-4">
     <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);" id="jcleft">
@@ -177,7 +154,7 @@
         </div>
       </div>
       </div>
-    <div class="col-span-3"  id="jcright">
+    <div class="col-span-3" id="jcright">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -206,9 +183,13 @@
 <script type="text/javascript" src="{{ asset('asset/js/diff.js') }}"></script>
   <script>
 
-
+  if(!!window.ActiveXObject || "ActiveXObject" in window){
+      $("#jcright").css("display","none")
+    }else{
+      $("#jcright").css("display","block")
+　　}
   //清空内容
-  $("#clearcontainer").click(()=>{
+  $("#clearcontainer").click(function(){
     $.confirm({
         title: '提示',
         content: '您确认要清空内容吗?',
@@ -227,40 +208,39 @@
             }
         }
       });
-
   })
 
   //增加降重字数
-  $("#addjctime").click(()=>{
+  $("#addjctime").click(function(){
     let current = Number($("#curjctime").text())+1;
     $("#curjctime").text(current)
   })
   //减少降重次数
-  $("#cutjctime").click(()=>{
+  $("#cutjctime").click(function(){
     let current = Number($("#curjctime").text());
     if(current==1) return;
     let cur = current -1;
     $("#curjctime").text(cur)
   })
   // 增加次数
-  $("#addjctimes").click(()=>{
+  $("#addjctimes").click(function(){
         $('#exampleModal').modal('hide')
         $("#jctimeModal").modal('show')
     })
 
-  $("#pageAdd").click(()=>{
+  $("#pageAdd").click(function(){
     $("#jctimeModal").modal('show')
   })
 
   //获取字数
-  $("#content").bind('input',(e)=>{
+  $("#content").bind('input',function(e){
         $('#words span').html(e.target.value.length)
   })
    //再来一篇
    $('#againjc').click(function(){
         window.location.reload()
       })
-  $("#aiSubmitBtn").click(()=>{
+  $("#aiSubmitBtn").click(function(){
     let words =  $('#words span').text();
     if(words>4000){
       toastr.error('字数不能大于4000字');
@@ -271,7 +251,7 @@
 
     $('#exampleModal').modal('show')
   })
-  $("#surecheck").click(()=>{
+  $("#surecheck").click(function(){
     $('#exampleModal').modal('hide')
 
     let num = $("#requestcishuNum").html();
@@ -283,18 +263,18 @@
     togetJc(num)
   })
   //确认购买
-  $("#sureshop").click(()=>{
+  $("#sureshop").click(function(){
         let totalprice=$("#curjctime").text();
         console.log(totalprice,3131)
         axios.post('{{ route('recharges.store') }}',{
           total_amount:totalprice,
           amount:totalprice
-        }).then(res => {
+        }).then(function(res){
           let number = res.data.data.amount;
           let id =res.data.data.id;
           let price=res.data.data.total_amount;
-          location.href=`/recharges/${id}`
-        }).catch(err => {
+          location.href="/recharges/"+id
+        }).catch(function(err){
           console.log(err,31312)
         })
       })
@@ -304,8 +284,7 @@
     // $('#beingModal').modal('hide')
         $('#beingModal11').modal('show')
         axios.post("/ai_rewrite",{ txt:contents,sim:1,th:"",retype:"",filter:"",type:"rewrite"})
-          .then(res => {
-            console.log(res,"按时发了")
+          .then(function(res){
             if(res.data.errcode==100101){
               $('#beingModal11').modal('hide');
               toastr.error('今日配额已满，请明天再试或联系客服');
@@ -323,8 +302,7 @@
             $("#isshowtimes").css("display","none")
             changed(contents,htmlstring)
           })
-          .catch(err =>{
-            console.log(err,"飞机撒发")
+          .catch(function(err){
             num--;
             if(num>=0){
               togetJc(num)
@@ -334,14 +312,13 @@
               toastr.error('降重失败，请重试');
             }
           }
-          ).finally(()=>{
+          ).finally(function(){
             $('#beingModal11').modal('hide')
           })
     }
     var currentJcContainer = ""
     var currentAllContainer = ""
     function changed(a,b) {
-
             var diff = JsDiff['diffChars'](a, b);
             var arr = new Array();
             for (var i = 0; i < diff.length; i++) {
@@ -384,7 +361,7 @@
         }
 
         //切换显示详情
-        $("#customSwitch1").change((e)=>{
+        $("#customSwitch1").change(function(e){
           let currentStatus = $("#customSwitch1").prop('checked')
           if(currentStatus){
             $("#content_after").html(currentAllContainer)

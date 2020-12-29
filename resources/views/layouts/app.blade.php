@@ -14,9 +14,8 @@
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
 
-  <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet"/>
-  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('asset/css/jquery-confirm.css')}}">
   <link href="{{asset('asset/css/toast-min.css')}}" rel="stylesheet" />
 
   <style>
@@ -32,13 +31,13 @@
       flex-direction: column;
       height: 100%;
     }
-    .alertify-notifier.ajs-top {
+    /* .alertify-notifier.ajs-top {
       top: 89px;
     }
     .alertify-notifier .ajs-message.ajs-visible {
       padding: 8px;
     }
-    .ajs-message.ajs-custom { color: #67c23a;background-color: #f0f9eb;border-color: #e1f3d8;}
+    .ajs-message.ajs-custom { color: #67c23a;background-color: #f0f9eb;border-color: #e1f3d8;} */
   </style>
   @yield('styles')
   <script>
@@ -67,7 +66,6 @@
 
 <body class="newbody">
 <div id="app" class="{{ route_class() }}-page newmain">
-
 
   @include('layouts._header')
 

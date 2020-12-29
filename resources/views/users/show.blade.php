@@ -174,7 +174,7 @@
   <script>
     $(document).ready(function () {
       $('#app').removeClass('newmain')
-      $("#activationBtn").click(() => {
+      $("#activationBtn").click(function(){
         var timer1 = null;
         clearTimeout(timer1);
         $.confirm({
@@ -196,13 +196,13 @@
                   $.alert('密钥不能为空');
                   return false;
                 }
-                axios.post("/coupon_codes/active-coupon-code", {code: name}).then(res => {
+                axios.post("/coupon_codes/active-coupon-code", {code: name}).then(function(res){
                   toastr.success(res.data.message);
                   timer1 = setTimeout(function(){
                     window.location.reload();
                   }, 2000);
 
-                }).catch(err => {
+                }).catch(function(err){
                   toastr.error(err.response.data.msg);
                 })
               }
@@ -220,56 +220,56 @@
           // }
         });
       })
-      $("#userbindPhone").click(()=>{
+      $("#userbindPhone").click(function(){
         $("#bindTitle").modal("show")
       })
-      $("#kaitonghuiyuan").click(()=>{
+      $("#kaitonghuiyuan").click(function(){
         window.open("https://detail.tmall.com/item.htm?spm=a212k0.12153887.0.0.4d7c687dvfKPtV&id=631864348638","_blank");
       })
-      $("#jcchongzhi").click(()=>{
+      $("#jcchongzhi").click(function(){
         $("#jctimeModal").modal('show')
       })
       //增加降重字数
-  $("#addjctime").click(()=>{
+  $("#addjctime").click(function(){
     let current = Number($("#curjctime").text())+1;
     $("#curjctime").text(current)
   })
   //减少降重次数
-  $("#cutjctime").click(()=>{
+  $("#cutjctime").click(function(){
     let current = Number($("#curjctime").text());
     if(current==1) return;
     let cur = current -1;
     $("#curjctime").text(cur)
   })
      //确认购买
-      $("#sureshop").click(()=>{
+      $("#sureshop").click(function(){
         let totalprice=$("#curjctime").text();
         console.log(totalprice,3131)
         axios.post('{{ route('recharges.store') }}',{
           total_amount:totalprice,
           amount:totalprice
-        }).then(res => {
+        }).then(function(res){
           let number = res.data.data.amount;
           let id =res.data.data.id;
           let price=res.data.data.total_amount;
-          location.href=`/recharges/${id}`
-        }).catch(err => {
+          location.href="/recharges/"+id
+        }).catch(function(err){
           console.log(err,31312)
         })
       })
       var currentCode="";
 
       //修改密码
-      $("#userxiugaipsd").click(()=>{
+      $("#userxiugaipsd").click(function(){
         $("#xgtoast").text("")
         $("#xgpsd").val("")
         $("#xgsurepsd").val("")
         $("#staticXiugai").modal("show")
       })
-      $("#xiugaicancel").click(()=>{
+      $("#xiugaicancel").click(function(){
         $("#staticXiugai").modal("hide")
       })
-      $("#xiugaisure").click(()=>{
+      $("#xiugaisure").click(function(){
 
         if($("#xgpsd").val().length<6){
            $("#xgtoast").text("密码不少于6位")
@@ -282,10 +282,10 @@
         axios.post('/password/reset', {
           password: $("#xgpsd").val(),
           password_confirmation: $("#xgsurepsd").val()
-        }).then(res=>{
+        }).then(function(res){
             toastr.success(res.data.message);
             $("#staticXiugai").modal("hide")
-        }).catch(err=>{
+        }).catch(function(err){
             toastr.error(err.response.data.message);
         })
       })

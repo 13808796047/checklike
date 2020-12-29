@@ -77,55 +77,11 @@
   </div>
   <!-- 二维码弹窗 -->
   <!-- 二维码弹窗结束 -->
-  <div id="header1">
-     <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
-				<div class="container">
-					<div class="navbar-brand" style="width:395px;margin-right:70px;">
-						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-					</div>
-					<ul class="newul" style="flex:1;">
-            <div style="display:flex;justify-content:space-between;width:100%;">
-            <div style="display:flex;align-items: center;margin-left:13px;">
-						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-                  <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-                  <li><a href="/freecheck" class="smooth-scroll">免费查重</a></li>
-                  <li><a href="/rewrite" class="smooth-scroll">自动降重</a></li>
-                  <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-            </div>
-            <div style="display:flex;align-items: center;">
-                <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-                <li class="ambtn" style="margin:0;"><a class="logout" href="javascript:;">退出</a></li>
-            </div>
-            </div>
-          </ul>
-          </div></nav>
-  </div>
+
   <div class="container" style="margin:18px auto">
     <div class="grid grid-cols-12 gap-4">
 
       <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;">
-         <!-- 新添加 -->
-         <ul class="nav nav-tabs" id="catergatya" style="margin-bottom:18px;">
-           <li class="nav-item">
-           <a class="nav-link" href="/categories/1">初稿查重</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="/categories/2">维普查重</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="/categories/4">万方查重</a>
-           </li>
-           <li class="nav-item">
-           <a class="nav-link" href="/categories/3">知网查重</a>
-           </li>
-           <li class="nav-item">
-           <a class="nav-link" href="/categories/5">PaperPass</a>
-           </li>
-          </ul>
-
-
-
-      <!-- 添加结束 -->
         <ul class=" category">
           @foreach($categories as $item)
             <li class="float-left position-relative mr-3 "
@@ -320,14 +276,15 @@
           <!-- 批量上传结束 -->
         @endif
       </div>
-      <div class="col-span-3">
-      <div>
+      <div class="col-span-3" id="IeNO">
+        <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
           <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
           <p style="text-align:center;margin-top:7px;font-size:13px;">微信扫一扫，与客服在线沟通</p>
       </div>
       </div>
+
       <div style="background:#fff;box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);margin-top:13px;" class="p-4">
       <b>1、检测结果是否准确？</b>
         <p id="rightcontainer"></p>
@@ -342,6 +299,7 @@
         <b>6、检测时作者需要填吗？</b>
         <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则需要填写真实作者姓名。</p>
       </div>
+
     </div>
     </div>
   </div>
@@ -349,7 +307,12 @@
 @section('scripts')
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
-    $(() => {
+  $(function () {
+     if(!!window.ActiveXObject || "ActiveXObject" in window){
+        $("#IeNO").css("display","none")
+      }else{
+        $("#IeNO").css("display","block")
+　　  }
       let currentright=window.location.pathname;
       switch (currentright) {
         case "/categories/1":
@@ -410,7 +373,7 @@
           $('#element_id').val('')
         }
       })
-      $('#content').bind('input propertychange', (e) => {
+      $('#content').bind('input propertychange', function(e){
         $('#words span').html(e.target.value.length)
       })
       //  //时间选择
@@ -456,7 +419,7 @@
             headers: {
               'Content-Type': 'multipart/form-data'
             }
-          }).then(res => {
+          }).then(function(){
             array.push({
               'file_id': res.data.data.id, 'from': 'pc', 'type': 'file',
               'content': ''
@@ -471,7 +434,8 @@
             for (let i = 0; i < obj.length; i++) {
               var id = obj[i].id;
               var name = obj[i].name;
-              option += `<option value=${id} class='options'>${name}</option>`
+              // option += `<option value=${id} class='options'>${name}</option>`
+              option += "<option value="+id+" class='options'>"+name+"</option>"
             }
             console.log(option, "xixixifsaddjfa")
             var file_id = res.data.data.id;
@@ -482,42 +446,44 @@
             $('#progress_bar_line').html('上传成功')
             $('#progress_text').html("上传成功");
             // alert('上传成功')
-            $("#newelement_container").append(`<div style='margin-bottom:10px;'><span style="margin-right:10px">订单${index}</span><input id='title' type='text' name='title' value=${item.name}>论文题目<input type='text' class='titlec' value=${item.name}>论文作者<input type='text' class='authorc' value='匿名'>检测系统<select>${option}</select></div>`);
-          }).catch(err => {
+            // $("#newelement_container").append(`<div style='margin-bottom:10px;'><span style="margin-right:10px">订单${index}</span><input id='title' type='text' name='title' value=${item.name}>论文题目<input type='text' class='titlec' value=${item.name}>论文作者<input type='text' class='authorc' value='匿名'>检测系统<select>${option}</select></div>`);
+            $("#newelement_container").append("<div style='margin-bottom:10px;'><span style='margin-right:10px'>订单"+index+"</span><input id='title' type='text' name='title' value="+item.name+">论文题目<input type='text' class='titlec' value="+item.name+">论文作者<input type='text' class='authorc' value='匿名'>检测系统<select>"+option+"</select></div>");
+          }).catch(function(err){
             console.log(err);
             index++;
             $('#progress_bar_line').css("width", "100%")
             $('#progress_text').html("不允许上传的文件类型");
-            $("#newelement_container").append(`<div style='margin-bottom:10px'><span style="margin-left:10px">订单${index}<span><input id='title' type='text' name='title' value=${item.name}><span style="margin-left:10px;">上传失败，请选择正确格式</span>`);
+            // $("#newelement_container").append(`<div style='margin-bottom:10px'><span style="margin-left:10px">订单${index}<span><input id='title' type='text' name='title' value=${item.name}><span style="margin-left:10px;">上传失败，请选择正确格式</span>`);
+            $("#newelement_container").append("<div style='margin-bottom:10px'><span style='margin-left:10px'>订单"+index+"<span><input id='title' type='text' name='title' value="+item.name+"><span style='margin-left:10px;'>上传失败，请选择正确格式</span>");
           })
         }
-        $('#batchBtn').click(_ => {
+        $('#batchBtn').click(function(){
           $('#newelement').css('display', 'none')
-          $('.titlec').each((index, ele) => {
+          $('.titlec').each(function(index, ele){
             console.log(index, ele, 312321)
             array[index]['title'] = ele.value;
           })
-          $('.authorc').each((index, ele) => {
+          $('.authorc').each(function(index, ele){
             console.log(index, ele, 312321)
             array[index]['writer'] = ele.value;
           })
-          $('select').each((index, ele) => {
+          $('select').each(function(index, ele){
             if (index + 1 > array.length) return;
             // array[index]['cid']=$("select").val();
             array[index]['cid'] = ele.value;
           })
-          console.log(array, 312, 'fsdafa');
+
           $('#paymsg').css('display', 'block')
-          for (let item of array) {
-            axios.post('{{route('orders.store')}}', item).then(res => {
+          for (let item in array) {
+            axios.post('{{route('orders.store')}}', item).then(function(res){
 
               if (res.status == 201) {
                 var paymsg = res.data.data;
-                $('#paymsg_container').append(`<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>论文题目:${paymsg.title}</p><p>作者：${paymsg.writer}</p><p>字数:${paymsg.words}</p><p>价格:${paymsg.price}元</p></div>`)
+                $('#paymsg_container').append("<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>论文题目:"+paymsg.title+"</p><p>作者："+paymsg.writer+"</p><p>字数:"+paymsg.words+"</p><p>价格:"+paymsg.price+"元</p></div>")
               }
 
-            }).catch(err => {
-              $('#paymsg_container').append(`<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>提交失败<p></div>`)
+            }).catch(function(err){
+              $('#paymsg_container').append("<div style='width: 602px;border: 1px solid;margin-bottom:20px;'><p>提交失败<p></div>")
             })
           }
         })
@@ -540,7 +506,7 @@
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(res => {
+        }).then(function(res){
           console.log(res, 3123123)
           $('#tosubmit').attr("disabled", false);
           $("#tosubmit").val("提交论文")
@@ -548,7 +514,7 @@
           $('#alertbot').modal('show')
           setTimeout("$('#alertbot').modal('hide')", 1000);
           oneid = res.data.data.id;
-        }).catch(err => {
+        }).catch(function(err){
           $('#model-body-container').html('上传失败，仅支持docx和txt格式，最大支持15M')
           $('#alertbot').modal('show')
           setTimeout("$('#alertbot').modal('hide')", 2000);
@@ -590,12 +556,12 @@
               writer: $('#writer').val(),
               endDate: $('#element_id').val()
             }
-          ).then(res => {
+          ).then(function(res){
             console.log(res, 3123123)
             var order = res.data.data
             $("#submitAlertModal").modal('hide')
             location.href = '/orders/' + res.data.data.id
-          }).catch(err => {
+          }).catch(function(err){
             console.log(err.response.status, 3112312312)
             if(err.response.status == 400){
 
@@ -618,11 +584,11 @@
               writer: $('#writer').val(),
               endDate: $('#element_id').val()
             }
-          ).then(res => {
+          ).then(function(res){
             console.log(res, 3123123)
             var order = res.data.data
             location.href = '/orders/' + res.data.data.id
-          }).catch(err => {
+          }).catch(function(err){
             alert('提交失败，请重试')
             $('#tosubmit').css("display", "block");
             $('#submitBtn').css("display", "none")

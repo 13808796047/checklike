@@ -107,29 +107,7 @@
   </style>
 @stop
 @section('content')
-<div id="header1">
-     <nav id="navigation" class="navbar scrollspy affix" style="position: static;">
-				<div class="container">
-					<div class="navbar-brand" style="width:395px;margin-right:70px;">
-						<a href="javascript:void(0)" onclick="window.location.href='/'"><img src= "{{ asset('asset/images/checklike.png') }}" alt=""></a>
-					</div>
-					<ul class="newul" style="flex:1;">
-            <div style="display:flex;justify-content:space-between;width:100%;">
-            <div style="display:flex;align-items: center;margin-left:13px;">
-						      <li><a href="javascript:void(0)" onclick="window.location.href='/'" class="smooth-scroll">网站首页</a></li>
-                  <li><a href="/categories/1" class="smooth-scroll">论文查重</a></li>
-                  <li><a href="/freecheck" class="smooth-scroll">免费查重</a></li>
-                  <li><a href="/rewrite" class="smooth-scroll">自动降重</a></li>
-                  <li><a href="/orders" class="smooth-scroll">报告下载</a></li>
-            </div>
-            <div style="display:flex;align-items: center;">
-                <li class="ambtn"><a href="/users/{{Auth::user()->id}}">个人中心</a></li>
-                <li class="ambtn" style="margin:0;"><a class="logout" href="javascript:;">退出</a></li>
-            </div>
-            </div>
-          </ul>
-          </div></nav>
-  </div>
+
   <div class="container" style="margin:18px auto">
   <div class="grid grid-cols-12 gap-4">
     <div class="col-span-12 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;min-height:calc(100vh * 0.81);">
@@ -196,7 +174,7 @@
 @section('scripts')
 <script type="text/javascript" src="{{ asset('asset/js/pagination.js') }}"></script>
   <script>
-    $(function () {
+      $(document).ready(function () {
       //手机号不存在
       var isbindPhone = {!!Auth::user()!!}
       if(!isbindPhone.phone){
@@ -210,15 +188,16 @@
         $("#bindTitle").modal("show")
       })
 
-      $("#lxkfimg").click(()=>{
+      $("#lxkfimg").click(function(){
         $.dialog({
           title:"",
           closeIcon: true,
           useBootstrap: false,
           boxWidth: '300px',
-          content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
-          <div style="color:#696969;text-align:center;margin:5px 0;font-size:13px;">微信扫一扫，与客服在线沟通</div>
-          `,
+          // content:` <img src="https://www.checklike.com/images/qrcode/sz-work.png" style="width:171px;height:171px;display:block;margin:0 auto;">
+          // <div style="color:#696969;text-align:center;margin:5px 0;font-size:13px;">微信扫一扫，与客服在线沟通</div>
+          // `,
+          content:" <img src=\"https://www.checklike.com/images/qrcode/sz-work.png\" style=\"width:171px;height:171px;display:block;margin:0 auto;\">\n          <div style=\"color:#696969;text-align:center;margin:5px 0;font-size:13px;\">\u5FAE\u4FE1\u626B\u4E00\u626B\uFF0C\u4E0E\u5BA2\u670D\u5728\u7EBF\u6C9F\u901A</div>\n          "
         });
       })
 
@@ -239,11 +218,11 @@
         canJump: 0,// 是否能跳转。0=不显示（默认），1=显示
         showOne: 1,//只有一页时，是否显示。0=不显示,1=显示（默认）
         callback: function (num) { //回调函数
-          window.location.href=`/orders?page=${num}`;
+          window.location.href = "/orders?page=".concat(num);
         }
     })
 
-      setTimeout(() => {
+      setTimeout(function(){
         window.location.reload();
       }, 120000);
       // 全选
@@ -255,6 +234,7 @@
       let single = $("input[name='delete']")
       single.click(function () {
         $("#allcheck").prop("checked", single.length == single.filter(":checked").length ? true : false);
+
       });
       $('#del_item').click(function () {
         // 判断是否至少选择一项
@@ -281,7 +261,7 @@
                 data: {
                   ids: valuelist
                 }
-                }).then(res => {
+                }).then(function(res){
                   toastr.success('删除成功');
                   location.reload()
                 })

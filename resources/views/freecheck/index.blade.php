@@ -15,13 +15,7 @@
       font-size: 20px;
     }
     .swal-text {
-      /* background-color: #FEFAE3;
-      padding: 17px;
-      border: 1px solid #F0E1A1;
-      display: block;
-      margin: 22px;
-      text-align: center;
-      color: #61534e; */
+
     }
   	.nav-link {
 			color: black;
@@ -144,9 +138,9 @@
                         登录
                       </button>
                     </div>
-                    <div style="display: flex;font-size: 10px;justify-content: space-between;color: #999;">
-                       <p id="forgetpsw">忘记密码</p>
-                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" id="quiklyRegister">
+                    <div style="display: flex;justify-content: space-between;color: #999;">
+                       <p id="forgetpsw" style="font-size:15px;font-weight:bold;">忘记密码</p>
+                       <a class="block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" id="quiklyRegister" style="font-size:15px;font-weight:bold;">
                           立即注册
                         </a>
                     </div>
@@ -218,7 +212,7 @@
 		            <input class="appearance-none border border-red-500 rounded   py-2 px-2  w-full mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 		             id="verification_code" type="text" placeholder="请输入短信验证码" />
 		            <input class="bg-blue-500 hover:bg-blue-700 px-2 py-1  text-white font-bold rounded" type="button" id="verificationCode"
-		             value="发送验证码" style="border:none;height:50px;">
+		             value="发送验证码" style="border:none;height:50px;background: #26AEF2;">
 
 	            </div>
           </div>
@@ -302,7 +296,7 @@
 
  </div>
 
-       <div class="col-span-3">
+       <div class="col-span-3" id="Ieno">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -331,10 +325,15 @@
 @endsection
 @section('scripts')
   <script>
-     $(document).ready(function () {
+      $(function () {
+      if(!!window.ActiveXObject || "ActiveXObject" in window){
+        $("#Ieno").css("display","none")
+      }else{
+        $("#Ieno").css("display","block")
+　　  }
       var timer = null
       $('#staticBackdrop').on('show.bs.modal', function () {
-        axios.get("/official_account").then(function()=>{
+        axios.get("/official_account").then(function(res){
           var img = new Image();
           img.onload = function() {
             $("#qrimg").attr('src',res.data.url);
@@ -357,11 +356,11 @@
         })
       })
       //注册
-      $("#quiklyRegister").click(()=>{
+      $("#quiklyRegister").click(function(){
         $("#staticBackdrop").modal("hide")
         $("#registerTcDialog").modal('show')
       })
-      $("#noregister").click(()=>{
+      $("#noregister").click(function(){
         $("#registerTcDialog").modal('hide')
         $("#staticBackdrop").modal("show")
         $("#pills-home-tab").attr("aria-selected",true)
@@ -400,14 +399,14 @@
           phone: $("#phone").val(),
           password: $("#password").val(),
           type: 'account'
-        }).then(res => {
+        }).then(function(res){
           if (res.status == 200) {
             swal("提示", res.data.message, "success");
             location.reload();
           } else {
             swal("提示", res.data.message);
           }
-        }).catch(err => {
+        }).catch(function(err){
           if (err.response.status == 422) {
             $.each(err.response.data.errors, function(field, errors){
               swal("提示", errors[0]);
@@ -450,11 +449,11 @@
         }
         axios.post('/api/v1/verificationCodes', {
           phone: phone,
-        }).then(res => {
+        }).then(function(res){
           swal('验证码已发送成功!,请注意查收!')
           time(index);
           verification_key = res.data.key;
-        }).catch(err => {
+        }).catch(function(err){
           index.removeAttribute("disabled");
           if (err.response.status == 401) {
             $.each(err.response.data.errors, function(field, errors){
@@ -471,7 +470,7 @@
       $('#verificationCode').click(function () {
         getcode(this)
       })
-      $('#phoneLogin').click(() => {
+      $('#phoneLogin').click(function() {
         axios.post('{{ route('login') }}', {
           phone: $('#mobile').val(),
           verification_code: $('#verification_code').val(),
@@ -504,6 +503,6 @@
           .siblings(".listbox")
           .css("display", "none");
       });
-    });
+      })
   </script>
 @stop
