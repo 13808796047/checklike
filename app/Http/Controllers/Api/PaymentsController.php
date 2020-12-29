@@ -117,9 +117,8 @@ class PaymentsController extends Controller
                 'openid' => $request->openid,
             ]);
         } catch (InvalidRequestException $e) {
-
+            throw new \Exception($e->getMessage());
         }
-        //预支付订单号prepayId, 生成支付 JS 配置
         $prepayId = $result['prepay_id'];
         $json = $jssdk->bridgeConfig($prepayId);
         return $json;

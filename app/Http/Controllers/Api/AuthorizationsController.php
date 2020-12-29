@@ -12,6 +12,7 @@ use EasyWeChat\Factory;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Overtrue\Socialite\SocialiteManager;
 
 
 class AuthorizationsController extends Controller
@@ -22,21 +23,21 @@ class AuthorizationsController extends Controller
         $driver = \Socialite::driver($type);
         try {
             if($code = $request->code) {
-                $response = $driver->getAccessTokenResponse($code);
-                $token = Arr::get($response, 'access_token');
+                $accessToken = $driver->getAccessToken($code);
             } else {
-                $token = $request->access_token;
-                if($type == 'weixin') {
-                    $driver->setOpenId($request->openid);
+                $tokenData['access_token'] = $request->access_token;
+                if($type == 'wechat') {
+                    $tokenData['openid'] = $request->openid;
                 }
+                $accessToken = new AccessToken($tokenData);
             }
-            $oauthUser = $driver->userFromToken($token);
+            $oauthUser = $driver->user($accessToken);
         } catch (\Exception $e) {
             throw new AuthenticationException('参数错误，未获取用户信息');
         }
         switch ($type) {
-            case 'weixin':
-                $unionid = $oauthUser->offsetExists('unionid') ? $oauthUser->offsetGet('unionid') : null;
+            case 'wechat':
+                $unionid = $oauthUser->getOriginal()['unionid'] ?? null;
 
                 if($unionid) {
                     $user = User::where('weixin_unionid', $unionid)->first();
@@ -46,7 +47,7 @@ class AuthorizationsController extends Controller
                 // 没有用户，默认创建一个用户
                 if(!$user) {
                     $user = User::create([
-                        'name' => $oauthUser->getNickname(),
+                        'nick_name' => $oauthUser->getNickname(),
                         'avatar' => $oauthUser->getAvatar(),
                         'weixin_openid' => $oauthUser->getId(),
                         'weixin_unionid' => $unionid,
@@ -58,7 +59,12 @@ class AuthorizationsController extends Controller
         }
         $token = auth('api')->login($user);
 
-        return $this->respondWithToken($token)->setStatusCode(201);
+        return response()->json([
+            'access_token' => $token,
+            'user' => (new UserResource($user))->showSensitiveFields(),
+            'token_type' => 'Bearer',
+            'expires_in' => \Auth::guard('api')->factory()->getTTL(),
+        ])->setStatusCode(201);
     }
 
 
@@ -159,32 +165,26 @@ class AuthorizationsController extends Controller
         if(!$code = $request->code) {
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
-        $data = $app->auth->session($code);
+        $result = $app->auth->session($code);
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
-            $decryptedData = $app->encryptor->decryptData($data['session_key'], $iv, $encryptData);
-            $data['unionid'] = $decryptedData['unionId'];
+            $decryptedData = $app->encryptor->decryptData($result['session_key'], $iv, $encryptData);
         }
 
         // 如果结果错误，说明 code 已过期或不正确，返回 401 错误
-        if(isset($data['errcode'])) {
+        if(isset($decryptedData['errcode'])) {
             throw new AuthenticationException('code 不正确');
         }
-        // 找到 openid 对应的用户
-        $user = User::where('weixin_unionid', $data['unionid'])->first();
-        $attributes['weixin_session_key'] = $data['session_key'];
-        $attributes['weapp_openid'] = $data['openid'];
-        $attributes['weixin_unionid'] = $data['unionid'];
+        $user = User::where('weixin_unionid', $decryptedData['unionId'])->first();
+        $attributes['weixin_session_key'] = $result['session_key'];
+        $attributes['weapp_openid'] = $decryptedData['openId'];
+        $attributes['weixin_unionid'] = $decryptedData['unionId'];
         if(!$user) {
             $user = User::create($attributes);
             $user->increaseJcTimes(config('app.jc_times'));
         }
         $user->update($attributes);
-//        if($user->weapp_openid == '') {
-//            $user->update([
-//                'weapp_openid' => $data['openid'],
-//            ]);
-//        }
+
         $token = auth('api')->login($user);
         return response()->json([
             'access_token' => $token,

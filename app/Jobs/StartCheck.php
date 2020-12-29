@@ -27,9 +27,6 @@ class StartCheck implements ShouldQueue
     {
         $api = app(OrderApiHandler::class);
         $result = $api->startCheck($this->order->api_orderid);
-        if($this->order->status == 2) {
-            return;
-        }
         if($result->code == 200 && $this->order->status == 1) {
             dispatch(new getOrderStatus($this->order))->delay(now()->addMinutes());
             $this->order->update([
@@ -37,7 +34,7 @@ class StartCheck implements ShouldQueue
             ]);
         }
     }
-    
+
     public function failed(\Throwable $exception)
     {
         $data = [

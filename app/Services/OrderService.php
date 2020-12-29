@@ -12,6 +12,7 @@ use App\Handlers\OrderApiHandler;
 use App\Handlers\WordHandler;
 use App\Jobs\CloseOrder;
 use App\Jobs\CloudCouvertFile;
+use App\Jobs\IOSPaidMessage;
 use App\Jobs\OrderPendingMsg;
 use App\Jobs\UpdateIsFree;
 use App\Models\Category;
@@ -29,9 +30,7 @@ class OrderService
             $category = Category::find($request->cid);
             $file = File::find($request->file_id);
             $user = \Auth::user();
-//            if($request->phone) {
-//                $result = $this->converFile($category, $request->type, $request->file_id, $phone);
-//            }
+
             $result = $this->converFile($category, $request->type, $request->content, $file, $user->id);
             $words = $result['words'];
 
@@ -88,6 +87,7 @@ class OrderService
                 'paper_path' => $result['path'] ?? '',
                 'from' => $request->from,
                 'content' => '',
+                'phone' => $request->phone ?? '',
                 'referer' => $referer['from'],
                 'keyword' => $referer['keyword']
             ]);
@@ -121,13 +121,17 @@ class OrderService
 
 
             $order->price = $amount;
+
             $order->save();
+
             if(isset($file)) {
                 $file->update([
                     'order_id' => $order->id,
                 ]);
             }
             \Cache::forget('word');
+
+
             $this->OrderCreated($order);
             return $order;
         });
@@ -136,7 +140,12 @@ class OrderService
 
     public function OrderCreated(Order $order)
     {
-        dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
+        if(!$order->phone) {
+            dispatch(new OrderPendingMsg($order))->delay(now()->addMinutes(2));
+        } else {
+            dispatch(new IOSPaidMessage($order));
+        }
+
     }
 
     public function converFile(Category $category, $type, $content, $file, $file_prefix)

@@ -38,7 +38,10 @@ class UserService
         $mini_program_user = auth()->user();
         $phone_user = User::where('phone', $phone)->first();
         if(!$phone_user) {
-            throw new InvalidRequestException('用户不存在');
+            $mini_program_user->update([
+                'phone' => $phone,
+            ]);
+            return $mini_program_user;
         }
         $mini_program_user = DB::transaction(function() use ($request, $mini_program_user, $phone_user, $phone) {
 //            foreach($phone_user->orders as $order) {
