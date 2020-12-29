@@ -308,12 +308,6 @@
   <script type="text/javascript" src="{{ asset('asset/js/jquery-cxcalendar.js') }}"></script>
   <script>
   $(function () {
-//      if(!!window.ActiveXObject || "ActiveXObject" in window){
-//         $("#IeNO").css("display","none")
-//       }else{
-//         $("#IeNO").css("display","block")
-// 　　  }
-
       $("#catergatya li a").each(function(){
         let currenthref = $(this).attr("href")
         if(currenthref == window.location.pathname){
