@@ -225,7 +225,7 @@
                     <div style="margin-top: 11px;padding-left: 30px;display:none;" id="progress_text">正在上传</div>
                   </div>
                 </div>
-                <p class="text-xs">仅支持docx和txt格式，最大支持15M</p>
+                <p class="text-xs">仅支持doc\docx\txt格式，最大支持15M</p>
               </div>
               <div id="contenttext" class="tab-pane fade">
                 <br>
@@ -490,7 +490,7 @@
           setTimeout("$('#alertbot').modal('hide')", 1000);
           oneid = res.data.data.id;
         }).catch(function(err){
-          $('#model-body-container').html('上传失败，仅支持docx和txt格式，最大支持15M')
+          $('#model-body-container').html('上传失败,仅支持doc\docx\txt格式，最大支持15M')
           $('#alertbot').modal('show')
           setTimeout("$('#alertbot').modal('hide')", 2000);
           $('#tosubmit').attr("disabled", true);
