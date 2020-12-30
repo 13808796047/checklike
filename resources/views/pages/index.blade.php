@@ -428,7 +428,7 @@
         <p class="p-2">维普查重提供维普大学生版、维普研究生版、维普职称认定版、维普编辑部版四个版本，分别适合不同的场景使用。<font class="text-blue-500">（维普查重支持中文、英文、日文论文检测）</font>
         </p>
       </div>
-      <div>
+      <div style="display:flex;">
         <div class="border border-gray-300 text-center p-2" style="margin-right:10px;">
           <img src="{{ asset('asset/images/pmlc.jpg') }}" class="w-full"/>
           <h5 class="py-2"><a>维普大学生版</a></h5>
