@@ -1,10 +1,6 @@
 @extends('layouts.app')
 @section('title', '订单支付')
 @section('styles')
-  <!-- <link href="{{asset('asset/css/check.css')}}" rel="stylesheet"/>
-  <link href="{{asset('asset/css/theme.css')}}" rel="stylesheet"/>
-  <link href="{{asset('asset/css/font-awesome.min.css')}}" rel="stylesheet"/>
-  <link href="{{asset('asset/css/alertify.css')}}" rel="stylesheet"/> -->
   <style>
     img[src=""],img:not([src]){opacity:0;}
     .curfont{
@@ -148,7 +144,7 @@
             </div>
         </div> -->
         <div id="isshowicon">
-        <div style="display: flex;justify-content: center;" >
+        <div style="display: flex;justify-content: center;margin-top:70px;" >
             <div style="display: flex;align-items: center;margin-right: 30px;">
               <input type="radio" name="paytype" value="alipay" checked="checked">
               <img src="{{asset('asset/images/alipay.png')}}" style="margin-left:17px;">
@@ -159,10 +155,14 @@
               height: auto;width:100px;">
             </div>
         </div>
-        <a type="button" id="bottonsubmit" style="height:33px;margin:13px auto" href="javascript:;"
+        <div>
+          <a type="button" id="bottonsubmit" style="height:33px;margin:13px auto" href="javascript:;"
 						 class="btn btn-primary btn-sm sbtn">提交</a>
-				<a type="button" id="btn-wechat" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
+        </div>
+        <div>
+        <a type="button" id="btn-wechat" style="height:33px;margin:13px auto;display:none;" href="javascript:;"
 						class="btn btn-primary btn-sm sbtn">提交</a>
+        </div>
 	     </div>
       </div>
       <div style="margin-left:20px;width:300px;">
