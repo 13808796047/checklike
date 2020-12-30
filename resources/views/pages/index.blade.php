@@ -429,7 +429,7 @@
         </p>
       </div>
       <div>
-        <div class="border border-gray-300 text-center p-2">
+        <div class="border border-gray-300 text-center p-2" style="margin-right:10px;">
           <img src="{{ asset('asset/images/pmlc.jpg') }}" class="w-full"/>
           <h5 class="py-2"><a>维普大学生版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
@@ -455,7 +455,7 @@
                href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
           @endguest
         </div>
-        <div class="border border-gray-300 text-center p-2">
+        <div class="border border-gray-300 text-center p-2" style="margin:0 10px;">
           <img src=" {{ asset('asset/images/wpbjb.jpg') }}" title="name" class="w-full"/>
           <h5 class="py-2"><a>维普编辑部版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
