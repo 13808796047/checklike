@@ -53,8 +53,7 @@
       @guest
         <!-- Authentication Links -->
           <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
-                                  data-target="#staticBackdrop" style="font-size:16px;">登录</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}" style="font-size:16px;">注册</a></li>
+                                  data-target="#staticBackdrop" style="font-size:16px;">登录/注册</a></li>
         @else
           <li class="nav-item"><a class="nav-link logout" href="javascript:;" style="font-size:16px;">退出登录</a></li>
         @endguest
