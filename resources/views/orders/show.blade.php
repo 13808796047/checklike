@@ -165,11 +165,8 @@
 						class="btn btn-primary btn-sm sbtn">提交</a>
 	     </div>
       </div>
-      <div id="iszero" style="display:none;">
-      <a type="button" id="freefee" style="height:33px;margin:50px auto;" href="javascript:;"
-						class="btn btn-primary btn-sm sbtn">提交</a>
-
        </div>
+
        <div style="margin-left:20px;width:300px;">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
@@ -193,9 +190,6 @@
         <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则需要填写真实作者姓名。</p>
       </div>
     </div>
-       </div>
-
-
   </div>
   <div class="modal fade" id="codeTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="codeTcDialogLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" style="width:333px;">
@@ -312,7 +306,7 @@ doStyle();
           CardBox.click(function(){
             $(this).addClass('currentBoder')
             $(this).parent().siblings().children(".discount_box").removeClass("currentBoder")
-            countPrice($(this))
+            // countPrice($(this))
 
           })
        }
@@ -339,48 +333,6 @@ doStyle();
       //       console.log(err,"err")
       //     })
       //  }
-        function countPrice(e){
-          //当前CODE
-          clickCode = e.find('.codedisplay').text()
-          //当前价格
-          axios.get("/orders/".concat(currentId, "/coupon-price"), {
-            params: {
-            code: clickCode
-            }
-          }).then(function (res) {
-            let currentPrice =  {{$order->price}} //当前订单价格
-            // $("#sjprice").text(res.data+"元")
-            // $("#yhje").text((currentPrice-res.data).toFixed(2))
-            // $("#dingdanprice").css("display","block")
-
-            if($("#sjprice").text()=="0元"){
-              $("#isshowicon").css("display","none")
-              $("#iszero").css("display","block")
-            }else{
-              $("#isshowicon").css("display","block")
-              $("#iszero").css("display","none")
-            }
-          }).catch(function(err){
-            console.log(err,"err")
-          })
-       }
-
-
-
-
-       $("#freefee").click(function () {
-  axios.get("/payments/".concat(currentId, "/free_pay?code=").concat(clickCode)).then(function (res) {
-    location.href = "/orders";
-  });
-});
-      $('.navbar').css('position','static')
-      $('#navigation').addClass('affix')
-      $('#app').removeClass('newmain')
-      $('#lwfooter').removeClass('absolute');
-      $("input[name='paytype']").change(function () {
-  $('#bottonsubmit').toggle();
-  $('#btn-wechat').toggle();
-});
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
 
