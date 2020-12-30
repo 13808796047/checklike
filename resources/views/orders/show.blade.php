@@ -155,13 +155,16 @@
               height: auto;width:100px;">
             </div>
         </div>
+        <div style="display:flex;justify-content:center;">
 
           <a type="button" id="bottonsubmit" style="height:33px;width:200px;margin-top:50px;" href="javascript:;"
 						 class="btn btn-primary btn-sm sbtn">提交</a>
+        </div>
 
-
+        <div style="display:flex;justify-content:center;">
         <a type="button" id="btn-wechat" style="height:33px;width:200px;margin-top:50px;display:none;" href="javascript:;"
 						class="btn btn-primary btn-sm sbtn">提交</a>
+        </div>
 
 	     </div>
       </div>
@@ -334,6 +337,10 @@ doStyle();
       //       console.log(err,"err")
       //     })
       //  }
+      $("input[name='paytype']").change(() => {
+        $('#bottonsubmit').toggle();
+        $('#btn-wechat').toggle();
+      })
       // 微信支付按钮事件
       $('#btn-wechat').click(function () {
 
