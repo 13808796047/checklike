@@ -429,7 +429,7 @@
         </p>
       </div>
       <div style="display:flex;">
-        <div class="border border-gray-300 text-center p-2" style="margin-right:10px;">
+        <div class="border border-gray-300 text-center p-2" style="margin-right:10px;width:290px;height:297px;">
           <img src="{{ asset('asset/images/pmlc.jpg') }}" class="w-full" style="width:271px;height:122px;"/>
           <h5 class="py-2"><a>维普大学生版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
@@ -442,7 +442,7 @@
                href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
           @endguest
         </div>
-        <div class="border border-gray-300 text-center p-2">
+        <div class="border border-gray-300 text-center p-2" style="width:290px;height:297px;">
           <img src="{{ asset('asset/images/wpyjs.jpg') }}" class="w-full" style="width:271px;height:122px";/>
           <h5 class="py-2"><a>维普研究生版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
@@ -455,7 +455,7 @@
                href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
           @endguest
         </div>
-        <div class="border border-gray-300 text-center p-2" style="margin:0 10px;">
+        <div class="border border-gray-300 text-center p-2" style="margin:0 10px;width:290px;height:297px;">
           <img src=" {{ asset('asset/images/wpbjb.jpg') }}" title="name" class="w-full" style="width:271px;height:122px";/>
           <h5 class="py-2"><a>维普编辑部版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
@@ -469,7 +469,7 @@
           @endguest
         </div>
 
-        <div class="border border-gray-300 text-center p-2">
+        <div class="border border-gray-300 text-center p-2" style="width:290px;height:297px;">
           <img src="{{ asset('asset/images/zhicheng.png') }}" title="name" class="w-full" style="width:271px;height:122px";/>
           <h5 class="py-2"><a>维普职称版</a></h5>
           <span class="text-red-500">30.00元/篇</span>
