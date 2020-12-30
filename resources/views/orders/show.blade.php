@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('title', '订单支付')
 @section('styles')
-  <link href="{{asset('asset/css/check.css')}}" rel="stylesheet"/>
+  <!-- <link href="{{asset('asset/css/check.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/theme.css')}}" rel="stylesheet"/>
   <link href="{{asset('asset/css/font-awesome.min.css')}}" rel="stylesheet"/>
-  <link href="{{asset('asset/css/alertify.css')}}" rel="stylesheet"/>
+  <link href="{{asset('asset/css/alertify.css')}}" rel="stylesheet"/> -->
   <style>
     img[src=""],img:not([src]){opacity:0;}
     .curfont{
