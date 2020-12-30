@@ -428,8 +428,8 @@
         <p class="p-2">维普查重提供维普大学生版、维普研究生版、维普职称认定版、维普编辑部版四个版本，分别适合不同的场景使用。<font class="text-blue-500">（维普查重支持中文、英文、日文论文检测）</font>
         </p>
       </div>
-      <div style="display:flex;">
-        <div class="border border-gray-300 text-center p-2" style="margin-right:10px;width:290px;height:297px;">
+      <div style="display:flex;justify-content: space-between;">
+        <div class="border border-gray-300 text-center p-2" style="width:290px;height:297px;">
           <img src="{{ asset('asset/images/pmlc.jpg') }}" class="w-full" style="width:271px;height:122px;"/>
           <h5 class="py-2"><a>维普大学生版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
@@ -455,7 +455,7 @@
                href="{{route('categories.show',['classid'=>2])}}">立即查重</a>
           @endguest
         </div>
-        <div class="border border-gray-300 text-center p-2" style="margin:0 10px;width:290px;height:297px;">
+        <div class="border border-gray-300 text-center p-2" style="width:290px;height:297px;">
           <img src=" {{ asset('asset/images/wpbjb.jpg') }}" title="name" class="w-full" style="width:271px;height:122px";/>
           <h5 class="py-2"><a>维普编辑部版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
