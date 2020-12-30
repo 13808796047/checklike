@@ -165,9 +165,7 @@
 						class="btn btn-primary btn-sm sbtn">提交</a>
 	     </div>
       </div>
-       </div>
-
-       <div style="margin-left:20px;width:300px;">
+      <div style="margin-left:20px;width:300px;">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -190,6 +188,9 @@
         <p>在提交检测的文章中，引用了一些内以前自己所写的内容并且被小论文系统文献库收录，需要在此次检测中排除这些；则需要填写真实作者姓名。</p>
       </div>
     </div>
+       </div>
+
+
   </div>
   <div class="modal fade" id="codeTcDialog" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="codeTcDialogLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" style="width:333px;">
