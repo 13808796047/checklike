@@ -96,8 +96,8 @@
 @section('content')
 
 <div class="container" style="margin:18px auto;">
-<div class="grid grid-cols-12 gap-4">
-	<div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
+<div style="display:flex;">
+	<div class="p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;flex:1;">
   <p style="font-weight: bold;font-size: 17px;">订单信息</p>
   <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
 
@@ -134,7 +134,7 @@
 
 
 
-        <div id="isfeizero">
+        <!-- <div id="isfeizero">
         <div>
 						<p style="font-weight: bold;font-size: 17px;margin-top:19px;">使用优惠卡券</p>
             <div style="width:100%;border-bottom:1px dotted #333;margin:10px 0;"></div>
@@ -146,7 +146,7 @@
             <div style="margin-bottom: 23px;">
               <p id="dingdanprice" style="display:none;">订单原价:{{$order->price}}元，卡券优惠:<span id="yhje"></span>元，应付金额：<span style="font-size: 19px;color: #FF5300;" id="sjprice">元</span>，请选择以下任一一种方式完成支付。</p>
             </div>
-        </div>
+        </div> -->
         <div id="isshowicon">
         <div style="display: flex;justify-content: center;" >
             <div style="display: flex;align-items: center;margin-right: 30px;">
@@ -172,7 +172,7 @@
        </div>
        </div>
 
-       <div class="col-span-3" id="IeNO">
+       <div style="margin-left:20px;width:300px;">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -224,12 +224,6 @@
 @section('scripts')
   <script>
      $(document).ready(function () {
-      if(!!window.ActiveXObject || "ActiveXObject" in window){
-        $("#IeNO").css("display","none")
-      }else{
-        $("#IeNO").css("display","block")
-　　  }
-
        var couponArr=[];
        var arrStr = "";
        var couponItem = {};
@@ -241,13 +235,13 @@
       //    console.log(err,"错误")
       //  })
        let curPrice = {{$order->price}};
-       if(curPrice==0){
-         $("#iszero").css("display","block")
-         $("#isfeizero").css("display","none")
-       }else{
-        $("#iszero").css("display","none")
-         $("#isfeizero").css("display","block")
-       }
+      //  if(curPrice==0){
+      //    $("#iszero").css("display","block")
+      //    $("#isfeizero").css("display","none")
+      //  }else{
+      //   $("#iszero").css("display","none")
+      //    $("#isfeizero").css("display","block")
+      //  }
 
 
        let currentId = {!!$order->id!!}
@@ -354,9 +348,9 @@ doStyle();
             }
           }).then(function (res) {
             let currentPrice =  {{$order->price}} //当前订单价格
-            $("#sjprice").text(res.data+"元")
-            $("#yhje").text((currentPrice-res.data).toFixed(2))
-            $("#dingdanprice").css("display","block")
+            // $("#sjprice").text(res.data+"元")
+            // $("#yhje").text((currentPrice-res.data).toFixed(2))
+            // $("#dingdanprice").css("display","block")
 
             if($("#sjprice").text()=="0元"){
               $("#isshowicon").css("display","none")

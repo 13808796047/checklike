@@ -54,8 +54,8 @@
   </div>
 
   <div class="container" style="margin:18px auto;">
-    <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-9 p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background: #fff;">
+    <div style="display:flex;">
+      <div class="p-4" style="box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);background:#fff;flex:1;">
         <div>
           <div class="card-body" style="padding:0">
             <div class="card-title">
@@ -97,7 +97,7 @@
           </div>
         </div>
       </div>
-      <div class="col-span-3" id="Ieno">
+      <div style="margin-left:20px;width:300px;">
       <div>
       <div style="background:#54B538;color: #fff;padding-left: 20px;font-size: 15px;height: 44px;line-height: 44px;">系统客服</div>
       <div style="border-bottom: 1px solid #c1bebd;box-shadow: 0px 0px 5px #c1bebd;padding: 15px;background: #FFFFFF;">
@@ -141,11 +141,6 @@
 @section('scripts')
   <script !src="">
     $(document).ready(function () {
-      if(!!window.ActiveXObject || "ActiveXObject" in window){
-        $("#Ieno").css("display","none")
-      }else{
-        $("#Ieno").css("display","block")
-　　  }
       var order = {!!$order!!}
       $("#qrcode").click(function(){
 
