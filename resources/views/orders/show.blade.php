@@ -337,7 +337,7 @@ doStyle();
       //       console.log(err,"err")
       //     })
       //  }
-      $("input[name='paytype']").change(() => {
+      $("input[name='paytype']").change(function(){
         $('#bottonsubmit').toggle();
         $('#btn-wechat').toggle();
       })
