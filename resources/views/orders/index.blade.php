@@ -184,7 +184,7 @@
         console.log("no")
         $("#Bindmodel").css("display","none")
       }
-      $("#isBindPhonetip").click(()=>{
+      $("#isBindPhonetip").click(function(){
         $("#bindTitle").modal("show")
       })
 
