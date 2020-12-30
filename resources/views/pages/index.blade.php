@@ -430,7 +430,7 @@
       </div>
       <div style="display:flex;">
         <div class="border border-gray-300 text-center p-2" style="margin-right:10px;">
-          <img src="{{ asset('asset/images/pmlc.jpg') }}" class="w-full"/>
+          <img src="{{ asset('asset/images/pmlc.jpg') }}" class="w-full" style="width:271px;height:122px;"/>
           <h5 class="py-2"><a>维普大学生版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
           <p class="my-2 text-xs">适合本科、专科、自考大学生毕业论文查重，全国多个高校在使用，与学校检测结果一致。</p>
@@ -443,7 +443,7 @@
           @endguest
         </div>
         <div class="border border-gray-300 text-center p-2">
-          <img src="{{ asset('asset/images/wpyjs.jpg') }}" class="w-full"/>
+          <img src="{{ asset('asset/images/wpyjs.jpg') }}" class="w-full" style="width:271px;height:122px;/>
           <h5 class="py-2"><a>维普研究生版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
           <p class="my-2 text-xs">含有博士/硕士学位论文全文数据库，更适合硕士和博士生论文查重，全国多个高校在使用。</p>
@@ -456,7 +456,7 @@
           @endguest
         </div>
         <div class="border border-gray-300 text-center p-2" style="margin:0 10px;">
-          <img src=" {{ asset('asset/images/wpbjb.jpg') }}" title="name" class="w-full"/>
+          <img src=" {{ asset('asset/images/wpbjb.jpg') }}" title="name" class="w-full" style="width:271px;height:122px;/>
           <h5 class="py-2"><a>维普编辑部版</a></h5>
           <span class="text-red-500">3.00元/千字</span>
           <p class="my-2 text-xs">适合期刊投稿、写作发表类论文查重，检测结果与期刊杂志编辑部的检测结果一致。</p>
@@ -470,7 +470,7 @@
         </div>
 
         <div class="border border-gray-300 text-center p-2">
-          <img src="{{ asset('asset/images/zhicheng.png') }}" title="name" class="w-full"/>
+          <img src="{{ asset('asset/images/zhicheng.png') }}" title="name" class="w-full" style="width:271px;height:122px;/>
           <h5 class="py-2"><a>维普职称版</a></h5>
           <span class="text-red-500">30.00元/篇</span>
           <p class="my-2 text-xs">适合职称评比、已发表论文查重，可选发表时间避免出现与自己发表的论文重复的尴尬。</p>
