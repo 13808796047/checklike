@@ -17,6 +17,7 @@ use App\Mail\OrderReport;
 use App\Models\Category;
 use App\Models\Order;
 use App\Services\OrderService;
+use GuzzleHttp\Client;
 use http\Exception\InvalidArgumentException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -175,5 +176,16 @@ class OrdersController extends Controller
             $request->rate
         );
         return response(compact('img_url'), 200);
+    }
+
+    public function verificationReport(Request $request, Client $client)
+    {
+        $params = [
+            'form_params' => [
+                'number' => $request->number
+            ]
+        ];
+        $response = $client->request("POST", 'http://vpcs.cqvip.com/data/tongji.aspx?action=rt', $params);
+        return json_decode($response->getBody(), true);
     }
 }
