@@ -94,6 +94,7 @@
                 开始验证</button>
         </div>
     </div>
+    <div style="background:#fff;">
     <div class="vpcs-main">
         <div class="vpcs-bgyz-jg" id="msg" style="">
             <i class="fa fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span></div>
@@ -142,6 +143,8 @@
             </tbody>
         </table>
     </div>
+    </div>
+
 </div>
 
 @stop
