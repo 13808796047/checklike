@@ -162,14 +162,15 @@
             return;
           }
           axios.post("/api/v1/verification-report",{number:vernum}).then(function(res){
+              console.log(res.msg,"fsds")
               if(!res.msg){
-                $("#ver_msg").css("display:block");
-                $("#ver_table").css("display:block");
+                $("#ver_msg").css("display:block")
+                $("#ver_table").css("display:block")
               }else{
                 console.log("fasdf")
-                $("#ver_msg").css("display:none");
-                $("#ver_table").css("display:none");
-                $.alert('报告不存在');
+                $("#ver_msg").css("display:none")
+                $("#ver_table").css("display:none")
+                $.alert('报告不存在')
               }
           })
         })
