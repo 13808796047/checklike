@@ -95,62 +95,49 @@
         </div>
     </div>
     <div class="vpcs-main">
-        <div class="vpcs-bgyz-jg" id="msg" style="display: none;">
-            <i class="fa fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span>
-        </div>
+        <div class="vpcs-bgyz-jg" id="msg" style="">
+            <i class="fa fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span></div>
         <!--<div class="vpcs-bgyz-jg"><i class="fa fa-close"></i> 验证失败！这是假论文！</div>-->
         <br>
         <br>
-        <span id="mesage" style="margin-left: 34%;"></span>
-        <table class="vpcs-bgyz-table" id="table">
+        <span id="mesage" style="margin-left: 34%; display: none;"></span>
+        <table class="vpcs-bgyz-table" id="table" style="">
             <tbody>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         验证产品：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="name">
-                    维普论文查重
-                    </td>
+                    <td class="vpcs-bgyz-table-content" id="name">维普论文检测系统</td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         版本类型：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="type">
-                    维普论文查重
-                    </td>
+                    <td class="vpcs-bgyz-table-content" id="type">维普论文检测（大学生版）</td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         报告编号：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="reportNumber">
-                    维普论文查重
-                    </td>
+                    <td class="vpcs-bgyz-table-content" id="reportNumber">251841098581c0ea</td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         论文题目：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="title">
-                    维普论文查重
-                    </td>
+                    <td class="vpcs-bgyz-table-content" id="title">我国乡村旅游发展中的成功经验研究——以昆明市为例</td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         检测时间：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="checkTime">
-                    维普论文查重
-                    </td>
+                    <td class="vpcs-bgyz-table-content" id="checkTime">2020-10-27 12:09:56</td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         总相似比：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="similar">
-                    维普论文查重
-                    </td>
+                    <td class="vpcs-bgyz-table-content" id="similar">40.47</td>
                 </tr>
             </tbody>
         </table>
