@@ -83,14 +83,10 @@
 }
 
 .fa-check{
-width:40px;
-height: 70px;
-border-bottom: 2px solid #ff2b3e;
-border-right: 2px solid #ff2b3e;
-margin:20px auto;
--webkit-transform: rotate(45deg);
--moz-transform: rotate(45deg);
-transform: rotate(45deg);
+   display: inline-block; width: 10px;height:5px; background: red;line-height:0;font-size:0;vertical-align: middle;-webkit-transform: rotate(45deg);
+}
+.fa-check:after{
+  content:'/';display:block;width: 20px;height:5px; background: red;-webkit-transform: rotate(-90deg) translateY(-50%) translateX(50%);
 }
 </style>
 @stop
