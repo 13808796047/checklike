@@ -112,7 +112,6 @@ class AuthorizationsController extends Controller
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, $client_id, $ret['session_key']);
         }
-        return $decryptedData['mobile'];
         $user = User::where('phone', $decryptedData['mobile'])->first();
         if(!$user) {
             $user = User::create([
