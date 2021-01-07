@@ -9,9 +9,10 @@
 <!-- Modal -->
 <div>
   报告验真
+  水分大啊啊啊啊啊啊啊啊
 </div>
 
-
+@stop
 <!--/.fluid-container-->
 @section('scripts')
   <script>
