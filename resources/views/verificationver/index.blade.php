@@ -81,16 +81,16 @@
 .vpcs-bgyz-table-content {
     padding-left: 10px;
 }
-.fa {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.fa-check:before {
-    content: "\f00c";
+
+.fa-check{
+width:40px;
+height: 70px;
+border-bottom: 2px solid #ff2b3e;
+border-right: 2px solid #ff2b3e;
+margin:20px auto;
+-webkit-transform: rotate(45deg);
+-moz-transform: rotate(45deg);
+transform: rotate(45deg);
 }
 </style>
 @stop
@@ -108,7 +108,7 @@
     <div style="background:#fff;">
     <div class="vpcs-main">
         <div class="vpcs-bgyz-jg" id="msg" style="">
-            <i class="fa fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span></div>
+            <i class="fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span></div>
         <!--<div class="vpcs-bgyz-jg"><i class="fa fa-close"></i> 验证失败！这是假论文！</div>-->
         <br>
         <br>
