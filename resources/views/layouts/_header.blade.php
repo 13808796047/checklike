@@ -42,10 +42,14 @@
             <a class="nav-link" href="{{route('orders.index')}}"   style="font-size:16px;">查看报告</a>
           @endguest
         </li>
+        <li class="nav-item px-4"><a class="nav-link" href="/verificationver"
+        style="font-size:16px;">报告验真</a>
+        </li>
         <li class="nav-item px-4"><a class="nav-link" href="javascript:void(0)"
                                     style="font-size:16px;"
                                      onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
         </li>
+
       </ul>
 
       <!-- Right Side Of Navbar -->
