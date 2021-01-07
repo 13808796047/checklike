@@ -55,7 +55,7 @@
           <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal"
                                   data-target="#staticBackdrop" style="font-size:16px;">登录/注册</a></li>
         @else
-          <li class="nav-item"><a class="nav-link" href="/users/{{Auth::user()->id}}">个人中心</a></li>
+          <li class="nav-item"><a class="nav-link" href="/users/{{Auth::user()->id}}" style="font-size:16px;">个人中心</a></li>
           <li class="nav-item"><a class="nav-link logout" href="javascript:;" style="font-size:16px;">退出登录</a></li>
         @endguest
       </ul>
