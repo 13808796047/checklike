@@ -169,9 +169,9 @@
                 $("#ver_reportNumber").val(res.data.paperobject.guid)
                 $("#ver_title").val(res.data.paperobject.title)
                 $("#ver_checkTime").val(res.data.checktime)
-                $("#ver_checkTime").val(res.data.paperobject.Percentage+"%")
+                $("#ver_similar").val(res.data.paperobject.Percentage+"%")
                 $("#ver_msg").css('display','block')
-                $("#ver_similar").css('display','block')
+                $("#ver_table").css('display','block')
               }else{
                 $("#ver_msg").css('display','none')
                 $("#ver_table").css('display','none')
