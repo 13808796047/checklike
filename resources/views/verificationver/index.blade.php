@@ -82,13 +82,6 @@
     padding-left: 10px;
 }
 
-.fa-check{
-   display: inline-block; width: 10px;height:5px; background: red;line-height:0;font-size:0;vertical-align: middle;-webkit-transform: rotate(45deg);
-   margin-right:20px;
-}
-.fa-check:after{
-  content:'/';display:block;width: 20px;height:5px; background: red;-webkit-transform: rotate(-90deg) translateY(-50%) translateX(50%);
-}
 </style>
 @stop
 @section('content')
@@ -105,8 +98,8 @@
     <div style="background:#fff;">
     <div class="vpcs-main">
         <div class="vpcs-bgyz-jg" id="msg" style="">
-            <i class="fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span></div>
-            √
+           <span>√ 验证通过！您查询的报告已通过【真伪验证】！</span></div>
+
         <!--<div class="vpcs-bgyz-jg"><i class="fa fa-close"></i> 验证失败！这是假论文！</div>-->
         <br>
         <br>
