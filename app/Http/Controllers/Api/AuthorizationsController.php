@@ -112,6 +112,7 @@ class AuthorizationsController extends Controller
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, config('services.baidu_weapp.client_id'), $ret['session_key']);
         }
+        dd($decryptedData['mobile']);
         $user = User::where('phone', $decryptedData['mobile'])->first();
         if(!$user) {
             $user = User::create([
