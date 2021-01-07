@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'CheckLike论文相似度检测系统，首次查重免费')
+@section('title', '维普查重')
 @section('styles')
   <link href="{{asset('asset/css/weipu-theme.css')}}" rel="stylesheet"/>
 
