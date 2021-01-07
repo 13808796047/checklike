@@ -165,7 +165,7 @@
           axios.post("/api/v1/verification-report",{number:vernum}).then(function(res){
 
               if(!res.data.msg){
-                $("#ver_type").val(res.data.type)
+                $("#ver_type").text(res.data.type)
                 $("#ver_reportNumber").val(res.data.paperobject.guid)
                 $("#ver_title").val(res.data.paperobject.title)
                 $("#ver_checkTime").val(res.data.checktime)
