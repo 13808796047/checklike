@@ -106,6 +106,7 @@
     <div class="vpcs-main">
         <div class="vpcs-bgyz-jg" id="msg" style="">
             <i class="fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span></div>
+            √
         <!--<div class="vpcs-bgyz-jg"><i class="fa fa-close"></i> 验证失败！这是假论文！</div>-->
         <br>
         <br>
