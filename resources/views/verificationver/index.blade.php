@@ -8,7 +8,7 @@
 @section('content')
 <!-- Modal -->
 <div>
-<img src=" {{ asset('asset/images/bgzy.jpg') }}" alt="">
+<img src=" {{ asset('asset/images/bgyz.jpg') }}" alt="">
   报告验真
   水分大啊啊啊啊啊啊啊啊
 </div>
