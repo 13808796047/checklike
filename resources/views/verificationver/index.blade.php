@@ -161,6 +161,187 @@ button:focus {
   <script>
       $(function () {
 
+      if(!!window.ActiveXObject || "ActiveXObject" in window){
+        $("#Ieno").css("display","none")
+      }else{
+        $("#Ieno").css("display","block")
+　　  }
+      var timer = null
+      $('#staticBackdrop').on('show.bs.modal', function () {
+        axios.get("/official_account").then(function(res){
+          var img = new Image();
+          img.onload = function() {
+            $("#qrimg").attr('src',res.data.url);
+            $("#qrimg").css("display","block");
+            $("#loginIcon").css("display","none");
+          }
+          img.src = res.data.url;
+          var wechatFlag = res.data.wechatFlag;
+          timer = setInterval(function(){
+            axios.post("login_check",{
+              wechat_flag:wechatFlag
+            }).then(function(res){
+              if(res.status==200){
+                clearInterval(timer);
+                swal("提示", "登录成功", "success");
+                location.reload();
+              }
+            })
+          }, 1000);
+        })
+      })
+      //注册
+      $("#quiklyRegister").click(function(){
+        $("#staticBackdrop").modal("hide")
+        $("#registerTcDialog").modal('show')
+      })
+      $("#noregister").click(function(){
+        $("#registerTcDialog").modal('hide')
+        $("#staticBackdrop").modal("show")
+        $("#pills-home-tab").attr("aria-selected",true)
+        $("#pills-home-tab").addClass('active')
+        $("#pills-profile-tab").attr("aria-selected",false)
+        $("#pills-profile-tab").removeClass('active')
+        $("#pills-profile").removeClass('active show')
+        $("#pills-home").addClass("active show")
+
+      })
+      //模态框关闭
+      $('#staticBackdrop').on('hidden.bs.modal', function () {
+          clearInterval(timer);
+      })
+      // Tab切换
+      $('.banner-li').click(function () {
+        $(this)
+          .addClass('li-current')
+          .siblings()
+          .removeClass('li-current')
+        let liIndex = $(this).index()
+        $('.listbox')
+          .eq(liIndex)
+          .css('display', 'block')
+          .siblings('.listbox')
+          .css('display', 'none')
+      })
+      $(document).keydown(function (e) {
+        if (e.keyCode == 13) {
+          $("#btnSubmit").click()
+        }
+      })
+      //账号登录
+      $('#accountLogin').click(function () {
+        axios.post('{{route('login') }}', {
+          phone: $("#phone").val(),
+          password: $("#password").val(),
+          type: 'account'
+        }).then(function(res){
+          if (res.status == 200) {
+            swal("提示", res.data.message, "success");
+            location.reload();
+          } else {
+            swal("提示", res.data.message);
+          }
+        }).catch(function(err){
+          if (err.response.status == 422) {
+            $.each(err.response.data.errors, function(field, errors){
+              swal("提示", errors[0]);
+            })
+          }
+          if (err.response.status == 401) {
+            $.each(err.response.data, function(field, errors){
+              swal("提示", errors);
+            })
+          }
+        })
+      })
+      var wait = 60;
+      var verification_key = '';
+      function time(o) {
+        if (wait == 0) {
+          o.removeAttribute("disabled");
+          o.value = "点击获取验证码";
+          wait = 60;
+        } else {
+          o.setAttribute("disabled", true);
+          o.value = "重新发送(" + wait + ")";
+          wait--;
+          setTimeout(function () {
+              time(o)
+            },
+            1000)
+        }
+      }
+
+      function getcode(index) {
+        index.setAttribute('disabled', true);
+        var phone = $("#mobile").val();
+        var reg = /^1[34578]\d{9}$/;
+        if (!reg.test(phone)) {
+          index.removeAttribute("disabled");
+          $("input[name='phone']").focus();
+          swal('提示信息', "请输入正确的手机号码!!!");
+          return;
+        }
+        axios.post('/api/v1/verificationCodes', {
+          phone: phone,
+        }).then(function(res){
+          swal('验证码已发送成功!,请注意查收!')
+          time(index);
+          verification_key = res.data.key;
+        }).catch(function(err){
+          index.removeAttribute("disabled");
+          if (err.response.status == 401) {
+            $.each(err.response.data.errors, function(field, errors){
+              swal("提示", errors[0]);
+            })
+          }
+        })
+      }
+      //忘记密码
+      $("#forgetpsw").click(function(){
+        $("#staticBackdrop").modal('hide')
+        $("#forgetModal").modal("show");
+      })
+      $('#verificationCode').click(function () {
+        getcode(this)
+      })
+      $('#phoneLogin').click(function() {
+        axios.post('{{ route('login') }}', {
+          phone: $('#mobile').val(),
+          verification_code: $('#verification_code').val(),
+          verification_key: verification_key,
+          type: 'phone'
+        }).then(function(res){
+          swal("提示", '登录成功', "success");
+          location.reload();
+        }).catch(function(err) {
+          if (err.response.status == 401) {
+            swal("提示", '用户不存在！！！');
+          }
+          if (err.response.status == 422) {
+            $.each(err.response.data.errors, function(field, errors){
+              swal("提示", errors[0]);
+            })
+          }
+        });
+      });
+      // Tab切换
+      $(".banner-li").click(function () {
+        $(this)
+          .addClass("li-current")
+          .siblings()
+          .removeClass("li-current");
+        let liIndex = $(this).index();
+        $(".listbox")
+          .eq(liIndex)
+          .css("display", "block")
+          .siblings(".listbox")
+          .css("display", "none");
+      });
+      })
+
+
+
         $("#ver_button").click(function(){
           var vernum = $("#ver_number").val()
           if(!vernum){
@@ -168,7 +349,6 @@ button:focus {
             return;
           }
           axios.post("/api/v1/verification-report",{number:vernum}).then(function(res){
-
               if(!res.data.msg){
                 $("#ver_type").text(res.data.type)
                 $("#ver_reportNumber").text(res.data.paperobject.guid)
