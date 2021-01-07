@@ -104,7 +104,7 @@
         <span class="userword" id="userbindPhone">绑定手机号</span>
         @endif
 			</div>
-			<div>
+			<div style="display:none;">
 				<p>降重次数 ：</p>
 				<p>{{Auth::user()->jc_times}}次</p>
         <span  class="userword" id="jcchongzhi">充值</span>
