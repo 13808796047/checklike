@@ -163,7 +163,7 @@
           }
           axios.post("/api/v1/verification-report",{number:vernum}).then(function(res){
               console.log(res,"sfda")
-              if(!res.msg){
+              if(!res.data.msg){
                 $("#ver_msg").css("display:block")
                 $("#ver_table").css("display:block")
               }else{
