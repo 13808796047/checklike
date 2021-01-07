@@ -32,7 +32,7 @@ class ChangeVipExpir
         if($user->user_group != 3) {
             return;
         }
-        if($user->vip_expir_at->lt(Carbon::now())) {
+        if($user->vip_expir_at && $user->vip_expir_at->lt(Carbon::now())) {
             $user->update([
                 'user_group' => 0,
                 'vip_days' => 0,

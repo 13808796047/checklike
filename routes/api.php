@@ -85,5 +85,6 @@ Route::prefix('v1')
                 Route::get('orders/{orderid}/view_pdf', 'OrdersController@viewPdf')->name('orders.view_pdf');
                 Route::post('orders/{order}/send-mail', 'OrdersController@sendMail');
                 Route::get('qcrode/min-generate-img', 'OrdersController@miniGenerateImg');
+                Route::post('verification-report','OrdersController@verificationReport');
             });
     });
