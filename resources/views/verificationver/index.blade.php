@@ -2,15 +2,18 @@
 @section('title','报告验真')
 @section('styles')
 <style>
-
+.vpcs-banner{
+  width: 100%;
+  height: 331px;
+  background: url("/asset/images/bgyz.jpg") no-repeat center;
+}
 </style>
 @stop
 @section('content')
 <!-- Modal -->
 <div>
-<img src=" {{ asset('asset/images/bgyz.jpg') }}" alt="">
-  报告验真
-  水分大啊啊啊啊啊啊啊啊
+    <div class="vpcs-banner">
+    </div>
 </div>
 
 @stop
