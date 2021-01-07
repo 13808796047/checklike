@@ -364,6 +364,6 @@ button:focus {
               }
           })
         })
-      })
+
   </script>
 @stop
