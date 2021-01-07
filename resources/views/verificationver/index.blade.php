@@ -7,15 +7,12 @@
 @stop
 @section('content')
 <!-- Modal -->
-@guest
 <div>
   报告验真
 </div>
 
 
 <!--/.fluid-container-->
-
-@endsection
 @section('scripts')
   <script>
       $(function () {
