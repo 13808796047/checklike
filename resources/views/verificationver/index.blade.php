@@ -167,7 +167,7 @@
               }else{
                 $("#ver_msg").css("display:none");
                 $("#ver_table").css("display:none");
-                $.alert(res.msg);
+                $.alert("报告不存在");
               }
           })
         })
