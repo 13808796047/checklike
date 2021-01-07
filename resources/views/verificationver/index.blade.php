@@ -49,6 +49,38 @@
     cursor: pointer;
     transition: background ease .3s;
 }
+.vpcs-main {
+    width: 1200px;
+    min-height: 480px;
+    margin: auto;
+}
+.vpcs-bgyz-jg {
+    text-align: center;
+    width: 100%;
+    color: #ff2b3e;
+    padding-top: 30px;
+}
+.vpcs-bgyz-table {
+    width: 1198px;
+    border: 1px solid #eaeaea;
+    margin-top: 30px;
+}
+.vpcs-bgyz-table tr td {
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #eaeaea;
+}
+.vpcs-bgyz-table-title {
+    border-right: 1px solid #eaeaea;
+    width: 200px;
+    text-align: right;
+    padding-right: 10px;
+    background: #f7f7f7;
+    color: #6f747a;
+}
+.vpcs-bgyz-table-content {
+    padding-left: 10px;
+}
 </style>
 @stop
 @section('content')
@@ -61,6 +93,60 @@
             <button class="vpcs-banner-sr-button">
                 开始验证</button>
         </div>
+    </div>
+    <div class="vpcs-main">
+        <div class="vpcs-bgyz-jg" id="msg" style="display: none;">
+            <i class="fa fa-check"></i><span>验证通过！您查询的报告已通过【真伪验证】！</span></div>
+        <!--<div class="vpcs-bgyz-jg"><i class="fa fa-close"></i> 验证失败！这是假论文！</div>-->
+        <br>
+        <br>
+        <span id="mesage" style="margin-left: 34%;"></span>
+        <table class="vpcs-bgyz-table" id="table" style="display: none;">
+            <tbody>
+                <tr>
+                    <td class="vpcs-bgyz-table-title">
+                        验证产品：
+                    </td>
+                    <td class="vpcs-bgyz-table-content" id="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="vpcs-bgyz-table-title">
+                        版本类型：
+                    </td>
+                    <td class="vpcs-bgyz-table-content" id="type">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="vpcs-bgyz-table-title">
+                        报告编号：
+                    </td>
+                    <td class="vpcs-bgyz-table-content" id="reportNumber">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="vpcs-bgyz-table-title">
+                        论文题目：
+                    </td>
+                    <td class="vpcs-bgyz-table-content" id="title">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="vpcs-bgyz-table-title">
+                        检测时间：
+                    </td>
+                    <td class="vpcs-bgyz-table-content" id="checkTime">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="vpcs-bgyz-table-title">
+                        总相似比：
+                    </td>
+                    <td class="vpcs-bgyz-table-content" id="similar">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
