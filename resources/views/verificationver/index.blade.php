@@ -97,14 +97,14 @@
     </div>
     <div style="background:#fff;">
     <div class="vpcs-main">
-        <div class="vpcs-bgyz-jg" id="msg" style="">
+        <div class="vpcs-bgyz-jg" id="ver_msg" style="display:none;">
            <span>√ 验证通过！您查询的报告已通过【真伪验证】！</span></div>
 
         <!--<div class="vpcs-bgyz-jg"><i class="fa fa-close"></i> 验证失败！这是假论文！</div>-->
         <br>
         <br>
         <span id="mesage" style="margin-left: 34%; display: none;"></span>
-        <table class="vpcs-bgyz-table" id="table" style="">
+        <table class="vpcs-bgyz-table" id="ver_table" style="display:none">
             <tbody>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
@@ -160,8 +160,15 @@
             $.alert('请输入报告编号');
             return;
           }
-          axios.post("/api/v1/verification-report",{number:"123"}).then(function(res){
-            console.log(res,"fsdaf")
+          axios.post("/api/v1/verification-report",{number:vernum}).then(function(res){
+              if(!res.msg){
+                $("#ver_msg").css("display:block");
+                $("#ver_table").css("display:block");
+              }else{
+                $("#ver_msg").css("display:none");
+                $("#ver_table").css("display:none");
+                $.alert(res.msg);
+              }
           })
         })
       })
