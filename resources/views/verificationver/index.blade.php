@@ -155,7 +155,14 @@
   <script>
       $(function () {
         $("#ver_button").click(function(){
-          $.alert('请输入报告编号');
+          var vernum = $("#ver_number").val()
+          if(!vernum){
+            $.alert('请输入报告编号');
+            return;
+          }
+          axios.post("/api/v1/verification-report",{number:"123"}).then(function(res){
+            console.log(res,"fsdaf")
+          })
         })
       })
   </script>
