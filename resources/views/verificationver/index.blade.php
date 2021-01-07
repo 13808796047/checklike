@@ -90,8 +90,8 @@
     <div class="vpcs-banner">
     <div class="vpcs-banner-srk">
             <span class="vpcs-banner-sr-span">报告编号：</span>
-            <input class="vpcs-banner-sr-input" type="text" id="number" placeholder="请输入报告编号">
-            <button class="vpcs-banner-sr-button">
+            <input class="vpcs-banner-sr-input" type="text" id="ver_number" placeholder="请输入报告编号">
+            <button class="vpcs-banner-sr-button" id="ver_button">
                 开始验证</button>
         </div>
     </div>
@@ -154,6 +154,9 @@
 @section('scripts')
   <script>
       $(function () {
+        $("#ver_button").click(function(){
+          $.alert('请输入报告编号');
+        })
       })
   </script>
 @stop
