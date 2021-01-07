@@ -81,6 +81,7 @@
 }
 .vpcs-bgyz-table-content {
     padding-left: 10px;
+    width:1000px;
 }
 
 </style>
