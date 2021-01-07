@@ -84,6 +84,7 @@
 
 .fa-check{
    display: inline-block; width: 10px;height:5px; background: red;line-height:0;font-size:0;vertical-align: middle;-webkit-transform: rotate(45deg);
+   margin-right:20px;
 }
 .fa-check:after{
   content:'/';display:block;width: 20px;height:5px; background: red;-webkit-transform: rotate(-90deg) translateY(-50%) translateX(50%);
