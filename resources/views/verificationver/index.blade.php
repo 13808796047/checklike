@@ -89,6 +89,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.fa-check:before {
+    content: "\f00c";
+}
 </style>
 @stop
 @section('content')
