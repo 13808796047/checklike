@@ -83,6 +83,10 @@
     padding-left: 10px;
     width:1000px;
 }
+button:focus {
+  border: 0 none;
+  outline: none;
+}
 
 </style>
 @stop
