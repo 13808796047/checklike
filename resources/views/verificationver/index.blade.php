@@ -35,6 +35,7 @@
 }
 .vpcs-banner-sr-button {
     position: absolute;
+    outline:none;
     top: 260px;
     left: 810px;
     width: 100px;
@@ -165,9 +166,10 @@
                 $("#ver_msg").css("display:block");
                 $("#ver_table").css("display:block");
               }else{
+                console.log("fasdf")
                 $("#ver_msg").css("display:none");
                 $("#ver_table").css("display:none");
-                $.alert("报告不存在");
+                $.alert('报告不存在');
               }
           })
         })
