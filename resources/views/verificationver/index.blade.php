@@ -117,31 +117,31 @@
                     <td class="vpcs-bgyz-table-title">
                         版本类型：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="type">维普论文检测（大学生版）</td>
+                    <td class="vpcs-bgyz-table-content" id="ver_type"></td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         报告编号：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="reportNumber">251841098581c0ea</td>
+                    <td class="vpcs-bgyz-table-content" id="ver_reportNumber"></td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         论文题目：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="title">我国乡村旅游发展中的成功经验研究——以昆明市为例</td>
+                    <td class="vpcs-bgyz-table-content" id="ver_title"></td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         检测时间：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="checkTime">2020-10-27 12:09:56</td>
+                    <td class="vpcs-bgyz-table-content" id="ver_checkTime"></td>
                 </tr>
                 <tr>
                     <td class="vpcs-bgyz-table-title">
                         总相似比：
                     </td>
-                    <td class="vpcs-bgyz-table-content" id="similar">40.47</td>
+                    <td class="vpcs-bgyz-table-content" id="ver_similar"></td>
                 </tr>
             </tbody>
         </table>
@@ -155,6 +155,7 @@
 @section('scripts')
   <script>
       $(function () {
+
         $("#ver_button").click(function(){
           var vernum = $("#ver_number").val()
           if(!vernum){
@@ -164,13 +165,16 @@
           axios.post("/api/v1/verification-report",{number:vernum}).then(function(res){
 
               if(!res.data.msg){
-                console.log("fsadjfa")
-                $("#ver_msg").css("display:block")
-                $("#ver_table").css("display:block")
+                $("#ver_type").val(res.data.type)
+                $("#ver_reportNumber").val(res.data.paperobject.guid)
+                $("#ver_title").val(res.data.paperobject.title)
+                $("#ver_checkTime").val(res.data.checktime)
+                $("#ver_checkTime").val(res.data.paperobject.Percentage+"%")
+                $("#ver_msg").css('display','block')
+                $("#ver_similar").css('display','block')
               }else{
-                console.log("fasdf")
-                $("#ver_msg").css("display:none")
-                $("#ver_table").css("display:none")
+                $("#ver_msg").css('display','none')
+                $("#ver_table").css('display','none')
                 $.alert('报告不存在')
               }
           })
