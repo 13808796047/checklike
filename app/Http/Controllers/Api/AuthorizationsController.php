@@ -110,7 +110,7 @@ class AuthorizationsController extends Controller
         $ret = $this->curlPost($url, $data);
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
-            $decryptedData = $this->decrypt($encryptData, $iv, config('services.baidu_weapp.client_id'), $ret['session_key']);
+            $decryptedData = $this->decrypt($encryptData, $iv, $client_id, $ret['session_key']);
         }
         return $decryptedData['mobile'];
         $user = User::where('phone', $decryptedData['mobile'])->first();
