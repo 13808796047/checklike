@@ -85,20 +85,20 @@ class AuthorizationsController extends Controller
                 $sk = config('services.baidu_weapp_2.client_secret');
                 break;
             case 3:
-                $client_id = config('services.baidu_weapp_2.client_id');
-                $sk = config('services.baidu_weapp_2.client_secret');
+                $client_id = config('services.baidu_weapp_3.client_id');
+                $sk = config('services.baidu_weapp_3.client_secret');
                 break;
             case 4:
-                $client_id = config('services.baidu_weapp_2.client_id');
-                $sk = config('services.baidu_weapp_2.client_secret');
+                $client_id = config('services.baidu_weapp_4.client_id');
+                $sk = config('services.baidu_weapp_4.client_secret');
                 break;
             case 5:
-                $client_id = config('services.baidu_weapp_2.client_id');
-                $sk = config('services.baidu_weapp_2.client_secret');
+                $client_id = config('services.baidu_weapp_5.client_id');
+                $sk = config('services.baidu_weapp_5.client_secret');
                 break;
             case 6:
-                $client_id = config('services.baidu_weapp_2.client_id');
-                $sk = config('services.baidu_weapp_2.client_secret');
+                $client_id = config('services.baidu_weapp_6.client_id');
+                $sk = config('services.baidu_weapp_6.client_secret');
                 break;
 
         }
