@@ -53,9 +53,29 @@ return [
         'redirect' => env('WEIXIN_REDIRECT_URI'),
     ],
     // 百度登录
-    'baidu_weapp' => [
-        'client_id' => env('BAIDU_AUTH_APP_KEY'),
-        'client_secret' => env('BAIDU_AUTH_APP_SECRET'),
+    'baidu_weapp_1' => [
+        'client_id' => env('BAIDU_AUTH_APP_KEY_1'),
+        'client_secret' => env('BAIDU_AUTH_APP_SECRET_1'),
+    ],
+    'baidu_weapp_2' => [
+        'client_id' => env('BAIDU_AUTH_APP_KEY_2'),
+        'client_secret' => env('BAIDU_AUTH_APP_SECRET_2'),
+    ],
+    'baidu_weapp_3' => [
+        'client_id' => env('BAIDU_AUTH_APP_KEY_3'),
+        'client_secret' => env('BAIDU_AUTH_APP_SECRET_3'),
+    ],
+    'baidu_weapp_4' => [
+        'client_id' => env('BAIDU_AUTH_APP_KEY_4'),
+        'client_secret' => env('BAIDU_AUTH_APP_SECRET_4'),
+    ],
+    'baidu_weapp_5' => [
+        'client_id' => env('BAIDU_AUTH_APP_KEY_5'),
+        'client_secret' => env('BAIDU_AUTH_APP_SECRET_5'),
+    ],
+    'baidu_weapp_6' => [
+        'client_id' => env('BAIDU_AUTH_APP_KEY_6'),
+        'client_secret' => env('BAIDU_AUTH_APP_SECRET_6'),
     ],
 //    'dev_lianwen_com' => [
 //        'wechat' => [
