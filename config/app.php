@@ -21,6 +21,7 @@ return [
     ],
     'service_wechat' => env('SERVICE_WECHAT'),
     'jc_times' => env('JC_TIMES'),
+    'ios_host' => env('IOS_HOST'),
     'name' => env('APP_NAME', 'Laravel'),
 
     /*

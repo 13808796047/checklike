@@ -42,7 +42,7 @@ class IOSPaidMessage implements ShouldQueue
             app('official_account')->template_message->send([
                 'touser' => $touser,
                 'template_id' => $template_id,
-                'url' => 'https://m.checklike.com/p/report?phone=' . $this->order->phone,
+                'url' => config('app.ios_host') . '?phone=' . $this->order->phone,
 //                'miniprogram' => [
 //                    'appid' => $appid,
 //                    'pagepath' => $pagepath,
