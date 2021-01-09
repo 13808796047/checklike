@@ -33,7 +33,7 @@ class SendLoginMessage implements ShouldQueue
             'first' => '您已成功登录',
             'keyword1' => ['value' => Carbon::now()->format('Y-m-d H:i:s')],
             'keyword2' => ['value' => '登录成功'],
-            'keyword3' => ['value' => config('app.ios_host')],
+            'keyword3' => ['value' => config('app.url')],
             'remark' => ['value' => '点击使用小程序', 'color' => '#173177']
         ];
 
