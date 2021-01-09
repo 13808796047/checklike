@@ -75,15 +75,42 @@ class AuthorizationsController extends Controller
             throw new AuthenticationException('参数code错误，未获取用户信息');
         }
         $url = 'https://spapi.baidu.com/oauth/jscode2sessionkey';
+        switch ($request->type) {
+            case 1:
+                $client_id = config('services.baidu_weapp_1.client_id');
+                $sk = config('services.baidu_weapp_1.client_secret');
+                break;
+            case 2:
+                $client_id = config('services.baidu_weapp_2.client_id');
+                $sk = config('services.baidu_weapp_2.client_secret');
+                break;
+            case 3:
+                $client_id = config('services.baidu_weapp_3.client_id');
+                $sk = config('services.baidu_weapp_3.client_secret');
+                break;
+            case 4:
+                $client_id = config('services.baidu_weapp_4.client_id');
+                $sk = config('services.baidu_weapp_4.client_secret');
+                break;
+            case 5:
+                $client_id = config('services.baidu_weapp_5.client_id');
+                $sk = config('services.baidu_weapp_5.client_secret');
+                break;
+            case 6:
+                $client_id = config('services.baidu_weapp_6.client_id');
+                $sk = config('services.baidu_weapp_6.client_secret');
+                break;
+
+        }
         $data = [
             "code" => $code,
-            "client_id" => config('services.baidu_weapp.client_id'),
-            "sk" => config('services.baidu_weapp.client_secret')
+            "client_id" => $client_id,
+            "sk" => $sk
         ];
         $ret = $this->curlPost($url, $data);
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
-            $decryptedData = $this->decrypt($encryptData, $iv, config('services.baidu_weapp.client_id'), $ret['session_key']);
+            $decryptedData = $this->decrypt($encryptData, $iv, $client_id, $ret['session_key']);
         }
         $user = User::where('phone', $decryptedData['mobile'])->first();
         if(!$user) {
