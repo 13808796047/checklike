@@ -47,7 +47,7 @@
         </li>
         <li class="nav-item px-4"><a class="nav-link" href="javascript:void(0)"
                                     style="font-size:16px;"
-                                     onclick="window.open('http://p.qiao.baidu.com/cps/chat?siteId=12623578&userId=26512539&cp=lianwen&cr=lianwen&cw=PC',height='680',width='900')">在线咨询</a>
+                                     onclick="window.open('https://p.qiao.baidu.com/cps/chat?siteId=16186571&userId=27452389&siteToken=41b46912e0f41a2abe83e3517923bc96&cp=weipu&cr=weipu&cw=PC',height='680',width='900')">在线咨询</a>
         </li>
 
       </ul>
