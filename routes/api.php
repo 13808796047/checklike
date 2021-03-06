@@ -85,6 +85,10 @@ Route::prefix('v1')
                 Route::get('orders/{orderid}/view_pdf', 'OrdersController@viewPdf')->name('orders.view_pdf');
                 Route::post('orders/{order}/send-mail', 'OrdersController@sendMail');
                 Route::get('qcrode/min-generate-img', 'OrdersController@miniGenerateImg');
-                Route::post('verification-report','OrdersController@verificationReport');
+                Route::post('verification-report', 'OrdersController@verificationReport');
+                // 邀请vip
+                Route::get('invite', 'UsersController@invite');
+                // 激活vip
+                Route::get('active-vip', 'UsersController@active_vip');
             });
     });

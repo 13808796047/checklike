@@ -45,8 +45,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         RefreshPaged::class => [
             ChangeVipExpir::class
+        ],
+        Invited::class => [
+            ActiveVip::class
         ]
-
     ];
 
     /**

@@ -85,9 +85,14 @@ class PaymentsController extends Controller
 //wap支付
     public function alipayWap(Order $order, Request $request)
     {
+        if($code = $request->code) {
+            $price = $this->paymentService->calcPrice($order, $request->code);
+        } else {
+            $price = $order->price;
+        }
         return app('alipay_wap')->wap([
             'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
-            'total_amount' => $order->price, // 订单金额，单位元，支持小数点后两位
+            'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
             'subject' => $order->category->name . '-' . config('app.service_wechat'), // 订单标题
         ]);
     }
@@ -238,9 +243,14 @@ class PaymentsController extends Controller
             throw new InvalidRequestException('订单状态不正确');
         }
         $this->orderfix = rand(1, 99);
+        if($code = $request->code) {
+            $price = $this->paymentService->calcPrice($order, $request->code);
+        } else {
+            $price = $order->price;
+        }
         $attributes = [
             'out_trade_no' => $order->orderid . '_' . $this->orderfix,  // 商户订单流水号，与支付宝 out_trade_no 一样
-            'total_fee' => $order->price * 100, // 与支付宝不同，微信支付的金额单位是分。
+            'total_fee' => $price * 100, // 与支付宝不同，微信支付的金额单位是分。
             'body' => $order->category->name . '-' . config('app.service_wechat'), // 订单描述
         ];
         return app('wechat_pay_wap')->wap($attributes);

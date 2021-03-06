@@ -23,7 +23,7 @@ return [
     'jc_times' => env('JC_TIMES'),
     'ios_host' => env('IOS_HOST'),
     'name' => env('APP_NAME', 'Laravel'),
-
+    'invite_vip' => env('INVITE_VIP'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

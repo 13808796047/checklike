@@ -17,11 +17,10 @@ class ChangeUsed implements ShouldQueue
     {
         $couponCode = $event->getCouponCode();
         $user = $event->getUser();
-        $couponCode->update([
-            'status' => CouponCode::STATUS_ACTIVED,
-            'actived_at' => Carbon::now(),
-            'uid' => $user->id
-        ]);
+        $couponCode->status = CouponCode::STATUS_ACTIVED;
+        $couponCode->actived_at = now();
+        $couponCode->user()->associate($user);
+        $couponCode->save();
         if($couponCode->type == CouponCode::TYPE_VIP) {
             if(!$user->vip_expir_at) {
                 $vip_expir_at = Carbon::now()->addDays($couponCode->enable_days);
