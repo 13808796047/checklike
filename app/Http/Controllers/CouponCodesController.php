@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Events\CouponCodeActived;
+use App\Events\Invited;
 use App\Exceptions\CouponCodeUnavailableException;
+use App\Exceptions\InvalidRequestException;
 use App\Http\Resources\CouponCodeResource;
 use App\Listeners\ChangeUsed;
 use App\Models\CouponCode;
@@ -53,7 +55,17 @@ class CouponCodesController extends Controller
     public function activeCouponCode(Request $request)
     {
         $user = $request->user();
-        if(!$couponCode = CouponCode::where('code', $request->code)->first()) {
+        $code = $request->code;
+        if($code == config('app.active_code')) {
+            if($user->vip_days > 31) {
+                throw new InvalidRequestException('你已经激活过了');
+            }
+            event(new Invited($user));
+            return response()->json([
+                'message' => '激活成功!'
+            ]);
+        }
+        if(!$couponCode = CouponCode::where('code', $code)->first()) {
             throw new CouponCodeUnavailableException('折扣卡不存在!');
         }
         $couponCode->checkAvailable();

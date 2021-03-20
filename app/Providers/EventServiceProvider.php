@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Events\CouponCodeActived;
+use App\Events\Invited;
 use App\Events\OrderPaid;
 use App\Events\RechargePaid;
 use App\Events\RefreshPaged;
+use App\Listeners\ActiveVip;
 use App\Listeners\ChangeUsed;
 use App\Listeners\ChangeVipExpir;
 use App\Listeners\CheckDoc;

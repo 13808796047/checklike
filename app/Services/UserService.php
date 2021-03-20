@@ -35,8 +35,11 @@ class UserService
 
     public function miniprogramBindPhone($request, $phone)
     {
-        $mini_program_user = auth()->user();
-        $phone_user = User::where('phone', $phone)->first();
+        $mini_program_user = auth()->user(); // A:微信用户
+        if($mini_program_user->phone && $mini_program_user->phone == $phone) {
+            throw new \Exception('已经绑定过手机号了');
+        }
+        $phone_user = User::where('phone', $phone)->first(); // B:用户
         if(!$phone_user) {
             $mini_program_user->update([
                 'phone' => $phone,
@@ -51,8 +54,8 @@ class UserService
 //            }
             DB::table('orders')->where('userid', $phone_user->id)->update([
                 'userid' => $mini_program_user->id
-            ]);
-            $phone_user->delete();
+            ]);// 把B的订单改成A
+//            $phone_user->delete();
             $mini_program_user->update([
                 'phone' => $phone,
                 'password' => $phone_user->password ?? "",

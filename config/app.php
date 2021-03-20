@@ -24,6 +24,7 @@ return [
     'ios_host' => env('IOS_HOST'),
     'name' => env('APP_NAME', 'Laravel'),
     'invite_vip' => env('INVITE_VIP'),
+    'active_code' => env('ACTIVE_CODE'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment
