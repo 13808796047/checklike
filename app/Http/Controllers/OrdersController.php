@@ -91,7 +91,7 @@ class OrdersController extends Controller
         }
         // 校验权限
 //        $this->authorize('own', $order);
-        if(!$order->report_path) {
+        if($order->report_path == '') {
             throw new InvalidRequestException('检测未完成', 400);
         }
 //        if($order->pay_type == '百度支付') {
