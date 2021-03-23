@@ -46,17 +46,16 @@ class AuthorizationsController extends Controller
                 } else {
                     $user = User::where('weixin_openid', $oauthUser['id'])->first();
                 }
+                $attributes ['avatar'] = $oauthUser['avatar'];
+                $attributes ['nick_name'] = $oauthUser['nickname'];
+                $attributes['weapp_openid'] = $oauthUser['id'];
+                $attributes['weixin_unionid'] = $unionid;
                 // 没有用户，默认创建一个用户
                 if(!$user) {
-                    $user = User::create([
-                        'nick_name' => $oauthUser['nickname'],
-                        'avatar' => $oauthUser['avatar'],
-                        'weixin_openid' => $oauthUser['id'],
-                        'weixin_unionid' => $unionid,
-                    ]);
+                    $user = User::create($attributes);
                     $user->increaseJcTimes(config('app.jc_times'));
                 }
-
+                $user->update($attributes);
                 break;
         }
         $token = auth('api')->login($user);
@@ -206,6 +205,8 @@ class AuthorizationsController extends Controller
         }
         $user = User::where('weixin_unionid', $decryptedData['unionId'])->first();
         $attributes['weixin_session_key'] = $result['session_key'];
+        $attributes ['avatar'] = $decryptedData['avatarUrl'];
+        $attributes ['nickname'] = $decryptedData['nickName'];
         $attributes['weapp_openid'] = $decryptedData['openId'];
         $attributes['weixin_unionid'] = $decryptedData['unionId'];
         if(!$user) {
