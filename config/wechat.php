@@ -73,11 +73,13 @@ return [
                 'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_PENDING_TEMPLATE_ID'),
                 'appid' => env('MINIPROGRAM_APPID'),
                 'page_path' => env('MINIPROGRAM_PENDING_URL'),
+                'url' => env('PENDING_URL')
             ],
             'paid' => [
                 'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_PAID_TEMPLATE_ID'),
                 'appid' => env('MINIPROGRAM_APPID'),
                 'page_path' => env('MINIPROGRAM_PAID_URL'),
+
             ],
             'checked' => [
                 'template_id' => env('WECHAT_OFFICIAL_ACCOUNT_CHECKED_TEMPLATE_ID'),

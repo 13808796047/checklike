@@ -46,11 +46,11 @@ class OrderPendingMsg implements ShouldQueue
             app('official_account')->template_message->send([
                 'touser' => $touser,
                 'template_id' => $template_id,
-//                'url' => 'https://wap.lianwen.com/bading?openid=' . $this->order->user->weixin_openid,
-                'miniprogram' => [
-                    'appid' => $appid,
-                    'pagepath' => $pagepath,
-                ],
+                'url' => config('wechat.official_account.templates.pending.url'),
+//                'miniprogram' => [
+//                    'appid' => $appid,
+//                    'pagepath' => $pagepath,
+//                ],
                 'data' => $data,
             ]);
         }
