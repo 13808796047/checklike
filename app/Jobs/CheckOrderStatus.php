@@ -43,13 +43,13 @@ class CheckOrderStatus implements ShouldQueue
                 throw new \Exception('文件未获取');
             }
             //存储pdf
-            $content = $api->extractReportPdf($this->order->api_orderid);
-            file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
-            $report_pdf_path = config('app.url') . '/pdf/' . $this->order->orderid . '.pdf';
-            \DB::transaction(function() use ($path, $result, $report_pdf_path) {
+//            $content = $api->extractReportPdf($this->order->api_orderid);
+//            file_put_contents(public_path('/pdf/') . $this->order->orderid . '.pdf', $content);
+//            $report_pdf_path = config('app.url') . '/pdf/' . $this->order->orderid . '.pdf';
+            \DB::transaction(function() use ($path, $result) {
                 $this->order->update([
                     'report_path' => $path,
-                    'report_pdf_path' => $report_pdf_path,
+//                    'report_pdf_path' => $report_pdf_path,
                     'rate' => str_replace('%', '', $result->data->orderCheck->apiResultSemblance),
                     'status' => OrderEnum::CHECKED
                 ]);

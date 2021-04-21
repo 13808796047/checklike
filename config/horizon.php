@@ -180,7 +180,7 @@ return [
             'supervisor-1' => [
                 'connection' => 'redis',
                 'queue' => ['default'],
-                'balance' => 'simple',
+                'balance' => 'auto',
                 'processes' => 3,
                 'tries' => 1,
             ],

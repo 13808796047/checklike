@@ -20,7 +20,7 @@ class FileService
             //是否是要求的文件
             $isInFileType = in_array($extension, $fileTypes);
             if(!$isInFileType) {
-                throw new \Exception('文件格式不合法!', 400);
+                abort(400, '文件不合法');
             }
             $result = $uploadHandler->save($file, 'files', $user->id);
             $data = File::create([

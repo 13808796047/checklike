@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')
     ->namespace('Api')
-    ->name('api.v1')
     ->middleware('throttle:' . config('api.rate_limits.sign'))
     ->group(function() {
         Route::middleware('auth:api')->group(function() {
@@ -76,7 +75,7 @@ Route::prefix('v1')
                 Route::post('baidu-weapp/authorizations', 'AuthorizationsController@baiduMiniProgramStore');
                 //分类
                 Route::get('categories', 'CategoriesController@index')->name('categories.index');
-                Route::post('user/offical_bound_phone', 'UsersController@officalBoundPhone')->name('user.offical_bound_phone');
+                //Route::post('user/offical_bound_phone', 'UsersController@officalBoundPhone')->name('user.offical_bound_phone');
                 // 根据电话查询订单
                 Route::get('mini-orders', 'OrdersController@miniIndex');
                 Route::get('mini-orders/{order}', 'OrdersController@miniShow');

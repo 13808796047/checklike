@@ -34,13 +34,77 @@ return [
     */
 
     'mailers' => [
-        'smtp' => [
+        'smtp1' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => env('MAIL_HOST_1', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME_1'),
+            'password' => env('MAIL_PASSWORD_1'),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS_1', 'hello@example.com'),
+                'name' => env('MAIL_FROM_NAME', 'Example'),
+            ],
+        ],
+        'smtp2' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST_2', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME_2'),
+            'password' => env('MAIL_PASSWORD_2'),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS_2', 'hello@example.com'),
+                'name' => env('MAIL_FROM_NAME', 'Example'),
+            ],
+        ],
+        'smtp3' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST_3', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME_3'),
+            'password' => env('MAIL_PASSWORD_3'),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS_3', 'hello@example.com'),
+                'name' => env('MAIL_FROM_NAME', 'Example'),
+            ],
+        ],
+        'smtp4' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST_4', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME_4'),
+            'password' => env('MAIL_PASSWORD_4'),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS_4', 'hello@example.com'),
+                'name' => env('MAIL_FROM_NAME', 'Example'),
+            ],
+        ],
+        'smtp5' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST_5', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME_5'),
+            'password' => env('MAIL_PASSWORD_5'),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS_5', 'hello@example.com'),
+                'name' => env('MAIL_FROM_NAME', 'Example'),
+            ],
+        ],
+        'smtp6' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST_6', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME_6'),
+            'password' => env('MAIL_PASSWORD_6'),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS_6', 'hello@example.com'),
+                'name' => env('MAIL_FROM_NAME', 'Example'),
+            ],
         ],
 
         'ses' => [

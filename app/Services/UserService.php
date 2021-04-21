@@ -55,7 +55,7 @@ class UserService
             DB::table('orders')->where('userid', $phone_user->id)->update([
                 'userid' => $mini_program_user->id
             ]);// 把B的订单改成A
-//            $phone_user->delete();
+            $phone_user->delete();
             $mini_program_user->update([
                 'phone' => $phone,
                 'password' => $phone_user->password ?? "",

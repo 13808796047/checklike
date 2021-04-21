@@ -54,7 +54,7 @@ class PaymentsController extends Controller
                 }
                 // 调用支付宝的网页支付
                 return app('alipay')->web([
-                    'out_trade_no' => $recharge->no . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
+                    'out_trade_no' => $recharge->no, // 订单编号，需保证在商户端不重复
                     'total_amount' => $recharge->total_amount, // 订单金额，单位元，支持小数点后两位
                     'subject' => $recharge->no . '-' . config('app.service_wechat'), // 订单标题
                 ]);
@@ -74,7 +74,7 @@ class PaymentsController extends Controller
                 }
 
                 return app('alipay')->web([
-                    'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
+                    'out_trade_no' => $order->orderid, // 订单编号，需保证在商户端不重复
                     'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
                     'subject' => $order->category->name . '-' . config('app.service_wechat'), // 订单标题,
                 ]);
@@ -91,7 +91,7 @@ class PaymentsController extends Controller
             $price = $order->price;
         }
         return app('alipay_wap')->wap([
-            'out_trade_no' => $order->orderid . '_' . $this->orderfix, // 订单编号，需保证在商户端不重复
+            'out_trade_no' => $order->orderid, // 订单编号，需保证在商户端不重复
             'total_amount' => $price, // 订单金额，单位元，支持小数点后两位
             'subject' => $order->category->name . '-' . config('app.service_wechat'), // 订单标题
         ]);
@@ -138,12 +138,12 @@ class PaymentsController extends Controller
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
             return app('alipay')->success();
         }
-        [$out_trade_no, $orderfix] = explode('_', $data->out_trade_no);
-        $type = substr($out_trade_no, 0, 2);
+
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
+        $type = substr($data->out_trade_no, 0, 2);
         switch ($type) {
             case 'JC':
-                $recharge = Recharge::where('no', $out_trade_no)->first();
+                $recharge = Recharge::where('no', $data->out_trade_no)->first();
                 // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
                 if(!$recharge) {
                     return 'fail';
@@ -156,13 +156,13 @@ class PaymentsController extends Controller
                 $recharge->update([
                     'paid_at' => Carbon::now(),
                     'payment_method' => '支付宝支付',
-                    'payment_no' => $out_trade_no,
+                    'payment_no' => $data->out_trade_no,
                 ]);
                 $this->afterRechargePaid($recharge);
                 return app('alipay')->success();
                 break;
             default:
-                $order = Order::where('orderid', $out_trade_no)->first();
+                $order = Order::where('orderid', $data->out_trade_no)->first();
                 // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
                 if(!$order) {
                     return 'fail';
@@ -175,7 +175,7 @@ class PaymentsController extends Controller
                 $order->update([
                     'date_pay' => Carbon::now(), // 支付时间
                     'pay_type' => '支付宝支付', // 支付方式
-                    'payid' => $out_trade_no, // 支付宝订单号
+                    'payid' => $data->out_trade_no, // 支付宝订单号
                     'pay_price' => $data->total_amount,//支付金额
                     'status' => 1,
                 ]);

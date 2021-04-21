@@ -6,6 +6,7 @@ use App\Admin\Metrics\Examples;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Order;
+use Carbon\Carbon;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Controllers\Dashboard;
 use Dcat\Admin\Layout\Column;
@@ -17,14 +18,36 @@ class HomeController extends Controller
 {
     public function index(Content $content, Request $request)
     {
-        $classOrders = Category::query()->with(['orders' => function($query) use ($request) {
-            $query->withOrder($request->date);
-        }])->get();
-//        $totalOrders = Category::query()->with(['orders' => function($query) use ($request) {
-//            $query->withOrder('created_at', $request->date);
-//        }])->get();
-        $sourceOrders = Order::query()->withOrder($request->date)->get()->groupBy('from');
-//        $sourceTotalOrders = Order::query()->withOrder('created_at', $request->date)->get()->groupBy('from');
+        $classOrders = Category::query()
+            ->withCount(['orders as order1' => function($query) use ($request) {
+                $query->withOrder('created_at', $request->date);
+            }])
+            ->withCount(['orders as order2' => function($query) use ($request) {
+                $query->withOrder('date_pay', $request->date);
+            }])->withCount(['orders as total_price' => function($query) use ($request) {
+                $query->withOrder('date_pay', $request->date)->select(\DB::raw("sum(pay_price)"));
+            }])
+            ->get(['name']);
+        switch ($request->date) {
+            case "yesterday":
+                $start = Carbon::now()->subDay()->startOfDay()->toDateTimeString();
+                $end = Carbon::now()->subDay()->endOfDay()->toDateTimeString();
+                break;
+            case 'month':
+                $start = Carbon::now()->startOfMonth()->toDateTimeString();
+                $end = Carbon::now()->endOfMonth()->toDateTimeString();
+                break;
+            case 'pre_month':
+                $start = Carbon::now()->subMonth()->startOfDay()->toDateTimeString();
+                $end = Carbon::now()->subMonth()->endOfDay()->toDateTimeString();
+                break;
+            default:
+                $start = Carbon::now()->startOfDay()->toDateTimeString();
+                $end = Carbon::now()->endOfDay()->toDateTimeString();
+        }
+
+        $sourceOrders = Order::query()->select(\DB::raw("count(created_at between '$start' and '$end' or null) as name1 , count(date_pay between '$start' and '$end'  or null) as name2,sum(if(date_pay between '$start' and '$end' ,pay_price,0)) as total_price"), 'from')->groupBy('from')->get();
+
         return $content
             ->title('首页')
             ->body(view('admin.home.index', [

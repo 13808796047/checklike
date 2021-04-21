@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('reset_password', 'UsersController@resetPassword')->name('users.reset_password');
     //绑定手机号
     Route::put('bond_phone', 'UsersController@boundPhone')->name('users.bound_phone');
+    Route::post('orders/{order}/mail_report', 'OrdersController@reportMail');
     // 个人中心优惠券
 
 //    Route::get('coupon_codes', 'CouponCodesController@index')->name('coupon_code.index');
@@ -87,11 +88,10 @@ Route::get('freecheck', 'FreeCheckController@index');
 //邀请注册
 Route::get('zt/jc', 'InvitsController@index')->name('invit.index');
 Route::get('invit_official', 'InvitOfficialController@index')->name('invit_official.index');
-Route::get('verificationver', function() {
-    return view('verificationver.index');
-});
+Route::get('verificationver', 'Verificationver@index');
 //Route::get('getKey', function() {
 //    $data['dealId'] = config('pay.baidu_pay.dealId');
 //    $data['appKey'] = config('pay.baidu_pay.appKey');
 //    return app('baidu_pay')->getSign($data);
 //});
+//verificationver.index

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\RefreshPaged;
+use App\Exceptions\InternalException;
 use App\Exceptions\InvalidRequestException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\MiniProgromAuthorizationRequest;
@@ -109,11 +110,15 @@ class AuthorizationsController extends Controller
             "sk" => $sk
         ];
         $ret = $this->curlPost($url, $data);
+        if(!$ret['session_key']) {
+            throw new AuthenticationException('会话过期,请重新登录');
+        }
         if($iv = $request->iv) {
             $encryptData = $request->encryptData;
             $decryptedData = $this->decrypt($encryptData, $iv, $client_id, $ret['session_key']);
         }
         $user = User::where('phone', $decryptedData['mobile'])->first();
+        \Log::info('xxxx', $user);
         if(!$user) {
             $user = User::create([
                 'phone' => $decryptedData['mobile'],
@@ -169,9 +174,7 @@ class AuthorizationsController extends Controller
 
     public function curlPost($url, $postDataArr)
     {
-//        $headerArr = [
-//            "Content-type:application/x-www-form-urlencoded"
-//        ];
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\OrderPaid;
 use App\Exceptions\CouponCodeUnavailableException;
+use App\Exceptions\InternalException;
 use App\Exceptions\InvalidRequestException;
 use App\Handlers\DocxConversionHandler;
 use App\Handlers\FileUploadHandler;
@@ -119,5 +120,21 @@ class OrdersController extends Controller
         $orderimg = app(OrderimgHandler::class);
         $img_url = $orderimg->generate($request->title, $request->writer, $request->category_name, $request->classid, $request->created_at, $request->rate);
         return view('orders.qrcode.index', compact('img_url'));
+    }
+
+    public function reportMail(Request $request, Order $order)
+    {
+        // 校验权限
+        $this->authorize('own', $order);
+        $to = $request->email_address;
+        // 发送
+        try {
+            Mail::to($to)->send(new OrderReport($order));
+        } catch (Exception $e) {
+            throw new InternalException($e->getMessage());
+        }
+        return response()->json([
+            'message' => '邮件发送成功,请注意查收！'
+        ]);
     }
 }

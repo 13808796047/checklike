@@ -21,6 +21,7 @@ use App\Models\File;
 use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class OrderService
 {
@@ -29,7 +30,7 @@ class OrderService
         $order = \DB::transaction(function() use ($request) {
             $category = Category::find($request->cid);
             $file = File::find($request->file_id);
-            $user = \Auth::user();
+            $user = $request->user();
 
             $result = $this->converFile($category, $request->type, $request->content, $file, $user->id);
             $words = $result['words'];
@@ -74,12 +75,11 @@ class OrderService
             if($words <= $category->min_words && $words >= $category->max_words) {
                 throw new InvalidRequestException("检测字数必须在" . $category->min_words . "与" . $category->max_words . "之间", 500);
             }
-
             $referer = \Cache::get('word');
             $order = new Order([
                 'cid' => $request->cid,
                 'title' => $request->title,
-                'writer' => $request->writer,
+                'writer' => Str::limit($request->writer, $limit = 3, $end = '...'),
                 'endDate' => $request->endDate ?? "",
                 'publishdate' => $request->publishdate ?? "",
                 'date_publish' => $request->date_publish,
@@ -170,7 +170,8 @@ class OrderService
                 }
             }
         } else {
-            $words = count_words(remove_spec_char($content));
+//            $words = count_words(remove_spec_char($content));
+            $words = $fileWords->queryParsing($fileWords->submitCheck($result['path'])['data']['orderid'])['data']['wordCount'];
             $result = $upload->saveTxt($content, 'files', $file_prefix);
 
         }

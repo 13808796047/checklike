@@ -139,9 +139,11 @@ class OrdersController extends Controller
         // 校验权限
         $this->authorize('own', $order);
         $to = $request->email_address;
+        $address = collect(['smtp1', 'smtp2', 'smtp3', 'smtp4', 'smtp5']);
+
         // 发送
         try {
-            Mail::to($to)->send(new OrderReport($order));
+            Mail::mailer($address->random())->to($to)->send(new OrderReport($order));
         } catch (Exception $e) {
             throw new InternalException($e->getMessage());
         }

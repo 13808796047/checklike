@@ -126,12 +126,16 @@
           </tr>
           </thead>
           <tbody>
+          @php $total = \App\Models\Order::whereBetween('created_at',[$start, $end])->selectRaw('count(*) source')->groupBy('source')@endphp
+          }
           @foreach($source_orders as $source=> $order)
             @php
               $orders_count = $order->count();
-                $total = \App\Models\Order::whereBetween('created_at',[$start, $end])->where('from',$source??'')->count();
+                $sourceTotal= $total->filter(function($item){
+                   $item->source == $order->$source;
+                });
                        try {
-                    $sorce_data = $orders_count/$total;
+                    $sorce_data = $orders_count/$sourceTotal;
                 }catch (\Exception $e){
                     $sorce_data=0;
                 }
