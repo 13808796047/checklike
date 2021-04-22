@@ -47,19 +47,15 @@ class UserService
             return $mini_program_user;
         }
         $mini_program_user = DB::transaction(function() use ($request, $mini_program_user, $phone_user, $phone) {
-//            foreach($phone_user->orders as $order) {
-//                $order->update([
-//                    'userid' => $mini_program_user->id,
-//                ]);
-//            }
-            DB::table('orders')->where('userid', $phone_user->id)->update([
-                'userid' => $mini_program_user->id
-            ]);// 把B的订单改成A
-            $phone_user->delete();
             $mini_program_user->update([
                 'phone' => $phone,
                 'password' => $phone_user->password ?? "",
             ]);
+            DB::table('orders')->where('userid', $phone_user->id)->update([
+                'userid' => $mini_program_user->id
+            ]);// 把B的订单改成A
+            
+            $phone_user->delete();
             return $mini_program_user;
         });
         return $mini_program_user;

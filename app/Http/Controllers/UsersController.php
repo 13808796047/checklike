@@ -33,6 +33,9 @@ class UsersController extends Controller
         $phone = $verifyData['phone'];
         // 公众号用户
         $user = $request->user();
+        if($user->phone && $user->phone == $phone) {
+            throw new \Exception('已经绑定过手机号了');
+        }
         // 手机用户
         $phoneUser = User::where('phone', $phone)->first();
         if(!$phoneUser) {
@@ -41,14 +44,16 @@ class UsersController extends Controller
             ]);
         } else {
             $user = DB::transaction(function() use ($user, $phoneUser, $phone) {
-                DB::table('orders')->where('userid', $phoneUser->id)->update([
-                    'userid' => $user->id
-                ]);
-                $phoneUser->delete();
                 $user->update([
                     'phone' => $phone,
                     'password' => $phoneUser->password ?? "",
                 ]);
+                DB::table('orders')->where('userid', $phoneUser->id)->update([
+                    'userid' => $user->id
+                ]);
+
+                $phoneUser->delete();
+
                 return $user;
             });
         }
