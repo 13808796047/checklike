@@ -64,15 +64,18 @@ class CouponCodesController extends Controller
             return response()->json([
                 'message' => '激活成功!'
             ]);
+        } else {
+            if(!$couponCode = CouponCode::where('code', $code)->first()) {
+                throw new CouponCodeUnavailableException('折扣卡不存在!');
+            }
+            $couponCode->checkAvailable();
+            event(new CouponCodeActived($couponCode, $user));
+            return response()->json([
+                'message' => '激活成功!'
+            ]);
         }
-        if(!$couponCode = CouponCode::where('code', $code)->first()) {
-            throw new CouponCodeUnavailableException('折扣卡不存在!');
-        }
-        $couponCode->checkAvailable();
-        event(new CouponCodeActived($couponCode, $user));
-        return response()->json([
-            'message' => '激活成功!'
-        ]);
+
+
     }
 
     public function couponPrice(Request $request, Order $order)

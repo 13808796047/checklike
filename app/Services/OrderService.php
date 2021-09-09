@@ -79,7 +79,7 @@ class OrderService
             $order = new Order([
                 'cid' => $request->cid,
                 'title' => $request->title,
-                'writer' => Str::limit($request->writer, $limit = 3, $end = '...'),
+                'writer' => $request->writer,
                 'endDate' => $request->endDate ?? "",
                 'publishdate' => $request->publishdate ?? "",
                 'date_publish' => $request->date_publish,

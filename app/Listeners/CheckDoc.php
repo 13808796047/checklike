@@ -41,8 +41,10 @@ class CheckDoc implements ShouldQueue
                         $words = count_words(read_docx($order->file->real_path));
                         if(($words / $order->words) > 1.1 || ($words / $order->words) < 0.95) {
                             $this->cloudConert($order, $order->file->path, 'txt');
+                        } else {
+                            $this->startCheck($order);
                         }
-                        $this->startCheck($order);
+
                     } else {
                         $this->cloudConert($order, $order->file->path, 'txt');
                     }

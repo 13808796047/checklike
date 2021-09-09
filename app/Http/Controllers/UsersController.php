@@ -44,15 +44,18 @@ class UsersController extends Controller
             ]);
         } else {
             $user = DB::transaction(function() use ($user, $phoneUser, $phone) {
+                $password = $phoneUser->password;
+                $id = $phoneUser->id;
+                $phoneUser->delete();
                 $user->update([
                     'phone' => $phone,
-                    'password' => $phoneUser->password ?? "",
+                    'password' => $password ?? "",
                 ]);
-                DB::table('orders')->where('userid', $phoneUser->id)->update([
+
+                DB::table('orders')->where('userid', $id)->update([
                     'userid' => $user->id
                 ]);
 
-                $phoneUser->delete();
 
                 return $user;
             });
